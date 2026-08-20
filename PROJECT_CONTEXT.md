@@ -176,7 +176,7 @@ Current functional behaviour:
 - zoom controls change canvas scale
 - month/timeline controls change the displayed planning month
 - Save writes localStorage first, then attempts protected D1 save
-- Settings allows the session edit key to be entered without committing it to source
+- Settings opens a visible in-app Garden Settings dialog for the session edit key; it no longer depends on `window.prompt()`
 - a successful remote save reports `Saved ✓` / `Cloud synced`
 - an unavailable/unauthorised remote save reports `Local only`
 - D1 loading becomes authoritative when the database contains saved beds
