@@ -8,6 +8,14 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "blenheim-garden",
+      "database_id": "30f379e1-a03c-4668-8bf3-e9d441b8f72f",
+      "migrations_dir": "migrations"
+    }
+  ],
   "observability": {
     "enabled": true
   }
