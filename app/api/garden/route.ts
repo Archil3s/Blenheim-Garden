@@ -4,6 +4,8 @@ import { GARDEN_ID } from "@/lib/garden/storage-contract";
 
 export const dynamic = "force-dynamic";
 
+const MAX_BED_EDGE_PERCENT = 105.01;
+
 type BedRow = {
   id: string;
   label: string;
@@ -68,7 +70,11 @@ function parsePlan(value: unknown): PlannerPlan {
     const y = bed.y as number;
     const w = bed.w as number;
     const h = bed.h as number;
-    if (x < 0 || y < 0 || w <= 0 || h <= 0 || x + w > 100.01 || y + h > 100.01) throw new Error(`Bed ${index + 1} is outside the garden canvas.`);
+    // The current physical plan intentionally lets Bed 12 extend a few percent past
+    // the nominal canvas edge, so persistence accepts a small drawing overscan.
+    if (x < 0 || y < 0 || w <= 0 || h <= 0 || x + w > MAX_BED_EDGE_PERCENT || y + h > MAX_BED_EDGE_PERCENT) {
+      throw new Error(`Bed ${index + 1} is outside the garden canvas.`);
+    }
 
     const crop = optionalString(bed.crop);
     const spacingCm = finite(bed.spacingCm) ? bed.spacingCm : undefined;
