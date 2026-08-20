@@ -20,15 +20,25 @@ export type D1DatabaseLike = {
 
 type GardenBindings = {
   DB?: D1DatabaseLike;
+  GARDEN_WRITE_TOKEN?: string;
 };
 
-export function getGardenDb(): D1DatabaseLike {
+function getGardenBindings(): GardenBindings {
   const { env } = getCloudflareContext();
-  const db = (env as GardenBindings).DB;
+  return env as GardenBindings;
+}
+
+export function getGardenDb(): D1DatabaseLike {
+  const db = getGardenBindings().DB;
 
   if (!db) {
     throw new Error("Cloudflare D1 binding DB is not available.");
   }
 
   return db;
+}
+
+export function getGardenWriteToken(): string | null {
+  const token = getGardenBindings().GARDEN_WRITE_TOKEN;
+  return typeof token === "string" && token.length > 0 ? token : null;
 }
