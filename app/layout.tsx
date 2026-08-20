@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { EditKeyDialogBridge } from "@/components/edit-key-dialog-bridge";
 import { GardenMediaDialogBridge } from "@/components/garden-media-dialog-bridge";
 import { GardenRecordsDialogBridge } from "@/components/garden-records-dialog-bridge";
+import { NewPlantingSaveRefreshBridge } from "@/components/new-planting-save-refresh-bridge";
 import "./globals.css";
 import "./planner-interactions.css";
 import "./growveg-workspace.css";
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         {children}
         <EditKeyDialogBridge />
+        <NewPlantingSaveRefreshBridge />
         <GardenMediaDialogBridge />
         <GardenRecordsDialogBridge />
       </body>
