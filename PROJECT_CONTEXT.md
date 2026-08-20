@@ -21,7 +21,7 @@ Core goals:
 1. Represent the user's actual physical garden layout, including beds, paths, trellises, trees/shade areas and berry/cane areas.
 2. Place crops visually inside beds or along drawn planting rows.
 3. Make planning quick with crop/variety selection, automatic spacing estimates and month views.
-4. Attach dated notes, photos, videos, planting records and harvests to beds/plants once durable storage is connected.
+4. Attach dated notes, photos, videos, planting records and harvests to beds/plants using Cloudflare persistence.
 5. Keep the experience lower-friction than a full commercial garden-design product.
 
 ---
@@ -32,7 +32,7 @@ The base plan contains 12 numbered beds and a top fruiting-cane area, modelled o
 
 The working canvas is 900 × 1080 internal pixels and is treated as approximately **9 m × 10.8 m** for spacing/capacity estimates (1 canvas pixel ≈ 1 cm). This is a practical planner scale, not a surveyed site measurement.
 
-Current browser-side plan state supports:
+Current plan state supports:
 
 - editable bed rectangles with x/y position and width/height
 - crop, variety, icon, spacing and estimated plant count per bed
@@ -41,13 +41,14 @@ Current browser-side plan state supports:
 - month selector
 - zoom
 - undo/redo history
-- local browser save via `localStorage`
+- local browser fallback/cache via `localStorage`
+- D1 load/save through `/api/garden`
 
-Durable multi-device persistence is not connected yet.
+On startup the app can load the local cache first and then replace it with the D1 plan when D1 contains saved beds.
 
 ---
 
-## 3. Current stack and storage foundation
+## 3. Current stack and storage
 
 - Next.js `16.2.11`
 - React `19.2.x`
@@ -56,13 +57,19 @@ Durable multi-device persistence is not connected yet.
 - Wrangler `4.124.0`
 - Cloudflare Workers target
 
-The repository now contains the first durable-storage foundation:
+Current storage implementation:
 
-- `migrations/0001_garden_storage.sql`
-- `lib/garden/storage-contract.ts`
-- `docs/CLOUDFLARE_STORAGE.md`
+- D1 database: `blenheim-garden`
+- D1 binding: `DB`
+- production D1 schema from `migrations/0001_garden_storage.sql` is applied
+- `lib/garden/storage-contract.ts` defines durable record types
+- `lib/garden/planner-plan.ts` defines the shared browser/API planner payload
+- `lib/garden/cloudflare-db.ts` resolves the D1 binding and write secret
+- `app/api/garden/status/route.ts` verifies binding/schema health
+- `app/api/garden/route.ts` provides D1 GET/PUT persistence
+- `docs/CLOUDFLARE_STORAGE.md` documents current setup
 
-The migration defines D1 tables for:
+D1 tables:
 
 - gardens
 - beds
@@ -74,16 +81,22 @@ The migration defines D1 tables for:
 - tasks
 - seed inventory
 
-Intended Cloudflare resources:
+The production schema was applied manually in the Cloudflare D1 Console and verified with `SELECT * FROM gardens;`.
 
-- D1 database: `blenheim-garden`
-- D1 binding: `DB`
-- R2 bucket: `blenheim-garden-media`
-- R2 binding: `GARDEN_MEDIA`
+Cloud writes are intentionally protected by the Worker secret:
+
+```text
+GARDEN_WRITE_TOKEN
+```
+
+Never commit this secret to GitHub or `wrangler.jsonc`. The browser keeps an entered edit key only in `sessionStorage`. If cloud save is unavailable, Save still writes to localStorage and reports `Local only`.
+
+R2 is still the next storage resource:
+
+- bucket: `blenheim-garden-media`
+- binding: `GARDEN_MEDIA`
 
 R2 will hold photo/video bytes. D1 `media` rows will hold searchable metadata and links back to beds, rows, plantings or harvests.
-
-Do not invent D1 database IDs. The real Cloudflare resources must exist before adding their bindings to `wrangler.jsonc`.
 
 ---
 
@@ -117,15 +130,18 @@ name: blenheim-garden
 main: .open-next/worker.js
 assets: .open-next/assets
 compatibility_flags: nodejs_compat
+D1 binding: DB -> blenheim-garden
 ```
 
-When storage is connected, preserve all existing settings and add only the real D1/R2 bindings.
+Preserve all existing settings when adding R2 later.
 
 `next.config.ts` keeps:
 
 ```ts
 output: "standalone"
 ```
+
+and initialises OpenNext Cloudflare bindings for local development.
 
 ---
 
@@ -159,11 +175,16 @@ Current functional behaviour:
 - Undo/Redo work for plan edits
 - zoom controls change canvas scale
 - month/timeline controls change the displayed planning month
-- Save stores beds and rows in browser `localStorage`
-- existing older localStorage bed-only plans are migrated on load
-- Clear bed removes the crop from the selected bed
+- Save writes localStorage first, then attempts protected D1 save
+- Settings allows the session edit key to be entered without committing it to source
+- a successful remote save reports `Saved ✓` / `Cloud synced`
+- an unavailable/unauthorised remote save reports `Local only`
+- D1 loading becomes authoritative when the database contains saved beds
+- changing a bed crop/variety finishes the prior active planting and creates a new active planting rather than overwriting history
+- clearing a bed finishes its active planting
+- deleting a drawn row finishes its active planting so old planting history remains in D1
 
-The Bed, Path, Trellis, Tree and Text drawing tools remain placeholders. Photos/video and Notes/harvests are not wired to D1/R2 yet.
+The Bed, Path, Trellis, Tree and Text drawing tools remain placeholders. Photos/video and Notes/harvests are not wired to R2/D1 UI flows yet.
 
 ---
 
@@ -179,21 +200,21 @@ The Bed, Path, Trellis, Tree and Text drawing tools remain placeholders. Photos/
 8. Keep detailed records behind selection/context-panel interactions.
 9. Treat spacing/capacity numbers as planner estimates unless the garden has been accurately measured.
 10. Preserve planting history separately from current bed geometry so replanting a bed does not destroy previous notes, harvests or media relationships.
+11. Never expose an anonymous garden write endpoint; keep D1 mutations behind the configured edit secret or a future stronger authentication layer.
 
 ---
 
 ## 7. Next build order
 
-1. Create D1 `blenheim-garden` and R2 `blenheim-garden-media` in the real Cloudflare account.
-2. Add the real bindings (`DB`, `GARDEN_MEDIA`) to `wrangler.jsonc` without changing existing OpenNext settings.
-3. Apply `migrations/0001_garden_storage.sql` to D1.
-4. Add `/api/garden` load/save endpoints and migrate browser state into D1, retaining localStorage as a fallback/cache.
-5. Implement R2 upload/list/delete endpoints and connect the Photos & video controls.
-6. Add Notes & harvests with sowing, germination, transplant and harvest dates.
-7. Make Bed, Path, Trellis, Tree and Text tools genuinely drawable/editable.
-8. Add Blenheim-specific planting windows and frost timing.
-9. Add Today / This Week task generation.
-10. Add seasonal occupancy/succession views and crop-rotation history.
+1. Configure Cloudflare Worker secret `GARDEN_WRITE_TOKEN` and deploy/verify the protected D1 save flow.
+2. Save the existing 12-bed plan once to seed D1 with planner geometry/current plantings.
+3. Create R2 `blenheim-garden-media` and bind it as `GARDEN_MEDIA`.
+4. Implement R2 upload/list/delete endpoints and connect Photos & video.
+5. Add Notes & harvests with sowing, germination, transplant and harvest dates.
+6. Make Bed, Path, Trellis, Tree and Text tools genuinely drawable/editable.
+7. Add Blenheim-specific planting windows and frost timing.
+8. Add Today / This Week task generation.
+9. Add seasonal occupancy/succession views and crop-rotation history.
 
 ---
 
@@ -203,5 +224,5 @@ The Bed, Path, Trellis, Tree and Text drawing tools remain placeholders. Photos/
 Work on my GitHub repo Archil3s/Blenheim-Garden.
 First read PROJECT_CONTEXT.md and inspect the current code before making changes.
 Treat the measured garden canvas as the primary interface. Preserve the GrowVeg-style workspace structure, the user's real physical garden layout and the existing Cloudflare/OpenNext deployment.
-For durable storage, use the existing D1 migration/storage contract and only add real Cloudflare D1/R2 bindings after the resources exist.
+D1 is live and bound as DB. Preserve protected writes using GARDEN_WRITE_TOKEN. R2 is the next storage layer and should use bucket blenheim-garden-media with binding GARDEN_MEDIA.
 ```
