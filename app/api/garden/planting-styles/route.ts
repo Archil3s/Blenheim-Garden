@@ -1,4 +1,5 @@
 import { getGardenDb } from "@/lib/garden/cloudflare-db";
+import { ensureGardenLayoutSchema } from "@/lib/garden/layout-schema";
 import { ensurePlantingStyleSchema } from "@/lib/garden/planting-style-schema";
 import { GARDEN_ID } from "@/lib/garden/storage-contract";
 import { authoriseGardenWrite } from "@/lib/garden/write-auth";
@@ -31,6 +32,13 @@ function numberValue(value: unknown, fallback: number) {
   return Number.isFinite(parsed) ? parsed : fallback;
 }
 
+async function ensureSchemas() {
+  const db = getGardenDb();
+  await ensureGardenLayoutSchema(db);
+  await ensurePlantingStyleSchema(db);
+  return db;
+}
+
 function styleDto(row: StyleRow) {
   return {
     bedId: row.bed_id,
@@ -46,8 +54,7 @@ function styleDto(row: StyleRow) {
 
 export async function GET() {
   try {
-    const db = getGardenDb();
-    await ensurePlantingStyleSchema(db);
+    const db = await ensureSchemas();
     const result = await db.prepare(`
       SELECT b.id AS bed_id, b.label, b.sort_order,
         s.icon_size_px, s.density_percent, s.pattern, s.visual_spacing, s.auto_fit
@@ -78,8 +85,7 @@ export async function PUT(request: Request) {
     const visualSpacing = SPACING.has(body.visualSpacing as VisualSpacing) ? body.visualSpacing as VisualSpacing : "normal";
     const autoFit = body.autoFit !== false;
 
-    const db = getGardenDb();
-    await ensurePlantingStyleSchema(db);
+    const db = await ensureSchemas();
     const bed = await db.prepare(`
       SELECT id FROM beds WHERE garden_id = ? AND id = ? AND archived_at IS NULL LIMIT 1
     `).bind(GARDEN_ID, bedId).first<{ id: string }>();
@@ -115,8 +121,7 @@ export async function DELETE(request: Request) {
     const url = new URL(request.url);
     const bedId = url.searchParams.get("bedId")?.trim() ?? "";
     if (!bedId) return Response.json({ ok: false, error: "Choose a bed first." }, { status: 400 });
-    const db = getGardenDb();
-    await ensurePlantingStyleSchema(db);
+    const db = await ensureSchemas();
     await db.prepare("DELETE FROM planting_styles WHERE garden_id = ? AND bed_id = ?").bind(GARDEN_ID, bedId).run();
     return Response.json({ ok: true });
   } catch (error) {
