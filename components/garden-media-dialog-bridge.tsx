@@ -78,10 +78,15 @@ export function GardenMediaDialogBridge() {
       let nextTarget: Target | null = null;
 
       if (mediaButton?.textContent?.includes("Photos & video")) {
-        const selectionPanel = mediaButton.closest(".gv-selection-panel");
-        const selectedName = selectionPanel?.querySelector(".gv-selection-hero h2")?.textContent?.trim() ?? "";
-        const match = selectedName.match(/^Bed\s+(\d+)$/i);
-        if (match) nextTarget = { targetType: "bed", targetId: match[1], label: selectedName };
+        const selectionPanel = mediaButton.closest(".gv-selection-panel") as HTMLElement | null;
+        const selectedName = selectionPanel?.querySelector(".gv-selection-hero h2")?.textContent?.trim() || "Selected bed";
+        const bedId = selectionPanel?.dataset.bedId?.trim();
+        if (bedId) {
+          nextTarget = { targetType: "bed", targetId: bedId, label: selectedName };
+        } else {
+          const match = selectedName.match(/^Bed\s+(\d+)$/i);
+          if (match) nextTarget = { targetType: "bed", targetId: match[1], label: selectedName };
+        }
       } else if (photosTab?.textContent?.trim() === "Photos") {
         nextTarget = { targetType: "garden", targetId: "blenheim-garden", label: "Whole garden" };
       }
