@@ -43,11 +43,11 @@ Current browser-side plan state supports:
 - undo/redo history
 - local browser save via `localStorage`
 
-Durable multi-device persistence is not implemented yet.
+Durable multi-device persistence is not connected yet.
 
 ---
 
-## 3. Current stack
+## 3. Current stack and storage foundation
 
 - Next.js `16.2.11`
 - React `19.2.x`
@@ -56,13 +56,34 @@ Durable multi-device persistence is not implemented yet.
 - Wrangler `4.124.0`
 - Cloudflare Workers target
 
-Future storage direction:
+The repository now contains the first durable-storage foundation:
 
-- Cloudflare D1 for beds, rows, crops, varieties, planting records, notes, tasks and harvests
-- Cloudflare R2 for garden photos and ordinary video files
-- Cloudflare Stream only if video playback/transcoding needs become substantial
+- `migrations/0001_garden_storage.sql`
+- `lib/garden/storage-contract.ts`
+- `docs/CLOUDFLARE_STORAGE.md`
 
-Do not invent D1 database IDs or R2 bucket bindings. Create/bind the real Cloudflare resources first, then commit the real bindings/configuration.
+The migration defines D1 tables for:
+
+- gardens
+- beds
+- planting rows
+- planting history
+- notes
+- harvests
+- media metadata
+- tasks
+- seed inventory
+
+Intended Cloudflare resources:
+
+- D1 database: `blenheim-garden`
+- D1 binding: `DB`
+- R2 bucket: `blenheim-garden-media`
+- R2 binding: `GARDEN_MEDIA`
+
+R2 will hold photo/video bytes. D1 `media` rows will hold searchable metadata and links back to beds, rows, plantings or harvests.
+
+Do not invent D1 database IDs. The real Cloudflare resources must exist before adding their bindings to `wrangler.jsonc`.
 
 ---
 
@@ -89,7 +110,7 @@ The package script must remain:
 
 Do not make `npm run build` invoke OpenNext when Cloudflare already runs the OpenNext build command.
 
-`wrangler.jsonc` uses:
+`wrangler.jsonc` currently uses:
 
 ```text
 name: blenheim-garden
@@ -97,6 +118,8 @@ main: .open-next/worker.js
 assets: .open-next/assets
 compatibility_flags: nodejs_compat
 ```
+
+When storage is connected, preserve all existing settings and add only the real D1/R2 bindings.
 
 `next.config.ts` keeps:
 
@@ -108,7 +131,7 @@ output: "standalone"
 
 ## 5. Current UI and behaviour
 
-The homepage is now organised like a compact professional garden-planning workspace:
+The homepage is organised like a compact professional garden-planning workspace:
 
 - top title bar with garden/year, Settings, Save and section tabs
 - second command bar grouped into Plan, Edit, Layout, Layers, Timeline, Seed Inventory and Crop Rotation
@@ -116,7 +139,6 @@ The homepage is now organised like a compact professional garden-planning worksp
 - approximately 250 px context-sensitive panel beside the rail
 - Plants/Rows modes show filters, plant catalogue, crop spacing and variety selection in that panel
 - Select mode uses that same panel for selected-bed or selected-row details/actions
-- the former bottom plant tray and permanent right inspector have been removed
 - measured rulers sit across the top and left of the canvas
 - the large grid-backed garden canvas dominates the remaining viewport
 - the supplied bed/path/trellis/berry layout remains the base plan
@@ -141,7 +163,7 @@ Current functional behaviour:
 - existing older localStorage bed-only plans are migrated on load
 - Clear bed removes the crop from the selected bed
 
-The Bed, Path, Trellis, Tree and Text drawing tools remain placeholders. Photos/video and Notes/harvests require durable storage/data-model work.
+The Bed, Path, Trellis, Tree and Text drawing tools remain placeholders. Photos/video and Notes/harvests are not wired to D1/R2 yet.
 
 ---
 
@@ -156,20 +178,22 @@ The Bed, Path, Trellis, Tree and Text drawing tools remain placeholders. Photos/
 7. Use crop icons/visuals where they improve scanability.
 8. Keep detailed records behind selection/context-panel interactions.
 9. Treat spacing/capacity numbers as planner estimates unless the garden has been accurately measured.
+10. Preserve planting history separately from current bed geometry so replanting a bed does not destroy previous notes, harvests or media relationships.
 
 ---
 
-## 7. Recommended next build order
+## 7. Next build order
 
-1. Make Bed, Path, Trellis, Tree and Text tools genuinely drawable/editable using the current context-panel pattern.
-2. Create the real Cloudflare D1 database and bind it to the Worker.
-3. Move saved beds/rows/varieties from localStorage to D1 while keeping local autosave as a fallback.
-4. Create/bind an R2 bucket for photos and ordinary garden video.
-5. Implement Photos & video on the selected bed/row with dated uploads and captions.
-6. Add Notes & harvests with sowing, transplant and harvest dates.
-7. Add Blenheim-specific planting windows and frost timing.
-8. Add Today / This Week task generation.
-9. Add seasonal occupancy/succession views and crop-rotation history.
+1. Create D1 `blenheim-garden` and R2 `blenheim-garden-media` in the real Cloudflare account.
+2. Add the real bindings (`DB`, `GARDEN_MEDIA`) to `wrangler.jsonc` without changing existing OpenNext settings.
+3. Apply `migrations/0001_garden_storage.sql` to D1.
+4. Add `/api/garden` load/save endpoints and migrate browser state into D1, retaining localStorage as a fallback/cache.
+5. Implement R2 upload/list/delete endpoints and connect the Photos & video controls.
+6. Add Notes & harvests with sowing, germination, transplant and harvest dates.
+7. Make Bed, Path, Trellis, Tree and Text tools genuinely drawable/editable.
+8. Add Blenheim-specific planting windows and frost timing.
+9. Add Today / This Week task generation.
+10. Add seasonal occupancy/succession views and crop-rotation history.
 
 ---
 
@@ -179,4 +203,5 @@ The Bed, Path, Trellis, Tree and Text drawing tools remain placeholders. Photos/
 Work on my GitHub repo Archil3s/Blenheim-Garden.
 First read PROJECT_CONTEXT.md and inspect the current code before making changes.
 Treat the measured garden canvas as the primary interface. Preserve the GrowVeg-style workspace structure, the user's real physical garden layout and the existing Cloudflare/OpenNext deployment.
+For durable storage, use the existing D1 migration/storage contract and only add real Cloudflare D1/R2 bindings after the resources exist.
 ```
