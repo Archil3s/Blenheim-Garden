@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "./planner-interactions.css";
 
 export const metadata: Metadata = {
   title: "Blenheim Garden",
