@@ -2,14 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { EditKeyDialogBridge } from "@/components/edit-key-dialog-bridge";
 import { GardenMediaDialogBridge } from "@/components/garden-media-dialog-bridge";
 import { GardenRecordsDialogBridge } from "@/components/garden-records-dialog-bridge";
-import { PlantingStyleDialogBridge } from "@/components/planting-style-dialog-bridge";
-import { PlantPlacementBridge } from "@/components/plant-placement-bridge";
 import "./globals.css";
 import "./planner-interactions.css";
 import "./growveg-workspace.css";
-import "./planting-style.css";
-import "./plant-placement.css";
 import "./tree-scaling.css";
+import "./growveg-v4.css";
 
 export const metadata: Metadata = {
   title: "Blenheim Garden",
@@ -30,8 +27,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <EditKeyDialogBridge />
         <GardenMediaDialogBridge />
         <GardenRecordsDialogBridge />
-        <PlantingStyleDialogBridge />
-        <PlantPlacementBridge />
       </body>
     </html>
   );
