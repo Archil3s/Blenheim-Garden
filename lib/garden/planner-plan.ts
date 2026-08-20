@@ -5,11 +5,33 @@ export type PlannerBed = {
   y: number;
   w: number;
   h: number;
+  // Legacy one-crop-per-bed fields are kept only so old local plans can migrate.
   crop?: string;
   cropIcon?: string;
   cropCount?: number;
   variety?: string;
   spacingCm?: number;
+};
+
+export type PlannerPlantingPattern = "grid" | "staggered" | "rows" | "natural" | "single";
+export type PlannerVisualSpacing = "tight" | "normal" | "wide";
+
+export type PlannerPlantingArea = {
+  id: string;
+  plantingId?: string;
+  bedId: number;
+  crop: string;
+  cropIcon: string;
+  variety: string;
+  spacingCm: number;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  count: number;
+  pattern: PlannerPlantingPattern;
+  iconSize: number;
+  visualSpacing: PlannerVisualSpacing;
 };
 
 export type PlannerRow = {
@@ -70,6 +92,7 @@ export type PlannerLayoutObject = PlannerPath | PlannerTrellis | PlannerTree | P
 
 export type PlannerPlan = {
   beds: PlannerBed[];
+  plantingAreas: PlannerPlantingArea[];
   rows: PlannerRow[];
   objects: PlannerLayoutObject[];
 };
