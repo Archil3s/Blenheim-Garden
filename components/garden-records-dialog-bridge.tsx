@@ -46,13 +46,14 @@ type HarvestItem = {
 type RecordsResponse = {
   ok: boolean;
   error?: string;
-  scope?: { type: "bed" | "garden"; bedId: string | null; label: string };
+  scope?: { type: "bed" | "planting" | "garden"; bedId: string | null; plantingId?: string | null; label: string };
   activePlanting?: ActivePlanting | null;
+  multipleActive?: boolean;
   notes?: NoteItem[];
   harvests?: HarvestItem[];
 };
 
-type Target = { bedId: string | null; label: string };
+type Target = { bedId: string | null; plantingId: string | null; label: string };
 
 function todayInput() {
   const now = new Date();
@@ -74,8 +75,10 @@ function formatWeight(grams: number | null) {
 
 export function GardenRecordsDialogBridge() {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const [target, setTarget] = useState<Target>({ bedId: null, label: "Whole garden" });
+  const [target, setTarget] = useState<Target>({ bedId: null, plantingId: null, label: "Whole garden" });
   const [activePlanting, setActivePlanting] = useState<ActivePlanting | null>(null);
+  const [multipleActive, setMultipleActive] = useState(false);
+  const [blocked, setBlocked] = useState(false);
   const [notes, setNotes] = useState<NoteItem[]>([]);
   const [harvests, setHarvests] = useState<HarvestItem[]>([]);
   const [noteBody, setNoteBody] = useState("");
@@ -96,6 +99,7 @@ export function GardenRecordsDialogBridge() {
   function applyResponse(data: RecordsResponse) {
     const planting = data.activePlanting ?? null;
     setActivePlanting(planting);
+    setMultipleActive(Boolean(data.multipleActive));
     setNotes(data.notes ?? []);
     setHarvests(data.harvests ?? []);
     setSowDate(planting?.sowDate ?? "");
@@ -107,7 +111,10 @@ export function GardenRecordsDialogBridge() {
     setBusy(true);
     setError("");
     try {
-      const query = nextTarget.bedId ? `?${new URLSearchParams({ bedId: nextTarget.bedId }).toString()}` : "";
+      const params = new URLSearchParams();
+      if (nextTarget.bedId) params.set("bedId", nextTarget.bedId);
+      if (nextTarget.plantingId) params.set("plantingId", nextTarget.plantingId);
+      const query = params.size ? `?${params.toString()}` : "";
       const response = await fetch(`/api/garden/records${query}`, { cache: "no-store" });
       const data = await response.json() as RecordsResponse;
       if (!response.ok || !data.ok) throw new Error(data.error || "Unable to load notes and harvests.");
@@ -126,14 +133,17 @@ export function GardenRecordsDialogBridge() {
       const recordButton = clicked.closest("button.gv-secondary-action");
       const notesTab = clicked.closest(".gv-tabs button");
       let nextTarget: Target | null = null;
+      let needsSave = false;
 
       if (recordButton?.textContent?.includes("Notes & harvests")) {
         const panel = recordButton.closest(".gv-selection-panel") as HTMLElement | null;
-        const bedId = panel?.dataset.bedId?.trim();
+        const bedId = panel?.dataset.bedId?.trim() || null;
+        const plantingId = panel?.dataset.plantingId?.trim() || null;
         const label = panel?.querySelector(".gv-selection-hero h2")?.textContent?.trim() || "Selected bed";
-        if (bedId) nextTarget = { bedId, label };
+        if (panel?.classList.contains("gv-planting-inspector") && !plantingId) needsSave = true;
+        if (bedId) nextTarget = { bedId, plantingId, label };
       } else if (notesTab?.textContent?.trim() === "Notes") {
-        nextTarget = { bedId: null, label: "Whole garden" };
+        nextTarget = { bedId: null, plantingId: null, label: "Whole garden" };
       }
 
       if (!nextTarget) return;
@@ -147,10 +157,15 @@ export function GardenRecordsDialogBridge() {
       setWeight("");
       setQuantity("");
       setHarvestNotes("");
-      setError("");
+      setError(needsSave ? "Save the garden once, then reopen this planting to add crop-specific notes or harvests." : "");
       setSuccess("");
+      setBlocked(needsSave);
+      setActivePlanting(null);
+      setMultipleActive(false);
+      setNotes([]);
+      setHarvests([]);
       dialogRef.current?.showModal();
-      void loadRecords(nextTarget);
+      if (!needsSave) void loadRecords(nextTarget);
     }
 
     document.addEventListener("click", openRecords, true);
@@ -158,6 +173,7 @@ export function GardenRecordsDialogBridge() {
   }, []);
 
   async function postAction(action: string, payload: Record<string, unknown>, successMessage: string) {
+    if (blocked) return false;
     const editKey = sessionStorage.getItem(EDIT_KEY_SESSION)?.trim() ?? "";
     if (!editKey) {
       setError("Open Settings and save your garden edit key before changing records.");
@@ -194,7 +210,7 @@ export function GardenRecordsDialogBridge() {
       setError("Write a note first.");
       return;
     }
-    const saved = await postAction("add-note", { bedId: target.bedId, body: noteBody.trim(), occurredOn: noteDate }, "Note added");
+    const saved = await postAction("add-note", { bedId: target.bedId, plantingId: target.plantingId, body: noteBody.trim(), occurredOn: noteDate }, "Note added");
     if (saved) setNoteBody("");
   }
 
@@ -205,6 +221,7 @@ export function GardenRecordsDialogBridge() {
     const numericQuantity = quantity.trim() ? Number(quantity) : null;
     const saved = await postAction("add-harvest", {
       bedId: target.bedId,
+      plantingId: target.plantingId,
       harvestedOn: harvestDate,
       weightG,
       quantity: numericQuantity == null || Number.isNaN(numericQuantity) ? null : numericQuantity,
@@ -222,6 +239,7 @@ export function GardenRecordsDialogBridge() {
     if (!target.bedId || !activePlanting) return;
     await postAction("save-milestones", {
       bedId: target.bedId,
+      plantingId: target.plantingId,
       sowDate: sowDate || null,
       germinatedDate: germinatedDate || null,
       transplantDate: transplantDate || null,
@@ -239,10 +257,7 @@ export function GardenRecordsDialogBridge() {
     setError("");
     try {
       const query = new URLSearchParams({ kind, id });
-      const response = await fetch(`/api/garden/records?${query.toString()}`, {
-        method: "DELETE",
-        headers: { authorization: `Bearer ${editKey}` },
-      });
+      const response = await fetch(`/api/garden/records?${query.toString()}`, { method: "DELETE", headers: { authorization: `Bearer ${editKey}` } });
       const data = await response.json() as RecordsResponse;
       if (!response.ok || !data.ok) throw new Error(data.error || "Delete failed.");
       await loadRecords(target);
@@ -261,41 +276,37 @@ export function GardenRecordsDialogBridge() {
     return entries.sort((a, b) => `${b.date}|${b.createdAt}`.localeCompare(`${a.date}|${a.createdAt}`));
   }, [notes, harvests]);
 
+  const cropUnavailableMessage = blocked
+    ? "Save this new planting first."
+    : multipleActive
+      ? "This bed contains multiple crops. Select a planting area on the canvas to edit crop dates or record a harvest."
+      : "You can still add bed notes. Plant a crop here before recording harvests.";
+
   return (
     <dialog ref={dialogRef} className="garden-records-dialog" onCancel={() => dialogRef.current?.close()}>
       <div className="records-card">
-        <header>
-          <div><strong>Notes & harvests</strong><span>{target.label}</span></div>
-          <button type="button" aria-label="Close" onClick={() => dialogRef.current?.close()}>×</button>
-        </header>
+        <header><div><strong>Notes & harvests</strong><span>{target.label}</span></div><button type="button" aria-label="Close" onClick={() => dialogRef.current?.close()}>×</button></header>
 
         {target.bedId && (
           <section className="crop-card">
-            {activePlanting ? (
-              <>
-                <div className="crop-title"><span>{activePlanting.cropIcon || "🌱"}</span><div><small>CURRENT CROP</small><strong>{activePlanting.variety || activePlanting.cropName}</strong><em>{activePlanting.cropName}</em></div></div>
-                <div className="milestones">
-                  <label>Sown<input type="date" value={sowDate} onChange={(event) => setSowDate(event.target.value)} disabled={busy} /></label>
-                  <label>Germinated<input type="date" value={germinatedDate} onChange={(event) => setGerminatedDate(event.target.value)} disabled={busy} /></label>
-                  <label>Transplanted<input type="date" value={transplantDate} onChange={(event) => setTransplantDate(event.target.value)} disabled={busy} /></label>
-                  <button type="button" onClick={() => void saveMilestones()} disabled={busy}>Save dates</button>
-                </div>
-              </>
-            ) : <div className="empty-crop"><span>🌱</span><div><strong>No active crop</strong><small>You can still add bed notes. Plant a crop here before recording harvests.</small></div></div>}
+            {activePlanting ? <>
+              <div className="crop-title"><span>{activePlanting.cropIcon || "🌱"}</span><div><small>{target.plantingId ? "SELECTED PLANTING" : "CURRENT CROP"}</small><strong>{activePlanting.variety || activePlanting.cropName}</strong><em>{activePlanting.cropName}</em></div></div>
+              <div className="milestones"><label>Sown<input type="date" value={sowDate} onChange={(event) => setSowDate(event.target.value)} disabled={busy} /></label><label>Germinated<input type="date" value={germinatedDate} onChange={(event) => setGerminatedDate(event.target.value)} disabled={busy} /></label><label>Transplanted<input type="date" value={transplantDate} onChange={(event) => setTransplantDate(event.target.value)} disabled={busy} /></label><button type="button" onClick={() => void saveMilestones()} disabled={busy}>Save dates</button></div>
+            </> : <div className="empty-crop"><span>🌱</span><div><strong>{multipleActive ? "Select a crop area" : "No active crop selected"}</strong><small>{cropUnavailableMessage}</small></div></div>}
           </section>
         )}
 
         <div className="record-columns">
-          <section className="record-form">
-            <div className="section-title"><strong>Quick note</strong><span>{activePlanting && target.bedId ? "Attached to current crop" : target.bedId ? "Attached to this bed" : "Whole garden"}</span></div>
-            <label>Date<input type="date" value={noteDate} onChange={(event) => setNoteDate(event.target.value)} disabled={busy} /></label>
-            <textarea value={noteBody} onChange={(event) => setNoteBody(event.target.value)} maxLength={4000} placeholder="What happened? Soil, growth, pests, weather, feeding…" disabled={busy} />
-            <button type="button" className="primary" onClick={() => void addNote()} disabled={busy || !noteBody.trim()}>{busy ? "Working…" : "Add note"}</button>
+          <section className={`record-form ${blocked ? "disabled" : ""}`}>
+            <div className="section-title"><strong>Quick note</strong><span>{target.plantingId ? "Attached to selected crop" : target.bedId ? "Attached to this bed" : "Whole garden"}</span></div>
+            <label>Date<input type="date" value={noteDate} onChange={(event) => setNoteDate(event.target.value)} disabled={busy || blocked} /></label>
+            <textarea value={noteBody} onChange={(event) => setNoteBody(event.target.value)} maxLength={4000} placeholder="What happened? Soil, growth, pests, weather, feeding…" disabled={busy || blocked} />
+            <button type="button" className="primary" onClick={() => void addNote()} disabled={busy || blocked || !noteBody.trim()}>{busy ? "Working…" : "Add note"}</button>
           </section>
 
           {target.bedId && (
             <section className={`record-form harvest-form ${!activePlanting ? "disabled" : ""}`}>
-              <div className="section-title"><strong>Record harvest</strong><span>{activePlanting ? activePlanting.variety || activePlanting.cropName : "Plant a crop first"}</span></div>
+              <div className="section-title"><strong>Record harvest</strong><span>{activePlanting ? activePlanting.variety || activePlanting.cropName : multipleActive ? "Select a planting area" : "Plant a crop first"}</span></div>
               <label>Date<input type="date" value={harvestDate} onChange={(event) => setHarvestDate(event.target.value)} disabled={busy || !activePlanting} /></label>
               <div className="split-input"><label>Weight<div><input type="number" min="0" step="0.01" value={weight} onChange={(event) => setWeight(event.target.value)} placeholder="0" disabled={busy || !activePlanting} /><select value={weightUnit} onChange={(event) => setWeightUnit(event.target.value as "g" | "kg")} disabled={busy || !activePlanting}><option value="kg">kg</option><option value="g">g</option></select></div></label><label>Quantity<div><input type="number" min="0" step="1" value={quantity} onChange={(event) => setQuantity(event.target.value)} placeholder="0" disabled={busy || !activePlanting} /><input value={quantityUnit} onChange={(event) => setQuantityUnit(event.target.value)} maxLength={40} placeholder="items" disabled={busy || !activePlanting} /></div></label></div>
               <textarea value={harvestNotes} onChange={(event) => setHarvestNotes(event.target.value)} maxLength={2000} placeholder="Optional harvest note" disabled={busy || !activePlanting} />
@@ -310,19 +321,7 @@ export function GardenRecordsDialogBridge() {
           <div className="activity-head"><strong>History</strong><span>{activity.length} record{activity.length === 1 ? "" : "s"}</span></div>
           {busy && activity.length === 0 ? <p className="empty">Loading…</p> : null}
           {!busy && activity.length === 0 ? <p className="empty">Nothing recorded here yet.</p> : null}
-          {activity.map((entry) => entry.kind === "note" ? (
-            <article key={`note-${entry.item.id}`}>
-              <span className="activity-icon note">✎</span>
-              <div className="activity-copy"><div><strong>Note</strong><small>{prettyDate(entry.date)}{entry.item.bedLabel ? ` · ${entry.item.bedLabel}` : ""}{entry.item.variety ? ` · ${entry.item.variety}` : ""}</small></div><p>{entry.item.body}</p></div>
-              <button type="button" className="delete" onClick={() => void remove("note", entry.item.id)} disabled={busy}>Delete</button>
-            </article>
-          ) : (
-            <article key={`harvest-${entry.item.id}`}>
-              <span className="activity-icon harvest">⚖</span>
-              <div className="activity-copy"><div><strong>Harvest{entry.item.cropIcon ? ` ${entry.item.cropIcon}` : ""}</strong><small>{prettyDate(entry.date)}{entry.item.bedLabel ? ` · ${entry.item.bedLabel}` : ""}{entry.item.variety ? ` · ${entry.item.variety}` : ""}</small></div><p>{[formatWeight(entry.item.weightG), entry.item.quantity != null ? `${entry.item.quantity} ${entry.item.unit || "items"}` : null, entry.item.notes].filter(Boolean).join(" · ")}</p></div>
-              <button type="button" className="delete" onClick={() => void remove("harvest", entry.item.id)} disabled={busy}>Delete</button>
-            </article>
-          ))}
+          {activity.map((entry) => entry.kind === "note" ? <article key={`note-${entry.item.id}`}><span className="activity-icon note">✎</span><div className="activity-copy"><div><strong>Note</strong><small>{prettyDate(entry.date)}{entry.item.bedLabel ? ` · ${entry.item.bedLabel}` : ""}{entry.item.variety ? ` · ${entry.item.variety}` : ""}</small></div><p>{entry.item.body}</p></div><button type="button" className="delete" onClick={() => void remove("note", entry.item.id)} disabled={busy}>Delete</button></article> : <article key={`harvest-${entry.item.id}`}><span className="activity-icon harvest">⚖</span><div className="activity-copy"><div><strong>Harvest{entry.item.cropIcon ? ` ${entry.item.cropIcon}` : ""}</strong><small>{prettyDate(entry.date)}{entry.item.bedLabel ? ` · ${entry.item.bedLabel}` : ""}{entry.item.variety ? ` · ${entry.item.variety}` : ""}</small></div><p>{[formatWeight(entry.item.weightG), entry.item.quantity != null ? `${entry.item.quantity} ${entry.item.unit || "items"}` : null, entry.item.notes].filter(Boolean).join(" · ")}</p></div><button type="button" className="delete" onClick={() => void remove("harvest", entry.item.id)} disabled={busy}>Delete</button></article>)}
         </section>
       </div>
 
