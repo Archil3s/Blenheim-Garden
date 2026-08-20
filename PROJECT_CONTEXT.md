@@ -2,228 +2,133 @@
 
 _Last updated: 20 August 2026_
 
-This file is the handoff/reference document for future ChatGPT/Codex sessions working on this repository.
-
-**Repository:** `Archil3s/Blenheim-Garden`
-
+**Repository:** `Archil3s/Blenheim-Garden`  
 **Production branch:** `main`
 
----
+## Product
 
-## 1. Product goal
+Blenheim Garden is a visual home-garden planner for Blenheim, Marlborough. The measured garden canvas is the application: keep it visually dominant, keep controls compact, and use a GrowVeg-like interaction model without copying proprietary code or artwork.
 
-Blenheim Garden is a visual home-garden planner for Blenheim, Marlborough.
+The working canvas is **900 × 1080 cm-equivalent pixels**, treated as approximately **9 m × 10.8 m**. The base plan contains the existing 12 numbered beds plus the berry/cane area.
 
-The primary interface follows the interaction model of a simplified GrowVeg-style planner: the **garden map is the application**, not a secondary dashboard feature. Do not copy GrowVeg proprietary artwork or code; use the structural ideas of compact toolbars, a context-sensitive drawing panel and a measured central canvas.
-
-Core goals:
-
-1. Represent the actual physical garden layout, including beds, paths, trellises, trees/shade areas and berry/cane areas.
-2. Place crops visually inside beds or along drawn planting rows.
-3. Make planning quick with crop/variety selection, automatic spacing estimates and month views.
-4. Attach dated notes, photos, videos, planting records and harvests to beds/plants using Cloudflare persistence.
-5. Keep the experience lower-friction than a full commercial garden-design product.
-
----
-
-## 2. Current garden model
-
-The base plan contains 12 numbered beds and a top fruiting-cane area, modelled on the supplied garden-plan drawings rather than a generic card grid.
-
-The working canvas is 900 × 1080 internal pixels and is treated as approximately **9 m × 10.8 m** for spacing/capacity estimates (1 canvas pixel ≈ 1 cm). This is a practical planner scale, not a surveyed site measurement.
-
-Current plan state supports:
-
-- editable bed rectangles with x/y position and width/height
-- crop, variety, icon, spacing and estimated plant count per bed
-- free-drawn planting rows
-- crop, variety, spacing and estimated plant count per row
-- month selector
-- zoom
-- undo/redo history
-- local browser fallback/cache via `localStorage`
-- D1 load/save through `/api/garden`
-
-D1 has been verified with all 12 beds saved successfully.
-
----
-
-## 3. Current stack and storage
+## Stack and live Cloudflare storage
 
 - Next.js `16.2.11`
 - React `19.2.x`
 - TypeScript `5.9.x`
 - OpenNext Cloudflare `1.20.2`
 - Wrangler `4.124.0`
-- Cloudflare Workers target
+- D1 database `blenheim-garden`, binding `DB`
+- private R2 bucket `blenheim-garden-media`, binding `GARDEN_MEDIA`
+- protected writes via Worker secret `GARDEN_WRITE_TOKEN`
 
-Live storage resources:
+D1 has the 12 original beds saved. R2 photo/video upload, viewing and deletion are live.
 
-- D1 database: `blenheim-garden`
-- D1 binding: `DB`
-- R2 bucket: `blenheim-garden-media`
-- R2 binding: `GARDEN_MEDIA`
-- R2 public access: disabled/private
-- Worker write secret: `GARDEN_WRITE_TOKEN`
+Never commit or expose `GARDEN_WRITE_TOKEN`. The browser stores an entered edit key only in `sessionStorage`.
 
-The production D1 schema from `migrations/0001_garden_storage.sql` is applied and includes:
+## Drawing Interface V2
 
-- gardens
-- beds
-- planting rows
-- planting history
-- notes
-- harvests
-- media metadata
-- tasks
-- seed inventory
+The planner now uses a simplified two-row application chrome:
 
-Important implementation files:
+- title bar: garden, Settings, Save, Plan/Photos/Notes
+- quick bar: Undo, Redo, 10 cm Snap toggle, Zoom, Month, cloud state
+- readable left drawing rail
+- context-sensitive inspector/tool panel
+- measured grid/rulers and live X/Y coordinates
 
-- `lib/garden/storage-contract.ts` — durable record types
-- `lib/garden/planner-plan.ts` — shared planner payload
-- `lib/garden/cloudflare-db.ts` — D1/R2 binding access and write secret
-- `lib/garden/media-limits.ts` — conservative app media quotas/types
-- `lib/garden/write-auth.ts` — shared protected write authentication
-- `app/api/garden/status/route.ts` — D1 health
-- `app/api/garden/route.ts` — D1 planner GET/PUT
-- `app/api/garden/media/route.ts` — R2 list/upload plus D1 metadata/quota
-- `app/api/garden/media/[id]/route.ts` — private R2 streaming/delete
-- `components/garden-media-dialog-bridge.tsx` — Photos & video UI
-- `docs/CLOUDFLARE_STORAGE.md` — Cloudflare setup/reference
+Real drawing tools:
 
-Never commit `GARDEN_WRITE_TOKEN`. The browser keeps the entered edit key only in `sessionStorage`.
+- **Select** — move/edit objects; resize beds/trees; reshape rows/paths/trellises using handles
+- **Plants** — select crop/variety and fill a bed
+- **Rows** — drag planting rows with live length/plant count
+- **Bed** — click-drag a new bed with live dimensions
+- **Path** — click-drag a path and edit width/label
+- **Trellis** — click-drag and edit height/post spacing/label
+- **Tree** — click to place, then move/resize canopy and rename
+- **Text** — click to place, then move/edit text and font size
 
----
+Objects use 10 cm snap by default and display live drawing measurements. Selected objects support duplicate/delete where appropriate.
 
-## 4. Cloudflare deployment
+### Saved planner payload
 
-Production configuration:
+`lib/garden/planner-plan.ts` defines:
 
-```text
-Build command:
-npx @opennextjs/cloudflare build
+- `beds`
+- `rows`
+- `objects` (`path`, `trellis`, `tree`, `text`)
 
-Deploy command:
-npx @opennextjs/cloudflare deploy
+Older local plans without `objects` are normalised to the built-in physical layout.
 
-Production branch:
-main
-```
+### D1 layout persistence
 
-The package script must remain:
+`lib/garden/layout-schema.ts` idempotently bootstraps Drawing V2 schema from the Worker when `/api/garden` first runs:
 
-```json
-"build": "next build"
-```
+- adds nullable `beds.archived_at` when missing
+- creates `layout_objects` when missing
+- creates its index
+- seeds the original main/cross paths, north trellis/tree, Entrance and Exit as editable layout objects only when the table is first created
 
-`wrangler.jsonc` must preserve:
+This runtime bootstrap is intentional so the existing production D1 upgrades without a manual dashboard SQL step.
 
-```text
-name: blenheim-garden
-main: .open-next/worker.js
-assets: .open-next/assets
-compatibility_flags: nodejs_compat
-D1 binding: DB -> blenheim-garden
-R2 binding: GARDEN_MEDIA -> blenheim-garden-media
-```
+`app/api/garden/route.ts` now:
 
-`next.config.ts` keeps `output: "standalone"` and initialises OpenNext Cloudflare bindings for local development.
+- loads/saves beds, planting rows and layout objects
+- excludes archived beds from the current plan
+- archives a removed bed instead of deleting the bed row, preserving historical planting/media relationships
+- preserves the existing planting-history behaviour when crops/rows change
 
----
+Do not add a duplicate non-idempotent migration for this runtime-bootstrap schema without first redesigning the migration/bootstrap coordination.
 
-## 5. Current UI and behaviour
+## Media
 
-The homepage is organised like a compact professional garden-planning workspace:
+Bed **Photos & video** and the top **Photos** tab use private R2 through Worker APIs. Bed media targeting uses the stable bed ID rather than the editable bed name.
 
-- top title bar with garden/year, Settings, Save and section tabs
-- second command bar grouped into Plan, Edit, Layout, Layers, Timeline, Seed Inventory and Crop Rotation
-- narrow icon-first vertical drawing rail
-- approximately 250 px context-sensitive panel beside the rail
-- Plants/Rows modes show filters, plant catalogue, crop spacing and variety selection
-- Select mode uses the same panel for selected-bed or selected-row details/actions
-- measured rulers sit across the top and left of the canvas
-- large grid-backed garden canvas dominates the viewport
-- context panel can collapse
-- mobile layout turns the context panel into an overlay drawer
-
-Functional behaviour:
-
-- crop/variety placement and estimated capacity
-- bed dragging/resizing
-- free-drawn planting rows
-- row selection/deletion
-- Undo/Redo
-- zoom/month controls
-- protected D1 Save with local fallback
-- visible Garden Settings dialog for the session edit key
-- planting history is finished/recreated rather than overwritten when crops change
-- D1 becomes authoritative once saved beds exist
-
-Media behaviour:
-
-- selected-bed **Photos & video** opens a bed-specific media dialog
-- top **Photos** tab opens whole-garden media
-- media is served through Worker routes while the R2 bucket stays private
-- uploads/deletes require `GARDEN_WRITE_TOKEN`
-- photos/videos are linked in D1 to their current target and, where available, current planting
-- videos use metadata preload and do not autoplay
-
-Conservative app media quotas:
+Strict app limits:
 
 ```text
-2 GB total garden media
-6 MB maximum per photo
-25 MB maximum per video
-500 files maximum
+2 GB total
+6 MB per photo
+25 MB per video
+500 files
 ```
 
-Allowed first-release media formats:
+Allowed: JPEG, PNG, WebP, HEIC/HEIF, MP4, WebM, MOV/QuickTime. The browser validates for UX and the Worker validates again before R2 writes.
 
-- JPEG, PNG, WebP, HEIC, HEIF
-- MP4, WebM, MOV/QuickTime
+## Important files
 
-The browser checks limits for UX and the Worker repeats them before writing to R2. D1 `media.size_bytes` is summed before every upload.
+- `components/garden-planner.tsx` — Drawing Interface V2 and planner interactions
+- `app/growveg-workspace.css` — V2 workspace/canvas styling
+- `app/planner-interactions.css` — pointer/cursor interaction rules
+- `lib/garden/planner-plan.ts` — shared planner state types
+- `lib/garden/layout-schema.ts` — idempotent D1 Drawing V2 bootstrap
+- `app/api/garden/route.ts` — planner GET/PUT persistence
+- `lib/garden/cloudflare-db.ts` — DB/R2 bindings
+- `app/api/garden/media/route.ts` — media list/upload
+- `app/api/garden/media/[id]/route.ts` — media stream/delete
+- `components/garden-media-dialog-bridge.tsx` — media UI
+- `docs/CLOUDFLARE_STORAGE.md` — storage reference
 
-The Bed, Path, Trellis, Tree and Text drawing tools remain placeholders. Notes/harvests UI is not wired yet.
-
----
-
-## 6. Design rules
-
-1. Keep the measured map/canvas visually dominant.
-2. Use GrowVeg-like information architecture and interaction density without copying proprietary assets or exact visual branding.
-3. Keep the narrow left rail and context-sensitive panel; avoid a large bottom plant tray or permanent right inspector.
-4. Preserve the physical garden layout rather than normalising it into a generic grid.
-5. Keep controls compact, obvious and visually quiet.
-6. Make mobile use practical through scroll/zoom and overlay dialogs/drawers.
-7. Use crop icons/visuals where they improve scanability.
-8. Keep detailed records behind selection/context-panel interactions.
-9. Treat spacing/capacity numbers as planner estimates unless the garden has been accurately measured.
-10. Preserve planting history separately from current bed geometry so replanting does not destroy previous notes, harvests or media relationships.
-11. Never expose anonymous garden mutations; D1 and R2 writes/deletes remain protected by the edit secret or future stronger auth.
-12. Keep the R2 bucket private. Serve media through the Worker rather than enabling a public R2 domain.
-13. Keep app media quotas conservative even if Cloudflare offers larger account-level allowances.
-
----
-
-## 7. Next build order
-
-1. Deploy and verify the R2 implementation with one small photo upload/delete.
-2. Add Notes & harvests with sowing, germination, transplant and harvest dates.
-3. Make Bed, Path, Trellis, Tree and Text tools genuinely drawable/editable.
-4. Add Blenheim-specific planting windows and frost timing.
-5. Add Today / This Week task generation.
-6. Add seasonal occupancy/succession views and crop-rotation history.
-7. Add media browsing by planting/season and optional client-side image compression if needed.
-
----
-
-## 8. New-chat bootstrap prompt
+## Deployment
 
 ```text
-Work on my GitHub repo Archil3s/Blenheim-Garden.
-First read PROJECT_CONTEXT.md and inspect the current code before making changes.
-Treat the measured garden canvas as the primary interface. Preserve the GrowVeg-style workspace structure, the physical garden layout and the existing Cloudflare/OpenNext deployment.
-D1 is live as DB and R2 is live as GARDEN_MEDIA using private bucket blenheim-garden-media. Preserve protected writes using GARDEN_WRITE_TOKEN and the strict 2 GB / 6 MB photo / 25 MB video / 500-file media caps.
+Production branch: main
+Build:  npx @opennextjs/cloudflare build
+Deploy: npx @opennextjs/cloudflare deploy
+```
+
+Keep package `build` as `next build`, keep `next.config.ts` output `standalone`, and preserve both DB and R2 bindings in `wrangler.jsonc`.
+
+## Next priorities after V2 verification
+
+1. Visually test every drawing tool and Save → refresh persistence.
+2. Polish alignment/snapping/keyboard shortcuts based on actual use.
+3. Add Notes & harvests UI using existing D1 tables.
+4. Add Blenheim-specific planting/frost windows and Today/This Week tasks.
+5. Add seasonal occupancy and crop-rotation history views.
+
+## New-chat bootstrap
+
+```text
+Work on Archil3s/Blenheim-Garden. Read PROJECT_CONTEXT.md first.
+Preserve Drawing Interface V2, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, and strict media quotas. Inspect the current implementation before changing it.
 ```
