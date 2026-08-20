@@ -1,0 +1,236 @@
+.gv-v4-bed {
+  display: block !important;
+  overflow: hidden !important;
+  isolation: isolate;
+}
+
+.gv-v4-bed-title {
+  position: absolute;
+  z-index: 30;
+  top: 3px;
+  left: 4px;
+  max-width: calc(100% - 10px);
+  overflow: hidden;
+  padding: 1px 4px;
+  border-radius: 3px;
+  color: #60482f;
+  background: rgba(255, 252, 244, .86);
+  font-size: 9px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+  backdrop-filter: blur(2px);
+}
+
+.gv-v4-bed > .empty-bed-label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.planting-area {
+  --area-icon-size: 18px;
+  --area-icon-gap: 4px;
+  position: absolute;
+  z-index: 5;
+  min-width: 12px;
+  min-height: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(19, 135, 95, .45);
+  border-radius: 5px;
+  background: rgba(214, 244, 224, .48);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.3);
+  cursor: grab;
+  touch-action: none;
+}
+
+.planting-area:hover {
+  border-color: rgba(11, 126, 86, .8);
+  background: rgba(207, 242, 219, .62);
+}
+
+.planting-area:active {
+  cursor: grabbing;
+}
+
+.planting-area.selected {
+  z-index: 16;
+  border: 2px solid #07966c;
+  background: rgba(205, 244, 221, .72);
+  box-shadow: 0 0 0 2px rgba(7, 150, 108, .14), inset 0 0 0 1px rgba(255,255,255,.65);
+}
+
+.planting-area-icons {
+  position: absolute;
+  inset: 18px 3px 17px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, var(--area-icon-size));
+  grid-auto-rows: var(--area-icon-size);
+  justify-content: center;
+  align-content: center;
+  gap: var(--area-icon-gap);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.planting-area-icons i {
+  display: grid;
+  width: var(--area-icon-size);
+  height: var(--area-icon-size);
+  place-items: center;
+  font-size: var(--area-icon-size);
+  font-style: normal;
+  line-height: 1;
+  transform-origin: center;
+}
+
+.planting-area[data-pattern="staggered"] .planting-area-icons i:nth-child(even) {
+  transform: translateX(calc(var(--area-icon-size) * .28));
+}
+
+.planting-area[data-pattern="rows"] .planting-area-icons {
+  justify-content: start;
+  align-content: space-evenly;
+}
+
+.planting-area[data-pattern="natural"] .planting-area-icons i:nth-child(4n + 1) { transform: translate(-10%, 8%) rotate(-7deg); }
+.planting-area[data-pattern="natural"] .planting-area-icons i:nth-child(4n + 2) { transform: translate(10%, -8%) rotate(6deg); }
+.planting-area[data-pattern="natural"] .planting-area-icons i:nth-child(4n + 3) { transform: translate(-5%, -5%) rotate(3deg); }
+.planting-area[data-pattern="natural"] .planting-area-icons i:nth-child(4n) { transform: translate(8%, 10%) rotate(-4deg); }
+
+.planting-area[data-pattern="single"] .planting-area-icons {
+  grid-template-columns: 1fr;
+  place-items: center;
+}
+
+.planting-area-label {
+  position: absolute;
+  z-index: 4;
+  right: 3px;
+  bottom: 2px;
+  left: 3px;
+  overflow: hidden;
+  padding: 2px 4px;
+  border-radius: 3px;
+  color: #315748;
+  background: rgba(255,255,255,.82);
+  font-size: 8px;
+  font-weight: 750;
+  line-height: 1.15;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.planting-area-resize {
+  position: absolute;
+  z-index: 40;
+  right: -1px;
+  bottom: -1px;
+  width: 13px;
+  height: 13px;
+  border: 2px solid #fff;
+  border-radius: 3px 0 3px 0;
+  background: #07966c;
+  box-shadow: 0 0 0 1px #087556;
+  cursor: nwse-resize;
+}
+
+.gv-v4-bed > .resize-handle {
+  z-index: 60;
+}
+
+.gv-v4-drop-target {
+  outline: 3px solid #16a678 !important;
+  outline-offset: 2px;
+  background-color: rgba(214, 249, 230, .7) !important;
+}
+
+.gv-v4-modebar {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 3px;
+  margin: 8px 10px;
+  padding: 4px;
+  border: 1px solid #d8e4df;
+  border-radius: 7px;
+  background: #f6faf8;
+}
+
+.gv-v4-modebar > span {
+  grid-column: 1 / -1;
+  padding: 1px 2px 3px;
+  color: #708078;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.gv-v4-modebar button {
+  min-width: 0;
+  min-height: 28px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 0 3px;
+  color: #53635c;
+  background: transparent;
+  font-size: 9px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.gv-v4-modebar button:hover {
+  background: #edf6f2;
+}
+
+.gv-v4-modebar button.active {
+  border-color: #9bcdbb;
+  color: #087556;
+  background: #def2ea;
+}
+
+.gv-v4-drag-grip {
+  margin-left: auto;
+  color: #9aa8a2;
+  font-size: 12px;
+  letter-spacing: -2px;
+  cursor: grab;
+}
+
+.gv-plant-list > button[draggable="true"] {
+  cursor: grab;
+}
+
+.gv-plant-list > button[draggable="true"]:active,
+.gv-v4-drag-grip:active {
+  cursor: grabbing;
+}
+
+.gv-planting-inspector select {
+  width: 100%;
+  min-height: 34px;
+  border: 1px solid #ccd7d3;
+  border-radius: 5px;
+  padding: 0 7px;
+  color: #405049;
+  background: #fff;
+}
+
+.gv-planting-inspector input[type="range"] {
+  width: 100%;
+  accent-color: #07966c;
+}
+
+@media (max-width: 760px) {
+  .gv-v4-modebar {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .planting-area-label {
+    font-size: 7px;
+  }
+}
