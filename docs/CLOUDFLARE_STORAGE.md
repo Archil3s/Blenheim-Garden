@@ -1,11 +1,12 @@
 # Cloudflare storage setup
 
-The real D1 database is now created and bound in `wrangler.jsonc`.
+The real D1 database is created, bound, and the first schema has been applied successfully.
 
 ## Current resources
 
-- D1 database: `blenheim-garden`
-- D1 binding: `DB`
+- D1 database: `blenheim-garden` ✅
+- D1 binding: `DB` ✅
+- D1 migration `0001_garden_storage.sql` applied to production ✅
 - R2 bucket: `blenheim-garden-media` (still to be created/bound)
 - Intended R2 binding: `GARDEN_MEDIA`
 
@@ -30,15 +31,9 @@ The production D1 database uses its real Cloudflare `database_id`; do not replac
 
 The existing Worker name, OpenNext entrypoint, assets binding, compatibility date and `nodejs_compat` settings must remain intact.
 
-## Database migration
+## Database schema
 
-The first migration is:
-
-```text
-migrations/0001_garden_storage.sql
-```
-
-It creates:
+`migrations/0001_garden_storage.sql` creates:
 
 - `gardens`
 - `beds`
@@ -52,29 +47,53 @@ It creates:
 
 It also creates the initial `blenheim-garden` garden record.
 
-Apply it locally with:
+The production schema was applied manually through the Cloudflare D1 Console on 20 August 2026 and verified with:
 
-```bash
-npm run db:migrate:local
+```sql
+SELECT * FROM gardens;
 ```
 
-Apply it to the real Cloudflare database with:
-
-```bash
-npm run db:migrate:remote
-```
-
-Wrangler records applied D1 migrations so the same migration is not repeatedly applied.
-
-## Binding verification
+## Garden API
 
 The app exposes:
 
 ```text
 GET /api/garden/status
+GET /api/garden
+PUT /api/garden
 ```
 
-It checks that the `DB` binding responds and reports whether the `gardens` table exists. Before the migration is applied, `ok` can be true while `schemaReady` is false.
+`GET /api/garden/status` verifies the D1 binding/schema.
+
+`GET /api/garden` loads the current planner state from D1. It is read-only and does not require the edit key.
+
+`PUT /api/garden` saves bed geometry, planting rows, and active plantings. It is intentionally protected by a Worker secret called:
+
+```text
+GARDEN_WRITE_TOKEN
+```
+
+Do not put that value in GitHub, `wrangler.jsonc`, source files, or a public Cloudflare variable. Configure it as a **secret/encrypted variable** in the Cloudflare Worker settings.
+
+The browser asks for the edit key when a cloud save is attempted and keeps it only in `sessionStorage` for that browser session. If the key is absent, incorrect, or the network is unavailable, the plan is still written to browser `localStorage` and the UI reports `Local only`.
+
+## Planner persistence behaviour
+
+On startup:
+
+1. The built-in garden plan is available immediately.
+2. A browser `localStorage` copy is loaded if present.
+3. `/api/garden` is requested.
+4. If D1 contains saved beds, the D1 plan becomes authoritative and refreshes the local cache.
+
+On Save:
+
+1. The current plan is always written to `localStorage` first.
+2. The browser uses the session edit key to call `PUT /api/garden`.
+3. A successful D1 save reports `Saved ✓` / `Cloud synced`.
+4. A failed or unauthorised cloud save reports `Local only` and does not expose D1 to anonymous writes.
+
+When a bed changes crop/variety, the previously active planting is marked `finished` and a new active planting row is created instead of overwriting planting history. Deleted planting rows are hidden by finishing their active planting record rather than deleting historical planting data.
 
 ## Storage model
 
@@ -104,15 +123,12 @@ gardens/blenheim-garden/videos/<uuid>.<ext>
 
 Each R2 object gets a matching row in D1 `media` containing its target bed/row/planting, content type, file size, date and caption.
 
-This allows a bed to be replanted later without losing historical photos, videos or harvest records.
+## Remaining setup
 
-## Integration sequence
-
-1. D1 `blenheim-garden` created and bound. ✅
-2. Apply `0001_garden_storage.sql` to the remote D1 database.
-3. Add `/api/garden` load/save endpoints using `DB`.
-4. Keep localStorage as a temporary fallback/cache.
-5. Create R2 `blenheim-garden-media`.
-6. Bind R2 as `GARDEN_MEDIA`.
-7. Add media upload/list/delete endpoints using R2 plus the D1 `media` table.
-8. Wire Photos & video, Notes and Harvest UI controls to those APIs.
+1. Configure Worker secret `GARDEN_WRITE_TOKEN`.
+2. Deploy the current `main` branch and verify `/api/garden/status` and `/api/garden`.
+3. Save the planner once to seed the 12 beds into D1.
+4. Create R2 `blenheim-garden-media`.
+5. Bind R2 as `GARDEN_MEDIA`.
+6. Add media upload/list/delete endpoints using R2 plus the D1 `media` table.
+7. Wire Photos & video, Notes and Harvest UI controls to those APIs.
