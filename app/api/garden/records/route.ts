@@ -227,7 +227,7 @@ export async function POST(request: Request) {
       const occurredOn = optionalDate(body.occurredOn);
       const bedId = text(body.bedId, 160) || null;
       let targetType: "garden" | "bed" | "planting" = "garden";
-      let targetId = GARDEN_ID;
+      let targetId: string = GARDEN_ID;
 
       if (bedId) {
         const bed = await getBed(bedId);
