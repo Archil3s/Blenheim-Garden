@@ -82,11 +82,18 @@ export function GardenMediaDialogBridge() {
         const selectedName = selectionPanel?.querySelector(".gv-selection-hero h2")?.textContent?.trim() || "Selected bed";
         const plantingId = selectionPanel?.dataset.plantingId?.trim();
         const bedId = selectionPanel?.dataset.bedId?.trim();
-        if (plantingId) {
-          nextTarget = { targetType: "planting", targetId: plantingId, label: selectedName };
-        } else if (bedId) {
-          nextTarget = { targetType: "bed", targetId: bedId, label: selectedName };
-        } else {
+
+        if (selectionPanel?.classList.contains("gv-planting-inspector") && !plantingId) {
+          event.preventDefault();
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+          window.alert("Save the garden once, then reopen this planting before attaching crop-specific photos or video.");
+          return;
+        }
+
+        if (plantingId) nextTarget = { targetType: "planting", targetId: plantingId, label: selectedName };
+        else if (bedId) nextTarget = { targetType: "bed", targetId: bedId, label: selectedName };
+        else {
           const match = selectedName.match(/^Bed\s+(\d+)$/i);
           if (match) nextTarget = { targetType: "bed", targetId: match[1], label: selectedName };
         }
