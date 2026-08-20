@@ -21,8 +21,8 @@ The user should be able to understand the real garden at a glance, then click be
 Core goals:
 
 1. Represent the user's actual physical garden layout, including beds, paths, trellises, trees/shade areas and berry/cane areas.
-2. Place crops visually inside the beds where they are physically growing.
-3. Make planning quick with a crop tray, select/plant tools and simple month views.
+2. Place crops visually inside beds or along drawn planting rows.
+3. Make planning quick with crop/variety selection, automatic spacing estimates and simple month views.
 4. Eventually attach dated notes, photos, videos, planting records and harvests to beds/plants.
 5. Keep the experience simpler and lower-friction than a full commercial garden-design product.
 
@@ -32,14 +32,18 @@ Core goals:
 
 The base plan currently contains 12 numbered beds and a top fruiting-cane area, with the layout modelled on the user's supplied garden-plan drawings rather than a generic 12-card grid.
 
-Current browser-side state supports:
+The working canvas is 900 × 1080 internal pixels and is treated as approximately **9 m × 10.8 m** for spacing/capacity estimates (1 canvas pixel ≈ 1 cm). This is a practical planner scale, not a surveyed site measurement.
 
-- selected bed
-- selected crop
-- simple crop placement into beds
-- crop counts/icons
+Current browser-side plan state supports:
+
+- 12 editable bed rectangles
+- bed x/y position and width/height
+- crop, variety, icon, spacing and estimated plant count per bed
+- free-drawn planting rows
+- crop, variety, spacing and estimated plant count per row
 - month selector
 - zoom
+- undo/redo history
 - local browser save via `localStorage`
 
 Durable multi-device persistence is not implemented yet.
@@ -57,9 +61,11 @@ Durable multi-device persistence is not implemented yet.
 
 Future storage direction when persistence is required:
 
-- Cloudflare D1 for beds, crops, planting records, notes, tasks and harvests
+- Cloudflare D1 for beds, rows, crops, varieties, planting records, notes, tasks and harvests
 - Cloudflare R2 for garden photos and ordinary video files
 - Cloudflare Stream only if video playback/transcoding needs become substantial
+
+Do not invent D1 database IDs or R2 bucket bindings. Create/bind the real Cloudflare resources first, then commit those real bindings/configuration.
 
 ---
 
@@ -103,31 +109,43 @@ output: "standalone"
 
 ---
 
-## 5. Current UI direction
+## 5. Current UI and behaviour
 
-The homepage is now a planner workspace with:
+The homepage is a planner workspace with:
 
-- compact top bar with month, zoom and save controls
-- left tool rail: Select, Bed, Path, Trellis, Plant, Tree and Text
+- compact top bar with month, zoom, undo/redo and save controls
+- left tool rail including Select, Bed, Path, Trellis, Plant, Row, Tree and Text
 - large grid-backed garden canvas
 - the user's approximate real-world bed/path/trellis/berry layout
 - crop icons inside occupied beds
-- selectable beds
+- selectable and movable beds
+- resize handle on the selected bed
+- free-drawn planting rows
 - bottom searchable plant tray
-- right-side selected-bed inspector
+- variety selector for the active crop
+- right-side bed/row inspector
 - responsive mobile layout with horizontally scrollable tools and plants
 
 Current functional behaviour:
 
 - choosing a plant switches to Plant mode
-- clicking a bed in Plant mode places that crop into the bed
-- clicking a bed updates the selected-bed inspector
+- selecting a variety controls what is placed next
+- clicking a bed in Plant mode fills it with the selected crop/variety
+- bed plant count is estimated from bed dimensions and crop spacing
+- Select mode lets beds be dragged around the canvas
+- the selected bed can be resized from its bottom-right handle
+- planted-bed capacity recalculates after resizing
+- Row mode lets the user drag a planting row directly across the plan
+- row length and estimated plant count are calculated from crop spacing
+- drawn rows can be selected and deleted
+- Undo/Redo work for plan edits
 - zoom controls change canvas scale
-- month selector changes the displayed planning month
-- Save plan stores the current bed state in browser `localStorage`
+- month selector changes the displayed planning month label
+- Save plan stores beds and rows in browser `localStorage`
+- existing older localStorage bed-only plans are migrated on load
 - Clear bed removes the crop from the selected bed
 
-The Undo/Redo, Photos & video, and Notes & harvests controls are visual placeholders for later functionality.
+The Bed, Path, Trellis, Tree and Text drawing tools are still placeholders. Photos & video and Notes & harvests still require durable storage/data-model work.
 
 ---
 
@@ -141,19 +159,21 @@ The Undo/Redo, Photos & video, and Notes & harvests controls are visual placehol
 6. Make mobile use practical through scroll/zoom rather than rebuilding the garden into a different layout.
 7. Use crop icons/visuals wherever they improve scanability.
 8. Keep detailed records behind selection/inspector interactions.
+9. Spacing/capacity numbers should be clearly treated as planner estimates unless the garden has been accurately measured.
 
 ---
 
 ## 7. Recommended next build order
 
-1. Make beds/paths/trellises draggable and resizable.
-2. Add proper row/block crop placement and spacing calculations.
-3. Add D1 persistence and user garden records.
-4. Add photo/video upload with R2.
-5. Add crop/variety records, sowing, transplant and harvest dates.
-6. Add Blenheim-specific planting windows and frost timing.
-7. Add Today / This Week task generation.
-8. Add seasonal occupancy/succession views and crop-rotation history.
+1. Create the real Cloudflare D1 database and bind it to the Worker.
+2. Move saved beds/rows/varieties from localStorage to D1 while keeping local autosave as a fallback.
+3. Create/bind an R2 bucket for photos and ordinary garden video.
+4. Implement Photos & video on the selected bed/row with dated uploads and captions.
+5. Add Notes & harvests with sowing, transplant and harvest dates.
+6. Make Path, Trellis, Tree and Text tools actually drawable/editable.
+7. Add Blenheim-specific planting windows and frost timing.
+8. Add Today / This Week task generation.
+9. Add seasonal occupancy/succession views and crop-rotation history.
 
 ---
 
