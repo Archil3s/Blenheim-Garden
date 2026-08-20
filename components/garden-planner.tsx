@@ -10,8 +10,8 @@ import type {
   PlannerPlantingArea,
   PlannerPlantingPattern,
   PlannerRow as PlantingRow,
-  PlannerVisualSpacing,
 } from "@/lib/garden/planner-plan";
+import { plantCountForArea, plantPositionsForArea } from "@/lib/garden/plant-spacing-layout";
 
 type Tool = "select" | "plant" | "row" | "bed" | "path" | "trellis" | "tree" | "note";
 type SaveState = "idle" | "saving" | "cloud" | "local" | "error";
@@ -151,8 +151,6 @@ function readLocalPlan() {
   try { return normalisePlan(JSON.parse(localStorage.getItem(LOCAL_PLAN_KEY) ?? "null") as Partial<PlanState>); } catch { return null; }
 }
 
-function visualGap(value: PlannerVisualSpacing) { return value === "tight" ? 1 : value === "wide" ? 8 : 4; }
-
 export function GardenPlanner() {
   const canvasRef = useRef<HTMLDivElement>(null);
   const [tool, setTool] = useState<Tool>("select");
@@ -221,12 +219,13 @@ export function GardenPlanner() {
     const scale = zoom / 100;
     return snapPoint({ x: (clientX - rect.left) / scale, y: (clientY - rect.top) / scale });
   }
-  function areaCount(area: PlannerPlantingArea, bed: Bed) {
-    if (area.pattern === "single") return 1;
+  function areaSizeCm(area: PlannerPlantingArea, bed: Bed) {
     const size = bedCm(bed);
-    const width = size.w * area.w / 100;
-    const height = size.h * area.h / 100;
-    return Math.max(1, Math.floor(width / area.spacingCm) * Math.floor(height / area.spacingCm));
+    return { width: size.w * area.w / 100, height: size.h * area.h / 100 };
+  }
+  function areaCount(area: PlannerPlantingArea, bed: Bed) {
+    const size = areaSizeCm(area, bed);
+    return plantCountForArea(area, size.width, size.height);
   }
   function remember() { setPast((items) => [...items, clonePlan(plan)].slice(-40)); setFuture([]); }
   function commit(next: PlanState) { remember(); setPlan(next); setSaveState("idle"); }
@@ -548,12 +547,13 @@ export function GardenPlanner() {
       const heightM = bedSize.h * selectedPlanting.h / 100 / 100;
       return <div className="gv-selection-panel gv-planting-inspector" data-bed-id={selectedPlanting.bedId} data-planting-id={selectedPlanting.plantingId ?? ""}>
         <div className="gv-selection-hero"><span>{selectedPlanting.cropIcon}</span><div><small>PLANTING AREA</small><h2>{selectedPlanting.variety}</h2><p>{selectedPlantingBed.name} · {widthM.toFixed(1)} × {heightM.toFixed(1)} m</p></div></div>
-        <dl><div><dt>Crop</dt><dd>{selectedPlanting.crop}</dd></div><div><dt>Plants</dt><dd>≈ {selectedPlanting.count}</dd></div><div><dt>Spacing</dt><dd>{selectedPlanting.spacingCm} cm</dd></div></dl>
+        <dl><div><dt>Crop</dt><dd>{selectedPlanting.crop}</dd></div><div><dt>Plants</dt><dd>≈ {selectedPlanting.count}</dd></div><div><dt>Spacing</dt><dd>{selectedPlanting.spacingCm} cm centres</dd></div></dl>
         <label>Variety<input value={selectedPlanting.variety} onChange={(event) => updatePlanting(selectedPlanting.id, (area) => ({ ...area, variety: event.target.value || area.crop }))} /></label>
-        <label>Plant spacing (cm)<input type="number" min={2} value={selectedPlanting.spacingCm} onChange={(event) => updatePlanting(selectedPlanting.id, (area, bed) => { const next = { ...area, spacingCm: Math.max(2, Number(event.target.value) || 2) }; return { ...next, count: areaCount(next, bed) }; })} /></label>
+        <label>Actual plant spacing (cm)<input type="number" min={2} value={selectedPlanting.spacingCm} onChange={(event) => updatePlanting(selectedPlanting.id, (area, bed) => { const next = { ...area, spacingCm: Math.max(2, Number(event.target.value) || 2) }; return { ...next, count: areaCount(next, bed) }; })} /></label>
+        <p className="gv-scale-note">↔ The plant centres on the canvas are drawn {selectedPlanting.spacingCm} cm apart at the garden scale.</p>
         <label>Icon size <strong>{selectedPlanting.iconSize}px</strong><input type="range" min={8} max={64} step={1} value={selectedPlanting.iconSize} onChange={(event) => updatePlanting(selectedPlanting.id, (area) => ({ ...area, iconSize: Number(event.target.value) }))} /></label>
-        <div className="gv-field-grid"><label>Layout<select value={selectedPlanting.pattern} onChange={(event) => updatePlanting(selectedPlanting.id, (area, bed) => { const next = { ...area, pattern: event.target.value as PlannerPlantingPattern }; return { ...next, count: areaCount(next, bed) }; })}><option value="grid">Block</option><option value="staggered">Staggered</option><option value="rows">Rows</option><option value="natural">Natural</option><option value="single">Single</option></select></label><label>Visual spacing<select value={selectedPlanting.visualSpacing} onChange={(event) => updatePlanting(selectedPlanting.id, (area) => ({ ...area, visualSpacing: event.target.value as PlannerVisualSpacing }))}><option value="tight">Tight</option><option value="normal">Normal</option><option value="wide">Wide</option></select></label></div>
-        <p className="gv-help">Drag this planting to move it within the bed. Drag the square handle to resize the planted area; plant count recalculates automatically.</p>
+        <label>Layout<select value={selectedPlanting.pattern} onChange={(event) => updatePlanting(selectedPlanting.id, (area, bed) => { const next = { ...area, pattern: event.target.value as PlannerPlantingPattern }; return { ...next, count: areaCount(next, bed) }; })}><option value="grid">Block</option><option value="staggered">Staggered</option><option value="rows">Rows</option><option value="natural">Natural</option><option value="single">Single</option></select></label>
+        <p className="gv-help">Drag this planting to move it within the bed. Drag the square handle to resize the planted area; plant count recalculates from the real centimetre spacing.</p>
         <button type="button" className="gv-secondary-action">📷 Photos & video</button>
         <button type="button" className="gv-secondary-action">📝 Notes & harvests</button>
         <div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Remove planting</button></div>
@@ -585,7 +585,7 @@ export function GardenPlanner() {
 
   function plantCatalog() {
     const modeLabel = (mode: PlannerPlantingPattern) => mode === "grid" ? "Block" : mode === "staggered" ? "Stagger" : mode === "rows" ? "Rows" : mode === "natural" ? "Natural" : "Single";
-    return <><div className="gv-panel-section-title"><div><span className="gv-panel-leaf">🌱</span><strong>{tool === "row" ? "Planting rows" : "Plants"}</strong></div></div><div className="gv-filters"><label>Search<input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Plant or variety" /></label><label>Type<select value={plantType} onChange={(event) => setPlantType(event.target.value)}><option>All Plants</option><option>Vegetable</option><option>Fruit</option><option>Herb</option></select></label><label>Variety<select value={selectedVariety} onChange={(event) => setSelectedVariety(event.target.value)}>{selectedPlant.varieties.map((variety) => <option key={variety}>{variety}</option>)}</select></label></div>{tool === "plant" && <div className="gv-v4-modebar"><span>Placement</span>{(["grid", "staggered", "rows", "natural", "single"] as PlannerPlantingPattern[]).map((mode) => <button key={mode} type="button" className={placementMode === mode ? "active" : ""} onClick={() => setPlacementMode(mode)}>{modeLabel(mode)}</button>)}</div>}<div className="gv-ready-strip"><span>{selectedPlant.icon}</span><div><small>{tool === "plant" ? "DRAG INTO A BED" : "READY TO DRAW"}</small><strong>{selectedVariety}</strong><em>{selectedPlant.spacing} spacing</em></div></div><div className="gv-plant-list">{filteredPlants.map((plant) => <button draggable={tool === "plant"} type="button" key={plant.name} className={selectedPlant.name === plant.name ? "active" : ""} onClick={() => choosePlant(plant)} onDragStart={(event) => { choosePlant(plant); setDragPlant(plant); event.dataTransfer.effectAllowed = "copy"; event.dataTransfer.setData("text/plain", plant.name); }} onDragEnd={() => { setDragPlant(null); setDropBedId(null); }}><span className="gv-plant-icon">{plant.icon}</span><span><strong>{plant.name}</strong><small>{plant.spacing}</small></span>{tool === "plant" && <b className="gv-v4-drag-grip">⋮⋮</b>}</button>)}</div></>;
+    return <><div className="gv-panel-section-title"><div><span className="gv-panel-leaf">🌱</span><strong>{tool === "row" ? "Planting rows" : "Plants"}</strong></div></div><div className="gv-filters"><label>Search<input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Plant or variety" /></label><label>Type<select value={plantType} onChange={(event) => setPlantType(event.target.value)}><option>All Plants</option><option>Vegetable</option><option>Fruit</option><option>Herb</option></select></label><label>Variety<select value={selectedVariety} onChange={(event) => setSelectedVariety(event.target.value)}>{selectedPlant.varieties.map((variety) => <option key={variety}>{variety}</option>)}</select></label></div>{tool === "plant" && <div className="gv-v4-modebar"><span>Placement</span>{(["grid", "staggered", "rows", "natural", "single"] as PlannerPlantingPattern[]).map((mode) => <button key={mode} type="button" className={placementMode === mode ? "active" : ""} onClick={() => setPlacementMode(mode)}>{modeLabel(mode)}</button>)}</div>}<div className="gv-ready-strip"><span>{selectedPlant.icon}</span><div><small>{tool === "plant" ? "DRAG INTO A BED" : "READY TO DRAW"}</small><strong>{selectedVariety}</strong><em>{selectedPlant.spacingCm} cm canvas spacing · recommended {selectedPlant.spacing}</em></div></div><div className="gv-plant-list">{filteredPlants.map((plant) => <button draggable={tool === "plant"} type="button" key={plant.name} className={selectedPlant.name === plant.name ? "active" : ""} onClick={() => choosePlant(plant)} onDragStart={(event) => { choosePlant(plant); setDragPlant(plant); event.dataTransfer.effectAllowed = "copy"; event.dataTransfer.setData("text/plain", plant.name); }} onDragEnd={() => { setDragPlant(null); setDropBedId(null); }}><span className="gv-plant-icon">{plant.icon}</span><span><strong>{plant.name}</strong><small>{plant.spacingCm} cm default · {plant.spacing}</small></span>{tool === "plant" && <b className="gv-v4-drag-grip">⋮⋮</b>}</button>)}</div></>;
   }
 
   function toolPanel() {
@@ -609,10 +609,13 @@ export function GardenPlanner() {
 
   function renderPlantingArea(area: PlannerPlantingArea) {
     const selected = selection?.kind === "planting" && selection.id === area.id;
-    const iconCount = Math.min(area.count, area.pattern === "single" ? 1 : 64);
-    return <div key={area.id} className={`planting-area ${selected ? "selected" : ""}`} data-pattern={area.pattern} style={{ left: `${area.x}%`, top: `${area.y}%`, width: `${area.w}%`, height: `${area.h}%`, ["--area-icon-size" as string]: `${area.iconSize}px`, ["--area-icon-gap" as string]: `${visualGap(area.visualSpacing)}px` }} onPointerDown={(event) => startPlantingInteraction(event, area)}>
-      <span className="planting-area-icons">{Array.from({ length: iconCount }, (_, index) => <i key={index}>{area.cropIcon}</i>)}</span>
-      <span className="planting-area-label">{area.cropIcon} {area.variety} · {area.count}</span>
+    const bed = plan.beds.find((item) => item.id === area.bedId);
+    const areaSize = bed ? areaSizeCm(area, bed) : { width: 1, height: 1 };
+    const positions = bed ? plantPositionsForArea(area, areaSize.width, areaSize.height) : [];
+    return <div key={area.id} className={`planting-area ${selected ? "selected" : ""}`} data-pattern={area.pattern} style={{ left: `${area.x}%`, top: `${area.y}%`, width: `${area.w}%`, height: `${area.h}%`, ["--area-icon-size" as string]: `${area.iconSize}px` }} onPointerDown={(event) => startPlantingInteraction(event, area)}>
+      <span className="planting-area-icons">{positions.map((position, index) => <i key={index} style={{ left: position.x, top: position.y, transform: `translate(-50%, -50%) rotate(${position.rotation}deg)` }}>{area.cropIcon}</i>)}</span>
+      <span className="planting-area-label">{area.cropIcon} {area.variety} · {area.count} · {area.spacingCm} cm</span>
+      {selected && <span className="planting-spacing-badge">↔ {area.spacingCm} cm</span>}
       {selected && <span className="planting-area-resize" onPointerDown={(event) => startPlantingInteraction(event, area, true)} />}
     </div>;
   }
