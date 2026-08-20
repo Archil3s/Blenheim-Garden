@@ -245,17 +245,18 @@ export function GardenPlanner() {
 
   useEffect(() => {
     if (!interaction) return;
+    const activeInteraction = interaction;
     const move = (event: PointerEvent) => {
       const point = canvasPoint(event.clientX, event.clientY);
       if (!point) return;
-      const dx = point.x - interaction.start.x;
-      const dy = point.y - interaction.start.y;
+      const dx = point.x - activeInteraction.start.x;
+      const dy = point.y - activeInteraction.start.y;
       setPlan((current) => {
-        if (interaction.kind === "bed-drag" || interaction.kind === "bed-resize") {
-          const start = bedCm(interaction.bed);
+        if (activeInteraction.kind === "bed-drag" || activeInteraction.kind === "bed-resize") {
+          const start = bedCm(activeInteraction.bed);
           return { ...current, beds: current.beds.map((bed) => {
-            if (bed.id !== interaction.id) return bed;
-            if (interaction.kind === "bed-drag") {
+            if (bed.id !== activeInteraction.id) return bed;
+            if (activeInteraction.kind === "bed-drag") {
               const x = clamp(snap(start.x + dx), 0, CANVAS_WIDTH - start.w);
               const y = clamp(snap(start.y + dy), 0, CANVAS_HEIGHT - start.h);
               return { ...bed, x: x / CANVAS_WIDTH * 100, y: y / CANVAS_HEIGHT * 100 };
@@ -266,24 +267,24 @@ export function GardenPlanner() {
             return bed.crop && bed.spacingCm ? { ...next, cropCount: bedCapacity(next, bed.spacingCm) } : next;
           }) };
         }
-        if (isRowInteraction(interaction)) {
+        if (isRowInteraction(activeInteraction)) {
           return { ...current, rows: current.rows.map((row) => {
-            if (row.id !== interaction.id) return row;
+            if (row.id !== activeInteraction.id) return row;
             let next = { ...row };
-            if (interaction.kind === "row-drag") next = { ...next, x1: clamp(snap(interaction.row.x1 + dx), 0, CANVAS_WIDTH), y1: clamp(snap(interaction.row.y1 + dy), 0, CANVAS_HEIGHT), x2: clamp(snap(interaction.row.x2 + dx), 0, CANVAS_WIDTH), y2: clamp(snap(interaction.row.y2 + dy), 0, CANVAS_HEIGHT) };
-            if (interaction.kind === "row-start") next = { ...next, x1: point.x, y1: point.y };
-            if (interaction.kind === "row-end") next = { ...next, x2: point.x, y2: point.y };
+            if (activeInteraction.kind === "row-drag") next = { ...next, x1: clamp(snap(activeInteraction.row.x1 + dx), 0, CANVAS_WIDTH), y1: clamp(snap(activeInteraction.row.y1 + dy), 0, CANVAS_HEIGHT), x2: clamp(snap(activeInteraction.row.x2 + dx), 0, CANVAS_WIDTH), y2: clamp(snap(activeInteraction.row.y2 + dy), 0, CANVAS_HEIGHT) };
+            if (activeInteraction.kind === "row-start") next = { ...next, x1: point.x, y1: point.y };
+            if (activeInteraction.kind === "row-end") next = { ...next, x2: point.x, y2: point.y };
             return { ...next, count: rowCount(next, next.spacingCm) };
           }) };
         }
         return { ...current, objects: current.objects.map((object) => {
-          if (object.id !== interaction.id) return object;
-          const original = interaction.object;
-          if (interaction.kind === "tree-resize" && original.type === "tree") return { ...object, ...(object.type === "tree" ? { diameterCm: clamp(snap(Math.hypot(point.x - original.x, point.y - original.y) * 2), 30, 1000) } : {}) } as PlannerLayoutObject;
+          if (object.id !== activeInteraction.id) return object;
+          const original = activeInteraction.object;
+          if (activeInteraction.kind === "tree-resize" && original.type === "tree") return { ...object, ...(object.type === "tree" ? { diameterCm: clamp(snap(Math.hypot(point.x - original.x, point.y - original.y) * 2), 30, 1000) } : {}) } as PlannerLayoutObject;
           if (original.type === "path" || original.type === "trellis") {
             if (object.type !== original.type) return object;
-            if (interaction.kind === "object-start") return { ...object, x1: point.x, y1: point.y };
-            if (interaction.kind === "object-end") return { ...object, x2: point.x, y2: point.y };
+            if (activeInteraction.kind === "object-start") return { ...object, x1: point.x, y1: point.y };
+            if (activeInteraction.kind === "object-end") return { ...object, x2: point.x, y2: point.y };
             return { ...object, x1: clamp(snap(original.x1 + dx), 0, CANVAS_WIDTH), y1: clamp(snap(original.y1 + dy), 0, CANVAS_HEIGHT), x2: clamp(snap(original.x2 + dx), 0, CANVAS_WIDTH), y2: clamp(snap(original.y2 + dy), 0, CANVAS_HEIGHT) };
           }
           if (original.type === "tree" && object.type === "tree") return { ...object, x: clamp(snap(original.x + dx), 0, CANVAS_WIDTH), y: clamp(snap(original.y + dy), 0, CANVAS_HEIGHT) };
