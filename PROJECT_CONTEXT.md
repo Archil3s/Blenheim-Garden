@@ -18,7 +18,7 @@ The primary interface follows the interaction model of a simplified GrowVeg-styl
 
 Core goals:
 
-1. Represent the user's actual physical garden layout, including beds, paths, trellises, trees/shade areas and berry/cane areas.
+1. Represent the actual physical garden layout, including beds, paths, trellises, trees/shade areas and berry/cane areas.
 2. Place crops visually inside beds or along drawn planting rows.
 3. Make planning quick with crop/variety selection, automatic spacing estimates and month views.
 4. Attach dated notes, photos, videos, planting records and harvests to beds/plants using Cloudflare persistence.
@@ -44,7 +44,7 @@ Current plan state supports:
 - local browser fallback/cache via `localStorage`
 - D1 load/save through `/api/garden`
 
-On startup the app can load the local cache first and then replace it with the D1 plan when D1 contains saved beds.
+D1 has been verified with all 12 beds saved successfully.
 
 ---
 
@@ -57,19 +57,16 @@ On startup the app can load the local cache first and then replace it with the D
 - Wrangler `4.124.0`
 - Cloudflare Workers target
 
-Current storage implementation:
+Live storage resources:
 
 - D1 database: `blenheim-garden`
 - D1 binding: `DB`
-- production D1 schema from `migrations/0001_garden_storage.sql` is applied
-- `lib/garden/storage-contract.ts` defines durable record types
-- `lib/garden/planner-plan.ts` defines the shared browser/API planner payload
-- `lib/garden/cloudflare-db.ts` resolves the D1 binding and write secret
-- `app/api/garden/status/route.ts` verifies binding/schema health
-- `app/api/garden/route.ts` provides D1 GET/PUT persistence
-- `docs/CLOUDFLARE_STORAGE.md` documents current setup
+- R2 bucket: `blenheim-garden-media`
+- R2 binding: `GARDEN_MEDIA`
+- R2 public access: disabled/private
+- Worker write secret: `GARDEN_WRITE_TOKEN`
 
-D1 tables:
+The production D1 schema from `migrations/0001_garden_storage.sql` is applied and includes:
 
 - gardens
 - beds
@@ -81,28 +78,27 @@ D1 tables:
 - tasks
 - seed inventory
 
-The production schema was applied manually in the Cloudflare D1 Console and verified with `SELECT * FROM gardens;`.
+Important implementation files:
 
-Cloud writes are intentionally protected by the Worker secret:
+- `lib/garden/storage-contract.ts` — durable record types
+- `lib/garden/planner-plan.ts` — shared planner payload
+- `lib/garden/cloudflare-db.ts` — D1/R2 binding access and write secret
+- `lib/garden/media-limits.ts` — conservative app media quotas/types
+- `lib/garden/write-auth.ts` — shared protected write authentication
+- `app/api/garden/status/route.ts` — D1 health
+- `app/api/garden/route.ts` — D1 planner GET/PUT
+- `app/api/garden/media/route.ts` — R2 list/upload plus D1 metadata/quota
+- `app/api/garden/media/[id]/route.ts` — private R2 streaming/delete
+- `components/garden-media-dialog-bridge.tsx` — Photos & video UI
+- `docs/CLOUDFLARE_STORAGE.md` — Cloudflare setup/reference
 
-```text
-GARDEN_WRITE_TOKEN
-```
-
-Never commit this secret to GitHub or `wrangler.jsonc`. The browser keeps an entered edit key only in `sessionStorage`. If cloud save is unavailable, Save still writes to localStorage and reports `Local only`.
-
-R2 is still the next storage resource:
-
-- bucket: `blenheim-garden-media`
-- binding: `GARDEN_MEDIA`
-
-R2 will hold photo/video bytes. D1 `media` rows will hold searchable metadata and links back to beds, rows, plantings or harvests.
+Never commit `GARDEN_WRITE_TOKEN`. The browser keeps the entered edit key only in `sessionStorage`.
 
 ---
 
 ## 4. Cloudflare deployment
 
-Known intended production configuration:
+Production configuration:
 
 ```text
 Build command:
@@ -121,9 +117,7 @@ The package script must remain:
 "build": "next build"
 ```
 
-Do not make `npm run build` invoke OpenNext when Cloudflare already runs the OpenNext build command.
-
-`wrangler.jsonc` currently uses:
+`wrangler.jsonc` must preserve:
 
 ```text
 name: blenheim-garden
@@ -131,17 +125,10 @@ main: .open-next/worker.js
 assets: .open-next/assets
 compatibility_flags: nodejs_compat
 D1 binding: DB -> blenheim-garden
+R2 binding: GARDEN_MEDIA -> blenheim-garden-media
 ```
 
-Preserve all existing settings when adding R2 later.
-
-`next.config.ts` keeps:
-
-```ts
-output: "standalone"
-```
-
-and initialises OpenNext Cloudflare bindings for local development.
+`next.config.ts` keeps `output: "standalone"` and initialises OpenNext Cloudflare bindings for local development.
 
 ---
 
@@ -153,38 +140,52 @@ The homepage is organised like a compact professional garden-planning workspace:
 - second command bar grouped into Plan, Edit, Layout, Layers, Timeline, Seed Inventory and Crop Rotation
 - narrow icon-first vertical drawing rail
 - approximately 250 px context-sensitive panel beside the rail
-- Plants/Rows modes show filters, plant catalogue, crop spacing and variety selection in that panel
-- Select mode uses that same panel for selected-bed or selected-row details/actions
+- Plants/Rows modes show filters, plant catalogue, crop spacing and variety selection
+- Select mode uses the same panel for selected-bed or selected-row details/actions
 - measured rulers sit across the top and left of the canvas
-- the large grid-backed garden canvas dominates the remaining viewport
-- the supplied bed/path/trellis/berry layout remains the base plan
-- the context panel can collapse to maximise canvas space
-- mobile layout turns the context panel into an overlay drawer rather than shrinking the garden map
+- large grid-backed garden canvas dominates the viewport
+- context panel can collapse
+- mobile layout turns the context panel into an overlay drawer
 
-Current functional behaviour:
+Functional behaviour:
 
-- choosing a crop/variety controls what is placed next
-- clicking a bed in Plant mode fills it with that crop/variety
-- bed plant count is estimated from bed dimensions and crop spacing
-- Select mode lets beds be dragged around the canvas
-- the selected bed can be resized from its bottom-right handle
-- planted-bed capacity recalculates after resizing
-- Row mode lets the user drag a planting row directly across the plan
-- row length and estimated plant count are calculated from crop spacing
-- drawn rows can be selected and deleted
-- Undo/Redo work for plan edits
-- zoom controls change canvas scale
-- month/timeline controls change the displayed planning month
-- Save writes localStorage first, then attempts protected D1 save
-- Settings opens a visible in-app Garden Settings dialog for the session edit key; it no longer depends on `window.prompt()`
-- a successful remote save reports `Saved ✓` / `Cloud synced`
-- an unavailable/unauthorised remote save reports `Local only`
-- D1 loading becomes authoritative when the database contains saved beds
-- changing a bed crop/variety finishes the prior active planting and creates a new active planting rather than overwriting history
-- clearing a bed finishes its active planting
-- deleting a drawn row finishes its active planting so old planting history remains in D1
+- crop/variety placement and estimated capacity
+- bed dragging/resizing
+- free-drawn planting rows
+- row selection/deletion
+- Undo/Redo
+- zoom/month controls
+- protected D1 Save with local fallback
+- visible Garden Settings dialog for the session edit key
+- planting history is finished/recreated rather than overwritten when crops change
+- D1 becomes authoritative once saved beds exist
 
-The Bed, Path, Trellis, Tree and Text drawing tools remain placeholders. Photos/video and Notes/harvests are not wired to R2/D1 UI flows yet.
+Media behaviour:
+
+- selected-bed **Photos & video** opens a bed-specific media dialog
+- top **Photos** tab opens whole-garden media
+- media is served through Worker routes while the R2 bucket stays private
+- uploads/deletes require `GARDEN_WRITE_TOKEN`
+- photos/videos are linked in D1 to their current target and, where available, current planting
+- videos use metadata preload and do not autoplay
+
+Conservative app media quotas:
+
+```text
+2 GB total garden media
+6 MB maximum per photo
+25 MB maximum per video
+500 files maximum
+```
+
+Allowed first-release media formats:
+
+- JPEG, PNG, WebP, HEIC, HEIF
+- MP4, WebM, MOV/QuickTime
+
+The browser checks limits for UX and the Worker repeats them before writing to R2. D1 `media.size_bytes` is summed before every upload.
+
+The Bed, Path, Trellis, Tree and Text drawing tools remain placeholders. Notes/harvests UI is not wired yet.
 
 ---
 
@@ -192,29 +193,29 @@ The Bed, Path, Trellis, Tree and Text drawing tools remain placeholders. Photos/
 
 1. Keep the measured map/canvas visually dominant.
 2. Use GrowVeg-like information architecture and interaction density without copying proprietary assets or exact visual branding.
-3. Keep the narrow left rail and context-sensitive panel; avoid bringing back a large bottom plant tray or permanent right inspector.
-4. Preserve the user's actual physical garden layout rather than normalising it into a generic grid.
+3. Keep the narrow left rail and context-sensitive panel; avoid a large bottom plant tray or permanent right inspector.
+4. Preserve the physical garden layout rather than normalising it into a generic grid.
 5. Keep controls compact, obvious and visually quiet.
-6. Make mobile use practical through scroll/zoom and an overlay context drawer.
+6. Make mobile use practical through scroll/zoom and overlay dialogs/drawers.
 7. Use crop icons/visuals where they improve scanability.
 8. Keep detailed records behind selection/context-panel interactions.
 9. Treat spacing/capacity numbers as planner estimates unless the garden has been accurately measured.
-10. Preserve planting history separately from current bed geometry so replanting a bed does not destroy previous notes, harvests or media relationships.
-11. Never expose an anonymous garden write endpoint; keep D1 mutations behind the configured edit secret or a future stronger authentication layer.
+10. Preserve planting history separately from current bed geometry so replanting does not destroy previous notes, harvests or media relationships.
+11. Never expose anonymous garden mutations; D1 and R2 writes/deletes remain protected by the edit secret or future stronger auth.
+12. Keep the R2 bucket private. Serve media through the Worker rather than enabling a public R2 domain.
+13. Keep app media quotas conservative even if Cloudflare offers larger account-level allowances.
 
 ---
 
 ## 7. Next build order
 
-1. Configure Cloudflare Worker secret `GARDEN_WRITE_TOKEN` and deploy/verify the protected D1 save flow.
-2. Save the existing 12-bed plan once to seed D1 with planner geometry/current plantings.
-3. Create R2 `blenheim-garden-media` and bind it as `GARDEN_MEDIA`.
-4. Implement R2 upload/list/delete endpoints and connect Photos & video.
-5. Add Notes & harvests with sowing, germination, transplant and harvest dates.
-6. Make Bed, Path, Trellis, Tree and Text tools genuinely drawable/editable.
-7. Add Blenheim-specific planting windows and frost timing.
-8. Add Today / This Week task generation.
-9. Add seasonal occupancy/succession views and crop-rotation history.
+1. Deploy and verify the R2 implementation with one small photo upload/delete.
+2. Add Notes & harvests with sowing, germination, transplant and harvest dates.
+3. Make Bed, Path, Trellis, Tree and Text tools genuinely drawable/editable.
+4. Add Blenheim-specific planting windows and frost timing.
+5. Add Today / This Week task generation.
+6. Add seasonal occupancy/succession views and crop-rotation history.
+7. Add media browsing by planting/season and optional client-side image compression if needed.
 
 ---
 
@@ -223,6 +224,6 @@ The Bed, Path, Trellis, Tree and Text drawing tools remain placeholders. Photos/
 ```text
 Work on my GitHub repo Archil3s/Blenheim-Garden.
 First read PROJECT_CONTEXT.md and inspect the current code before making changes.
-Treat the measured garden canvas as the primary interface. Preserve the GrowVeg-style workspace structure, the user's real physical garden layout and the existing Cloudflare/OpenNext deployment.
-D1 is live and bound as DB. Preserve protected writes using GARDEN_WRITE_TOKEN. R2 is the next storage layer and should use bucket blenheim-garden-media with binding GARDEN_MEDIA.
+Treat the measured garden canvas as the primary interface. Preserve the GrowVeg-style workspace structure, the physical garden layout and the existing Cloudflare/OpenNext deployment.
+D1 is live as DB and R2 is live as GARDEN_MEDIA using private bucket blenheim-garden-media. Preserve protected writes using GARDEN_WRITE_TOKEN and the strict 2 GB / 6 MB photo / 25 MB video / 500-file media caps.
 ```
