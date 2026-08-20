@@ -18,8 +18,35 @@ export type D1DatabaseLike = {
   batch: <T = unknown>(statements: D1PreparedStatementLike[]) => Promise<T[]>;
 };
 
+export type R2ObjectBodyLike = {
+  body: ReadableStream<Uint8Array>;
+  size?: number;
+  httpMetadata?: {
+    contentType?: string;
+    contentDisposition?: string;
+    cacheControl?: string;
+  };
+};
+
+export type R2BucketLike = {
+  put: (
+    key: string,
+    value: ArrayBuffer | ArrayBufferView | Blob | ReadableStream<Uint8Array> | string,
+    options?: {
+      httpMetadata?: {
+        contentType?: string;
+        contentDisposition?: string;
+        cacheControl?: string;
+      };
+    },
+  ) => Promise<unknown>;
+  get: (key: string) => Promise<R2ObjectBodyLike | null>;
+  delete: (key: string) => Promise<void>;
+};
+
 type GardenBindings = {
   DB?: D1DatabaseLike;
+  GARDEN_MEDIA?: R2BucketLike;
   GARDEN_WRITE_TOKEN?: string;
 };
 
@@ -36,6 +63,16 @@ export function getGardenDb(): D1DatabaseLike {
   }
 
   return db;
+}
+
+export function getGardenMediaBucket(): R2BucketLike {
+  const bucket = getGardenBindings().GARDEN_MEDIA;
+
+  if (!bucket) {
+    throw new Error("Cloudflare R2 binding GARDEN_MEDIA is not available.");
+  }
+
+  return bucket;
 }
 
 export function getGardenWriteToken(): string | null {
