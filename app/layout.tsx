@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { EditKeyDialogBridge } from "@/components/edit-key-dialog-bridge";
 import "./globals.css";
 import "./planner-interactions.css";
 import "./growveg-workspace.css";
@@ -17,7 +18,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-NZ">
-      <body>{children}</body>
+      <body>
+        {children}
+        <EditKeyDialogBridge />
+      </body>
     </html>
   );
 }
