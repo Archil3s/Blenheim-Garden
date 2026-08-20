@@ -12,37 +12,37 @@ This file is the handoff/reference document for future ChatGPT/Codex sessions wo
 
 ## 1. Product goal
 
-Blenheim Garden should be a simple, low-friction garden planner for a home vegetable garden in Blenheim, Marlborough.
+Blenheim Garden is a visual home-garden planner for Blenheim, Marlborough.
 
-The product should make it easy to answer:
+The primary interface should feel like a simplified GrowVeg-style planner: the **garden map is the application**, not a secondary dashboard feature.
 
-1. What needs doing today or this week?
-2. What is planted in each bed?
-3. What seedlings are being raised?
-4. What can be sown or transplanted now in Blenheim?
-5. What has been harvested and roughly how much?
+The user should be able to understand the real garden at a glance, then click beds/plants to manage details without cluttering the map.
 
-Avoid turning it into a commercial farm-management system. The UI should stay visual, mobile-friendly and easy to scan.
+Core goals:
+
+1. Represent the user's actual physical garden layout, including beds, paths, trellises, trees/shade areas and berry/cane areas.
+2. Place crops visually inside the beds where they are physically growing.
+3. Make planning quick with a crop tray, select/plant tools and simple month views.
+4. Eventually attach dated notes, photos, videos, planting records and harvests to beds/plants.
+5. Keep the experience simpler and lower-friction than a full commercial garden-design product.
 
 ---
 
-## 2. Initial garden model
+## 2. Current garden model
 
-The initial dashboard is built around 12 garden beds.
+The base plan currently contains 12 numbered beds and a top fruiting-cane area, with the layout modelled on the user's supplied garden-plan drawings rather than a generic 12-card grid.
 
-Planned data areas:
+Current browser-side state supports:
 
-- beds
-- crops and varieties
-- seed sowing dates
-- germination / seedling status
-- transplant dates
-- seasonal planting windows
-- garden tasks
-- harvest dates and yields
-- notes
+- selected bed
+- selected crop
+- simple crop placement into beds
+- crop counts/icons
+- month selector
+- zoom
+- local browser save via `localStorage`
 
-No database has been added yet. The first version is intentionally a static UI shell so the data model can be designed before persistence is introduced.
+Durable multi-device persistence is not implemented yet.
 
 ---
 
@@ -54,6 +54,12 @@ No database has been added yet. The first version is intentionally a static UI s
 - OpenNext Cloudflare `1.20.2`
 - Wrangler `4.124.0`
 - Cloudflare Workers target
+
+Future storage direction when persistence is required:
+
+- Cloudflare D1 for beds, crops, planting records, notes, tasks and harvests
+- Cloudflare R2 for garden photos and ordinary video files
+- Cloudflare Stream only if video playback/transcoding needs become substantial
 
 ---
 
@@ -97,44 +103,57 @@ output: "standalone"
 
 ---
 
-## 5. Current UI
+## 5. Current UI direction
 
-The initial homepage contains:
+The homepage is now a planner workspace with:
 
-- Blenheim Garden hero
-- spring setup/current-focus card
-- today/task area
-- quick cards for seedlings, planting calendar, crops and harvests
-- a visual 12-bed garden grid
-- responsive mobile layout
+- compact top bar with month, zoom and save controls
+- left tool rail: Select, Bed, Path, Trellis, Plant, Tree and Text
+- large grid-backed garden canvas
+- the user's approximate real-world bed/path/trellis/berry layout
+- crop icons inside occupied beds
+- selectable beds
+- bottom searchable plant tray
+- right-side selected-bed inspector
+- responsive mobile layout with horizontally scrollable tools and plants
 
-Most controls are placeholders at this stage. Do not assume buttons are wired to persistent data yet.
+Current functional behaviour:
+
+- choosing a plant switches to Plant mode
+- clicking a bed in Plant mode places that crop into the bed
+- clicking a bed updates the selected-bed inspector
+- zoom controls change canvas scale
+- month selector changes the displayed planning month
+- Save plan stores the current bed state in browser `localStorage`
+- Clear bed removes the crop from the selected bed
+
+The Undo/Redo, Photos & video, and Notes & harvests controls are visual placeholders for later functionality.
 
 ---
 
-## 6. Development principles
+## 6. Design rules
 
-1. Keep the UI simple and visual.
-2. Prefer a few obvious actions over large menus.
-3. Make mobile usability a first-class requirement.
-4. Use Blenheim-specific seasonal timing when adding planting guidance.
-5. Keep horticultural guidance separate from user-entered garden state.
-6. Add persistence only when the data model is clear.
-7. Prefer small isolated changes.
-8. Preserve the working Cloudflare/OpenNext configuration.
-9. Update this file after major architecture, deployment or UX changes.
+1. Keep the map/canvas visually dominant.
+2. Match the interaction model of modern visual garden planners without copying proprietary assets or exact UI.
+3. Preserve the user's actual physical garden layout rather than normalising it into a generic grid.
+4. Keep controls compact and obvious.
+5. Avoid dashboard-card overload and decision fatigue.
+6. Make mobile use practical through scroll/zoom rather than rebuilding the garden into a different layout.
+7. Use crop icons/visuals wherever they improve scanability.
+8. Keep detailed records behind selection/inspector interactions.
 
 ---
 
 ## 7. Recommended next build order
 
-1. Make the 12 beds editable.
-2. Define crop/variety and planting records.
-3. Add seedling tracking.
-4. Add a Blenheim sow/transplant calendar.
-5. Create the Today / This Week task engine.
-6. Add harvest logging.
-7. Decide whether local browser storage is sufficient or whether durable Cloudflare storage is needed.
+1. Make beds/paths/trellises draggable and resizable.
+2. Add proper row/block crop placement and spacing calculations.
+3. Add D1 persistence and user garden records.
+4. Add photo/video upload with R2.
+5. Add crop/variety records, sowing, transplant and harvest dates.
+6. Add Blenheim-specific planting windows and frost timing.
+7. Add Today / This Week task generation.
+8. Add seasonal occupancy/succession views and crop-rotation history.
 
 ---
 
@@ -143,5 +162,5 @@ Most controls are placeholders at this stage. Do not assume buttons are wired to
 ```text
 Work on my GitHub repo Archil3s/Blenheim-Garden.
 First read PROJECT_CONTEXT.md and inspect the current code before making changes.
-Keep the existing Cloudflare/OpenNext deployment working and keep the garden UI simple, visual and mobile-friendly.
+Treat the garden canvas as the primary interface. Preserve the GrowVeg-style visual-planner direction, the user's real physical garden layout and the existing Cloudflare/OpenNext deployment.
 ```
