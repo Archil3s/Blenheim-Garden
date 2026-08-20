@@ -1,26 +1,19 @@
 # Cloudflare storage setup
 
-This project is ready to move from browser-only `localStorage` to Cloudflare persistence, but the real Cloudflare resources must exist before `wrangler.jsonc` is changed.
+The real D1 database is now created and bound in `wrangler.jsonc`.
 
-## Required resources
-
-Create these in the same Cloudflare account as the `blenheim-garden` Worker:
+## Current resources
 
 - D1 database: `blenheim-garden`
-- R2 bucket: `blenheim-garden-media`
+- D1 binding: `DB`
+- R2 bucket: `blenheim-garden-media` (still to be created/bound)
+- Intended R2 binding: `GARDEN_MEDIA`
 
-## Intended bindings
+The production D1 database uses its real Cloudflare `database_id`; do not replace it with placeholders.
 
-Use these binding names in the Worker:
+## D1 binding
 
-```text
-D1 binding: DB
-R2 binding: GARDEN_MEDIA
-```
-
-Do not invent or paste placeholder database IDs into production configuration. After the D1 database exists, use its real `database_id`.
-
-The final Wrangler shape will be approximately:
+`wrangler.jsonc` contains:
 
 ```jsonc
 {
@@ -28,19 +21,14 @@ The final Wrangler shape will be approximately:
     {
       "binding": "DB",
       "database_name": "blenheim-garden",
-      "database_id": "<REAL_D1_DATABASE_ID>"
-    }
-  ],
-  "r2_buckets": [
-    {
-      "binding": "GARDEN_MEDIA",
-      "bucket_name": "blenheim-garden-media"
+      "database_id": "30f379e1-a03c-4668-8bf3-e9d441b8f72f",
+      "migrations_dir": "migrations"
     }
   ]
 }
 ```
 
-The existing Worker name, OpenNext entrypoint, assets binding, compatibility date and `nodejs_compat` settings must remain intact when these bindings are added.
+The existing Worker name, OpenNext entrypoint, assets binding, compatibility date and `nodejs_compat` settings must remain intact.
 
 ## Database migration
 
@@ -64,7 +52,29 @@ It creates:
 
 It also creates the initial `blenheim-garden` garden record.
 
-After the real D1 resource is bound, apply the migration with Wrangler against the real database.
+Apply it locally with:
+
+```bash
+npm run db:migrate:local
+```
+
+Apply it to the real Cloudflare database with:
+
+```bash
+npm run db:migrate:remote
+```
+
+Wrangler records applied D1 migrations so the same migration is not repeatedly applied.
+
+## Binding verification
+
+The app exposes:
+
+```text
+GET /api/garden/status
+```
+
+It checks that the `DB` binding responds and reports whether the `gardens` table exists. Before the migration is applied, `ok` can be true while `schemaReady` is false.
 
 ## Storage model
 
@@ -85,7 +95,7 @@ D1 stores structured, searchable data:
 
 ### R2
 
-R2 stores only the media bytes:
+R2 will store only the media bytes:
 
 ```text
 gardens/blenheim-garden/photos/<uuid>.<ext>
@@ -98,12 +108,11 @@ This allows a bed to be replanted later without losing historical photos, videos
 
 ## Integration sequence
 
-1. Create D1 `blenheim-garden`.
-2. Create R2 `blenheim-garden-media`.
-3. Add the real bindings to `wrangler.jsonc`.
-4. Generate/update Cloudflare binding types if required.
-5. Apply `0001_garden_storage.sql`.
-6. Add `/api/garden` load/save endpoints using `DB`.
-7. Keep localStorage as a temporary local fallback/cache.
-8. Add media upload/list/delete endpoints using `GARDEN_MEDIA` plus the D1 `media` table.
-9. Wire the existing Photos & video, Notes and Harvest UI controls to those APIs.
+1. D1 `blenheim-garden` created and bound. ✅
+2. Apply `0001_garden_storage.sql` to the remote D1 database.
+3. Add `/api/garden` load/save endpoints using `DB`.
+4. Keep localStorage as a temporary fallback/cache.
+5. Create R2 `blenheim-garden-media`.
+6. Bind R2 as `GARDEN_MEDIA`.
+7. Add media upload/list/delete endpoints using R2 plus the D1 `media` table.
+8. Wire Photos & video, Notes and Harvest UI controls to those APIs.
