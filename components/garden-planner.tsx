@@ -277,14 +277,16 @@ export function GardenPlanner() {
             return { ...next, count: rowCount(next, next.spacingCm) };
           }) };
         }
+        if (!("object" in activeInteraction)) return current;
+        const objectInteraction = activeInteraction;
         return { ...current, objects: current.objects.map((object) => {
-          if (object.id !== activeInteraction.id) return object;
-          const original = activeInteraction.object;
-          if (activeInteraction.kind === "tree-resize" && original.type === "tree") return { ...object, ...(object.type === "tree" ? { diameterCm: clamp(snap(Math.hypot(point.x - original.x, point.y - original.y) * 2), 30, 1000) } : {}) } as PlannerLayoutObject;
+          if (object.id !== objectInteraction.id) return object;
+          const original = objectInteraction.object;
+          if (objectInteraction.kind === "tree-resize" && original.type === "tree") return { ...object, ...(object.type === "tree" ? { diameterCm: clamp(snap(Math.hypot(point.x - original.x, point.y - original.y) * 2), 30, 1000) } : {}) } as PlannerLayoutObject;
           if (original.type === "path" || original.type === "trellis") {
             if (object.type !== original.type) return object;
-            if (activeInteraction.kind === "object-start") return { ...object, x1: point.x, y1: point.y };
-            if (activeInteraction.kind === "object-end") return { ...object, x2: point.x, y2: point.y };
+            if (objectInteraction.kind === "object-start") return { ...object, x1: point.x, y1: point.y };
+            if (objectInteraction.kind === "object-end") return { ...object, x2: point.x, y2: point.y };
             return { ...object, x1: clamp(snap(original.x1 + dx), 0, CANVAS_WIDTH), y1: clamp(snap(original.y1 + dy), 0, CANVAS_HEIGHT), x2: clamp(snap(original.x2 + dx), 0, CANVAS_WIDTH), y2: clamp(snap(original.y2 + dy), 0, CANVAS_HEIGHT) };
           }
           if (original.type === "tree" && object.type === "tree") return { ...object, x: clamp(snap(original.x + dx), 0, CANVAS_WIDTH), y: clamp(snap(original.y + dy), 0, CANVAS_HEIGHT) };
