@@ -2,37 +2,11 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { PointerEvent as ReactPointerEvent } from "react";
+import type { GardenPlanApiResponse, PlannerBed as Bed, PlannerPlan as PlanState, PlannerRow as PlantingRow } from "@/lib/garden/planner-plan";
 
 type Tool = "select" | "bed" | "path" | "trellis" | "plant" | "row" | "tree" | "note";
-
-type Bed = {
-  id: number;
-  name: string;
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-  crop?: string;
-  cropIcon?: string;
-  cropCount?: number;
-  variety?: string;
-  spacingCm?: number;
-};
-
-type PlantingRow = {
-  id: string;
-  crop: string;
-  cropIcon: string;
-  variety: string;
-  spacingCm: number;
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-  count: number;
-};
-
-type PlanState = { beds: Bed[]; rows: PlantingRow[] };
+type SaveState = "idle" | "saving" | "cloud" | "local" | "error";
+type LoadSource = "starting" | "cloud" | "local" | "default";
 
 type PlantOption = {
   name: string;
@@ -56,6 +30,8 @@ type DraftRow = { x1: number; y1: number; x2: number; y2: number };
 const CANVAS_WIDTH = 900;
 const CANVAS_HEIGHT = 1080;
 const CM_PER_CANVAS_PIXEL = 1;
+const LOCAL_PLAN_KEY = "blenheim-garden-plan";
+const EDIT_KEY_SESSION = "blenheim-garden-edit-key";
 
 const tools: Array<{ id: Tool; icon: string; label: string }> = [
   { id: "select", icon: "↖", label: "Select" },
@@ -133,6 +109,19 @@ function rowVisual(row: Pick<PlantingRow, "x1" | "y1" | "x2" | "y2">) {
   return { length: Math.hypot(dx, dy), angle: Math.atan2(dy, dx) * 180 / Math.PI };
 }
 
+function readLocalPlan(): PlanState | null {
+  try {
+    const stored = localStorage.getItem(LOCAL_PLAN_KEY);
+    if (!stored) return null;
+    const parsed = JSON.parse(stored) as PlanState | Bed[];
+    if (Array.isArray(parsed)) return { beds: parsed, rows: [] };
+    if (Array.isArray(parsed.beds) && Array.isArray(parsed.rows)) return parsed;
+  } catch {
+    // Ignore invalid browser cache and fall back to the built-in plan.
+  }
+  return null;
+}
+
 export function GardenPlanner() {
   const canvasRef = useRef<HTMLDivElement>(null);
   const [tool, setTool] = useState<Tool>("plant");
@@ -150,18 +139,34 @@ export function GardenPlanner() {
   const [future, setFuture] = useState<PlanState[]>([]);
   const [interaction, setInteraction] = useState<BedInteraction | null>(null);
   const [draftRow, setDraftRow] = useState<DraftRow | null>(null);
-  const [saved, setSaved] = useState(false);
+  const [saveState, setSaveState] = useState<SaveState>("idle");
+  const [loadSource, setLoadSource] = useState<LoadSource>("starting");
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem("blenheim-garden-plan");
-      if (!stored) return;
-      const parsed = JSON.parse(stored) as PlanState | Bed[];
-      if (Array.isArray(parsed)) setPlan({ beds: parsed, rows: [] });
-      else if (Array.isArray(parsed.beds) && Array.isArray(parsed.rows)) setPlan(parsed);
-    } catch {
-      // Keep the built-in plan if local storage cannot be read.
+    let cancelled = false;
+    const local = readLocalPlan();
+    if (local) {
+      setPlan(local);
+      setLoadSource("local");
+    } else {
+      setLoadSource("default");
     }
+
+    async function loadCloudPlan() {
+      try {
+        const response = await fetch("/api/garden", { cache: "no-store" });
+        const data = await response.json() as GardenPlanApiResponse;
+        if (cancelled || !response.ok || !data.ok || !data.plan || data.plan.beds.length === 0) return;
+        setPlan(data.plan);
+        localStorage.setItem(LOCAL_PLAN_KEY, JSON.stringify(data.plan));
+        setLoadSource("cloud");
+      } catch {
+        // Browser/local plan remains available when cloud loading is unavailable.
+      }
+    }
+
+    void loadCloudPlan();
+    return () => { cancelled = true; };
   }, []);
 
   useEffect(() => {
@@ -216,6 +221,7 @@ export function GardenPlanner() {
   function updatePlan(next: PlanState) {
     rememberCurrent();
     setPlan(next);
+    setSaveState("idle");
   }
 
   function chooseTool(nextTool: Tool) {
@@ -326,6 +332,7 @@ export function GardenPlanner() {
     setPlan(previous);
     setInteraction(null);
     setDraftRow(null);
+    setSaveState("idle");
   }
 
   function redo() {
@@ -334,12 +341,54 @@ export function GardenPlanner() {
     setPast((current) => [...current, plan].slice(-30));
     setFuture((current) => current.slice(1));
     setPlan(next);
+    setSaveState("idle");
   }
 
-  function savePlan() {
-    localStorage.setItem("blenheim-garden-plan", JSON.stringify(plan));
-    setSaved(true);
-    window.setTimeout(() => setSaved(false), 1800);
+  function configureEditKey() {
+    const value = window.prompt("Enter your garden edit key. It is stored only for this browser session.");
+    if (value === null) return;
+    const key = value.trim();
+    if (key) sessionStorage.setItem(EDIT_KEY_SESSION, key);
+    else sessionStorage.removeItem(EDIT_KEY_SESSION);
+  }
+
+  async function savePlan() {
+    localStorage.setItem(LOCAL_PLAN_KEY, JSON.stringify(plan));
+    setSaveState("saving");
+
+    let editKey = sessionStorage.getItem(EDIT_KEY_SESSION)?.trim() ?? "";
+    if (!editKey) {
+      const supplied = window.prompt("Enter your garden edit key to save to Cloudflare D1. Cancel to save only on this device.");
+      editKey = supplied?.trim() ?? "";
+      if (editKey) sessionStorage.setItem(EDIT_KEY_SESSION, editKey);
+    }
+
+    if (!editKey) {
+      setSaveState("local");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/garden", {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${editKey}`,
+        },
+        body: JSON.stringify({ plan }),
+      });
+      const data = await response.json() as GardenPlanApiResponse;
+      if (!response.ok || !data.ok) {
+        if (response.status === 401) sessionStorage.removeItem(EDIT_KEY_SESSION);
+        setSaveState("local");
+        return;
+      }
+      setLoadSource("cloud");
+      setSaveState("cloud");
+      window.setTimeout(() => setSaveState("idle"), 2200);
+    } catch {
+      setSaveState("local");
+    }
   }
 
   function renderCatalog() {
@@ -421,11 +470,17 @@ export function GardenPlanner() {
 
   const scaledWidth = CANVAS_WIDTH * zoom / 100;
   const scaledHeight = CANVAS_HEIGHT * zoom / 100;
+  const saveLabel = saveState === "saving" ? "Saving…" : saveState === "cloud" ? "Saved ✓" : saveState === "local" ? "Local only" : saveState === "error" ? "Retry" : "Save";
+  const sourceLabel = loadSource === "cloud" ? "Cloud synced" : loadSource === "local" ? "Local copy" : loadSource === "starting" ? "Loading…" : "Unsynced plan";
 
   return (
     <main className="gv-app">
       <header className="gv-titlebar">
-        <div className="gv-title-left"><button type="button" className="gv-plan-name">BLENHEIM GARDEN <span>2026 ▾</span></button><button type="button" className="gv-settings">⚙ Settings</button><button type="button" className="gv-save" onClick={savePlan}>💾 {saved ? "Saved" : "Save"}</button></div>
+        <div className="gv-title-left">
+          <button type="button" className="gv-plan-name">BLENHEIM GARDEN <span>2026 ▾</span></button>
+          <button type="button" className="gv-settings" onClick={configureEditKey} title="Set the private edit key used for cloud saves">⚙ Settings</button>
+          <button type="button" className="gv-save" onClick={() => void savePlan()} disabled={saveState === "saving"} title={saveState === "local" ? "Saved in this browser, but not yet written to D1" : "Save garden plan"}>💾 {saveLabel}</button>
+        </div>
         <nav className="gv-tabs" aria-label="Garden sections"><button type="button" className="active">Plan</button><button type="button">Plant List</button><button type="button">Photos</button><button type="button">Notes</button></nav>
       </header>
 
@@ -449,7 +504,7 @@ export function GardenPlanner() {
         {!panelOpen && <button type="button" className="gv-panel-reopen" onClick={() => setPanelOpen(true)}>›</button>}
 
         <section className="gv-stage">
-          <div className="gv-stage-status"><strong>{tool === "row" ? `Draw ${selectedVariety} ${selectedPlant.name} rows` : tool === "plant" ? `Place ${selectedVariety} ${selectedPlant.name}` : tool === "select" ? "Select, move and resize" : `${tools.find((item) => item.id === tool)?.label} tool`}</strong><span>{month} 2026 · 1 px ≈ 1 cm</span></div>
+          <div className="gv-stage-status"><strong>{tool === "row" ? `Draw ${selectedVariety} ${selectedPlant.name} rows` : tool === "plant" ? `Place ${selectedVariety} ${selectedPlant.name}` : tool === "select" ? "Select, move and resize" : `${tools.find((item) => item.id === tool)?.label} tool`}</strong><span>{month} 2026 · {sourceLabel} · 1 px ≈ 1 cm</span></div>
           <div className="gv-stage-scroll">
             <div className="gv-ruler-grid" style={{ width: scaledWidth + 28, gridTemplateColumns: `28px ${scaledWidth}px`, gridTemplateRows: `26px ${scaledHeight}px` }}>
               <div className="gv-ruler-corner" />
