@@ -24,7 +24,7 @@ type MediaItem = {
 };
 
 type Usage = { fileCount: number; totalBytes: number };
-type Target = { targetType: "garden" | "bed"; targetId: string; label: string };
+type Target = { targetType: "garden" | "bed" | "planting"; targetId: string; label: string };
 
 type MediaResponse = {
   ok: boolean;
@@ -80,8 +80,11 @@ export function GardenMediaDialogBridge() {
       if (mediaButton?.textContent?.includes("Photos & video")) {
         const selectionPanel = mediaButton.closest(".gv-selection-panel") as HTMLElement | null;
         const selectedName = selectionPanel?.querySelector(".gv-selection-hero h2")?.textContent?.trim() || "Selected bed";
+        const plantingId = selectionPanel?.dataset.plantingId?.trim();
         const bedId = selectionPanel?.dataset.bedId?.trim();
-        if (bedId) {
+        if (plantingId) {
+          nextTarget = { targetType: "planting", targetId: plantingId, label: selectedName };
+        } else if (bedId) {
           nextTarget = { targetType: "bed", targetId: bedId, label: selectedName };
         } else {
           const match = selectedName.match(/^Bed\s+(\d+)$/i);
@@ -199,10 +202,7 @@ export function GardenMediaDialogBridge() {
       const data = await response.json() as MediaResponse;
       if (!response.ok || !data.ok) throw new Error(data.error || "Delete failed.");
       setItems((current) => current.filter((candidate) => candidate.id !== item.id));
-      setUsage((current) => ({
-        fileCount: Math.max(0, current.fileCount - 1),
-        totalBytes: Math.max(0, current.totalBytes - item.sizeBytes),
-      }));
+      setUsage((current) => ({ fileCount: Math.max(0, current.fileCount - 1), totalBytes: Math.max(0, current.totalBytes - item.sizeBytes) }));
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "Delete failed.");
     } finally {
@@ -215,93 +215,33 @@ export function GardenMediaDialogBridge() {
   return (
     <dialog ref={dialogRef} className="garden-media-dialog" onCancel={() => dialogRef.current?.close()}>
       <div className="garden-media-card">
-        <header>
-          <div><strong>Photos & video</strong><span>{target.label}</span></div>
-          <button type="button" aria-label="Close" onClick={() => dialogRef.current?.close()}>×</button>
-        </header>
-
-        <section className="media-quota">
-          <div><strong>{formatBytes(usage.totalBytes)} / 2 GB</strong><span>{usage.fileCount} / {GARDEN_MEDIA_LIMITS.maxFiles} files</span></div>
-          <div className="quota-track"><i style={{ width: `${percent}%` }} /></div>
-          <small>Photo limit 6 MB · Video limit 25 MB · private R2 bucket</small>
-        </section>
-
+        <header><div><strong>Photos & video</strong><span>{target.label}</span></div><button type="button" aria-label="Close" onClick={() => dialogRef.current?.close()}>×</button></header>
+        <section className="media-quota"><div><strong>{formatBytes(usage.totalBytes)} / 2 GB</strong><span>{usage.fileCount} / {GARDEN_MEDIA_LIMITS.maxFiles} files</span></div><div className="quota-track"><i style={{ width: `${percent}%` }} /></div><small>Photo limit 6 MB · Video limit 25 MB · private R2 bucket</small></section>
         <section className="media-upload">
-          <label>
-            <span>Add a photo or video</span>
-            <input
-              ref={inputRef}
-              type="file"
-              accept="image/jpeg,image/png,image/webp,image/heic,image/heif,video/mp4,video/webm,video/quicktime"
-              onChange={(event) => chooseFile(event.target.files?.[0] ?? null)}
-              disabled={busy}
-            />
-          </label>
+          <label><span>Add a photo or video</span><input ref={inputRef} type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,video/mp4,video/webm,video/quicktime" onChange={(event) => chooseFile(event.target.files?.[0] ?? null)} disabled={busy} /></label>
           {selectedFile && <div className="selected-file"><strong>{selectedFile.name}</strong><span>{formatBytes(selectedFile.size)}</span></div>}
           <input value={caption} onChange={(event) => setCaption(event.target.value)} maxLength={1000} placeholder="Optional caption" disabled={busy} />
           <button type="button" className="upload-action" onClick={() => void upload()} disabled={!selectedFile || busy}>{busy ? "Working…" : "Upload"}</button>
           {error && <p className="media-error">{error}</p>}
         </section>
-
         <section className="media-gallery">
           {busy && items.length === 0 ? <p className="media-empty">Loading…</p> : null}
           {!busy && items.length === 0 ? <p className="media-empty">No media attached here yet.</p> : null}
-          {items.map((item) => (
-            <article key={item.id}>
-              <div className="media-preview">
-                {item.mediaType === "photo"
-                  ? <img src={item.url} alt={item.caption || item.fileName} loading="lazy" />
-                  : <video src={item.url} controls preload="metadata" />}
-              </div>
-              <div className="media-copy">
-                <strong>{item.caption || item.fileName}</strong>
-                <small>{formatBytes(item.sizeBytes)} · {new Date(item.capturedAt || item.createdAt).toLocaleDateString()}</small>
-              </div>
-              <button type="button" className="delete-media" onClick={() => void remove(item)} disabled={busy}>Delete</button>
-            </article>
-          ))}
+          {items.map((item) => <article key={item.id}><div className="media-preview">{item.mediaType === "photo" ? <img src={item.url} alt={item.caption || item.fileName} loading="lazy" /> : <video src={item.url} controls preload="metadata" />}</div><div className="media-copy"><strong>{item.caption || item.fileName}</strong><small>{formatBytes(item.sizeBytes)} · {new Date(item.capturedAt || item.createdAt).toLocaleDateString()}</small></div><button type="button" className="delete-media" onClick={() => void remove(item)} disabled={busy}>Delete</button></article>)}
         </section>
       </div>
-
       <style jsx>{`
         .garden-media-dialog { border: 0; padding: 0; width: min(760px, calc(100vw - 28px)); max-height: min(780px, calc(100vh - 28px)); border-radius: 9px; box-shadow: 0 20px 60px rgba(0,0,0,.3); color: #263630; }
         .garden-media-dialog::backdrop { background: rgba(24,38,33,.46); }
         .garden-media-card { background: #fff; min-height: 340px; }
         header { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid #dce4e0; }
-        header div { display:grid; gap:2px; }
-        header strong { font-size:15px; }
-        header span { font-size:11px; color:#6e7c75; }
-        header button { border:0; background:transparent; font-size:23px; color:#64716b; cursor:pointer; }
-        .media-quota { padding:13px 16px; border-bottom:1px solid #edf1ef; background:#f8faf9; }
-        .media-quota > div:first-child { display:flex; justify-content:space-between; gap:14px; font-size:11px; }
-        .media-quota strong { font-size:12px; }
-        .quota-track { height:6px; margin:8px 0 6px; border-radius:99px; background:#e1e8e5; overflow:hidden; }
-        .quota-track i { display:block; min-width:2px; max-width:100%; height:100%; background:#19a97b; }
-        .media-quota small { color:#75827c; font-size:10px; }
-        .media-upload { display:grid; grid-template-columns:minmax(220px,1fr) minmax(180px,1fr) auto; gap:9px; align-items:end; padding:14px 16px; border-bottom:1px solid #e7ece9; }
-        .media-upload label { display:grid; gap:5px; font-size:11px; font-weight:700; }
-        .media-upload input[type=file] { font-size:11px; }
-        .media-upload > input { height:35px; border:1px solid #c4cfca; border-radius:4px; padding:0 9px; min-width:0; }
-        .selected-file { grid-column:1 / -1; display:flex; justify-content:space-between; gap:12px; padding:7px 9px; background:#f4f8f6; border-radius:4px; font-size:10px; }
-        .upload-action { height:35px; padding:0 16px; border:1px solid #138a65; border-radius:4px; background:#19a97b; color:#fff; font-weight:700; cursor:pointer; }
-        .upload-action:disabled { opacity:.55; cursor:not-allowed; }
-        .media-error { grid-column:1 / -1; margin:0; padding:8px 10px; border-radius:4px; background:#fff1f0; color:#a13a32; font-size:11px; }
-        .media-gallery { display:grid; gap:1px; max-height:470px; overflow:auto; background:#e8eeeb; }
-        .media-gallery article { display:grid; grid-template-columns:112px 1fr auto; gap:12px; align-items:center; padding:10px 14px; background:#fff; }
-        .media-preview { width:112px; height:78px; border-radius:5px; overflow:hidden; background:#eef2f0; display:grid; place-items:center; }
-        .media-preview img, .media-preview video { width:100%; height:100%; object-fit:cover; }
-        .media-copy { min-width:0; display:grid; gap:4px; }
-        .media-copy strong { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:12px; }
-        .media-copy small { color:#738079; font-size:10px; }
-        .delete-media { border:1px solid #d7c0bc; background:#fff; color:#9c443c; border-radius:4px; padding:7px 10px; cursor:pointer; }
-        .media-empty { margin:0; padding:32px; text-align:center; color:#718078; background:#fff; font-size:12px; }
-        @media (max-width: 640px) {
-          .media-upload { grid-template-columns:1fr; }
-          .media-upload > input, .upload-action { width:100%; }
-          .media-gallery article { grid-template-columns:84px 1fr; }
-          .media-preview { width:84px; height:68px; }
-          .delete-media { grid-column:2; justify-self:start; }
-        }
+        header div { display:grid; gap:2px; } header strong { font-size:15px; } header span { font-size:11px; color:#6e7c75; } header button { border:0; background:transparent; font-size:23px; color:#64716b; cursor:pointer; }
+        .media-quota { padding:13px 16px; border-bottom:1px solid #edf1ef; background:#f8faf9; } .media-quota > div:first-child { display:flex; justify-content:space-between; gap:14px; font-size:11px; } .media-quota strong { font-size:12px; }
+        .quota-track { height:6px; margin:8px 0 6px; border-radius:99px; background:#e1e8e5; overflow:hidden; } .quota-track i { display:block; min-width:2px; max-width:100%; height:100%; background:#19a97b; } .media-quota small { color:#75827c; font-size:10px; }
+        .media-upload { display:grid; grid-template-columns:minmax(220px,1fr) minmax(180px,1fr) auto; gap:9px; align-items:end; padding:14px 16px; border-bottom:1px solid #e7ece9; } .media-upload label { display:grid; gap:5px; font-size:11px; font-weight:700; } .media-upload input[type=file] { font-size:11px; } .media-upload > input { height:35px; border:1px solid #c4cfca; border-radius:4px; padding:0 9px; min-width:0; }
+        .selected-file { grid-column:1 / -1; display:flex; justify-content:space-between; gap:12px; padding:7px 9px; background:#f4f8f6; border-radius:4px; font-size:10px; } .upload-action { height:35px; padding:0 16px; border:1px solid #138a65; border-radius:4px; background:#19a97b; color:#fff; font-weight:700; cursor:pointer; } .upload-action:disabled { opacity:.55; cursor:not-allowed; } .media-error { grid-column:1 / -1; margin:0; padding:8px 10px; border-radius:4px; background:#fff1f0; color:#a13a32; font-size:11px; }
+        .media-gallery { display:grid; gap:1px; max-height:470px; overflow:auto; background:#e8eeeb; } .media-gallery article { display:grid; grid-template-columns:112px 1fr auto; gap:12px; align-items:center; padding:10px 14px; background:#fff; } .media-preview { width:112px; height:78px; border-radius:5px; overflow:hidden; background:#eef2f0; display:grid; place-items:center; } .media-preview img, .media-preview video { width:100%; height:100%; object-fit:cover; } .media-copy { min-width:0; display:grid; gap:4px; } .media-copy strong { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:12px; } .media-copy small { color:#738079; font-size:10px; } .delete-media { border:1px solid #d7c0bc; background:#fff; color:#9c443c; border-radius:4px; padding:7px 10px; cursor:pointer; } .media-empty { margin:0; padding:32px; text-align:center; color:#718078; background:#fff; font-size:12px; }
+        @media (max-width: 640px) { .media-upload { grid-template-columns:1fr; } .media-upload > input, .upload-action { width:100%; } .media-gallery article { grid-template-columns:84px 1fr; } .media-preview { width:84px; height:68px; } .delete-media { grid-column:2; justify-self:start; } }
       `}</style>
     </dialog>
   );
