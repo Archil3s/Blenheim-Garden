@@ -16,17 +16,21 @@ const seedObjects = [
 export async function ensureGardenLayoutSchema(db: D1DatabaseLike) {
   const bedColumns = await db.prepare("PRAGMA table_info(beds)").all<TableInfoRow>();
   if (!(bedColumns.results ?? []).some((column) => column.name === "archived_at")) {
-    await db.prepare("ALTER TABLE beds ADD COLUMN archived_at TEXT").run();
+    try {
+      await db.prepare("ALTER TABLE beds ADD COLUMN archived_at TEXT").run();
+    } catch (error) {
+      const message = error instanceof Error ? error.message.toLowerCase() : "";
+      if (!message.includes("duplicate column") && !message.includes("already exists")) throw error;
+    }
   }
 
   const existing = await db.prepare(
     "SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'layout_objects' LIMIT 1",
   ).first<TableNameRow>();
-
-  if (existing?.name) return;
+  const shouldSeed = !existing?.name;
 
   await db.prepare(`
-    CREATE TABLE layout_objects (
+    CREATE TABLE IF NOT EXISTS layout_objects (
       id TEXT PRIMARY KEY,
       garden_id TEXT NOT NULL,
       object_type TEXT NOT NULL CHECK (object_type IN ('path', 'trellis', 'tree', 'text')),
@@ -50,6 +54,7 @@ export async function ensureGardenLayoutSchema(db: D1DatabaseLike) {
   `).run();
 
   await db.prepare("CREATE INDEX IF NOT EXISTS idx_layout_objects_garden ON layout_objects(garden_id, sort_order)").run();
+  if (!shouldSeed) return;
 
   const statements = seedObjects.map((seed) => db.prepare(`
     INSERT OR IGNORE INTO layout_objects (
