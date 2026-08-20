@@ -1,0 +1,13 @@
+.tree-object {
+  container-type: inline-size;
+}
+
+.tree-object > span:first-child {
+  font-size: clamp(18px, 18cqw, 120px);
+  line-height: 1;
+  transition: font-size .12s ease;
+}
+
+.tree-object small {
+  top: calc(50% + clamp(18px, 11cqw, 64px));
+}
