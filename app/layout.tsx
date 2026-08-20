@@ -7,6 +7,7 @@ import "./globals.css";
 import "./planner-interactions.css";
 import "./growveg-workspace.css";
 import "./planting-style.css";
+import "./tree-scaling.css";
 
 export const metadata: Metadata = {
   title: "Blenheim Garden",
