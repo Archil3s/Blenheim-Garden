@@ -16,11 +16,12 @@ type LoadSource = "starting" | "cloud" | "local" | "default";
 type Point = { x: number; y: number };
 type Selection = { kind: "bed" | "row" | "object"; id: string } | null;
 type Draft = { kind: "bed" | "row" | "path" | "trellis"; start: Point; end: Point } | null;
-type Interaction = (
+type Interaction =
   | { kind: "bed-drag" | "bed-resize"; id: number; start: Point; bed: Bed }
   | { kind: "row-drag" | "row-start" | "row-end"; id: string; start: Point; row: PlantingRow }
-  | { kind: "object-drag" | "object-start" | "object-end" | "tree-resize"; id: string; start: Point; object: PlannerLayoutObject }
-) & Record<string, any>;
+  | { kind: "object-drag" | "object-start" | "object-end" | "tree-resize"; id: string; start: Point; object: PlannerLayoutObject };
+
+type RowInteraction = Extract<Interaction, { row: PlantingRow }>;
 
 type PlantOption = {
   name: string;
@@ -101,6 +102,17 @@ function bedSizeLabel(bed: Bed) { const size = bedCm(bed); return `${(size.w / 1
 function bedCapacity(bed: Bed, spacingCm: number) { const size = bedCm(bed); return Math.max(1, Math.floor(size.w / spacingCm) * Math.floor(size.h / spacingCm)); }
 function rowCount(row: { x1: number; y1: number; x2: number; y2: number }, spacing: number) { return Math.max(1, Math.floor(lineLength(row) / spacing) + 1); }
 function uuid(prefix: string) { return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; }
+function uniqueBedId() { return Date.now() * 1000 + Math.floor(Math.random() * 1000); }
+function nextBedLabel(beds: Bed[]) {
+  const highest = beds.reduce((max, bed) => {
+    const match = bed.name.match(/^Bed\s+(\d+)$/i);
+    return match ? Math.max(max, Number(match[1])) : max;
+  }, 0);
+  return `Bed ${highest + 1}`;
+}
+function isRowInteraction(interaction: Interaction): interaction is RowInteraction {
+  return interaction.kind === "row-drag" || interaction.kind === "row-start" || interaction.kind === "row-end";
+}
 function clonePlan(plan: PlanState): PlanState { return structuredClone(plan); }
 
 function normalisePlan(value: Partial<PlanState> | null | undefined): PlanState | null {
@@ -202,7 +214,7 @@ export function GardenPlanner() {
     setSelection({ kind: "bed", id: String(bed.id) });
   }
 
-  function startBedInteraction(event: ReactPointerEvent<HTMLDivElement>, bed: Bed, resize = false) {
+  function startBedInteraction(event: ReactPointerEvent<HTMLElement>, bed: Bed, resize = false) {
     event.stopPropagation();
     setSelection({ kind: "bed", id: String(bed.id) });
     if (tool === "plant") { plantBed(bed); return; }
@@ -213,7 +225,7 @@ export function GardenPlanner() {
     setInteraction({ kind: resize ? "bed-resize" : "bed-drag", id: bed.id, start: point, bed: clonePlan({ beds: [bed], rows: [], objects: [] }).beds[0] });
   }
 
-  function startRowInteraction(event: ReactPointerEvent<HTMLDivElement>, row: PlantingRow, mode: "row-drag" | "row-start" | "row-end" = "row-drag") {
+  function startRowInteraction(event: ReactPointerEvent<HTMLElement>, row: PlantingRow, mode: "row-drag" | "row-start" | "row-end" = "row-drag") {
     event.stopPropagation();
     if (tool !== "select" && tool !== "row") return;
     const point = canvasPoint(event.clientX, event.clientY);
@@ -222,7 +234,7 @@ export function GardenPlanner() {
     setInteraction({ kind: mode, id: row.id, start: point, row: { ...row } });
   }
 
-  function startObjectInteraction(event: ReactPointerEvent<HTMLDivElement>, object: PlannerLayoutObject, mode: "object-drag" | "object-start" | "object-end" | "tree-resize" = "object-drag") {
+  function startObjectInteraction(event: ReactPointerEvent<HTMLElement>, object: PlannerLayoutObject, mode: "object-drag" | "object-start" | "object-end" | "tree-resize" = "object-drag") {
     event.stopPropagation();
     if (tool !== "select" && tool !== object.type && !(tool === "note" && object.type === "text")) return;
     const point = canvasPoint(event.clientX, event.clientY);
@@ -254,7 +266,7 @@ export function GardenPlanner() {
             return bed.crop && bed.spacingCm ? { ...next, cropCount: bedCapacity(next, bed.spacingCm) } : next;
           }) };
         }
-        if (interaction.kind.startsWith("row-")) {
+        if (isRowInteraction(interaction)) {
           return { ...current, rows: current.rows.map((row) => {
             if (row.id !== interaction.id) return row;
             let next = { ...row };
@@ -320,8 +332,8 @@ export function GardenPlanner() {
       const x = Math.min(current.start.x, current.end.x), y = Math.min(current.start.y, current.end.y);
       const w = Math.abs(current.end.x - current.start.x), h = Math.abs(current.end.y - current.start.y);
       if (w < 40 || h < 40) return;
-      const id = Math.max(0, ...plan.beds.map((bed) => bed.id)) + 1;
-      const bed = cmBed(id, `Bed ${id}`, { x, y, w, h });
+      const id = uniqueBedId();
+      const bed = cmBed(id, nextBedLabel(plan.beds), { x, y, w, h });
       commit({ ...plan, beds: [...plan.beds, bed] }); setSelection({ kind: "bed", id: String(id) }); return;
     }
     if (lineLength({ x1: current.start.x, y1: current.start.y, x2: current.end.x, y2: current.end.y }) < 20) return;
@@ -346,9 +358,9 @@ export function GardenPlanner() {
   function duplicateSelection() {
     if (!selection) return;
     if (selectedBed) {
-      const id = Math.max(0, ...plan.beds.map((bed) => bed.id)) + 1;
+      const id = uniqueBedId();
       const size = bedCm(selectedBed);
-      const bed = { ...selectedBed, id, name: `Bed ${id}`, x: clamp((size.x + 20) / CANVAS_WIDTH * 100, 0, 100 - selectedBed.w), y: clamp((size.y + 20) / CANVAS_HEIGHT * 100, 0, 100 - selectedBed.h) };
+      const bed = { ...selectedBed, id, name: nextBedLabel(plan.beds), x: clamp((size.x + 20) / CANVAS_WIDTH * 100, 0, 100 - selectedBed.w), y: clamp((size.y + 20) / CANVAS_HEIGHT * 100, 0, 100 - selectedBed.h) };
       commit({ ...plan, beds: [...plan.beds, bed] }); setSelection({ kind: "bed", id: String(id) });
     } else if (selectedRow) {
       const row = { ...selectedRow, id: uuid("row"), x1: clamp(selectedRow.x1 + 20, 0, CANVAS_WIDTH), y1: clamp(selectedRow.y1 + 20, 0, CANVAS_HEIGHT), x2: clamp(selectedRow.x2 + 20, 0, CANVAS_WIDTH), y2: clamp(selectedRow.y2 + 20, 0, CANVAS_HEIGHT) };
