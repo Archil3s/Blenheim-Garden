@@ -253,7 +253,7 @@ export function PlantPlacementBridge() {
     bed.dataset.plantBedId = bedId;
     const existing = stylesRef.current.get(bedId) ?? {
       bedId,
-      label: panel.querySelector(".gv-selection-hero h2")?.textContent?.trim() || "Bed",
+      label: panel?.querySelector(".gv-selection-hero h2")?.textContent?.trim() || "Bed",
       sortOrder: Number.MAX_SAFE_INTEGER,
       iconSize: 14,
       density: 70,
