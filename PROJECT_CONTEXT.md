@@ -1,6 +1,6 @@
 # Blenheim Garden — Project Context
 
-_Last updated: 20 August 2026_
+_Last updated: 21 August 2026_
 
 **Repository:** `Archil3s/Blenheim-Garden`  
 **Production branch:** `main`
@@ -22,13 +22,13 @@ The working canvas is **900 × 1080 cm-equivalent pixels**, treated as approxima
 - private R2 bucket `blenheim-garden-media`, binding `GARDEN_MEDIA`
 - protected writes via Worker secret `GARDEN_WRITE_TOKEN`
 
-D1 has the 12 original beds saved. R2 photo/video upload, viewing and deletion are live.
+D1 has the 12 original beds saved. R2 photo/video upload, viewing and deletion are live. Notes, harvests and crop milestone dates use the existing D1 schema.
 
 Never commit or expose `GARDEN_WRITE_TOKEN`. The browser stores an entered edit key only in `sessionStorage`.
 
 ## Drawing Interface V2
 
-The planner now uses a simplified two-row application chrome:
+The planner uses a simplified two-row application chrome:
 
 - title bar: garden, Settings, Save, Plan/Photos/Notes
 - quick bar: Undo, Redo, 10 cm Snap toggle, Zoom, Month, cloud state
@@ -51,33 +51,34 @@ Objects use 10 cm snap by default and display live drawing measurements. Selecte
 
 ### Saved planner payload
 
-`lib/garden/planner-plan.ts` defines:
-
-- `beds`
-- `rows`
-- `objects` (`path`, `trellis`, `tree`, `text`)
-
-Older local plans without `objects` are normalised to the built-in physical layout.
+`lib/garden/planner-plan.ts` defines `beds`, `rows`, and `objects` (`path`, `trellis`, `tree`, `text`). Older local plans without `objects` are normalised to the built-in physical layout.
 
 ### D1 layout persistence
 
-`lib/garden/layout-schema.ts` idempotently bootstraps Drawing V2 schema from the Worker when `/api/garden` first runs:
+`lib/garden/layout-schema.ts` idempotently bootstraps Drawing V2 schema when `/api/garden` runs:
 
 - adds nullable `beds.archived_at` when missing
-- creates `layout_objects` when missing
-- creates its index
-- seeds the original main/cross paths, north trellis/tree, Entrance and Exit as editable layout objects only when the table is first created
+- creates `layout_objects` and its index when missing
+- seeds the original main/cross paths, north trellis/tree, Entrance and Exit only when the table is first created
 
-This runtime bootstrap is intentional so the existing production D1 upgrades without a manual dashboard SQL step.
+`app/api/garden/route.ts` loads/saves beds, planting rows and layout objects. Removed beds are archived instead of deleted so historical planting/media relationships survive.
 
-`app/api/garden/route.ts` now:
+Do not add a duplicate non-idempotent migration for this runtime-bootstrap schema without first coordinating migration/bootstrap state.
 
-- loads/saves beds, planting rows and layout objects
-- excludes archived beds from the current plan
-- archives a removed bed instead of deleting the bed row, preserving historical planting/media relationships
-- preserves the existing planting-history behaviour when crops/rows change
+## Notes & Harvests
 
-Do not add a duplicate non-idempotent migration for this runtime-bootstrap schema without first redesigning the migration/bootstrap coordination.
+The selected-bed **Notes & harvests** button and top **Notes** tab are functional through `components/garden-records-dialog-bridge.tsx` and `app/api/garden/records/route.ts`.
+
+Bed workflow:
+
+- shows the current active crop/variety
+- edit **Sown**, **Germinated**, and **Transplanted** dates on the active planting
+- add a dated quick note; when a crop is active the note follows that planting, otherwise it follows the bed
+- record harvest date, weight (g/kg), quantity/unit, and optional note
+- browse chronological note/harvest history for that bed, including finished plantings
+- delete individual notes or harvest records
+
+The top **Notes** tab opens whole-garden history and allows garden-level notes. All writes/deletes use the same `GARDEN_WRITE_TOKEN` edit key. No new migration is required because `notes`, `harvests`, and planting milestone columns already exist in `migrations/0001_garden_storage.sql`.
 
 ## Media
 
@@ -102,6 +103,8 @@ Allowed: JPEG, PNG, WebP, HEIC/HEIF, MP4, WebM, MOV/QuickTime. The browser valid
 - `lib/garden/planner-plan.ts` — shared planner state types
 - `lib/garden/layout-schema.ts` — idempotent D1 Drawing V2 bootstrap
 - `app/api/garden/route.ts` — planner GET/PUT persistence
+- `app/api/garden/records/route.ts` — notes, harvests and milestone API
+- `components/garden-records-dialog-bridge.tsx` — Notes & Harvests UI
 - `lib/garden/cloudflare-db.ts` — DB/R2 bindings
 - `app/api/garden/media/route.ts` — media list/upload
 - `app/api/garden/media/[id]/route.ts` — media stream/delete
@@ -118,17 +121,17 @@ Deploy: npx @opennextjs/cloudflare deploy
 
 Keep package `build` as `next build`, keep `next.config.ts` output `standalone`, and preserve both DB and R2 bindings in `wrangler.jsonc`.
 
-## Next priorities after V2 verification
+## Next priorities
 
-1. Visually test every drawing tool and Save → refresh persistence.
+1. Visually test Drawing V2 and Notes & Harvests on production, including Save → refresh persistence.
 2. Polish alignment/snapping/keyboard shortcuts based on actual use.
-3. Add Notes & harvests UI using existing D1 tables.
-4. Add Blenheim-specific planting/frost windows and Today/This Week tasks.
-5. Add seasonal occupancy and crop-rotation history views.
+3. Add Blenheim-specific planting/frost windows and **Today / This Week** actions.
+4. Add seasonal occupancy and crop-rotation history views.
+5. Link photos directly to harvest records and richer crop timelines if useful.
 
 ## New-chat bootstrap
 
 ```text
 Work on Archil3s/Blenheim-Garden. Read PROJECT_CONTEXT.md first.
-Preserve Drawing Interface V2, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, and strict media quotas. Inspect the current implementation before changing it.
+Preserve Drawing Interface V2, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, and strict media quotas. Inspect the current implementation before changing it.
 ```
