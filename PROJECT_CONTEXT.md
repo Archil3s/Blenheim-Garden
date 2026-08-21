@@ -16,141 +16,63 @@ Core direction:
 
 ## Current planner interaction model
 
-The planner supports:
-
-- Select — move, resize and edit
-- Plants — click a crop to pick it up, move over a bed, click to place a patch, or drag to draw a row
-- Rows — draw planting rows directly
-- Bed — click-drag to create and resize measured beds
-- Path — click-drag and edit width/label
-- Trellis — click-drag and edit height/post spacing/label
-- Tree — click to place, then move/resize canopy and rename
-- Text — click to place, then move/edit text and font size
-
-Objects use 10 cm snap by default and display live drawing measurements. Selected objects support duplicate/delete where appropriate.
+The planner supports Select, Plants, Rows, Bed, Path, Trellis, Tree and Text tools. Objects use 10 cm snap by default and display live drawing measurements. Selected objects support duplicate/delete where appropriate.
 
 ### Planting areas and true centimetre spacing
 
 GrowVeg-style planting areas support multiple crops in one bed and can be dragged/resized independently.
 
-`lib/garden/plant-spacing-layout.ts` is the source of truth for plant counts and icon coordinates. Plant centres are positioned using the actual `spacingCm` value at the garden's centimetre scale instead of using cosmetic CSS gaps.
+`lib/garden/plant-spacing-layout.ts` is the source of truth for plant counts and icon coordinates. Plant centres are positioned using the actual `spacingCm` value at the garden's centimetre scale instead of cosmetic CSS gaps.
 
-Supported patterns:
-
-- grid / block
-- staggered
-- rows
-- natural
-- single
-
-The planting inspector displays actual spacing in centimetres and recalculates count after area or bed resizing. Large planting areas are sampled for rendering performance while preserving the logical plant count.
+Supported patterns are grid/block, staggered, rows, natural and single. The planting inspector displays actual spacing in centimetres and recalculates count after area or bed resizing.
 
 ### Planner UX polish layer
 
-The UI polish is intentionally implemented as additive CSS/bridge layers without changing planner persistence or spacing logic.
-
-It currently:
-
-- gives beds a warmer raised-bed / soil treatment with a subtle soil texture
-- reduces permanent planting-area borders/backgrounds so plant markers carry the visual weight
-- strengthens hover/selection states only when needed
-- gives empty beds a quieter add/empty treatment instead of another heavy label
-- improves grab/grabbing cursor feedback for beds, planting areas, rows and layout objects
-- improves selected-bed and selected-planting handles/outlines
-- makes crop catalogue cards and placement modes easier to scan and target
-- adds a concise planting flow and contextual explanations for Block, Stagger, Rows, Natural and Single
-- softens the inspector into clearer grouped surfaces
-- reduces visual weight of the canvas grid while preserving the 10 cm / 50 cm planning scale
-- includes mobile and reduced-motion adjustments
+The UI polish is intentionally additive and does not change planner persistence or spacing logic. Beds use a warmer raised-bed/soil treatment, planting-area chrome is quiet at rest, hover/selection states are contextual, empty beds are subdued, drag/drop and resize states are clearer, and catalogue/inspector surfaces are compact.
 
 Keep this direction: avoid reverting to large opaque planting rectangles or permanently loud editing chrome.
 
 ### GrowVeg-style hover information
 
-`app/growveg-hover-info.css` adds contextual plant information without copying GrowVeg code or artwork.
-
-Current behaviour:
-
-- planted crop labels are hidden at rest
-- hover or selection reveals the existing crop / variety / count / spacing text as a compact tooltip outside the planted patch
-- the parent bed temporarily allows contextual tooltip/handle overflow only while a planting is hovered or selected
-- the plant marker layer remains clipped to the planted patch, so markers never spill into neighbouring beds
-- the separate spacing badge is hidden because spacing is already present in the tooltip
-- row captions follow the same contextual hover/selection principle
-- touch devices rely on selected state rather than hover
+`app/growveg-hover-info.css` keeps planted crop labels hidden at rest and reveals crop/variety/count/spacing information as a contextual tooltip outside the planted patch. Row captions follow the same principle. Touch devices rely on selected state rather than hover.
 
 ### GrowVeg-style planting gestures
 
-The current planting flow includes:
-
-- click a crop to pick it up
-- move over a bed to see a live planting footprint preview
-- click to place a patch at that position
-- click-drag to draw a real planting row through the existing row engine
-- live row length and approximate plant count during drawing
-- **Shift** while dragging locks the row horizontal/vertical
-- **Ctrl** while finishing a patch or row re-arms the same crop/variety for repeated placement
-- Escape/right-click cancels pickup
-- native drag/drop remains as a fallback
+The current planting flow includes click-to-pick-up, live bed footprint preview, click-to-place patches, drag-to-draw planting rows, live length/count feedback, Shift horizontal/vertical locking, Ctrl repeat placement, Escape/right-click cancel and native drag/drop fallback.
 
 ### Botanical crop marker system
 
-`components/botanical-plant-icons-bridge.tsx` tags crop render nodes while preserving the existing stored `cropIcon` emoji as fallback metadata.
+`components/botanical-plant-icons-bridge.tsx` tags crop render nodes while preserving stored `cropIcon` emoji as fallback metadata.
 
-`app/botanical-plant-icons.css` replaces rendered emoji with original top-down botanical markers for:
+`app/botanical-plant-icons.css` replaces rendered emoji with original top-down botanical markers for tomato, strawberry, bean, lettuce, pumpkin, carrot, broccoli, raspberry, blueberry and herbs. The same marker language is used in the catalogue, selected crop strip, placement ghosts, planted areas, row previews and saved planting rows.
 
-- tomato
-- strawberry
-- bean
-- lettuce
-- pumpkin
-- carrot
-- broccoli
-- raspberry
-- blueberry
-- herbs
-
-The same crop marker language is used in the catalogue, selected crop strip, placement ghosts, planted areas, row previews and saved planting rows.
-
-Dense crops such as carrots/beans are visually smaller and wide-spaced crops such as pumpkins/blueberries are visually larger, but the true plant centres remain unchanged.
+Dense crops such as carrots/beans are visually smaller and wide-spaced crops such as pumpkins/blueberries are visually larger, but true plant centres remain unchanged.
 
 ### Zoom-aware botanical detail
 
-`app/botanical-zoom-detail.css` adds three canvas-only visual detail levels driven by the planner zoom. The catalogue and inspector remain stable/full-detail.
+`app/botanical-zoom-detail.css` adds three canvas-only visual detail levels driven by planner zoom. Catalogue/inspector markers remain stable and full-detail.
 
-- **50–70% — low detail:** clean CSS crop silhouettes with reduced marker scale so dense plantings remain readable from a whole-garden view
-- **80–110% — mid detail:** the standard top-down botanical SVG marker artwork
-- **120–150% — high detail:** subtle crop-specific leaf veins, fruit highlights, centres and surface detail layered over the botanical marker
+- **50–70%:** simplified CSS crop silhouettes and smaller visual scale for whole-garden readability
+- **80–110%:** the standard top-down botanical SVG artwork
+- **120–150%:** crop-specific high-detail overlays such as leaf veins, fruit highlights, centres and surface details
 
-Important geometry guarantees:
+Geometry guarantees:
 
-- zoom detail never changes `spacingCm`, logical count or `plant-spacing-layout.ts`
-- marker scale uses visual `scale`, so neighbouring layout geometry is not reflowed
-- absolutely positioned planting icons retain their measured `left` / `top` centre coordinates and inline rotation
-- high-detail pseudo overlays do not change planting icon positioning mode
-- crop catalogue icons do not switch detail as the garden zoom changes
+- zoom detail never changes `spacingCm`, logical plant count or `plant-spacing-layout.ts`
+- marker scaling is visual only and does not reflow neighbouring geometry
+- measured planting icons retain their existing absolute `left`/`top` centres and inline rotation
+- high-detail overlays do not change measured planting icon positioning mode
+- catalogue icons do not switch detail when canvas zoom changes
 
-### Saved planner payload
+### Saved planner payload and storage
 
-`lib/garden/planner-plan.ts` defines `beds`, `plantingAreas`, `rows`, and `objects` (`path`, `trellis`, `tree`, `text`). Older local plans without planting areas or objects are normalised to the current model.
-
-### D1 layout persistence
-
-`lib/garden/layout-schema.ts` idempotently bootstraps Drawing V2/V4 schema when `/api/garden` runs.
-
-Safety rules remain:
-
-- no D1 migration for visual-only planner work
-- no saved-plan schema changes for UI-only work
-- no change to `GARDEN_WRITE_TOKEN` handling
-- no R2/media changes unless explicitly required
-- keep crop spacing/count logic separate from visual marker styling
+`lib/garden/planner-plan.ts` defines `beds`, `plantingAreas`, `rows`, and layout objects. Older plans are normalised to the current model. Visual-only planner work must not introduce a D1 migration, saved-plan schema change, R2/media change or `GARDEN_WRITE_TOKEN` change.
 
 ## Current verification status
 
 Before merge/deploy still run:
 
-1. visual desktop testing specifically at 50%, 70%, 80%, 110%, 120% and 150% zoom to verify each detail threshold
+1. visual desktop testing at 50%, 70%, 80%, 110%, 120% and 150% zoom
 2. mobile/touch visual testing
 3. build / TypeScript / lint checks
 4. production smoke testing
