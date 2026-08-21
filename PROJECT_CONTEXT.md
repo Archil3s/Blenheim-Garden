@@ -95,7 +95,7 @@ It currently:
 - strengthens hover/selection states only when needed
 - gives empty beds a quieter add/empty treatment instead of another heavy label
 - adds a clear **Release to plant** drop target when dragging a crop over a bed
-- improves grab/grabbing feedback for move interactions
+- improves grab/grabbing cursor feedback for beds, planting areas, rows and layout objects
 - improves selected-bed and selected-planting handles/outlines
 - makes the crop catalogue cards and placement modes easier to scan and target
 - softens the inspector into clearer grouped surfaces
@@ -231,7 +231,7 @@ Implemented before this handoff:
 6. Private R2 photos/video.
 7. Blenheim seasonal guidance data and **Blenheim Now** Today / This Week UI on the feature branch.
 8. Seasonal crop recommendations can select the crop directly in the planner and sync the planner month.
-9. Planner UX polish pass: physical-looking beds, quieter planting boundaries, clearer editing states, stronger drag/drop feedback, and improved crop catalogue/inspector styling.
+9. Planner UX polish pass: physical-looking beds, quieter planting boundaries, clearer editing states, stronger drag/drop feedback, improved cursor feedback, and improved crop catalogue/inspector styling.
 
 ## Next priorities
 
