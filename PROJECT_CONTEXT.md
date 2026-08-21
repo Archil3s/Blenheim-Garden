@@ -150,7 +150,7 @@ Safety rules remain:
 
 Before merge/deploy still run:
 
-1. visual desktop testing at 50%, 70%, 90%, 120% and 150% zoom
+1. visual desktop testing specifically at 50%, 70%, 80%, 110%, 120% and 150% zoom to verify each detail threshold
 2. mobile/touch visual testing
 3. build / TypeScript / lint checks
 4. production smoke testing
