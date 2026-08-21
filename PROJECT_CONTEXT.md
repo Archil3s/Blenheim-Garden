@@ -26,7 +26,7 @@ The canvas should read as a **garden first and an editor second**:
 - inspector/catalogue controls should feel calm, compact and tactile rather than form-heavy
 - preserve real centimetre spacing and measured layout even while simplifying the visual presentation
 
-`app/planner-ux-polish.css` is the current UX refinement layer and intentionally loads after the base GrowVeg V4 styles.
+`app/planner-ux-polish.css`, `app/planting-flow-polish.css`, and `app/growveg-hover-info.css` are the current UX refinement layers and intentionally load after the base GrowVeg V4 styles.
 
 ## Stack and live Cloudflare storage
 
@@ -82,11 +82,11 @@ Supported patterns:
 - natural
 - single
 
-The planting inspector displays actual spacing in centimetres, recalculates count after area or bed resizing, and shows a spacing badge on the selected planting. Large planting areas are sampled for rendering performance while preserving the logical plant count.
+The planting inspector displays actual spacing in centimetres and recalculates count after area or bed resizing. Large planting areas are sampled for rendering performance while preserving the logical plant count.
 
 ### Planner UX polish layer
 
-The current UI pass is implemented in `app/planner-ux-polish.css` without changing planner persistence or spacing logic.
+The UI polish is intentionally implemented as additive CSS layers without changing planner persistence or spacing logic.
 
 It currently:
 
@@ -98,11 +98,28 @@ It currently:
 - improves grab/grabbing cursor feedback for beds, planting areas, rows and layout objects
 - improves selected-bed and selected-planting handles/outlines
 - makes the crop catalogue cards and placement modes easier to scan and target
+- adds a concise four-step planting flow and contextual explanations for Block, Stagger, Rows, Natural and Single
 - softens the inspector into clearer grouped surfaces
 - reduces visual weight of the canvas grid while preserving the 10 cm / 50 cm planning scale
 - includes mobile and reduced-motion adjustments
 
 Keep this direction: avoid reverting to large opaque planting rectangles or permanently loud editing chrome.
+
+### GrowVeg-style hover information
+
+`app/growveg-hover-info.css` adds contextual plant information inspired by the interaction pattern documented in GrowVeg's planner guide, without copying GrowVeg code or artwork.
+
+Current behaviour:
+
+- planted crop labels are hidden at rest
+- hover or selection reveals the existing crop / variety / count / spacing text as a compact tooltip **outside** the planted patch
+- the parent bed temporarily allows contextual tooltip/handle overflow only while a planting is hovered or selected
+- the plant icon layer remains clipped to the planted patch, so icons never spill into neighbouring beds
+- the separate spacing badge is hidden because spacing is already present in the tooltip and the extra badge covered plant geometry
+- row captions follow the same contextual hover/selection principle
+- touch devices rely on selected state rather than hover
+
+The goal is to preserve plant visibility while still making count and spacing immediately discoverable.
 
 ### Saved planner payload
 
@@ -191,7 +208,9 @@ Allowed: JPEG, PNG, WebP, HEIC/HEIF, MP4, WebM, MOV/QuickTime. The browser valid
 - `components/garden-planner.tsx` — GrowVeg V4 planner interactions and canvas
 - `app/growveg-workspace.css` — base workspace/canvas styling
 - `app/growveg-v4.css` — planting-area and V4 styling
-- `app/planner-ux-polish.css` — current bed/planting/catalogue/interaction UX refinement layer
+- `app/planner-ux-polish.css` — bed/planting/catalogue/interaction UX refinement layer
+- `app/planting-flow-polish.css` — planting journey, layout guidance and label-density refinements
+- `app/growveg-hover-info.css` — contextual crop/count/spacing hover cards outside planted areas
 - `app/planner-interactions.css` — pointer/cursor interaction rules
 - `lib/garden/planner-plan.ts` — shared planner state types
 - `lib/garden/plant-spacing-layout.ts` — true centimetre plant layout/count engine
@@ -232,13 +251,15 @@ Implemented before this handoff:
 7. Blenheim seasonal guidance data and **Blenheim Now** Today / This Week UI on the feature branch.
 8. Seasonal crop recommendations can select the crop directly in the planner and sync the planner month.
 9. Planner UX polish pass: physical-looking beds, quieter planting boundaries, clearer editing states, stronger drag/drop feedback, improved cursor feedback, and improved crop catalogue/inspector styling.
+10. Planting-flow polish: labels hidden at rest, clearer four-step planting journey, contextual placement-mode explanations, and simplified inspector guidance.
+11. GrowVeg-style hover information: crop / variety / count / spacing appears as an external hover/selection tooltip instead of covering the plant icons.
 
 ## Next priorities
 
 Keep the next work **UI/interaction-first**, not feature-first:
 
-1. Visually test the bed/planting polish on real desktop and mobile layouts; tune contrast, label density and plant icon visibility from actual use.
-2. Refine the planting workflow itself: selecting a crop → understanding placement mode → dragging → resizing/moving after placement should feel obvious without instructions.
+1. Visually test the external hover cards on dense beds, full-bed plantings and mobile selection states; tune collision/edge behaviour from actual use.
+2. Add a GrowVeg-like **plant pickup / placement preview** so choosing a crop gives a clear cursor/ghost state before placement, while preserving the existing drag workflow.
 3. Refine bed creation/resizing feedback and selected-object handles so dimensions and active state are clear without visual clutter.
 4. Improve catalogue/inspector information hierarchy and touch targets, especially at narrower widths.
 5. Review paths, trellises, trees and labels so their visual language matches the more physical bed/planting style.
