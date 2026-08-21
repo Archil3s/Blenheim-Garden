@@ -11,6 +11,23 @@ Blenheim Garden is a visual home-garden planner for Blenheim, Marlborough. The m
 
 The working canvas is **900 × 1080 cm-equivalent pixels**, treated as approximately **9 m × 10.8 m**. The base plan contains the existing 12 numbered beds plus the berry/cane area.
 
+### Current UX direction
+
+Prioritise refinement of the existing planning experience over adding more feature surface.
+
+The canvas should read as a **garden first and an editor second**:
+
+- beds should feel like physical raised beds / soil rather than white UI rectangles
+- planted crops and their real spacing should be the dominant visual information
+- planting-area boundaries should recede until hover, selection or drag interaction
+- selection state should be obvious without covering the garden in permanent outlines
+- drag/drop should clearly answer “where can I put this?” and “what will happen if I release?”
+- crop labels should remain readable but secondary to plant positions
+- inspector/catalogue controls should feel calm, compact and tactile rather than form-heavy
+- preserve real centimetre spacing and measured layout even while simplifying the visual presentation
+
+`app/planner-ux-polish.css` is the current UX refinement layer and intentionally loads after the base GrowVeg V4 styles.
+
 ## Stack and live Cloudflare storage
 
 - Next.js `16.2.11`
@@ -66,6 +83,25 @@ Supported patterns:
 - single
 
 The planting inspector displays actual spacing in centimetres, recalculates count after area or bed resizing, and shows a spacing badge on the selected planting. Large planting areas are sampled for rendering performance while preserving the logical plant count.
+
+### Planner UX polish layer
+
+The current UI pass is implemented in `app/planner-ux-polish.css` without changing planner persistence or spacing logic.
+
+It currently:
+
+- gives beds a warmer raised-bed / soil treatment with a subtle soil texture
+- reduces permanent planting-area borders/backgrounds so plant icons carry the visual weight
+- strengthens hover/selection states only when needed
+- adds a clear **Release to plant** drop target when dragging a crop over a bed
+- improves grab/grabbing feedback for move interactions
+- improves selected-bed and selected-planting handles/outlines
+- makes the crop catalogue cards and placement modes easier to scan and target
+- softens the inspector into clearer grouped surfaces
+- reduces visual weight of the canvas grid while preserving the 10 cm / 50 cm planning scale
+- includes mobile and reduced-motion adjustments
+
+Keep this direction: avoid reverting to large opaque planting rectangles or permanently loud editing chrome.
 
 ### Saved planner payload
 
@@ -152,8 +188,9 @@ Allowed: JPEG, PNG, WebP, HEIC/HEIF, MP4, WebM, MOV/QuickTime. The browser valid
 ## Important files
 
 - `components/garden-planner.tsx` — GrowVeg V4 planner interactions and canvas
-- `app/growveg-workspace.css` — workspace/canvas styling
+- `app/growveg-workspace.css` — base workspace/canvas styling
 - `app/growveg-v4.css` — planting-area and V4 styling
+- `app/planner-ux-polish.css` — current bed/planting/catalogue/interaction UX refinement layer
 - `app/planner-interactions.css` — pointer/cursor interaction rules
 - `lib/garden/planner-plan.ts` — shared planner state types
 - `lib/garden/plant-spacing-layout.ts` — true centimetre plant layout/count engine
@@ -193,19 +230,25 @@ Implemented before this handoff:
 6. Private R2 photos/video.
 7. Blenheim seasonal guidance data and **Blenheim Now** Today / This Week UI on the feature branch.
 8. Seasonal crop recommendations can select the crop directly in the planner and sync the planner month.
+9. Planner UX polish pass: physical-looking beds, quieter planting boundaries, clearer editing states, stronger drag/drop feedback, and improved crop catalogue/inspector styling.
 
 ## Next priorities
 
-1. Visually test **Blenheim Now** and its **Use in planner** actions with Drawing V4 on desktop/mobile.
-2. Run build/lint and production smoke tests after merging the seasonal feature.
-3. Add stronger Blenheim succession logic: sow-this-week quantities, expected harvest windows, and reminders based on actual planting milestone dates.
-4. Add seasonal bed occupancy and crop-rotation history views.
-5. Link photos directly to harvest records and richer crop timelines if useful.
-6. Polish alignment/snapping/keyboard shortcuts based on actual use.
+Keep the next work **UI/interaction-first**, not feature-first:
+
+1. Visually test the bed/planting polish on real desktop and mobile layouts; tune contrast, label density and plant icon visibility from actual use.
+2. Refine the planting workflow itself: selecting a crop → understanding placement mode → dragging → resizing/moving after placement should feel obvious without instructions.
+3. Refine bed creation/resizing feedback and selected-object handles so dimensions and active state are clear without visual clutter.
+4. Improve catalogue/inspector information hierarchy and touch targets, especially at narrower widths.
+5. Review paths, trellises, trees and labels so their visual language matches the more physical bed/planting style.
+6. Polish alignment/snapping feedback and keyboard interactions based on actual use.
+7. Run build/lint and production smoke tests before merge/deploy.
+
+Defer larger feature additions such as succession reminders, occupancy history or crop-rotation views until the core planner interaction/design feels settled.
 
 ## New-chat bootstrap
 
 ```text
 Work on Archil3s/Blenheim-Garden. Read PROJECT_CONTEXT.md first.
-Preserve GrowVeg V4, true centimetre plant spacing, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, strict media quotas, and the additive Blenheim Now seasonal guidance/action layer. Inspect the current implementation before changing it.
+Preserve GrowVeg V4, true centimetre plant spacing, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, strict media quotas, and the additive Blenheim Now seasonal guidance/action layer. Prioritise core planner UI/UX refinement over adding new feature surface. Inspect the current implementation before changing it.
 ```
