@@ -176,6 +176,28 @@
 .blenheim-crop-list article b { display: block; margin-top: 2px; color: #527066; font-size: 9px; }
 .blenheim-crop-list article p { margin: 3px 0 0; color: #7b8984; font-size: 8.5px; line-height: 1.4; }
 
+.blenheim-plan-crop {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  margin-top: 7px;
+  border: 1px solid #aad5c4;
+  border-radius: 6px;
+  padding: 5px 7px;
+  color: #0d7654;
+  background: #f2faf7;
+  font-size: 8.5px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.blenheim-plan-crop:hover {
+  border-color: #72b89e;
+  background: #e7f6f0;
+}
+
+.blenheim-plan-crop span { font-size: 11px; line-height: 1; }
+
 .blenheim-week-list { display: grid; gap: 7px; padding: 5px 12px 12px; }
 .blenheim-week-list > div {
   display: grid;
@@ -189,6 +211,49 @@
 }
 .blenheim-week-list span { display: grid; width: 20px; height: 20px; place-items: center; border-radius: 50%; color: #0c7d58; background: #e6f6ef; font-size: 10px; font-weight: 900; }
 .blenheim-week-list p { margin: 1px 0 0; color: #5e6e68; font-size: 9px; line-height: 1.4; }
+
+.blenheim-week-crops {
+  display: grid;
+  gap: 7px;
+  margin: 0 12px 12px;
+  border-top: 1px solid #edf2f0;
+  padding-top: 9px;
+}
+
+.blenheim-week-crops > small {
+  color: #71817b;
+  font-size: 7.5px;
+  font-weight: 850;
+  letter-spacing: .07em;
+}
+
+.blenheim-week-crops > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.blenheim-week-crops button {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  min-height: 29px;
+  border: 1px solid #c9ded5;
+  border-radius: 999px;
+  padding: 4px 8px;
+  color: #315d4d;
+  background: #f8fcfa;
+  font-size: 8.5px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.blenheim-week-crops button:hover {
+  border-color: #8fc7b1;
+  background: #edf8f4;
+}
+
+.blenheim-week-crops button span { font-size: 12px; }
 
 .blenheim-now-panel footer {
   display: grid;
