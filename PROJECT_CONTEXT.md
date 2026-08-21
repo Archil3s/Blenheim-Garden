@@ -85,17 +85,29 @@ Do not add a duplicate non-idempotent migration for this runtime-bootstrap schem
 
 ## Blenheim Now seasonal guide
 
-A new seasonal layer is being added without changing the saved-plan or D1 schema.
+The seasonal layer is additive and does not change the saved-plan or D1 schema.
 
 Files:
 
 - `lib/garden/blenheim-season.ts` — Blenheim/Marlborough seasonal crop guidance, frost-risk summaries and weekly tasks
+- `lib/garden/planner-actions.ts` — typed browser event used to request a crop in the planner
 - `components/blenheim-season-guide.tsx` — compact **Blenheim Now** UI with **Today** and **This Week** views
-- `app/blenheim-season-guide.css` — guide styling
+- `components/season-planner-action-bridge.tsx` — connects seasonal recommendations to the existing planner controls
+- `app/blenheim-season-guide.css` — guide and planner-action styling
 
 The guide uses the user's current browser month by default and also lets the user inspect another month. Guidance is intentionally conservative for a Blenheim home garden, especially for frost-tender warm-season crops.
 
 The first crop set mirrors the current planner catalogue: tomato, strawberry, bean, lettuce, pumpkin, carrot, broccoli, raspberry, blueberry and herbs.
+
+Actionable recommendations now include **Use in planner** controls. Choosing a recommended crop:
+
+1. closes the seasonal panel
+2. syncs the planner month to the guide month
+3. opens the Plants tool and normal crop catalogue
+4. clears catalogue search/type filters that could hide the requested crop
+5. selects that crop and its default variety, ready to drag into a bed
+
+If an individual planting is selected, the action bridge first selects its parent bed so the planting inspector does not block the crop catalogue. The bridge uses the existing planner controls and does not write seasonal metadata into the saved plan.
 
 Frost guidance uses historical Blenheim climatology as a planning aid, not as a weather forecast. The UI explicitly tells users to check their own microclimate and short-range forecast before exposing tender plants.
 
@@ -146,7 +158,9 @@ Allowed: JPEG, PNG, WebP, HEIC/HEIF, MP4, WebM, MOV/QuickTime. The browser valid
 - `lib/garden/planner-plan.ts` — shared planner state types
 - `lib/garden/plant-spacing-layout.ts` — true centimetre plant layout/count engine
 - `lib/garden/blenheim-season.ts` — local seasonal/frost guidance
+- `lib/garden/planner-actions.ts` — seasonal → planner action event contract
 - `components/blenheim-season-guide.tsx` — Today / This Week seasonal UI
+- `components/season-planner-action-bridge.tsx` — seasonal recommendation planner bridge
 - `lib/garden/layout-schema.ts` — idempotent D1 Drawing schema bootstrap
 - `app/api/garden/route.ts` — planner GET/PUT persistence
 - `app/api/garden/records/route.ts` — notes, harvests and milestone API
@@ -178,20 +192,20 @@ Implemented before this handoff:
 5. D1 Notes & Harvests with planting milestones.
 6. Private R2 photos/video.
 7. Blenheim seasonal guidance data and **Blenheim Now** Today / This Week UI on the feature branch.
+8. Seasonal crop recommendations can select the crop directly in the planner and sync the planner month.
 
 ## Next priorities
 
-1. Visually test **Blenheim Now** together with Drawing V4 on desktop/mobile and verify it does not obstruct important canvas controls.
+1. Visually test **Blenheim Now** and its **Use in planner** actions with Drawing V4 on desktop/mobile.
 2. Run build/lint and production smoke tests after merging the seasonal feature.
-3. Link a seasonal crop recommendation directly to selecting that crop in the planner catalogue.
-4. Add stronger Blenheim succession logic: sow-this-week quantities, expected harvest windows, and reminders based on actual planting milestone dates.
-5. Add seasonal bed occupancy and crop-rotation history views.
-6. Link photos directly to harvest records and richer crop timelines if useful.
-7. Polish alignment/snapping/keyboard shortcuts based on actual use.
+3. Add stronger Blenheim succession logic: sow-this-week quantities, expected harvest windows, and reminders based on actual planting milestone dates.
+4. Add seasonal bed occupancy and crop-rotation history views.
+5. Link photos directly to harvest records and richer crop timelines if useful.
+6. Polish alignment/snapping/keyboard shortcuts based on actual use.
 
 ## New-chat bootstrap
 
 ```text
 Work on Archil3s/Blenheim-Garden. Read PROJECT_CONTEXT.md first.
-Preserve GrowVeg V4, true centimetre plant spacing, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, strict media quotas, and the additive Blenheim Now seasonal guidance layer. Inspect the current implementation before changing it.
+Preserve GrowVeg V4, true centimetre plant spacing, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, strict media quotas, and the additive Blenheim Now seasonal guidance/action layer. Inspect the current implementation before changing it.
 ```
