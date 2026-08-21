@@ -26,8 +26,6 @@ The canvas should read as a **garden first and an editor second**:
 - inspector/catalogue controls should feel calm, compact and tactile rather than form-heavy
 - preserve real centimetre spacing and measured layout even while simplifying the visual presentation
 
-`app/planner-ux-polish.css` is the current UX refinement layer and intentionally loads after the base GrowVeg V4 styles.
-
 ## Stack and live Cloudflare storage
 
 - Next.js `16.2.11`
@@ -45,7 +43,7 @@ Never commit or expose `GARDEN_WRITE_TOKEN`. The browser stores an entered edit 
 
 ## Drawing / GrowVeg V4 interface
 
-The planner now uses the compact GrowVeg V4-style workspace while preserving the Drawing Interface V2 object model and persistence.
+The planner uses the compact GrowVeg V4-style workspace while preserving the Drawing Interface V2 object model and persistence.
 
 Application chrome:
 
@@ -58,8 +56,8 @@ Application chrome:
 Real drawing tools:
 
 - **Select** — move/edit objects; resize beds/trees; reshape rows/paths/trellises using handles
-- **Plants** — click a crop to pick it up; click to place a patch or drag to draw a row
-- **Rows** — drag planting rows with live length/plant count
+- **Plants** — pick up crops, preview the footprint, click for patches, drag for rows
+- **Rows** — draw planting rows with live length/plant count
 - **Bed** — click-drag a new bed with live dimensions
 - **Path** — click-drag a path and edit width/label
 - **Trellis** — click-drag and edit height/post spacing/label
@@ -72,7 +70,7 @@ Objects use 10 cm snap by default and display live drawing measurements. Selecte
 
 GrowVeg V4 planting areas support multiple crops in one bed and can be dragged/resized independently.
 
-`lib/garden/plant-spacing-layout.ts` is the source of truth for plant counts and icon coordinates. Plant centres are now positioned using the actual `spacingCm` value at the garden's centimetre scale instead of using cosmetic CSS gaps.
+`lib/garden/plant-spacing-layout.ts` is the source of truth for plant counts and icon coordinates. Plant centres are positioned using the actual `spacingCm` value at the garden's centimetre scale instead of cosmetic CSS gaps.
 
 Supported patterns:
 
@@ -84,66 +82,51 @@ Supported patterns:
 
 The planting inspector displays actual spacing in centimetres and recalculates count after area or bed resizing. Large planting areas are sampled for rendering performance while preserving the logical plant count.
 
-### Planner UX polish layer
+### Planner UX polish layers
 
-The UI polish is intentionally implemented as additive CSS layers without changing planner persistence or spacing logic.
+The current UI passes are additive and do not change planner persistence or true spacing logic.
 
-It currently:
+They currently:
 
-- gives beds a warmer raised-bed / soil treatment with a subtle soil texture
-- reduces permanent planting-area borders/backgrounds so plant icons carry the visual weight
-- strengthens hover/selection states only when needed
-- gives empty beds a quieter add/empty treatment instead of another heavy label
-- adds a clear **Release to plant** drop target when dragging a crop over a bed
-- improves grab/grabbing cursor feedback for beds, planting areas, rows and layout objects
-- improves selected-bed and selected-planting handles/outlines
-- makes the crop catalogue cards and placement modes easier to scan and target
-- adds a concise four-step planting flow and contextual explanations for Block, Stagger, Rows, Natural and Single
-- softens the inspector into clearer grouped surfaces
-- reduces visual weight of the canvas grid while preserving the 10 cm / 50 cm planning scale
-- includes mobile and reduced-motion adjustments
+- give beds a warmer raised-bed / soil treatment with subtle texture
+- reduce permanent planting-area borders/backgrounds so plants carry the visual weight
+- strengthen hover/selection states only when needed
+- keep planting labels and row captions contextual instead of permanently covering plants
+- add hover/selection information cards outside the planted patch
+- add click-to-pick-up planting with a live ghost footprint
+- add click-and-drag row drawing with live length/count feedback
+- support **Shift** for horizontal/vertical row lock
+- support **Ctrl** for repeated placement of the same crop/variety
+- preserve existing drag/drop as a fallback
+- include mobile and reduced-motion adjustments
 
-Keep this direction: avoid reverting to large opaque planting rectangles or permanently loud editing chrome.
+### Botanical plant markers
 
-### GrowVeg-style hover information
+`components/botanical-plant-icons-bridge.tsx` and `app/botanical-plant-icons.css` replace the displayed emoji glyphs with original top-down crop markers while leaving the saved crop icon and true coordinates untouched.
 
-`app/growveg-hover-info.css` adds contextual plant information inspired by the interaction pattern documented in GrowVeg's planner guide, without copying GrowVeg code or artwork.
+Current marker set:
 
-Current behaviour:
+- tomato
+- strawberry
+- bean
+- lettuce
+- pumpkin
+- carrot
+- broccoli
+- raspberry
+- blueberry
+- herbs
 
-- planted crop labels are hidden at rest
-- hover or selection reveals the existing crop / variety / count / spacing text as a compact tooltip **outside** the planted patch
-- the parent bed temporarily allows contextual tooltip/handle overflow only while a planting is hovered or selected
-- the plant icon layer remains clipped to the planted patch, so icons never spill into neighbouring beds
-- the separate spacing badge is hidden because spacing is already present in the tooltip and the extra badge covered plant geometry
-- row captions follow the same contextual hover/selection principle
-- touch devices rely on selected state rather than hover
+The marker bridge tags existing rendered plant nodes from the crop emoji and applies the same marker language to:
 
-The goal is to preserve plant visibility while still making count and spacing immediately discoverable.
+- crop catalogue cards
+- selected crop / ready strip
+- click-placement ghost previews
+- planted areas
+- row-drawing previews
+- saved planting rows
 
-### GrowVeg-style planting pickup, row drawing and modifiers
-
-The current planting interaction is implemented through additive bridge/CSS layers so the large planner component and saved schema remain stable:
-
-- `components/growveg-click-place-bridge.tsx`
-- `components/growveg-modifier-keys-bridge.tsx`
-- `app/growveg-click-place.css`
-- `app/growveg-row-draw.css`
-- `app/growveg-modifier-keys.css`
-
-Current behaviour:
-
-- click a crop in the Plants catalogue to pick it up
-- move over a bed to preview a planting footprint using the same `max(120 cm, spacing × 3)` sizing rule as the real drop path
-- click to place the patch at that exact position
-- drag instead of clicking to preview and create a real planting row using the planner's existing Rows engine
-- row preview shows length and approximate plant count and stays aligned to the centimetre canvas at all zoom levels
-- hold **Shift** while dragging to constrain the row horizontal or vertical
-- hold **Ctrl** while finishing a patch or row to return to Plants and re-arm the same crop/variety for rapid repeat placement
-- Escape or right-click cancels picked-up placement
-- existing native drag/drop remains available as a fallback
-
-The modifier bridge intercepts pointer coordinates at the window capture level before the planner's existing document listeners, then delegates the final action back into the planner. This preserves the planner's own spacing/count/undo behaviour instead of creating a parallel saved object model.
+Dense crops such as carrots and beans are intentionally rendered smaller so real spacing remains legible; wide-spaced crops such as pumpkins and blueberries can carry more visual mass. Unknown crops retain the existing fallback rendering. This layer must never move plant centres or alter `spacingCm`, counts, plan persistence, D1 data, or saved crop metadata.
 
 ### Saved planner payload
 
@@ -156,8 +139,6 @@ The modifier bridge intercepts pointer coordinates at the window capture level b
 - adds nullable `beds.archived_at` when missing
 - creates `layout_objects` and its index when missing
 - seeds the original main/cross paths, north trellis/tree, Entrance and Exit only when the table is first created
-
-`app/api/garden/route.ts` loads/saves beds, planting rows, planting areas and layout objects. Removed beds are archived instead of deleted so historical planting/media relationships survive.
 
 Do not add a duplicate non-idempotent migration for this runtime-bootstrap schema without first coordinating migration/bootstrap state.
 
@@ -177,40 +158,15 @@ The guide uses the user's current browser month by default and also lets the use
 
 The first crop set mirrors the current planner catalogue: tomato, strawberry, bean, lettuce, pumpkin, carrot, broccoli, raspberry, blueberry and herbs.
 
-Actionable recommendations now include **Use in planner** controls. Choosing a recommended crop:
+Actionable recommendations include **Use in planner** controls. Choosing a recommended crop closes the guide, syncs the planner month, opens Plants, clears hiding filters and selects that crop ready for placement.
 
-1. closes the seasonal panel
-2. syncs the planner month to the guide month
-3. opens the Plants tool and normal crop catalogue
-4. clears catalogue search/type filters that could hide the requested crop
-5. selects that crop and its default variety, ready to place into a bed
-
-If an individual planting is selected, the action bridge first selects its parent bed so the planting inspector does not block the crop catalogue. The bridge uses the existing planner controls and does not write seasonal metadata into the saved plan.
-
-Frost guidance uses historical Blenheim climatology as a planning aid, not as a weather forecast. The UI explicitly tells users to check their own microclimate and short-range forecast before exposing tender plants.
-
-Reference basis recorded in the source file:
-
-- Tui Marlborough planting calendar
-- Yates New Zealand garden calendar
-- NIWA / Earth Sciences New Zealand Marlborough climatology
-
-This seasonal feature should remain additive: do not put static seasonal metadata into the persisted planner payload unless there is a clear future need for user-edited schedules.
+Frost guidance uses historical Blenheim climatology as a planning aid, not as a weather forecast.
 
 ## Notes & Harvests
 
 The selected-bed **Notes & harvests** button and top **Notes** tab are functional through `components/garden-records-dialog-bridge.tsx` and `app/api/garden/records/route.ts`.
 
-Bed workflow:
-
-- shows the current active crop/variety
-- edit **Sown**, **Germinated**, and **Transplanted** dates on the active planting
-- add a dated quick note; when a crop is active the note follows that planting, otherwise it follows the bed
-- record harvest date, weight (g/kg), quantity/unit, and optional note
-- browse chronological note/harvest history for that bed, including finished plantings
-- delete individual notes or harvest records
-
-The top **Notes** tab opens whole-garden history and allows garden-level notes. All writes/deletes use the same `GARDEN_WRITE_TOKEN` edit key. No new migration is required because `notes`, `harvests`, and planting milestone columns already exist in `migrations/0001_garden_storage.sql`.
+Bed workflow includes crop milestone dates, dated notes, harvest records and chronological history. All writes/deletes use the same `GARDEN_WRITE_TOKEN` edit key.
 
 ## Media
 
@@ -230,16 +186,18 @@ Allowed: JPEG, PNG, WebP, HEIC/HEIF, MP4, WebM, MOV/QuickTime. The browser valid
 ## Important files
 
 - `components/garden-planner.tsx` — GrowVeg V4 planner interactions and canvas
-- `components/growveg-click-place-bridge.tsx` — crop pickup, patch placement and row drawing bridge
-- `components/growveg-modifier-keys-bridge.tsx` — Shift axis lock and Ctrl repeat placement bridge
+- `components/botanical-plant-icons-bridge.tsx` — crop marker tagging layer
+- `app/botanical-plant-icons.css` — original top-down crop marker artwork/styling
+- `components/growveg-click-place-bridge.tsx` — click pickup/placement and drag-row bridge
+- `components/growveg-modifier-keys-bridge.tsx` — Shift/Ctrl placement modifiers
 - `app/growveg-workspace.css` — base workspace/canvas styling
 - `app/growveg-v4.css` — planting-area and V4 styling
-- `app/planner-ux-polish.css` — current bed/planting/catalogue/interaction UX refinement layer
-- `app/planting-flow-polish.css` — planting workflow and label hierarchy polish
-- `app/growveg-hover-info.css` — contextual planting/row hover cards
-- `app/growveg-click-place.css` — picked-up crop and patch ghost preview
-- `app/growveg-row-draw.css` — live row drawing preview
-- `app/growveg-modifier-keys.css` — compact modifier-key feedback
+- `app/planner-ux-polish.css` — bed/planting/catalogue/interaction polish
+- `app/planting-flow-polish.css` — planting flow and contextual editing polish
+- `app/growveg-hover-info.css` — contextual plant/row hover cards
+- `app/growveg-click-place.css` — pickup/ghost footprint styling
+- `app/growveg-row-draw.css` — row drawing preview styling
+- `app/growveg-modifier-keys.css` — placement modifier feedback
 - `app/planner-interactions.css` — pointer/cursor interaction rules
 - `lib/garden/planner-plan.ts` — shared planner state types
 - `lib/garden/plant-spacing-layout.ts` — true centimetre plant layout/count engine
@@ -277,21 +235,23 @@ Implemented before this handoff:
 4. Save → cloud persistence for planner layout.
 5. D1 Notes & Harvests with planting milestones.
 6. Private R2 photos/video.
-7. Blenheim seasonal guidance data and **Blenheim Now** Today / This Week UI on the feature branch.
-8. Seasonal crop recommendations can select the crop directly in the planner and sync the planner month.
-9. Planner UX polish pass: physical-looking beds, quieter planting boundaries, clearer editing states, stronger drag/drop feedback, improved cursor feedback, and improved crop catalogue/inspector styling.
-10. Contextual hover cards move planting information outside the crop geometry.
-11. GrowVeg-style crop pickup supports click-to-place patches and drag-to-draw rows with live previews.
-12. GrowVeg-style modifiers support Shift horizontal/vertical row locking and Ctrl repeat placement.
+7. Blenheim seasonal guidance and **Blenheim Now** Today / This Week UI.
+8. Seasonal crop recommendations select the crop directly in the planner and sync the planner month.
+9. Physical bed/soil UX polish with quieter editing chrome.
+10. Contextual planting hover cards outside plant geometry.
+11. Click-to-pick-up planting with a true-size ghost footprint.
+12. Drag-to-draw rows with live length/count preview.
+13. Shift straight-row lock and Ctrl repeat placement.
+14. Original botanical crop markers replacing emoji at rendered plant centres while preserving saved crop metadata and true spacing.
 
 ## Next priorities
 
 Keep the next work **UI/interaction-first**, not feature-first:
 
-1. Visually test the full planting flow on real desktop and mobile layouts: crop pickup → ghost preview → patch placement → row drawing → Shift axis lock → Ctrl repeat placement → move/resize after placement.
-2. Refine bed creation/resizing feedback and selected-object handles so dimensions and active state are clear without visual clutter.
-3. Improve catalogue/inspector information hierarchy and touch targets, especially at narrower widths.
-4. Review paths, trellises, trees and labels so their visual language matches the more physical bed/planting style.
+1. Visually test the botanical markers at 50%, 90%, 100%, 120% and 150% zoom and tune dense-crop legibility.
+2. Refine selected planting/bed handles and dimension feedback.
+3. Improve catalogue/inspector hierarchy and touch targets at narrower widths.
+4. Review paths, trellises, trees and labels so their visual language matches the physical bed/planting style.
 5. Polish alignment/snapping feedback and keyboard interactions based on actual use.
 6. Run build/lint and production smoke tests before merge/deploy.
 
@@ -301,5 +261,5 @@ Defer larger feature additions such as succession reminders, occupancy history o
 
 ```text
 Work on Archil3s/Blenheim-Garden. Read PROJECT_CONTEXT.md first.
-Preserve GrowVeg V4, true centimetre plant spacing, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, strict media quotas, and the additive Blenheim Now seasonal guidance/action layer. Prioritise core planner UI/UX refinement over adding new feature surface. Inspect the current implementation before changing it.
+Preserve GrowVeg V4, true centimetre plant spacing, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, strict media quotas, additive Blenheim Now seasonal guidance/actions, click-to-place / drag-row interactions, placement modifier keys, and the original botanical crop marker layer. Prioritise core planner UI/UX refinement over adding new feature surface. Inspect the current implementation before changing it.
 ```
