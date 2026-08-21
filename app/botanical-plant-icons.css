@@ -98,7 +98,6 @@
   filter: drop-shadow(0 1px .7px rgba(30, 60, 39, .16));
 }
 
-/* Dense crops need smaller glyphs so the real spacing remains legible. */
 .planting-area[data-plant-marker="carrot"] .planting-area-icons i {
   width: calc(var(--area-icon-size, 16px) * .72);
   height: calc(var(--area-icon-size, 16px) * .72);
@@ -117,7 +116,6 @@
   height: calc(var(--area-icon-size, 16px) * 1.02);
 }
 
-/* Wide-spaced plants can carry more visual mass without moving their centres. */
 .planting-area[data-plant-marker="pumpkin"] .planting-area-icons i,
 .planting-area[data-plant-marker="blueberry"] .planting-area-icons i {
   width: calc(var(--area-icon-size, 16px) * 1.3);
