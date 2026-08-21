@@ -103,7 +103,10 @@
 
 .gv-v4-bed > .empty-bed-label {
   inset: 0;
-  place-items: center;
+  grid-auto-flow: row;
+  align-content: center;
+  justify-items: center;
+  gap: 4px;
   color: rgba(100, 68, 43, .58);
   font-size: 8px;
   font-weight: 760;
@@ -112,17 +115,15 @@
 
 .gv-v4-bed > .empty-bed-label::before {
   content: "+";
-  display: inline-grid;
+  display: grid;
   width: 18px;
   height: 18px;
-  margin-right: 5px;
   place-items: center;
   border: 1px dashed rgba(105, 72, 47, .35);
   border-radius: 50%;
   color: rgba(96, 68, 47, .62);
   background: rgba(255, 248, 236, .34);
   font-size: 12px;
-  vertical-align: middle;
 }
 
 /* Planting areas --------------------------------------------------------- */
