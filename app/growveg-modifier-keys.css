@@ -1,8 +1,4 @@
-/*
- * GrowVeg-style placement modifiers.
- * Shift constrains drawn rows to horizontal/vertical.
- * Ctrl keeps the picked-up crop active after placement for rapid repeat work.
- */
+/* GrowVeg-style placement modifiers: Shift locks rows straight; Ctrl repeats placement. */
 
 .gv-v4-modebar + .gv-ready-strip em::after {
   content: " · Shift straight · Ctrl repeat";
