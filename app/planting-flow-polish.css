@@ -48,9 +48,11 @@
   filter: drop-shadow(0 1px .5px rgba(35, 48, 39, .16));
 }
 
-/* The bed name remains available but should not compete with plants. */
+/* The bed name stays available but is deliberately quiet at rest. */
 .gv-v4-bed-title {
-  opacity: .58;
+  opacity: .34;
+  background: rgba(252, 244, 230, .58);
+  box-shadow: none;
   transition: opacity 110ms ease, background 110ms ease;
 }
 
@@ -58,6 +60,7 @@
 .plan-bed.gv-v4-bed.selected .gv-v4-bed-title,
 .garden-canvas.tool-plant .plan-bed.gv-v4-bed .gv-v4-bed-title {
   opacity: 1;
+  background: rgba(252, 244, 230, .92);
 }
 
 /* Row captions can also obscure plant geometry; reveal them contextually. */
@@ -138,13 +141,13 @@
   content: "Single — place one plant in the centre of the planted patch.";
 }
 
-/* The selected crop card should read like the next action. */
+/* The selected crop card should read like the next action, but only in Plants mode. */
 .gv-ready-strip {
   position: relative;
   overflow: hidden;
 }
 
-.gv-ready-strip::after {
+.gv-v4-modebar + .gv-ready-strip::after {
   content: "Drag this crop onto a bed";
   position: absolute;
   right: 8px;
@@ -189,28 +192,6 @@
     0 3px 7px rgba(24, 73, 52, .25);
 }
 
-.planting-area.selected::after {
-  content: "drag to move";
-  position: absolute;
-  z-index: 24;
-  left: 5px;
-  top: 5px;
-  border: 1px solid rgba(13, 112, 80, .14);
-  border-radius: 999px;
-  padding: 2px 5px;
-  color: rgba(11, 96, 69, .80);
-  background: rgba(249, 255, 252, .83);
-  font-size: 6.5px;
-  font-weight: 800;
-  line-height: 1;
-  pointer-events: none;
-}
-
-/* Do not show another hint when the spacing badge would collide with it. */
-.planting-area.selected .planting-spacing-badge {
-  z-index: 26;
-}
-
 /* -----------------------------------------------------------------------
    4. Simplify the inspector instructions
    ----------------------------------------------------------------------- */
@@ -253,12 +234,8 @@
     font-size: 7.5px;
   }
 
-  .gv-ready-strip::after {
+  .gv-v4-modebar + .gv-ready-strip::after {
     display: none;
-  }
-
-  .planting-area.selected::after {
-    content: "move";
   }
 }
 
