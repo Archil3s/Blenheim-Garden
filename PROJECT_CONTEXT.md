@@ -25,6 +25,7 @@ The canvas should read as a **garden first and an editor second**:
 - crop labels should remain readable but secondary to plant positions
 - inspector/catalogue controls should feel calm, compact and tactile rather than form-heavy
 - preserve real centimetre spacing and measured layout even while simplifying the visual presentation
+- crop markers should read like a garden plan, not scattered emoji
 
 ## Stack and live Cloudflare storage
 
@@ -83,6 +84,15 @@ Current additive UX layers:
 Current markers: tomato, strawberry, bean, lettuce, pumpkin, carrot, broccoli, raspberry, blueberry and herbs.
 
 The same marker language is used in crop catalogue cards, the selected crop ready strip, placement ghosts, planted areas, row previews and saved planting rows. Dense crops such as carrots and beans render smaller; wide-spaced crops such as pumpkins and blueberries render larger without moving their centres. Unknown crops retain the existing fallback rendering.
+
+Marker design goals:
+
+- readable from normal planner zoom without looking like UI badges
+- top-down / garden-plan feel rather than emoji
+- crop-specific silhouettes and colour cues
+- subtle soil/contact shadow rather than heavy outlines
+- preserve random/natural rotation where the spacing engine already supplies it
+- never fake spacing by shifting or padding plant centres
 
 ## Blenheim Now seasonal guide
 
