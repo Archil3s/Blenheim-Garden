@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { BlenheimSeasonGuide } from "@/components/blenheim-season-guide";
+import { BotanicalPlantIconsBridge } from "@/components/botanical-plant-icons-bridge";
 import { EditKeyDialogBridge } from "@/components/edit-key-dialog-bridge";
 import { GardenMediaDialogBridge } from "@/components/garden-media-dialog-bridge";
 import { GardenRecordsDialogBridge } from "@/components/garden-records-dialog-bridge";
@@ -18,6 +19,7 @@ import "./growveg-hover-info.css";
 import "./growveg-click-place.css";
 import "./growveg-row-draw.css";
 import "./growveg-modifier-keys.css";
+import "./botanical-plant-icons.css";
 import "./blenheim-season-guide.css";
 
 export const metadata: Metadata = {
@@ -40,6 +42,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SeasonPlannerActionBridge />
         <GrowVegModifierKeysBridge />
         <GrowVegClickPlaceBridge />
+        <BotanicalPlantIconsBridge />
         <EditKeyDialogBridge />
         <NewPlantingSaveRefreshBridge />
         <GardenMediaDialogBridge />
