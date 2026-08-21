@@ -10,8 +10,18 @@ type ArmedPlant = {
   spacingCm: number;
 };
 
+type DrawGesture = {
+  pointerId: number;
+  startX: number;
+  startY: number;
+  currentX: number;
+  currentY: number;
+  dragged: boolean;
+};
+
 const CANVAS_WIDTH_CM = 900;
 const CANVAS_HEIGHT_CM = 1080;
+const DRAW_THRESHOLD_PX = 12;
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
@@ -20,6 +30,11 @@ function clamp(value: number, min: number, max: number) {
 function plantsToolActive() {
   return Array.from(document.querySelectorAll<HTMLButtonElement>(".gv-rail button"))
     .some((button) => button.classList.contains("active") && button.querySelector("small")?.textContent?.trim() === "Plants");
+}
+
+function toolButton(label: string) {
+  return Array.from(document.querySelectorAll<HTMLButtonElement>(".gv-rail button"))
+    .find((button) => button.querySelector("small")?.textContent?.trim() === label) ?? null;
 }
 
 function parseSpacing(button: HTMLButtonElement) {
@@ -57,6 +72,26 @@ function createGhost(armed: ArmedPlant) {
   return ghost;
 }
 
+function createRowGhost(armed: ArmedPlant) {
+  const ghost = document.createElement("div");
+  ghost.className = "gv-row-draw-ghost";
+  ghost.setAttribute("aria-hidden", "true");
+
+  const line = document.createElement("span");
+  line.className = "gv-row-draw-line";
+
+  const dots = document.createElement("span");
+  dots.className = "gv-row-draw-dots";
+
+  const label = document.createElement("span");
+  label.className = "gv-row-draw-label";
+  label.textContent = `${armed.icon} drag to draw row`;
+
+  line.append(dots);
+  ghost.append(line, label);
+  return ghost;
+}
+
 function fillGhostIcons(ghost: HTMLElement, armed: ArmedPlant, mode: string) {
   const icons = ghost.querySelector<HTMLElement>(".gv-click-place-ghost-icons");
   if (!icons) return;
@@ -73,21 +108,101 @@ function fillGhostIcons(ghost: HTMLElement, armed: ArmedPlant, mode: string) {
   }
 }
 
+function dispatchSyntheticRow(startX: number, startY: number, endX: number, endY: number) {
+  const rowsButton = toolButton("Rows");
+  const canvas = document.querySelector<HTMLDivElement>(".garden-canvas");
+  if (!rowsButton || !canvas) return false;
+
+  rowsButton.click();
+
+  window.requestAnimationFrame(() => {
+    const originalCapture = canvas.setPointerCapture?.bind(canvas);
+    try {
+      Object.defineProperty(canvas, "setPointerCapture", {
+        configurable: true,
+        value: () => undefined,
+      });
+    } catch {
+      // Synthetic pointer capture can fail in some browsers; the planner only needs the draft state here.
+    }
+
+    canvas.dispatchEvent(new PointerEvent("pointerdown", {
+      bubbles: true,
+      cancelable: true,
+      pointerId: 9876,
+      pointerType: "mouse",
+      isPrimary: true,
+      button: 0,
+      buttons: 1,
+      clientX: startX,
+      clientY: startY,
+    }));
+
+    if (originalCapture) {
+      try {
+        Object.defineProperty(canvas, "setPointerCapture", {
+          configurable: true,
+          value: originalCapture,
+        });
+      } catch {
+        // Ignore restoration failure; browsers provide the prototype method on the next real interaction.
+      }
+    }
+
+    window.requestAnimationFrame(() => {
+      canvas.dispatchEvent(new PointerEvent("pointermove", {
+        bubbles: true,
+        cancelable: true,
+        pointerId: 9876,
+        pointerType: "mouse",
+        isPrimary: true,
+        button: 0,
+        buttons: 1,
+        clientX: endX,
+        clientY: endY,
+      }));
+
+      window.requestAnimationFrame(() => {
+        canvas.dispatchEvent(new PointerEvent("pointerup", {
+          bubbles: true,
+          cancelable: true,
+          pointerId: 9876,
+          pointerType: "mouse",
+          isPrimary: true,
+          button: 0,
+          buttons: 0,
+          clientX: endX,
+          clientY: endY,
+        }));
+      });
+    });
+  });
+
+  return true;
+}
+
 export function GrowVegClickPlaceBridge() {
   useEffect(() => {
     let armed: ArmedPlant | null = null;
     let ghost: HTMLDivElement | null = null;
+    let rowGhost: HTMLDivElement | null = null;
     let targetBed: HTMLElement | null = null;
+    let drawGesture: DrawGesture | null = null;
+    let syntheticRowInProgress = false;
 
     const clearTarget = () => {
       targetBed?.classList.remove("gv-click-place-target");
       targetBed = null;
       ghost?.remove();
       ghost = null;
+      rowGhost?.remove();
+      rowGhost = null;
+      document.documentElement.classList.remove("gv-row-draw-active");
     };
 
     const disarm = (dispatchDragEnd = true) => {
       clearTarget();
+      drawGesture = null;
       document.documentElement.classList.remove("gv-click-place-armed");
       if (armed) {
         armed.button.classList.remove("gv-pickup-armed");
@@ -123,7 +238,7 @@ export function GrowVegClickPlaceBridge() {
     };
 
     const updateGhost = (clientX: number, clientY: number) => {
-      if (!armed) return;
+      if (!armed || drawGesture?.dragged) return;
 
       const element = document.elementFromPoint(clientX, clientY) as HTMLElement | null;
       const bed = element?.closest<HTMLElement>(".plan-bed.gv-v4-bed") ?? null;
@@ -165,6 +280,51 @@ export function GrowVegClickPlaceBridge() {
       if (label) label.textContent = `${armed.icon} ${variety || armed.name} · ${armed.spacingCm} cm · ${mode}`;
     };
 
+    const updateRowGhost = (clientX: number, clientY: number) => {
+      if (!armed || !drawGesture) return;
+      const canvas = document.querySelector<HTMLElement>(".garden-canvas");
+      if (!canvas) return;
+
+      if (!rowGhost) {
+        rowGhost = createRowGhost(armed);
+        canvas.append(rowGhost);
+      }
+
+      const canvasRect = canvas.getBoundingClientRect();
+      const startX = drawGesture.startX - canvasRect.left;
+      const startY = drawGesture.startY - canvasRect.top;
+      const endX = clientX - canvasRect.left;
+      const endY = clientY - canvasRect.top;
+      const dx = endX - startX;
+      const dy = endY - startY;
+      const lengthPx = Math.hypot(dx, dy);
+      const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+      const cmPerPx = CANVAS_WIDTH_CM / Math.max(1, canvasRect.width);
+      const lengthCm = lengthPx * cmPerPx;
+      const count = Math.max(1, Math.floor(lengthCm / Math.max(2, armed.spacingCm)) + 1);
+
+      rowGhost.style.left = `${startX}px`;
+      rowGhost.style.top = `${startY}px`;
+      rowGhost.style.width = `${lengthPx}px`;
+      rowGhost.style.transform = `rotate(${angle}deg)`;
+
+      const dots = rowGhost.querySelector<HTMLElement>(".gv-row-draw-dots");
+      if (dots) {
+        const visible = Math.min(count, 28);
+        if (dots.childElementCount !== visible) {
+          dots.replaceChildren();
+          for (let index = 0; index < visible; index += 1) {
+            const dot = document.createElement("i");
+            dot.textContent = armed.icon;
+            dots.append(dot);
+          }
+        }
+      }
+
+      const label = rowGhost.querySelector<HTMLElement>(".gv-row-draw-label");
+      if (label) label.textContent = `${(lengthCm / 100).toFixed(1)} m · ≈ ${count} plants · release to draw row`;
+    };
+
     const onClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement | null;
       const plantButton = target?.closest<HTMLButtonElement>(".gv-plant-list > button[draggable=\"true\"]") ?? null;
@@ -178,12 +338,27 @@ export function GrowVegClickPlaceBridge() {
     };
 
     const onPointerMove = (event: PointerEvent) => {
-      if (!armed) return;
+      if (!armed || syntheticRowInProgress) return;
+
+      if (drawGesture && event.pointerId === drawGesture.pointerId) {
+        drawGesture.currentX = event.clientX;
+        drawGesture.currentY = event.clientY;
+        const distance = Math.hypot(event.clientX - drawGesture.startX, event.clientY - drawGesture.startY);
+        if (distance >= DRAW_THRESHOLD_PX) {
+          drawGesture.dragged = true;
+          ghost?.remove();
+          ghost = null;
+          document.documentElement.classList.add("gv-row-draw-active");
+          updateRowGhost(event.clientX, event.clientY);
+          return;
+        }
+      }
+
       updateGhost(event.clientX, event.clientY);
     };
 
     const onPointerDown = (event: PointerEvent) => {
-      if (!armed || event.button !== 0) return;
+      if (!armed || syntheticRowInProgress || event.button !== 0) return;
       const target = event.target as HTMLElement | null;
       const bed = target?.closest<HTMLElement>(".plan-bed.gv-v4-bed") ?? null;
       if (!bed) return;
@@ -192,6 +367,49 @@ export function GrowVegClickPlaceBridge() {
       event.stopPropagation();
       event.stopImmediatePropagation();
       updateGhost(event.clientX, event.clientY);
+
+      drawGesture = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        currentX: event.clientX,
+        currentY: event.clientY,
+        dragged: false,
+      };
+    };
+
+    const onPointerUp = (event: PointerEvent) => {
+      if (!armed || syntheticRowInProgress || !drawGesture || event.pointerId !== drawGesture.pointerId) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+
+      const gesture = drawGesture;
+      drawGesture = null;
+
+      if (gesture.dragged) {
+        const startX = gesture.startX;
+        const startY = gesture.startY;
+        const endX = event.clientX;
+        const endY = event.clientY;
+        clearTarget();
+        syntheticRowInProgress = true;
+
+        const started = dispatchSyntheticRow(startX, startY, endX, endY);
+        window.setTimeout(() => {
+          syntheticRowInProgress = false;
+          disarm();
+        }, started ? 180 : 0);
+        return;
+      }
+
+      const target = document.elementFromPoint(event.clientX, event.clientY) as HTMLElement | null;
+      const bed = target?.closest<HTMLElement>(".plan-bed.gv-v4-bed") ?? targetBed;
+      if (!bed) {
+        clearTarget();
+        return;
+      }
 
       bed.dispatchEvent(new DragEvent("drop", {
         bubbles: true,
@@ -215,6 +433,7 @@ export function GrowVegClickPlaceBridge() {
     document.addEventListener("click", onClick);
     document.addEventListener("pointermove", onPointerMove, { passive: true });
     document.addEventListener("pointerdown", onPointerDown, true);
+    document.addEventListener("pointerup", onPointerUp, true);
     document.addEventListener("keydown", onKeyDown);
     document.addEventListener("contextmenu", onContextMenu);
 
@@ -222,6 +441,7 @@ export function GrowVegClickPlaceBridge() {
       document.removeEventListener("click", onClick);
       document.removeEventListener("pointermove", onPointerMove);
       document.removeEventListener("pointerdown", onPointerDown, true);
+      document.removeEventListener("pointerup", onPointerUp, true);
       document.removeEventListener("keydown", onKeyDown);
       document.removeEventListener("contextmenu", onContextMenu);
       disarm(false);
