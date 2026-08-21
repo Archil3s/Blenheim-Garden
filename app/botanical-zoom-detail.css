@@ -158,10 +158,17 @@ html[data-gv-plant-detail="high"] .garden-canvas .planting-area-icons i[data-pla
 html[data-gv-plant-detail="high"] .garden-canvas .row-dots i[data-plant-marker],
 html[data-gv-plant-detail="high"] .garden-canvas .gv-click-place-ghost-icons i[data-plant-marker],
 html[data-gv-plant-detail="high"] .garden-canvas .gv-row-draw-dots i[data-plant-marker] {
-  position: relative;
   isolation: isolate;
   scale: 1.08;
   filter: drop-shadow(0 1.5px 1.2px rgba(29, 65, 42, .18)) saturate(1.05) !important;
+}
+
+/* Flex/grid preview dots need a containing block for the high-detail overlay.
+ * Measured planting icons are already absolutely positioned, so their positioning is untouched. */
+html[data-gv-plant-detail="high"] .garden-canvas .row-dots i[data-plant-marker],
+html[data-gv-plant-detail="high"] .garden-canvas .gv-click-place-ghost-icons i[data-plant-marker],
+html[data-gv-plant-detail="high"] .garden-canvas .gv-row-draw-dots i[data-plant-marker] {
+  position: relative;
 }
 
 html[data-gv-plant-detail="high"] .garden-canvas .planting-area-icons i[data-plant-marker="pumpkin"],
