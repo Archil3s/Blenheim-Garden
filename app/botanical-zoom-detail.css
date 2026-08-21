@@ -112,33 +112,45 @@
     linear-gradient(-42deg, transparent 48%, rgba(235,255,225,.30) 49% 51%, transparent 52%);
 }
 
-/* Only the measured canvas changes detail with planner zoom. Catalogue/inspector markers stay full-detail. */
-html[data-gv-plant-detail="low"] .garden-canvas [data-plant-marker] {
+/* Only actual glyph nodes on the measured canvas change with zoom. */
+html[data-gv-plant-detail="low"] .garden-canvas .planting-area-icons i[data-plant-marker],
+html[data-gv-plant-detail="low"] .garden-canvas .row-dots i[data-plant-marker],
+html[data-gv-plant-detail="low"] .garden-canvas .gv-click-place-ghost-icons i[data-plant-marker],
+html[data-gv-plant-detail="low"] .garden-canvas .gv-row-draw-dots i[data-plant-marker] {
   background-image: var(--plant-low-marker) !important;
   background-size: 100% 100% !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   filter: drop-shadow(0 1px 1px rgba(29, 70, 44, .15)) saturate(.88) !important;
-}
-
-html[data-gv-plant-detail="low"] .garden-canvas .planting-area-icons i[data-plant-marker],
-html[data-gv-plant-detail="low"] .garden-canvas .row-dots i[data-plant-marker],
-html[data-gv-plant-detail="low"] .garden-canvas .gv-click-place-ghost-icons i[data-plant-marker],
-html[data-gv-plant-detail="low"] .garden-canvas .gv-row-draw-dots i[data-plant-marker] {
   scale: .78;
 }
 
-html[data-gv-plant-detail="low"] .garden-canvas [data-plant-marker="bean"],
-html[data-gv-plant-detail="low"] .garden-canvas [data-plant-marker="carrot"] {
+html[data-gv-plant-detail="low"] .garden-canvas .planting-area-icons i[data-plant-marker="bean"],
+html[data-gv-plant-detail="low"] .garden-canvas .planting-area-icons i[data-plant-marker="carrot"],
+html[data-gv-plant-detail="low"] .garden-canvas .row-dots i[data-plant-marker="bean"],
+html[data-gv-plant-detail="low"] .garden-canvas .row-dots i[data-plant-marker="carrot"],
+html[data-gv-plant-detail="low"] .garden-canvas .gv-click-place-ghost-icons i[data-plant-marker="bean"],
+html[data-gv-plant-detail="low"] .garden-canvas .gv-click-place-ghost-icons i[data-plant-marker="carrot"],
+html[data-gv-plant-detail="low"] .garden-canvas .gv-row-draw-dots i[data-plant-marker="bean"],
+html[data-gv-plant-detail="low"] .garden-canvas .gv-row-draw-dots i[data-plant-marker="carrot"] {
   scale: .68;
 }
 
-html[data-gv-plant-detail="low"] .garden-canvas [data-plant-marker="pumpkin"],
-html[data-gv-plant-detail="low"] .garden-canvas [data-plant-marker="blueberry"] {
+html[data-gv-plant-detail="low"] .garden-canvas .planting-area-icons i[data-plant-marker="pumpkin"],
+html[data-gv-plant-detail="low"] .garden-canvas .planting-area-icons i[data-plant-marker="blueberry"],
+html[data-gv-plant-detail="low"] .garden-canvas .row-dots i[data-plant-marker="pumpkin"],
+html[data-gv-plant-detail="low"] .garden-canvas .row-dots i[data-plant-marker="blueberry"],
+html[data-gv-plant-detail="low"] .garden-canvas .gv-click-place-ghost-icons i[data-plant-marker="pumpkin"],
+html[data-gv-plant-detail="low"] .garden-canvas .gv-click-place-ghost-icons i[data-plant-marker="blueberry"],
+html[data-gv-plant-detail="low"] .garden-canvas .gv-row-draw-dots i[data-plant-marker="pumpkin"],
+html[data-gv-plant-detail="low"] .garden-canvas .gv-row-draw-dots i[data-plant-marker="blueberry"] {
   scale: .88;
 }
 
-html[data-gv-plant-detail="mid"] .garden-canvas [data-plant-marker] {
+html[data-gv-plant-detail="mid"] .garden-canvas .planting-area-icons i[data-plant-marker],
+html[data-gv-plant-detail="mid"] .garden-canvas .row-dots i[data-plant-marker],
+html[data-gv-plant-detail="mid"] .garden-canvas .gv-click-place-ghost-icons i[data-plant-marker],
+html[data-gv-plant-detail="mid"] .garden-canvas .gv-row-draw-dots i[data-plant-marker] {
   scale: 1;
 }
 
@@ -152,8 +164,14 @@ html[data-gv-plant-detail="high"] .garden-canvas .gv-row-draw-dots i[data-plant-
   filter: drop-shadow(0 1.5px 1.2px rgba(29, 65, 42, .18)) saturate(1.05) !important;
 }
 
-html[data-gv-plant-detail="high"] .garden-canvas [data-plant-marker="pumpkin"],
-html[data-gv-plant-detail="high"] .garden-canvas [data-plant-marker="blueberry"] {
+html[data-gv-plant-detail="high"] .garden-canvas .planting-area-icons i[data-plant-marker="pumpkin"],
+html[data-gv-plant-detail="high"] .garden-canvas .planting-area-icons i[data-plant-marker="blueberry"],
+html[data-gv-plant-detail="high"] .garden-canvas .row-dots i[data-plant-marker="pumpkin"],
+html[data-gv-plant-detail="high"] .garden-canvas .row-dots i[data-plant-marker="blueberry"],
+html[data-gv-plant-detail="high"] .garden-canvas .gv-click-place-ghost-icons i[data-plant-marker="pumpkin"],
+html[data-gv-plant-detail="high"] .garden-canvas .gv-click-place-ghost-icons i[data-plant-marker="blueberry"],
+html[data-gv-plant-detail="high"] .garden-canvas .gv-row-draw-dots i[data-plant-marker="pumpkin"],
+html[data-gv-plant-detail="high"] .garden-canvas .gv-row-draw-dots i[data-plant-marker="blueberry"] {
   scale: 1.14;
 }
 
