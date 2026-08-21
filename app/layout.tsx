@@ -12,6 +12,7 @@ import "./tree-scaling.css";
 import "./growveg-v4.css";
 import "./planner-ux-polish.css";
 import "./planting-flow-polish.css";
+import "./growveg-hover-info.css";
 import "./blenheim-season-guide.css";
 
 export const metadata: Metadata = {
