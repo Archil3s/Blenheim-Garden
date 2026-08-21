@@ -93,6 +93,7 @@ It currently:
 - gives beds a warmer raised-bed / soil treatment with a subtle soil texture
 - reduces permanent planting-area borders/backgrounds so plant icons carry the visual weight
 - strengthens hover/selection states only when needed
+- gives empty beds a quieter add/empty treatment instead of another heavy label
 - adds a clear **Release to plant** drop target when dragging a crop over a bed
 - improves grab/grabbing feedback for move interactions
 - improves selected-bed and selected-planting handles/outlines
