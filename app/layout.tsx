@@ -20,6 +20,7 @@ import "./growveg-click-place.css";
 import "./growveg-row-draw.css";
 import "./growveg-modifier-keys.css";
 import "./botanical-plant-icons.css";
+import "./botanical-zoom-detail.css";
 import "./blenheim-season-guide.css";
 
 export const metadata: Metadata = {
