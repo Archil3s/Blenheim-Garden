@@ -15,6 +15,8 @@ const emojiToCrop: Record<string, string> = {
   "🌿": "herbs",
 };
 
+type PlantDetailLevel = "low" | "mid" | "high";
+
 function cropFromText(text: string | null | undefined) {
   if (!text) return null;
   for (const [emoji, crop] of Object.entries(emojiToCrop)) {
@@ -27,6 +29,30 @@ function markElement(element: HTMLElement, crop: string | null) {
   if (!crop) return;
   if (element.dataset.plantMarker === crop) return;
   element.dataset.plantMarker = crop;
+}
+
+function plannerZoom() {
+  const label = document.querySelector<HTMLElement>(".gv-quick-center strong")?.textContent ?? "";
+  const fromLabel = Number.parseFloat(label.replace("%", ""));
+  if (Number.isFinite(fromLabel)) return fromLabel;
+
+  const transform = document.querySelector<HTMLElement>(".garden-canvas")?.style.transform ?? "";
+  const match = transform.match(/scale\((\d+(?:\.\d+)?)\)/);
+  return match ? Number(match[1]) * 100 : 100;
+}
+
+function detailLevelForZoom(zoom: number): PlantDetailLevel {
+  if (zoom <= 70) return "low";
+  if (zoom >= 120) return "high";
+  return "mid";
+}
+
+function syncZoomDetail() {
+  const zoom = plannerZoom();
+  const level = detailLevelForZoom(zoom);
+  const root = document.documentElement;
+  root.dataset.gvPlantDetail = level;
+  root.style.setProperty("--gv-planner-zoom", String(zoom / 100));
 }
 
 function enhancePlantingAreas(root: ParentNode) {
@@ -66,6 +92,7 @@ function enhancePlacementGhosts(root: ParentNode) {
 }
 
 function enhance(root: ParentNode = document) {
+  syncZoomDetail();
   enhancePlantingAreas(root);
   enhanceRows(root);
   enhanceCatalogue(root);
@@ -92,9 +119,14 @@ export function BotanicalPlantIconsBridge() {
       characterData: true,
     });
 
+    window.addEventListener("resize", schedule, { passive: true });
+
     return () => {
       observer.disconnect();
+      window.removeEventListener("resize", schedule);
       if (frame) window.cancelAnimationFrame(frame);
+      delete document.documentElement.dataset.gvPlantDetail;
+      document.documentElement.style.removeProperty("--gv-planner-zoom");
     };
   }, []);
 
