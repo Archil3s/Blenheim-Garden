@@ -8,6 +8,7 @@ import {
   getBlenheimWeekTasks,
   type BlenheimSeasonStatus,
 } from "@/lib/garden/blenheim-season";
+import { requestPlannerCrop } from "@/lib/garden/planner-actions";
 
 type View = "today" | "week";
 
@@ -23,6 +24,10 @@ function currentMonthIndex() {
   return new Date().getMonth();
 }
 
+function canPlan(status: BlenheimSeasonStatus) {
+  return status === "plant-now" || status === "sow-now" || status === "start-under-cover";
+}
+
 export function BlenheimSeasonGuide() {
   const [open, setOpen] = useState(false);
   const [view, setView] = useState<View>("today");
@@ -32,6 +37,12 @@ export function BlenheimSeasonGuide() {
   const frost = useMemo(() => getBlenheimFrost(monthIndex), [monthIndex]);
   const weekTasks = useMemo(() => getBlenheimWeekTasks(monthIndex), [monthIndex]);
   const active = guidance.filter((item) => item.status !== "wait");
+  const plannerReady = active.filter((item) => canPlan(item.status));
+
+  function planCrop(crop: string) {
+    requestPlannerCrop({ crop, month: BLENHEIM_MONTHS[monthIndex] });
+    setOpen(false);
+  }
 
   return (
     <aside className={`blenheim-now ${open ? "open" : ""}`} aria-label="Blenheim seasonal planting guide">
@@ -73,14 +84,33 @@ export function BlenheimSeasonGuide() {
                     <div className="crop-title"><strong>{item.crop}</strong><em data-status={item.status}>{statusLabels[item.status]}</em></div>
                     <b>{item.action}</b>
                     <p>{item.note}</p>
+                    {canPlan(item.status) && (
+                      <button type="button" className="blenheim-plan-crop" onClick={() => planCrop(item.crop)}>
+                        Use in planner <span>→</span>
+                      </button>
+                    )}
                   </div>
                 </article>
               ))}
             </div>
           ) : (
-            <div className="blenheim-week-list">
-              {weekTasks.map((task) => <div key={task}><span>✓</span><p>{task}</p></div>)}
-            </div>
+            <>
+              <div className="blenheim-week-list">
+                {weekTasks.map((task) => <div key={task}><span>✓</span><p>{task}</p></div>)}
+              </div>
+              {plannerReady.length > 0 && (
+                <div className="blenheim-week-crops">
+                  <small>PLAN A RECOMMENDED CROP</small>
+                  <div>
+                    {plannerReady.map((item) => (
+                      <button type="button" key={item.crop} onClick={() => planCrop(item.crop)}>
+                        <span>{item.icon}</span>{item.crop}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
           )}
 
           <footer>
