@@ -26,9 +26,11 @@ D1 has the 12 original beds saved. R2 photo/video upload, viewing and deletion a
 
 Never commit or expose `GARDEN_WRITE_TOKEN`. The browser stores an entered edit key only in `sessionStorage`.
 
-## Drawing Interface V2
+## Drawing / GrowVeg V4 interface
 
-The planner uses a simplified two-row application chrome:
+The planner now uses the compact GrowVeg V4-style workspace while preserving the Drawing Interface V2 object model and persistence.
+
+Application chrome:
 
 - title bar: garden, Settings, Save, Plan/Photos/Notes
 - quick bar: Undo, Redo, 10 cm Snap toggle, Zoom, Month, cloud state
@@ -39,7 +41,7 @@ The planner uses a simplified two-row application chrome:
 Real drawing tools:
 
 - **Select** — move/edit objects; resize beds/trees; reshape rows/paths/trellises using handles
-- **Plants** — select crop/variety and fill a bed
+- **Plants** — drag crop/variety planting areas into beds
 - **Rows** — drag planting rows with live length/plant count
 - **Bed** — click-drag a new bed with live dimensions
 - **Path** — click-drag a path and edit width/label
@@ -49,21 +51,61 @@ Real drawing tools:
 
 Objects use 10 cm snap by default and display live drawing measurements. Selected objects support duplicate/delete where appropriate.
 
+### Planting areas and true centimetre spacing
+
+GrowVeg V4 planting areas support multiple crops in one bed and can be dragged/resized independently.
+
+`lib/garden/plant-spacing-layout.ts` is the source of truth for plant counts and icon coordinates. Plant centres are now positioned using the actual `spacingCm` value at the garden's centimetre scale instead of using cosmetic CSS gaps.
+
+Supported patterns:
+
+- grid / block
+- staggered
+- rows
+- natural
+- single
+
+The planting inspector displays actual spacing in centimetres, recalculates count after area or bed resizing, and shows a spacing badge on the selected planting. Large planting areas are sampled for rendering performance while preserving the logical plant count.
+
 ### Saved planner payload
 
-`lib/garden/planner-plan.ts` defines `beds`, `rows`, and `objects` (`path`, `trellis`, `tree`, `text`). Older local plans without `objects` are normalised to the built-in physical layout.
+`lib/garden/planner-plan.ts` defines `beds`, `plantingAreas`, `rows`, and `objects` (`path`, `trellis`, `tree`, `text`). Older local plans without planting areas or objects are normalised to the current model.
 
 ### D1 layout persistence
 
-`lib/garden/layout-schema.ts` idempotently bootstraps Drawing V2 schema when `/api/garden` runs:
+`lib/garden/layout-schema.ts` idempotently bootstraps Drawing V2/V4 schema when `/api/garden` runs:
 
 - adds nullable `beds.archived_at` when missing
 - creates `layout_objects` and its index when missing
 - seeds the original main/cross paths, north trellis/tree, Entrance and Exit only when the table is first created
 
-`app/api/garden/route.ts` loads/saves beds, planting rows and layout objects. Removed beds are archived instead of deleted so historical planting/media relationships survive.
+`app/api/garden/route.ts` loads/saves beds, planting rows, planting areas and layout objects. Removed beds are archived instead of deleted so historical planting/media relationships survive.
 
 Do not add a duplicate non-idempotent migration for this runtime-bootstrap schema without first coordinating migration/bootstrap state.
+
+## Blenheim Now seasonal guide
+
+A new seasonal layer is being added without changing the saved-plan or D1 schema.
+
+Files:
+
+- `lib/garden/blenheim-season.ts` — Blenheim/Marlborough seasonal crop guidance, frost-risk summaries and weekly tasks
+- `components/blenheim-season-guide.tsx` — compact **Blenheim Now** UI with **Today** and **This Week** views
+- `app/blenheim-season-guide.css` — guide styling
+
+The guide uses the user's current browser month by default and also lets the user inspect another month. Guidance is intentionally conservative for a Blenheim home garden, especially for frost-tender warm-season crops.
+
+The first crop set mirrors the current planner catalogue: tomato, strawberry, bean, lettuce, pumpkin, carrot, broccoli, raspberry, blueberry and herbs.
+
+Frost guidance uses historical Blenheim climatology as a planning aid, not as a weather forecast. The UI explicitly tells users to check their own microclimate and short-range forecast before exposing tender plants.
+
+Reference basis recorded in the source file:
+
+- Tui Marlborough planting calendar
+- Yates New Zealand garden calendar
+- NIWA / Earth Sciences New Zealand Marlborough climatology
+
+This seasonal feature should remain additive: do not put static seasonal metadata into the persisted planner payload unless there is a clear future need for user-edited schedules.
 
 ## Notes & Harvests
 
@@ -97,11 +139,15 @@ Allowed: JPEG, PNG, WebP, HEIC/HEIF, MP4, WebM, MOV/QuickTime. The browser valid
 
 ## Important files
 
-- `components/garden-planner.tsx` — Drawing Interface V2 and planner interactions
-- `app/growveg-workspace.css` — V2 workspace/canvas styling
+- `components/garden-planner.tsx` — GrowVeg V4 planner interactions and canvas
+- `app/growveg-workspace.css` — workspace/canvas styling
+- `app/growveg-v4.css` — planting-area and V4 styling
 - `app/planner-interactions.css` — pointer/cursor interaction rules
 - `lib/garden/planner-plan.ts` — shared planner state types
-- `lib/garden/layout-schema.ts` — idempotent D1 Drawing V2 bootstrap
+- `lib/garden/plant-spacing-layout.ts` — true centimetre plant layout/count engine
+- `lib/garden/blenheim-season.ts` — local seasonal/frost guidance
+- `components/blenheim-season-guide.tsx` — Today / This Week seasonal UI
+- `lib/garden/layout-schema.ts` — idempotent D1 Drawing schema bootstrap
 - `app/api/garden/route.ts` — planner GET/PUT persistence
 - `app/api/garden/records/route.ts` — notes, harvests and milestone API
 - `components/garden-records-dialog-bridge.tsx` — Notes & Harvests UI
@@ -121,17 +167,31 @@ Deploy: npx @opennextjs/cloudflare deploy
 
 Keep package `build` as `next build`, keep `next.config.ts` output `standalone`, and preserve both DB and R2 bindings in `wrangler.jsonc`.
 
+## Current checkpoint
+
+Implemented before this handoff:
+
+1. Drawing / GrowVeg V4 interface and measured physical layout.
+2. Multiple planting areas per bed with drag/resize.
+3. True centimetre-scale plant counts and icon placement.
+4. Save → cloud persistence for planner layout.
+5. D1 Notes & Harvests with planting milestones.
+6. Private R2 photos/video.
+7. Blenheim seasonal guidance data and **Blenheim Now** Today / This Week UI on the feature branch.
+
 ## Next priorities
 
-1. Visually test Drawing V2 and Notes & Harvests on production, including Save → refresh persistence.
-2. Polish alignment/snapping/keyboard shortcuts based on actual use.
-3. Add Blenheim-specific planting/frost windows and **Today / This Week** actions.
-4. Add seasonal occupancy and crop-rotation history views.
-5. Link photos directly to harvest records and richer crop timelines if useful.
+1. Visually test **Blenheim Now** together with Drawing V4 on desktop/mobile and verify it does not obstruct important canvas controls.
+2. Run build/lint and production smoke tests after merging the seasonal feature.
+3. Link a seasonal crop recommendation directly to selecting that crop in the planner catalogue.
+4. Add stronger Blenheim succession logic: sow-this-week quantities, expected harvest windows, and reminders based on actual planting milestone dates.
+5. Add seasonal bed occupancy and crop-rotation history views.
+6. Link photos directly to harvest records and richer crop timelines if useful.
+7. Polish alignment/snapping/keyboard shortcuts based on actual use.
 
 ## New-chat bootstrap
 
 ```text
 Work on Archil3s/Blenheim-Garden. Read PROJECT_CONTEXT.md first.
-Preserve Drawing Interface V2, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, and strict media quotas. Inspect the current implementation before changing it.
+Preserve GrowVeg V4, true centimetre plant spacing, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, strict media quotas, and the additive Blenheim Now seasonal guidance layer. Inspect the current implementation before changing it.
 ```
