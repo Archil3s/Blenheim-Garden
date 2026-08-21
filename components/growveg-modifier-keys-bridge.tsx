@@ -158,7 +158,9 @@ export function GrowVegModifierKeysBridge() {
     const onPointerMove = (event: PointerEvent) => {
       if (syntheticEvents.has(event) || !gesture || event.pointerId !== gesture.pointerId) return;
 
-      const distance = Math.hypot(event.clientX - gesture.startX, event.clientY - gesture.startY);
+      const dx = event.clientX - gesture.startX;
+      const dy = event.clientY - gesture.startY;
+      const distance = event.shiftKey ? Math.max(Math.abs(dx), Math.abs(dy)) : Math.hypot(dx, dy);
       if (distance >= DRAW_THRESHOLD_PX) gesture.dragged = true;
 
       if (!gesture.dragged || !event.shiftKey) {
