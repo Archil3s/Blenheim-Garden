@@ -98,18 +98,30 @@
   filter: drop-shadow(0 1px .7px rgba(30, 60, 39, .16));
 }
 
-/* At dense carrot/bean spacing, retain the crop silhouette but reduce visual collision. */
-.planting-area[data-plant-marker="carrot"] .planting-area-icons i,
-.planting-area[data-plant-marker="bean"] .planting-area-icons i {
-  width: calc(var(--area-icon-size, 16px) * .94);
-  height: calc(var(--area-icon-size, 16px) * .94);
+/* Dense crops need smaller glyphs so the real spacing remains legible. */
+.planting-area[data-plant-marker="carrot"] .planting-area-icons i {
+  width: calc(var(--area-icon-size, 16px) * .72);
+  height: calc(var(--area-icon-size, 16px) * .72);
+  opacity: .86;
 }
 
-/* Large-spaced plants can carry a little more visual mass without changing their centres. */
+.planting-area[data-plant-marker="bean"] .planting-area-icons i {
+  width: calc(var(--area-icon-size, 16px) * .84);
+  height: calc(var(--area-icon-size, 16px) * .84);
+  opacity: .9;
+}
+
+.planting-area[data-plant-marker="lettuce"] .planting-area-icons i,
+.planting-area[data-plant-marker="strawberry"] .planting-area-icons i {
+  width: calc(var(--area-icon-size, 16px) * 1.02);
+  height: calc(var(--area-icon-size, 16px) * 1.02);
+}
+
+/* Wide-spaced plants can carry more visual mass without moving their centres. */
 .planting-area[data-plant-marker="pumpkin"] .planting-area-icons i,
 .planting-area[data-plant-marker="blueberry"] .planting-area-icons i {
-  width: calc(var(--area-icon-size, 16px) * 1.28);
-  height: calc(var(--area-icon-size, 16px) * 1.28);
+  width: calc(var(--area-icon-size, 16px) * 1.3);
+  height: calc(var(--area-icon-size, 16px) * 1.3);
 }
 
 @media (max-width: 760px) {
