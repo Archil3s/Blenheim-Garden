@@ -3,6 +3,7 @@ import { BlenheimSeasonGuide } from "@/components/blenheim-season-guide";
 import { EditKeyDialogBridge } from "@/components/edit-key-dialog-bridge";
 import { GardenMediaDialogBridge } from "@/components/garden-media-dialog-bridge";
 import { GardenRecordsDialogBridge } from "@/components/garden-records-dialog-bridge";
+import { GrowVegClickPlaceBridge } from "@/components/growveg-click-place-bridge";
 import { NewPlantingSaveRefreshBridge } from "@/components/new-planting-save-refresh-bridge";
 import { SeasonPlannerActionBridge } from "@/components/season-planner-action-bridge";
 import "./globals.css";
@@ -13,6 +14,7 @@ import "./growveg-v4.css";
 import "./planner-ux-polish.css";
 import "./planting-flow-polish.css";
 import "./growveg-hover-info.css";
+import "./growveg-click-place.css";
 import "./blenheim-season-guide.css";
 
 export const metadata: Metadata = {
@@ -33,6 +35,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {children}
         <BlenheimSeasonGuide />
         <SeasonPlannerActionBridge />
+        <GrowVegClickPlaceBridge />
         <EditKeyDialogBridge />
         <NewPlantingSaveRefreshBridge />
         <GardenMediaDialogBridge />
