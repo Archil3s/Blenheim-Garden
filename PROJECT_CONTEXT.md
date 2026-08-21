@@ -26,7 +26,7 @@ The canvas should read as a **garden first and an editor second**:
 - inspector/catalogue controls should feel calm, compact and tactile rather than form-heavy
 - preserve real centimetre spacing and measured layout even while simplifying the visual presentation
 
-`app/planner-ux-polish.css`, `app/planting-flow-polish.css`, and `app/growveg-hover-info.css` are the current UX refinement layers and intentionally load after the base GrowVeg V4 styles.
+`app/planner-ux-polish.css` is the current UX refinement layer and intentionally loads after the base GrowVeg V4 styles.
 
 ## Stack and live Cloudflare storage
 
@@ -58,7 +58,7 @@ Application chrome:
 Real drawing tools:
 
 - **Select** — move/edit objects; resize beds/trees; reshape rows/paths/trellises using handles
-- **Plants** — drag crop/variety planting areas into beds
+- **Plants** — click a crop to pick it up; click to place a patch or drag to draw a row
 - **Rows** — drag planting rows with live length/plant count
 - **Bed** — click-drag a new bed with live dimensions
 - **Path** — click-drag a path and edit width/label
@@ -121,6 +121,30 @@ Current behaviour:
 
 The goal is to preserve plant visibility while still making count and spacing immediately discoverable.
 
+### GrowVeg-style planting pickup, row drawing and modifiers
+
+The current planting interaction is implemented through additive bridge/CSS layers so the large planner component and saved schema remain stable:
+
+- `components/growveg-click-place-bridge.tsx`
+- `components/growveg-modifier-keys-bridge.tsx`
+- `app/growveg-click-place.css`
+- `app/growveg-row-draw.css`
+- `app/growveg-modifier-keys.css`
+
+Current behaviour:
+
+- click a crop in the Plants catalogue to pick it up
+- move over a bed to preview a planting footprint using the same `max(120 cm, spacing × 3)` sizing rule as the real drop path
+- click to place the patch at that exact position
+- drag instead of clicking to preview and create a real planting row using the planner's existing Rows engine
+- row preview shows length and approximate plant count and stays aligned to the centimetre canvas at all zoom levels
+- hold **Shift** while dragging to constrain the row horizontal or vertical
+- hold **Ctrl** while finishing a patch or row to return to Plants and re-arm the same crop/variety for rapid repeat placement
+- Escape or right-click cancels picked-up placement
+- existing native drag/drop remains available as a fallback
+
+The modifier bridge intercepts pointer coordinates at the window capture level before the planner's existing document listeners, then delegates the final action back into the planner. This preserves the planner's own spacing/count/undo behaviour instead of creating a parallel saved object model.
+
 ### Saved planner payload
 
 `lib/garden/planner-plan.ts` defines `beds`, `plantingAreas`, `rows`, and `objects` (`path`, `trellis`, `tree`, `text`). Older local plans without planting areas or objects are normalised to the current model.
@@ -159,7 +183,7 @@ Actionable recommendations now include **Use in planner** controls. Choosing a r
 2. syncs the planner month to the guide month
 3. opens the Plants tool and normal crop catalogue
 4. clears catalogue search/type filters that could hide the requested crop
-5. selects that crop and its default variety, ready to drag into a bed
+5. selects that crop and its default variety, ready to place into a bed
 
 If an individual planting is selected, the action bridge first selects its parent bed so the planting inspector does not block the crop catalogue. The bridge uses the existing planner controls and does not write seasonal metadata into the saved plan.
 
@@ -206,11 +230,16 @@ Allowed: JPEG, PNG, WebP, HEIC/HEIF, MP4, WebM, MOV/QuickTime. The browser valid
 ## Important files
 
 - `components/garden-planner.tsx` — GrowVeg V4 planner interactions and canvas
+- `components/growveg-click-place-bridge.tsx` — crop pickup, patch placement and row drawing bridge
+- `components/growveg-modifier-keys-bridge.tsx` — Shift axis lock and Ctrl repeat placement bridge
 - `app/growveg-workspace.css` — base workspace/canvas styling
 - `app/growveg-v4.css` — planting-area and V4 styling
-- `app/planner-ux-polish.css` — bed/planting/catalogue/interaction UX refinement layer
-- `app/planting-flow-polish.css` — planting journey, layout guidance and label-density refinements
-- `app/growveg-hover-info.css` — contextual crop/count/spacing hover cards outside planted areas
+- `app/planner-ux-polish.css` — current bed/planting/catalogue/interaction UX refinement layer
+- `app/planting-flow-polish.css` — planting workflow and label hierarchy polish
+- `app/growveg-hover-info.css` — contextual planting/row hover cards
+- `app/growveg-click-place.css` — picked-up crop and patch ghost preview
+- `app/growveg-row-draw.css` — live row drawing preview
+- `app/growveg-modifier-keys.css` — compact modifier-key feedback
 - `app/planner-interactions.css` — pointer/cursor interaction rules
 - `lib/garden/planner-plan.ts` — shared planner state types
 - `lib/garden/plant-spacing-layout.ts` — true centimetre plant layout/count engine
@@ -251,20 +280,20 @@ Implemented before this handoff:
 7. Blenheim seasonal guidance data and **Blenheim Now** Today / This Week UI on the feature branch.
 8. Seasonal crop recommendations can select the crop directly in the planner and sync the planner month.
 9. Planner UX polish pass: physical-looking beds, quieter planting boundaries, clearer editing states, stronger drag/drop feedback, improved cursor feedback, and improved crop catalogue/inspector styling.
-10. Planting-flow polish: labels hidden at rest, clearer four-step planting journey, contextual placement-mode explanations, and simplified inspector guidance.
-11. GrowVeg-style hover information: crop / variety / count / spacing appears as an external hover/selection tooltip instead of covering the plant icons.
+10. Contextual hover cards move planting information outside the crop geometry.
+11. GrowVeg-style crop pickup supports click-to-place patches and drag-to-draw rows with live previews.
+12. GrowVeg-style modifiers support Shift horizontal/vertical row locking and Ctrl repeat placement.
 
 ## Next priorities
 
 Keep the next work **UI/interaction-first**, not feature-first:
 
-1. Visually test the external hover cards on dense beds, full-bed plantings and mobile selection states; tune collision/edge behaviour from actual use.
-2. Add a GrowVeg-like **plant pickup / placement preview** so choosing a crop gives a clear cursor/ghost state before placement, while preserving the existing drag workflow.
-3. Refine bed creation/resizing feedback and selected-object handles so dimensions and active state are clear without visual clutter.
-4. Improve catalogue/inspector information hierarchy and touch targets, especially at narrower widths.
-5. Review paths, trellises, trees and labels so their visual language matches the more physical bed/planting style.
-6. Polish alignment/snapping feedback and keyboard interactions based on actual use.
-7. Run build/lint and production smoke tests before merge/deploy.
+1. Visually test the full planting flow on real desktop and mobile layouts: crop pickup → ghost preview → patch placement → row drawing → Shift axis lock → Ctrl repeat placement → move/resize after placement.
+2. Refine bed creation/resizing feedback and selected-object handles so dimensions and active state are clear without visual clutter.
+3. Improve catalogue/inspector information hierarchy and touch targets, especially at narrower widths.
+4. Review paths, trellises, trees and labels so their visual language matches the more physical bed/planting style.
+5. Polish alignment/snapping feedback and keyboard interactions based on actual use.
+6. Run build/lint and production smoke tests before merge/deploy.
 
 Defer larger feature additions such as succession reminders, occupancy history or crop-rotation views until the core planner interaction/design feels settled.
 
