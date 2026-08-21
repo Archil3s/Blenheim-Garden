@@ -291,21 +291,21 @@ export function GrowVegClickPlaceBridge() {
       }
 
       const canvasRect = canvas.getBoundingClientRect();
-      const startX = drawGesture.startX - canvasRect.left;
-      const startY = drawGesture.startY - canvasRect.top;
-      const endX = clientX - canvasRect.left;
-      const endY = clientY - canvasRect.top;
+      const logicalX = CANVAS_WIDTH_CM / Math.max(1, canvasRect.width);
+      const logicalY = CANVAS_HEIGHT_CM / Math.max(1, canvasRect.height);
+      const startX = (drawGesture.startX - canvasRect.left) * logicalX;
+      const startY = (drawGesture.startY - canvasRect.top) * logicalY;
+      const endX = (clientX - canvasRect.left) * logicalX;
+      const endY = (clientY - canvasRect.top) * logicalY;
       const dx = endX - startX;
       const dy = endY - startY;
-      const lengthPx = Math.hypot(dx, dy);
+      const lengthCm = Math.hypot(dx, dy);
       const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-      const cmPerPx = CANVAS_WIDTH_CM / Math.max(1, canvasRect.width);
-      const lengthCm = lengthPx * cmPerPx;
       const count = Math.max(1, Math.floor(lengthCm / Math.max(2, armed.spacingCm)) + 1);
 
       rowGhost.style.left = `${startX}px`;
       rowGhost.style.top = `${startY}px`;
-      rowGhost.style.width = `${lengthPx}px`;
+      rowGhost.style.width = `${lengthCm}px`;
       rowGhost.style.transform = `rotate(${angle}deg)`;
 
       const dots = rowGhost.querySelector<HTMLElement>(".gv-row-draw-dots");
