@@ -1,0 +1,161 @@
+/*
+ * GrowVeg-style click-and-drag row placement.
+ *
+ * Loaded after growveg-click-place.css so a picked-up crop can either:
+ * - click once on a bed for the normal planting patch, or
+ * - drag to draw a true planting row using the existing row engine.
+ */
+
+html.gv-click-place-armed .gv-v4-modebar + .gv-ready-strip small::after {
+  content: "CLICK FOR PATCH · DRAG FOR ROW";
+}
+
+html.gv-click-place-armed .gv-v4-modebar + .gv-ready-strip::after {
+  content: "Esc to cancel" !important;
+}
+
+.gv-v4-modebar::before {
+  content: "1  Pick a crop   ·   2  Choose layout   ·   3  Click for a patch   ·   4  Drag for a row" !important;
+}
+
+html.gv-click-place-armed .gv-stage-status strong::after {
+  content: " · click for patch · drag for row · Esc cancels";
+}
+
+html.gv-row-draw-active .garden-canvas,
+html.gv-row-draw-active .plan-bed.gv-v4-bed {
+  cursor: crosshair !important;
+}
+
+html.gv-row-draw-active .gv-click-place-ghost {
+  display: none;
+}
+
+.gv-row-draw-ghost {
+  position: absolute;
+  z-index: 150;
+  height: 30px;
+  min-width: 8px;
+  transform-origin: 0 50%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.gv-row-draw-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(10, 135, 93, .62);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .88),
+    0 0 0 4px rgba(15, 145, 104, .12);
+  transform: translateY(-50%);
+}
+
+.gv-row-draw-line::before,
+.gv-row-draw-line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background: #0f9168;
+  box-shadow: 0 1px 4px rgba(20, 74, 51, .25);
+  transform: translateY(-50%);
+}
+
+.gv-row-draw-line::before {
+  left: -5px;
+}
+
+.gv-row-draw-line::after {
+  right: -5px;
+}
+
+.gv-row-draw-dots {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+  transform: translateY(-50%);
+}
+
+.gv-row-draw-dots i {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .88);
+  border-radius: 50%;
+  background: rgba(244, 255, 249, .88);
+  box-shadow: 0 1px 4px rgba(28, 76, 55, .13);
+  font-size: 11px;
+  font-style: normal;
+  line-height: 1;
+}
+
+.gv-row-draw-label {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: calc(100% + 4px);
+  transform: translateX(-50%);
+  min-width: max-content;
+  border: 1px solid rgba(10, 115, 80, .22);
+  border-radius: 999px;
+  padding: 4px 7px;
+  color: #155e46;
+  background: rgba(250, 255, 252, .97);
+  box-shadow: 0 3px 9px rgba(32, 76, 57, .12);
+  font-size: 7.5px;
+  font-weight: 850;
+  line-height: 1;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+}
+
+html.gv-row-draw-active .gv-stage-status {
+  box-shadow: inset 0 -2px 0 rgba(16, 143, 101, .16);
+}
+
+html.gv-row-draw-active .gv-stage-status strong::after {
+  content: " · release to create row";
+  color: #0c7755;
+}
+
+@media (max-width: 760px) {
+  .gv-v4-modebar::before {
+    content: "1 Pick crop · 2 Layout · 3 Tap for patch · 4 Drag for row" !important;
+  }
+
+  .gv-row-draw-label {
+    padding: 3px 6px;
+    font-size: 6.5px;
+  }
+
+  .gv-row-draw-dots i {
+    width: 15px;
+    height: 15px;
+    flex-basis: 15px;
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gv-row-draw-ghost,
+  .gv-row-draw-line,
+  .gv-row-draw-dots i {
+    transition: none;
+  }
+}
