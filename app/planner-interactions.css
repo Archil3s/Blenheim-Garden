@@ -1,5 +1,7 @@
 .garden-canvas.tool-select .plan-bed,
 .garden-canvas.tool-bed .plan-bed,
+.garden-canvas.tool-select .planting-area,
+.garden-canvas.tool-plant .planting-area,
 .garden-canvas.tool-select .planting-row,
 .garden-canvas.tool-row .planting-row,
 .garden-canvas.tool-select .layout-object {
@@ -10,10 +12,22 @@
   cursor: copy;
 }
 
+.garden-canvas.tool-select .plan-bed:active,
+.garden-canvas.tool-bed .plan-bed:active,
+.garden-canvas.tool-select .planting-area:active,
+.garden-canvas.tool-plant .planting-area:active,
+.garden-canvas.tool-select .planting-row:active,
+.garden-canvas.tool-row .planting-row:active,
+.garden-canvas.tool-select .layout-object:active {
+  cursor: grabbing;
+}
+
 .plan-bed,
+.planting-area,
 .planting-row,
 .layout-object,
 .resize-handle,
+.planting-area-resize,
 .line-handle,
 .tree-resize-handle {
   touch-action: none;
