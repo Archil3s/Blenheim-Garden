@@ -1,0 +1,125 @@
+/*
+ * Original top-down crop markers for the measured garden canvas.
+ * The bridge only tags existing render nodes; true centimetre positions remain untouched.
+ */
+
+[data-plant-marker] {
+  --plant-marker-image: none;
+}
+
+[data-plant-marker="tomato"] { --plant-marker-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGVsbGlwc2UgY3g9IjE2IiBjeT0iMjUiIHJ4PSIxMCIgcnk9IjMiIGZpbGw9IiMzMTViMzUiIG9wYWNpdHk9Ii4xNCIvPjxwYXRoIGQ9Ik0xNiAxNkMxMCA5IDcgNyA0IDhjMyA0IDQgNyA0IDEwLTItMS00LTItNi0yIDIgNCA1IDYgOSA2IiBmaWxsPSIjM2Y4YTQ4Ii8+PHBhdGggZD0iTTE2IDE2YzUtNyA4LTkgMTItOC0zIDQtNCA3LTQgMTAgMi0xIDQtMiA2LTEtMiA0LTUgNi05IDYiIGZpbGw9IiM0YzliNTUiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjE2IiByPSI1LjciIGZpbGw9IiNkOTRhM2QiIHN0cm9rZT0iIzlmMmYyYyIgc3Ryb2tlLXdpZHRoPSIxIi8+PGNpcmNsZSBjeD0iMjAiIGN5PSIxNy41IiByPSI1LjQiIGZpbGw9IiNlMjVhNDYiIHN0cm9rZT0iI2EzM2EyZSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHBhdGggZD0iTTExIDEwbDEuMiAzIDMuMi0uOC0yLjIgMi4zIDIgMi41LTMtMS4xLTEuNyAyLjYtLjEtMy4yLTMuMS0uOCAzLTEuMXoiIGZpbGw9IiMyZjdhM2MiLz48cGF0aCBkPSJNMjAgMTJsMSAyLjUgMi44LS42LTEuOSAyIDEuNiAyLjItMi42LS45LTEuNSAyLjItLjEtMi43LTIuNi0uOCAyLjUtLjh6IiBmaWxsPSIjMzY3ZjQxIi8+PGNpcmNsZSBjeD0iMTAuMyIgY3k9IjE0LjIiIHI9IjEiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii41NSIvPjwvc3ZnPg=="); }
+[data-plant-marker="strawberry"] { --plant-marker-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGVsbGlwc2UgY3g9IjE2IiBjeT0iMjYiIHJ4PSI5IiByeT0iMi44IiBmaWxsPSIjMzE1YjM1IiBvcGFjaXR5PSIuMTIiLz48cGF0aCBkPSJNMTYgOWMtNC02LTgtNi0xMC0zIDIgNSA2IDcgMTAgNiIgZmlsbD0iIzRhOTY1MSIvPjxwYXRoIGQ9Ik0xNiA5YzQtNiA4LTYgMTAtMy0yIDUtNiA3LTEwIDYiIGZpbGw9IiM1OGE4NWMiLz48cGF0aCBkPSJNMTYgMTBjLTEtNi00LTgtNy03IDAgNSAzIDggNyA5IiBmaWxsPSIjM2Q4ODQ4Ii8+PHBhdGggZD0iTTE2IDEwYzEtNiA0LTggNy03IDAgNS0zIDgtNyA5IiBmaWxsPSIjM2Q4ODQ4Ii8+PHBhdGggZD0iTTE2IDhjNSAxIDggNSA4IDkgMCA2LTUgMTAtOCAxMi0zLTItOC02LTgtMTIgMC00IDMtOCA4LTl6IiBmaWxsPSIjZDk0NDQ3IiBzdHJva2U9IiNhNjJmMzYiIHN0cm9rZS13aWR0aD0iMSIvPjxjaXJjbGUgY3g9IjEzIiBjeT0iMTUiIHI9Ii43IiBmaWxsPSIjZjhkODZhIi8+PGNpcmNsZSBjeD0iMTgiIGN5PSIxNCIgcj0iLjciIGZpbGw9IiNmOGQ4NmEiLz48Y2lyY2xlIGN4PSIyMC41IiBjeT0iMTgiIHI9Ii43IiBmaWxsPSIjZjhkODZhIi8+PGNpcmNsZSBjeD0iMTQuNSIgY3k9IjIwIiByPSIuNyIgZmlsbD0iI2Y4ZDg2YSIvPjxjaXJjbGUgY3g9IjE4IiBjeT0iMjMiIHI9Ii43IiBmaWxsPSIjZjhkODZhIi8+PC9zdmc+"); }
+[data-plant-marker="bean"] { --plant-marker-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGVsbGlwc2UgY3g9IjE2IiBjeT0iMjYiIHJ4PSIxMCIgcnk9IjIuOCIgZmlsbD0iIzMxNWIzNSIgb3BhY2l0eT0iLjEyIi8+PHBhdGggZD0iTTE2IDI1QzE0IDE5IDEzIDE0IDE1IDgiIHN0cm9rZT0iIzNiN2Y0NiIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMTUgMTFDMTAgNiA2IDcgNCAxMWM0IDMgOCA0IDExIDIiIGZpbGw9IiM0Yjk5NTUiLz48cGF0aCBkPSJNMTUgMTRjNS01IDktNCAxMiAwLTQgMy04IDQtMTIgMiIgZmlsbD0iIzVhYWE2MCIvPjxwYXRoIGQ9Ik0xMiAxN2MtNC0yLTcgMC04IDQgNCAyIDcgMSA5LTIiIGZpbGw9IiM0MzhiNGMiLz48cGF0aCBkPSJNMTggMTdjNC0yIDcgMCA4IDQtNCAyLTcgMS05LTIiIGZpbGw9IiM0ZjliNTYiLz48cGF0aCBkPSJNMjAgOGMyIDIgMyA1IDIgOS0uNiAyLTIgMy0zIDItMS0xIDAtMyAwLTUgMC0zLTEtNSAxLTZ6IiBmaWxsPSIjN2ViYzRiIiBzdHJva2U9IiM0ZThiMzIiIHN0cm9rZS13aWR0aD0iMSIvPjxwYXRoIGQ9Ik0xMSAxMmMtMSAzLTEgNiAxIDkgLjggMS41IDIuNSAyIDMuNC44LjgtMS4xLS4yLTIuNC0uNi00LjEtLjctMi45LjMtNC44LTEuMi01Ljd6IiBmaWxsPSIjODNiZjUwIiBzdHJva2U9IiM0ZjhiMzIiIHN0cm9rZS13aWR0aD0iMSIvPjwvc3ZnPg=="); }
+[data-plant-marker="lettuce"] { --plant-marker-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGVsbGlwc2UgY3g9IjE2IiBjeT0iMjYiIHJ4PSIxMCIgcnk9IjMiIGZpbGw9IiMzMTViMzUiIG9wYWNpdHk9Ii4xMiIvPjxnIHN0cm9rZT0iIzJmN2M0MyIgc3Ryb2tlLXdpZHRoPSIuOSI+PHBhdGggZD0iTTE2IDE2QzkgNyAzIDkgNCAxNWMtNCAyLTIgOCA0IDkgMSA2IDggNyAxMCAzIDQgMyAxMCAwIDktNSA1LTIgNC04LTEtOS0xLTYtOC03LTEwIDN6IiBmaWxsPSIjNjdhZDU1Ii8+PHBhdGggZD0iTTE2IDE3QzExIDEwIDcgMTEgOCAxNmMtMyAyLTEgNiAzIDYgMSA0IDYgNSA4IDIgMyAyIDcgMCA2LTQgMy0yIDItNi0yLTYtMS00LTYtNC03IDN6IiBmaWxsPSIjODJiZjYzIi8+PHBhdGggZD0iTTE2IDE4Yy0zLTQtNi0zLTYgMC0yIDEtMSA0IDIgNCAxIDMgNSAzIDYgMSAyIDEgNSAwIDQtMyAyLTEgMS00LTEtNC0xLTMtNC0yLTUgMnoiIGZpbGw9IiNhMmQyNzYiLz48L2c+PC9zdmc+"); }
+[data-plant-marker="pumpkin"] { --plant-marker-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGVsbGlwc2UgY3g9IjE2IiBjeT0iMjYiIHJ4PSIxMSIgcnk9IjMiIGZpbGw9IiMzMTViMzUiIG9wYWNpdHk9Ii4xMiIvPjxwYXRoIGQ9Ik0xOSA5YzItMyA0LTQgNy0zLTEgNC0zIDYtNyA2IiBmaWxsPSIjNGE5NDRlIi8+PHBhdGggZD0iTTE3IDEwYzAtMyAxLTUgNC03IiBzdHJva2U9IiM0MTdkNDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGVsbGlwc2UgY3g9IjE2IiBjeT0iMTgiIHJ4PSIxMC41IiByeT0iOC41IiBmaWxsPSIjZTc4MzJmIiBzdHJva2U9IiNiNTVmMjMiIHN0cm9rZS13aWR0aD0iMS4xIi8+PGVsbGlwc2UgY3g9IjEyLjMiIGN5PSIxOCIgcng9IjQuNyIgcnk9IjgiIGZpbGw9IiNmMDkzMzgiIG9wYWNpdHk9Ii45Ii8+PGVsbGlwc2UgY3g9IjE5LjciIGN5PSIxOCIgcng9IjQuNyIgcnk9IjgiIGZpbGw9IiNkOTc1MjgiIG9wYWNpdHk9Ii43Ii8+PHBhdGggZD0iTTE2IDEwYy0xLjggMi0yIDUtMiA4cy4yIDYgMiA4TTE2IDEwYzEuOCAyIDIgNSAyIDhzLS4yIDYtMiA4IiBzdHJva2U9IiNiODVmMjUiIHN0cm9rZS13aWR0aD0iLjgiIGZpbGw9Im5vbmUiIG9wYWNpdHk9Ii42NSIvPjwvc3ZnPg=="); }
+[data-plant-marker="carrot"] { --plant-marker-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGVsbGlwc2UgY3g9IjE2IiBjeT0iMjYiIHJ4PSI4IiByeT0iMi42IiBmaWxsPSIjMzE1YjM1IiBvcGFjaXR5PSIuMTIiLz48cGF0aCBkPSJNMTYgMTRjLTctNS0xMS0zLTExIDEgNCAyIDggMiAxMSAxIiBmaWxsPSIjNGQ5ODUwIi8+PHBhdGggZD0iTTE2IDE0YzctNSAxMS0zIDExIDEtNCAyLTggMi0xMSAxIiBmaWxsPSIjNTlhNTVhIi8+PHBhdGggZD0iTTE2IDEzYy00LTctOC04LTEwLTUgMiA1IDUgNyAxMCA3IiBmaWxsPSIjM2U4NzQ2Ii8+PHBhdGggZD0iTTE2IDEzYzQtNyA4LTggMTAtNS0yIDUtNSA3LTEwIDciIGZpbGw9IiM0NThmNGEiLz48cGF0aCBkPSJNMTYgMTJjLTItNy0xLTEwIDItMTEgMiA1IDEgOS0yIDEzIiBmaWxsPSIjNWJhNDViIi8+PHBhdGggZD0iTTExIDE1YzEgNyAzIDExIDUgMTUgMi00IDQtOCA1LTE1LTMtMS03LTEtMTAgMHoiIGZpbGw9IiNlZjg0MzQiIHN0cm9rZT0iI2M3NjYyMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PHBhdGggZD0iTTEzIDE5aDZNMTQgMjNoNCIgc3Ryb2tlPSIjYzc2ODI1IiBzdHJva2Utd2lkdGg9Ii44IiBvcGFjaXR5PSIuNyIvPjwvc3ZnPg=="); }
+[data-plant-marker="broccoli"] { --plant-marker-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGVsbGlwc2UgY3g9IjE2IiBjeT0iMjYiIHJ4PSI5IiByeT0iMi44IiBmaWxsPSIjMzE1YjM1IiBvcGFjaXR5PSIuMTIiLz48cGF0aCBkPSJNMTQgMTZsLTIgMTFNMTggMTZsMiAxMU0xNiAxNXYxMiIgc3Ryb2tlPSIjNTQ4ZjQ1IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xNiAxOGMtNCAxLTcgNC04IDcgNCAxIDcgMCA5LTNNMTYgMThjNCAxIDcgNCA4IDctNCAxLTcgMC05LTMiIGZpbGw9IiM1YmE0NTEiLz48ZyBmaWxsPSIjMzY3YjQzIiBzdHJva2U9IiMyODVmMzUiIHN0cm9rZS13aWR0aD0iLjciPjxjaXJjbGUgY3g9IjEwIiBjeT0iMTMiIHI9IjQuMiIvPjxjaXJjbGUgY3g9IjE1IiBjeT0iMTAiIHI9IjQuNiIvPjxjaXJjbGUgY3g9IjIxIiBjeT0iMTIiIHI9IjQuNCIvPjxjaXJjbGUgY3g9IjEzIiBjeT0iMTYiIHI9IjQuMiIvPjxjaXJjbGUgY3g9IjE5IiBjeT0iMTYiIHI9IjQuNCIvPjwvZz48ZyBmaWxsPSIjNGI5NDUyIj48Y2lyY2xlIGN4PSI5IiBjeT0iMTEuNSIgcj0iMS40Ii8+PGNpcmNsZSBjeD0iMTUiIGN5PSI4LjUiIHI9IjEuNiIvPjxjaXJjbGUgY3g9IjIxIiBjeT0iMTAuNSIgcj0iMS40Ii8+PGNpcmNsZSBjeD0iMTgiIGN5PSIxNC41IiByPSIxLjUiLz48L2c+PC9zdmc+"); }
+[data-plant-marker="raspberry"] { --plant-marker-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGVsbGlwc2UgY3g9IjE2IiBjeT0iMjYiIHJ4PSI5IiByeT0iMi43IiBmaWxsPSIjMzE1YjM1IiBvcGFjaXR5PSIuMTIiLz48cGF0aCBkPSJNMTYgMTNDMTAgNyA2IDggNCAxMmM0IDMgOCA0IDEyIDMiIGZpbGw9IiM0Yjk2NTEiLz48cGF0aCBkPSJNMTYgMTNjNi02IDEwLTUgMTItMS00IDMtOCA0LTEyIDMiIGZpbGw9IiM1NzlmNTciLz48ZyBmaWxsPSIjYzgzZDUxIiBzdHJva2U9IiM5MjJjM2QiIHN0cm9rZS13aWR0aD0iLjU1Ij48Y2lyY2xlIGN4PSIxMyIgY3k9IjE1IiByPSIyLjQiLz48Y2lyY2xlIGN4PSIxNyIgY3k9IjE1IiByPSIyLjQiLz48Y2lyY2xlIGN4PSIyMSIgY3k9IjE2IiByPSIyLjQiLz48Y2lyY2xlIGN4PSIxMSIgY3k9IjE5IiByPSIyLjQiLz48Y2lyY2xlIGN4PSIxNSIgY3k9IjE5IiByPSIyLjQiLz48Y2lyY2xlIGN4PSIxOSIgY3k9IjIwIiByPSIyLjQiLz48Y2lyY2xlIGN4PSIyMyIgY3k9IjIwIiByPSIyLjQiLz48Y2lyY2xlIGN4PSIxMyIgY3k9IjIzIiByPSIyLjQiLz48Y2lyY2xlIGN4PSIxNyIgY3k9IjIzIiByPSIyLjQiLz48Y2lyY2xlIGN4PSIyMSIgY3k9IjI0IiByPSIyLjQiLz48L2c+PC9zdmc+"); }
+[data-plant-marker="blueberry"] { --plant-marker-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGVsbGlwc2UgY3g9IjE2IiBjeT0iMjYiIHJ4PSI5IiByeT0iMi43IiBmaWxsPSIjMzE1YjM1IiBvcGFjaXR5PSIuMTIiLz48cGF0aCBkPSJNMTYgMTNDMTAgNyA2IDggNCAxMmM0IDMgOCA0IDEyIDMiIGZpbGw9IiM0Yzk1NTIiLz48cGF0aCBkPSJNMTYgMTNjNi02IDEwLTUgMTItMS00IDMtOCA0LTEyIDMiIGZpbGw9IiM1Y2EzNWIiLz48ZyBmaWxsPSIjNDk2ZmFlIiBzdHJva2U9IiMzMjRmODIiIHN0cm9rZS13aWR0aD0iLjciPjxjaXJjbGUgY3g9IjExIiBjeT0iMTgiIHI9IjQiLz48Y2lyY2xlIGN4PSIxNyIgY3k9IjE2IiByPSI0LjMiLz48Y2lyY2xlIGN4PSIyMiIgY3k9IjE5IiByPSI0Ii8+PGNpcmNsZSBjeD0iMTUiIGN5PSIyMiIgcj0iNC4xIi8+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMyIgcj0iMy44Ii8+PC9nPjxnIGZpbGw9IiNkOGUwZjIiIG9wYWNpdHk9Ii42NSI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxNyIgcj0iLjgiLz48Y2lyY2xlIGN4PSIxNiIgY3k9IjE1IiByPSIuOCIvPjxjaXJjbGUgY3g9IjIxIiBjeT0iMTgiIHI9Ii44Ii8+PC9nPjwvc3ZnPg=="); }
+[data-plant-marker="herbs"] { --plant-marker-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGVsbGlwc2UgY3g9IjE2IiBjeT0iMjYiIHJ4PSI4IiByeT0iMi42IiBmaWxsPSIjMzE1YjM1IiBvcGFjaXR5PSIuMTIiLz48cGF0aCBkPSJNMTYgMjdWOSIgc3Ryb2tlPSIjM2Y3ZTQ0IiBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTE2IDEzQzExIDggNyA5IDYgMTNjNCAzIDcgMyAxMCAyIiBmaWxsPSIjNWFhNzVkIi8+PHBhdGggZD0iTTE2IDE2YzUtNSA5LTQgMTAgMC00IDMtNyAzLTEwIDIiIGZpbGw9IiM2OGI0NjkiLz48cGF0aCBkPSJNMTYgMjBjLTUtNC05LTMtMTAgMSA0IDMgNyAyIDEwIDEiIGZpbGw9IiM0Yzk4NTIiLz48cGF0aCBkPSJNMTYgMjNjNS00IDktMyAxMCAxLTQgMi03IDItMTAgMSIgZmlsbD0iIzVlYWE2MSIvPjxwYXRoIGQ9Ik0xNiAxMWMtMi02IDAtOSAzLTEwIDIgNCAxIDgtMyAxMiIgZmlsbD0iIzc0YmE2ZSIvPjwvc3ZnPg=="); }
+
+.planting-area-icons i[data-plant-marker] {
+  width: calc(var(--area-icon-size, 16px) * 1.15);
+  height: calc(var(--area-icon-size, 16px) * 1.15);
+  color: transparent !important;
+  font-size: 0 !important;
+  background-image: var(--plant-marker-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: drop-shadow(0 1px 1px rgba(30, 60, 39, .20));
+  transform-origin: center;
+}
+
+.planting-area:hover .planting-area-icons i[data-plant-marker],
+.planting-area.selected .planting-area-icons i[data-plant-marker] {
+  filter:
+    drop-shadow(0 1px 1px rgba(30, 60, 39, .22))
+    drop-shadow(0 0 2px rgba(255, 255, 255, .65));
+}
+
+.gv-plant-icon[data-plant-marker],
+.gv-ready-strip > span[data-plant-marker] {
+  display: inline-block;
+  flex: 0 0 auto;
+  color: transparent !important;
+  font-size: 0 !important;
+  background-image: var(--plant-marker-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: drop-shadow(0 1px 1px rgba(30, 60, 39, .16));
+}
+
+.gv-plant-icon[data-plant-marker] {
+  width: 30px;
+  height: 30px;
+}
+
+.gv-ready-strip > span[data-plant-marker] {
+  width: 34px;
+  height: 34px;
+}
+
+.gv-click-place-ghost-icons i[data-plant-marker],
+.gv-row-draw-dots i[data-plant-marker],
+.row-dots i[data-plant-marker] {
+  color: transparent !important;
+  font-size: 0 !important;
+  background-image: var(--plant-marker-image) !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+}
+
+.gv-click-place-ghost-icons i[data-plant-marker] {
+  width: 20px;
+  height: 20px;
+  filter: drop-shadow(0 1px 1px rgba(30, 60, 39, .14));
+}
+
+.gv-row-draw-dots i[data-plant-marker] {
+  border: 0;
+  border-radius: 0;
+  background-color: transparent !important;
+  box-shadow: none;
+  width: 20px;
+  height: 20px;
+  flex-basis: 20px;
+}
+
+.row-dots i[data-plant-marker] {
+  width: 15px;
+  height: 15px;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent !important;
+  box-shadow: none;
+  filter: drop-shadow(0 1px .7px rgba(30, 60, 39, .16));
+}
+
+/* At dense carrot/bean spacing, retain the crop silhouette but reduce visual collision. */
+.planting-area[data-plant-marker="carrot"] .planting-area-icons i,
+.planting-area[data-plant-marker="bean"] .planting-area-icons i {
+  width: calc(var(--area-icon-size, 16px) * .94);
+  height: calc(var(--area-icon-size, 16px) * .94);
+}
+
+/* Large-spaced plants can carry a little more visual mass without changing their centres. */
+.planting-area[data-plant-marker="pumpkin"] .planting-area-icons i,
+.planting-area[data-plant-marker="blueberry"] .planting-area-icons i {
+  width: calc(var(--area-icon-size, 16px) * 1.28);
+  height: calc(var(--area-icon-size, 16px) * 1.28);
+}
+
+@media (max-width: 760px) {
+  .gv-plant-icon[data-plant-marker] {
+    width: 28px;
+    height: 28px;
+  }
+
+  .gv-ready-strip > span[data-plant-marker] {
+    width: 30px;
+    height: 30px;
+  }
+}
