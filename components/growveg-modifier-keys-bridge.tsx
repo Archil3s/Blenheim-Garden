@@ -63,6 +63,7 @@ export function GrowVegModifierKeysBridge() {
     const syntheticEvents = new WeakSet<Event>();
     let gesture: Gesture | null = null;
     let rearmToken = 0;
+    let rearming = false;
 
     const cancelPendingRearm = () => {
       rearmToken += 1;
@@ -126,7 +127,10 @@ export function GrowVegModifierKeysBridge() {
             return;
           }
 
+          rearming = true;
           button.click();
+          rearming = false;
+
           window.requestAnimationFrame(() => {
             window.requestAnimationFrame(() => {
               if (token === rearmToken) restoreVariety(snapshot.variety);
@@ -205,7 +209,7 @@ export function GrowVegModifierKeysBridge() {
       if (event instanceof KeyboardEvent && event.key === "Escape") cancelPendingRearm();
       if (event.type === "contextmenu") cancelPendingRearm();
 
-      if (event.type === "click") {
+      if (event.type === "click" && !rearming) {
         const plantButton = target?.closest(".gv-plant-list > button");
         const rail = target?.closest<HTMLButtonElement>(".gv-rail button");
         if (plantButton) cancelPendingRearm();
