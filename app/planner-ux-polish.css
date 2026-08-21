@@ -191,7 +191,7 @@
   box-shadow: 0 1px 3px rgba(48, 74, 59, .07);
   font-size: 7.5px;
   font-weight: 800;
-  opacity: .76;
+  opacity: .64;
   backdrop-filter: blur(3px);
   transition: opacity 120ms ease, background 120ms ease;
 }
