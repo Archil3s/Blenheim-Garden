@@ -1,137 +1,111 @@
-# Blenheim Garden — Project Context
+# Blenheim Garden project context
 
-_Last updated: 21 August 2026_
+## Product direction
 
-**Repository:** `Archil3s/Blenheim-Garden`  
-**Production branch:** `main`
+The current priority is planner UI/UX rather than adding more garden-management feature surface.
 
-## Product
+Core direction:
 
-Blenheim Garden is a visual home-garden planner for Blenheim, Marlborough. The measured garden canvas is the application: keep it visually dominant, keep controls compact, and use a GrowVeg-like interaction model without copying proprietary code or artwork.
+- the canvas should read as a **garden first and an editor second**
+- beds should feel physical / soil-like rather than like white UI cards
+- plants and their true centimetre spacing should dominate the plan visually
+- planting boundaries, labels and editing chrome should recede until hover/selection/drag state
+- placement should clearly communicate where a crop will land and how much space it will occupy
+- catalogue and inspector UI should stay compact, calm and tactile
+- preserve real measurements and the existing saved-plan model
 
-The working canvas is **900 × 1080 cm-equivalent pixels**, treated as approximately **9 m × 10.8 m**. The base plan contains the existing 12 numbered beds plus the berry/cane area.
+## Current planner interaction model
 
-## Stack and live Cloudflare storage
+The planner supports Select, Plants, Rows, Bed, Path, Trellis, Tree and Text tools. Objects use 10 cm snap by default and display live drawing measurements. Selected objects support duplicate/delete where appropriate.
 
-- Next.js `16.2.11`
-- React `19.2.x`
-- TypeScript `5.9.x`
-- OpenNext Cloudflare `1.20.2`
-- Wrangler `4.124.0`
-- D1 database `blenheim-garden`, binding `DB`
-- private R2 bucket `blenheim-garden-media`, binding `GARDEN_MEDIA`
-- protected writes via Worker secret `GARDEN_WRITE_TOKEN`
+### Planting areas and true centimetre spacing
 
-D1 has the 12 original beds saved. R2 photo/video upload, viewing and deletion are live. Notes, harvests and crop milestone dates use the existing D1 schema.
+GrowVeg-style planting areas support multiple crops in one bed and can be dragged/resized independently.
 
-Never commit or expose `GARDEN_WRITE_TOKEN`. The browser stores an entered edit key only in `sessionStorage`.
+`lib/garden/plant-spacing-layout.ts` is the source of truth for plant counts and icon coordinates. Plant centres are positioned using the actual `spacingCm` value at the garden's centimetre scale instead of cosmetic CSS gaps.
 
-## Drawing Interface V2
+Supported patterns are grid/block, staggered, rows, natural and single. The planting inspector displays actual spacing in centimetres and recalculates count after area or bed resizing.
 
-The planner uses a simplified two-row application chrome:
+### Planner UX polish layer
 
-- title bar: garden, Settings, Save, Plan/Photos/Notes
-- quick bar: Undo, Redo, 10 cm Snap toggle, Zoom, Month, cloud state
-- readable left drawing rail
-- context-sensitive inspector/tool panel
-- measured grid/rulers and live X/Y coordinates
+The UI polish is intentionally additive and does not change planner persistence or spacing logic. Beds use a warmer raised-bed/soil treatment, planting-area chrome is quiet at rest, hover/selection states are contextual, empty beds are subdued, drag/drop and resize states are clearer, and catalogue/inspector surfaces are compact.
 
-Real drawing tools:
+Keep this direction: avoid reverting to large opaque planting rectangles or permanently loud editing chrome.
 
-- **Select** — move/edit objects; resize beds/trees; reshape rows/paths/trellises using handles
-- **Plants** — select crop/variety and fill a bed
-- **Rows** — drag planting rows with live length/plant count
-- **Bed** — click-drag a new bed with live dimensions
-- **Path** — click-drag a path and edit width/label
-- **Trellis** — click-drag and edit height/post spacing/label
-- **Tree** — click to place, then move/resize canopy and rename
-- **Text** — click to place, then move/edit text and font size
+### GrowVeg-style hover information
 
-Objects use 10 cm snap by default and display live drawing measurements. Selected objects support duplicate/delete where appropriate.
+`app/growveg-hover-info.css` keeps planted crop labels hidden at rest and reveals crop/variety/count/spacing information as a contextual tooltip outside the planted patch. Row captions follow the same principle. Touch devices rely on selected state rather than hover.
 
-### Saved planner payload
+### GrowVeg-style planting gestures
 
-`lib/garden/planner-plan.ts` defines `beds`, `rows`, and `objects` (`path`, `trellis`, `tree`, `text`). Older local plans without `objects` are normalised to the built-in physical layout.
+The current planting flow includes click-to-pick-up, live bed footprint preview, click-to-place patches, drag-to-draw planting rows, live length/count feedback, Shift horizontal/vertical locking, Ctrl repeat placement, Escape/right-click cancel and native drag/drop fallback.
 
-### D1 layout persistence
+### Botanical crop marker system
 
-`lib/garden/layout-schema.ts` idempotently bootstraps Drawing V2 schema when `/api/garden` runs:
+`components/botanical-plant-icons-bridge.tsx` tags crop render nodes while preserving stored `cropIcon` emoji as fallback metadata.
 
-- adds nullable `beds.archived_at` when missing
-- creates `layout_objects` and its index when missing
-- seeds the original main/cross paths, north trellis/tree, Entrance and Exit only when the table is first created
+`app/botanical-plant-icons.css` replaces rendered emoji with original top-down botanical markers for tomato, strawberry, bean, lettuce, pumpkin, carrot, broccoli, raspberry, blueberry and herbs. The same marker language is used in the catalogue, selected crop strip, placement ghosts, planted areas, row previews and saved planting rows.
 
-`app/api/garden/route.ts` loads/saves beds, planting rows and layout objects. Removed beds are archived instead of deleted so historical planting/media relationships survive.
+Dense crops such as carrots/beans are visually smaller and wide-spaced crops such as pumpkins/blueberries are visually larger, but true plant centres remain unchanged.
 
-Do not add a duplicate non-idempotent migration for this runtime-bootstrap schema without first coordinating migration/bootstrap state.
+### Zoom-aware botanical detail
 
-## Notes & Harvests
+`app/botanical-zoom-detail.css` adds three canvas-only visual detail levels driven by planner zoom. Catalogue/inspector markers remain stable and full-detail.
 
-The selected-bed **Notes & harvests** button and top **Notes** tab are functional through `components/garden-records-dialog-bridge.tsx` and `app/api/garden/records/route.ts`.
+- **50–70%:** simplified CSS crop silhouettes and smaller visual scale for whole-garden readability
+- **80–110%:** the standard top-down botanical SVG artwork
+- **120–150%:** crop-specific high-detail overlays such as leaf veins, fruit highlights, centres and surface details
 
-Bed workflow:
+Geometry guarantees:
 
-- shows the current active crop/variety
-- edit **Sown**, **Germinated**, and **Transplanted** dates on the active planting
-- add a dated quick note; when a crop is active the note follows that planting, otherwise it follows the bed
-- record harvest date, weight (g/kg), quantity/unit, and optional note
-- browse chronological note/harvest history for that bed, including finished plantings
-- delete individual notes or harvest records
+- zoom detail never changes `spacingCm`, logical plant count or `plant-spacing-layout.ts`
+- marker scaling is visual only and does not reflow neighbouring geometry
+- measured planting icons retain their existing absolute `left`/`top` centres and inline rotation
+- high-detail overlays do not change measured planting icon positioning mode
+- catalogue icons do not switch detail when canvas zoom changes
 
-The top **Notes** tab opens whole-garden history and allows garden-level notes. All writes/deletes use the same `GARDEN_WRITE_TOKEN` edit key. No new migration is required because `notes`, `harvests`, and planting milestone columns already exist in `migrations/0001_garden_storage.sql`.
+### Horizontal crop palette workspace
 
-## Media
+`app/palette-workspace.css` begins the workspace-architecture redesign.
 
-Bed **Photos & video** and the top **Photos** tab use private R2 through Worker APIs. Bed media targeting uses the stable bed ID rather than the editable bed name.
+On desktop, when the context panel contains the Plants/Rows catalogue:
 
-Strict app limits:
+- the old tall crop sidebar becomes a compact horizontal tray above the canvas
+- search, plant type and variety controls sit in one slim control row
+- Block / Stagger / Rows / Natural / Single becomes a compact segmented control
+- the selected crop is represented as a small in-hand chip
+- crops render as horizontally scrolling visual cards using the botanical marker system
+- crop cards remain click-to-pick-up and drag-capable
+- selecting an existing planting/bed/object returns the UI to the normal side inspector rather than leaving the tray open
+- medium desktop widths retain the tray while hiding redundant selected-crop chrome
 
-```text
-2 GB total
-6 MB per photo
-25 MB per video
-500 files
-```
+This establishes the intended workspace split:
 
-Allowed: JPEG, PNG, WebP, HEIC/HEIF, MP4, WebM, MOV/QuickTime. The browser validates for UX and the Worker validates again before R2 writes.
+**palette for picking → canvas for manipulation → inspector for editing**
 
-## Important files
+Mobile is deliberately unchanged in this first workspace pass. The planned touch version should be a bottom sheet rather than a compressed desktop tray.
 
-- `components/garden-planner.tsx` — Drawing Interface V2 and planner interactions
-- `app/growveg-workspace.css` — V2 workspace/canvas styling
-- `app/planner-interactions.css` — pointer/cursor interaction rules
-- `lib/garden/planner-plan.ts` — shared planner state types
-- `lib/garden/layout-schema.ts` — idempotent D1 Drawing V2 bootstrap
-- `app/api/garden/route.ts` — planner GET/PUT persistence
-- `app/api/garden/records/route.ts` — notes, harvests and milestone API
-- `components/garden-records-dialog-bridge.tsx` — Notes & Harvests UI
-- `lib/garden/cloudflare-db.ts` — DB/R2 bindings
-- `app/api/garden/media/route.ts` — media list/upload
-- `app/api/garden/media/[id]/route.ts` — media stream/delete
-- `components/garden-media-dialog-bridge.tsx` — media UI
-- `docs/CLOUDFLARE_STORAGE.md` — storage reference
+### Saved planner payload and storage
 
-## Deployment
+`lib/garden/planner-plan.ts` defines `beds`, `plantingAreas`, `rows`, and layout objects. Older plans are normalised to the current model. Visual-only planner work must not introduce a D1 migration, saved-plan schema change, R2/media change or `GARDEN_WRITE_TOKEN` change.
 
-```text
-Production branch: main
-Build:  npx @opennextjs/cloudflare build
-Deploy: npx @opennextjs/cloudflare deploy
-```
+## Next UI priorities
 
-Keep package `build` as `next build`, keep `next.config.ts` output `standalone`, and preserve both DB and R2 bindings in `wrangler.jsonc`.
+1. visually test/refine the horizontal crop palette at common desktop widths
+2. design the Plants/Rows mobile bottom sheet
+3. reduce permanent chrome in the left tool rail and top bars
+4. make selected-object editing more contextual/floating where practical
+5. improve visual previews for beds, paths, trellises and trees
+6. improve alignment/snap guides and dimension feedback during object editing
 
-## Next priorities
+## Current verification status
 
-1. Visually test Drawing V2 and Notes & Harvests on production, including Save → refresh persistence.
-2. Polish alignment/snapping/keyboard shortcuts based on actual use.
-3. Add Blenheim-specific planting/frost windows and **Today / This Week** actions.
-4. Add seasonal occupancy and crop-rotation history views.
-5. Link photos directly to harvest records and richer crop timelines if useful.
+Before merge/deploy still run:
 
-## New-chat bootstrap
+1. visual desktop testing at common viewport widths and 50%, 70%, 80%, 110%, 120% and 150% zoom
+2. mobile/touch visual testing
+3. click-placement / drag-row / modifier regression checks
+4. build / TypeScript / lint checks
+5. production smoke testing
 
-```text
-Work on Archil3s/Blenheim-Garden. Read PROJECT_CONTEXT.md first.
-Preserve Drawing Interface V2, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, and strict media quotas. Inspect the current implementation before changing it.
-```
+Do not claim those checks passed until they have actually run.

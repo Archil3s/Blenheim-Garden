@@ -1,0 +1,248 @@
+/*
+ * Planting flow polish
+ *
+ * Keep the centimetre-scale plant positions untouched. This layer only
+ * changes visual hierarchy and instructional UI so plants remain readable.
+ */
+
+/* -----------------------------------------------------------------------
+   1. Keep labels out of the way until they are useful
+   ----------------------------------------------------------------------- */
+
+.planting-area-label {
+  left: 50%;
+  right: auto;
+  bottom: 5px;
+  width: auto;
+  max-width: calc(100% - 18px);
+  transform: translateX(-50%) translateY(3px);
+  padding: 3px 7px;
+  border: 1px solid rgba(47, 103, 72, .16);
+  border-radius: 999px;
+  color: #315944;
+  background: rgba(250, 255, 252, .94);
+  box-shadow: 0 2px 6px rgba(39, 72, 56, .10);
+  font-size: 7px;
+  font-weight: 800;
+  line-height: 1.15;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+  transition: opacity 110ms ease, transform 110ms ease, visibility 110ms ease;
+}
+
+.planting-area:hover .planting-area-label,
+.planting-area.selected .planting-area-label {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Keep the crop itself visually dominant. */
+.planting-area-icons {
+  z-index: 3;
+}
+
+.planting-area-icons i {
+  filter: drop-shadow(0 1px .5px rgba(35, 48, 39, .16));
+}
+
+/* The bed name stays available but is deliberately quiet at rest. */
+.gv-v4-bed-title {
+  opacity: .34;
+  background: rgba(252, 244, 230, .58);
+  box-shadow: none;
+  transition: opacity 110ms ease, background 110ms ease;
+}
+
+.plan-bed.gv-v4-bed:hover .gv-v4-bed-title,
+.plan-bed.gv-v4-bed.selected .gv-v4-bed-title,
+.garden-canvas.tool-plant .plan-bed.gv-v4-bed .gv-v4-bed-title {
+  opacity: 1;
+  background: rgba(252, 244, 230, .92);
+}
+
+/* Row captions can also obscure plant geometry; reveal them contextually. */
+.row-caption {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(3px);
+  transition: opacity 110ms ease, transform 110ms ease, visibility 110ms ease;
+}
+
+.planting-row:hover .row-caption,
+.planting-row.selected .row-caption {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* -----------------------------------------------------------------------
+   2. Make the planting journey obvious without adding another feature
+   ----------------------------------------------------------------------- */
+
+.gv-v4-modebar::before {
+  content: "1  Pick a crop   ·   2  Choose a layout   ·   3  Drag into a bed   ·   4  Click the planted patch to move or resize";
+  grid-column: 1 / -1;
+  display: block;
+  margin: -1px -1px 3px;
+  padding: 7px 8px;
+  border: 1px solid #dce9e3;
+  border-radius: 7px;
+  color: #5c6c65;
+  background: rgba(255, 255, 255, .78);
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: .005em;
+}
+
+.gv-v4-modebar > span {
+  padding-top: 2px;
+}
+
+/* Give each placement choice more breathing room. */
+.gv-v4-modebar button {
+  min-height: 32px;
+  padding-inline: 4px;
+}
+
+/* One concise explanation appears below the mode choices. */
+.gv-v4-modebar::after {
+  content: "Choose how the plant centres are arranged inside the planted patch.";
+  grid-column: 1 / -1;
+  display: block;
+  min-height: 23px;
+  padding: 4px 6px 1px;
+  color: #718078;
+  font-size: 8px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.gv-v4-modebar:has(button:nth-of-type(1).active)::after {
+  content: "Block — even rows and columns using the selected centimetre spacing.";
+}
+
+.gv-v4-modebar:has(button:nth-of-type(2).active)::after {
+  content: "Stagger — offset alternate rows for denser, triangular spacing.";
+}
+
+.gv-v4-modebar:has(button:nth-of-type(3).active)::after {
+  content: "Rows — keep plants visually organised into straight planting lines.";
+}
+
+.gv-v4-modebar:has(button:nth-of-type(4).active)::after {
+  content: "Natural — keep the real spacing but loosen the visual arrangement.";
+}
+
+.gv-v4-modebar:has(button:nth-of-type(5).active)::after {
+  content: "Single — place one plant in the centre of the planted patch.";
+}
+
+/* The selected crop card should read like the next action, but only in Plants mode. */
+.gv-ready-strip {
+  position: relative;
+  overflow: hidden;
+}
+
+.gv-v4-modebar + .gv-ready-strip::after {
+  content: "Drag this crop onto a bed";
+  position: absolute;
+  right: 8px;
+  top: 7px;
+  border: 1px solid rgba(17, 126, 89, .16);
+  border-radius: 999px;
+  padding: 2px 5px;
+  color: #0d7654;
+  background: rgba(255, 255, 255, .76);
+  font-size: 7px;
+  font-weight: 800;
+  pointer-events: none;
+}
+
+/* -----------------------------------------------------------------------
+   3. Make planted patches feel editable without permanent editor chrome
+   ----------------------------------------------------------------------- */
+
+.planting-area {
+  border-color: rgba(32, 112, 73, .10);
+  background: rgba(60, 143, 87, .025);
+}
+
+.planting-area:hover {
+  border-color: rgba(24, 126, 84, .40);
+  background: rgba(222, 244, 227, .11);
+}
+
+.planting-area.selected {
+  border-color: #168b65;
+  background: rgba(225, 247, 232, .12);
+}
+
+/* The resize control should be unmistakable only after selection. */
+.planting-area-resize {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, .94),
+    0 0 0 3px rgba(13, 117, 82, .52),
+    0 3px 7px rgba(24, 73, 52, .25);
+}
+
+/* -----------------------------------------------------------------------
+   4. Simplify the inspector instructions
+   ----------------------------------------------------------------------- */
+
+.gv-planting-inspector .gv-help {
+  font-size: 0;
+}
+
+.gv-planting-inspector .gv-help::before {
+  content: "Drag the planted patch to move it. Drag the corner handle to resize it. Plant count updates automatically from the real centimetre spacing.";
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.gv-planting-inspector .gv-scale-note {
+  color: #3e6656;
+  background: #f5faf7;
+}
+
+/* -----------------------------------------------------------------------
+   5. Touch / small-screen behaviour
+   ----------------------------------------------------------------------- */
+
+@media (max-width: 760px) {
+  /* Touch has no hover, so a selected planting remains the label trigger. */
+  .planting-area-label {
+    bottom: 4px;
+    max-width: calc(100% - 12px);
+    padding: 2px 5px;
+    font-size: 6.5px;
+  }
+
+  .gv-v4-modebar::before {
+    content: "1 Pick crop  ·  2 Layout  ·  3 Drag to bed  ·  4 Tap patch to edit";
+    padding: 6px;
+    font-size: 7.5px;
+  }
+
+  .gv-v4-modebar::after {
+    font-size: 7.5px;
+  }
+
+  .gv-v4-modebar + .gv-ready-strip::after {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planting-area-label,
+  .row-caption,
+  .gv-v4-bed-title {
+    transition: none;
+  }
+}

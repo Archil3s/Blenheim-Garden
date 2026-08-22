@@ -1,0 +1,151 @@
+/*
+ * GrowVeg-style planting hover information
+ *
+ * Plant geometry stays visually clean. Crop details live in a contextual
+ * tooltip outside the planted patch instead of covering the plant icons.
+ */
+
+/* Allow contextual editing UI to escape a bed only while it is needed. */
+.plan-bed.gv-v4-bed:has(.planting-area:hover),
+.plan-bed.gv-v4-bed:has(.planting-area.selected) {
+  overflow: visible !important;
+  z-index: 48;
+}
+
+.planting-area:hover,
+.planting-area.selected {
+  overflow: visible;
+}
+
+/* The icon layer remains clipped to the planted patch even when the tooltip
+   can escape it, so plants never spill into neighbouring beds. */
+.planting-area-icons {
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+/* Turn the existing crop label into a compact hover card. */
+.planting-area-label {
+  z-index: 90;
+  top: 0;
+  bottom: auto;
+  left: 50%;
+  right: auto;
+  width: max-content;
+  max-width: min(230px, calc(100vw - 28px));
+  transform: translate(-50%, calc(-100% - 9px));
+  overflow: visible;
+  padding: 5px 8px;
+  border: 1px solid rgba(45, 91, 68, .20);
+  border-radius: 8px;
+  color: #304e40;
+  background: rgba(252, 255, 253, .98);
+  box-shadow:
+    0 1px 2px rgba(31, 57, 45, .08),
+    0 6px 16px rgba(31, 57, 45, .14);
+  font-size: 7.5px;
+  font-weight: 780;
+  line-height: 1.25;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+}
+
+/* Tooltip pointer. */
+.planting-area-label::before,
+.planting-area-label::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.planting-area-label::before {
+  border: 5px solid transparent;
+  border-top-color: rgba(45, 91, 68, .20);
+}
+
+.planting-area-label::after {
+  margin-top: -1px;
+  border: 4px solid transparent;
+  border-top-color: rgba(252, 255, 253, .98);
+}
+
+/* The previous transition moved labels only a few pixels inside the planting.
+   Keep the hover card fully outside the plant geometry at all times. */
+.planting-area:hover .planting-area-label,
+.planting-area.selected .planting-area-label {
+  transform: translate(-50%, calc(-100% - 9px));
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Crop count + spacing are already in the tooltip, so the separate spacing
+   pill is redundant and was another thing sitting over plant icons. */
+.planting-spacing-badge {
+  display: none !important;
+}
+
+/* Selection chrome should identify the patch without filling it with UI. */
+.planting-area.selected::after {
+  content: "move";
+  left: 6px;
+  top: auto;
+  bottom: -21px;
+  padding: 2px 5px;
+  border: 1px solid rgba(13, 112, 80, .18);
+  border-radius: 999px;
+  color: #176a50;
+  background: rgba(249, 255, 252, .95);
+  box-shadow: 0 2px 5px rgba(35, 76, 56, .10);
+  font-size: 6.5px;
+  font-weight: 820;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Give the selected patch a slight physical focus without dimming the plants. */
+.planting-area.selected .planting-area-icons i {
+  filter:
+    drop-shadow(0 1px .5px rgba(35, 48, 39, .14))
+    drop-shadow(0 0 2px rgba(255, 255, 255, .48));
+}
+
+/* Row information follows the same rule: information floats outside the crop
+   geometry and only appears when interacting. */
+.row-caption {
+  bottom: 22px;
+  border-color: rgba(50, 90, 70, .18);
+  border-radius: 8px;
+  padding: 4px 7px;
+  background: rgba(252, 255, 253, .97);
+  box-shadow: 0 4px 12px rgba(35, 63, 49, .12);
+  font-size: 7.5px;
+}
+
+/* On touch devices there is no hover; selected plantings still expose the
+   same card, and slightly smaller text avoids covering neighbouring beds. */
+@media (max-width: 760px) {
+  .planting-area-label {
+    max-width: min(190px, calc(100vw - 20px));
+    padding: 4px 6px;
+    font-size: 7px;
+  }
+
+  .planting-area.selected::after {
+    bottom: -19px;
+    font-size: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planting-area-label {
+    transition: none;
+  }
+}

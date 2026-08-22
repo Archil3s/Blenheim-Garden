@@ -1,0 +1,233 @@
+/*
+ * GrowVeg-style click-to-place planting preview.
+ *
+ * This is intentionally an interaction layer over the existing drag/drop path:
+ * click a crop to pick it up, move over a bed, click to place at that point.
+ */
+
+html.gv-click-place-armed .garden-canvas,
+html.gv-click-place-armed .plan-bed.gv-v4-bed {
+  cursor: crosshair !important;
+}
+
+.gv-plant-list > button.gv-pickup-armed {
+  border-color: #78bea4 !important;
+  background: #eaf8f2 !important;
+  box-shadow:
+    inset 3px 0 0 #15966c,
+    0 0 0 2px rgba(21, 150, 108, .10),
+    0 4px 10px rgba(34, 99, 72, .10) !important;
+}
+
+.gv-plant-list > button.gv-pickup-armed .gv-v4-drag-grip::after {
+  content: "✓";
+  display: inline-block;
+  margin-left: 3px;
+  color: #0c7755;
+  font-size: 9px;
+  letter-spacing: normal;
+}
+
+html.gv-click-place-armed .gv-ready-strip {
+  border-color: #9fd6c3;
+  background: linear-gradient(135deg, #f7fffb, #e9f7f1);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .8),
+    0 3px 10px rgba(36, 104, 75, .08);
+}
+
+/* Replace drag-only wording only in the Plants panel. The Rows tool keeps its own copy. */
+.gv-v4-modebar + .gv-ready-strip small {
+  font-size: 0;
+}
+
+.gv-v4-modebar + .gv-ready-strip small::after {
+  content: "CLICK A CROP TO PICK IT UP";
+  font-size: 8px;
+}
+
+html.gv-click-place-armed .gv-v4-modebar + .gv-ready-strip small::after {
+  content: "MOVE TO A BED · CLICK TO PLACE";
+}
+
+.gv-v4-modebar + .gv-ready-strip::after {
+  content: "Click crop → move → place" !important;
+}
+
+html.gv-click-place-armed .gv-v4-modebar + .gv-ready-strip::after {
+  content: "Esc to cancel" !important;
+}
+
+.gv-v4-modebar::before {
+  content: "1  Pick a crop   ·   2  Choose a layout   ·   3  Move to a bed   ·   4  Click to place" !important;
+}
+
+/* A hovered bed reads as the valid landing zone before the actual click. */
+.plan-bed.gv-v4-bed.gv-click-place-target {
+  overflow: visible !important;
+  border-color: #0f9168 !important;
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, .9),
+    0 0 0 6px rgba(15, 145, 104, .22),
+    inset 0 0 0 3px rgba(34, 129, 87, .10),
+    0 7px 18px rgba(40, 94, 70, .15) !important;
+}
+
+.gv-click-place-ghost {
+  position: absolute;
+  z-index: 90;
+  display: grid;
+  min-width: 18px;
+  min-height: 18px;
+  place-items: center;
+  overflow: visible;
+  border: 2px dashed rgba(10, 135, 93, .78);
+  border-radius: 10px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(238, 255, 247, .70), rgba(211, 242, 224, .28) 65%, rgba(197, 235, 215, .14));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .75),
+    0 4px 14px rgba(24, 91, 63, .14);
+  pointer-events: none;
+  animation: gv-click-place-in 90ms ease-out;
+}
+
+.gv-click-place-ghost::before,
+.gv-click-place-ghost::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  background: rgba(12, 128, 90, .22);
+  transform: translate(-50%, -50%);
+}
+
+.gv-click-place-ghost::before {
+  width: 1px;
+  height: calc(100% + 12px);
+}
+
+.gv-click-place-ghost::after {
+  width: calc(100% + 12px);
+  height: 1px;
+}
+
+.gv-click-place-ghost-icons {
+  position: absolute;
+  z-index: 3;
+  inset: 7px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  place-items: center;
+  gap: 1px;
+  overflow: hidden;
+  opacity: .72;
+}
+
+.gv-click-place-ghost[data-mode="Rows"] .gv-click-place-ghost-icons {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.gv-click-place-ghost[data-mode="Single"] .gv-click-place-ghost-icons {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.gv-click-place-ghost[data-mode="Stagger"] .gv-click-place-ghost-icons i:nth-child(4),
+.gv-click-place-ghost[data-mode="Stagger"] .gv-click-place-ghost-icons i:nth-child(5),
+.gv-click-place-ghost[data-mode="Stagger"] .gv-click-place-ghost-icons i:nth-child(6) {
+  transform: translateX(18%);
+}
+
+.gv-click-place-ghost[data-mode="Natural"] .gv-click-place-ghost-icons i:nth-child(even) {
+  transform: translate(12%, -8%) rotate(7deg);
+}
+
+.gv-click-place-ghost[data-mode="Natural"] .gv-click-place-ghost-icons i:nth-child(3n) {
+  transform: translate(-10%, 10%) rotate(-9deg);
+}
+
+.gv-click-place-ghost-icons i {
+  display: grid;
+  place-items: center;
+  font-size: clamp(10px, 1.45vw, 18px);
+  font-style: normal;
+  line-height: 1;
+  filter: saturate(.85) drop-shadow(0 1px 1px rgba(31, 67, 48, .12));
+}
+
+.gv-click-place-ghost-label {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  max-width: 210px;
+  border: 1px solid rgba(10, 115, 80, .24);
+  border-radius: 999px;
+  padding: 4px 8px;
+  color: #155e46;
+  background: rgba(250, 255, 252, .97);
+  box-shadow: 0 3px 10px rgba(32, 76, 57, .13);
+  font-size: 7.5px;
+  font-weight: 850;
+  line-height: 1.15;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+}
+
+.gv-click-place-ghost-label::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 7px;
+  height: 7px;
+  border-right: 1px solid rgba(10, 115, 80, .24);
+  border-bottom: 1px solid rgba(10, 115, 80, .24);
+  background: rgba(250, 255, 252, .97);
+  transform: translate(-50%, -4px) rotate(45deg);
+}
+
+html.gv-click-place-armed .gv-stage-status strong::after {
+  content: " · click a bed to place · Esc cancels";
+  color: #0e7856;
+  font-weight: 700;
+}
+
+@keyframes gv-click-place-in {
+  from { opacity: 0; transform: scale(.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 760px) {
+  html.gv-click-place-armed .plan-bed.gv-v4-bed {
+    box-shadow: inset 0 0 0 1px rgba(18, 135, 94, .11);
+  }
+
+  .gv-click-place-ghost-label {
+    bottom: calc(100% + 5px);
+    max-width: 160px;
+    padding: 3px 6px;
+    font-size: 6.5px;
+  }
+
+  .gv-click-place-ghost-icons i {
+    font-size: 11px;
+  }
+
+  .gv-v4-modebar::before {
+    content: "1 Pick crop · 2 Layout · 3 Tap a bed to place" !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gv-click-place-ghost {
+    animation: none;
+  }
+}
