@@ -22,6 +22,7 @@ import "./growveg-modifier-keys.css";
 import "./botanical-plant-icons.css";
 import "./botanical-zoom-detail.css";
 import "./palette-workspace.css";
+import "./palette-workspace-state.css";
 import "./blenheim-season-guide.css";
 
 export const metadata: Metadata = {
