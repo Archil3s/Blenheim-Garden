@@ -1,0 +1,383 @@
+/* GrowVeg-inspired visual hierarchy pass. Presentation only: no planner/storage schema changes. */
+
+/* Make the planner read as canvas first, controls second. */
+.gv-stage {
+  background:
+    radial-gradient(circle at 30% 15%, rgba(255,255,255,.42), transparent 32%),
+    #d8ddda;
+}
+
+.gv-stage-scroll {
+  scroll-behavior: smooth;
+}
+
+.gv-fit-width {
+  min-width: 38px;
+  color: var(--gv-green-dark) !important;
+  background: #f3faf7 !important;
+  border-color: #b8d9cd !important;
+}
+
+/* Simplify crop choice: crop first, details only when selected. */
+.gv-filters label:nth-child(2) {
+  display: none;
+}
+
+.gv-filters {
+  gap: 7px;
+  padding-bottom: 8px;
+}
+
+.gv-ready-strip {
+  grid-template-columns: 32px 1fr;
+  margin: 7px 10px 5px;
+  padding: 7px 8px;
+  border-color: #cce4da;
+  border-radius: 7px;
+  background: #f3faf7;
+}
+
+.gv-ready-strip > span {
+  width: 28px;
+  height: 28px;
+  font-size: 17px;
+}
+
+.gv-ready-strip small {
+  font-size: 7px;
+}
+
+.gv-ready-strip em {
+  display: none;
+}
+
+.gv-advanced-layout-toggle {
+  display: flex;
+  width: calc(100% - 20px);
+  min-height: 30px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 6px 10px 1px;
+  border: 1px solid #d9e2de;
+  border-radius: 6px;
+  padding: 0 9px;
+  color: #65736d;
+  background: #fafcfb;
+  font-size: 9px;
+  font-weight: 750;
+}
+
+.gv-advanced-layout-toggle:hover {
+  border-color: #bfd1c9;
+  background: #f4f8f6;
+}
+
+.gv-v4-modebar {
+  display: none;
+}
+
+.gv-context.gv-layout-expanded .gv-v4-modebar {
+  display: grid;
+}
+
+.gv-plant-list > button {
+  grid-template-columns: 48px 1fr !important;
+  min-height: 58px !important;
+  padding: 5px 11px !important;
+}
+
+.gv-plant-list > button small,
+.gv-v4-drag-grip {
+  display: none !important;
+}
+
+.gv-plant-list strong {
+  font-size: 12px !important;
+  font-weight: 750;
+}
+
+.gv-plant-icon {
+  width: 38px !important;
+  height: 38px !important;
+  border: 1px solid #d7e2de !important;
+  background: linear-gradient(#fff, #f7faf8) !important;
+  box-shadow: 0 1px 2px rgba(30,50,42,.06);
+  font-size: 20px !important;
+}
+
+.gv-plant-list > button.active .gv-plant-icon {
+  border-color: #9ccfbc !important;
+  box-shadow: 0 0 0 3px rgba(22,155,112,.09);
+}
+
+/* Physical garden materials: beds, paths, structures and boundaries should not look interchangeable. */
+.garden-canvas {
+  border-color: #aebbb6 !important;
+  background-color: #f8faf8 !important;
+  background-image:
+    linear-gradient(rgba(192,204,198,.36) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(192,204,198,.36) 1px, transparent 1px),
+    linear-gradient(rgba(152,169,161,.32) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(152,169,161,.32) 1px, transparent 1px) !important;
+}
+
+.plan-bed {
+  border: 3px solid #9b6b42 !important;
+  border-radius: 4px !important;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(111,76,45,.15) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 65%, rgba(88,61,38,.12) 0 1px, transparent 1.5px),
+    linear-gradient(135deg, rgba(255,255,255,.08), transparent 40%),
+    #b98a5d !important;
+  background-size: 18px 18px, 22px 22px, auto, auto !important;
+  box-shadow:
+    inset 0 0 0 2px rgba(237,208,170,.55),
+    inset 0 0 14px rgba(71,46,28,.12),
+    0 1px 2px rgba(42,31,22,.08) !important;
+}
+
+.plan-bed:hover {
+  border-color: #7f5332 !important;
+}
+
+.plan-bed.selected {
+  border-color: var(--gv-green) !important;
+  box-shadow: 0 0 0 4px rgba(22,155,112,.18), inset 0 0 0 2px rgba(255,255,255,.45) !important;
+}
+
+.gv-v4-bed-title {
+  color: #493521 !important;
+  background: rgba(255,249,239,.9) !important;
+}
+
+.empty-bed-label {
+  color: rgba(71,52,34,.72) !important;
+  background: rgba(255,250,241,.7);
+  border-radius: 999px;
+  width: max-content;
+  height: max-content;
+  margin: auto;
+  padding: 3px 7px;
+}
+
+.planting-area {
+  border-color: rgba(47,115,70,.28) !important;
+  background: rgba(167,203,139,.16) !important;
+  box-shadow: inset 0 0 18px rgba(73,118,56,.08) !important;
+}
+
+.planting-area:hover {
+  border-color: rgba(23,126,82,.58) !important;
+  background: rgba(175,214,150,.22) !important;
+}
+
+.planting-area.selected {
+  border-color: #07966c !important;
+  background: rgba(181,222,157,.25) !important;
+}
+
+.path-object {
+  border: 1px solid rgba(117,122,115,.24) !important;
+  background:
+    radial-gradient(circle, rgba(92,97,91,.30) 0 1px, transparent 1.5px) 0 0 / 8px 8px,
+    radial-gradient(circle, rgba(255,255,255,.65) 0 1px, transparent 1.5px) 4px 3px / 10px 10px,
+    #c7c9c3 !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.26);
+}
+
+.trellis-object .layout-line-core {
+  height: 7px !important;
+  border-top: 2px dashed #596e61 !important;
+  border-bottom: 2px dashed #829188 !important;
+  background: repeating-linear-gradient(90deg, transparent 0 22px, rgba(74,91,80,.55) 22px 24px) !important;
+}
+
+.north-zone {
+  border: 2px dashed #89958f !important;
+  background: rgba(226,231,228,.12);
+}
+
+.berry-strip {
+  border: 2px solid #7c8d67 !important;
+  border-radius: 5px;
+  background:
+    linear-gradient(rgba(236,241,226,.72), rgba(226,235,216,.72)),
+    repeating-linear-gradient(90deg, transparent 0 28px, rgba(89,108,74,.12) 28px 30px) !important;
+}
+
+.berry-strip > strong {
+  color: #58654c !important;
+}
+
+.berry-strip span {
+  min-height: 30px !important;
+  border: 0 !important;
+  border-radius: 4px !important;
+  color: #4f5d49 !important;
+  background:
+    radial-gradient(circle at 20% 50%, #b9344c 0 2px, transparent 2.5px),
+    radial-gradient(circle at 40% 38%, #b9344c 0 2px, transparent 2.5px),
+    radial-gradient(circle at 60% 60%, #7c315e 0 2px, transparent 2.5px),
+    radial-gradient(circle at 80% 42%, #b9344c 0 2px, transparent 2.5px),
+    linear-gradient(90deg, transparent 48%, #657457 48% 52%, transparent 52%) !important;
+  box-shadow: inset 0 0 0 1px rgba(89,108,74,.2);
+}
+
+/* Top-down botanical markers replace emoji wallpaper on the measured canvas. */
+.planting-area-icons i {
+  width: calc(var(--area-icon-size) * .86) !important;
+  height: calc(var(--area-icon-size) * .86) !important;
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 50%;
+  font-size: 0 !important;
+  box-shadow: 0 1px 2px rgba(38,60,44,.16);
+}
+
+.planting-area-icons i::before,
+.planting-area-icons i::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.planting-area[data-crop="Tomato"] .planting-area-icons i {
+  background: radial-gradient(circle at 50% 55%, #df5143 0 42%, #b52f28 43% 55%, transparent 56%);
+}
+.planting-area[data-crop="Tomato"] .planting-area-icons i::before {
+  inset: 9% 20% 58%;
+  background: conic-gradient(from 15deg, #3d8b4c 0 18%, transparent 18% 32%, #3d8b4c 32% 50%, transparent 50% 66%, #3d8b4c 66% 84%, transparent 84%);
+}
+
+.planting-area[data-crop="Strawberry"] .planting-area-icons i {
+  border-radius: 48% 48% 55% 55% / 38% 38% 68% 68%;
+  background:
+    radial-gradient(circle at 35% 45%, #ffd166 0 3%, transparent 4%),
+    radial-gradient(circle at 63% 58%, #ffd166 0 3%, transparent 4%),
+    linear-gradient(#f04f58, #c83248);
+}
+.planting-area[data-crop="Strawberry"] .planting-area-icons i::before {
+  inset: -12% 15% 68%;
+  background: conic-gradient(from 10deg, #4a9a52 0 20%, transparent 20% 35%, #4a9a52 35% 55%, transparent 55% 70%, #4a9a52 70% 90%, transparent 90%);
+}
+
+.planting-area[data-crop="Bean"] .planting-area-icons i {
+  border: 0;
+  border-radius: 70% 30% 68% 32%;
+  background: linear-gradient(135deg, #78b54f, #3e7f37);
+  transform-origin: center;
+}
+.planting-area[data-crop="Bean"] .planting-area-icons i::after {
+  inset: 47% 12% auto;
+  height: 1px;
+  background: rgba(238,255,230,.65);
+  transform: rotate(-34deg);
+}
+
+.planting-area[data-crop="Lettuce"] .planting-area-icons i,
+.planting-area[data-crop="Herbs"] .planting-area-icons i {
+  border: 0;
+  background: repeating-conic-gradient(from 8deg, #74b95a 0 12deg, #3f8947 12deg 24deg);
+  box-shadow: inset 0 0 0 3px rgba(237,255,227,.18), 0 1px 2px rgba(38,60,44,.16);
+}
+
+.planting-area[data-crop="Pumpkin"] .planting-area-icons i {
+  background: repeating-linear-gradient(90deg, #d96f24 0 15%, #f2943d 15% 30%);
+}
+.planting-area[data-crop="Pumpkin"] .planting-area-icons i::before {
+  inset: -10% 42% 72%;
+  background: #477f3f;
+  border-radius: 2px;
+}
+
+.planting-area[data-crop="Carrot"] .planting-area-icons i {
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(160deg, #f69a32, #d96920);
+  clip-path: polygon(28% 18%, 72% 18%, 52% 92%);
+  box-shadow: none;
+}
+.planting-area[data-crop="Carrot"] .planting-area-icons i::before {
+  inset: 0 15% 60%;
+  background: repeating-conic-gradient(#4d9850 0 24deg, transparent 24deg 48deg);
+}
+
+.planting-area[data-crop="Broccoli"] .planting-area-icons i {
+  border: 0;
+  background:
+    radial-gradient(circle at 32% 38%, #4c9550 0 25%, transparent 26%),
+    radial-gradient(circle at 66% 35%, #3b8147 0 28%, transparent 29%),
+    radial-gradient(circle at 50% 65%, #5da658 0 31%, transparent 32%);
+}
+
+.planting-area[data-crop="Raspberry"] .planting-area-icons i,
+.planting-area[data-crop="Blueberry"] .planting-area-icons i {
+  border: 0;
+  background:
+    radial-gradient(circle at 31% 34%, var(--berry, #c53c55) 0 20%, transparent 22%),
+    radial-gradient(circle at 68% 36%, var(--berry, #c53c55) 0 20%, transparent 22%),
+    radial-gradient(circle at 50% 68%, var(--berry, #c53c55) 0 22%, transparent 24%),
+    radial-gradient(circle, #5c984f 0 62%, transparent 63%);
+}
+.planting-area[data-crop="Blueberry"] .planting-area-icons i { --berry: #5264a5; }
+
+/* A tree should read like a canopy, not an emoji in a dotted circle. */
+.tree-object {
+  border: 0 !important;
+  background:
+    radial-gradient(circle at 30% 35%, rgba(82,139,72,.88) 0 26%, transparent 27%),
+    radial-gradient(circle at 68% 34%, rgba(94,151,79,.86) 0 27%, transparent 28%),
+    radial-gradient(circle at 50% 68%, rgba(68,123,65,.9) 0 31%, transparent 32%),
+    radial-gradient(circle at 50% 50%, rgba(103,162,84,.72) 0 55%, rgba(63,111,60,.30) 56% 66%, transparent 67%) !important;
+  filter: drop-shadow(0 2px 2px rgba(49,73,48,.18));
+}
+
+.tree-object > span:first-child {
+  font-size: 0 !important;
+}
+
+.tree-object::after {
+  content: "";
+  width: 10%;
+  height: 10%;
+  border-radius: 50%;
+  background: #6f553c;
+  box-shadow: 0 0 0 2px rgba(255,255,255,.35);
+}
+
+/* Progressive detail: exact count stays intact; only low-zoom rendering is simplified. */
+.gv-app[data-zoom-tier="low"] .planting-area-icons i:not(:nth-child(3n + 1)) {
+  display: none !important;
+}
+
+.gv-app[data-zoom-tier="medium"] .planting-area-icons i:nth-child(even) {
+  display: none !important;
+}
+
+.gv-app[data-zoom-tier="low"] .planting-area-label,
+.gv-app[data-zoom-tier="medium"] .planting-area-label {
+  opacity: 0;
+}
+
+.gv-app[data-zoom-tier="low"] .planting-area:hover .planting-area-label,
+.gv-app[data-zoom-tier="medium"] .planting-area:hover .planting-area-label,
+.gv-app[data-zoom-tier="low"] .planting-area.selected .planting-area-label,
+.gv-app[data-zoom-tier="medium"] .planting-area.selected .planting-area-label {
+  opacity: 1;
+}
+
+.planting-area-label {
+  transition: opacity .15s ease;
+}
+
+@media (max-width: 900px) {
+  .gv-fit-width {
+    min-width: 32px;
+    padding-inline: 6px !important;
+  }
+
+  .gv-plant-list > button {
+    min-height: 54px !important;
+  }
+}
