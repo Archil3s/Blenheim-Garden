@@ -25,6 +25,21 @@ The planner currently supports:
 - duplicate/delete controls where appropriate
 - true centimetre-based plant spacing on the canvas
 
+### Blenheim seasonal guidance
+
+The quick bar now includes **Today** and **This Week** garden actions tailored to Blenheim conditions.
+
+The first version:
+
+- uses Blenheim 1991–2020 monthly ground-frost normals to grade seasonal frost risk
+- gives crop actions as **Do now**, **Under cover**, **Coming up**, or **Wait**
+- covers the crops already in the planner: Tomato, Strawberry, Bean, Lettuce, Pumpkin, Carrot, Broccoli, Raspberry, Blueberry and Herbs
+- separates protected sowing from outdoor planting for frost-sensitive crops
+- lets an action jump directly to that crop in the Plants panel
+- links the climate/planting guidance sources inside the seasonal drawer
+
+This is seasonal guidance rather than a live weather forecast. Tender-crop recommendations still tell the user to check the actual local forecast before planting outside.
+
 ### Persistence and storage
 
 - Next.js 16
@@ -107,11 +122,11 @@ Never commit or expose `GARDEN_WRITE_TOKEN`.
 
 ## Next priorities
 
-1. Visually test Drawing V2 and Notes & Harvests on production, including Save → refresh persistence.
+1. Visually test Drawing V2, Notes & Harvests and **Today / This Week** on production, including Save → refresh persistence and mobile layout.
 2. Polish alignment, snapping and keyboard shortcuts based on actual use.
-3. Add Blenheim-specific planting and frost windows plus **Today / This Week** actions.
-4. Add seasonal occupancy and crop-rotation history views.
-5. Link photos directly to harvest records and richer crop timelines if useful.
+3. Add **seasonal bed occupancy and crop-rotation history** views.
+4. Link photos directly to harvest records and richer crop timelines if useful.
+5. Expand the seasonal catalogue beyond the initial planner crops and consider optional live forecast-aware frost warnings later.
 
 ## Development handoff
 
