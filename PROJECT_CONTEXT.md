@@ -64,17 +64,48 @@ Geometry guarantees:
 - high-detail overlays do not change measured planting icon positioning mode
 - catalogue icons do not switch detail when canvas zoom changes
 
+### Horizontal crop palette workspace
+
+`app/palette-workspace.css` begins the workspace-architecture redesign.
+
+On desktop, when the context panel contains the Plants/Rows catalogue:
+
+- the old tall crop sidebar becomes a compact horizontal tray above the canvas
+- search, plant type and variety controls sit in one slim control row
+- Block / Stagger / Rows / Natural / Single becomes a compact segmented control
+- the selected crop is represented as a small in-hand chip
+- crops render as horizontally scrolling visual cards using the botanical marker system
+- crop cards remain click-to-pick-up and drag-capable
+- selecting an existing planting/bed/object returns the UI to the normal side inspector rather than leaving the tray open
+- medium desktop widths retain the tray while hiding redundant selected-crop chrome
+
+This establishes the intended workspace split:
+
+**palette for picking → canvas for manipulation → inspector for editing**
+
+Mobile is deliberately unchanged in this first workspace pass. The planned touch version should be a bottom sheet rather than a compressed desktop tray.
+
 ### Saved planner payload and storage
 
 `lib/garden/planner-plan.ts` defines `beds`, `plantingAreas`, `rows`, and layout objects. Older plans are normalised to the current model. Visual-only planner work must not introduce a D1 migration, saved-plan schema change, R2/media change or `GARDEN_WRITE_TOKEN` change.
+
+## Next UI priorities
+
+1. visually test/refine the horizontal crop palette at common desktop widths
+2. design the Plants/Rows mobile bottom sheet
+3. reduce permanent chrome in the left tool rail and top bars
+4. make selected-object editing more contextual/floating where practical
+5. improve visual previews for beds, paths, trellises and trees
+6. improve alignment/snap guides and dimension feedback during object editing
 
 ## Current verification status
 
 Before merge/deploy still run:
 
-1. visual desktop testing at 50%, 70%, 80%, 110%, 120% and 150% zoom
+1. visual desktop testing at common viewport widths and 50%, 70%, 80%, 110%, 120% and 150% zoom
 2. mobile/touch visual testing
-3. build / TypeScript / lint checks
-4. production smoke testing
+3. click-placement / drag-row / modifier regression checks
+4. build / TypeScript / lint checks
+5. production smoke testing
 
 Do not claim those checks passed until they have actually run.
