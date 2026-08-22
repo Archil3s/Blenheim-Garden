@@ -1,0 +1,19 @@
+/* State-specific cleanup for the horizontal crop palette. */
+
+@media (min-width: 761px) {
+  /* Older sidebar hints were pseudo-elements; hide them in the compact tray. */
+  .gv-body:has(> .gv-context .gv-plant-list) .gv-ready-strip::after,
+  .gv-body:has(> .gv-context .gv-plant-list) .gv-ready-strip em::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .gv-body:has(> .gv-context .gv-plant-list) .gv-v4-modebar + .gv-ready-strip small::after {
+    content: "IN HAND" !important;
+    font-size: 6.5px !important;
+  }
+
+  html.gv-click-place-armed .gv-body:has(> .gv-context .gv-plant-list) .gv-v4-modebar + .gv-ready-strip small::after {
+    content: "PLACE ON GARDEN" !important;
+  }
+}
