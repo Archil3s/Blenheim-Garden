@@ -5,6 +5,7 @@ import { EditKeyDialogBridge } from "@/components/edit-key-dialog-bridge";
 import { GardenMediaDialogBridge } from "@/components/garden-media-dialog-bridge";
 import { GardenRecordsDialogBridge } from "@/components/garden-records-dialog-bridge";
 import { NewPlantingSaveRefreshBridge } from "@/components/new-planting-save-refresh-bridge";
+import { PlannerShortcutsBridge } from "@/components/planner-shortcuts-bridge";
 import "./globals.css";
 import "./planner-interactions.css";
 import "./growveg-workspace.css";
@@ -12,6 +13,7 @@ import "./tree-scaling.css";
 import "./growveg-v4.css";
 import "./blenheim-calendar.css";
 import "./crop-rotation.css";
+import "./production-polish.css";
 
 export const metadata: Metadata = {
   title: "Blenheim Garden",
@@ -35,6 +37,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <CropRotationBridge />
         <GardenMediaDialogBridge />
         <GardenRecordsDialogBridge />
+        <PlannerShortcutsBridge />
       </body>
     </html>
   );
