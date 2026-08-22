@@ -1,0 +1,123 @@
+.gv-rotation-backdrop { position: fixed; inset: 0; z-index: 180; display: flex; justify-content: flex-end; background: rgba(26, 39, 34, .34); backdrop-filter: blur(1px); }
+.gv-rotation-drawer { width: min(720px, 94vw); height: 100%; overflow-y: auto; border-left: 1px solid #cbd7d2; background: #f8faf9; box-shadow: -18px 0 44px rgba(29, 43, 38, .16); color: #43504b; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.gv-rotation-header { position: sticky; top: 0; z-index: 8; display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; padding: 20px 22px 16px; border-bottom: 1px solid #dfe7e4; background: rgba(255, 255, 255, .97); backdrop-filter: blur(9px); }
+.gv-rotation-header small, .gv-rotation-section-title small { color: #158160; font-size: 9px; font-weight: 850; letter-spacing: .13em; }
+.gv-rotation-header h2 { margin: 3px 0 2px; color: #26332e; font-size: 21px; line-height: 1.15; }
+.gv-rotation-header p { margin: 0; color: #7b8983; font-size: 11px; }
+.gv-rotation-header > button { flex: 0 0 34px; width: 34px; height: 34px; border: 1px solid #d6dfdb; border-radius: 50%; color: #61716a; background: #fff; font-size: 24px; line-height: 1; }
+.gv-rotation-back { margin: 12px 18px 0; border: 1px solid #cfdbd6; border-radius: 6px; padding: 7px 10px; color: #3c6f5d; background: #fff; font-size: 10px; font-weight: 750; }
+
+.gv-rotation-state { display: grid; place-items: center; gap: 9px; min-height: 230px; padding: 30px; text-align: center; }
+.gv-rotation-state strong { color: #35433e; font-size: 13px; }
+.gv-rotation-state p { margin: 0; color: #7f8c87; font-size: 11px; }
+.gv-rotation-state.error strong { color: #a33f38; }
+.gv-rotation-spinner { width: 26px; height: 26px; border: 3px solid #d6e5df; border-top-color: #169b70; border-radius: 50%; animation: gv-rotation-spin .8s linear infinite; }
+@keyframes gv-rotation-spin { to { transform: rotate(360deg); } }
+
+.gv-rotation-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; padding: 16px 18px 4px; }
+.gv-rotation-summary > div { display: grid; gap: 2px; border: 1px solid #dce5e1; border-radius: 9px; padding: 11px 12px; background: #fff; }
+.gv-rotation-summary strong { color: #2f413a; font-size: 19px; }
+.gv-rotation-summary span { color: #87938f; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+
+.gv-rotation-bed-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 14px 18px 24px; }
+.gv-rotation-bed-card { position: relative; display: grid; gap: 9px; min-height: 165px; border: 1px solid #d9e2de; border-radius: 10px; padding: 13px; color: #46544f; background: #fff; text-align: left; box-shadow: 0 1px 2px rgba(35, 53, 46, .03); }
+.gv-rotation-bed-card:hover { border-color: #9fcdbc; box-shadow: 0 5px 16px rgba(29, 73, 56, .07); transform: translateY(-1px); }
+.gv-rotation-bed-card.tone-caution { border-left: 4px solid #d69b45; }
+.gv-rotation-bed-card.tone-good { border-left: 4px solid #56a98a; }
+.gv-rotation-bed-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.gv-rotation-bed-title strong { color: #2e3d37; font-size: 13px; }
+.gv-rotation-bed-title span { color: #909b97; font-size: 9px; }
+.gv-rotation-active-list { display: flex; flex-wrap: wrap; gap: 5px; }
+.gv-rotation-active-list > span { border: 1px solid #d8e9e2; border-radius: 999px; padding: 4px 7px; color: #3e695a; background: #f0f8f5; font-size: 9px; font-weight: 700; }
+.gv-rotation-last { margin: 0; color: #60706a; font-size: 10px; }
+.gv-rotation-last.empty { color: #9ca6a2; font-style: italic; }
+.gv-family-row { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+.gv-family-badge, .gv-season-chip { display: inline-flex; align-items: center; min-height: 20px; border: 1px solid #d8e1de; border-radius: 999px; padding: 2px 7px; color: #576660; background: #f7f9f8; font-size: 8px; font-weight: 800; }
+.gv-family-badge.family-nightshade { border-color: #d9c7e5; color: #6d4d7b; background: #f8f3fb; }
+.gv-family-badge.family-legume { border-color: #bfdfcf; color: #35705a; background: #f1faf5; }
+.gv-family-badge.family-brassica { border-color: #c6dfbd; color: #4f7445; background: #f4faef; }
+.gv-family-badge.family-cucurbit { border-color: #ead7af; color: #88652f; background: #fff9ed; }
+.gv-family-badge.family-apiaceae { border-color: #ecd0b5; color: #8b5b32; background: #fff7ef; }
+.gv-family-badge.family-asteraceae { border-color: #d9d8b1; color: #737137; background: #fbfbea; }
+.gv-family-badge.family-rosaceae { border-color: #ecc6ce; color: #8a5260; background: #fff4f6; }
+.gv-family-badge.family-ericaceae { border-color: #c8cde7; color: #515f8d; background: #f4f5fc; }
+.gv-family-badge.family-lamiaceae { border-color: #c6dfd8; color: #416f63; background: #f1f9f7; }
+.gv-family-badge.family-allium { border-color: #d8cce2; color: #6e557e; background: #f8f4fb; }
+.gv-rotation-card-advice { margin: 0; color: #67756f; font-size: 9px; line-height: 1.45; }
+.gv-rotation-card-link { margin-top: auto; color: #16815f; font-size: 9px; font-weight: 800; }
+
+.gv-rotation-advice { display: grid; grid-template-columns: 42px 1fr; gap: 10px; margin: 14px 18px 8px; border: 1px solid #d7e4df; border-radius: 10px; padding: 13px; background: #fff; }
+.gv-rotation-advice.tone-caution { border-color: #ead7b9; background: #fffaf2; }
+.gv-rotation-advice.tone-good { border-color: #c8e2d8; background: #f5fbf8; }
+.gv-rotation-advice-icon { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 9px; color: #147653; background: #e9f7f1; font-size: 19px; font-weight: 850; }
+.gv-rotation-advice.tone-caution .gv-rotation-advice-icon { color: #a36d24; background: #fff0d8; }
+.gv-rotation-advice strong { color: #304139; font-size: 12px; }
+.gv-rotation-advice p { margin: 4px 0 8px; color: #66756f; font-size: 10px; line-height: 1.5; }
+.gv-rotation-avoid, .gv-rotation-suggestions { display: grid; gap: 5px; margin-top: 7px; }
+.gv-rotation-avoid > span, .gv-rotation-suggestions > span { color: #87938f; font-size: 8px; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+.gv-rotation-suggestions > div { display: flex; flex-wrap: wrap; gap: 5px; }
+.gv-rotation-suggestions button { border: 1px solid #bcd9ce; border-radius: 999px; padding: 4px 8px; color: #28684f; background: #fff; font-size: 9px; font-weight: 750; }
+.gv-rotation-suggestions button:hover { border-color: #169b70; background: #eef8f4; }
+
+.gv-occupancy-section, .gv-rotation-history-section { margin: 15px 18px; border: 1px solid #dce5e1; border-radius: 10px; overflow: hidden; background: #fff; }
+.gv-rotation-section-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 13px; border-bottom: 1px solid #e4ebe8; background: #fafcfb; }
+.gv-rotation-section-title > div { display: grid; gap: 1px; }
+.gv-rotation-section-title strong { color: #33433d; font-size: 12px; }
+.gv-rotation-section-title > span { color: #8b9792; font-size: 9px; }
+.gv-occupancy-scroll { overflow-x: auto; }
+.gv-occupancy-grid { min-width: 890px; }
+.gv-occupancy-corner, .gv-occupancy-label { width: 190px; }
+.gv-occupancy-grid { display: grid; grid-template-columns: 190px minmax(700px, 1fr); }
+.gv-occupancy-corner { padding: 8px 10px; border-right: 1px solid #e7ecea; border-bottom: 1px solid #e7ecea; color: #8a9691; font-size: 8px; font-weight: 800; text-transform: uppercase; }
+.gv-occupancy-months { display: grid; grid-template-columns: repeat(var(--month-count), minmax(34px, 1fr)); border-bottom: 1px solid #e7ecea; }
+.gv-occupancy-months > span { display: grid; place-items: center; gap: 0; min-height: 34px; border-left: 1px solid #f0f3f2; color: #7f8b86; font-size: 8px; font-weight: 750; }
+.gv-occupancy-months > span.quarter { border-left-color: #d6dfdc; }
+.gv-occupancy-months small { color: #a0aaa6; font-size: 7px; font-weight: 600; }
+.gv-occupancy-row { display: contents; }
+.gv-occupancy-label { display: grid; grid-template-columns: 28px 1fr; gap: 7px; align-items: center; min-height: 43px; border-right: 1px solid #e7ecea; border-bottom: 1px solid #edf1ef; padding: 5px 9px; }
+.gv-occupancy-label > span { font-size: 18px; }
+.gv-occupancy-label div { min-width: 0; display: grid; gap: 1px; }
+.gv-occupancy-label strong { overflow: hidden; color: #44514c; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.gv-occupancy-label small { color: #909b97; font-size: 8px; }
+.gv-occupancy-cells { display: grid; grid-template-columns: repeat(var(--month-count), minmax(34px, 1fr)); min-height: 43px; border-bottom: 1px solid #edf1ef; }
+.gv-occupancy-cells > span { margin: 7px 2px; border-left: 1px solid #f1f4f3; border-radius: 3px; }
+.gv-occupancy-cells > span.occupied { border: 0; background: #bcded1; box-shadow: inset 0 0 0 1px rgba(34, 100, 75, .08); }
+.gv-occupancy-cells > span.occupied.family-nightshade { background: #d7c4e3; }
+.gv-occupancy-cells > span.occupied.family-legume { background: #b8dccb; }
+.gv-occupancy-cells > span.occupied.family-brassica { background: #c6dfbb; }
+.gv-occupancy-cells > span.occupied.family-cucurbit { background: #ead4a8; }
+.gv-occupancy-cells > span.occupied.family-apiaceae { background: #ebc9a8; }
+.gv-occupancy-cells > span.occupied.family-asteraceae { background: #dedca8; }
+.gv-occupancy-cells > span.occupied.family-rosaceae { background: #e9c0c9; }
+.gv-occupancy-cells > span.occupied.family-ericaceae { background: #c4cbe4; }
+.gv-occupancy-cells > span.occupied.family-lamiaceae { background: #bcd8d0; }
+.gv-occupancy-cells > span.planned { opacity: .45; background-image: repeating-linear-gradient(135deg, transparent, transparent 4px, rgba(255,255,255,.7) 4px, rgba(255,255,255,.7) 7px); }
+
+.gv-rotation-history-list { display: grid; }
+.gv-rotation-history-list article { display: grid; grid-template-columns: 42px 1fr; gap: 9px; align-items: start; padding: 11px 12px; border-bottom: 1px solid #edf1ef; }
+.gv-rotation-history-list article:last-child { border-bottom: 0; }
+.gv-rotation-history-list article.status-active { background: #fbfefc; }
+.gv-rotation-history-icon { display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid #dce5e1; border-radius: 9px; background: #fff; font-size: 19px; }
+.gv-rotation-history-main { display: grid; gap: 4px; }
+.gv-rotation-history-main > div:first-child { display: flex; align-items: center; justify-content: space-between; gap: 9px; }
+.gv-rotation-history-main strong { color: #3b4943; font-size: 11px; }
+.gv-rotation-history-main em { border-radius: 999px; padding: 2px 6px; color: #7a8782; background: #eef2f0; font-size: 7px; font-style: normal; font-weight: 850; text-transform: uppercase; }
+.status-active .gv-rotation-history-main em { color: #176c50; background: #e8f5f0; }
+.gv-rotation-history-main p { margin: 0; color: #7d8a85; font-size: 9px; }
+.gv-season-chip { color: #6c7974; background: #fff; }
+.gv-rotation-empty { padding: 28px 18px; color: #8b9792; font-size: 10px; text-align: center; }
+.gv-rotation-note { margin: 15px 18px 24px; border-left: 3px solid #b9d9cd; padding: 9px 11px; color: #6e7c76; background: #f3f8f6; font-size: 9px; line-height: 1.5; }
+.gv-rotation-note strong { color: #4c5c55; }
+.gv-rotation-note p { margin: 3px 0 0; }
+
+@media (max-width: 720px) {
+  .gv-rotation-drawer { width: 100vw; }
+  .gv-rotation-header { padding: 16px 14px 13px; }
+  .gv-rotation-header h2 { font-size: 18px; }
+  .gv-rotation-summary { padding: 12px 10px 2px; gap: 6px; }
+  .gv-rotation-summary > div { padding: 9px 8px; }
+  .gv-rotation-summary strong { font-size: 16px; }
+  .gv-rotation-bed-grid { grid-template-columns: 1fr; padding: 10px 10px 18px; }
+  .gv-rotation-advice, .gv-occupancy-section, .gv-rotation-history-section, .gv-rotation-note { margin-left: 10px; margin-right: 10px; }
+  .gv-rotation-back { margin-left: 10px; }
+}
