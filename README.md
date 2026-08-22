@@ -27,7 +27,7 @@ The planner currently supports:
 
 ### Blenheim seasonal guidance
 
-The quick bar now includes **Today** and **This Week** garden actions tailored to Blenheim conditions.
+The quick bar includes **Today** and **This Week** garden actions tailored to Blenheim conditions.
 
 The first version:
 
@@ -40,6 +40,23 @@ The first version:
 
 This is seasonal guidance rather than a live weather forecast. Tender-crop recommendations still tell the user to check the actual local forecast before planting outside.
 
+### Seasonal occupancy & crop rotation
+
+The top navigation now includes **Rotation**, and every selected bed/planting has a **Rotation history** action.
+
+The rotation view:
+
+- reads the existing permanent planting history from D1; no duplicate history table is required
+- shows the current and previous occupants of every bed
+- groups crops by botanical family for practical rotation guidance
+- shows an 18-month month-by-month occupancy timeline for each bed
+- highlights repeated recent crop families as a caution
+- suggests different crop-family options that can be selected directly in the Plants panel
+- treats perennial fruit separately from annual rotation
+- keeps rotation advice deliberately advisory rather than presenting it as a hard rule
+
+The history uses existing planting `status`, `start_date`, `end_date`, sow/transplant dates and retained finished planting records.
+
 ### Persistence and storage
 
 - Next.js 16
@@ -50,7 +67,7 @@ This is seasonal guidance rather than a live weather forecast. Tender-crop recom
 - private R2 media bucket: `blenheim-garden-media`
 - protected writes via `GARDEN_WRITE_TOKEN`
 
-D1 stores beds, planting rows, layout objects, notes, harvests and crop milestone dates. Removed beds are archived rather than destructively deleted so historical planting and media relationships are preserved.
+D1 stores beds, planting rows, layout objects, notes, harvests, crop milestone dates and planting history. Removed beds are archived rather than destructively deleted so historical planting and media relationships are preserved.
 
 ### Notes & harvests
 
@@ -89,6 +106,10 @@ npm install
 npm run dev
 ```
 
+## Build verification
+
+Pull requests and pushes to `main` run the repository **Build** workflow using Bun and `bun run build`.
+
 ## Cloudflare deployment
 
 Production branch:
@@ -122,11 +143,11 @@ Never commit or expose `GARDEN_WRITE_TOKEN`.
 
 ## Next priorities
 
-1. Visually test Drawing V2, Notes & Harvests and **Today / This Week** on production, including Save → refresh persistence and mobile layout.
+1. Visually test Drawing V2, Notes & Harvests, **Today / This Week**, and **Rotation** on production, including Save → refresh persistence and mobile layout.
 2. Polish alignment, snapping and keyboard shortcuts based on actual use.
-3. Add **seasonal bed occupancy and crop-rotation history** views.
-4. Link photos directly to harvest records and richer crop timelines if useful.
-5. Expand the seasonal catalogue beyond the initial planner crops and consider optional live forecast-aware frost warnings later.
+3. Link photos directly to harvest records and richer crop timelines.
+4. Expand the seasonal catalogue beyond the initial planner crops.
+5. Consider optional live forecast-aware frost warnings and more detailed bed-health/rotation notes later.
 
 ## Development handoff
 
