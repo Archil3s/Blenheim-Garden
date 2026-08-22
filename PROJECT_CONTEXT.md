@@ -1,6 +1,6 @@
 # Blenheim Garden — Project Context
 
-_Last updated: 21 August 2026_
+_Last updated: 22 August 2026_
 
 **Repository:** `Archil3s/Blenheim-Garden`  
 **Production branch:** `main`
@@ -31,7 +31,7 @@ Never commit or expose `GARDEN_WRITE_TOKEN`. The browser stores an entered edit 
 The planner uses a simplified two-row application chrome:
 
 - title bar: garden, Settings, Save, Plan/Photos/Notes
-- quick bar: Undo, Redo, 10 cm Snap toggle, Zoom, Month, cloud state
+- quick bar: Undo, Redo, 10 cm Snap toggle, Zoom, Month, **Today**, **This Week**, cloud state
 - readable left drawing rail
 - context-sensitive inspector/tool panel
 - measured grid/rulers and live X/Y coordinates
@@ -51,7 +51,7 @@ Objects use 10 cm snap by default and display live drawing measurements. Selecte
 
 ### Saved planner payload
 
-`lib/garden/planner-plan.ts` defines `beds`, `rows`, and `objects` (`path`, `trellis`, `tree`, `text`). Older local plans without `objects` are normalised to the built-in physical layout.
+`lib/garden/planner-plan.ts` defines `beds`, `plantingAreas`, `rows`, and `objects` (`path`, `trellis`, `tree`, `text`). Older local plans without newer fields are normalised to the built-in physical layout.
 
 ### D1 layout persistence
 
@@ -61,9 +61,32 @@ Objects use 10 cm snap by default and display live drawing measurements. Selecte
 - creates `layout_objects` and its index when missing
 - seeds the original main/cross paths, north trellis/tree, Entrance and Exit only when the table is first created
 
-`app/api/garden/route.ts` loads/saves beds, planting rows and layout objects. Removed beds are archived instead of deleted so historical planting/media relationships survive.
+`app/api/garden/route.ts` loads/saves beds, planting areas, planting rows and layout objects. Removed beds are archived instead of deleted so historical planting/media relationships survive.
 
 Do not add a duplicate non-idempotent migration for this runtime-bootstrap schema without first coordinating migration/bootstrap state.
+
+## Blenheim seasonal guidance
+
+Blenheim-specific planting and frost guidance is now live through **Today** and **This Week** actions in the planner quick bar.
+
+Implementation:
+
+- `lib/garden/blenheim-calendar.ts` — deterministic Blenheim crop windows, monthly ground-frost normals and action generation
+- `components/blenheim-calendar-bridge.tsx` — injects Today / This Week into the existing quick bar and opens the seasonal drawer
+- `app/blenheim-calendar.css` — drawer, frost card and action styling
+- `app/layout.tsx` — mounts the calendar bridge globally
+
+The first calendar version covers the crops already present in the planner catalogue: Tomato, Strawberry, Bean, Lettuce, Pumpkin, Carrot, Broccoli, Raspberry, Blueberry and Herbs.
+
+Action states are **Do now**, **Under cover**, **Coming up**, and **Wait**. Crop actions include **Choose [crop] in planner →**, which switches to the Plants tool and selects that crop.
+
+Frost guidance uses Blenheim mean monthly ground-frost days for **1991–2020** rather than pretending there is one guaranteed last-frost date. Key values used by the app include approximately 9.6 ground-frost days in August, 4.3 in September, 2.2 in October and 0.6 in November. Guidance sources are linked inside the drawer (NIWA / Earth Sciences NZ, Tui and Yates NZ).
+
+This is seasonal guidance, **not a live weather forecast**. The UI explicitly tells the user to check the actual local forecast before moving tender crops outside.
+
+No D1 schema or migration is required for the seasonal guidance; it is calculated client-side from the browser date and static local climate/crop-window data.
+
+The implementation was build-verified on 22 August 2026 using a temporary GitHub PR check running `bun run build`; the check passed and the temporary workflow was removed afterward.
 
 ## Notes & Harvests
 
@@ -98,6 +121,9 @@ Allowed: JPEG, PNG, WebP, HEIC/HEIF, MP4, WebM, MOV/QuickTime. The browser valid
 ## Important files
 
 - `components/garden-planner.tsx` — Drawing Interface V2 and planner interactions
+- `components/blenheim-calendar-bridge.tsx` — Today / This Week seasonal UI
+- `lib/garden/blenheim-calendar.ts` — Blenheim crop/frost guidance engine
+- `app/blenheim-calendar.css` — seasonal drawer styling
 - `app/growveg-workspace.css` — V2 workspace/canvas styling
 - `app/planner-interactions.css` — pointer/cursor interaction rules
 - `lib/garden/planner-plan.ts` — shared planner state types
@@ -123,15 +149,15 @@ Keep package `build` as `next build`, keep `next.config.ts` output `standalone`,
 
 ## Next priorities
 
-1. Visually test Drawing V2 and Notes & Harvests on production, including Save → refresh persistence.
+1. Visually test Drawing V2, Notes & Harvests and **Today / This Week** on production, including Save → refresh persistence and mobile layout.
 2. Polish alignment/snapping/keyboard shortcuts based on actual use.
-3. Add Blenheim-specific planting/frost windows and **Today / This Week** actions.
-4. Add seasonal occupancy and crop-rotation history views.
-5. Link photos directly to harvest records and richer crop timelines if useful.
+3. Add **seasonal bed occupancy and crop-rotation history** views.
+4. Link photos directly to harvest records and richer crop timelines if useful.
+5. Expand the seasonal catalogue beyond the initial planner crops and consider optional live forecast-aware frost warnings later.
 
 ## New-chat bootstrap
 
 ```text
 Work on Archil3s/Blenheim-Garden. Read PROJECT_CONTEXT.md first.
-Preserve Drawing Interface V2, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, and strict media quotas. Inspect the current implementation before changing it.
+Preserve Drawing Interface V2, Today / This Week Blenheim seasonal guidance, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, and strict media quotas. Inspect the current implementation before changing it.
 ```
