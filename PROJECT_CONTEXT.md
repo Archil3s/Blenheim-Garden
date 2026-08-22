@@ -22,7 +22,7 @@ The working canvas is **900 × 1080 cm-equivalent pixels**, treated as approxima
 - private R2 bucket `blenheim-garden-media`, binding `GARDEN_MEDIA`
 - protected writes via Worker secret `GARDEN_WRITE_TOKEN`
 
-D1 has the 12 original beds saved. R2 photo/video upload, viewing and deletion are live. Notes, harvests and crop milestone dates use the existing D1 schema.
+D1 has the 12 original beds saved. R2 photo/video upload, viewing and deletion are live. Notes, harvests, crop milestone dates and planting history use the existing D1 schema.
 
 Never commit or expose `GARDEN_WRITE_TOKEN`. The browser stores an entered edit key only in `sessionStorage`.
 
@@ -30,7 +30,7 @@ Never commit or expose `GARDEN_WRITE_TOKEN`. The browser stores an entered edit 
 
 The planner uses a simplified two-row application chrome:
 
-- title bar: garden, Settings, Save, Plan/Photos/Notes
+- title bar: garden, Settings, Save, Plan/Photos/Notes/**Rotation**
 - quick bar: Undo, Redo, 10 cm Snap toggle, Zoom, Month, **Today**, **This Week**, cloud state
 - readable left drawing rail
 - context-sensitive inspector/tool panel
@@ -67,7 +67,7 @@ Do not add a duplicate non-idempotent migration for this runtime-bootstrap schem
 
 ## Blenheim seasonal guidance
 
-Blenheim-specific planting and frost guidance is now live through **Today** and **This Week** actions in the planner quick bar.
+Blenheim-specific planting and frost guidance is live through **Today** and **This Week** actions in the planner quick bar.
 
 Implementation:
 
@@ -86,7 +86,35 @@ This is seasonal guidance, **not a live weather forecast**. The UI explicitly te
 
 No D1 schema or migration is required for the seasonal guidance; it is calculated client-side from the browser date and static local climate/crop-window data.
 
-The implementation was build-verified on 22 August 2026 using a temporary GitHub PR check running `bun run build`; the check passed and the temporary workflow was removed afterward.
+## Seasonal occupancy & crop rotation history
+
+Seasonal occupancy and crop-rotation history are now live through the top **Rotation** tab and a **Rotation history** action injected into selected bed/planting inspectors.
+
+The feature deliberately reads the existing retained `plantings` history rather than adding a duplicate history table. Existing `status`, `start_date`, `end_date`, `sow_date`, `transplant_date`, `created_at` and `updated_at` fields provide the occupancy record.
+
+Implementation:
+
+- `lib/garden/crop-rotation.ts` — crop-family mapping, perennial handling, seasonal labels and rotation advice
+- `app/api/garden/rotation/route.ts` — read-only whole-garden/per-bed history API
+- `components/crop-rotation-bridge.tsx` — injects the Rotation tab and per-bed action; renders garden overview and bed detail drawer
+- `app/crop-rotation.css` — rotation cards, crop-family badges, timeline and mobile styles
+- `app/layout.tsx` — mounts the rotation bridge globally
+
+Current rotation behaviour:
+
+- whole-garden overview shows every current bed, active crops, recent crop families, history count and any rotation caution
+- bed detail shows a full chronological planting record
+- an **18-month monthly occupancy timeline** visualises when each crop occupied the bed
+- crop/variety names are mapped to practical botanical families such as Nightshade, Legume, Brassica, Cucurbit, Apiaceae, Asteraceae, Rosaceae, Ericaceae, Lamiaceae and Allium
+- generic Herbs use the variety to distinguish common herb families where possible
+- repeated recent annual crop families trigger a caution
+- suggested different-family crops can jump directly into the Plants tool
+- raspberry, blackberry, blueberry and strawberry are treated as perennial occupancy rather than normal annual rotation
+- the UI explicitly says rotation is a planning aid, not a hard rule
+
+No new D1 migration is required. The feature is read-only and builds on the history already retained when planting areas are replaced/finished.
+
+The feature was implemented through PR #10 and verified by the repository Build workflow using `bun run build` before merge.
 
 ## Notes & Harvests
 
@@ -124,6 +152,10 @@ Allowed: JPEG, PNG, WebP, HEIC/HEIF, MP4, WebM, MOV/QuickTime. The browser valid
 - `components/blenheim-calendar-bridge.tsx` — Today / This Week seasonal UI
 - `lib/garden/blenheim-calendar.ts` — Blenheim crop/frost guidance engine
 - `app/blenheim-calendar.css` — seasonal drawer styling
+- `components/crop-rotation-bridge.tsx` — Rotation overview/detail UI
+- `lib/garden/crop-rotation.ts` — crop-family/rotation engine
+- `app/api/garden/rotation/route.ts` — read-only planting-history API
+- `app/crop-rotation.css` — rotation/timeline styling
 - `app/growveg-workspace.css` — V2 workspace/canvas styling
 - `app/planner-interactions.css` — pointer/cursor interaction rules
 - `lib/garden/planner-plan.ts` — shared planner state types
@@ -135,7 +167,19 @@ Allowed: JPEG, PNG, WebP, HEIC/HEIF, MP4, WebM, MOV/QuickTime. The browser valid
 - `app/api/garden/media/route.ts` — media list/upload
 - `app/api/garden/media/[id]/route.ts` — media stream/delete
 - `components/garden-media-dialog-bridge.tsx` — media UI
+- `.github/workflows/build.yml` — permanent Bun/Next build verification for PRs and `main`
 - `docs/CLOUDFLARE_STORAGE.md` — storage reference
+
+## Build verification
+
+The repository now has a permanent **Build** workflow for pull requests and pushes to `main`:
+
+```text
+bun install
+bun run build
+```
+
+The crop-rotation feature passed this workflow before merge.
 
 ## Deployment
 
@@ -149,15 +193,15 @@ Keep package `build` as `next build`, keep `next.config.ts` output `standalone`,
 
 ## Next priorities
 
-1. Visually test Drawing V2, Notes & Harvests and **Today / This Week** on production, including Save → refresh persistence and mobile layout.
+1. Visually test Drawing V2, Notes & Harvests, **Today / This Week**, and **Rotation** on production, including Save → refresh persistence and mobile layout.
 2. Polish alignment/snapping/keyboard shortcuts based on actual use.
-3. Add **seasonal bed occupancy and crop-rotation history** views.
-4. Link photos directly to harvest records and richer crop timelines if useful.
-5. Expand the seasonal catalogue beyond the initial planner crops and consider optional live forecast-aware frost warnings later.
+3. Link photos directly to harvest records and richer crop timelines.
+4. Expand the seasonal catalogue beyond the initial planner crops.
+5. Consider optional live forecast-aware frost warnings and more detailed bed-health/rotation notes later.
 
 ## New-chat bootstrap
 
 ```text
 Work on Archil3s/Blenheim-Garden. Read PROJECT_CONTEXT.md first.
-Preserve Drawing Interface V2, Today / This Week Blenheim seasonal guidance, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, and strict media quotas. Inspect the current implementation before changing it.
+Preserve Drawing Interface V2, Today / This Week Blenheim seasonal guidance, Rotation history, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, and strict media quotas. Inspect the current implementation before changing it.
 ```
