@@ -1,10 +1,10 @@
-import { GardenWebGLLite } from "@/components/garden-webgl-lite";
+import { GardenWebGL } from "@/components/garden-webgl";
 
 export const metadata = {
   title: "3D Garden | Blenheim Garden",
-  description: "Interactive low-cost WebGL view of the measured Blenheim garden plan.",
+  description: "Interactive WebGL view of the measured Blenheim garden plan.",
 };
 
 export default function Garden3DPage() {
-  return <GardenWebGLLite />;
+  return <GardenWebGL />;
 }

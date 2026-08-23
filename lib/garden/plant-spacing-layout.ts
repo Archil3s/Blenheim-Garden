@@ -18,7 +18,6 @@ type PlantLayout = {
 
 const STAGGER_ROW_FACTOR = Math.sqrt(3) / 2;
 const NATURAL_ROTATIONS = [-7, 5, -3, 7, 2, -5, 4, -2];
-const DEFAULT_MAX_RENDERED_PLANTS = 240;
 
 function layoutFor(area: PlannerPlantingArea, widthCm: number, heightCm: number): PlantLayout {
   const safeWidth = Math.max(1, widthCm);
@@ -58,7 +57,7 @@ export function plantPositionsForArea(
   area: PlannerPlantingArea,
   widthCm: number,
   heightCm: number,
-  maxRendered = DEFAULT_MAX_RENDERED_PLANTS,
+  maxRendered = 1600,
 ): PlantCanvasPosition[] {
   const layout = layoutFor(area, widthCm, heightCm);
   if (area.pattern === "single") {
