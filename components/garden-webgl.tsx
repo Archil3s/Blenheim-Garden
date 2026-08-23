@@ -21,8 +21,8 @@ import styles from "./garden-webgl.module.css";
 
 const GARDEN_WIDTH_CM = 900;
 const GARDEN_HEIGHT_CM = 1080;
-const MAX_AREA_PLANTS = 512;
-const MAX_ROW_PLANTS = 256;
+const MAX_AREA_PLANTS = 96;
+const MAX_ROW_PLANTS = 96;
 const LIVE_UPDATE_MS = 100;
 
 type ViewMode = "garden" | "rotation";
@@ -824,7 +824,7 @@ export function GardenWebGL() {
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({
-        antialias: true,
+        antialias: false,
         alpha: false,
         powerPreference: "high-performance",
       });
@@ -834,9 +834,9 @@ export function GardenWebGL() {
       return;
     }
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25));
+    renderer.setPixelRatio(1);
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
     renderer.shadowMap.autoUpdate = false;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     mount.replaceChildren(renderer.domElement);
@@ -858,7 +858,7 @@ export function GardenWebGL() {
     scene.add(new THREE.HemisphereLight(0xf6fbf7, 0x786a56, 1.35));
     const sun = new THREE.DirectionalLight(0xfff4d8, 2.3);
     sun.castShadow = true;
-    sun.shadow.mapSize.set(1024, 1024);
+    sun.shadow.mapSize.set(512, 512);
     sun.shadow.camera.left = -8;
     sun.shadow.camera.right = 8;
     sun.shadow.camera.top = 8;
