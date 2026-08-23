@@ -16,6 +16,7 @@ import "./blenheim-calendar.css";
 import "./crop-rotation.css";
 import "./production-polish.css";
 import "./growveg-visual-polish.css";
+import "./plant-icon-polish.css";
 
 export const metadata: Metadata = {
   title: "Blenheim Garden",
