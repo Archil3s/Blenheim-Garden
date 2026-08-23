@@ -12,6 +12,7 @@ import type {
   PlannerRow as PlantingRow,
 } from "@/lib/garden/planner-plan";
 import { plantCountForArea, plantPositionsForArea } from "@/lib/garden/plant-spacing-layout";
+import { DEFAULT_GARDEN_ID, LIVE_PLAN_EVENT, gardenLivePlanKey, gardenLocalPlanKey, readActiveGardenId } from "@/lib/garden/active-garden";
 
 type Tool = "select" | "plant" | "row" | "bed" | "path" | "trellis" | "tree" | "note";
 type SaveState = "idle" | "saving" | "cloud" | "local" | "error";
@@ -40,7 +41,6 @@ type PlantOption = {
 const CANVAS_WIDTH = 900;
 const CANVAS_HEIGHT = 1080;
 const SNAP_CM = 10;
-const LOCAL_PLAN_KEY = "blenheim-garden-plan";
 const EDIT_KEY_SESSION = "blenheim-garden-edit-key";
 
 const tools: Array<{ id: Tool; icon: string; label: string; hint: string }> = [
@@ -100,6 +100,7 @@ const baseObjects: PlannerLayoutObject[] = [
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const basePlan: PlanState = { beds: baseBeds, plantingAreas: basePlantingAreas, rows: [], objects: baseObjects };
+const emptyPlan: PlanState = { beds: [], plantingAreas: [], rows: [], objects: [] };
 
 function clamp(value: number, min: number, max: number) { return Math.min(max, Math.max(min, value)); }
 function lineLength(line: { x1: number; y1: number; x2: number; y2: number }) { return Math.hypot(line.x2 - line.x1, line.y2 - line.y1); }
@@ -147,8 +148,8 @@ function normalisePlan(value: Partial<PlanState> | null | undefined): PlanState 
   };
 }
 
-function readLocalPlan() {
-  try { return normalisePlan(JSON.parse(localStorage.getItem(LOCAL_PLAN_KEY) ?? "null") as Partial<PlanState>); } catch { return null; }
+function readLocalPlan(gardenId: string) {
+  try { return normalisePlan(JSON.parse(localStorage.getItem(gardenLocalPlanKey(gardenId)) ?? "null") as Partial<PlanState>); } catch { return null; }
 }
 
 export function GardenPlanner() {
@@ -182,21 +183,43 @@ export function GardenPlanner() {
 
   useEffect(() => {
     let cancelled = false;
-    const local = readLocalPlan();
-    if (local) { setPlan(local); setLoadSource("local"); } else setLoadSource("default");
+    const gardenId = readActiveGardenId();
+    const local = readLocalPlan(gardenId);
+    if (local) {
+      setPlan(local);
+      setLoadSource("local");
+    } else {
+      setPlan(gardenId === DEFAULT_GARDEN_ID ? clonePlan(basePlan) : clonePlan(emptyPlan));
+      setSelection(gardenId === DEFAULT_GARDEN_ID ? { kind: "bed", id: "1" } : null);
+      setLoadSource("default");
+    }
     void (async () => {
       try {
-        const response = await fetch("/api/garden", { cache: "no-store" });
+        const response = await fetch("/api/garden?gardenId=" + encodeURIComponent(gardenId), { cache: "no-store" });
         const data = await response.json() as GardenPlanApiResponse;
         const cloud = normalisePlan(data.plan);
-        if (cancelled || !response.ok || !data.ok || !cloud || cloud.beds.length === 0) return;
+        if (cancelled || !response.ok || !data.ok || !cloud) return;
         setPlan(cloud);
-        localStorage.setItem(LOCAL_PLAN_KEY, JSON.stringify(cloud));
+        setSelection(cloud.beds.length ? { kind: "bed", id: String(cloud.beds[0].id) } : null);
+        localStorage.setItem(gardenLocalPlanKey(gardenId), JSON.stringify(cloud));
         setLoadSource("cloud");
-      } catch { /* keep local plan */ }
+      } catch { /* keep local or blank plan */ }
     })();
     return () => { cancelled = true; };
   }, []);
+
+  // Publish every in-memory planner change for the WebGL companion.
+  // This does not save to D1 and does not change the normal Save workflow.
+  useEffect(() => {
+    if (loadSource === "starting") return;
+    try {
+      const gardenId = readActiveGardenId();
+      localStorage.setItem(gardenLivePlanKey(gardenId), JSON.stringify(plan));
+      window.dispatchEvent(new CustomEvent(LIVE_PLAN_EVENT, { detail: { gardenId, plan } }));
+    } catch {
+      // Live preview is best-effort; planner editing must keep working if storage is unavailable.
+    }
+  }, [plan, loadSource]);
 
   const selectedBed = selection?.kind === "bed" ? plan.beds.find((item) => String(item.id) === selection.id) ?? null : null;
   const selectedPlanting = selection?.kind === "planting" ? plan.plantingAreas.find((item) => item.id === selection.id) ?? null : null;
@@ -520,11 +543,12 @@ export function GardenPlanner() {
   }
 
   async function savePlan() {
-    localStorage.setItem(LOCAL_PLAN_KEY, JSON.stringify(plan)); setSaveState("saving");
+    const gardenId = readActiveGardenId();
+    localStorage.setItem(gardenLocalPlanKey(gardenId), JSON.stringify(plan)); setSaveState("saving");
     const editKey = sessionStorage.getItem(EDIT_KEY_SESSION)?.trim() ?? "";
     if (!editKey) { setSaveState("local"); return; }
     try {
-      const response = await fetch("/api/garden", { method: "PUT", headers: { "content-type": "application/json", authorization: `Bearer ${editKey}` }, body: JSON.stringify({ plan }) });
+      const response = await fetch(`/api/garden?gardenId=${encodeURIComponent(gardenId)}`, { method: "PUT", headers: { "content-type": "application/json", authorization: `Bearer ${editKey}` }, body: JSON.stringify({ plan }) });
       const data = await response.json() as GardenPlanApiResponse;
       if (!response.ok || !data.ok) { if (response.status === 401) sessionStorage.removeItem(EDIT_KEY_SESSION); setSaveState("local"); return; }
       setLoadSource("cloud"); setSaveState("cloud"); window.setTimeout(() => setSaveState("idle"), 1800);

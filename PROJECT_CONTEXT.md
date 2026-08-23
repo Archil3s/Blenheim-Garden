@@ -205,3 +205,20 @@ Keep package `build` as `next build`, keep `next.config.ts` output `standalone`,
 Work on Archil3s/Blenheim-Garden. Read PROJECT_CONTEXT.md first.
 Preserve Drawing Interface V2, Today / This Week Blenheim seasonal guidance, Rotation history, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, and strict media quotas. Inspect the current implementation before changing it.
 ```
+
+
+## Live WebGL design mirror
+
+The **Live 3D** planner action opens `/3d` as a companion window. The 2D planner publishes its current in-memory `PlannerPlan` to a separate local live-preview key on every plan change; this does **not** write D1. The WebGL view listens for those changes and rebuilds the scene from the same bed, planting-area, row, path, trellis and tree coordinates, so unsaved edits appear in 3D immediately. Normal **Save** remains the only planner action that persists the design through the protected garden API.
+
+
+### Persistent WebGL runtime
+
+Live planner updates now rebuild only the WebGL garden-content group rather than recreating the renderer/camera. This preserves the user's 3D viewpoint during 2D dragging and avoids repeated WebGL-context creation. The hard-coded 2D berry/cane strip and north-zone outline are mirrored with the same percentage geometry, and text layout objects render as WebGL sprites.
+
+
+## Multiple named gardens
+
+The D1 schema already supported multiple garden ids. The planner now stores the selected garden id in browser local storage, scopes local/live plan caches by garden id, sends gardenId to /api/garden, and exposes /api/gardens for listing and creating named blank gardens. Live 3D uses the same garden id. New gardens start blank and do not overwrite the original Blenheim Garden.
+
+WebGL dense planting rendering is deliberately capped and live updates are throttled to keep the browser stable while preserving the real saved plant counts in planner data.
