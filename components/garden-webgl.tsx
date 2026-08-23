@@ -30,6 +30,8 @@ type Runtime = {
   controls: OrbitControls;
   renderer: THREE.WebGLRenderer;
   sun: THREE.DirectionalLight;
+  scene: THREE.Scene;
+  content: THREE.Group;
 };
 
 const familyByCrop: Record<string, string> = {
@@ -196,7 +198,7 @@ function createPlant(crop: string, size: number) {
   return group;
 }
 
-function addBed(scene: THREE.Scene, bed: PlannerBed, mode: ViewMode, activeArea?: PlannerPlantingArea) {
+function addBed(scene: THREE.Object3D, bed: PlannerBed, mode: ViewMode, activeArea?: PlannerPlantingArea) {
   const rect = bedRectCm(bed);
   const width = rect.w / 100;
   const depth = rect.h / 100;
@@ -237,7 +239,7 @@ function addBed(scene: THREE.Scene, bed: PlannerBed, mode: ViewMode, activeArea?
   addRail(railT, depth, x + width / 2, z);
 }
 
-function addPath(scene: THREE.Scene, object: Extract<PlannerPlan["objects"][number], { type: "path" }>) {
+function addPath(scene: THREE.Object3D, object: Extract<PlannerPlan["objects"][number], { type: "path" }>) {
   const x1 = worldX(object.x1);
   const z1 = worldZ(object.y1);
   const x2 = worldX(object.x2);
@@ -262,7 +264,7 @@ function addPath(scene: THREE.Scene, object: Extract<PlannerPlan["objects"][numb
   scene.add(path);
 }
 
-function addTrellis(scene: THREE.Scene, object: Extract<PlannerPlan["objects"][number], { type: "trellis" }>) {
+function addTrellis(scene: THREE.Object3D, object: Extract<PlannerPlan["objects"][number], { type: "trellis" }>) {
   const x1 = worldX(object.x1);
   const z1 = worldZ(object.y1);
   const x2 = worldX(object.x2);
@@ -301,7 +303,7 @@ function addTrellis(scene: THREE.Scene, object: Extract<PlannerPlan["objects"][n
   scene.add(root);
 }
 
-function addTree(scene: THREE.Scene, object: Extract<PlannerPlan["objects"][number], { type: "tree" }>) {
+function addTree(scene: THREE.Object3D, object: Extract<PlannerPlan["objects"][number], { type: "tree" }>) {
   const root = new THREE.Group();
   const trunk = new THREE.Mesh(
     new THREE.CylinderGeometry(0.08, 0.11, 1.05, 9),
@@ -328,7 +330,7 @@ function addTree(scene: THREE.Scene, object: Extract<PlannerPlan["objects"][numb
   scene.add(root);
 }
 
-function addPlantingArea(scene: THREE.Scene, bed: PlannerBed, area: PlannerPlantingArea) {
+function addPlantingArea(scene: THREE.Object3D, bed: PlannerBed, area: PlannerPlantingArea) {
   const bedRect = bedRectCm(bed);
   const areaX = bedRect.x + (area.x / 100) * bedRect.w;
   const areaY = bedRect.y + (area.y / 100) * bedRect.h;
@@ -355,7 +357,7 @@ function addPlantingArea(scene: THREE.Scene, bed: PlannerBed, area: PlannerPlant
   }
 }
 
-function addRow(scene: THREE.Scene, row: PlannerPlan["rows"][number]) {
+function addRow(scene: THREE.Object3D, row: PlannerPlan["rows"][number]) {
   const total = Math.min(160, Math.max(1, row.count));
   const size = clamp(row.spacingCm / 45, 0.55, 1.25);
   for (let index = 0; index < total; index += 1) {
@@ -378,7 +380,91 @@ function addRow(scene: THREE.Scene, row: PlannerPlan["rows"][number]) {
   }
 }
 
-function disposeScene(scene: THREE.Scene) {
+function addFixedGardenFeatures(scene: THREE.Object3D) {
+  // These two measured overlays are still hard-coded in the 2D planner rather than PlannerPlan.
+  // Mirror their exact 2D percentages here so the garden footprint stays visually consistent.
+  const berry = {
+    x: GARDEN_WIDTH_CM * 0.07,
+    y: GARDEN_HEIGHT_CM * 0.028,
+    w: GARDEN_WIDTH_CM * 0.86,
+    h: GARDEN_HEIGHT_CM * 0.085,
+  };
+  const berryBed = new THREE.Mesh(
+    new THREE.BoxGeometry(berry.w / 100, 0.055, berry.h / 100),
+    new THREE.MeshStandardMaterial({ color: 0x718b5d, roughness: 1, transparent: true, opacity: 0.72 }),
+  );
+  berryBed.position.set(worldX(berry.x + berry.w / 2), 0.035, worldZ(berry.y + berry.h / 2));
+  berryBed.receiveShadow = true;
+  inspectable(berryBed, {
+    title: "Berry / cane strip",
+    subtitle: "Fixed garden feature",
+    lines: [{ label: "Size", value: `${(berry.w / 100).toFixed(1)} × ${(berry.h / 100).toFixed(1)} m` }],
+  });
+  scene.add(berryBed);
+
+  const caneCrops = ["Raspberry", "Raspberry", "Raspberry", "Raspberry"];
+  caneCrops.forEach((crop, index) => {
+    const plant = createPlant(crop, 0.76);
+    const t = (index + 1) / (caneCrops.length + 1);
+    plant.position.set(worldX(berry.x + berry.w * t), 0.12, worldZ(berry.y + berry.h / 2));
+    inspectable(plant, {
+      title: index === 3 ? "Blackberry" : "Raspberry",
+      subtitle: "Berry / cane strip",
+      lines: [],
+    });
+    scene.add(plant);
+  });
+
+  const north = {
+    x: GARDEN_WIDTH_CM * 0.12,
+    y: GARDEN_HEIGHT_CM * 0.12,
+    w: GARDEN_WIDTH_CM * 0.34,
+    h: GARDEN_HEIGHT_CM * 0.30,
+  };
+  const material = new THREE.MeshStandardMaterial({ color: 0x8e775e, roughness: 0.95, transparent: true, opacity: 0.7 });
+  const x = worldX(north.x + north.w / 2);
+  const z = worldZ(north.y + north.h / 2);
+  const w = north.w / 100;
+  const d = north.h / 100;
+  const thickness = 0.025;
+  const addRail = (rw: number, rd: number, rx: number, rz: number) => {
+    const rail = new THREE.Mesh(new THREE.BoxGeometry(rw, 0.025, rd), material);
+    rail.position.set(rx, 0.035, rz);
+    scene.add(rail);
+  };
+  addRail(w, thickness, x, z - d / 2);
+  addRail(w, thickness, x, z + d / 2);
+  addRail(thickness, d, x - w / 2, z);
+  addRail(thickness, d, x + w / 2, z);
+}
+
+function addTextLabel(scene: THREE.Object3D, object: Extract<PlannerPlan["objects"][number], { type: "text" }>) {
+  const canvas = document.createElement("canvas");
+  canvas.width = 512;
+  canvas.height = 128;
+  const context = canvas.getContext("2d");
+  if (!context) return;
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.fillStyle = "rgba(255,255,255,0.88)";
+  context.roundRect(8, 22, 496, 84, 18);
+  context.fill();
+  context.fillStyle = "#344a41";
+  context.font = "700 42px Arial, sans-serif";
+  context.textAlign = "center";
+  context.textBaseline = "middle";
+  context.fillText(object.text, 256, 64, 470);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false }));
+  const scale = Math.max(0.55, object.fontSize / 13);
+  sprite.scale.set(2.4 * scale, 0.6 * scale, 1);
+  sprite.position.set(worldX(object.x), 0.42, worldZ(object.y));
+  inspectable(sprite, { title: object.text, subtitle: "Garden label", lines: [] });
+  scene.add(sprite);
+}
+
+function disposeScene(scene: THREE.Object3D) {
   scene.traverse((object) => {
     if (object instanceof THREE.Mesh) {
       object.geometry.dispose();
@@ -488,9 +574,11 @@ export function GardenWebGL() {
     return map;
   }, [plan]);
 
+  // Create the WebGL renderer once. Live plan edits update only the scene content group,
+  // preserving the camera, controls and GPU context while the user drags in the 2D planner.
   useEffect(() => {
     const mount = mountRef.current;
-    if (!mount || !plan) return;
+    if (!mount) return;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "high-performance" });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -539,17 +627,8 @@ export function GardenWebGL() {
     (grid.material as THREE.Material).transparent = true;
     scene.add(grid);
 
-    for (const bed of plan.beds) addBed(scene, bed, viewMode, activeByBed.get(bed.id));
-    for (const object of plan.objects) {
-      if (object.type === "path") addPath(scene, object);
-      if (object.type === "trellis") addTrellis(scene, object);
-      if (object.type === "tree") addTree(scene, object);
-    }
-    for (const area of plan.plantingAreas) {
-      const bed = plan.beds.find((candidate) => candidate.id === area.bedId);
-      if (bed) addPlantingArea(scene, bed, area);
-    }
-    for (const row of plan.rows) addRow(scene, row);
+    const content = new THREE.Group();
+    scene.add(content);
 
     const raycaster = new THREE.Raycaster();
     const pointer = new THREE.Vector2();
@@ -558,7 +637,7 @@ export function GardenWebGL() {
       pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
       pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
       raycaster.setFromCamera(pointer, camera);
-      const hits = raycaster.intersectObjects(scene.children, true);
+      const hits = raycaster.intersectObjects(content.children, true);
       for (const hit of hits) {
         let object: THREE.Object3D | null = hit.object;
         while (object) {
@@ -583,7 +662,7 @@ export function GardenWebGL() {
     resizeObserver.observe(mount);
     resize();
 
-    runtimeRef.current = { camera, controls, renderer, sun };
+    runtimeRef.current = { camera, controls, renderer, sun, scene, content };
     let frame = 0;
     const render = () => {
       controls.update();
@@ -602,6 +681,28 @@ export function GardenWebGL() {
       renderer.dispose();
       if (renderer.domElement.parentElement === mount) mount.removeChild(renderer.domElement);
     };
+  }, []);
+
+  useEffect(() => {
+    const runtime = runtimeRef.current;
+    if (!runtime || !plan) return;
+    const content = runtime.content;
+    disposeScene(content);
+    content.clear();
+
+    addFixedGardenFeatures(content);
+    for (const bed of plan.beds) addBed(content, bed, viewMode, activeByBed.get(bed.id));
+    for (const object of plan.objects) {
+      if (object.type === "path") addPath(content, object);
+      if (object.type === "trellis") addTrellis(content, object);
+      if (object.type === "tree") addTree(content, object);
+      if (object.type === "text") addTextLabel(content, object);
+    }
+    for (const area of plan.plantingAreas) {
+      const bed = plan.beds.find((candidate) => candidate.id === area.bedId);
+      if (bed) addPlantingArea(content, bed, area);
+    }
+    for (const row of plan.rows) addRow(content, row);
   }, [plan, viewMode, activeByBed]);
 
   useEffect(() => {
@@ -667,7 +768,7 @@ export function GardenWebGL() {
           </dl>
           <div className={styles.legend}>
             <strong>Live garden mirror</strong>
-            <p>Mirrors the exact in-memory 2D design, including unsaved moves and resizing. Save still controls D1 persistence.</p>
+            <p>Mirrors the live 2D geometry without resetting your 3D camera, including the fixed berry/cane and north-zone layout. Save still controls D1 persistence.</p>
           </div>
         </aside>
       </section>

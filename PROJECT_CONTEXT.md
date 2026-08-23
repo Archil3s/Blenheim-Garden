@@ -210,3 +210,8 @@ Preserve Drawing Interface V2, Today / This Week Blenheim seasonal guidance, Rot
 ## Live WebGL design mirror
 
 The **Live 3D** planner action opens `/3d` as a companion window. The 2D planner publishes its current in-memory `PlannerPlan` to a separate local live-preview key on every plan change; this does **not** write D1. The WebGL view listens for those changes and rebuilds the scene from the same bed, planting-area, row, path, trellis and tree coordinates, so unsaved edits appear in 3D immediately. Normal **Save** remains the only planner action that persists the design through the protected garden API.
+
+
+### Persistent WebGL runtime
+
+Live planner updates now rebuild only the WebGL garden-content group rather than recreating the renderer/camera. This preserves the user's 3D viewpoint during 2D dragging and avoids repeated WebGL-context creation. The hard-coded 2D berry/cane strip and north-zone outline are mirrored with the same percentage geometry, and text layout objects render as WebGL sprites.
