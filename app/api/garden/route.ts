@@ -268,12 +268,6 @@ function samePlanting(existing: ActivePlanting, crop: string, variety: string | 
   return existing.crop_name === crop && (existing.variety ?? "") === (variety ?? "") && Number(existing.spacing_cm ?? 0) === Number(spacingCm ?? 0);
 }
 
-function gardenIdFromRequest(request: Request) {
-  const value = new URL(request.url).searchParams.get("gardenId")?.trim() || GARDEN_ID;
-  if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,79}$/.test(value)) throw new Error("Garden id is invalid.");
-  return value;
-}
-
 function authorised(request: Request) {
   const configured = getGardenWriteToken();
   if (!configured) return { ok: false as const, status: 503, error: "Garden cloud writes are not configured yet." };
@@ -288,9 +282,8 @@ function pointFromDb(value: string | null) {
   return { x: Number.isFinite(x) ? x : 0, y: Number.isFinite(y) ? y : 0 };
 }
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
-    const gardenId = gardenIdFromRequest(request);
     const db = getGardenDb();
     await ensureGardenLayoutSchema(db);
     await ensureGardenPlantingAreaSchema(db);
@@ -299,7 +292,7 @@ export async function GET(request: Request) {
       SELECT id, label, x_percent, y_percent, width_percent, height_percent
       FROM beds WHERE garden_id = ? AND archived_at IS NULL
       ORDER BY sort_order ASC, id ASC
-    `).bind(gardenId).all<BedRow>();
+    `).bind(GARDEN_ID).all<BedRow>();
 
     const areasResult = await db.prepare(`
       SELECT a.id, a.bed_id, a.x_percent, a.y_percent, a.width_percent, a.height_percent,
@@ -309,7 +302,7 @@ export async function GET(request: Request) {
       INNER JOIN plantings p ON p.area_id = a.id AND p.status = 'active'
       WHERE a.garden_id = ? AND a.archived_at IS NULL
       ORDER BY a.sort_order ASC, a.created_at ASC
-    `).bind(gardenId).all<PlantingAreaDb>();
+    `).bind(GARDEN_ID).all<PlantingAreaDb>();
 
     const rowsResult = await db.prepare(`
       SELECT r.id, r.x1_cm, r.y1_cm, r.x2_cm, r.y2_cm,
@@ -318,13 +311,13 @@ export async function GET(request: Request) {
       INNER JOIN plantings p ON p.row_id = r.id AND p.status = 'active'
       WHERE r.garden_id = ?
       ORDER BY r.created_at ASC
-    `).bind(gardenId).all<PlantingRowDb>();
+    `).bind(GARDEN_ID).all<PlantingRowDb>();
 
     const layoutResult = await db.prepare(`
       SELECT id, object_type, x1_cm, y1_cm, x2_cm, y2_cm, width_cm, height_cm,
         diameter_cm, post_spacing_cm, text_value, label, point_xy, font_size
       FROM layout_objects WHERE garden_id = ? ORDER BY sort_order ASC, created_at ASC
-    `).bind(gardenId).all<LayoutRow>();
+    `).bind(GARDEN_ID).all<LayoutRow>();
 
     const beds: PlannerBed[] = (bedsResult.results ?? []).map((bed) => ({
       id: Number.parseInt(bed.id, 10), name: bed.label, x: Number(bed.x_percent), y: Number(bed.y_percent),
@@ -361,7 +354,7 @@ export async function GET(request: Request) {
       return { id: item.id, type: "text", ...point, text: item.text_value ?? "Label", fontSize: Number(item.font_size ?? 13) };
     });
 
-    return Response.json({ ok: true, source: "d1", gardenId, plan: { beds, plantingAreas, rows, objects } });
+    return Response.json({ ok: true, source: "d1", plan: { beds, plantingAreas, rows, objects } });
   } catch (error) {
     return Response.json({ ok: false, error: error instanceof Error ? error.message : "Unable to load garden plan." }, { status: 503 });
   }
@@ -372,7 +365,6 @@ export async function PUT(request: Request) {
   if (!auth.ok) return Response.json({ ok: false, error: auth.error }, { status: auth.status });
 
   try {
-    const gardenId = gardenIdFromRequest(request);
     const body = await request.json();
     const plan = parsePlan((body as { plan?: unknown })?.plan);
     const db = getGardenDb();
@@ -382,7 +374,7 @@ export async function PUT(request: Request) {
     const currentResult = await db.prepare(`
       SELECT id, bed_id, row_id, area_id, crop_name, crop_icon, variety, spacing_cm, estimated_count
       FROM plantings WHERE garden_id = ? AND status = 'active' ORDER BY created_at DESC
-    `).bind(gardenId).all<ActivePlanting>();
+    `).bind(GARDEN_ID).all<ActivePlanting>();
 
     const existingByTarget = new Map<string, ActivePlanting>();
     const duplicateActive: string[] = [];
@@ -405,12 +397,12 @@ export async function PUT(request: Request) {
         ON CONFLICT(id) DO UPDATE SET label = excluded.label, x_percent = excluded.x_percent,
           y_percent = excluded.y_percent, width_percent = excluded.width_percent, height_percent = excluded.height_percent,
           sort_order = excluded.sort_order, archived_at = NULL, updated_at = CURRENT_TIMESTAMP
-      `).bind(bedId, gardenId, bed.name, bed.x, bed.y, bed.w, bed.h, index));
+      `).bind(bedId, GARDEN_ID, bed.name, bed.x, bed.y, bed.w, bed.h, index));
     }
 
     const bedIds = plan.beds.map((bed) => String(bed.id));
-    if (bedIds.length) statements.push(db.prepare(`UPDATE beds SET archived_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE garden_id = ? AND archived_at IS NULL AND id NOT IN (${bedIds.map(() => "?").join(",")})`).bind(gardenId, ...bedIds));
-    else statements.push(db.prepare("UPDATE beds SET archived_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE garden_id = ? AND archived_at IS NULL").bind(gardenId));
+    if (bedIds.length) statements.push(db.prepare(`UPDATE beds SET archived_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE garden_id = ? AND archived_at IS NULL AND id NOT IN (${bedIds.map(() => "?").join(",")})`).bind(GARDEN_ID, ...bedIds));
+    else statements.push(db.prepare("UPDATE beds SET archived_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE garden_id = ? AND archived_at IS NULL").bind(GARDEN_ID));
 
     for (const [index, area] of plan.plantingAreas.entries()) {
       const bedId = String(area.bedId);
@@ -423,7 +415,7 @@ export async function PUT(request: Request) {
           y_percent = excluded.y_percent, width_percent = excluded.width_percent, height_percent = excluded.height_percent,
           pattern = excluded.pattern, icon_size_px = excluded.icon_size_px, visual_spacing = excluded.visual_spacing,
           sort_order = excluded.sort_order, archived_at = NULL, updated_at = CURRENT_TIMESTAMP
-      `).bind(area.id, gardenId, bedId, area.x, area.y, area.w, area.h, area.pattern, area.iconSize, area.visualSpacing, index));
+      `).bind(area.id, GARDEN_ID, bedId, area.x, area.y, area.w, area.h, area.pattern, area.iconSize, area.visualSpacing, index));
 
       const target = `area:${area.id}`;
       const existing = existingByTarget.get(target);
@@ -443,20 +435,20 @@ export async function PUT(request: Request) {
         statements.push(db.prepare(`
           INSERT INTO plantings (id, garden_id, bed_id, row_id, area_id, crop_name, crop_icon, variety, spacing_cm, estimated_count, status, start_date)
           VALUES (?, ?, ?, NULL, ?, ?, ?, ?, ?, ?, 'active', date('now'))
-        `).bind(plantingId, gardenId, bedId, area.id, area.crop, area.cropIcon, area.variety, area.spacingCm, area.count));
+        `).bind(plantingId, GARDEN_ID, bedId, area.id, area.crop, area.cropIcon, area.variety, area.spacingCm, area.count));
       }
     }
 
     const areaIds = plan.plantingAreas.map((area) => area.id);
-    if (areaIds.length) statements.push(db.prepare(`UPDATE planting_areas SET archived_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE garden_id = ? AND archived_at IS NULL AND id NOT IN (${areaIds.map(() => "?").join(",")})`).bind(gardenId, ...areaIds));
-    else statements.push(db.prepare("UPDATE planting_areas SET archived_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE garden_id = ? AND archived_at IS NULL").bind(gardenId));
+    if (areaIds.length) statements.push(db.prepare(`UPDATE planting_areas SET archived_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE garden_id = ? AND archived_at IS NULL AND id NOT IN (${areaIds.map(() => "?").join(",")})`).bind(GARDEN_ID, ...areaIds));
+    else statements.push(db.prepare("UPDATE planting_areas SET archived_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE garden_id = ? AND archived_at IS NULL").bind(GARDEN_ID));
 
     for (const row of plan.rows) {
       statements.push(db.prepare(`
         INSERT INTO planting_rows (id, garden_id, x1_cm, y1_cm, x2_cm, y2_cm) VALUES (?, ?, ?, ?, ?, ?)
         ON CONFLICT(id) DO UPDATE SET x1_cm = excluded.x1_cm, y1_cm = excluded.y1_cm, x2_cm = excluded.x2_cm,
           y2_cm = excluded.y2_cm, updated_at = CURRENT_TIMESTAMP
-      `).bind(row.id, gardenId, row.x1, row.y1, row.x2, row.y2));
+      `).bind(row.id, GARDEN_ID, row.x1, row.y1, row.x2, row.y2));
       const target = `row:${row.id}`;
       const existing = existingByTarget.get(target);
       if (existing && samePlanting(existing, row.crop, row.variety, row.spacingCm)) {
@@ -472,7 +464,7 @@ export async function PUT(request: Request) {
         statements.push(db.prepare(`
           INSERT INTO plantings (id, garden_id, bed_id, row_id, area_id, crop_name, crop_icon, variety, spacing_cm, estimated_count, status, start_date)
           VALUES (?, ?, NULL, ?, NULL, ?, ?, ?, ?, ?, 'active', date('now'))
-        `).bind(plantingId, gardenId, row.id, row.crop, row.cropIcon, row.variety, row.spacingCm, row.count));
+        `).bind(plantingId, GARDEN_ID, row.id, row.crop, row.cropIcon, row.variety, row.spacingCm, row.count));
       }
     }
 
@@ -489,7 +481,7 @@ export async function PUT(request: Request) {
           text_value = excluded.text_value, label = excluded.label, point_xy = excluded.point_xy, font_size = excluded.font_size,
           sort_order = excluded.sort_order, updated_at = CURRENT_TIMESTAMP
       `).bind(
-        object.id, gardenId, object.type,
+        object.id, GARDEN_ID, object.type,
         object.type === "path" || object.type === "trellis" ? object.x1 : null,
         object.type === "path" || object.type === "trellis" ? object.y1 : null,
         object.type === "path" || object.type === "trellis" ? object.x2 : null,
@@ -507,8 +499,8 @@ export async function PUT(request: Request) {
     }
 
     const objectIds = plan.objects.map((object) => object.id);
-    if (objectIds.length) statements.push(db.prepare(`DELETE FROM layout_objects WHERE garden_id = ? AND id NOT IN (${objectIds.map(() => "?").join(",")})`).bind(gardenId, ...objectIds));
-    else statements.push(db.prepare("DELETE FROM layout_objects WHERE garden_id = ?").bind(gardenId));
+    if (objectIds.length) statements.push(db.prepare(`DELETE FROM layout_objects WHERE garden_id = ? AND id NOT IN (${objectIds.map(() => "?").join(",")})`).bind(GARDEN_ID, ...objectIds));
+    else statements.push(db.prepare("DELETE FROM layout_objects WHERE garden_id = ?").bind(GARDEN_ID));
 
     const currentTargets = new Set([
       ...plan.plantingAreas.map((area) => `area:${area.id}`),
@@ -521,9 +513,8 @@ export async function PUT(request: Request) {
       }
     }
 
-    statements.push(db.prepare("UPDATE gardens SET updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind(gardenId));
     if (statements.length) await db.batch(statements);
-    return Response.json({ ok: true, gardenId, savedAt: new Date().toISOString() });
+    return Response.json({ ok: true, savedAt: new Date().toISOString() });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unable to save garden plan.";
     const status = /invalid|required|outside|larger|missing|too short/i.test(message) ? 400 : 503;
