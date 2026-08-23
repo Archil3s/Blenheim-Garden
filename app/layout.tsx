@@ -8,6 +8,7 @@ import { GardenRecordsDialogBridge } from "@/components/garden-records-dialog-br
 import { GrowVegVisualPolishBridge } from "@/components/growveg-visual-polish-bridge";
 import { NewPlantingSaveRefreshBridge } from "@/components/new-planting-save-refresh-bridge";
 import { PlannerShortcutsBridge } from "@/components/planner-shortcuts-bridge";
+import { WebglLaunchBridge } from "@/components/webgl-launch-bridge";
 import "./globals.css";
 import "./planner-interactions.css";
 import "./growveg-workspace.css";
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <PlannerShortcutsBridge />
         <GrowVegVisualPolishBridge />
         <GardenManagerBridge />
+        <WebglLaunchBridge />
       </body>
     </html>
   );

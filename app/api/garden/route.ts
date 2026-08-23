@@ -405,7 +405,7 @@ export async function PUT(request: Request) {
         ON CONFLICT(id) DO UPDATE SET label = excluded.label, x_percent = excluded.x_percent,
           y_percent = excluded.y_percent, width_percent = excluded.width_percent, height_percent = excluded.height_percent,
           sort_order = excluded.sort_order, archived_at = NULL, updated_at = CURRENT_TIMESTAMP
-      `).bind(bedId, GARDEN_ID, bed.name, bed.x, bed.y, bed.w, bed.h, index));
+      `).bind(bedId, gardenId, bed.name, bed.x, bed.y, bed.w, bed.h, index));
     }
 
     const bedIds = plan.beds.map((bed) => String(bed.id));
@@ -423,7 +423,7 @@ export async function PUT(request: Request) {
           y_percent = excluded.y_percent, width_percent = excluded.width_percent, height_percent = excluded.height_percent,
           pattern = excluded.pattern, icon_size_px = excluded.icon_size_px, visual_spacing = excluded.visual_spacing,
           sort_order = excluded.sort_order, archived_at = NULL, updated_at = CURRENT_TIMESTAMP
-      `).bind(area.id, GARDEN_ID, bedId, area.x, area.y, area.w, area.h, area.pattern, area.iconSize, area.visualSpacing, index));
+      `).bind(area.id, gardenId, bedId, area.x, area.y, area.w, area.h, area.pattern, area.iconSize, area.visualSpacing, index));
 
       const target = `area:${area.id}`;
       const existing = existingByTarget.get(target);
@@ -443,7 +443,7 @@ export async function PUT(request: Request) {
         statements.push(db.prepare(`
           INSERT INTO plantings (id, garden_id, bed_id, row_id, area_id, crop_name, crop_icon, variety, spacing_cm, estimated_count, status, start_date)
           VALUES (?, ?, ?, NULL, ?, ?, ?, ?, ?, ?, 'active', date('now'))
-        `).bind(plantingId, GARDEN_ID, bedId, area.id, area.crop, area.cropIcon, area.variety, area.spacingCm, area.count));
+        `).bind(plantingId, gardenId, bedId, area.id, area.crop, area.cropIcon, area.variety, area.spacingCm, area.count));
       }
     }
 
@@ -456,7 +456,7 @@ export async function PUT(request: Request) {
         INSERT INTO planting_rows (id, garden_id, x1_cm, y1_cm, x2_cm, y2_cm) VALUES (?, ?, ?, ?, ?, ?)
         ON CONFLICT(id) DO UPDATE SET x1_cm = excluded.x1_cm, y1_cm = excluded.y1_cm, x2_cm = excluded.x2_cm,
           y2_cm = excluded.y2_cm, updated_at = CURRENT_TIMESTAMP
-      `).bind(row.id, GARDEN_ID, row.x1, row.y1, row.x2, row.y2));
+      `).bind(row.id, gardenId, row.x1, row.y1, row.x2, row.y2));
       const target = `row:${row.id}`;
       const existing = existingByTarget.get(target);
       if (existing && samePlanting(existing, row.crop, row.variety, row.spacingCm)) {
@@ -472,7 +472,7 @@ export async function PUT(request: Request) {
         statements.push(db.prepare(`
           INSERT INTO plantings (id, garden_id, bed_id, row_id, area_id, crop_name, crop_icon, variety, spacing_cm, estimated_count, status, start_date)
           VALUES (?, ?, NULL, ?, NULL, ?, ?, ?, ?, ?, 'active', date('now'))
-        `).bind(plantingId, GARDEN_ID, row.id, row.crop, row.cropIcon, row.variety, row.spacingCm, row.count));
+        `).bind(plantingId, gardenId, row.id, row.crop, row.cropIcon, row.variety, row.spacingCm, row.count));
       }
     }
 
@@ -489,7 +489,7 @@ export async function PUT(request: Request) {
           text_value = excluded.text_value, label = excluded.label, point_xy = excluded.point_xy, font_size = excluded.font_size,
           sort_order = excluded.sort_order, updated_at = CURRENT_TIMESTAMP
       `).bind(
-        object.id, GARDEN_ID, object.type,
+        object.id, gardenId, object.type,
         object.type === "path" || object.type === "trellis" ? object.x1 : null,
         object.type === "path" || object.type === "trellis" ? object.y1 : null,
         object.type === "path" || object.type === "trellis" ? object.x2 : null,
