@@ -205,3 +205,8 @@ Keep package `build` as `next build`, keep `next.config.ts` output `standalone`,
 Work on Archil3s/Blenheim-Garden. Read PROJECT_CONTEXT.md first.
 Preserve Drawing Interface V2, Today / This Week Blenheim seasonal guidance, Rotation history, Notes & Harvests, the measured physical garden layout, D1 DB binding, private R2 GARDEN_MEDIA binding, protected GARDEN_WRITE_TOKEN writes, and strict media quotas. Inspect the current implementation before changing it.
 ```
+
+
+## Live WebGL design mirror
+
+The **Live 3D** planner action opens `/3d` as a companion window. The 2D planner publishes its current in-memory `PlannerPlan` to a separate local live-preview key on every plan change; this does **not** write D1. The WebGL view listens for those changes and rebuilds the scene from the same bed, planting-area, row, path, trellis and tree coordinates, so unsaved edits appear in 3D immediately. Normal **Save** remains the only planner action that persists the design through the protected garden API.

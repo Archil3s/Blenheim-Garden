@@ -13,10 +13,11 @@ export function WebglLaunchBridge() {
       button.type = "button";
       button.dataset.webglLaunch = "true";
       button.className = "gv-webgl-launch";
-      button.textContent = "3D";
-      button.title = "Open the interactive WebGL garden";
+      button.textContent = "Live 3D";
+      button.title = "Open a live 3D companion window";
       button.addEventListener("click", () => {
-        window.location.assign("/3d");
+        const companion = window.open("/3d", "blenheim-garden-live-3d");
+        companion?.focus();
       });
       tabs.append(button);
     };

@@ -15,6 +15,8 @@ import styles from "./garden-webgl.module.css";
 const GARDEN_WIDTH_CM = 900;
 const GARDEN_HEIGHT_CM = 1080;
 const LOCAL_PLAN_KEY = "blenheim-garden-plan";
+const LIVE_PLAN_KEY = "blenheim-garden-live-plan";
+const LIVE_PLAN_EVENT = "blenheim-garden-live-plan-change";
 
 type ViewMode = "garden" | "rotation";
 type InspectorItem = {
@@ -386,9 +388,9 @@ function disposeScene(scene: THREE.Scene) {
   });
 }
 
-function readLocalPlan(): PlannerPlan | null {
+function readPlanFromStorage(key: string): PlannerPlan | null {
   try {
-    const parsed = JSON.parse(localStorage.getItem(LOCAL_PLAN_KEY) ?? "null") as Partial<PlannerPlan> | null;
+    const parsed = JSON.parse(localStorage.getItem(key) ?? "null") as Partial<PlannerPlan> | null;
     if (!parsed || !Array.isArray(parsed.beds) || !Array.isArray(parsed.rows)) return null;
     return {
       beds: parsed.beds,
@@ -400,6 +402,9 @@ function readLocalPlan(): PlannerPlan | null {
     return null;
   }
 }
+
+function readLocalPlan() { return readPlanFromStorage(LOCAL_PLAN_KEY); }
+function readLivePlan() { return readPlanFromStorage(LIVE_PLAN_KEY); }
 
 export function GardenWebGL() {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -417,6 +422,14 @@ export function GardenWebGL() {
   useEffect(() => {
     let cancelled = false;
     async function load() {
+      const live = readLivePlan();
+      if (live) {
+        if (!cancelled) {
+          setPlan(live);
+          setSource("Live 2D planner");
+        }
+        return;
+      }
       try {
         const response = await fetch("/api/garden", { cache: "no-store" });
         const data = (await response.json()) as GardenPlanApiResponse;
@@ -441,6 +454,29 @@ export function GardenWebGL() {
     load();
     return () => {
       cancelled = true;
+    };
+  }, []);
+
+  // Keep a separate 3D window synchronized with unsaved edits in the planner.
+  useEffect(() => {
+    const applyPlan = (candidate: PlannerPlan | null) => {
+      if (!candidate) return;
+      setPlan(candidate);
+      setSource("Live 2D planner");
+    };
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === LIVE_PLAN_KEY) applyPlan(readLivePlan());
+    };
+    const onLivePlan = (event: Event) => {
+      const detail = (event as CustomEvent<PlannerPlan>).detail;
+      if (detail && Array.isArray(detail.beds) && Array.isArray(detail.rows)) applyPlan(detail);
+      else applyPlan(readLivePlan());
+    };
+    window.addEventListener("storage", onStorage);
+    window.addEventListener(LIVE_PLAN_EVENT, onLivePlan as EventListener);
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      window.removeEventListener(LIVE_PLAN_EVENT, onLivePlan as EventListener);
     };
   }, []);
 
@@ -592,7 +628,7 @@ export function GardenWebGL() {
           <a href="/" className={styles.back}>← 2D Plan</a>
           <div>
             <strong>Blenheim Garden</strong>
-            <span>WebGL garden twin</span>
+            <span>Live WebGL garden twin</span>
           </div>
         </div>
         <div className={styles.headerActions}>
@@ -630,8 +666,8 @@ export function GardenWebGL() {
             ))}
           </dl>
           <div className={styles.legend}>
-            <strong>First WebGL pass</strong>
-            <p>Uses the same D1 planner geometry and centimetre plant spacing as the 2D garden. No new storage schema.</p>
+            <strong>Live garden mirror</strong>
+            <p>Mirrors the exact in-memory 2D design, including unsaved moves and resizing. Save still controls D1 persistence.</p>
           </div>
         </aside>
       </section>
