@@ -1,4 +1,4 @@
-import { GardenWebGL } from "@/components/garden-webgl";
+import { GardenWebGLLoader } from "@/components/garden-webgl-loader";
 
 export const metadata = {
   title: "3D Garden | Blenheim Garden",
@@ -6,5 +6,5 @@ export const metadata = {
 };
 
 export default function Garden3DPage() {
-  return <GardenWebGL />;
+  return <GardenWebGLLoader />;
 }
