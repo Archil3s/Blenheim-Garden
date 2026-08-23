@@ -22,24 +22,24 @@ function cropFromText(text: string) {
   return null;
 }
 
-function decorateNewCrops() {
-  document.querySelectorAll<HTMLElement>(".gv-plant-list > button:not([data-crop])").forEach((button) => {
+function decorateCrops() {
+  document.querySelectorAll<HTMLElement>(".gv-plant-list > button").forEach((button) => {
     const crop = button.querySelector("strong")?.textContent?.trim();
     if (crop) button.dataset.crop = crop;
   });
 
-  document.querySelectorAll<HTMLElement>(".planting-area:not([data-crop])").forEach((area) => {
+  document.querySelectorAll<HTMLElement>(".planting-area").forEach((area) => {
     const text = area.querySelector(".planting-area-icons i")?.textContent ?? area.textContent ?? "";
     const crop = cropFromText(text);
     if (crop) area.dataset.crop = crop;
   });
 
-  document.querySelectorAll<HTMLElement>(".planting-row:not([data-crop])").forEach((row) => {
+  document.querySelectorAll<HTMLElement>(".planting-row").forEach((row) => {
     const crop = cropFromText(row.textContent ?? "");
     if (crop) row.dataset.crop = crop;
   });
 
-  const ready = document.querySelector<HTMLElement>(".gv-ready-strip:not([data-crop])");
+  const ready = document.querySelector<HTMLElement>(".gv-ready-strip");
   if (ready) {
     const crop = cropFromText(ready.textContent ?? "");
     if (crop) ready.dataset.crop = crop;
@@ -112,51 +112,32 @@ function ensureAdvancedLayoutToggle() {
 
 export function GrowVegVisualPolishBridge() {
   useEffect(() => {
-    let frame: number | null = null;
-
     const decorate = () => {
-      frame = null;
       ensureFitButton();
       ensureAdvancedLayoutToggle();
-      decorateNewCrops();
+      decorateCrops();
       decorateZoom();
     };
 
-    const scheduleDecorate = () => {
-      if (frame !== null) return;
-      frame = window.requestAnimationFrame(decorate);
-    };
+    decorate();
+    const observer = new MutationObserver(decorate);
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
 
-    scheduleDecorate();
-
-    // Only react to structural DOM changes. Character-data observation caused the
-    // previous implementation to rescan the entire planner while dragging/editing.
-    const observer = new MutationObserver(scheduleDecorate);
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    const onInteraction = () => scheduleDecorate();
-    document.addEventListener("click", onInteraction, true);
-    document.addEventListener("change", onInteraction, true);
-    document.addEventListener("input", onInteraction, true);
-    window.addEventListener("resize", onInteraction);
+    const onResize = () => decorateZoom();
+    window.addEventListener("resize", onResize);
 
     const initialFit = window.setTimeout(() => {
       const app = document.querySelector<HTMLElement>(".gv-app");
       if (window.innerWidth >= 1100 && app && !app.dataset.autoFitApplied) {
         app.dataset.autoFitApplied = "true";
         fitToWidth();
-        scheduleDecorate();
       }
     }, 350);
 
     return () => {
       window.clearTimeout(initialFit);
-      if (frame !== null) window.cancelAnimationFrame(frame);
       observer.disconnect();
-      document.removeEventListener("click", onInteraction, true);
-      document.removeEventListener("change", onInteraction, true);
-      document.removeEventListener("input", onInteraction, true);
-      window.removeEventListener("resize", onInteraction);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 
