@@ -7,12 +7,16 @@ on:
     paths:
       - scripts/apply-webgl-live-layout.mjs
       - .github/workflows/apply-webgl-live-layout.yml
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
 
 jobs:
   patch:
+    if: github.event_name == 'push' || github.head_ref == 'webgl-exact-live-layout'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,5 +39,3 @@ jobs:
           fi
           git commit -m "Keep WebGL camera stable during live layout updates"
           git push origin HEAD:webgl-exact-live-layout
-
-# One-shot workflow; the patch script removes this file after a successful run.
