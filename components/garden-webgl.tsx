@@ -427,7 +427,7 @@ function addFixedGardenFeatures(scene: THREE.Object3D) {
   const w = north.w / 100;
   const d = north.h / 100;
   const thickness = 0.025;
-  const addRail = (rw, rd, rx, rz) => {
+  const addRail = (rw: number, rd: number, rx: number, rz: number) => {
     const rail = new THREE.Mesh(new THREE.BoxGeometry(rw, 0.025, rd), material);
     rail.position.set(rx, 0.035, rz);
     scene.add(rail);
