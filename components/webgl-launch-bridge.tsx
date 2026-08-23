@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { readActiveGardenId } from "@/lib/garden/active-garden";
 
 export function WebglLaunchBridge() {
   useEffect(() => {
@@ -14,9 +15,10 @@ export function WebglLaunchBridge() {
       button.dataset.webglLaunch = "true";
       button.className = "gv-webgl-launch";
       button.textContent = "Live 3D";
-      button.title = "Open a live 3D companion window";
+      button.title = "Open a live 3D companion window for this garden";
       button.addEventListener("click", () => {
-        const companion = window.open("/3d", "blenheim-garden-live-3d");
+        const gardenId = readActiveGardenId();
+        const companion = window.open(`/3d?gardenId=${encodeURIComponent(gardenId)}`, `blenheim-garden-live-3d-${gardenId}`);
         companion?.focus();
       });
       tabs.append(button);

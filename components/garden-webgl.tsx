@@ -10,13 +10,11 @@ import type {
   PlannerPlantingArea,
 } from "@/lib/garden/planner-plan";
 import { plantPositionsForArea } from "@/lib/garden/plant-spacing-layout";
+import { DEFAULT_GARDEN_ID, LIVE_PLAN_EVENT, gardenLivePlanKey, gardenLocalPlanKey, readActiveGardenId } from "@/lib/garden/active-garden";
 import styles from "./garden-webgl.module.css";
 
 const GARDEN_WIDTH_CM = 900;
 const GARDEN_HEIGHT_CM = 1080;
-const LOCAL_PLAN_KEY = "blenheim-garden-plan";
-const LIVE_PLAN_KEY = "blenheim-garden-live-plan";
-const LIVE_PLAN_EVENT = "blenheim-garden-live-plan-change";
 
 type ViewMode = "garden" | "rotation";
 type InspectorItem = {
@@ -336,7 +334,7 @@ function addPlantingArea(scene: THREE.Object3D, bed: PlannerBed, area: PlannerPl
   const areaY = bedRect.y + (area.y / 100) * bedRect.h;
   const areaW = (area.w / 100) * bedRect.w;
   const areaH = (area.h / 100) * bedRect.h;
-  const positions = plantPositionsForArea(area, areaW, areaH, 240);
+  const positions = plantPositionsForArea(area, areaW, areaH, 72);
   const size = clamp(area.spacingCm / 45, 0.55, 1.35);
 
   for (const position of positions) {
@@ -358,7 +356,7 @@ function addPlantingArea(scene: THREE.Object3D, bed: PlannerBed, area: PlannerPl
 }
 
 function addRow(scene: THREE.Object3D, row: PlannerPlan["rows"][number]) {
-  const total = Math.min(160, Math.max(1, row.count));
+  const total = Math.min(48, Math.max(1, row.count));
   const size = clamp(row.spacingCm / 45, 0.55, 1.25);
   for (let index = 0; index < total; index += 1) {
     const t = total === 1 ? 0.5 : index / (total - 1);
@@ -489,14 +487,16 @@ function readPlanFromStorage(key: string): PlannerPlan | null {
   }
 }
 
-function readLocalPlan() { return readPlanFromStorage(LOCAL_PLAN_KEY); }
-function readLivePlan() { return readPlanFromStorage(LIVE_PLAN_KEY); }
+function readLocalPlan(gardenId: string) { return readPlanFromStorage(gardenLocalPlanKey(gardenId)); }
+function readLivePlan(gardenId: string) { return readPlanFromStorage(gardenLivePlanKey(gardenId)); }
 
 export function GardenWebGL() {
   const mountRef = useRef<HTMLDivElement>(null);
   const runtimeRef = useRef<Runtime | null>(null);
   const [plan, setPlan] = useState<PlannerPlan | null>(null);
+  const [gardenId, setGardenId] = useState(DEFAULT_GARDEN_ID);
   const [source, setSource] = useState("Loading garden…");
+  const [renderError, setRenderError] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>("garden");
   const [sunHour, setSunHour] = useState(13);
   const [inspector, setInspector] = useState<InspectorItem>({
@@ -507,64 +507,71 @@ export function GardenWebGL() {
 
   useEffect(() => {
     let cancelled = false;
+    const fromQuery = new URL(window.location.href).searchParams.get("gardenId")?.trim();
+    const selectedGardenId = fromQuery || readActiveGardenId();
+    setGardenId(selectedGardenId);
     async function load() {
-      const live = readLivePlan();
+      const live = readLivePlan(selectedGardenId);
       if (live) {
-        if (!cancelled) {
-          setPlan(live);
-          setSource("Live 2D planner");
-        }
+        if (!cancelled) { setPlan(live); setSource("Live 2D planner"); }
         return;
       }
       try {
-        const response = await fetch("/api/garden", { cache: "no-store" });
+        const response = await fetch(`/api/garden?gardenId=${encodeURIComponent(selectedGardenId)}`, { cache: "no-store" });
         const data = (await response.json()) as GardenPlanApiResponse;
         if (response.ok && data.ok && data.plan) {
-          if (!cancelled) {
-            setPlan(data.plan);
-            setSource("Live D1 garden");
-          }
+          if (!cancelled) { setPlan(data.plan); setSource("Live D1 garden"); }
           return;
         }
       } catch {
         // Fall through to local plan.
       }
-      const local = readLocalPlan();
+      const local = readLocalPlan(selectedGardenId);
       if (!cancelled && local) {
         setPlan(local);
         setSource("Local planner copy");
       } else if (!cancelled) {
-        setSource("Garden data unavailable");
+        setPlan({ beds: [], plantingAreas: [], rows: [], objects: [] });
+        setSource("Empty garden");
       }
     }
-    load();
-    return () => {
-      cancelled = true;
-    };
+    void load();
+    return () => { cancelled = true; };
   }, []);
 
   // Keep a separate 3D window synchronized with unsaved edits in the planner.
   useEffect(() => {
-    const applyPlan = (candidate: PlannerPlan | null) => {
-      if (!candidate) return;
-      setPlan(candidate);
+    let timer: number | null = null;
+    let pending: PlannerPlan | null = null;
+    const applyNow = () => {
+      timer = null;
+      if (!pending) return;
+      setPlan(pending);
       setSource("Live 2D planner");
+      pending = null;
     };
+    const schedulePlan = (candidate: PlannerPlan | null) => {
+      if (!candidate) return;
+      pending = candidate;
+      if (timer === null) timer = window.setTimeout(applyNow, 70);
+    };
+    const liveKey = gardenLivePlanKey(gardenId);
     const onStorage = (event: StorageEvent) => {
-      if (event.key === LIVE_PLAN_KEY) applyPlan(readLivePlan());
+      if (event.key === liveKey) schedulePlan(readLivePlan(gardenId));
     };
     const onLivePlan = (event: Event) => {
-      const detail = (event as CustomEvent<PlannerPlan>).detail;
-      if (detail && Array.isArray(detail.beds) && Array.isArray(detail.rows)) applyPlan(detail);
-      else applyPlan(readLivePlan());
+      const detail = (event as CustomEvent<{ gardenId?: string; plan?: PlannerPlan }>).detail;
+      if (detail?.gardenId === gardenId && detail.plan) schedulePlan(detail.plan);
+      else schedulePlan(readLivePlan(gardenId));
     };
     window.addEventListener("storage", onStorage);
     window.addEventListener(LIVE_PLAN_EVENT, onLivePlan as EventListener);
     return () => {
+      if (timer !== null) window.clearTimeout(timer);
       window.removeEventListener("storage", onStorage);
       window.removeEventListener(LIVE_PLAN_EVENT, onLivePlan as EventListener);
     };
-  }, []);
+  }, [gardenId]);
 
   const activeByBed = useMemo(() => {
     const map = new Map<number, PlannerPlantingArea>();
@@ -580,8 +587,15 @@ export function GardenWebGL() {
     const mount = mountRef.current;
     if (!mount) return;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "high-performance" });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "high-performance" });
+      setRenderError(null);
+    } catch {
+      setRenderError("WebGL could not start in this browser. Try reloading the page or enabling hardware acceleration.");
+      return;
+    }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -605,7 +619,7 @@ export function GardenWebGL() {
     scene.add(new THREE.HemisphereLight(0xf6fbf7, 0x786a56, 1.35));
     const sun = new THREE.DirectionalLight(0xfff4d8, 2.3);
     sun.castShadow = true;
-    sun.shadow.mapSize.set(2048, 2048);
+    sun.shadow.mapSize.set(1024, 1024);
     sun.shadow.camera.left = -8;
     sun.shadow.camera.right = 8;
     sun.shadow.camera.top = 8;
@@ -726,7 +740,7 @@ export function GardenWebGL() {
     <main className={styles.shell}>
       <header className={styles.header}>
         <div className={styles.brand}>
-          <a href="/" className={styles.back}>← 2D Plan</a>
+          <a href={`/?gardenId=${encodeURIComponent(gardenId)}`} className={styles.back}>← 2D Plan</a>
           <div>
             <strong>Blenheim Garden</strong>
             <span>Live WebGL garden twin</span>
@@ -752,7 +766,8 @@ export function GardenWebGL() {
 
       <section className={styles.workspace}>
         <div ref={mountRef} className={styles.viewport}>
-          {!plan && <div className={styles.loading}>{source}</div>}
+          {renderError && <div className={styles.loading}>{renderError}</div>}
+          {!renderError && !plan && <div className={styles.loading}>{source}</div>}
         </div>
         <aside className={styles.inspector}>
           <p className={styles.eyebrow}>INSPECTOR</p>

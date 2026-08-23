@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { BlenheimCalendarBridge } from "@/components/blenheim-calendar-bridge";
 import { CropRotationBridge } from "@/components/crop-rotation-bridge";
 import { EditKeyDialogBridge } from "@/components/edit-key-dialog-bridge";
+import { GardenManagerBridge } from "@/components/garden-manager-bridge";
 import { GardenMediaDialogBridge } from "@/components/garden-media-dialog-bridge";
 import { GardenRecordsDialogBridge } from "@/components/garden-records-dialog-bridge";
 import { GrowVegVisualPolishBridge } from "@/components/growveg-visual-polish-bridge";
@@ -17,6 +18,7 @@ import "./blenheim-calendar.css";
 import "./crop-rotation.css";
 import "./production-polish.css";
 import "./growveg-visual-polish.css";
+import "./garden-manager.css";
 
 export const metadata: Metadata = {
   title: "Blenheim Garden",
@@ -42,6 +44,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <GardenRecordsDialogBridge />
         <PlannerShortcutsBridge />
         <GrowVegVisualPolishBridge />
+        <GardenManagerBridge />
         <WebglLaunchBridge />
       </body>
     </html>
