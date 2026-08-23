@@ -18,6 +18,7 @@ type PlantLayout = {
 
 const STAGGER_ROW_FACTOR = Math.sqrt(3) / 2;
 const NATURAL_ROTATIONS = [-7, 5, -3, 7, 2, -5, 4, -2];
+const DEFAULT_RENDER_SAMPLE_LIMIT = 360;
 
 function layoutFor(area: PlannerPlantingArea, widthCm: number, heightCm: number): PlantLayout {
   const safeWidth = Math.max(1, widthCm);
@@ -57,13 +58,15 @@ export function plantPositionsForArea(
   area: PlannerPlantingArea,
   widthCm: number,
   heightCm: number,
-  maxRendered = 1600,
+  maxRendered = DEFAULT_RENDER_SAMPLE_LIMIT,
 ): PlantCanvasPosition[] {
   const layout = layoutFor(area, widthCm, heightCm);
   if (area.pattern === "single") {
     return [{ x: layout.widthCm / 2, y: layout.heightCm / 2, rotation: 0 }];
   }
 
+  // The logical count remains exact. Rendering is sampled for very dense plantings
+  // so the 2D planner does not create thousands of absolutely-positioned DOM nodes.
   const sampleEvery = Math.max(1, Math.ceil(layout.count / Math.max(1, maxRendered)));
   const usedHeight = (layout.rows - 1) * layout.rowStepCm;
   const startY = (layout.heightCm - usedHeight) / 2;
