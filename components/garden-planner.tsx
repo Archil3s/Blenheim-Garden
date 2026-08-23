@@ -41,6 +41,8 @@ const CANVAS_WIDTH = 900;
 const CANVAS_HEIGHT = 1080;
 const SNAP_CM = 10;
 const LOCAL_PLAN_KEY = "blenheim-garden-plan";
+const LIVE_PLAN_KEY = "blenheim-garden-live-plan";
+const LIVE_PLAN_EVENT = "blenheim-garden-live-plan-change";
 const EDIT_KEY_SESSION = "blenheim-garden-edit-key";
 
 const tools: Array<{ id: Tool; icon: string; label: string; hint: string }> = [
@@ -197,6 +199,18 @@ export function GardenPlanner() {
     })();
     return () => { cancelled = true; };
   }, []);
+
+  // Publish every in-memory planner change for the WebGL companion.
+  // This does not save to D1 and does not change the normal Save workflow.
+  useEffect(() => {
+    if (loadSource === "starting") return;
+    try {
+      localStorage.setItem(LIVE_PLAN_KEY, JSON.stringify(plan));
+      window.dispatchEvent(new CustomEvent(LIVE_PLAN_EVENT, { detail: plan }));
+    } catch {
+      // Live preview is best-effort; planner editing must keep working if storage is unavailable.
+    }
+  }, [plan, loadSource]);
 
   const selectedBed = selection?.kind === "bed" ? plan.beds.find((item) => String(item.id) === selection.id) ?? null : null;
   const selectedPlanting = selection?.kind === "planting" ? plan.plantingAreas.find((item) => item.id === selection.id) ?? null : null;
