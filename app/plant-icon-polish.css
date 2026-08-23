@@ -1,0 +1,259 @@
+/* Clean crop-specific picker art. Presentation only: no planner/storage changes. */
+
+.gv-plant-list > button[data-crop] .gv-plant-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  width: 42px !important;
+  height: 42px !important;
+  border: 1px solid #d9e4df !important;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  box-shadow: 0 1px 2px rgba(31, 53, 44, 0.07) !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  isolation: isolate;
+}
+
+.gv-plant-list > button[data-crop] .gv-plant-icon::before,
+.gv-plant-list > button[data-crop] .gv-plant-icon::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.gv-plant-list > button[data-crop]:hover .gv-plant-icon {
+  border-color: #b9d5c9 !important;
+  box-shadow: 0 2px 5px rgba(31, 53, 44, 0.10) !important;
+}
+
+.gv-plant-list > button.active[data-crop] .gv-plant-icon {
+  border-color: #7fc4aa !important;
+  box-shadow: 0 0 0 3px rgba(22, 155, 112, 0.10), 0 2px 5px rgba(31, 53, 44, 0.09) !important;
+}
+
+/* Tomato: fruit with a simple leaf crown. */
+.gv-plant-list > button[data-crop="Tomato"] .gv-plant-icon::before {
+  width: 25px;
+  height: 25px;
+  left: 8px;
+  top: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #ff8176 0 8%, transparent 9%), linear-gradient(145deg, #ef5d52, #c93631);
+  box-shadow: inset -3px -4px 0 rgba(139, 33, 31, 0.08);
+}
+
+.gv-plant-list > button[data-crop="Tomato"] .gv-plant-icon::after {
+  width: 17px;
+  height: 10px;
+  left: 12px;
+  top: 6px;
+  background: conic-gradient(from 5deg, #4f9a54 0 18%, transparent 18% 32%, #4f9a54 32% 50%, transparent 50% 66%, #4f9a54 66% 84%, transparent 84%);
+  border-radius: 50%;
+}
+
+/* Strawberry: single clean berry, not an emoji. */
+.gv-plant-list > button[data-crop="Strawberry"] .gv-plant-icon::before {
+  width: 24px;
+  height: 27px;
+  left: 9px;
+  top: 10px;
+  clip-path: polygon(50% 100%, 12% 43%, 18% 18%, 50% 8%, 82% 18%, 88% 43%);
+  background:
+    radial-gradient(circle at 35% 42%, #ffd86a 0 3%, transparent 4%),
+    radial-gradient(circle at 61% 50%, #ffd86a 0 3%, transparent 4%),
+    radial-gradient(circle at 48% 68%, #ffd86a 0 3%, transparent 4%),
+    linear-gradient(#f45f69, #ca3348);
+}
+
+.gv-plant-list > button[data-crop="Strawberry"] .gv-plant-icon::after {
+  width: 20px;
+  height: 10px;
+  left: 11px;
+  top: 6px;
+  background: conic-gradient(from 8deg, #4c9c55 0 20%, transparent 20% 34%, #4c9c55 34% 54%, transparent 54% 68%, #4c9c55 68% 88%, transparent 88%);
+  border-radius: 50%;
+}
+
+/* Bean: paired leaves with a small centre stem. */
+.gv-plant-list > button[data-crop="Bean"] .gv-plant-icon::before {
+  width: 29px;
+  height: 25px;
+  left: 7px;
+  top: 9px;
+  background:
+    radial-gradient(ellipse at 28% 48%, #5eaa52 0 30%, transparent 31%),
+    radial-gradient(ellipse at 72% 48%, #4d9446 0 30%, transparent 31%),
+    radial-gradient(ellipse at 50% 75%, #70b65e 0 25%, transparent 26%);
+  transform: rotate(-4deg);
+}
+
+.gv-plant-list > button[data-crop="Bean"] .gv-plant-icon::after {
+  width: 2px;
+  height: 21px;
+  left: 20px;
+  top: 14px;
+  border-radius: 2px;
+  background: #4b7f42;
+  transform: rotate(-8deg);
+}
+
+/* Lettuce: compact top-down rosette. */
+.gv-plant-list > button[data-crop="Lettuce"] .gv-plant-icon::before {
+  width: 29px;
+  height: 29px;
+  left: 6px;
+  top: 6px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 6deg, #8bc96c 0 16deg, #5aa955 16deg 31deg, #76bc61 31deg 46deg);
+  box-shadow: inset 0 0 0 5px rgba(238, 255, 231, 0.16), inset 0 0 9px rgba(48, 101, 54, 0.18);
+}
+
+.gv-plant-list > button[data-crop="Lettuce"] .gv-plant-icon::after {
+  width: 11px;
+  height: 11px;
+  left: 15px;
+  top: 15px;
+  border-radius: 50%;
+  background: #72b65d;
+}
+
+/* Pumpkin: round lobed fruit and short stem. */
+.gv-plant-list > button[data-crop="Pumpkin"] .gv-plant-icon::before {
+  width: 29px;
+  height: 24px;
+  left: 6px;
+  top: 12px;
+  border-radius: 48%;
+  background: repeating-linear-gradient(90deg, #de7826 0 14%, #f29a42 14% 29%);
+  box-shadow: inset 0 -3px 0 rgba(164, 77, 18, 0.08);
+}
+
+.gv-plant-list > button[data-crop="Pumpkin"] .gv-plant-icon::after {
+  width: 7px;
+  height: 9px;
+  left: 18px;
+  top: 7px;
+  border-radius: 4px 4px 1px 1px;
+  background: #4d8646;
+  transform: rotate(8deg);
+}
+
+/* Carrot: root plus separated leafy top. */
+.gv-plant-list > button[data-crop="Carrot"] .gv-plant-icon::before {
+  width: 18px;
+  height: 27px;
+  left: 12px;
+  top: 12px;
+  clip-path: polygon(19% 0, 81% 0, 56% 100%);
+  background: linear-gradient(155deg, #f6a13a, #dd6f21);
+}
+
+.gv-plant-list > button[data-crop="Carrot"] .gv-plant-icon::after {
+  width: 24px;
+  height: 15px;
+  left: 9px;
+  top: 5px;
+  background:
+    linear-gradient(72deg, transparent 42%, #4c9650 43% 56%, transparent 57%) 0 0 / 8px 15px,
+    linear-gradient(108deg, transparent 42%, #5aa75a 43% 56%, transparent 57%) 4px 0 / 8px 15px;
+}
+
+/* Broccoli: three florets above a visible stalk. */
+.gv-plant-list > button[data-crop="Broccoli"] .gv-plant-icon::before {
+  width: 29px;
+  height: 23px;
+  left: 6px;
+  top: 7px;
+  background:
+    radial-gradient(circle at 25% 58%, #5aa557 0 27%, transparent 29%),
+    radial-gradient(circle at 52% 38%, #3f8849 0 30%, transparent 32%),
+    radial-gradient(circle at 78% 58%, #4d9851 0 27%, transparent 29%),
+    radial-gradient(circle at 50% 75%, #6bae5d 0 30%, transparent 32%);
+}
+
+.gv-plant-list > button[data-crop="Broccoli"] .gv-plant-icon::after {
+  width: 8px;
+  height: 13px;
+  left: 17px;
+  top: 25px;
+  clip-path: polygon(38% 0, 62% 0, 100% 100%, 0 100%);
+  background: #6fa75d;
+}
+
+/* Raspberry: grouped drupelets with a small leaf. */
+.gv-plant-list > button[data-crop="Raspberry"] .gv-plant-icon::before {
+  width: 26px;
+  height: 25px;
+  left: 8px;
+  top: 11px;
+  background:
+    radial-gradient(circle at 28% 28%, #d94a62 0 15%, transparent 17%),
+    radial-gradient(circle at 51% 23%, #c83e59 0 15%, transparent 17%),
+    radial-gradient(circle at 72% 31%, #d94a62 0 15%, transparent 17%),
+    radial-gradient(circle at 34% 52%, #c93a55 0 16%, transparent 18%),
+    radial-gradient(circle at 60% 50%, #e05b6d 0 16%, transparent 18%),
+    radial-gradient(circle at 48% 74%, #b9314d 0 17%, transparent 19%);
+}
+
+.gv-plant-list > button[data-crop="Raspberry"] .gv-plant-icon::after {
+  width: 13px;
+  height: 8px;
+  left: 15px;
+  top: 7px;
+  border-radius: 80% 20% 80% 20%;
+  background: #4e9550;
+  transform: rotate(-18deg);
+}
+
+/* Blueberry: three berries with their crown dots. */
+.gv-plant-list > button[data-crop="Blueberry"] .gv-plant-icon::before {
+  width: 29px;
+  height: 25px;
+  left: 6px;
+  top: 10px;
+  background:
+    radial-gradient(circle at 28% 42%, #6573b7 0 22%, transparent 24%),
+    radial-gradient(circle at 67% 37%, #5364a8 0 23%, transparent 25%),
+    radial-gradient(circle at 51% 72%, #445797 0 24%, transparent 26%);
+}
+
+.gv-plant-list > button[data-crop="Blueberry"] .gv-plant-icon::after {
+  width: 26px;
+  height: 22px;
+  left: 8px;
+  top: 12px;
+  background:
+    radial-gradient(circle at 26% 34%, #d7dbea 0 3%, transparent 4%),
+    radial-gradient(circle at 70% 29%, #d7dbea 0 3%, transparent 4%),
+    radial-gradient(circle at 52% 72%, #cbd1e4 0 3%, transparent 4%);
+}
+
+/* Herbs: three distinct leaves around a centre. */
+.gv-plant-list > button[data-crop="Herbs"] .gv-plant-icon::before {
+  width: 30px;
+  height: 28px;
+  left: 6px;
+  top: 7px;
+  background:
+    radial-gradient(ellipse at 32% 45%, #58a85a 0 22%, transparent 24%),
+    radial-gradient(ellipse at 68% 40%, #72b967 0 22%, transparent 24%),
+    radial-gradient(ellipse at 52% 72%, #44924f 0 24%, transparent 26%);
+}
+
+.gv-plant-list > button[data-crop="Herbs"] .gv-plant-icon::after {
+  width: 2px;
+  height: 18px;
+  left: 20px;
+  top: 18px;
+  border-radius: 2px;
+  background: #4f8550;
+}
+
+@media (max-width: 760px) {
+  .gv-plant-list > button[data-crop] .gv-plant-icon {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
