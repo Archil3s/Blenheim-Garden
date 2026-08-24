@@ -49,7 +49,7 @@ async function openFixtureGarden(page: import("@playwright/test").Page) {
 
   const response = await page.goto("/3d?gardenId=selection-test", { waitUntil: "domcontentloaded" });
   expect(response?.status()).toBeLessThan(400);
-  await expect(page.getByRole("heading", { name: "Blenheim Garden", exact: true })).toBeVisible();
+  await expect(page.locator("header").getByText("Blenheim Garden", { exact: true })).toBeVisible();
 
   return { pageErrors, failedRequests, consoleErrors };
 }
@@ -62,7 +62,8 @@ async function tapCanvasCentre(page: import("@playwright/test").Page) {
   await page.mouse.click(box!.x + box!.width / 2, box!.y + box!.height / 2);
 }
 
-test("phone 3D tap selects a garden item and shows a compact inspector", async ({ page }) => {
+test("phone 3D tap selects a garden item and shows a compact inspector", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "webkit-iphone", "Phone selection is covered by the iPhone WebKit profile.");
   const diagnostics = await openFixtureGarden(page);
 
   await tapCanvasCentre(page);
@@ -77,7 +78,8 @@ test("phone 3D tap selects a garden item and shows a compact inspector", async (
   expect(diagnostics.consoleErrors, "console errors").toEqual([]);
 });
 
-test("desktop 3D click still updates the existing inspector", async ({ page }) => {
+test("desktop 3D click still updates the existing inspector", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "webkit-desktop", "Desktop selection is covered by the desktop WebKit profile.");
   const diagnostics = await openFixtureGarden(page);
   const inspectorHeading = page.locator("aside h2").first();
   await expect(inspectorHeading).toHaveText("3D Garden");
