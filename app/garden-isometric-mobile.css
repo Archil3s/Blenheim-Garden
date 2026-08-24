@@ -1,0 +1,142 @@
+.gv-iso-workspace {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #bfd3ca;
+  color: #eff8f4;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.gv-iso-scene {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: manipulation;
+}
+
+.gv-iso-bed,
+.gv-iso-plant,
+.gv-iso-tree,
+.gv-iso-scene line {
+  cursor: pointer;
+}
+
+.gv-iso-live,
+.gv-iso-controls,
+.gv-iso-inspector {
+  position: absolute;
+  z-index: 12;
+  border: 1px solid rgba(224, 239, 232, .2);
+  background: rgba(20, 35, 29, .82);
+  box-shadow: 0 6px 20px rgba(14, 25, 21, .17);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
+.gv-iso-live {
+  top: 8px;
+  left: 8px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 11px;
+  border-radius: 10px;
+}
+
+.gv-iso-live > span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ed299;
+  box-shadow: 0 0 0 4px rgba(78, 210, 153, .12);
+}
+
+.gv-iso-live strong {
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+
+.gv-iso-live small {
+  color: #a8c5b8;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.gv-iso-controls {
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.gv-iso-controls button {
+  min-width: 44px;
+  min-height: 31px;
+  border: 0;
+  border-radius: 7px;
+  padding: 0 9px;
+  color: #e3eee9;
+  background: transparent;
+  font-size: 10px;
+  font-weight: 850;
+}
+
+.gv-iso-controls button.active {
+  color: #183d30;
+  background: #f0f8f4;
+}
+
+.gv-iso-inspector {
+  left: 8px;
+  right: 8px;
+  bottom: max(8px, env(safe-area-inset-bottom));
+  display: grid;
+  gap: 2px;
+  padding: 11px 13px;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.gv-iso-inspector > span {
+  color: #91ddb9;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.gv-iso-inspector > strong {
+  overflow: hidden;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gv-iso-inspector > small {
+  overflow: hidden;
+  color: #c1d0c9;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gv-iso-inspector > em {
+  margin-top: 3px;
+  color: #99afa5;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@media (max-width: 430px) {
+  .gv-iso-live small {
+    display: none;
+  }
+
+  .gv-iso-live {
+    padding-inline: 9px;
+  }
+}
