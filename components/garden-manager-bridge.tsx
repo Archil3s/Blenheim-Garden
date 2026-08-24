@@ -39,7 +39,11 @@ export function GardenManagerBridge() {
     const refreshButton = () => {
       const button = document.querySelector<HTMLButtonElement>(".gv-plan-name");
       if (!button) return;
-      button.innerHTML = `${activeName().toUpperCase()} <span>Garden ▾</span>`;
+      const desiredHtml = `${activeName().toUpperCase()} <span>Garden ▾</span>`;
+      // This bridge observes document child-list changes. Rewriting innerHTML on every
+      // observer callback creates another child-list mutation and can lock the main
+      // thread in a self-triggering MutationObserver loop. Only mutate when needed.
+      if (button.innerHTML !== desiredHtml) button.innerHTML = desiredHtml;
       button.title = "Switch, load or create a garden";
     };
 
