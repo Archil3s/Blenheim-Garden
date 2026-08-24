@@ -33,23 +33,30 @@ async function openGarden(page: import("@playwright/test").Page) {
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   page.on("requestfailed", (request) => failed.push(`${request.method()} ${request.url()}`));
-
   await page.route("**/api/garden?**", async (route) => {
     await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(fixturePlan) });
   });
-
   const response = await page.goto("/3d?gardenId=visual-fixture", { waitUntil: "domcontentloaded" });
   expect(response?.status()).toBeLessThan(400);
   await expect(page.locator("header").getByText("Blenheim Garden", { exact: true })).toBeVisible();
-  await expect(page.locator('[aria-label="Visual 3D garden canvas"] canvas')).toBeVisible();
+  const canvas = page.locator('[aria-label="Visual 3D garden canvas"] canvas');
+  await expect(canvas).toBeVisible();
   await page.waitForTimeout(1800);
   await expect(page.locator("header").getByText("Live D1 garden", { exact: true })).toHaveText("Live D1 garden");
-  return { errors, failed };
+  return { errors, failed, canvas };
+}
+
+async function clickCanvasCentre(page: import("@playwright/test").Page, canvas: import("@playwright/test").Locator) {
+  const box = await canvas.boundingBox();
+  expect(box).not.toBeNull();
+  await page.mouse.click(box!.x + box!.width / 2, box!.y + box!.height / 2);
 }
 
 test("visual garden renders on iPhone WebKit", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "webkit-iphone", "iPhone profile only");
   const diagnostics = await openGarden(page);
+  await clickCanvasCentre(page, diagnostics.canvas);
+  await expect(page.getByText("SELECTED", { exact: true })).toBeVisible();
   await page.screenshot({ path: "test-results/visual-3d-iphone.png", fullPage: true });
   expect(diagnostics.errors).toEqual([]);
   expect(diagnostics.failed).toEqual([]);
