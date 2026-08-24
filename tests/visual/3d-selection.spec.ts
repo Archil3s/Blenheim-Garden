@@ -81,13 +81,14 @@ test("phone 3D tap selects a garden item and shows a compact inspector", async (
 test("desktop 3D click updates the responsive inspector", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "webkit-desktop", "Desktop selection is covered by the desktop WebKit profile.");
   const diagnostics = await openFixtureGarden(page);
-  const inspectorHeading = page.locator("aside h2").first();
+  const inspector = page.locator("aside").first();
+  const inspectorHeading = inspector.locator("h2");
   await expect(inspectorHeading).toHaveText("Tap something in the garden");
 
   await tapCanvasCentre(page);
 
   await expect(inspectorHeading).toHaveText(/Test Bed|Tomato/);
-  await expect(page.getByText("Spacing", { exact: true }).first()).toBeVisible();
+  await expect(inspector.getByText("Spacing", { exact: true })).toBeVisible();
   await page.screenshot({ path: "test-results/3d-selection-desktop.png", fullPage: true });
 
   expect(diagnostics.pageErrors, "uncaught page errors").toEqual([]);
