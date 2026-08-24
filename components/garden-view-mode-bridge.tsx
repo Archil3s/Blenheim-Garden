@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import type { PlannerPlan } from "@/lib/garden/planner-plan";
 import { LIVE_PLAN_EVENT, gardenLivePlanKey, readActiveGardenId } from "@/lib/garden/active-garden";
@@ -10,12 +10,10 @@ const EMPTY_PLAN: PlannerPlan = { beds: [], plantingAreas: [], rows: [], objects
 
 const GardenWorkspace3D = dynamic(
   () => import("@/components/garden-workspace-3d").then((module) => module.GardenWorkspace3D),
-  { ssr: false, loading: () => <div className="gv-inline-3d-loading">Starting 3D garden…</div> },
-);
-
-const GardenWorkspaceIsometric = dynamic(
-  () => import("@/components/garden-workspace-isometric").then((module) => module.GardenWorkspaceIsometric),
-  { ssr: false, loading: () => <div className="gv-inline-3d-loading">Starting phone 3D…</div> },
+  {
+    ssr: false,
+    loading: () => <div className="gv-inline-3d-loading">Loading simulator…</div>,
+  },
 );
 
 function readLivePlan() {
@@ -35,27 +33,11 @@ function readLivePlan() {
   }
 }
 
-function subscribePhone(callback: () => void) {
-  if (typeof window === "undefined") return () => undefined;
-  const media = window.matchMedia("(max-width: 760px)");
-  media.addEventListener("change", callback);
-  return () => media.removeEventListener("change", callback);
-}
-
-function phoneSnapshot() {
-  return typeof window !== "undefined" && window.matchMedia("(max-width: 760px)").matches;
-}
-
-function serverPhoneSnapshot() {
-  return false;
-}
-
 export function GardenViewModeBridge() {
   const [mode, setMode] = useState<"2d" | "3d">("2d");
   const [plan, setPlan] = useState<PlannerPlan>(() => readLivePlan());
   const [quickHost, setQuickHost] = useState<HTMLElement | null>(null);
   const [stageHost, setStageHost] = useState<HTMLElement | null>(null);
-  const phone = useSyncExternalStore(subscribePhone, phoneSnapshot, serverPhoneSnapshot);
 
   useEffect(() => {
     const locate = () => {
@@ -108,9 +90,9 @@ export function GardenViewModeBridge() {
           data-testid="inline-3d-root"
           data-bed-count={plan.beds.length}
           data-planting-count={plan.plantingAreas.length}
-          data-renderer={phone ? "isometric-svg" : "three-webgl"}
+          data-renderer="three-webgl"
         >
-          {phone ? <GardenWorkspaceIsometric plan={plan} /> : <GardenWorkspace3D plan={plan} />}
+          <GardenWorkspace3D plan={plan} />
         </div>,
         stageHost,
       )}
