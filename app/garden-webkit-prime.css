@@ -1,0 +1,20 @@
+/* WebKit can occasionally mount the WebGL canvas without presenting the first
+   rendered frame. A tiny, one-shot width pulse makes the existing ResizeObserver
+   issue a few additional renders, then the workspace settles at its normal size.
+   This is deliberately finite: there is no permanent animation/render loop. */
+@keyframes gv-webkit-canvas-prime {
+  0% { right: 1px; }
+  34% { right: 0; }
+  67% { right: 1px; }
+  100% { right: 0; }
+}
+
+.gv-app.gv-view-3d .gv-inline-3d-root {
+  animation: gv-webkit-canvas-prime 180ms steps(3, end) 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gv-app.gv-view-3d .gv-inline-3d-root {
+    animation-duration: 1ms;
+  }
+}
