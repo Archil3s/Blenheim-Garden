@@ -13,7 +13,7 @@ const updatedPlan = {
   plantingAreas: [...initialPlan.plantingAreas, { id: "lettuce", bedId: 2, crop: "Lettuce", cropIcon: "🥬", variety: "Cos", spacingCm: 28, x: 0, y: 0, w: 100, h: 100, count: 12, pattern: "grid", iconSize: 16, visualSpacing: "normal" }],
 };
 
-test("switches the main planner between 2D and live inline 3D", async ({ page }, testInfo) => {
+test("switches the main planner between 2D and realistic live WebGL 3D", async ({ page }, testInfo) => {
   const pageErrors: string[] = [];
   page.on("pageerror", (error) => pageErrors.push(error.message));
 
@@ -39,18 +39,13 @@ test("switches the main planner between 2D and live inline 3D", async ({ page },
   await expect(root).toBeVisible();
   await expect(root).toHaveAttribute("data-bed-count", "1");
   await expect(root).toHaveAttribute("data-planting-count", "1");
-
-  if (testInfo.project.name === "mobile-webkit") {
-    await expect(root).toHaveAttribute("data-renderer", "isometric-svg");
-    await expect(page.locator('svg[aria-label="Interactive 3D garden workspace"]')).toBeVisible();
-    await expect(page.locator("canvas")).toHaveCount(0);
-  } else {
-    await expect(root).toHaveAttribute("data-renderer", "three-webgl");
-    await expect(page.getByLabel("Interactive 3D garden workspace").locator("canvas")).toBeVisible();
-  }
-
+  await expect(root).toHaveAttribute("data-renderer", "three-webgl");
+  await expect(page.getByLabel("Interactive 3D garden workspace").locator("canvas")).toBeVisible();
+  await expect(page.getByText("GARDEN SIM", { exact: true })).toBeVisible();
   await expect(page.locator("iframe")).toHaveCount(0);
   await expect(page.locator(".gv-stage-scroll")).toBeHidden();
+
+  await page.waitForTimeout(1200);
 
   await page.evaluate((plan) => {
     window.dispatchEvent(new CustomEvent("blenheim-garden-live-plan-change", {
@@ -60,6 +55,7 @@ test("switches the main planner between 2D and live inline 3D", async ({ page },
 
   await expect(root).toHaveAttribute("data-bed-count", "2");
   await expect(root).toHaveAttribute("data-planting-count", "2");
+  await page.waitForTimeout(600);
   await page.screenshot({ path: `test-results/workspace-${testInfo.project.name}.png`, fullPage: true });
 
   await switcher.getByRole("button", { name: "2D" }).click();
