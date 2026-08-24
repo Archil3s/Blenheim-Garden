@@ -17,4 +17,31 @@ jobs:
         with:
           bun-version: 1.2.15
       - run: bun install
+      - name: Install Playwright test runner
+        run: bun add --dev --no-save @playwright/test@1.62.1
+      - name: Lint workspace feature
+        run: bunx eslint components/garden-view-mode-bridge.tsx components/garden-workspace-3d.tsx
       - run: bun run build
+      - run: bun run build:cloudflare
+      - name: Install browser engines
+        run: bunx playwright install --with-deps chromium webkit
+      - name: Start production app
+        run: |
+          bun run start > /tmp/blenheim-next.log 2>&1 &
+          for i in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:3000/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/blenheim-next.log
+          exit 1
+      - name: Verify simulator workspace
+        run: bunx playwright test --config=playwright.workspace.config.ts
+      - name: Upload workspace diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace-3d-diagnostics
+          path: |
+            test-results
+            playwright-workspace-report
+          if-no-files-found: ignore
