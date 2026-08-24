@@ -9,7 +9,7 @@ import { LIVE_PLAN_EVENT, gardenLivePlanKey, readActiveGardenId } from "@/lib/ga
 const EMPTY_PLAN: PlannerPlan = { beds: [], plantingAreas: [], rows: [], objects: [] };
 
 const GardenWorkspace3D = dynamic(
-  () => import("@/components/garden-workspace-3d").then((module) => module.GardenWorkspace3D),
+  () => import("@/components/garden-workspace-realistic").then((module) => module.GardenWorkspaceRealistic),
   {
     ssr: false,
     loading: () => <div className="gv-inline-3d-loading">Loading simulator…</div>,
