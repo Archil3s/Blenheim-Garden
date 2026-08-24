@@ -18,14 +18,14 @@ jobs:
         with:
           bun-version: 1.2.15
       - run: bun install
+      - name: Install Playwright test runner
+        run: bun add --dev --no-save @playwright/test@1.62.1
       - name: Lint new preview bridge
         run: bunx eslint components/garden-3d-preview-bridge.tsx
       - run: bun run build
       - run: bun run build:cloudflare
       - name: Install preview browser
-        run: |
-          bun add --dev --no-save @playwright/test@1.62.1
-          bunx playwright install --with-deps chromium
+        run: bunx playwright install --with-deps chromium
       - name: Start production app
         run: |
           bun run start > /tmp/blenheim-next.log 2>&1 &
