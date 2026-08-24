@@ -1,0 +1,1 @@
+Temporary marker to trigger pull-request build verification for the restored /3d route on 2026-08-24.
