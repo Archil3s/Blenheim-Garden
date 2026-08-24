@@ -69,7 +69,7 @@ function fitToWidth() {
   if (!minus || !plus) return;
 
   const current = zoomValue();
-  const usableWidth = Math.max(450, stage.clientWidth - 88);
+  const usableWidth = Math.max(450, stage.clientWidth - 52);
   const target = Math.min(150, Math.max(50, Math.round((usableWidth / 900) * 10) * 10));
   const button = target > current ? plus : minus;
   const clicks = Math.min(10, Math.round(Math.abs(target - current) / 10));
@@ -123,12 +123,24 @@ export function GrowVegVisualPolishBridge() {
     const observer = new MutationObserver(decorate);
     observer.observe(document.body, { childList: true, subtree: true, characterData: true });
 
-    const onResize = () => decorateZoom();
+    let lastViewportWidth = window.innerWidth;
+    let resizeTimer: number | undefined;
+
+    const onResize = () => {
+      decorateZoom();
+      const nextWidth = window.innerWidth;
+      const meaningfulWidthChange = Math.abs(nextWidth - lastViewportWidth) >= 32;
+      lastViewportWidth = nextWidth;
+      if (!meaningfulWidthChange || nextWidth > 760) return;
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => fitToWidth(), 140);
+    };
     window.addEventListener("resize", onResize);
 
     const initialFit = window.setTimeout(() => {
       const app = document.querySelector<HTMLElement>(".gv-app");
-      if (window.innerWidth >= 1100 && app && !app.dataset.autoFitApplied) {
+      const shouldAutoFit = window.innerWidth <= 760 || window.innerWidth >= 1100;
+      if (shouldAutoFit && app && !app.dataset.autoFitApplied) {
         app.dataset.autoFitApplied = "true";
         fitToWidth();
       }
@@ -136,6 +148,7 @@ export function GrowVegVisualPolishBridge() {
 
     return () => {
       window.clearTimeout(initialFit);
+      window.clearTimeout(resizeTimer);
       observer.disconnect();
       window.removeEventListener("resize", onResize);
     };
