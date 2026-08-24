@@ -10,7 +10,8 @@ import "./crop-rotation.css";
 import "./production-polish.css";
 import "./growveg-visual-polish.css";
 import "./garden-manager.css";
-import "./garden-3d-preview.css";
+import "./garden-view-mode.css";
+import "./garden-realistic-sim.css";
 
 export const metadata: Metadata = {
   title: "Blenheim Garden",

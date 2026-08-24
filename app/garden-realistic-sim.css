@@ -1,0 +1,146 @@
+.gv-app.gv-view-3d .gv-stage {
+  background: #16221e;
+}
+
+.gv-app.gv-view-3d .gv-inline-3d-root,
+.gv-app.gv-view-3d .gv-3d-workspace {
+  background: #16221e;
+}
+
+.gv-3d-realistic .gv-3d-workspace-canvas {
+  background: #16221e;
+}
+
+.gv-3d-realistic .gv-3d-workspace-canvas canvas {
+  filter: saturate(1.06) contrast(1.035);
+}
+
+.gv-3d-realistic::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(8, 16, 13, .16), transparent 20%, transparent 75%, rgba(8, 16, 13, .16)),
+    radial-gradient(circle at center, transparent 55%, rgba(7, 15, 12, .2) 100%);
+}
+
+.gv-3d-realistic .gv-3d-hud,
+.gv-3d-realistic .gv-3d-selection-card,
+.gv-3d-realistic .gv-3d-help {
+  border-color: rgba(217, 235, 226, .16);
+  background: rgba(13, 22, 18, .78);
+  box-shadow: 0 10px 34px rgba(5, 11, 9, .28);
+  backdrop-filter: blur(12px) saturate(1.08);
+  -webkit-backdrop-filter: blur(12px) saturate(1.08);
+}
+
+.gv-3d-realistic .gv-3d-hud-left {
+  min-height: 38px;
+  padding-inline: 12px;
+  border-radius: 8px;
+}
+
+.gv-3d-realistic .gv-3d-hud-left strong {
+  color: #f2f7f4;
+  font-size: 10px;
+  letter-spacing: .12em;
+}
+
+.gv-3d-realistic .gv-3d-hud-left small {
+  color: #92a59d;
+}
+
+.gv-3d-realistic .gv-3d-live-dot {
+  background: #55e7a7;
+  box-shadow: 0 0 0 4px rgba(85, 231, 167, .1), 0 0 12px rgba(85, 231, 167, .38);
+}
+
+.gv-3d-realistic .gv-3d-camera-controls {
+  min-height: 38px;
+  border-radius: 8px;
+}
+
+.gv-3d-realistic .gv-3d-camera-controls button {
+  min-height: 30px;
+  border-radius: 5px;
+  color: #dce6e1;
+  font-size: 9px;
+  letter-spacing: .02em;
+}
+
+.gv-3d-realistic .gv-3d-camera-controls button:hover,
+.gv-3d-realistic .gv-3d-camera-controls button:focus-visible {
+  color: #11251c;
+  background: #e8f2ed;
+}
+
+.gv-3d-realistic .gv-3d-camera-controls > span {
+  color: #69e1ac;
+  background: rgba(52, 135, 97, .22);
+}
+
+.gv-3d-realistic .gv-3d-selection-card {
+  width: min(310px, calc(100% - 24px));
+  padding: 12px 13px;
+  border-radius: 9px;
+}
+
+.gv-3d-realistic .gv-3d-selection-card > span {
+  color: #63dba6;
+}
+
+.gv-3d-realistic .gv-3d-selection-card > strong {
+  color: #f3f8f5;
+  font-size: 16px;
+}
+
+.gv-3d-realistic .gv-3d-selection-card > small {
+  color: #9eafa7;
+}
+
+.gv-3d-realistic .gv-3d-selection-card b {
+  color: #879990;
+}
+
+.gv-3d-realistic .gv-3d-selection-card em {
+  color: #f0f5f2;
+}
+
+.gv-3d-realistic .gv-3d-help {
+  color: #9aa9a2;
+  background: rgba(13, 22, 18, .58);
+}
+
+.gv-inline-3d-loading {
+  color: #dce8e2;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(68, 104, 86, .25), transparent 36%),
+    #14211c;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .gv-3d-realistic .gv-3d-hud-left {
+    top: 7px;
+    left: 7px;
+  }
+
+  .gv-3d-realistic .gv-3d-camera-controls {
+    top: 7px;
+    right: 7px;
+  }
+
+  .gv-3d-realistic .gv-3d-selection-card {
+    left: 7px;
+    right: 7px;
+    bottom: max(7px, env(safe-area-inset-bottom));
+    width: auto;
+  }
+
+  .gv-3d-realistic .gv-3d-camera-controls button:first-child {
+    display: none;
+  }
+}
