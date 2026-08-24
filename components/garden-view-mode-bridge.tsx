@@ -17,6 +17,7 @@ const GardenWorkspace3D = dynamic(
 );
 
 function readLivePlan() {
+  if (typeof window === "undefined") return EMPTY_PLAN;
   try {
     const gardenId = readActiveGardenId();
     const parsed = JSON.parse(localStorage.getItem(gardenLivePlanKey(gardenId)) ?? "null") as Partial<PlannerPlan> | null;
@@ -34,7 +35,7 @@ function readLivePlan() {
 
 export function GardenViewModeBridge() {
   const [mode, setMode] = useState<"2d" | "3d">("2d");
-  const [plan, setPlan] = useState<PlannerPlan>(EMPTY_PLAN);
+  const [plan, setPlan] = useState<PlannerPlan>(() => readLivePlan());
   const [quickHost, setQuickHost] = useState<HTMLElement | null>(null);
   const [stageHost, setStageHost] = useState<HTMLElement | null>(null);
 
@@ -53,7 +54,6 @@ export function GardenViewModeBridge() {
   }, []);
 
   useEffect(() => {
-    setPlan(readLivePlan());
     const onLivePlan = (event: Event) => {
       const detail = (event as CustomEvent<{ gardenId?: string; plan?: PlannerPlan }>).detail;
       if (!detail?.plan || detail.gardenId !== readActiveGardenId()) return;
