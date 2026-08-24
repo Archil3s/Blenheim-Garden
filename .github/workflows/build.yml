@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - feature/2d-3d-preview
   pull_request:
     branches:
       - main
