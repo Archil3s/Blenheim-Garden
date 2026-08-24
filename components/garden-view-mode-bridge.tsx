@@ -70,6 +70,28 @@ export function GardenViewModeBridge() {
     return () => app.classList.remove("gv-view-3d");
   }, [mode]);
 
+  useEffect(() => {
+    if (mode !== "3d") return;
+
+    const delays = [0, 48, 120, 240, 420, 700];
+    const timers = delays.map((delay, index) => window.setTimeout(() => {
+      const root = document.querySelector<HTMLElement>('[data-testid="inline-3d-root"]');
+      if (!root) return;
+      root.style.right = index % 2 === 0 ? "1px" : "0px";
+      if (index === delays.length - 1) {
+        requestAnimationFrame(() => {
+          root.style.right = "0px";
+        });
+      }
+    }, delay));
+
+    return () => {
+      timers.forEach((timer) => window.clearTimeout(timer));
+      const root = document.querySelector<HTMLElement>('[data-testid="inline-3d-root"]');
+      if (root) root.style.right = "";
+    };
+  }, [mode]);
+
   const switchMode = (next: "2d" | "3d") => {
     if (next === "3d") setPlan(readLivePlan());
     setMode(next);
