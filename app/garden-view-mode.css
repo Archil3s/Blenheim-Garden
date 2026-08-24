@@ -1,0 +1,331 @@
+.gv-view-toggle {
+  order: -20;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 31px;
+  margin-right: 5px;
+  padding: 2px;
+  border: 1px solid #cbd6d1;
+  border-radius: 7px;
+  background: #e8eeeb;
+}
+
+.gv-quickbar .gv-view-toggle button {
+  min-width: 42px;
+  height: 25px;
+  border: 0;
+  border-radius: 5px;
+  padding: 0 9px;
+  color: #6f7a76;
+  background: transparent;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.gv-quickbar .gv-view-toggle button.active {
+  color: #176c50;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(32, 55, 46, 0.14);
+}
+
+.gv-app.gv-view-3d .gv-body {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+.gv-app.gv-view-3d .gv-rail,
+.gv-app.gv-view-3d .gv-context,
+.gv-app.gv-view-3d .gv-panel-reopen {
+  display: none !important;
+}
+
+.gv-app.gv-view-3d .gv-stage {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: #20302a;
+}
+
+.gv-app.gv-view-3d .gv-stage > .gv-stage-status,
+.gv-app.gv-view-3d .gv-stage > .gv-stage-scroll {
+  display: none !important;
+}
+
+.gv-app.gv-view-3d .gv-quick-center > button,
+.gv-app.gv-view-3d .gv-quick-center > strong {
+  display: none;
+}
+
+.gv-inline-3d-root,
+.gv-inline-3d-loading {
+  position: absolute;
+  inset: 0;
+}
+
+.gv-inline-3d-root {
+  z-index: 8;
+  min-width: 0;
+  min-height: 0;
+}
+
+.gv-inline-3d-loading {
+  display: grid;
+  place-items: center;
+  color: #d9e8e1;
+  background: #23352e;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.gv-3d-workspace {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: #eff8f4;
+  background: #23352e;
+  user-select: none;
+}
+
+.gv-3d-workspace-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.gv-3d-workspace-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  touch-action: none;
+}
+
+.gv-3d-workspace-error {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: #fff;
+  background: #263b33;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.gv-3d-hud {
+  position: absolute;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgba(224, 239, 232, 0.18);
+  background: rgba(20, 35, 29, 0.72);
+  box-shadow: 0 5px 18px rgba(14, 25, 21, 0.16);
+  backdrop-filter: blur(10px);
+}
+
+.gv-3d-hud-left {
+  top: 12px;
+  left: 12px;
+  min-height: 34px;
+  padding: 0 11px;
+  border-radius: 9px;
+}
+
+.gv-3d-hud-left strong {
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+
+.gv-3d-hud-left small {
+  color: #b7c9c1;
+  font-size: 9px;
+}
+
+.gv-3d-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ed299;
+  box-shadow: 0 0 0 4px rgba(78, 210, 153, .12);
+}
+
+.gv-3d-camera-controls {
+  top: 12px;
+  right: 12px;
+  min-height: 36px;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.gv-3d-camera-controls button {
+  min-height: 28px;
+  border: 0;
+  border-radius: 7px;
+  padding: 0 10px;
+  color: #e4eee9;
+  background: transparent;
+  font-size: 9px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.gv-3d-camera-controls button:hover,
+.gv-3d-camera-controls button:focus-visible {
+  color: #183d30;
+  background: #eff8f4;
+  outline: none;
+}
+
+.gv-3d-camera-controls > span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  margin: 0 3px 0 1px;
+  padding: 0 7px;
+  border-radius: 999px;
+  color: #9fe1c2;
+  background: rgba(61, 144, 105, .22);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.gv-3d-selection-card {
+  position: absolute;
+  z-index: 12;
+  left: 12px;
+  bottom: 12px;
+  width: min(280px, calc(100% - 24px));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 3px 12px;
+  padding: 11px 12px;
+  border: 1px solid rgba(232, 243, 237, .22);
+  border-radius: 11px;
+  color: #eaf5f0;
+  background: rgba(20, 35, 29, 0.78);
+  box-shadow: 0 8px 24px rgba(13, 24, 20, .2);
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+}
+
+.gv-3d-selection-card > span,
+.gv-3d-selection-card > strong,
+.gv-3d-selection-card > small {
+  grid-column: 1 / -1;
+}
+
+.gv-3d-selection-card > span {
+  color: #92d9b9;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.gv-3d-selection-card > strong {
+  overflow: hidden;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gv-3d-selection-card > small {
+  overflow: hidden;
+  color: #b8c8c1;
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gv-3d-selection-card > div {
+  display: contents;
+}
+
+.gv-3d-selection-card b,
+.gv-3d-selection-card em {
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+.gv-3d-selection-card b {
+  color: #9eaea7;
+  font-weight: 650;
+}
+
+.gv-3d-selection-card em {
+  color: #f2f8f5;
+  font-style: normal;
+  font-weight: 800;
+  text-align: right;
+}
+
+.gv-3d-help {
+  position: absolute;
+  z-index: 11;
+  right: 13px;
+  bottom: 13px;
+  padding: 7px 9px;
+  border-radius: 8px;
+  color: #c3d2cb;
+  background: rgba(20, 35, 29, .58);
+  font-size: 9px;
+  pointer-events: none;
+  backdrop-filter: blur(7px);
+}
+
+@media (max-width: 760px) {
+  .gv-view-toggle {
+    margin-right: 1px;
+  }
+
+  .gv-quickbar .gv-view-toggle button {
+    min-width: 38px;
+    padding-inline: 7px;
+  }
+
+  .gv-app.gv-view-3d .gv-cloud-state {
+    display: none;
+  }
+
+  .gv-3d-hud-left {
+    top: 8px;
+    left: 8px;
+  }
+
+  .gv-3d-hud-left small {
+    display: none;
+  }
+
+  .gv-3d-camera-controls {
+    top: 8px;
+    right: 8px;
+  }
+
+  .gv-3d-camera-controls button {
+    padding-inline: 8px;
+  }
+
+  .gv-3d-camera-controls > span {
+    display: none;
+  }
+
+  .gv-3d-selection-card {
+    left: 8px;
+    right: 8px;
+    bottom: max(8px, env(safe-area-inset-bottom));
+    width: auto;
+  }
+
+  .gv-3d-help {
+    display: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .gv-3d-camera-controls button:first-child {
+    display: none;
+  }
+}
