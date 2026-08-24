@@ -1,0 +1,183 @@
+.gv-3d-preview-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid #b8cec4;
+  border-radius: 8px;
+  background: #eef8f3;
+  color: #214f40;
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.gv-3d-preview-trigger:hover,
+.gv-3d-preview-trigger:focus-visible {
+  background: #e1f3eb;
+  border-color: #7fb49f;
+  outline: none;
+}
+
+.gv-3d-preview-trigger strong {
+  font-size: 12px;
+}
+
+.gv-3d-preview-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  background: rgba(20, 35, 30, 0.55);
+  backdrop-filter: blur(3px);
+}
+
+.gv-3d-preview-dialog {
+  width: min(760px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  display: grid;
+  grid-template-rows: auto minmax(320px, 68dvh) auto;
+  overflow: hidden;
+  border: 1px solid #b8c9c1;
+  border-radius: 16px;
+  background: #f7faf8;
+  box-shadow: 0 24px 70px rgba(16, 32, 26, 0.28);
+}
+
+.gv-3d-preview-header,
+.gv-3d-preview-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #f7faf8;
+}
+
+.gv-3d-preview-header {
+  border-bottom: 1px solid #d8e3de;
+}
+
+.gv-3d-preview-header h2 {
+  margin: 2px 0 0;
+  color: #263d35;
+  font-size: 18px;
+}
+
+.gv-3d-preview-header p {
+  margin: 2px 0 0;
+  color: #6c7d76;
+  font-size: 12px;
+}
+
+.gv-3d-preview-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: #dff2e8;
+  color: #2f7259;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.gv-3d-preview-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gv-3d-preview-actions a,
+.gv-3d-preview-footer button,
+.gv-3d-preview-actions button {
+  min-height: 36px;
+  border: 1px solid #b8c9c1;
+  border-radius: 9px;
+  background: #fff;
+  color: #315146;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.gv-3d-preview-actions a,
+.gv-3d-preview-footer button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 11px;
+}
+
+.gv-3d-preview-actions button {
+  width: 38px;
+  padding: 0;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.gv-3d-preview-frame-wrap {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: #d4e1da;
+}
+
+.gv-3d-preview-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #d4e1da;
+}
+
+.gv-3d-preview-footer {
+  border-top: 1px solid #d8e3de;
+}
+
+.gv-3d-preview-footer span {
+  color: #677970;
+  font-size: 11px;
+}
+
+@media (max-width: 760px) {
+  .gv-3d-preview-trigger strong {
+    display: none;
+  }
+
+  .gv-3d-preview-trigger {
+    min-width: 38px;
+    padding: 0 9px;
+  }
+
+  .gv-3d-preview-backdrop {
+    padding: 0;
+  }
+
+  .gv-3d-preview-dialog {
+    width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .gv-3d-preview-header,
+  .gv-3d-preview-footer {
+    padding: 10px;
+  }
+
+  .gv-3d-preview-header p,
+  .gv-3d-preview-footer span,
+  .gv-3d-preview-actions a {
+    display: none;
+  }
+}
