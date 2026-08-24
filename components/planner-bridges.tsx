@@ -4,10 +4,10 @@ import { usePathname } from "next/navigation";
 import { BlenheimCalendarBridge } from "@/components/blenheim-calendar-bridge";
 import { CropRotationBridge } from "@/components/crop-rotation-bridge";
 import { EditKeyDialogBridge } from "@/components/edit-key-dialog-bridge";
-import { Garden3DPreviewBridge } from "@/components/garden-3d-preview-bridge";
 import { GardenManagerBridge } from "@/components/garden-manager-bridge";
 import { GardenMediaDialogBridge } from "@/components/garden-media-dialog-bridge";
 import { GardenRecordsDialogBridge } from "@/components/garden-records-dialog-bridge";
+import { GardenViewModeBridge } from "@/components/garden-view-mode-bridge";
 import { GrowVegVisualPolishBridge } from "@/components/growveg-visual-polish-bridge";
 import { NewPlantingSaveRefreshBridge } from "@/components/new-planting-save-refresh-bridge";
 import { PlannerShortcutsBridge } from "@/components/planner-shortcuts-bridge";
@@ -15,10 +15,8 @@ import { PlannerShortcutsBridge } from "@/components/planner-shortcuts-bridge";
 export function PlannerBridges() {
   const pathname = usePathname();
 
-  // The WebGL companion is its own application surface. The planner bridges below
-  // install DOM observers, keyboard handlers, dialogs, and planner-specific polish
-  // against the 2D workspace. Keeping them off /3d prevents unrelated 2D runtime
-  // code from crashing or repeatedly mutating the WebGL page.
+  // The standalone WebGL companion is its own application surface. Planner bridges
+  // stay off /3d, while the main planner gets an inline simulator-style 2D/3D switch.
   if (pathname?.startsWith("/3d")) return null;
 
   return (
@@ -32,7 +30,7 @@ export function PlannerBridges() {
       <PlannerShortcutsBridge />
       <GrowVegVisualPolishBridge />
       <GardenManagerBridge />
-      <Garden3DPreviewBridge />
+      <GardenViewModeBridge />
     </>
   );
 }
