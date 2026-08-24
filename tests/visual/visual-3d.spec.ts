@@ -43,6 +43,7 @@ async function openGarden(page: import("@playwright/test").Page) {
   await expect(page.locator("header").getByText("Blenheim Garden", { exact: true })).toBeVisible();
   await expect(page.locator('[aria-label="Visual 3D garden canvas"] canvas')).toBeVisible();
   await page.waitForTimeout(1800);
+  await expect(page.locator("header").getByText("Live D1 garden", { exact: true })).toHaveText("Live D1 garden");
   return { errors, failed };
 }
 
