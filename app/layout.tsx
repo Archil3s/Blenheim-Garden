@@ -1,13 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { BlenheimCalendarBridge } from "@/components/blenheim-calendar-bridge";
-import { CropRotationBridge } from "@/components/crop-rotation-bridge";
-import { EditKeyDialogBridge } from "@/components/edit-key-dialog-bridge";
-import { GardenManagerBridge } from "@/components/garden-manager-bridge";
-import { GardenMediaDialogBridge } from "@/components/garden-media-dialog-bridge";
-import { GardenRecordsDialogBridge } from "@/components/garden-records-dialog-bridge";
-import { GrowVegVisualPolishBridge } from "@/components/growveg-visual-polish-bridge";
-import { NewPlantingSaveRefreshBridge } from "@/components/new-planting-save-refresh-bridge";
-import { PlannerShortcutsBridge } from "@/components/planner-shortcuts-bridge";
+import { PlannerBridges } from "@/components/planner-bridges";
 import "./globals.css";
 import "./planner-interactions.css";
 import "./growveg-workspace.css";
@@ -35,15 +27,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en-NZ">
       <body>
         {children}
-        <EditKeyDialogBridge />
-        <NewPlantingSaveRefreshBridge />
-        <BlenheimCalendarBridge />
-        <CropRotationBridge />
-        <GardenMediaDialogBridge />
-        <GardenRecordsDialogBridge />
-        <PlannerShortcutsBridge />
-        <GrowVegVisualPolishBridge />
-        <GardenManagerBridge />
+        <PlannerBridges />
       </body>
     </html>
   );
