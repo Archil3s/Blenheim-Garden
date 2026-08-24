@@ -39,7 +39,16 @@ test("switches the main planner between 2D and live inline 3D", async ({ page },
   await expect(root).toBeVisible();
   await expect(root).toHaveAttribute("data-bed-count", "1");
   await expect(root).toHaveAttribute("data-planting-count", "1");
-  await expect(page.getByLabel("Interactive 3D garden workspace").locator("canvas")).toBeVisible();
+
+  if (testInfo.project.name === "mobile-webkit") {
+    await expect(root).toHaveAttribute("data-renderer", "isometric-svg");
+    await expect(page.locator('svg[aria-label="Interactive 3D garden workspace"]')).toBeVisible();
+    await expect(page.locator("canvas")).toHaveCount(0);
+  } else {
+    await expect(root).toHaveAttribute("data-renderer", "three-webgl");
+    await expect(page.getByLabel("Interactive 3D garden workspace").locator("canvas")).toBeVisible();
+  }
+
   await expect(page.locator("iframe")).toHaveCount(0);
   await expect(page.locator(".gv-stage-scroll")).toBeHidden();
 
