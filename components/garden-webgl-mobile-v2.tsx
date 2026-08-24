@@ -11,6 +11,18 @@ const GARDEN_WIDTH_CM = 900;
 const GARDEN_HEIGHT_CM = 1080;
 const EMPTY_PLAN: PlannerPlan = { beds: [], plantingAreas: [], rows: [], objects: [] };
 
+type InspectorItem = {
+  title: string;
+  subtitle?: string;
+  lines: Array<{ label: string; value: string }>;
+};
+
+const DEFAULT_INSPECTOR: InspectorItem = {
+  title: "Tap something in the garden",
+  subtitle: "Tap a bed, crop, row, path, trellis or tree to inspect it.",
+  lines: [],
+};
+
 function worldX(cm: number) {
   return cm / 100 - GARDEN_WIDTH_CM / 200;
 }
@@ -44,6 +56,22 @@ function clearGroup(group: THREE.Group) {
   group.clear();
 }
 
+function inspectable(root: THREE.Object3D, item: InspectorItem) {
+  root.traverse((object) => {
+    object.userData.inspect = item;
+    object.userData.selectionRoot = root;
+  });
+}
+
+function clearSelectionHelper(ref: React.MutableRefObject<THREE.BoxHelper | null>) {
+  const helper = ref.current;
+  if (!helper) return;
+  helper.removeFromParent();
+  helper.geometry.dispose();
+  helper.material.dispose();
+  ref.current = null;
+}
+
 function addLine(group: THREE.Group, x1cm: number, y1cm: number, x2cm: number, y2cm: number, width: number, color: number, height = 0.04) {
   const x1 = worldX(x1cm);
   const z1 = worldZ(y1cm);
@@ -59,6 +87,7 @@ function addLine(group: THREE.Group, x1cm: number, y1cm: number, x2cm: number, y
   mesh.position.set((x1 + x2) / 2, height / 2, (z1 + z2) / 2);
   mesh.rotation.y = -Math.atan2(dz, dx);
   group.add(mesh);
+  return mesh;
 }
 
 function buildGarden(group: THREE.Group, plan: PlannerPlan) {
@@ -75,10 +104,12 @@ function buildGarden(group: THREE.Group, plan: PlannerPlan) {
     const d = hcm / 100;
     const x = worldX(xcm + wcm / 2);
     const z = worldZ(ycm + hcm / 2);
+    const activeArea = plan.plantingAreas.find((area) => area.bedId === bed.id);
+    const bedRoot = new THREE.Group();
 
     const bedMesh = new THREE.Mesh(new THREE.BoxGeometry(w, 0.12, d), soil.clone());
     bedMesh.position.set(x, 0.06, z);
-    group.add(bedMesh);
+    bedRoot.add(bedMesh);
 
     const rail = 0.055;
     for (const [rw, rd, rx, rz] of [
@@ -89,8 +120,21 @@ function buildGarden(group: THREE.Group, plan: PlannerPlan) {
     ] as const) {
       const mesh = new THREE.Mesh(new THREE.BoxGeometry(rw, 0.14, rd), timber.clone());
       mesh.position.set(rx, 0.08, rz);
-      group.add(mesh);
+      bedRoot.add(mesh);
     }
+
+    inspectable(bedRoot, {
+      title: bed.name,
+      subtitle: activeArea ? `${activeArea.crop}${activeArea.variety ? ` · ${activeArea.variety}` : ""}` : "Empty bed",
+      lines: [
+        { label: "Size", value: `${w.toFixed(1)} × ${d.toFixed(1)} m` },
+        ...(activeArea ? [
+          { label: "Spacing", value: `${activeArea.spacingCm} cm` },
+          { label: "Planned count", value: String(activeArea.count) },
+        ] : []),
+      ],
+    });
+    group.add(bedRoot);
   }
 
   // Deliberately representative rather than one mesh per real plant on phones.
@@ -106,6 +150,7 @@ function buildGarden(group: THREE.Group, plan: PlannerPlan) {
     const aw = (area.w / 100) * bw;
     const ah = (area.h / 100) * bh;
     const count = Math.min(6, Math.max(1, area.count || 1));
+    const areaRoot = new THREE.Group();
 
     for (let index = 0; index < count; index += 1) {
       const column = index % 3;
@@ -115,12 +160,25 @@ function buildGarden(group: THREE.Group, plan: PlannerPlan) {
       const plant = new THREE.Mesh(new THREE.SphereGeometry(0.11, 6, 4), green.clone());
       plant.scale.set(1.2, 0.7, 1.2);
       plant.position.set(worldX(px), 0.2, worldZ(py));
-      group.add(plant);
+      areaRoot.add(plant);
     }
+
+    inspectable(areaRoot, {
+      title: area.crop,
+      subtitle: area.variety || "Planting area",
+      lines: [
+        { label: "Bed", value: bed.name },
+        { label: "Spacing", value: `${area.spacingCm} cm` },
+        { label: "Pattern", value: area.pattern },
+        { label: "Planned count", value: String(area.count) },
+      ],
+    });
+    group.add(areaRoot);
   }
 
   for (const row of plan.rows) {
     const count = Math.min(8, Math.max(1, row.count || 1));
+    const rowRoot = new THREE.Group();
     for (let index = 0; index < count; index += 1) {
       const t = count === 1 ? 0.5 : index / (count - 1);
       const marker = new THREE.Mesh(new THREE.SphereGeometry(0.065, 6, 4), green.clone());
@@ -129,24 +187,53 @@ function buildGarden(group: THREE.Group, plan: PlannerPlan) {
         0.14,
         worldZ(row.y1 + (row.y2 - row.y1) * t),
       );
-      group.add(marker);
+      rowRoot.add(marker);
     }
+    inspectable(rowRoot, {
+      title: row.crop,
+      subtitle: row.variety || "Planting row",
+      lines: [
+        { label: "Spacing", value: `${row.spacingCm} cm` },
+        { label: "Row plants", value: String(row.count) },
+      ],
+    });
+    group.add(rowRoot);
   }
 
   for (const object of plan.objects) {
     if (object.type === "path") {
-      addLine(group, object.x1, object.y1, object.x2, object.y2, Math.max(0.14, object.widthCm / 100), 0xb8b6aa);
+      const path = addLine(group, object.x1, object.y1, object.x2, object.y2, Math.max(0.14, object.widthCm / 100), 0xb8b6aa);
+      inspectable(path, {
+        title: object.label || "Path",
+        lines: [
+          { label: "Width", value: `${object.widthCm} cm` },
+          { label: "Length", value: `${(Math.hypot(object.x2 - object.x1, object.y2 - object.y1) / 100).toFixed(1)} m` },
+        ],
+      });
     } else if (object.type === "trellis") {
-      addLine(group, object.x1, object.y1, object.x2, object.y2, 0.045, 0x78644e, Math.max(0.1, object.heightCm / 250));
+      const trellis = addLine(group, object.x1, object.y1, object.x2, object.y2, 0.045, 0x78644e, Math.max(0.1, object.heightCm / 250));
+      inspectable(trellis, {
+        title: object.label || "Trellis",
+        lines: [
+          { label: "Height", value: `${(object.heightCm / 100).toFixed(1)} m` },
+          { label: "Post spacing", value: `${object.postSpacingCm} cm` },
+        ],
+      });
     } else if (object.type === "tree") {
+      const treeRoot = new THREE.Group();
       const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.09, 0.7, 6), new THREE.MeshLambertMaterial({ color: 0x76563c }));
       trunk.position.set(worldX(object.x), 0.35, worldZ(object.y));
-      group.add(trunk);
+      treeRoot.add(trunk);
       const radius = Math.min(0.7, Math.max(0.22, object.diameterCm / 220));
       const crown = new THREE.Mesh(new THREE.SphereGeometry(radius, 7, 5), new THREE.MeshLambertMaterial({ color: 0x4e8750 }));
       crown.position.set(worldX(object.x), 0.9, worldZ(object.y));
       crown.scale.y = 0.72;
-      group.add(crown);
+      treeRoot.add(crown);
+      inspectable(treeRoot, {
+        title: object.label || "Tree",
+        lines: [{ label: "Canopy", value: `${(object.diameterCm / 100).toFixed(1)} m` }],
+      });
+      group.add(treeRoot);
     }
   }
 }
@@ -157,10 +244,13 @@ export function GardenWebGLMobileV2() {
   const renderRef = useRef<(() => void) | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const controlsRef = useRef<OrbitControls | null>(null);
+  const selectionHelperRef = useRef<THREE.BoxHelper | null>(null);
   const [gardenId, setGardenId] = useState(DEFAULT_GARDEN_ID);
   const [plan, setPlan] = useState<PlannerPlan | null>(null);
   const [source, setSource] = useState("Loading garden…");
   const [renderError, setRenderError] = useState<string | null>(null);
+  const [inspector, setInspector] = useState<InspectorItem>(DEFAULT_INSPECTOR);
+  const [hasSelection, setHasSelection] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -242,6 +332,64 @@ export function GardenWebGLMobileV2() {
     renderRef.current = render;
     controls.addEventListener("change", render);
 
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+    let pointerStart: { id: number; x: number; y: number } | null = null;
+
+    const clearSelection = () => {
+      clearSelectionHelper(selectionHelperRef);
+      setHasSelection(false);
+      setInspector(DEFAULT_INSPECTOR);
+      render();
+    };
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (!event.isPrimary) return;
+      pointerStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
+    };
+
+    const onPointerUp = (event: PointerEvent) => {
+      const start = pointerStart;
+      pointerStart = null;
+      if (!start || start.id !== event.pointerId || !event.isPrimary) return;
+      if (Math.hypot(event.clientX - start.x, event.clientY - start.y) > 10) return;
+
+      const rect = renderer.domElement.getBoundingClientRect();
+      if (rect.width <= 0 || rect.height <= 0) return;
+      pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster.setFromCamera(pointer, camera);
+      const hits = raycaster.intersectObjects(content.children, true);
+
+      for (const hit of hits) {
+        let object: THREE.Object3D | null = hit.object;
+        while (object) {
+          const item = object.userData.inspect as InspectorItem | undefined;
+          const selectionRoot = object.userData.selectionRoot as THREE.Object3D | undefined;
+          if (item && selectionRoot) {
+            clearSelectionHelper(selectionHelperRef);
+            const helper = new THREE.BoxHelper(selectionRoot, 0xf0b429);
+            helper.material.depthTest = false;
+            helper.renderOrder = 20;
+            scene.add(helper);
+            selectionHelperRef.current = helper;
+            setInspector(item);
+            setHasSelection(true);
+            render();
+            return;
+          }
+          object = object.parent;
+        }
+      }
+
+      clearSelection();
+    };
+
+    const onPointerCancel = () => { pointerStart = null; };
+    renderer.domElement.addEventListener("pointerdown", onPointerDown);
+    renderer.domElement.addEventListener("pointerup", onPointerUp);
+    renderer.domElement.addEventListener("pointercancel", onPointerCancel);
+
     const resize = () => {
       const width = Math.max(1, mount.clientWidth);
       const height = Math.max(1, mount.clientHeight);
@@ -256,8 +404,12 @@ export function GardenWebGLMobileV2() {
 
     return () => {
       observer.disconnect();
+      renderer.domElement.removeEventListener("pointerdown", onPointerDown);
+      renderer.domElement.removeEventListener("pointerup", onPointerUp);
+      renderer.domElement.removeEventListener("pointercancel", onPointerCancel);
       controls.removeEventListener("change", render);
       controls.dispose();
+      clearSelectionHelper(selectionHelperRef);
       clearGroup(content);
       renderer.dispose();
       renderRef.current = null;
@@ -271,6 +423,9 @@ export function GardenWebGLMobileV2() {
   useEffect(() => {
     const content = sceneContentRef.current;
     if (!content || !plan) return;
+    clearSelectionHelper(selectionHelperRef);
+    setHasSelection(false);
+    setInspector(DEFAULT_INSPECTOR);
     clearGroup(content);
     buildGarden(content, plan);
     renderRef.current?.();
@@ -303,7 +458,8 @@ export function GardenWebGLMobileV2() {
       </header>
 
       <section className={styles.toolbar}>
-        <span className={styles.hint}>Drag to orbit · pinch to zoom</span>
+        <span className={styles.hint}>Tap to inspect · drag to orbit · pinch to zoom</span>
+        <span className={styles.mobileHint}>Tap a bed or crop to inspect it</span>
       </section>
 
       <section className={styles.workspace}>
@@ -311,14 +467,37 @@ export function GardenWebGLMobileV2() {
           <div ref={canvasMountRef} aria-label="3D garden canvas" style={{ position: "absolute", inset: 0 }} />
           {renderError && <div className={styles.loading}>{renderError}</div>}
           {!renderError && !plan && <div className={styles.loading}>{source}</div>}
+          {hasSelection && (
+            <div className={styles.selectionCard} aria-live="polite">
+              <span>SELECTED</span>
+              <strong>{inspector.title}</strong>
+              {inspector.subtitle && <small>{inspector.subtitle}</small>}
+              {inspector.lines.slice(0, 2).map((line) => (
+                <div key={`${line.label}-${line.value}`}>
+                  <b>{line.label}</b>
+                  <em>{line.value}</em>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-        <aside className={styles.inspector}>
-          <p className={styles.eyebrow}>3D VIEW</p>
-          <h2>Blenheim Garden</h2>
-          <p className={styles.subtitle}>Low-resource phone view of the measured garden plan.</p>
+        <aside className={styles.inspector} aria-live="polite">
+          <p className={styles.eyebrow}>{hasSelection ? "SELECTED ITEM" : "3D INSPECTOR"}</p>
+          <h2>{inspector.title}</h2>
+          {inspector.subtitle && <p className={styles.subtitle}>{inspector.subtitle}</p>}
+          {inspector.lines.length > 0 && (
+            <dl>
+              {inspector.lines.map((line) => (
+                <div key={`${line.label}-${line.value}`}>
+                  <dt>{line.label}</dt>
+                  <dd>{line.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
           <div className={styles.legend}>
-            <strong>Phone-safe renderer</strong>
-            <p>Three.js owns only the canvas mount. React owns the loading and error overlays separately, preventing the WebKit DOM crash found in testing.</p>
+            <strong>{hasSelection ? "Highlighted in 3D" : "Tap, then inspect"}</strong>
+            <p>{hasSelection ? "The yellow outline marks the exact bed, crop group or garden feature you selected." : "A short tap selects. Dragging still rotates the garden, so orbit gestures do not accidentally change the inspector."}</p>
           </div>
         </aside>
       </section>
