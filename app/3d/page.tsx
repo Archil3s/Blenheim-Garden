@@ -1,4 +1,6 @@
-import { GardenWebGL } from "@/components/garden-webgl";
+import Garden3DClient from "./garden-3d-client";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "3D Garden | Blenheim Garden",
@@ -6,5 +8,5 @@ export const metadata = {
 };
 
 export default function Garden3DPage() {
-  return <GardenWebGL />;
+  return <Garden3DClient />;
 }
