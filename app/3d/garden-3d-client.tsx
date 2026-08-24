@@ -18,7 +18,7 @@ const GardenWebGLDesktop = dynamic(
 );
 
 const GardenWebGLMobile = dynamic(
-  () => import("@/components/garden-webgl-mobile").then((module) => module.GardenWebGLMobile),
+  () => import("@/components/garden-webgl-mobile-v2").then((module) => module.GardenWebGLMobileV2),
   { ssr: false, loading },
 );
 
