@@ -40,7 +40,6 @@ const DEFAULT_INSPECTOR: InspectorItem = {
 };
 
 const colours = {
-  soil: 0x73513a,
   soilTop: 0x684632,
   timber: 0xa87950,
   timberDark: 0x765136,
@@ -60,13 +59,8 @@ const colours = {
   onion: 0xe9e0c6,
 };
 
-function worldX(cm: number) {
-  return cm / 100 - GARDEN_WIDTH_CM / 200;
-}
-
-function worldZ(cm: number) {
-  return cm / 100 - GARDEN_HEIGHT_CM / 200;
-}
+function worldX(cm: number) { return cm / 100 - GARDEN_WIDTH_CM / 200; }
+function worldZ(cm: number) { return cm / 100 - GARDEN_HEIGHT_CM / 200; }
 
 function bedRectCm(bed: PlannerBed) {
   return {
@@ -203,21 +197,18 @@ function createPlant(crop: string, detailed: boolean) {
     root.add(fruitSphere(colours.tomato, 0.045, 0.07, 0.33, 0.05));
     root.add(fruitSphere(colours.tomato, 0.043, 0.02, 0.22, -0.06));
   } else if (kind === "strawberry") {
-    radialLeaves(root, detailed ? 8 : 6, 0.08, 0.08, 0.68, colours.leaf);
+    radialLeaves(root, detailed ? 8 : 6, 0.08, 0.08, 0.68);
     root.add(fruitSphere(colours.strawberry, 0.055, 0.08, 0.065, 0.04, [0.82, 1.2, 0.82]));
     if (detailed) root.add(fruitSphere(colours.strawberry, 0.04, -0.06, 0.055, 0.055, [0.82, 1.2, 0.82]));
   } else if (kind === "blueberry" || kind === "raspberry") {
     root.add(stem(0.44, 0.018));
     radialLeaves(root, detailed ? 7 : 5, 0.11, 0.28, 0.7);
     const berry = kind === "blueberry" ? colours.blueberry : colours.raspberry;
-    for (const [x, y, z] of [[-0.055, 0.22, 0.04], [0.055, 0.25, 0.04], [0, 0.19, -0.05]] as const) {
-      root.add(fruitSphere(berry, 0.038, x, y, z));
-    }
+    for (const [x, y, z] of [[-0.055, 0.22, 0.04], [0.055, 0.25, 0.04], [0, 0.19, -0.05]] as const) root.add(fruitSphere(berry, 0.038, x, y, z));
   } else if (kind === "pumpkin" || kind === "zucchini") {
     radialLeaves(root, detailed ? 8 : 6, 0.16, 0.08, 1.05, colours.leafDark);
-    if (kind === "pumpkin") {
-      root.add(fruitSphere(colours.pumpkin, 0.12, 0.13, 0.1, 0.04, [1.2, 0.78, 1.08]));
-    } else {
+    if (kind === "pumpkin") root.add(fruitSphere(colours.pumpkin, 0.12, 0.13, 0.1, 0.04, [1.2, 0.78, 1.08]));
+    else {
       const fruit = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.065, 0.28, 8), material(0x3f7d42));
       fruit.rotation.z = Math.PI / 2;
       fruit.rotation.y = 0.28;
@@ -226,20 +217,18 @@ function createPlant(crop: string, detailed: boolean) {
     }
   } else if (kind === "lettuce") {
     radialLeaves(root, detailed ? 11 : 8, 0.095, 0.06, 1.05, colours.leafLight);
-    radialLeaves(root, detailed ? 7 : 5, 0.045, 0.095, 0.75, colours.leaf);
+    radialLeaves(root, detailed ? 7 : 5, 0.045, 0.095, 0.75);
   } else if (kind === "broccoli") {
     root.add(stem(0.24, 0.035));
     radialLeaves(root, detailed ? 6 : 4, 0.1, 0.12, 0.78, colours.leafDark);
-    for (const [x, y, z] of [[0, 0.27, 0], [-0.055, 0.245, 0.02], [0.055, 0.245, 0.02], [0.01, 0.245, -0.055]] as const) {
-      root.add(fruitSphere(colours.broccoli, 0.075, x, y, z));
-    }
+    for (const [x, y, z] of [[0, 0.27, 0], [-0.055, 0.245, 0.02], [0.055, 0.245, 0.02], [0.01, 0.245, -0.055]] as const) root.add(fruitSphere(colours.broccoli, 0.075, x, y, z));
   } else if (kind === "brassica") {
     radialLeaves(root, detailed ? 10 : 7, 0.1, 0.07, 1, colours.leafDark);
     root.add(fruitSphere(0x6e9a63, 0.09, 0, 0.13, 0, [1.05, 0.8, 1.05]));
   } else if (kind === "bean") {
     root.add(stem(0.62, 0.016));
     radialLeaves(root, detailed ? 7 : 5, 0.1, 0.32, 0.74, colours.leafLight);
-    radialLeaves(root, detailed ? 5 : 3, 0.07, 0.5, 0.62, colours.leaf);
+    radialLeaves(root, detailed ? 5 : 3, 0.07, 0.5, 0.62);
     const pod = new THREE.Mesh(new THREE.CapsuleGeometry(0.018, 0.13, 4, 6), material(0x68a54f));
     pod.rotation.z = 0.32;
     pod.position.set(0.09, 0.32, 0.03);
@@ -294,9 +283,7 @@ function createPlant(crop: string, detailed: boolean) {
       root.add(sprig);
       radialLeaves(root, 4, 0.055, 0.14 + i * 0.012, 0.45, colours.leafLight);
     }
-  } else {
-    radialLeaves(root, detailed ? 9 : 6, 0.09, 0.08, 0.92, colours.leafLight);
-  }
+  } else radialLeaves(root, detailed ? 9 : 6, 0.09, 0.08, 0.92, colours.leafLight);
 
   return root;
 }
@@ -312,9 +299,7 @@ function makeLabel(text: string) {
     context.beginPath();
     context.roundRect(6, 8, 372, 80, 18);
     context.fill();
-  } else {
-    context.fillRect(6, 8, 372, 80);
-  }
+  } else context.fillRect(6, 8, 372, 80);
   context.fillStyle = "#f7fff9";
   context.font = "700 34px Arial, sans-serif";
   context.textAlign = "center";
@@ -347,40 +332,31 @@ function addBed(group: THREE.Group, bed: PlannerBed, active?: PlannerPlantingAre
   const root = new THREE.Group();
   const wallHeight = 0.22;
   const rail = 0.085;
-  const timber = material(colours.timber, 0.9);
-  const timberDark = material(colours.timberDark, 0.95);
 
   const soil = new THREE.Mesh(new THREE.BoxGeometry(Math.max(0.05, width - 0.1), 0.14, Math.max(0.05, depth - 0.1)), material(colours.soilTop, 1));
   soil.position.set(x, 0.16, z);
-  soil.receiveShadow = true;
   root.add(soil);
 
   const rails: Array<[number, number, number, number]> = [
-    [width + rail * 2, rail, x, z - depth / 2],
-    [width + rail * 2, rail, x, z + depth / 2],
-    [rail, depth, x - width / 2, z],
-    [rail, depth, x + width / 2, z],
+    [width + rail * 2, rail, x, z - depth / 2], [width + rail * 2, rail, x, z + depth / 2],
+    [rail, depth, x - width / 2, z], [rail, depth, x + width / 2, z],
   ];
   rails.forEach(([w, d, px, pz], index) => {
-    const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, wallHeight, d), index % 2 ? timber : timberDark.clone());
+    const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, wallHeight, d), material(index % 2 ? colours.timber : colours.timberDark, 0.9));
     mesh.position.set(px, wallHeight / 2, pz);
     root.add(mesh);
   });
 
   if (detailed) {
-    const capMaterial = new THREE.MeshStandardMaterial({ color: 0xb48660, roughness: 0.88, wireframe: true, transparent: true, opacity: 0.12 });
-    const cap = new THREE.Mesh(new THREE.BoxGeometry(width + 0.14, 0.035, depth + 0.14), capMaterial);
+    const cap = new THREE.Mesh(new THREE.BoxGeometry(width + 0.14, 0.035, depth + 0.14), new THREE.MeshStandardMaterial({ color: 0xb48660, roughness: 0.88, wireframe: true, transparent: true, opacity: 0.12 }));
     cap.position.set(x, 0.225, z);
     root.add(cap);
   }
-
+  applyShadow(root, detailed);
   inspectable(root, {
     title: bed.name,
     subtitle: active ? `${active.crop}${active.variety ? ` · ${active.variety}` : ""}` : "Raised garden bed",
-    lines: [
-      { label: "Size", value: `${width.toFixed(1)} × ${depth.toFixed(1)} m` },
-      ...(active ? [{ label: "Crop", value: active.crop }, { label: "Spacing", value: `${active.spacingCm} cm` }] : []),
-    ],
+    lines: [{ label: "Size", value: `${width.toFixed(1)} × ${depth.toFixed(1)} m` }, ...(active ? [{ label: "Crop", value: active.crop }, { label: "Spacing", value: `${active.spacingCm} cm` }] : [])],
   });
   group.add(root);
 }
@@ -394,89 +370,59 @@ function addPlantingArea(group: THREE.Group, plan: PlannerPlan, area: PlannerPla
   const aw = (area.w / 100) * rect.w;
   const ah = (area.h / 100) * rect.h;
   const root = new THREE.Group();
-  const positions = representativePositions(aw, ah, area.count, detailed ? 10 : 6);
-
-  for (const position of positions) {
+  for (const position of representativePositions(aw, ah, area.count, detailed ? 10 : 6)) {
     const plant = createPlant(area.crop, detailed);
     plant.position.set(worldX(ax + aw * position.x), 0.23, worldZ(ay + ah * position.y));
     plant.scale.setScalar(Math.max(0.72, Math.min(1.25, area.iconSize || 1)));
     root.add(plant);
   }
-
   const label = makeLabel(area.crop);
   if (label) {
     label.position.set(worldX(ax + aw / 2), detailed ? 0.95 : 0.78, worldZ(ay + ah / 2));
     root.add(label);
   }
-
   applyShadow(root, detailed);
   inspectable(root, {
     title: area.crop,
     subtitle: area.variety || "Planting area",
-    lines: [
-      { label: "Bed", value: bed.name },
-      { label: "Spacing", value: `${area.spacingCm} cm` },
-      { label: "Pattern", value: area.pattern },
-      { label: "Planned count", value: String(area.count) },
-    ],
+    lines: [{ label: "Bed", value: bed.name }, { label: "Spacing", value: `${area.spacingCm} cm` }, { label: "Pattern", value: area.pattern }, { label: "Planned count", value: String(area.count) }],
   });
   group.add(root);
 }
 
 function addPath(group: THREE.Group, object: Extract<PlannerPlan["objects"][number], { type: "path" }>, detailed: boolean) {
-  const x1 = worldX(object.x1);
-  const z1 = worldZ(object.y1);
-  const x2 = worldX(object.x2);
-  const z2 = worldZ(object.y2);
-  const dx = x2 - x1;
-  const dz = z2 - z1;
-  const length = Math.max(0.05, Math.hypot(dx, dz));
-  const width = Math.max(0.16, object.widthCm / 100);
+  const x1 = worldX(object.x1), z1 = worldZ(object.y1), x2 = worldX(object.x2), z2 = worldZ(object.y2);
+  const dx = x2 - x1, dz = z2 - z1, length = Math.max(0.05, Math.hypot(dx, dz)), width = Math.max(0.16, object.widthCm / 100);
   const root = new THREE.Group();
   const path = new THREE.Mesh(new THREE.BoxGeometry(length, 0.035, width), material(0xb4ad9b, 1));
   path.position.set((x1 + x2) / 2, 0.025, (z1 + z2) / 2);
   path.rotation.y = -Math.atan2(dz, dx);
-  path.receiveShadow = true;
   root.add(path);
-
   if (detailed) {
     const count = Math.min(18, Math.max(5, Math.floor(length * 2.2)));
     for (let i = 0; i < count; i += 1) {
-      const t = (i + 0.5) / count;
-      const side = ((i * 37) % 100) / 100 - 0.5;
+      const t = (i + 0.5) / count, side = ((i * 37) % 100) / 100 - 0.5;
       const pebble = new THREE.Mesh(new THREE.SphereGeometry(0.035 + (i % 3) * 0.006, 5, 4), material(0x8e897d, 1));
       pebble.scale.y = 0.35;
       pebble.position.set(x1 + dx * t + Math.cos(Math.atan2(dz, dx)) * side * width * 0.7, 0.052, z1 + dz * t - Math.sin(Math.atan2(dz, dx)) * side * width * 0.7);
       root.add(pebble);
     }
   }
-
-  inspectable(root, {
-    title: object.label || "Garden path",
-    lines: [{ label: "Length", value: `${length.toFixed(1)} m` }, { label: "Width", value: `${object.widthCm} cm` }],
-  });
+  inspectable(root, { title: object.label || "Garden path", lines: [{ label: "Length", value: `${length.toFixed(1)} m` }, { label: "Width", value: `${object.widthCm} cm` }] });
   group.add(root);
 }
 
 function addTrellis(group: THREE.Group, object: Extract<PlannerPlan["objects"][number], { type: "trellis" }>, detailed: boolean) {
-  const x1 = worldX(object.x1);
-  const z1 = worldZ(object.y1);
-  const x2 = worldX(object.x2);
-  const z2 = worldZ(object.y2);
-  const dx = x2 - x1;
-  const dz = z2 - z1;
-  const length = Math.max(0.05, Math.hypot(dx, dz));
-  const height = Math.max(0.45, object.heightCm / 100);
+  const x1 = worldX(object.x1), z1 = worldZ(object.y1), x2 = worldX(object.x2), z2 = worldZ(object.y2);
+  const dx = x2 - x1, dz = z2 - z1, length = Math.max(0.05, Math.hypot(dx, dz)), height = Math.max(0.45, object.heightCm / 100);
   const root = new THREE.Group();
   const posts = Math.max(2, Math.ceil((length * 100) / Math.max(50, object.postSpacingCm)) + 1);
-
   for (let i = 0; i < posts; i += 1) {
     const t = posts === 1 ? 0.5 : i / (posts - 1);
     const post = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.038, height, 7), material(0x74583f, 0.92));
     post.position.set(x1 + dx * t, height / 2, z1 + dz * t);
     root.add(post);
   }
-
   const angle = -Math.atan2(dz, dx);
   for (const y of detailed ? [height * 0.25, height * 0.5, height * 0.75, height] : [height * 0.45, height * 0.8]) {
     const rail = new THREE.Mesh(new THREE.BoxGeometry(length, 0.018, 0.018), material(0x7b8580, 0.55));
@@ -484,25 +430,17 @@ function addTrellis(group: THREE.Group, object: Extract<PlannerPlan["objects"][n
     rail.rotation.y = angle;
     root.add(rail);
   }
-
   applyShadow(root, detailed);
-  inspectable(root, {
-    title: object.label || "Trellis",
-    lines: [{ label: "Height", value: `${height.toFixed(1)} m` }, { label: "Length", value: `${length.toFixed(1)} m` }],
-  });
+  inspectable(root, { title: object.label || "Trellis", lines: [{ label: "Height", value: `${height.toFixed(1)} m` }, { label: "Length", value: `${length.toFixed(1)} m` }] });
   group.add(root);
 }
 
 function addTree(group: THREE.Group, object: Extract<PlannerPlan["objects"][number], { type: "tree" }>, detailed: boolean) {
   const root = new THREE.Group();
-  const x = worldX(object.x);
-  const z = worldZ(object.y);
-  const radius = Math.min(0.9, Math.max(0.3, object.diameterCm / 200));
-  const trunkHeight = 0.75 + radius * 0.25;
+  const x = worldX(object.x), z = worldZ(object.y), radius = Math.min(0.9, Math.max(0.3, object.diameterCm / 200)), trunkHeight = 0.75 + radius * 0.25;
   const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.11, trunkHeight, 8), material(0x755137, 1));
   trunk.position.set(x, trunkHeight / 2, z);
   root.add(trunk);
-
   const lobes = detailed ? 5 : 3;
   for (let i = 0; i < lobes; i += 1) {
     const angle = (i / lobes) * Math.PI * 2;
@@ -511,23 +449,19 @@ function addTree(group: THREE.Group, object: Extract<PlannerPlan["objects"][numb
     crown.position.set(x + Math.cos(angle) * radius * 0.28, trunkHeight + radius * (0.44 + (i % 2) * 0.08), z + Math.sin(angle) * radius * 0.28);
     root.add(crown);
   }
-
   if (detailed && (object.label || "").toLowerCase().includes("peach")) {
     for (let i = 0; i < 5; i += 1) {
       const angle = (i / 5) * Math.PI * 2;
       root.add(fruitSphere(0xe99963, 0.045, x + Math.cos(angle) * radius * 0.36, trunkHeight + radius * 0.55, z + Math.sin(angle) * radius * 0.36));
     }
   }
-
   applyShadow(root, detailed);
   inspectable(root, { title: object.label || "Garden tree", lines: [{ label: "Canopy", value: `${(object.diameterCm / 100).toFixed(1)} m` }] });
   group.add(root);
 }
 
 function addBoundary(group: THREE.Group, detailed: boolean) {
-  const width = GARDEN_WIDTH_CM / 100;
-  const depth = GARDEN_HEIGHT_CM / 100;
-  const postCount = detailed ? 22 : 14;
+  const width = GARDEN_WIDTH_CM / 100, depth = GARDEN_HEIGHT_CM / 100, postCount = detailed ? 22 : 14;
   for (let i = 0; i < postCount; i += 1) {
     const t = i / Math.max(1, postCount - 1);
     for (const [x, z] of [[-width / 2, -depth / 2 + depth * t], [width / 2, -depth / 2 + depth * t]] as const) {
@@ -542,7 +476,6 @@ function buildGarden(group: THREE.Group, plan: PlannerPlan, detailed: boolean) {
   addBoundary(group, detailed);
   for (const bed of plan.beds) addBed(group, bed, plan.plantingAreas.find((area) => area.bedId === bed.id), detailed);
   for (const area of plan.plantingAreas) addPlantingArea(group, plan, area, detailed);
-
   for (const row of plan.rows) {
     const root = new THREE.Group();
     const count = Math.min(detailed ? 12 : 7, Math.max(1, row.count || 1));
@@ -554,14 +487,9 @@ function buildGarden(group: THREE.Group, plan: PlannerPlan, detailed: boolean) {
       root.add(plant);
     }
     applyShadow(root, detailed);
-    inspectable(root, {
-      title: row.crop,
-      subtitle: row.variety || "Planting row",
-      lines: [{ label: "Spacing", value: `${row.spacingCm} cm` }, { label: "Planned count", value: String(row.count) }],
-    });
+    inspectable(root, { title: row.crop, subtitle: row.variety || "Planting row", lines: [{ label: "Spacing", value: `${row.spacingCm} cm` }, { label: "Planned count", value: String(row.count) }] });
     group.add(root);
   }
-
   for (const object of plan.objects) {
     if (object.type === "path") addPath(group, object, detailed);
     if (object.type === "trellis") addTrellis(group, object, detailed);
@@ -580,26 +508,35 @@ export function GardenWebGLVisual() {
   const [renderError, setRenderError] = useState<string | null>(null);
   const [inspector, setInspector] = useState<InspectorItem>(DEFAULT_INSPECTOR);
   const [hasSelection, setHasSelection] = useState(false);
-  planRef.current = plan;
+
+  const applyPlan = (nextPlan: PlannerPlan, nextSource: string) => {
+    planRef.current = nextPlan;
+    setPlan(nextPlan);
+    setSource(nextSource);
+    const runtime = runtimeRef.current;
+    if (!runtime) return;
+    clearSelectionHelper(selectionHelperRef);
+    clearGroup(runtime.content);
+    buildGarden(runtime.content, nextPlan, runtime.detailed);
+    runtime.render();
+    setInspector(DEFAULT_INSPECTOR);
+    setHasSelection(false);
+  };
 
   useEffect(() => {
     let cancelled = false;
     const fromQuery = new URL(window.location.href).searchParams.get("gardenId")?.trim();
     const selected = fromQuery || readActiveGardenId();
     setGardenId(selected);
-
     const live = readPlanFromStorage(gardenLivePlanKey(selected));
-    if (live) {
-      setPlan(live);
-      setSource("Live 2D planner");
-    } else {
+    if (live) applyPlan(live, "Live 2D planner");
+    else {
       void (async () => {
         try {
           const response = await fetch(`/api/garden?gardenId=${encodeURIComponent(selected)}`, { cache: "no-store" });
           const data = (await response.json()) as GardenPlanApiResponse;
           if (response.ok && data.ok && data.plan && !cancelled) {
-            setPlan(data.plan);
-            setSource("Live D1 garden");
+            applyPlan(data.plan, "Live D1 garden");
             return;
           }
         } catch {
@@ -607,21 +544,18 @@ export function GardenWebGLVisual() {
         }
         if (cancelled) return;
         const local = readPlanFromStorage(gardenLocalPlanKey(selected));
-        setPlan(local ?? EMPTY_PLAN);
-        setSource(local ? "Local planner copy" : "Empty garden");
+        applyPlan(local ?? EMPTY_PLAN, local ? "Local planner copy" : "Empty garden");
       })();
     }
-
     return () => { cancelled = true; };
+    // applyPlan intentionally uses refs so this loader runs only once for the selected URL garden.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     const onLivePlan = (event: Event) => {
       const detail = (event as CustomEvent<{ gardenId?: string; plan?: PlannerPlan }>).detail;
-      if (detail?.gardenId === gardenId && detail.plan) {
-        setPlan(detail.plan);
-        setSource("Live 2D planner");
-      }
+      if (detail?.gardenId === gardenId && detail.plan) applyPlan(detail.plan, "Live 2D planner");
     };
     window.addEventListener(LIVE_PLAN_EVENT, onLivePlan as EventListener);
     return () => window.removeEventListener(LIVE_PLAN_EVENT, onLivePlan as EventListener);
@@ -631,7 +565,6 @@ export function GardenWebGLVisual() {
     const mount = canvasMountRef.current;
     if (!mount) return;
     const detailed = window.matchMedia("(min-width: 841px)").matches;
-
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({ antialias: detailed, alpha: false, powerPreference: detailed ? "high-performance" : "low-power" });
@@ -643,13 +576,11 @@ export function GardenWebGLVisual() {
       setRenderError("WebGL could not start on this device.");
       return;
     }
-
     mount.appendChild(renderer.domElement);
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xcbded7);
     scene.fog = new THREE.Fog(0xcbded7, 18, 31);
     scene.add(new THREE.HemisphereLight(0xf8fff8, 0x76624c, 1.45));
-
     const sun = new THREE.DirectionalLight(0xffefd2, detailed ? 2.25 : 1.55);
     sun.position.set(-6, 10, 7);
     if (detailed) {
@@ -662,19 +593,16 @@ export function GardenWebGLVisual() {
       sun.shadow.bias = -0.0008;
     }
     scene.add(sun);
-
     const outerGround = new THREE.Mesh(new THREE.PlaneGeometry(17, 19), material(colours.grassDark, 1));
     outerGround.rotation.x = -Math.PI / 2;
     outerGround.position.y = -0.035;
     outerGround.receiveShadow = detailed;
     scene.add(outerGround);
-
     const gardenGround = new THREE.Mesh(new THREE.PlaneGeometry(9.3, 11.1), material(colours.grass, 1));
     gardenGround.rotation.x = -Math.PI / 2;
     gardenGround.position.y = -0.015;
     gardenGround.receiveShadow = detailed;
     scene.add(gardenGround);
-
     const camera = new THREE.PerspectiveCamera(detailed ? 38 : 44, 1, 0.1, 60);
     camera.position.set(detailed ? 8.9 : 7.6, detailed ? 8.6 : 8.8, detailed ? 12.2 : 11.2);
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -684,18 +612,17 @@ export function GardenWebGLVisual() {
     controls.minDistance = 3.8;
     controls.maxDistance = 27;
     controls.maxPolarAngle = Math.PI * 0.48;
-
     const content = new THREE.Group();
     scene.add(content);
     const render = () => renderer.render(scene, camera);
     runtimeRef.current = { scene, content, camera, controls, renderer, render, detailed };
     controls.addEventListener("change", render);
 
-    // The plan can resolve before the Three.js runtime is ready on fast mobile/WebKit.
-    // Build the latest plan here as well as in the plan effect so either startup order works.
+    // If data won the startup race, consume it synchronously now.
     if (planRef.current) {
       buildGarden(content, planRef.current, detailed);
-      render();
+      setInspector(DEFAULT_INSPECTOR);
+      setHasSelection(false);
     }
 
     let animationFrame = 0;
@@ -710,14 +637,12 @@ export function GardenWebGLVisual() {
     const pointer = new THREE.Vector2();
     let pointerStart: { id: number; x: number; y: number } | null = null;
     const onPointerDown = (event: PointerEvent) => {
-      if (!event.isPrimary) return;
-      pointerStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
+      if (event.isPrimary) pointerStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
     };
     const onPointerUp = (event: PointerEvent) => {
       const start = pointerStart;
       pointerStart = null;
-      if (!start || start.id !== event.pointerId || !event.isPrimary) return;
-      if (Math.hypot(event.clientX - start.x, event.clientY - start.y) > 10) return;
+      if (!start || start.id !== event.pointerId || !event.isPrimary || Math.hypot(event.clientX - start.x, event.clientY - start.y) > 10) return;
       const rect = renderer.domElement.getBoundingClientRect();
       if (rect.width <= 0 || rect.height <= 0) return;
       pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
@@ -751,10 +676,8 @@ export function GardenWebGLVisual() {
     };
     renderer.domElement.addEventListener("pointerdown", onPointerDown);
     renderer.domElement.addEventListener("pointerup", onPointerUp);
-
     const resize = () => {
-      const width = Math.max(1, mount.clientWidth);
-      const height = Math.max(1, mount.clientHeight);
+      const width = Math.max(1, mount.clientWidth), height = Math.max(1, mount.clientHeight);
       renderer.setSize(width, height, false);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
@@ -779,17 +702,6 @@ export function GardenWebGLVisual() {
     };
   }, []);
 
-  useEffect(() => {
-    const runtime = runtimeRef.current;
-    if (!runtime || !plan) return;
-    clearSelectionHelper(selectionHelperRef);
-    clearGroup(runtime.content);
-    setInspector(DEFAULT_INSPECTOR);
-    setHasSelection(false);
-    buildGarden(runtime.content, plan, runtime.detailed);
-    runtime.render();
-  }, [plan]);
-
   const resetCamera = () => {
     const runtime = runtimeRef.current;
     if (!runtime) return;
@@ -804,22 +716,14 @@ export function GardenWebGLVisual() {
       <header className={styles.header}>
         <div className={styles.brand}>
           <a href={`/?gardenId=${encodeURIComponent(gardenId)}`} className={styles.back}>← 2D Plan</a>
-          <div>
-            <strong>Blenheim Garden</strong>
-            <span>Visual 3D garden</span>
-          </div>
+          <div><strong>Blenheim Garden</strong><span>Visual 3D garden</span></div>
         </div>
-        <div className={styles.headerActions}>
-          <span className={styles.source}>{source}</span>
-          <button type="button" onClick={resetCamera}>Fit garden</button>
-        </div>
+        <div className={styles.headerActions}><span className={styles.source}>{source}</span><button type="button" onClick={resetCamera}>Fit garden</button></div>
       </header>
-
       <section className={styles.toolbar}>
         <span className={styles.hint}>Recognisable crops · tap to inspect · drag to orbit · pinch/wheel to zoom</span>
         <span className={styles.mobileHint}>Tap crops and beds · drag to rotate</span>
       </section>
-
       <section className={styles.workspace}>
         <div className={styles.viewport}>
           <div ref={canvasMountRef} aria-label="Visual 3D garden canvas" style={{ position: "absolute", inset: 0 }} />
@@ -827,15 +731,8 @@ export function GardenWebGLVisual() {
           {!renderError && !plan && <div className={styles.loading}>{source}</div>}
           {hasSelection && (
             <div className={styles.selectionCard} aria-live="polite">
-              <span>SELECTED</span>
-              <strong>{inspector.title}</strong>
-              {inspector.subtitle && <small>{inspector.subtitle}</small>}
-              {inspector.lines.slice(0, 2).map((line) => (
-                <div key={`${line.label}-${line.value}`}>
-                  <b>{line.label}</b>
-                  <em>{line.value}</em>
-                </div>
-              ))}
+              <span>SELECTED</span><strong>{inspector.title}</strong>{inspector.subtitle && <small>{inspector.subtitle}</small>}
+              {inspector.lines.slice(0, 2).map((line) => <div key={`${line.label}-${line.value}`}><b>{line.label}</b><em>{line.value}</em></div>)}
             </div>
           )}
         </div>
@@ -843,16 +740,7 @@ export function GardenWebGLVisual() {
           <p className={styles.eyebrow}>{hasSelection ? "SELECTED ITEM" : "VISUAL 3D"}</p>
           <h2>{inspector.title}</h2>
           {inspector.subtitle && <p className={styles.subtitle}>{inspector.subtitle}</p>}
-          {inspector.lines.length > 0 && (
-            <dl>
-              {inspector.lines.map((line) => (
-                <div key={`${line.label}-${line.value}`}>
-                  <dt>{line.label}</dt>
-                  <dd>{line.value}</dd>
-                </div>
-              ))}
-            </dl>
-          )}
+          {inspector.lines.length > 0 && <dl>{inspector.lines.map((line) => <div key={`${line.label}-${line.value}`}><dt>{line.label}</dt><dd>{line.value}</dd></div>)}</dl>}
           <div className={styles.legend}>
             <strong>{hasSelection ? "Highlighted in the garden" : "Designed to read visually"}</strong>
             <p>{hasSelection ? "The yellow outline marks the crop group, bed or garden feature you selected." : "Crop-specific shapes, fruit colours, raised beds and real trellis/tree forms make the 3D view easier to understand without opening the inspector."}</p>
