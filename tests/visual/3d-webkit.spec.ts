@@ -16,7 +16,7 @@ test("3D garden reaches a stable phone UI in WebKit", async ({ page }) => {
   const response = await page.goto("/3d?diagnostic=webkit", { waitUntil: "domcontentloaded" });
   expect(response?.status(), "3D document should be served").toBeLessThan(400);
 
-  await expect(page.getByText("Blenheim Garden", { exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Blenheim Garden", exact: true })).toBeVisible();
   await expect(page.getByText("Phone-optimised 3D", { exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: /2D Plan/ })).toBeVisible();
 
