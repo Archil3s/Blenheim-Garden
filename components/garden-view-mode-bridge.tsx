@@ -85,7 +85,12 @@ export function GardenViewModeBridge() {
         quickHost,
       )}
       {stageHost && mode === "3d" && createPortal(
-        <div className="gv-inline-3d-root">
+        <div
+          className="gv-inline-3d-root"
+          data-testid="inline-3d-root"
+          data-bed-count={plan.beds.length}
+          data-planting-count={plan.plantingAreas.length}
+        >
           <GardenWorkspace3D plan={plan} />
         </div>,
         stageHost,
