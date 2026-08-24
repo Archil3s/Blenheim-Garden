@@ -40,9 +40,9 @@ async function openGarden(page: import("@playwright/test").Page) {
 
   const response = await page.goto("/3d?gardenId=visual-fixture", { waitUntil: "domcontentloaded" });
   expect(response?.status()).toBeLessThan(400);
-  await expect(page.getByText("Visual 3D garden", { exact: true })).toBeVisible();
-  await expect(page.locator("canvas").first()).toBeVisible();
-  await page.waitForTimeout(1200);
+  await expect(page.locator("header").getByText("Blenheim Garden", { exact: true })).toBeVisible();
+  await expect(page.locator('[aria-label="Visual 3D garden canvas"] canvas')).toBeVisible();
+  await page.waitForTimeout(1800);
   return { errors, failed };
 }
 
