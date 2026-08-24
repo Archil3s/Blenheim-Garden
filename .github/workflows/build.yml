@@ -18,3 +18,33 @@ jobs:
           bun-version: 1.2.15
       - run: bun install
       - run: bun run build
+      - run: bun run build:cloudflare
+      - run: bunx playwright install --with-deps webkit
+      - name: Start production app
+        run: |
+          bun run start > /tmp/blenheim-next.log 2>&1 &
+          echo $! > /tmp/blenheim-next.pid
+          for i in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:3000/3d > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/blenheim-next.log
+          exit 1
+      - name: Test 3D in iPhone WebKit
+        run: bun run visual:test:3d
+      - name: Collect diagnostics
+        if: always()
+        run: |
+          mkdir -p test-results
+          cp /tmp/blenheim-next.log test-results/server.log || true
+      - name: Upload 3D diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: 3d-webkit-diagnostics
+          path: |
+            test-results
+            playwright-report
+          if-no-files-found: ignore
