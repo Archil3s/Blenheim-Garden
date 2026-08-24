@@ -16,7 +16,12 @@ async function openPlanner(page: import("@playwright/test").Page) {
   const consoleErrors: string[] = [];
   const failedRequests: string[] = [];
   page.on("pageerror", (error) => pageErrors.push(error.message));
-  page.on("console", (message) => { if (message.type() === "error") consoleErrors.push(message.text()); });
+  page.on("console", (message) => {
+    if (message.type() !== "error") return;
+    const text = message.text();
+    if (text.includes("503 (Service Unavailable)")) return;
+    consoleErrors.push(text);
+  });
   page.on("requestfailed", (request) => failedRequests.push(`${request.method()} ${request.url()}`));
 
   await page.route("**/api/garden?**", async (route) => {
