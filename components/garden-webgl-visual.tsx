@@ -325,18 +325,12 @@ function representativePositions(widthCm: number, heightCm: number, desired: num
 
 function addBed(group: THREE.Group, bed: PlannerBed, active?: PlannerPlantingArea, detailed = false) {
   const rect = bedRectCm(bed);
-  const width = rect.w / 100;
-  const depth = rect.h / 100;
-  const x = worldX(rect.x + rect.w / 2);
-  const z = worldZ(rect.y + rect.h / 2);
+  const width = rect.w / 100, depth = rect.h / 100, x = worldX(rect.x + rect.w / 2), z = worldZ(rect.y + rect.h / 2);
   const root = new THREE.Group();
-  const wallHeight = 0.22;
-  const rail = 0.085;
-
+  const wallHeight = 0.22, rail = 0.085;
   const soil = new THREE.Mesh(new THREE.BoxGeometry(Math.max(0.05, width - 0.1), 0.14, Math.max(0.05, depth - 0.1)), material(colours.soilTop, 1));
   soil.position.set(x, 0.16, z);
   root.add(soil);
-
   const rails: Array<[number, number, number, number]> = [
     [width + rail * 2, rail, x, z - depth / 2], [width + rail * 2, rail, x, z + depth / 2],
     [rail, depth, x - width / 2, z], [rail, depth, x + width / 2, z],
@@ -346,7 +340,6 @@ function addBed(group: THREE.Group, bed: PlannerBed, active?: PlannerPlantingAre
     mesh.position.set(px, wallHeight / 2, pz);
     root.add(mesh);
   });
-
   if (detailed) {
     const cap = new THREE.Mesh(new THREE.BoxGeometry(width + 0.14, 0.035, depth + 0.14), new THREE.MeshStandardMaterial({ color: 0xb48660, roughness: 0.88, wireframe: true, transparent: true, opacity: 0.12 }));
     cap.position.set(x, 0.225, z);
@@ -365,10 +358,7 @@ function addPlantingArea(group: THREE.Group, plan: PlannerPlan, area: PlannerPla
   const bed = plan.beds.find((candidate) => candidate.id === area.bedId);
   if (!bed) return;
   const rect = bedRectCm(bed);
-  const ax = rect.x + (area.x / 100) * rect.w;
-  const ay = rect.y + (area.y / 100) * rect.h;
-  const aw = (area.w / 100) * rect.w;
-  const ah = (area.h / 100) * rect.h;
+  const ax = rect.x + (area.x / 100) * rect.w, ay = rect.y + (area.y / 100) * rect.h, aw = (area.w / 100) * rect.w, ah = (area.h / 100) * rect.h;
   const root = new THREE.Group();
   for (const position of representativePositions(aw, ah, area.count, detailed ? 10 : 6)) {
     const plant = createPlant(area.crop, detailed);
@@ -509,6 +499,14 @@ export function GardenWebGLVisual() {
   const [inspector, setInspector] = useState<InspectorItem>(DEFAULT_INSPECTOR);
   const [hasSelection, setHasSelection] = useState(false);
 
+  const present = (runtime: Runtime) => {
+    runtime.render();
+    window.requestAnimationFrame(() => {
+      runtime.render();
+      window.requestAnimationFrame(runtime.render);
+    });
+  };
+
   const applyPlan = (nextPlan: PlannerPlan, nextSource: string) => {
     planRef.current = nextPlan;
     setPlan(nextPlan);
@@ -518,9 +516,9 @@ export function GardenWebGLVisual() {
     clearSelectionHelper(selectionHelperRef);
     clearGroup(runtime.content);
     buildGarden(runtime.content, nextPlan, runtime.detailed);
-    runtime.render();
     setInspector(DEFAULT_INSPECTOR);
     setHasSelection(false);
+    present(runtime);
   };
 
   useEffect(() => {
@@ -548,7 +546,6 @@ export function GardenWebGLVisual() {
       })();
     }
     return () => { cancelled = true; };
-    // applyPlan intentionally uses refs so this loader runs only once for the selected URL garden.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -615,10 +612,10 @@ export function GardenWebGLVisual() {
     const content = new THREE.Group();
     scene.add(content);
     const render = () => renderer.render(scene, camera);
-    runtimeRef.current = { scene, content, camera, controls, renderer, render, detailed };
+    const runtime: Runtime = { scene, content, camera, controls, renderer, render, detailed };
+    runtimeRef.current = runtime;
     controls.addEventListener("change", render);
 
-    // If data won the startup race, consume it synchronously now.
     if (planRef.current) {
       buildGarden(content, planRef.current, detailed);
       setInspector(DEFAULT_INSPECTOR);
@@ -626,12 +623,16 @@ export function GardenWebGLVisual() {
     }
 
     let animationFrame = 0;
-    const animate = () => {
-      if (detailed) controls.update();
-      render();
-      if (detailed) animationFrame = requestAnimationFrame(animate);
-    };
-    animate();
+    if (detailed) {
+      const animate = () => {
+        controls.update();
+        render();
+        animationFrame = requestAnimationFrame(animate);
+      };
+      animate();
+    } else {
+      present(runtime);
+    }
 
     const raycaster = new THREE.Raycaster();
     const pointer = new THREE.Vector2();
@@ -663,7 +664,7 @@ export function GardenWebGLVisual() {
             selectionHelperRef.current = helper;
             setInspector(item);
             setHasSelection(true);
-            render();
+            present(runtime);
             return;
           }
           current = current.parent;
@@ -672,7 +673,7 @@ export function GardenWebGLVisual() {
       clearSelectionHelper(selectionHelperRef);
       setInspector(DEFAULT_INSPECTOR);
       setHasSelection(false);
-      render();
+      present(runtime);
     };
     renderer.domElement.addEventListener("pointerdown", onPointerDown);
     renderer.domElement.addEventListener("pointerup", onPointerUp);
@@ -681,7 +682,7 @@ export function GardenWebGLVisual() {
       renderer.setSize(width, height, false);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      render();
+      present(runtime);
     };
     const observer = new ResizeObserver(resize);
     observer.observe(mount);
@@ -700,6 +701,7 @@ export function GardenWebGLVisual() {
       runtimeRef.current = null;
       if (renderer.domElement.parentNode === mount) mount.removeChild(renderer.domElement);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const resetCamera = () => {
@@ -708,7 +710,7 @@ export function GardenWebGLVisual() {
     runtime.camera.position.set(runtime.detailed ? 8.9 : 7.6, runtime.detailed ? 8.6 : 8.8, runtime.detailed ? 12.2 : 11.2);
     runtime.controls.target.set(0, 0.28, 0);
     runtime.controls.update();
-    runtime.render();
+    present(runtime);
   };
 
   return (
