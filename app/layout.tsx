@@ -12,6 +12,7 @@ import "./growveg-visual-polish.css";
 import "./garden-manager.css";
 import "./garden-view-mode.css";
 import "./garden-realistic-sim.css";
+import "./smart-planting.css";
 
 export const metadata: Metadata = {
   title: "Blenheim Garden",
