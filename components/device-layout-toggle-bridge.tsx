@@ -16,6 +16,7 @@ export function DeviceLayoutToggleBridge() {
     const quickActions = document.querySelector<HTMLElement>(".gv-quick-actions");
     if (!app || !quickActions || quickActions.querySelector(".gv-device-toggle")) return;
 
+    const appRoot = app;
     const wrapper = document.createElement("div");
     wrapper.className = "gv-device-toggle";
     wrapper.setAttribute("role", "group");
@@ -39,15 +40,21 @@ export function DeviceLayoutToggleBridge() {
     const buttons = [mobile, desktop];
 
     function apply(mode: DeviceLayout, persist = true) {
-      app.classList.toggle("gv-device-mobile", mode === "mobile");
-      app.classList.toggle("gv-device-desktop", mode === "desktop");
-      app.dataset.deviceLayout = mode;
+      appRoot.classList.toggle("gv-device-mobile", mode === "mobile");
+      appRoot.classList.toggle("gv-device-desktop", mode === "desktop");
+      appRoot.dataset.deviceLayout = mode;
       buttons.forEach((button) => {
         const active = button.dataset.deviceLayout === mode;
         button.classList.toggle("active", active);
         button.setAttribute("aria-pressed", String(active));
       });
-      if (persist) window.localStorage.setItem(STORAGE_KEY, mode);
+      if (persist) {
+        try {
+          window.localStorage.setItem(STORAGE_KEY, mode);
+        } catch {
+          // The current session still keeps the selected layout.
+        }
+      }
       window.dispatchEvent(new Event("resize"));
     }
 
@@ -70,8 +77,8 @@ export function DeviceLayoutToggleBridge() {
     return () => {
       wrapper.removeEventListener("click", onClick);
       wrapper.remove();
-      app.classList.remove("gv-device-mobile", "gv-device-desktop");
-      delete app.dataset.deviceLayout;
+      appRoot.classList.remove("gv-device-mobile", "gv-device-desktop");
+      delete appRoot.dataset.deviceLayout;
     };
   }, []);
 
