@@ -28,6 +28,7 @@ test("bed-first smart planting calculates capacity and fills the bed", async ({ 
   await card.getByLabel("Variety").selectOption("Cos");
   await expect(card).toContainText("≈ 84");
   await expect(card).toContainText("planner default 28 cm");
+  await page.screenshot({ path: `test-results/smart-planting-card-${testInfo.project.name}.png`, fullPage: true });
 
   await card.getByRole("button", { name: "Fill bed with Cos" }).click();
 
