@@ -17,4 +17,33 @@ jobs:
         with:
           bun-version: 1.2.15
       - run: bun install
+      - name: Install Playwright test runner
+        run: bun add --dev --no-save @playwright/test@1.62.1
+      - name: Lint device layout feature
+        run: bunx eslint components/device-layout-toggle-bridge.tsx components/planner-bridges.tsx
       - run: bun run build
+      - name: Build Cloudflare package
+        run: bun run build:cloudflare
+      - name: Install Chromium
+        run: bunx playwright install --with-deps chromium
+      - name: Start production app
+        run: |
+          bun run start > /tmp/blenheim-garden.log 2>&1 &
+          echo $! > /tmp/blenheim-garden.pid
+          for i in {1..60}; do
+            if curl -fsS http://127.0.0.1:3000/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/blenheim-garden.log
+          exit 1
+      - name: Verify mobile desktop layout toggle
+        run: bunx playwright test --config=playwright.device-layout.config.ts
+      - name: Upload device layout screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: device-layout-diagnostics
+          path: |
+            test-results
+            playwright-report
+          if-no-files-found: ignore
