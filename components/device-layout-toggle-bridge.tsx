@@ -5,18 +5,21 @@ import { useEffect } from "react";
 type DeviceLayout = "mobile" | "desktop";
 
 const STORAGE_KEY = "blenheim-garden-device-layout";
+const NARROW_QUERY = "(max-width: 760px)";
 
 function defaultMode(): DeviceLayout {
-  return window.matchMedia("(max-width: 760px)").matches ? "mobile" : "desktop";
+  return window.matchMedia(NARROW_QUERY).matches ? "mobile" : "desktop";
 }
 
 export function DeviceLayoutToggleBridge() {
   useEffect(() => {
     const app = document.querySelector<HTMLElement>(".gv-app");
     const quickActions = document.querySelector<HTMLElement>(".gv-quick-actions");
-    if (!app || !quickActions || quickActions.querySelector(".gv-device-toggle")) return;
+    if (!app || !quickActions || app.querySelector(".gv-device-toggle")) return;
 
     const appRoot = app;
+    let activeMode: DeviceLayout = defaultMode();
+
     const wrapper = document.createElement("div");
     wrapper.className = "gv-device-toggle";
     wrapper.setAttribute("role", "group");
@@ -39,10 +42,22 @@ export function DeviceLayoutToggleBridge() {
 
     const buttons = [mobile, desktop];
 
+    function placeToggle(mode: DeviceLayout) {
+      const needsViewportOverlay = mode === "desktop" && window.matchMedia(NARROW_QUERY).matches;
+      wrapper.classList.toggle("gv-device-toggle-floating", needsViewportOverlay);
+      if (needsViewportOverlay) {
+        if (wrapper.parentElement !== appRoot) appRoot.append(wrapper);
+      } else if (wrapper.parentElement !== quickActions) {
+        quickActions.prepend(wrapper);
+      }
+    }
+
     function apply(mode: DeviceLayout, persist = true) {
+      activeMode = mode;
       appRoot.classList.toggle("gv-device-mobile", mode === "mobile");
       appRoot.classList.toggle("gv-device-desktop", mode === "desktop");
       appRoot.dataset.deviceLayout = mode;
+      placeToggle(mode);
       buttons.forEach((button) => {
         const active = button.dataset.deviceLayout === mode;
         button.classList.toggle("active", active);
@@ -72,10 +87,14 @@ export function DeviceLayoutToggleBridge() {
       const mode = button?.dataset.deviceLayout;
       if (mode === "mobile" || mode === "desktop") apply(mode);
     };
+    const onViewportResize = () => placeToggle(activeMode);
+
     wrapper.addEventListener("click", onClick);
+    window.addEventListener("resize", onViewportResize);
 
     return () => {
       wrapper.removeEventListener("click", onClick);
+      window.removeEventListener("resize", onViewportResize);
       wrapper.remove();
       appRoot.classList.remove("gv-device-mobile", "gv-device-desktop");
       delete appRoot.dataset.deviceLayout;
