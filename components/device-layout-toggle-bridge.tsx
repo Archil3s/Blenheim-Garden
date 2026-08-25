@@ -18,6 +18,7 @@ export function DeviceLayoutToggleBridge() {
     if (!app || !quickActions || app.querySelector(".gv-device-toggle")) return;
 
     const appRoot = app;
+    const quickBarActions = quickActions;
     let activeMode: DeviceLayout = defaultMode();
 
     const wrapper = document.createElement("div");
@@ -38,7 +39,7 @@ export function DeviceLayoutToggleBridge() {
     desktop.title = "Use the full desktop planner layout";
 
     wrapper.append(mobile, desktop);
-    quickActions.prepend(wrapper);
+    quickBarActions.prepend(wrapper);
 
     const buttons = [mobile, desktop];
 
@@ -47,8 +48,8 @@ export function DeviceLayoutToggleBridge() {
       wrapper.classList.toggle("gv-device-toggle-floating", needsViewportOverlay);
       if (needsViewportOverlay) {
         if (wrapper.parentElement !== appRoot) appRoot.append(wrapper);
-      } else if (wrapper.parentElement !== quickActions) {
-        quickActions.prepend(wrapper);
+      } else if (wrapper.parentElement !== quickBarActions) {
+        quickBarActions.prepend(wrapper);
       }
     }
 
