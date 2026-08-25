@@ -9,6 +9,19 @@
   box-shadow: 0 6px 18px rgba(32, 76, 61, .08);
 }
 
+/* Bed-first workflow: keep Smart Plant above secondary/media actions even though
+   the bridge portal is appended to the React-owned inspector node. */
+.gv-selection-panel[data-bed-id]:not(.gv-planting-inspector) > .gv-smart-plant-card {
+  order: 10;
+  margin-top: 0;
+}
+
+.gv-selection-panel[data-bed-id]:not(.gv-planting-inspector) > .gv-primary-action,
+.gv-selection-panel[data-bed-id]:not(.gv-planting-inspector) > .gv-secondary-action,
+.gv-selection-panel[data-bed-id]:not(.gv-planting-inspector) > .gv-edit-actions {
+  order: 20;
+}
+
 .gv-smart-plant-heading {
   display: flex;
   align-items: center;
@@ -204,6 +217,10 @@
     gap: 8px;
     margin-top: 8px;
     padding: 9px;
+  }
+
+  .gv-selection-panel[data-bed-id]:not(.gv-planting-inspector) > .gv-smart-plant-card {
+    margin-top: 0;
   }
 
   .gv-smart-plant-fields,
