@@ -24,8 +24,8 @@ jobs:
       - run: bun run build
       - name: Build Cloudflare package
         run: bun run build:cloudflare
-      - name: Install Chromium
-        run: bunx playwright install --with-deps chromium
+      - name: Install Chromium and WebKit
+        run: bunx playwright install --with-deps chromium webkit
       - name: Start production app
         run: |
           bun run start > /tmp/blenheim-garden.log 2>&1 &
