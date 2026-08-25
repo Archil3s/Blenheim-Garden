@@ -1,0 +1,79 @@
+"use client";
+
+import { useEffect } from "react";
+
+type DeviceLayout = "mobile" | "desktop";
+
+const STORAGE_KEY = "blenheim-garden-device-layout";
+
+function defaultMode(): DeviceLayout {
+  return window.matchMedia("(max-width: 760px)").matches ? "mobile" : "desktop";
+}
+
+export function DeviceLayoutToggleBridge() {
+  useEffect(() => {
+    const app = document.querySelector<HTMLElement>(".gv-app");
+    const quickActions = document.querySelector<HTMLElement>(".gv-quick-actions");
+    if (!app || !quickActions || quickActions.querySelector(".gv-device-toggle")) return;
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "gv-device-toggle";
+    wrapper.setAttribute("role", "group");
+    wrapper.setAttribute("aria-label", "Planner layout");
+
+    const mobile = document.createElement("button");
+    mobile.type = "button";
+    mobile.dataset.deviceLayout = "mobile";
+    mobile.textContent = "📱 Mobile";
+    mobile.title = "Use the touch-friendly compact planner layout";
+
+    const desktop = document.createElement("button");
+    desktop.type = "button";
+    desktop.dataset.deviceLayout = "desktop";
+    desktop.textContent = "🖥 Desktop";
+    desktop.title = "Use the full desktop planner layout";
+
+    wrapper.append(mobile, desktop);
+    quickActions.prepend(wrapper);
+
+    const buttons = [mobile, desktop];
+
+    function apply(mode: DeviceLayout, persist = true) {
+      app.classList.toggle("gv-device-mobile", mode === "mobile");
+      app.classList.toggle("gv-device-desktop", mode === "desktop");
+      app.dataset.deviceLayout = mode;
+      buttons.forEach((button) => {
+        const active = button.dataset.deviceLayout === mode;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      if (persist) window.localStorage.setItem(STORAGE_KEY, mode);
+      window.dispatchEvent(new Event("resize"));
+    }
+
+    let saved: DeviceLayout | null = null;
+    try {
+      const value = window.localStorage.getItem(STORAGE_KEY);
+      if (value === "mobile" || value === "desktop") saved = value;
+    } catch {
+      // Layout selection still works when local storage is unavailable.
+    }
+    apply(saved ?? defaultMode(), false);
+
+    const onClick = (event: Event) => {
+      const button = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>("button[data-device-layout]");
+      const mode = button?.dataset.deviceLayout;
+      if (mode === "mobile" || mode === "desktop") apply(mode);
+    };
+    wrapper.addEventListener("click", onClick);
+
+    return () => {
+      wrapper.removeEventListener("click", onClick);
+      wrapper.remove();
+      app.classList.remove("gv-device-mobile", "gv-device-desktop");
+      delete app.dataset.deviceLayout;
+    };
+  }, []);
+
+  return null;
+}
