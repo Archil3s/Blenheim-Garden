@@ -11,6 +11,7 @@ import { GardenViewModeBridge } from "@/components/garden-view-mode-bridge";
 import { GrowVegVisualPolishBridge } from "@/components/growveg-visual-polish-bridge";
 import { NewPlantingSaveRefreshBridge } from "@/components/new-planting-save-refresh-bridge";
 import { PlannerShortcutsBridge } from "@/components/planner-shortcuts-bridge";
+import { SmartPlantingBridge } from "@/components/smart-planting-bridge";
 
 export function PlannerBridges() {
   const pathname = usePathname();
@@ -31,6 +32,7 @@ export function PlannerBridges() {
       <GrowVegVisualPolishBridge />
       <GardenManagerBridge />
       <GardenViewModeBridge />
+      <SmartPlantingBridge />
     </>
   );
 }
