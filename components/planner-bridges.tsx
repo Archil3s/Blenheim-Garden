@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { BlenheimCalendarBridge } from "@/components/blenheim-calendar-bridge";
 import { CropRotationBridge } from "@/components/crop-rotation-bridge";
+import { DeviceLayoutToggleBridge } from "@/components/device-layout-toggle-bridge";
 import { EditKeyDialogBridge } from "@/components/edit-key-dialog-bridge";
 import { GardenManagerBridge } from "@/components/garden-manager-bridge";
 import { GardenMediaDialogBridge } from "@/components/garden-media-dialog-bridge";
@@ -33,6 +34,7 @@ export function PlannerBridges() {
       <GardenManagerBridge />
       <GardenViewModeBridge />
       <SmartPlantingBridge />
+      <DeviceLayoutToggleBridge />
     </>
   );
 }
