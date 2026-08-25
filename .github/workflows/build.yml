@@ -17,4 +17,33 @@ jobs:
         with:
           bun-version: 1.2.15
       - run: bun install
+      - name: Install Playwright test runner
+        run: bun add -d @playwright/test@1.55.0
+      - name: Lint smart planting feature
+        run: bunx eslint components/smart-planting-bridge.tsx
       - run: bun run build
+      - name: Build Cloudflare package
+        run: bun run build:cloudflare
+      - name: Install Chromium
+        run: bunx playwright install --with-deps chromium
+      - name: Start production app
+        run: |
+          bun run start > /tmp/blenheim-smart-planting.log 2>&1 &
+          echo $! > /tmp/blenheim-smart-planting.pid
+          for i in {1..60}; do
+            if curl -fsS http://127.0.0.1:3000/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/blenheim-smart-planting.log
+          exit 1
+      - name: Verify smart planting workflow
+        run: bunx playwright test --config=playwright.smart-planting.config.ts
+      - name: Upload smart planting screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smart-planting-diagnostics
+          path: |
+            test-results
+            playwright-report
+          if-no-files-found: ignore
