@@ -71,6 +71,102 @@
 .structure-object[data-kind="garden-arch"] { border-radius: 48% 48% 8px 8px; background: rgba(189,205,195,.45); }
 .structure-object[data-kind="beehive"] { border-color: #987f3f; background: repeating-linear-gradient(0deg, #e3c86d 0 14px, #c9aa4f 14px 16px); }
 
+.structure-object[data-kind="cattle-panel-arch"],
+.structure-object[data-kind="bean-arch"],
+.structure-object[data-kind="cucumber-arch"],
+.structure-object[data-kind="hoop-arch"],
+.structure-object[data-kind="low-hoop-frame"],
+.structure-object[data-kind="row-cover-hoops"] {
+  border-color: #718681;
+  border-radius: 30% / 10%;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 13px, rgba(95,117,109,.32) 13px 15px),
+    repeating-linear-gradient(0deg, rgba(233,239,235,.72) 0 13px, rgba(95,117,109,.2) 13px 15px);
+}
+.structure-object[data-kind="cattle-panel-arch"] {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 10px, rgba(83,102,96,.5) 10px 12px),
+    repeating-linear-gradient(0deg, rgba(232,238,234,.6) 0 10px, rgba(83,102,96,.42) 10px 12px);
+}
+.structure-object[data-kind="a-frame-trellis"] {
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  border-color: #776c54;
+  background: repeating-linear-gradient(90deg, rgba(139,116,79,.72) 0 5px, rgba(255,255,255,.2) 5px 18px);
+}
+
+.structure-object[data-kind="insect-net-tunnel"],
+.structure-object[data-kind="frost-cloth-tunnel"],
+.structure-object[data-kind="cloche"] {
+  border-color: #88a59d;
+  border-radius: 30% / 12%;
+  background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.18) 0 5px, rgba(135,168,158,.18) 5px 6px),
+    rgba(222,239,233,.72);
+}
+.structure-object[data-kind="bird-net-frame"] {
+  border-color: #718d7d;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 9px, rgba(68,105,86,.24) 9px 10px),
+    repeating-linear-gradient(0deg, rgba(229,239,233,.58) 0 9px, rgba(68,105,86,.24) 9px 10px);
+}
+.structure-object[data-kind="shade-cloth-frame"] {
+  border-color: #65796c;
+  background: repeating-linear-gradient(45deg, rgba(72,94,80,.42) 0 4px, rgba(161,178,167,.46) 4px 8px);
+}
+
+.structure-object[data-kind="pot"],
+.structure-object[data-kind="half-barrel"],
+.structure-object[data-kind="raised-bed-round"] {
+  border-radius: 50%;
+}
+.structure-object[data-kind="pot"] {
+  border-color: #9b654d;
+  background: radial-gradient(circle at 38% 35%, #a87861 0 38%, #744635 72%);
+}
+.structure-object[data-kind="grow-bag"] {
+  border-color: #59625e;
+  border-radius: 18%;
+  background: linear-gradient(145deg, #6d7772, #444d49);
+}
+.structure-object[data-kind="planter-box"],
+.structure-object[data-kind="trough-planter"] {
+  border-color: #87694c;
+  background: linear-gradient(#5f4b37 0 10%, #4b3c2d 10% 18%, #bc976c 18% 100%);
+}
+.structure-object[data-kind="half-barrel"] {
+  border-color: #785a3b;
+  background: repeating-radial-gradient(circle, #a47d50 0 12px, #765735 13px 15px);
+}
+.structure-object[data-kind="wicking-bed"] {
+  border-color: #607985;
+  background: linear-gradient(#544936 0 36%, #8f7658 36% 64%, #8faab4 64% 100%);
+}
+.structure-object[data-kind="seed-tray"] {
+  border-color: #4f5f57;
+  background:
+    radial-gradient(circle, #4b3928 0 3px, transparent 4px) 0 0 / 14px 14px,
+    #72817a;
+}
+
+.structure-object[data-kind="raised-bed-timber"],
+.structure-object[data-kind="raised-bed-square"] {
+  border-color: #866b4d;
+  background: linear-gradient(#a47f58 0 12%, #493d2f 12% 88%, #a47f58 88%);
+}
+.structure-object[data-kind="raised-bed-corrugated"] {
+  border-color: #728187;
+  background: repeating-linear-gradient(90deg, #9aa7aa 0 8px, #c2cbcd 8px 13px, #8c999c 13px 16px);
+}
+.structure-object[data-kind="raised-bed-round"] {
+  border-color: #788388;
+  background: radial-gradient(circle, #4b3d2d 0 63%, #a5afb0 64% 78%, #788388 79%);
+}
+.structure-object[data-kind="keyhole-bed"] {
+  border-color: #866d4f;
+  border-radius: 46%;
+  background: radial-gradient(circle at 50% 50%, #8f7758 0 14%, #493d2f 15% 60%, #ae8c63 61% 100%);
+}
+
 .gv-structure-ready > span:first-child,
 .gv-structure-preset-icon {
   display: grid;
