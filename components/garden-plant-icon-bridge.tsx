@@ -24,6 +24,8 @@ function setArt(host: HTMLElement | null, icon: PlantIconDefinition | null, comp
 
   art.dataset.slug = icon.slug;
   host.style.position = host.style.position || "relative";
+  host.style.overflow = "hidden";
+  host.style.textIndent = "-9999px";
   Object.assign(art.style, plantIconBackground(icon), compact ? {
     position: "absolute",
     width: "1.35em",
