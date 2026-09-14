@@ -12,6 +12,7 @@ import {
   readActiveGardenId,
 } from "@/lib/garden/active-garden";
 import { plantIconSprite } from "@/lib/garden/plant-icons";
+import { addStructure3D } from "@/components/garden-structure-3d";
 import styles from "./garden-webgl.module.css";
 
 const GARDEN_WIDTH_CM = 900;
@@ -36,7 +37,7 @@ type Runtime = {
 
 const DEFAULT_INSPECTOR: InspectorItem = {
   title: "Explore your garden",
-  subtitle: "Tap a bed, crop, path, trellis or tree.",
+  subtitle: "Tap a bed, crop, path, trellis, structure or tree.",
   lines: [],
 };
 
@@ -519,6 +520,7 @@ function buildGarden(group: THREE.Group, plan: PlannerPlan, detailed: boolean, r
   for (const object of plan.objects) {
     if (object.type === "path") addPath(group, object, detailed);
     if (object.type === "trellis") addTrellis(group, object, detailed);
+    if (object.type === "structure") addStructure3D(group, object, detailed);
     if (object.type === "tree") addTree(group, object, detailed);
   }
 }
