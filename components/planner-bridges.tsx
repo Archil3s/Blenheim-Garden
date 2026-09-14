@@ -7,7 +7,6 @@ import { DeviceLayoutToggleBridge } from "@/components/device-layout-toggle-brid
 import { EditKeyDialogBridge } from "@/components/edit-key-dialog-bridge";
 import { GardenManagerBridge } from "@/components/garden-manager-bridge";
 import { GardenMediaDialogBridge } from "@/components/garden-media-dialog-bridge";
-import { GardenPlantIconBridge } from "@/components/garden-plant-icon-bridge";
 import { GardenRecordsDialogBridge } from "@/components/garden-records-dialog-bridge";
 import { GardenViewModeBridge } from "@/components/garden-view-mode-bridge";
 import { GrowVegVisualPolishBridge } from "@/components/growveg-visual-polish-bridge";
@@ -32,7 +31,6 @@ export function PlannerBridges() {
       <GardenRecordsDialogBridge />
       <PlannerShortcutsBridge />
       <GrowVegVisualPolishBridge />
-      <GardenPlantIconBridge />
       <GardenManagerBridge />
       <GardenViewModeBridge />
       <SmartPlantingBridge />
