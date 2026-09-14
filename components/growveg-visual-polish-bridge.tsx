@@ -29,18 +29,20 @@ function decorateCrops() {
   });
 
   document.querySelectorAll<HTMLElement>(".planting-area").forEach((area) => {
+    if (area.dataset.crop) return;
     const text = area.querySelector(".planting-area-icons i")?.textContent ?? area.textContent ?? "";
     const crop = cropFromText(text);
     if (crop) area.dataset.crop = crop;
   });
 
   document.querySelectorAll<HTMLElement>(".planting-row").forEach((row) => {
+    if (row.dataset.crop) return;
     const crop = cropFromText(row.textContent ?? "");
     if (crop) row.dataset.crop = crop;
   });
 
   const ready = document.querySelector<HTMLElement>(".gv-ready-strip");
-  if (ready) {
+  if (ready && !ready.dataset.crop) {
     const crop = cropFromText(ready.textContent ?? "");
     if (crop) ready.dataset.crop = crop;
   }
