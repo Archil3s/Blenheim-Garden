@@ -101,28 +101,31 @@ test("records, photos, rotation, Today and drawing tools remain reachable", asyn
       await capture(page, testInfo, "plants");
     }
     if (label === "Structures") {
-      await expect(page.locator(".gv-structure-list > button")).toHaveCount(12);
+      await expect(page.locator(".gv-structure-list > button")).toHaveCount(36);
       await expect(page.locator(".gv-structure-ready")).toContainText("Greenhouse");
+      await expect(page.locator(".gv-structure-list")).toContainText("Bent cattle panel arch");
+      await expect(page.locator(".gv-structure-list")).toContainText("Garden pot");
+      await expect(page.locator(".gv-structure-list")).toContainText("Timber raised bed");
       await capture(page, testInfo, "structures-catalogue");
     }
     await page.getByRole("button", { name: "Close inspector" }).click();
   }
 });
 
-test("structure presets place, edit and flow into the live plan", async ({ page }, testInfo) => {
+test("expanded structure presets place, edit and flow into the live plan", async ({ page }, testInfo) => {
   await selectTool(page, "Structures");
-  await page.locator(".gv-structure-list > button").filter({ hasText: "Beehive" }).click();
-  await expect(page.locator(".gv-structure-ready")).toContainText("Beehive");
+  await page.locator(".gv-structure-list > button").filter({ hasText: "Bent cattle panel arch" }).click();
+  await expect(page.locator(".gv-structure-ready")).toContainText("Bent cattle panel arch");
   const canvas = (await page.locator(".garden-canvas").boundingBox())!;
   await page.mouse.click(canvas.x + canvas.width * 0.3, canvas.y + canvas.height * 0.35);
-  const hive = page.locator('.structure-object[data-kind="beehive"]');
-  await expect(hive).toHaveCount(1);
-  await expect(page.locator(".gv-selection-hero h2")).toHaveText("Beehive");
+  const arch = page.locator('.structure-object[data-kind="cattle-panel-arch"]');
+  await expect(arch).toHaveCount(1);
+  await expect(page.locator(".gv-selection-hero h2")).toHaveText("Bent cattle panel arch");
   await page.getByLabel("Rotation", { exact: true }).fill("90");
-  await expect(hive).toHaveCSS("transform", /matrix/);
+  await expect(arch).toHaveCSS("transform", /matrix/);
   const live = await page.evaluate((key) => JSON.parse(localStorage.getItem(key) ?? "null"), liveKey) as { objects: Array<Record<string, unknown>> };
-  expect(live.objects.some((object) => object.type === "structure" && object.kind === "beehive" && object.rotationDeg === 90)).toBeTruthy();
-  await capture(page, testInfo, "structure-beehive");
+  expect(live.objects.some((object) => object.type === "structure" && object.kind === "cattle-panel-arch" && object.rotationDeg === 90)).toBeTruthy();
+  await capture(page, testInfo, "structure-cattle-panel-arch");
 });
 
 test("move, undo, redo, snap and named-garden isolation", async ({ page }) => {
