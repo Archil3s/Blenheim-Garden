@@ -91,7 +91,31 @@ export type PlannerStructureKind =
   | "pergola"
   | "garden-arch"
   | "chicken-coop"
-  | "beehive";
+  | "beehive"
+  | "cattle-panel-arch"
+  | "bean-arch"
+  | "cucumber-arch"
+  | "hoop-arch"
+  | "a-frame-trellis"
+  | "low-hoop-frame"
+  | "insect-net-tunnel"
+  | "bird-net-frame"
+  | "frost-cloth-tunnel"
+  | "shade-cloth-frame"
+  | "cloche"
+  | "row-cover-hoops"
+  | "pot"
+  | "grow-bag"
+  | "planter-box"
+  | "trough-planter"
+  | "half-barrel"
+  | "wicking-bed"
+  | "seed-tray"
+  | "raised-bed-timber"
+  | "raised-bed-corrugated"
+  | "raised-bed-round"
+  | "raised-bed-square"
+  | "keyhole-bed";
 
 export type PlannerStructure = {
   id: string;
