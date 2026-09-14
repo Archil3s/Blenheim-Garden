@@ -11,6 +11,7 @@ import {
   gardenLocalPlanKey,
   readActiveGardenId,
 } from "@/lib/garden/active-garden";
+import { plantIconSprite } from "@/lib/garden/plant-icons";
 import styles from "./garden-webgl.module.css";
 
 const GARDEN_WIDTH_CM = 900;
@@ -288,6 +289,21 @@ function createPlant(crop: string, detailed: boolean) {
   return root;
 }
 
+function makePlantIconMaterial(crop: string, variety: string | null | undefined, requestRender?: () => void) {
+  const sprite = plantIconSprite(crop, variety);
+  if (!sprite) return null;
+  const texture = new THREE.TextureLoader().load(sprite.src, () => {
+    try { requestRender?.(); } catch { /* renderer may already be disposed */ }
+  });
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.wrapS = THREE.ClampToEdgeWrapping;
+  texture.wrapT = THREE.ClampToEdgeWrapping;
+  texture.repeat.set(1 / sprite.columns, 1 / sprite.rows);
+  texture.offset.set(sprite.column / sprite.columns, 1 - (sprite.row + 1) / sprite.rows);
+  texture.needsUpdate = true;
+  return new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false, alphaTest: 0.015 });
+}
+
 function makeLabel(text: string) {
   const canvas = document.createElement("canvas");
   canvas.width = 384;
@@ -354,17 +370,28 @@ function addBed(group: THREE.Group, bed: PlannerBed, active?: PlannerPlantingAre
   group.add(root);
 }
 
-function addPlantingArea(group: THREE.Group, plan: PlannerPlan, area: PlannerPlantingArea, detailed: boolean) {
+function addPlantingArea(group: THREE.Group, plan: PlannerPlan, area: PlannerPlantingArea, detailed: boolean, requestRender?: () => void) {
   const bed = plan.beds.find((candidate) => candidate.id === area.bedId);
   if (!bed) return;
   const rect = bedRectCm(bed);
   const ax = rect.x + (area.x / 100) * rect.w, ay = rect.y + (area.y / 100) * rect.h, aw = (area.w / 100) * rect.w, ah = (area.h / 100) * rect.h;
   const root = new THREE.Group();
-  for (const position of representativePositions(aw, ah, area.count, detailed ? 10 : 6)) {
-    const plant = createPlant(area.crop, detailed);
-    plant.position.set(worldX(ax + aw * position.x), 0.23, worldZ(ay + ah * position.y));
-    plant.scale.setScalar(Math.max(0.72, Math.min(1.25, area.iconSize || 1)));
-    root.add(plant);
+  const iconMaterial = makePlantIconMaterial(area.crop, area.variety, requestRender);
+  const positions = representativePositions(aw, ah, area.count, detailed ? 10 : 6);
+  for (const position of positions) {
+    if (iconMaterial) {
+      const plant = new THREE.Sprite(iconMaterial);
+      plant.center.set(0.5, 0);
+      plant.position.set(worldX(ax + aw * position.x), 0.2, worldZ(ay + ah * position.y));
+      const scale = (detailed ? 0.72 : 0.58) * Math.max(0.72, Math.min(1.35, (area.iconSize || 18) / 18));
+      plant.scale.set(scale, scale, 1);
+      root.add(plant);
+    } else {
+      const plant = createPlant(area.crop, detailed);
+      plant.position.set(worldX(ax + aw * position.x), 0.23, worldZ(ay + ah * position.y));
+      plant.scale.setScalar(Math.max(0.72, Math.min(1.25, area.iconSize || 1)));
+      root.add(plant);
+    }
   }
   const label = makeLabel(area.crop);
   if (label) {
@@ -462,19 +489,28 @@ function addBoundary(group: THREE.Group, detailed: boolean) {
   }
 }
 
-function buildGarden(group: THREE.Group, plan: PlannerPlan, detailed: boolean) {
+function buildGarden(group: THREE.Group, plan: PlannerPlan, detailed: boolean, requestRender?: () => void) {
   addBoundary(group, detailed);
   for (const bed of plan.beds) addBed(group, bed, plan.plantingAreas.find((area) => area.bedId === bed.id), detailed);
-  for (const area of plan.plantingAreas) addPlantingArea(group, plan, area, detailed);
+  for (const area of plan.plantingAreas) addPlantingArea(group, plan, area, detailed, requestRender);
   for (const row of plan.rows) {
     const root = new THREE.Group();
     const count = Math.min(detailed ? 12 : 7, Math.max(1, row.count || 1));
+    const iconMaterial = makePlantIconMaterial(row.crop, row.variety, requestRender);
     for (let i = 0; i < count; i += 1) {
       const t = count === 1 ? 0.5 : i / (count - 1);
-      const plant = createPlant(row.crop, detailed);
-      plant.scale.setScalar(0.82);
-      plant.position.set(worldX(row.x1 + (row.x2 - row.x1) * t), 0.03, worldZ(row.y1 + (row.y2 - row.y1) * t));
-      root.add(plant);
+      if (iconMaterial) {
+        const plant = new THREE.Sprite(iconMaterial);
+        plant.center.set(0.5, 0);
+        plant.scale.set(detailed ? 0.66 : 0.54, detailed ? 0.66 : 0.54, 1);
+        plant.position.set(worldX(row.x1 + (row.x2 - row.x1) * t), 0.18, worldZ(row.y1 + (row.y2 - row.y1) * t));
+        root.add(plant);
+      } else {
+        const plant = createPlant(row.crop, detailed);
+        plant.scale.setScalar(0.82);
+        plant.position.set(worldX(row.x1 + (row.x2 - row.x1) * t), 0.03, worldZ(row.y1 + (row.y2 - row.y1) * t));
+        root.add(plant);
+      }
     }
     applyShadow(root, detailed);
     inspectable(root, { title: row.crop, subtitle: row.variety || "Planting row", lines: [{ label: "Spacing", value: `${row.spacingCm} cm` }, { label: "Planned count", value: String(row.count) }] });
@@ -515,7 +551,7 @@ export function GardenWebGLVisual() {
     if (!runtime) return;
     clearSelectionHelper(selectionHelperRef);
     clearGroup(runtime.content);
-    buildGarden(runtime.content, nextPlan, runtime.detailed);
+    buildGarden(runtime.content, nextPlan, runtime.detailed, () => present(runtime));
     setInspector(DEFAULT_INSPECTOR);
     setHasSelection(false);
     present(runtime);
@@ -617,7 +653,7 @@ export function GardenWebGLVisual() {
     controls.addEventListener("change", render);
 
     if (planRef.current) {
-      buildGarden(content, planRef.current, detailed);
+      buildGarden(content, planRef.current, detailed, () => present(runtime));
       setInspector(DEFAULT_INSPECTOR);
       setHasSelection(false);
     }
@@ -745,7 +781,7 @@ export function GardenWebGLVisual() {
           {inspector.lines.length > 0 && <dl>{inspector.lines.map((line) => <div key={`${line.label}-${line.value}`}><dt>{line.label}</dt><dd>{line.value}</dd></div>)}</dl>}
           <div className={styles.legend}>
             <strong>{hasSelection ? "Highlighted in the garden" : "Designed to read visually"}</strong>
-            <p>{hasSelection ? "The yellow outline marks the crop group, bed or garden feature you selected." : "Crop-specific shapes, fruit colours, raised beds and real trellis/tree forms make the 3D view easier to understand without opening the inspector."}</p>
+            <p>{hasSelection ? "The yellow outline marks the crop group, bed or garden feature you selected." : "Crop-specific shapes, uploaded plant art, raised beds and real trellis/tree forms make the 3D view easier to understand without opening the inspector."}</p>
           </div>
         </aside>
       </section>
