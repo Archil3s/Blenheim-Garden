@@ -92,7 +92,7 @@ test("records, photos, rotation, Today and drawing tools remain reachable", asyn
     await capture(page, testInfo, label.toLowerCase());
     await dialog.getByRole("button", { name: "Close", exact: true }).click();
   }
-  for (const label of ["Plants", "Rows", "Bed", "Path", "Trellis", "Tree", "Text", "Select"]) {
+  for (const label of ["Plants", "Rows", "Bed", "Path", "Trellis", "Structures", "Tree", "Text", "Select"]) {
     await selectTool(page, label);
     await expect(page.locator(".gv-context")).toBeVisible();
     if (label === "Plants") {
@@ -100,8 +100,29 @@ test("records, photos, rotation, Today and drawing tools remain reachable", asyn
       await expect(page.locator(".gv-ready-strip")).toContainText("King Purple");
       await capture(page, testInfo, "plants");
     }
+    if (label === "Structures") {
+      await expect(page.locator(".gv-structure-list > button")).toHaveCount(12);
+      await expect(page.locator(".gv-structure-ready")).toContainText("Greenhouse");
+      await capture(page, testInfo, "structures-catalogue");
+    }
     await page.getByRole("button", { name: "Close inspector" }).click();
   }
+});
+
+test("structure presets place, edit and flow into the live plan", async ({ page }, testInfo) => {
+  await selectTool(page, "Structures");
+  await page.locator(".gv-structure-list > button").filter({ hasText: "Beehive" }).click();
+  await expect(page.locator(".gv-structure-ready")).toContainText("Beehive");
+  const canvas = (await page.locator(".garden-canvas").boundingBox())!;
+  await page.mouse.click(canvas.x + canvas.width * 0.3, canvas.y + canvas.height * 0.35);
+  const hive = page.locator('.structure-object[data-kind="beehive"]');
+  await expect(hive).toHaveCount(1);
+  await expect(page.locator(".gv-selection-hero h2")).toHaveText("Beehive");
+  await page.getByLabel("Rotation", { exact: true }).fill("90");
+  await expect(hive).toHaveCSS("transform", /matrix/);
+  const live = await page.evaluate((key) => JSON.parse(localStorage.getItem(key) ?? "null"), liveKey) as { objects: Array<Record<string, unknown>> };
+  expect(live.objects.some((object) => object.type === "structure" && object.kind === "beehive" && object.rotationDeg === 90)).toBeTruthy();
+  await capture(page, testInfo, "structure-beehive");
 });
 
 test("move, undo, redo, snap and named-garden isolation", async ({ page }) => {

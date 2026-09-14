@@ -10,6 +10,7 @@ import type {
   PlannerRow,
   PlannerVisualSpacing,
 } from "@/lib/garden/planner-plan";
+import { isPlannerStructureKind } from "@/lib/garden/structure-catalog";
 import { GARDEN_ID } from "@/lib/garden/storage-contract";
 
 export const dynamic = "force-dynamic";
@@ -62,7 +63,7 @@ type PlantingRowDb = {
 
 type LayoutRow = {
   id: string;
-  object_type: "path" | "trellis" | "tree" | "text";
+  object_type: "path" | "trellis" | "tree" | "structure" | "text";
   x1_cm: number | null;
   y1_cm: number | null;
   x2_cm: number | null;
@@ -75,6 +76,9 @@ type LayoutRow = {
   label: string | null;
   point_xy: string | null;
   font_size: number | null;
+  structure_kind: string | null;
+  depth_cm: number | null;
+  rotation_deg: number | null;
 };
 
 type ActivePlanting = {
@@ -101,6 +105,10 @@ function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
 }
 
+function normalizeRotation(value: number) {
+  return ((value % 360) + 360) % 360;
+}
+
 function canvasPoint(value: Record<string, unknown>, xField: string, yField: string, label: string) {
   if (!finite(value[xField]) || !finite(value[yField])) throw new Error(`${label} has invalid coordinates.`);
   const x = value[xField] as number;
@@ -114,7 +122,7 @@ function parseLayoutObject(raw: unknown, index: number): PlannerLayoutObject {
   const object = raw as Record<string, unknown>;
   const id = optionalString(object.id);
   const type = object.type;
-  if (!id || id.length > 160 || !["path", "trellis", "tree", "text"].includes(String(type))) throw new Error(`Drawing object ${index + 1} is invalid.`);
+  if (!id || id.length > 160 || !["path", "trellis", "tree", "structure", "text"].includes(String(type))) throw new Error(`Drawing object ${index + 1} is invalid.`);
 
   if (type === "path" || type === "trellis") {
     const start = canvasPoint(object, "x1", "y1", `Drawing object ${index + 1}`);
@@ -133,6 +141,26 @@ function parseLayoutObject(raw: unknown, index: number): PlannerLayoutObject {
   if (type === "tree") {
     if (!finite(object.diameterCm) || object.diameterCm < 20 || object.diameterCm > 1000) throw new Error(`Tree ${index + 1} has an invalid canopy diameter.`);
     return { id, type, x: point.x, y: point.y, diameterCm: object.diameterCm, label: optionalString(object.label) };
+  }
+
+  if (type === "structure") {
+    if (!isPlannerStructureKind(object.kind)) throw new Error(`Structure ${index + 1} has an invalid type.`);
+    if (!finite(object.widthCm) || object.widthCm < 30 || object.widthCm > CANVAS_WIDTH) throw new Error(`Structure ${index + 1} has an invalid width.`);
+    if (!finite(object.depthCm) || object.depthCm < 30 || object.depthCm > CANVAS_HEIGHT) throw new Error(`Structure ${index + 1} has an invalid depth.`);
+    if (!finite(object.heightCm) || object.heightCm < 20 || object.heightCm > 600) throw new Error(`Structure ${index + 1} has an invalid height.`);
+    const rotationDeg = finite(object.rotationDeg) ? normalizeRotation(object.rotationDeg) : 0;
+    return {
+      id,
+      type,
+      kind: object.kind,
+      x: point.x,
+      y: point.y,
+      widthCm: object.widthCm,
+      depthCm: object.depthCm,
+      heightCm: object.heightCm,
+      rotationDeg,
+      label: optionalString(object.label),
+    };
   }
 
   const text = optionalString(object.text);
@@ -322,7 +350,8 @@ export async function GET(request: Request) {
 
     const layoutResult = await db.prepare(`
       SELECT id, object_type, x1_cm, y1_cm, x2_cm, y2_cm, width_cm, height_cm,
-        diameter_cm, post_spacing_cm, text_value, label, point_xy, font_size
+        diameter_cm, post_spacing_cm, text_value, label, point_xy, font_size,
+        structure_kind, depth_cm, rotation_deg
       FROM layout_objects WHERE garden_id = ? ORDER BY sort_order ASC, created_at ASC
     `).bind(gardenId).all<LayoutRow>();
 
@@ -358,6 +387,17 @@ export async function GET(request: Request) {
       if (item.object_type === "trellis") return { id: item.id, type: "trellis", x1: Number(item.x1_cm), y1: Number(item.y1_cm), x2: Number(item.x2_cm), y2: Number(item.y2_cm), heightCm: Number(item.height_cm ?? 180), postSpacingCm: Number(item.post_spacing_cm ?? 150), label: item.label ?? undefined };
       const point = pointFromDb(item.point_xy);
       if (item.object_type === "tree") return { id: item.id, type: "tree", ...point, diameterCm: Number(item.diameter_cm ?? 120), label: item.label ?? undefined };
+      if (item.object_type === "structure" && isPlannerStructureKind(item.structure_kind)) return {
+        id: item.id,
+        type: "structure",
+        kind: item.structure_kind,
+        ...point,
+        widthCm: Number(item.width_cm ?? 120),
+        depthCm: Number(item.depth_cm ?? 120),
+        heightCm: Number(item.height_cm ?? 180),
+        rotationDeg: normalizeRotation(Number(item.rotation_deg ?? 0)),
+        label: item.label ?? undefined,
+      };
       return { id: item.id, type: "text", ...point, text: item.text_value ?? "Label", fontSize: Number(item.font_size ?? 13) };
     });
 
@@ -477,16 +517,18 @@ export async function PUT(request: Request) {
     }
 
     for (const [index, object] of plan.objects.entries()) {
-      const point = object.type === "tree" || object.type === "text" ? `${object.x},${object.y}` : null;
+      const point = object.type === "tree" || object.type === "text" || object.type === "structure" ? `${object.x},${object.y}` : null;
       statements.push(db.prepare(`
         INSERT INTO layout_objects (
           id, garden_id, object_type, x1_cm, y1_cm, x2_cm, y2_cm, width_cm, height_cm,
-          diameter_cm, post_spacing_cm, text_value, label, point_xy, font_size, sort_order
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          diameter_cm, post_spacing_cm, text_value, label, point_xy, font_size,
+          structure_kind, depth_cm, rotation_deg, sort_order
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(id) DO UPDATE SET object_type = excluded.object_type, x1_cm = excluded.x1_cm,
           y1_cm = excluded.y1_cm, x2_cm = excluded.x2_cm, y2_cm = excluded.y2_cm, width_cm = excluded.width_cm,
           height_cm = excluded.height_cm, diameter_cm = excluded.diameter_cm, post_spacing_cm = excluded.post_spacing_cm,
           text_value = excluded.text_value, label = excluded.label, point_xy = excluded.point_xy, font_size = excluded.font_size,
+          structure_kind = excluded.structure_kind, depth_cm = excluded.depth_cm, rotation_deg = excluded.rotation_deg,
           sort_order = excluded.sort_order, updated_at = CURRENT_TIMESTAMP
       `).bind(
         object.id, gardenId, object.type,
@@ -494,14 +536,17 @@ export async function PUT(request: Request) {
         object.type === "path" || object.type === "trellis" ? object.y1 : null,
         object.type === "path" || object.type === "trellis" ? object.x2 : null,
         object.type === "path" || object.type === "trellis" ? object.y2 : null,
-        object.type === "path" ? object.widthCm : null,
-        object.type === "trellis" ? object.heightCm : null,
+        object.type === "path" || object.type === "structure" ? object.widthCm : null,
+        object.type === "trellis" || object.type === "structure" ? object.heightCm : null,
         object.type === "tree" ? object.diameterCm : null,
         object.type === "trellis" ? object.postSpacingCm : null,
         object.type === "text" ? object.text : null,
-        object.type === "path" || object.type === "trellis" || object.type === "tree" ? object.label ?? null : null,
+        object.type === "path" || object.type === "trellis" || object.type === "tree" || object.type === "structure" ? object.label ?? null : null,
         point,
         object.type === "text" ? object.fontSize : null,
+        object.type === "structure" ? object.kind : null,
+        object.type === "structure" ? object.depthCm : null,
+        object.type === "structure" ? normalizeRotation(object.rotationDeg) : null,
         index,
       ));
     }
