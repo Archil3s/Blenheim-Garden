@@ -83,3 +83,44 @@
 .gv-structure-list button { min-height: 48px; }
 .gv-structure-list .gv-structure-preset-icon { width: 36px; min-width: 36px; font-size: 22px; }
 .gv-structure-list button.active .gv-structure-preset-icon { color: var(--gv-green-dark); }
+
+/* Keep the compact phone header on one row. An older responsive rule wraps the
+   title bar to 76px while the current workspace reserves only 52px for it,
+   which can leave the navigation sitting on top of Undo/Redo. */
+@media (max-width: 760px) {
+  .gv-app .gv-titlebar,
+  .gv-app.gv-device-mobile:not(.gv-view-3d) .gv-titlebar {
+    height: 52px;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    overflow: hidden;
+  }
+
+  .gv-app .gv-title-left,
+  .gv-app.gv-device-mobile:not(.gv-view-3d) .gv-title-left {
+    flex: 1 1 auto;
+    height: 52px;
+    min-width: 0;
+  }
+
+  .gv-app .gv-plan-name {
+    max-width: 112px;
+  }
+
+  .gv-app .gv-primary-nav {
+    flex: 0 0 auto;
+    min-width: 0;
+    height: 52px;
+    gap: 0;
+  }
+
+  .gv-app .gv-primary-nav > button,
+  .gv-app .gv-more > summary {
+    min-height: 44px;
+    padding-inline: 6px;
+  }
+
+  .gv-app .gv-save {
+    min-width: 58px;
+  }
+}
