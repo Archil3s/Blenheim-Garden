@@ -1,0 +1,85 @@
+.garden-canvas.tool-structure { cursor: cell; }
+
+.structure-object {
+  z-index: 19;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  transform-origin: center center;
+  overflow: visible;
+  border: 2px solid #667a70;
+  border-radius: 5px;
+  background: linear-gradient(145deg, rgba(223, 231, 226, .94), rgba(190, 204, 196, .88));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.72), 0 1px 3px rgba(39,58,49,.14);
+  color: #405249;
+  cursor: move;
+}
+
+.structure-object::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(78, 103, 91, .38);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.structure-object:hover,
+.structure-object.selected {
+  border-color: var(--gv-green);
+  box-shadow: 0 0 0 3px rgba(22,155,112,.16), inset 0 0 0 1px rgba(255,255,255,.82);
+}
+
+.structure-object.selected { z-index: 47; }
+.structure-object .structure-symbol { position: relative; z-index: 2; font-size: clamp(16px, 18cqw, 42px); line-height: 1; pointer-events: none; }
+.structure-object small {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 5px;
+  max-width: calc(100% - 10px);
+  transform: translateX(-50%);
+  overflow: hidden;
+  border-radius: 4px;
+  padding: 2px 5px;
+  color: #3c4d45;
+  background: rgba(255,255,255,.9);
+  font-size: 7px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.structure-object[data-kind="greenhouse"] {
+  border-color: #6d9084;
+  background: repeating-linear-gradient(90deg, rgba(215,239,231,.62) 0 24px, rgba(177,209,199,.5) 24px 26px), rgba(223,244,237,.62);
+}
+.structure-object[data-kind="greenhouse"]::before { border-style: dashed; }
+.structure-object[data-kind="polytunnel"] { border-radius: 28% / 12%; background: rgba(224,239,232,.78); }
+.structure-object[data-kind="polytunnel"]::before { border-radius: 28% / 12%; }
+.structure-object[data-kind="shed"],
+.structure-object[data-kind="chicken-coop"] { border-color: #896c50; background: repeating-linear-gradient(90deg, #d5b890 0 16px, #c7a77f 16px 18px); }
+.structure-object[data-kind="cold-frame"] { border-color: #758c83; background: rgba(211,231,224,.82); }
+.structure-object[data-kind="compost-bin"] { border-color: #746d53; background: repeating-linear-gradient(0deg, #aa956d 0 12px, #8f7c59 12px 14px); }
+.structure-object[data-kind="water-tank"],
+.structure-object[data-kind="rain-barrel"] { border-radius: 50%; border-color: #64808a; background: radial-gradient(circle at 36% 32%, #dbe6e8, #a7bcc1 72%); }
+.structure-object[data-kind="water-tank"]::before,
+.structure-object[data-kind="rain-barrel"]::before { border-radius: 50%; }
+.structure-object[data-kind="potting-bench"] { border-color: #886f55; background: linear-gradient(#c5aa84 0 22%, transparent 22% 70%, #b28e66 70%); }
+.structure-object[data-kind="pergola"] { background: repeating-linear-gradient(90deg, rgba(160,128,91,.86) 0 10px, rgba(255,255,255,.18) 10px 30px); border-color: #8a6d4c; }
+.structure-object[data-kind="garden-arch"] { border-radius: 48% 48% 8px 8px; background: rgba(189,205,195,.45); }
+.structure-object[data-kind="beehive"] { border-color: #987f3f; background: repeating-linear-gradient(0deg, #e3c86d 0 14px, #c9aa4f 14px 16px); }
+
+.gv-structure-ready > span:first-child,
+.gv-structure-preset-icon {
+  display: grid;
+  place-items: center;
+  color: #456158;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.gv-structure-list button { min-height: 48px; }
+.gv-structure-list .gv-structure-preset-icon { width: 36px; min-width: 36px; font-size: 22px; }
+.gv-structure-list button.active .gv-structure-preset-icon { color: var(--gv-green-dark); }
