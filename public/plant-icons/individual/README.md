@@ -1,0 +1,1 @@
+Individual 128×128 transparent PNG plant icons used by the garden planner. These are the small icon files prepared for the standalone HTML icon library.
