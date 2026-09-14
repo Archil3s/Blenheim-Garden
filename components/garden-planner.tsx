@@ -13,9 +13,10 @@ import type {
 } from "@/lib/garden/planner-plan";
 import { plantCountForArea, plantPositionsForArea } from "@/lib/garden/plant-spacing-layout";
 import { DEFAULT_GARDEN_ID, LIVE_PLAN_EVENT, gardenLivePlanKey, gardenLocalPlanKey, readActiveGardenId } from "@/lib/garden/active-garden";
+import { STRUCTURE_PRESETS, structurePreset } from "@/lib/garden/structure-catalog";
 import { PlantArt } from "@/components/plant-art";
 
-type Tool = "select" | "plant" | "row" | "bed" | "path" | "trellis" | "tree" | "note";
+type Tool = "select" | "plant" | "row" | "bed" | "path" | "trellis" | "structure" | "tree" | "note";
 type SaveState = "idle" | "saving" | "cloud" | "local" | "error";
 type LoadSource = "starting" | "cloud" | "local" | "default";
 type Point = { x: number; y: number };
@@ -52,6 +53,7 @@ const tools: Array<{ id: Tool; icon: string; label: string; hint: string }> = [
   { id: "bed", icon: "▭", label: "Bed", hint: "Drag a new garden bed" },
   { id: "path", icon: "═", label: "Path", hint: "Drag a path line" },
   { id: "trellis", icon: "⋮", label: "Trellis", hint: "Drag a trellis line" },
+  { id: "structure", icon: "⌂", label: "Structures", hint: "Choose an object, then click the plan" },
   { id: "tree", icon: "🌳", label: "Tree", hint: "Click to place a tree" },
   { id: "note", icon: "A", label: "Text", hint: "Click to place a label" },
 ];
@@ -198,6 +200,7 @@ export function GardenPlanner() {
   const [pathWidth, setPathWidth] = useState(75);
   const [trellisHeight, setTrellisHeight] = useState(180);
   const [postSpacing, setPostSpacing] = useState(150);
+  const [selectedStructureKind, setSelectedStructureKind] = useState(STRUCTURE_PRESETS[0].kind);
   const [treeDiameter, setTreeDiameter] = useState(150);
   const [newText, setNewText] = useState("Label");
   const [saveState, setSaveState] = useState<SaveState>("idle");
@@ -485,6 +488,11 @@ export function GardenPlanner() {
             return { ...object, x1: clamp(snap(original.x1 + dx), 0, CANVAS_WIDTH), y1: clamp(snap(original.y1 + dy), 0, CANVAS_HEIGHT), x2: clamp(snap(original.x2 + dx), 0, CANVAS_WIDTH), y2: clamp(snap(original.y2 + dy), 0, CANVAS_HEIGHT) };
           }
           if (original.type === "tree" && object.type === "tree") return { ...object, x: clamp(snap(original.x + dx), 0, CANVAS_WIDTH), y: clamp(snap(original.y + dy), 0, CANVAS_HEIGHT) };
+          if (original.type === "structure" && object.type === "structure") {
+            const halfW = object.widthCm / 2;
+            const halfD = object.depthCm / 2;
+            return { ...object, x: clamp(snap(original.x + dx), halfW, CANVAS_WIDTH - halfW), y: clamp(snap(original.y + dy), halfD, CANVAS_HEIGHT - halfD) };
+          }
           if (original.type === "text" && object.type === "text") return { ...object, x: clamp(snap(original.x + dx), 0, CANVAS_WIDTH), y: clamp(snap(original.y + dy), 0, CANVAS_HEIGHT) };
           return object;
         }) };
@@ -506,6 +514,22 @@ export function GardenPlanner() {
       event.currentTarget.setPointerCapture(event.pointerId);
       setDraft({ kind: tool as "bed" | "row" | "path" | "trellis", start: point, end: point });
       return;
+    }
+    if (tool === "structure") {
+      const preset = structurePreset(selectedStructureKind);
+      const object: PlannerLayoutObject = {
+        id: uuid("structure"),
+        type: "structure",
+        kind: preset.kind,
+        x: clamp(point.x, preset.widthCm / 2, CANVAS_WIDTH - preset.widthCm / 2),
+        y: clamp(point.y, preset.depthCm / 2, CANVAS_HEIGHT - preset.depthCm / 2),
+        widthCm: preset.widthCm,
+        depthCm: preset.depthCm,
+        heightCm: preset.heightCm,
+        rotationDeg: 0,
+        label: preset.label,
+      };
+      commit({ ...plan, objects: [...plan.objects, object] }); setSelection({ kind: "object", id: object.id }); return;
     }
     if (tool === "tree") {
       const object: PlannerLayoutObject = { id: uuid("tree"), type: "tree", x: point.x, y: point.y, diameterCm: treeDiameter, label: "Tree" };
@@ -577,6 +601,7 @@ export function GardenPlanner() {
       let object = structuredClone(selectedObject);
       object.id = uuid(object.type);
       if (object.type === "path" || object.type === "trellis") object = { ...object, x1: clamp(object.x1 + 20, 0, CANVAS_WIDTH), y1: clamp(object.y1 + 20, 0, CANVAS_HEIGHT), x2: clamp(object.x2 + 20, 0, CANVAS_WIDTH), y2: clamp(object.y2 + 20, 0, CANVAS_HEIGHT) };
+      else if (object.type === "structure") object = { ...object, x: clamp(object.x + 20, object.widthCm / 2, CANVAS_WIDTH - object.widthCm / 2), y: clamp(object.y + 20, object.depthCm / 2, CANVAS_HEIGHT - object.depthCm / 2) };
       else object = { ...object, x: clamp(object.x + 20, 0, CANVAS_WIDTH), y: clamp(object.y + 20, 0, CANVAS_HEIGHT) };
       commit({ ...plan, objects: [...plan.objects, object] }); setSelection({ kind: "object", id: object.id });
     }
@@ -663,12 +688,21 @@ export function GardenPlanner() {
     if (selectedObject.type === "path") return <div className="gv-selection-panel"><div className="gv-selection-hero"><span>═</span><div><small>PATH</small><h2>{selectedObject.label ?? "Path"}</h2><p>{(lineLength(selectedObject) / 100).toFixed(1)} m long</p></div></div><label>Label<input value={selectedObject.label ?? ""} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "path" ? { ...object, label: event.target.value } : object) }))} /></label><label>Width (cm)<input type="number" min={20} max={400} value={selectedObject.widthCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "path" ? { ...object, widthCm: clamp(Number(event.target.value) || 20, 20, 400) } : object) }))} /></label><p className="gv-help">Drag the path to move it. Drag either endpoint to reshape it.</p><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
     if (selectedObject.type === "trellis") return <div className="gv-selection-panel"><div className="gv-selection-hero"><span>⋮</span><div><small>TRELLIS</small><h2>{selectedObject.label ?? "Trellis"}</h2><p>{(lineLength(selectedObject) / 100).toFixed(1)} m long</p></div></div><label>Label<input value={selectedObject.label ?? ""} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "trellis" ? { ...object, label: event.target.value } : object) }))} /></label><div className="gv-field-grid"><label>Height (cm)<input type="number" value={selectedObject.heightCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "trellis" ? { ...object, heightCm: clamp(Number(event.target.value) || 50, 50, 500) } : object) }))} /></label><label>Posts (cm)<input type="number" value={selectedObject.postSpacingCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "trellis" ? { ...object, postSpacingCm: clamp(Number(event.target.value) || 50, 30, 1000) } : object) }))} /></label></div><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
     if (selectedObject.type === "tree") return <div className="gv-selection-panel"><div className="gv-selection-hero"><span>🌳</span><div><small>TREE / SHADE</small><h2>{selectedObject.label ?? "Tree"}</h2><p>{(selectedObject.diameterCm / 100).toFixed(1)} m canopy</p></div></div><label>Name<input value={selectedObject.label ?? ""} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "tree" ? { ...object, label: event.target.value } : object) }))} /></label><label>Canopy diameter (cm)<input type="range" min={30} max={600} step={10} value={selectedObject.diameterCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "tree" ? { ...object, diameterCm: Number(event.target.value) } : object) }))} /><strong>{selectedObject.diameterCm} cm</strong></label><p className="gv-help">Drag the tree to move it. Drag the square handle on the canopy edge to resize visually.</p><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
+    if (selectedObject.type === "structure") {
+      const preset = structurePreset(selectedObject.kind);
+      return <div className="gv-selection-panel"><div className="gv-selection-hero"><span>{preset.icon}</span><div><small>STRUCTURE</small><h2>{selectedObject.label ?? preset.label}</h2><p>{(selectedObject.widthCm / 100).toFixed(1)} × {(selectedObject.depthCm / 100).toFixed(1)} m footprint</p></div></div><label>Name<input value={selectedObject.label ?? ""} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "structure" ? { ...object, label: event.target.value } : object) }))} /></label><div className="gv-field-grid"><label>Width (cm)<input type="number" min={30} max={CANVAS_WIDTH} value={selectedObject.widthCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "structure" ? { ...object, widthCm: clamp(Number(event.target.value) || 30, 30, CANVAS_WIDTH) } : object) }))} /></label><label>Depth (cm)<input type="number" min={30} max={CANVAS_HEIGHT} value={selectedObject.depthCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "structure" ? { ...object, depthCm: clamp(Number(event.target.value) || 30, 30, CANVAS_HEIGHT) } : object) }))} /></label><label>Height (cm)<input type="number" min={20} max={600} value={selectedObject.heightCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "structure" ? { ...object, heightCm: clamp(Number(event.target.value) || 20, 20, 600) } : object) }))} /></label><label>Rotation<input type="number" min={0} max={350} step={10} value={selectedObject.rotationDeg} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "structure" ? { ...object, rotationDeg: ((Number(event.target.value) || 0) % 360 + 360) % 360 } : object) }))} /></label></div><p className="gv-help">Drag the structure to move it. Use the dimensions and rotation fields for precise placement.</p><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
+    }
     return <div className="gv-selection-panel"><div className="gv-selection-hero"><span>A</span><div><small>TEXT LABEL</small><h2>{selectedObject.text}</h2><p>Canvas label</p></div></div><label>Text<input value={selectedObject.text} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "text" ? { ...object, text: event.target.value || "Label" } : object) }))} /></label><label>Size<input type="range" min={9} max={28} value={selectedObject.fontSize} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "text" ? { ...object, fontSize: Number(event.target.value) } : object) }))} /></label><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
   }
 
   function plantCatalog() {
     const modeLabel = (mode: PlannerPlantingPattern) => mode === "grid" ? "Block" : mode === "staggered" ? "Stagger" : mode === "rows" ? "Rows" : mode === "natural" ? "Natural" : "Single";
     return <><div className="gv-panel-section-title"><div><span className="gv-panel-leaf">🌱</span><strong>{tool === "row" ? "Planting rows" : "Plants"}</strong></div></div><div className="gv-filters"><label>Search<input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Plant or variety" /></label><label>Type<select value={plantType} onChange={(event) => setPlantType(event.target.value)}><option>All Plants</option><option>Vegetable</option><option>Fruit</option><option>Herb</option><option>Flower</option><option>Native</option></select></label><label>Variety<select value={selectedVariety} onChange={(event) => setSelectedVariety(event.target.value)}>{selectedPlant.varieties.map((variety) => <option key={variety}>{variety}</option>)}</select></label></div>{tool === "plant" && <div className="gv-v4-modebar"><span>Placement</span>{(["grid", "staggered", "rows", "natural", "single"] as PlannerPlantingPattern[]).map((mode) => <button key={mode} type="button" className={placementMode === mode ? "active" : ""} onClick={() => setPlacementMode(mode)}>{modeLabel(mode)}</button>)}</div>}<div className="gv-ready-strip" data-crop={selectedPlant.name}><span><PlantArt crop={selectedPlant.name} variety={selectedVariety} fallback={selectedPlant.icon} /></span><div><small>{tool === "plant" ? "DRAG INTO A BED" : "READY TO DRAW"}</small><strong>{selectedVariety}</strong><em>{selectedPlant.spacingCm} cm canvas spacing · recommended {selectedPlant.spacing}</em></div></div><div className="gv-plant-list">{filteredPlants.map((plant) => <button draggable={tool === "plant"} type="button" key={plant.name} data-crop={plant.name} className={selectedPlant.name === plant.name ? "active" : ""} onClick={() => choosePlant(plant)} onDragStart={(event) => { choosePlant(plant); setDragPlant(plant); event.dataTransfer.effectAllowed = "copy"; event.dataTransfer.setData("text/plain", plant.name); }} onDragEnd={() => { setDragPlant(null); setDropBedId(null); }}><span className="gv-plant-icon"><PlantArt crop={plant.name} variety={selectedPlant.name === plant.name ? selectedVariety : plant.varieties[0]} fallback={plant.icon} /></span><span><strong>{plant.name}</strong><small>{plant.spacingCm} cm default · {plant.spacing}</small></span>{tool === "plant" && <b className="gv-v4-drag-grip">⋮⋮</b>}</button>)}</div></>;
+  }
+
+  function structureCatalog() {
+    const selected = structurePreset(selectedStructureKind);
+    return <><div className="gv-panel-section-title"><div><span className="gv-panel-leaf">⌂</span><strong>Structures</strong></div></div><div className="gv-ready-strip gv-structure-ready"><span>{selected.icon}</span><div><small>CLICK THE PLAN TO PLACE</small><strong>{selected.label}</strong><em>{(selected.widthCm / 100).toFixed(1)} × {(selected.depthCm / 100).toFixed(1)} m · {selected.heightCm} cm high</em></div></div><div className="gv-plant-list gv-structure-list">{STRUCTURE_PRESETS.map((preset) => <button type="button" key={preset.kind} className={selectedStructureKind === preset.kind ? "active" : ""} onClick={() => setSelectedStructureKind(preset.kind)}><span className="gv-structure-preset-icon">{preset.icon}</span><span><strong>{preset.label}</strong><small>{(preset.widthCm / 100).toFixed(1)} × {(preset.depthCm / 100).toFixed(1)} m footprint</small></span></button>)}</div><div className="gv-tool-tip"><kbd>{snapEnabled ? "10 cm" : "Free"}</kbd><span>Select an object above, then click the garden where its centre should sit.</span></div></>;
   }
 
   function toolPanel() {
@@ -680,7 +714,8 @@ export function GardenPlanner() {
     const inspect = selectionInspector();
     if (inspect && (tool === "select" || (selectedBed && tool === "bed") || (selectedPlanting && tool === "plant") || (selectedRow && tool === "row") || (selectedObject && (tool === selectedObject.type || (tool === "note" && selectedObject.type === "text"))))) return inspect;
     if (tool === "plant" || tool === "row") return plantCatalog();
-    if (tool === "select") return inspect ?? <div className="gv-empty-selection"><span>↖</span><h2>Select something</h2><p>Click a planting, bed, row, path, trellis, tree or label to edit it.</p></div>;
+    if (tool === "structure") return structureCatalog();
+    if (tool === "select") return inspect ?? <div className="gv-empty-selection"><span>↖</span><h2>Select something</h2><p>Click a planting, bed, row, path, trellis, structure, tree or label to edit it.</p></div>;
     return toolPanel();
   }
 
@@ -736,6 +771,7 @@ export function GardenPlanner() {
           if (object.type === "path" || object.type === "trellis") return lineObject(object);
           const selected = selection?.kind === "object" && selection.id === object.id;
           if (object.type === "tree") return <div key={object.id} className={`layout-object tree-object ${selected ? "selected" : ""}`} style={{ left: object.x - object.diameterCm / 2, top: object.y - object.diameterCm / 2, width: object.diameterCm, height: object.diameterCm }} onPointerDown={(event) => startObjectInteraction(event, object)}><span>🌳</span><small>{object.label}</small>{selected && <span className="tree-resize-handle" onPointerDown={(event) => startObjectInteraction(event, object, "tree-resize")} />}</div>;
+          if (object.type === "structure") { const preset = structurePreset(object.kind); return <div key={object.id} data-kind={object.kind} className={`layout-object structure-object ${selected ? "selected" : ""}`} style={{ left: object.x - object.widthCm / 2, top: object.y - object.depthCm / 2, width: object.widthCm, height: object.depthCm, transform: `rotate(${object.rotationDeg}deg)` }} onPointerDown={(event) => startObjectInteraction(event, object)}><span className="structure-symbol">{preset.icon}</span><small>{object.label ?? preset.label}</small></div>; }
           return <div key={object.id} className={`layout-object text-object ${selected ? "selected" : ""}`} style={{ left: object.x, top: object.y, fontSize: object.fontSize }} onPointerDown={(event) => startObjectInteraction(event, object)}>{object.text}</div>;
         })}
         {plan.rows.map((row) => { const visual = lineVisual(row), selected = selection?.kind === "row" && selection.id === row.id; return <div key={row.id} className={`planting-row ${selected ? "selected" : ""}`} data-crop={row.crop} style={{ left: row.x1, top: row.y1 - 12, width: visual.length, transform: `rotate(${visual.angle}deg)` }} onPointerDown={(event) => startRowInteraction(event, row)}><span className="row-dots">{Array.from({ length: Math.min(row.count, 24) }, (_, index) => <i key={index} />)}</span><span className="row-caption"><PlantArt crop={row.crop} variety={row.variety} fallback={row.cropIcon} /> {row.variety} · {row.count}</span>{selected && <><span className="line-handle start" onPointerDown={(event) => startRowInteraction(event, row, "row-start")} /><span className="line-handle end" onPointerDown={(event) => startRowInteraction(event, row, "row-end")} /></>}</div>; })}
