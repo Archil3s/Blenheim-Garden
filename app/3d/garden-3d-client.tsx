@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { Garden3DIconBridge } from "@/components/garden-3d-icon-bridge";
 
 const loading = () => (
   <main style={{ minHeight: "100dvh", display: "grid", placeItems: "center", padding: 24, background: "#dce5df", color: "#2d473e", fontFamily: "Arial, Helvetica, sans-serif" }}>
@@ -18,10 +17,5 @@ const GardenWebGLVisual = dynamic(
 );
 
 export default function Garden3DClient() {
-  return (
-    <>
-      <Garden3DIconBridge />
-      <GardenWebGLVisual />
-    </>
-  );
+  return <GardenWebGLVisual />;
 }
