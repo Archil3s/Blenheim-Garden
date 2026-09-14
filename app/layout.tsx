@@ -15,6 +15,7 @@ import "./garden-realistic-sim.css";
 import "./smart-planting.css";
 import "./device-layout.css";
 import "./device-layout-recovery.css";
+import "./garden-first.css";
 
 export const metadata: Metadata = {
   title: "Blenheim Garden",

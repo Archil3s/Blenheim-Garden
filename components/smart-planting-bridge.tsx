@@ -148,8 +148,8 @@ function pressSelectedBed() {
 }
 
 export function SmartPlantingBridge() {
-  useSyncExternalStore(subscribePanel, panelSignature, () => "");
-  const panel = selectedBedPanel();
+  const signature = useSyncExternalStore(subscribePanel, panelSignature, () => "");
+  const panel = signature ? selectedBedPanel() : null;
   const [plantName, setPlantName] = useState(PLANTS[0].name);
   const [variety, setVariety] = useState(PLANTS[0].varieties[0]);
   const [pattern, setPattern] = useState<Pattern>("grid");
@@ -231,7 +231,7 @@ export function SmartPlantingBridge() {
         </button>
         {existingPlantings > 0 && <button type="button" className="gv-smart-replace" disabled={busy} onClick={() => void place(true)}>Replace all plantings with {variety}</button>}
       </section>,
-      panel,
+      panel.querySelector(".gv-edit-section") ?? panel,
     )}
     {error && <div className="gv-smart-plant-toast" role="status">{error}</div>}
   </>;

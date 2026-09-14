@@ -43,37 +43,13 @@ export function BlenheimCalendarBridge() {
   }, []);
 
   useEffect(() => {
-    function makeButton(label: string, className: string, open: BlenheimActionScope) {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = className;
-      button.textContent = label;
-      button.title = open === "today" ? "What should I do in the garden today?" : "Blenheim garden priorities for the next seven days";
-      button.addEventListener("click", () => setView(open));
-      return button;
-    }
-
-    function ensureActions() {
-      const center = document.querySelector<HTMLElement>(".gv-quick-center");
-      if (!center || center.querySelector(".gv-season-actions")) return;
-
-      const host = document.createElement("div");
-      host.className = "gv-season-actions";
-      host.append(
-        makeButton("☀ Today", "gv-season-today", "today"),
-        makeButton("✓ This Week", "gv-season-week", "week"),
-      );
-      center.appendChild(host);
-    }
-
-    ensureActions();
-    const observer = new MutationObserver(ensureActions);
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    return () => {
-      observer.disconnect();
-      document.querySelectorAll(".gv-season-actions").forEach((element) => element.remove());
+    const onClick = (event: MouseEvent) => {
+      const button = (event.target as HTMLElement)?.closest<HTMLElement>("[data-season-view]");
+      const scope = button?.dataset.seasonView;
+      if (scope === "today" || scope === "week") setView(scope);
     };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
   }, []);
 
   useEffect(() => {

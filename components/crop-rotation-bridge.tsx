@@ -133,8 +133,8 @@ export function CropRotationBridge() {
           setBedId(id);
           setOpen(true);
         });
-        const editActions = panel.querySelector(".gv-edit-actions");
-        if (editActions) panel.insertBefore(button, editActions);
+        const records = panel.querySelector(".gv-records-group");
+        if (records) records.appendChild(button);
         else panel.appendChild(button);
       });
     }

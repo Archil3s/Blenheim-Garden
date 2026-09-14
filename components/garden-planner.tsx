@@ -154,15 +154,19 @@ function readLocalPlan(gardenId: string) {
 
 export function GardenPlanner() {
   const canvasRef = useRef<HTMLDivElement>(null);
+  const moreRef = useRef<HTMLDetailsElement>(null);
+  const stageScrollRef = useRef<HTMLDivElement>(null);
+  const [savedSnapshot, setSavedSnapshot] = useState<string | null>(null);
+  const [autoFit, setAutoFit] = useState(true);
   const [tool, setTool] = useState<Tool>("select");
-  const [panelOpen, setPanelOpen] = useState(true);
+  const [panelOpen, setPanelOpen] = useState(false);
   const [zoom, setZoom] = useState(90);
   const [month, setMonth] = useState("Sep");
   const [snapEnabled, setSnapEnabled] = useState(true);
   const [plan, setPlan] = useState<PlanState>(basePlan);
   const [past, setPast] = useState<PlanState[]>([]);
   const [future, setFuture] = useState<PlanState[]>([]);
-  const [selection, setSelection] = useState<Selection>({ kind: "bed", id: "1" });
+  const [selection, setSelection] = useState<Selection>(null);
   const [interaction, setInteraction] = useState<Interaction | null>(null);
   const [draft, setDraft] = useState<Draft>(null);
   const [cursorPoint, setCursorPoint] = useState<Point | null>(null);
@@ -190,7 +194,7 @@ export function GardenPlanner() {
       setLoadSource("local");
     } else {
       setPlan(gardenId === DEFAULT_GARDEN_ID ? clonePlan(basePlan) : clonePlan(emptyPlan));
-      setSelection(gardenId === DEFAULT_GARDEN_ID ? { kind: "bed", id: "1" } : null);
+      setSelection(null);
       setLoadSource("default");
     }
     void (async () => {
@@ -200,9 +204,10 @@ export function GardenPlanner() {
         const cloud = normalisePlan(data.plan);
         if (cancelled || !response.ok || !data.ok || !cloud) return;
         setPlan(cloud);
-        setSelection(cloud.beds.length ? { kind: "bed", id: String(cloud.beds[0].id) } : null);
+        setSelection(null);
         localStorage.setItem(gardenLocalPlanKey(gardenId), JSON.stringify(cloud));
         setLoadSource("cloud");
+        setSavedSnapshot(JSON.stringify(cloud));
       } catch { /* keep local or blank plan */ }
     })();
     return () => { cancelled = true; };
@@ -220,6 +225,30 @@ export function GardenPlanner() {
       // Live preview is best-effort; planner editing must keep working if storage is unavailable.
     }
   }, [plan, loadSource]);
+
+  useEffect(() => {
+    const stage = stageScrollRef.current;
+    if (!stage || !autoFit) return;
+    const fit = () => {
+      const width = stage.clientWidth - 54;
+      const height = stage.clientHeight - 52;
+      setZoom(Math.max(25, Math.min(100, Math.floor(Math.min(width / CANVAS_WIDTH, height / (CANVAS_HEIGHT * 1.04)) * 100))));
+    };
+    const observer = new ResizeObserver(fit);
+    observer.observe(stage);
+    fit();
+    return () => observer.disconnect();
+  }, [autoFit, panelOpen]);
+
+  useEffect(() => {
+    const closeMore = (event: MouseEvent) => {
+      const more = moreRef.current;
+      const target = event.target as HTMLElement;
+      if (more?.open && (!more.contains(target) || target.closest(".gv-more-panel button, .gv-more-panel a"))) more.open = false;
+    };
+    document.addEventListener("click", closeMore, true);
+    return () => document.removeEventListener("click", closeMore, true);
+  }, []);
 
   const selectedBed = selection?.kind === "bed" ? plan.beds.find((item) => String(item.id) === selection.id) ?? null : null;
   const selectedPlanting = selection?.kind === "planting" ? plan.plantingAreas.find((item) => item.id === selection.id) ?? null : null;
@@ -254,7 +283,7 @@ export function GardenPlanner() {
   function commit(next: PlanState) { remember(); setPlan(next); setSaveState("idle"); }
   function edit(mutator: (current: PlanState) => PlanState) { remember(); setPlan((current) => mutator(current)); setSaveState("idle"); }
 
-  function chooseTool(next: Tool) { setTool(next); setPanelOpen(true); setDraft(null); setInteraction(null); }
+  function chooseTool(next: Tool) { if (next !== "select" && selection?.kind !== "bed") setSelection(selectedPlanting ? { kind: "bed", id: String(selectedPlanting.bedId) } : null); setTool(next); setPanelOpen(true); setDraft(null); setInteraction(null); }
   function choosePlant(plant: PlantOption) { setSelectedPlant(plant); setSelectedVariety(plant.varieties[0]); }
 
   function undo() {
@@ -362,7 +391,7 @@ export function GardenPlanner() {
     if (tool !== "select" && tool !== object.type && !(tool === "note" && object.type === "text")) return;
     const point = canvasPoint(event.clientX, event.clientY);
     if (!point) return;
-    setSelection({ kind: "object", id: object.id }); remember();
+    setSelection({ kind: "object", id: object.id }); setPanelOpen(true); remember();
     setInteraction({ kind: mode, id: object.id, start: point, object: structuredClone(object) });
   }
 
@@ -404,7 +433,7 @@ export function GardenPlanner() {
           const dyPct = dy / Math.max(1, size.h) * 100;
           return { ...current, plantingAreas: current.plantingAreas.map((area) => {
             if (area.id !== active.id) return area;
-            let next = { ...area };
+            const next = { ...area };
             if (active.kind === "planting-drag") {
               next.x = clamp(active.area.x + dxPct, 0, 100 - active.area.w);
               next.y = clamp(active.area.y + dyPct, 0, 100 - active.area.h);
@@ -446,7 +475,7 @@ export function GardenPlanner() {
       });
       setSaveState("idle");
     };
-    const up = () => setInteraction(null);
+    const up = () => { setInteraction(null); setPanelOpen(true); };
     window.addEventListener("pointermove", move);
     window.addEventListener("pointerup", up, { once: true });
     return () => { window.removeEventListener("pointermove", move); window.removeEventListener("pointerup", up); };
@@ -544,15 +573,23 @@ export function GardenPlanner() {
 
   async function savePlan() {
     const gardenId = readActiveGardenId();
-    localStorage.setItem(gardenLocalPlanKey(gardenId), JSON.stringify(plan)); setSaveState("saving");
-    const editKey = sessionStorage.getItem(EDIT_KEY_SESSION)?.trim() ?? "";
-    if (!editKey) { setSaveState("local"); return; }
+    const snapshot = JSON.stringify(plan);
+    setSaveState("saving");
     try {
-      const response = await fetch(`/api/garden?gardenId=${encodeURIComponent(gardenId)}`, { method: "PUT", headers: { "content-type": "application/json", authorization: `Bearer ${editKey}` }, body: JSON.stringify({ plan }) });
+      localStorage.setItem(gardenLocalPlanKey(gardenId), snapshot);
+      const editKey = sessionStorage.getItem(EDIT_KEY_SESSION)?.trim() ?? "";
+      if (!editKey) { setSaveState("local"); return; }
+      const response = await fetch("/api/garden?gardenId=" + encodeURIComponent(gardenId), { method: "PUT", headers: { "content-type": "application/json", authorization: "Bearer " + editKey }, body: JSON.stringify({ plan }) });
       const data = await response.json() as GardenPlanApiResponse;
-      if (!response.ok || !data.ok) { if (response.status === 401) sessionStorage.removeItem(EDIT_KEY_SESSION); setSaveState("local"); return; }
-      setLoadSource("cloud"); setSaveState("cloud"); window.setTimeout(() => setSaveState("idle"), 1800);
-    } catch { setSaveState("local"); }
+      if (!response.ok || !data.ok) {
+        if (response.status === 401) sessionStorage.removeItem(EDIT_KEY_SESSION);
+        setSaveState("error");
+        return;
+      }
+      setSavedSnapshot(snapshot);
+      setLoadSource("cloud");
+      setSaveState("cloud");
+    } catch { setSaveState("error"); }
   }
 
   function updatePlanting(id: string, mutate: (area: PlannerPlantingArea, bed: Bed) => PlannerPlantingArea) {
@@ -572,15 +609,18 @@ export function GardenPlanner() {
       return <div className="gv-selection-panel gv-planting-inspector" data-bed-id={selectedPlanting.bedId} data-planting-id={selectedPlanting.plantingId ?? ""}>
         <div className="gv-selection-hero"><span>{selectedPlanting.cropIcon}</span><div><small>PLANTING AREA</small><h2>{selectedPlanting.variety}</h2><p>{selectedPlantingBed.name} · {widthM.toFixed(1)} × {heightM.toFixed(1)} m</p></div></div>
         <dl><div><dt>Crop</dt><dd>{selectedPlanting.crop}</dd></div><div><dt>Plants</dt><dd>≈ {selectedPlanting.count}</dd></div><div><dt>Spacing</dt><dd>{selectedPlanting.spacingCm} cm centres</dd></div></dl>
+        <section className="gv-inspector-section gv-records-group"><h3>Records</h3><button type="button" className="gv-secondary-action">📝 Notes & harvests</button><button type="button" className="gv-secondary-action">📷 Photos & video</button></section>
+        <details className="gv-inspector-section gv-edit-section"><summary>Edit planting</summary>
         <label>Variety<input value={selectedPlanting.variety} onChange={(event) => updatePlanting(selectedPlanting.id, (area) => ({ ...area, variety: event.target.value || area.crop }))} /></label>
         <label>Actual plant spacing (cm)<input type="number" min={2} value={selectedPlanting.spacingCm} onChange={(event) => updatePlanting(selectedPlanting.id, (area, bed) => { const next = { ...area, spacingCm: Math.max(2, Number(event.target.value) || 2) }; return { ...next, count: areaCount(next, bed) }; })} /></label>
-        <p className="gv-scale-note">↔ The plant centres on the canvas are drawn {selectedPlanting.spacingCm} cm apart at the garden scale.</p>
+        <p className="gv-scale-note">↔ Zoom above 100% to see plant centres drawn {selectedPlanting.spacingCm} cm apart at the garden scale.</p>
         <label>Icon size <strong>{selectedPlanting.iconSize}px</strong><input type="range" min={8} max={64} step={1} value={selectedPlanting.iconSize} onChange={(event) => updatePlanting(selectedPlanting.id, (area) => ({ ...area, iconSize: Number(event.target.value) }))} /></label>
         <label>Layout<select value={selectedPlanting.pattern} onChange={(event) => updatePlanting(selectedPlanting.id, (area, bed) => { const next = { ...area, pattern: event.target.value as PlannerPlantingPattern }; return { ...next, count: areaCount(next, bed) }; })}><option value="grid">Block</option><option value="staggered">Staggered</option><option value="rows">Rows</option><option value="natural">Natural</option><option value="single">Single</option></select></label>
         <p className="gv-help">Drag this planting to move it within the bed. Drag the square handle to resize the planted area; plant count recalculates from the real centimetre spacing.</p>
-        <button type="button" className="gv-secondary-action">📷 Photos & video</button>
-        <button type="button" className="gv-secondary-action">📝 Notes & harvests</button>
-        <div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Remove planting</button></div>
+
+          <button type="button" className="gv-secondary-action" onClick={duplicateSelection}>Duplicate planting</button>
+        </details>
+        <details className="gv-inspector-section gv-danger-zone"><summary>Danger zone</summary><button type="button" className="gv-secondary-action danger" onClick={deleteSelection}>Remove planting</button></details>
       </div>;
     }
     if (selectedBed) {
@@ -589,14 +629,19 @@ export function GardenPlanner() {
       const totalPlants = areas.reduce((sum, area) => sum + area.count, 0);
       return <div className="gv-selection-panel" data-bed-id={selectedBed.id}>
         <div className="gv-selection-hero"><span>▭</span><div><small>BED</small><h2>{selectedBed.name}</h2><p>{bedSizeLabel(selectedBed)}</p></div></div>
+        <dl><div><dt>Area</dt><dd>{(size.w * size.h / 10000).toFixed(1)} m²</dd></div><div><dt>Plantings</dt><dd>{areas.length}</dd></div><div><dt>Plants</dt><dd>≈ {totalPlants}</dd></div></dl>
+        <section className="gv-inspector-section"><h3>Current planting</h3>
+          {areas.length ? areas.map((area) => <button type="button" className="gv-planting-summary" key={area.id} onClick={() => setSelection({ kind: "planting", id: area.id })}><span>{area.cropIcon}</span><span><strong>{area.variety}</strong><small>{area.crop} · {area.spacingCm} cm spacing</small></span><b>×{area.count}</b></button>) : <p className="gv-inspector-empty">Empty · ready for your next planting</p>}
+        </section>
+        <section className="gv-inspector-section gv-records-group"><h3>Records</h3><button type="button" className="gv-secondary-action">📝 Notes & harvests</button><button type="button" className="gv-secondary-action">📷 Photos & video</button></section>
+        <details className="gv-inspector-section gv-edit-section"><summary>Edit bed</summary>
         <label>Name<input value={selectedBed.name} onChange={(event) => setPlan((current) => ({ ...current, beds: current.beds.map((bed) => bed.id === selectedBed.id ? { ...bed, name: event.target.value } : bed) }))} /></label>
         <div className="gv-field-grid"><label>Width (cm)<input type="number" value={Math.round(size.w)} onChange={(event) => { const w = clamp(Number(event.target.value) || 40, 40, CANVAS_WIDTH - size.x); setPlan((current) => { const nextBed = { ...selectedBed, w: w / CANVAS_WIDTH * 100 }; return { ...current, beds: current.beds.map((bed) => bed.id === selectedBed.id ? nextBed : bed), plantingAreas: current.plantingAreas.map((area) => area.bedId === selectedBed.id ? { ...area, count: areaCount(area, nextBed) } : area) }; }); }} /></label><label>Length (cm)<input type="number" value={Math.round(size.h)} onChange={(event) => { const h = clamp(Number(event.target.value) || 40, 40, CANVAS_HEIGHT - size.y); setPlan((current) => { const nextBed = { ...selectedBed, h: h / CANVAS_HEIGHT * 100 }; return { ...current, beds: current.beds.map((bed) => bed.id === selectedBed.id ? nextBed : bed), plantingAreas: current.plantingAreas.map((area) => area.bedId === selectedBed.id ? { ...area, count: areaCount(area, nextBed) } : area) }; }); }} /></label></div>
-        <dl><div><dt>Area</dt><dd>{(size.w * size.h / 10000).toFixed(1)} m²</dd></div><div><dt>Plantings</dt><dd>{areas.length}</dd></div><div><dt>Plants</dt><dd>≈ {totalPlants}</dd></div></dl>
-        <button type="button" className="gv-primary-action" onClick={() => chooseTool("plant")}>🌱 Add planting area</button>
-        <button type="button" className="gv-secondary-action">📷 Photos & video</button>
-        <button type="button" className="gv-secondary-action">📝 Notes & harvests</button>
-        {areas.length > 0 && <button type="button" className="gv-secondary-action" onClick={clearBed}>Clear all plantings</button>}
-        <div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Remove bed</button></div>
+
+          <button type="button" className="gv-primary-action" onClick={() => chooseTool("plant")}>🌱 Add planting area</button>
+          <button type="button" className="gv-secondary-action" onClick={duplicateSelection}>Duplicate bed</button>
+        </details>
+        <details className="gv-inspector-section gv-danger-zone"><summary>Danger zone</summary><p>Removing a bed preserves its saved history.</p>{areas.length > 0 && <button type="button" className="gv-secondary-action danger" onClick={clearBed}>Clear all plantings</button>}<button type="button" className="gv-secondary-action danger" onClick={deleteSelection}>Remove bed</button></details>
       </div>;
     }
     if (selectedRow) return <div className="gv-selection-panel"><div className="gv-selection-hero"><span>{selectedRow.cropIcon}</span><div><small>PLANTING ROW</small><h2>{selectedRow.variety}</h2><p>{(lineLength(selectedRow) / 100).toFixed(1)} m · ≈ {selectedRow.count} plants</p></div></div><label>Spacing (cm)<input type="number" value={selectedRow.spacingCm} min={2} onChange={(event) => { const spacing = Math.max(2, Number(event.target.value) || 2); setPlan((current) => ({ ...current, rows: current.rows.map((row) => row.id === selectedRow.id ? { ...row, spacingCm: spacing, count: rowCount(row, spacing) } : row) })); }} /></label><p className="gv-help">Drag the row to move it. Drag either round endpoint to change its length or angle.</p><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
@@ -635,26 +680,42 @@ export function GardenPlanner() {
     const selected = selection?.kind === "planting" && selection.id === area.id;
     const bed = plan.beds.find((item) => item.id === area.bedId);
     const areaSize = bed ? areaSizeCm(area, bed) : { width: 1, height: 1 };
-    const positions = bed ? plantPositionsForArea(area, areaSize.width, areaSize.height) : [];
-    return <div key={area.id} className={`planting-area ${selected ? "selected" : ""}`} data-pattern={area.pattern} style={{ left: `${area.x}%`, top: `${area.y}%`, width: `${area.w}%`, height: `${area.h}%`, ["--area-icon-size" as string]: `${area.iconSize}px` }} onPointerDown={(event) => startPlantingInteraction(event, area)}>
-      <span className="planting-area-icons">{positions.map((position, index) => <i key={index} style={{ left: position.x, top: position.y, transform: `translate(-50%, -50%) rotate(${position.rotation}deg)` }}>{area.cropIcon}</i>)}</span>
-      <span className="planting-area-label">{area.cropIcon} {area.variety} · {area.count} · {area.spacingCm} cm</span>
-      {selected && <span className="planting-spacing-badge">↔ {area.spacingCm} cm</span>}
+    const overview = zoom < 110;
+    const positions = bed && !overview ? plantPositionsForArea(area, areaSize.width, areaSize.height) : [];
+    return <div key={area.id} className={`planting-area ${overview ? "is-overview" : ""} ${selected ? "selected" : ""}`} data-crop={area.crop} data-pattern={area.pattern} style={{ left: `${area.x}%`, top: `${area.y}%`, width: `${area.w}%`, height: `${area.h}%`, ["--area-icon-size" as string]: `${area.iconSize}px` }} onPointerDown={(event) => overview && bed && tool === "select" ? startBedInteraction(event, bed) : startPlantingInteraction(event, area)}>
+      <span className="planting-area-icons">{overview && zoom >= 45 && <i className="gv-overview-art" style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)", ["--area-icon-size" as string]: `${30 / (zoom / 100)}px` }}>{area.cropIcon}</i>}{positions.map((position, index) => <i key={index} style={{ left: position.x, top: position.y, transform: `translate(-50%, -50%) rotate(${position.rotation}deg)` }}>{area.cropIcon}</i>)}</span>
+      <span className="planting-area-label" title={`${area.crop} · ${area.variety} · ${area.count} plants · ${area.spacingCm} cm spacing`}><span className="gv-crop-symbol" aria-hidden="true">{area.cropIcon}</span><span className="gv-crop-name">{area.variety}</span><b>×{area.count}</b></span>
+      {selected && !overview && <span className="planting-spacing-badge">↔ {area.spacingCm} cm</span>}
       {selected && <span className="planting-area-resize" onPointerDown={(event) => startPlantingInteraction(event, area, true)} />}
     </div>;
   }
 
-  const saveLabel = saveState === "saving" ? "Saving…" : saveState === "cloud" ? "Saved ✓" : saveState === "local" ? "Local only" : "Save";
-  const sourceLabel = loadSource === "cloud" ? "Cloud synced" : loadSource === "local" ? "Local copy" : loadSource === "starting" ? "Loading…" : "Unsynced";
+  const isSaved = savedSnapshot === JSON.stringify(plan);
+  const saveLabel = saveState === "saving" ? "Saving…" : saveState === "error" ? "Save failed" : saveState === "local" ? "Local only" : isSaved ? "Saved ✓" : "Save";
+  const sourceLabel = saveState === "saving" ? "Saving…" : saveState === "error" ? "Save failed · retry" : saveState === "local" ? "Local only · set edit key in Settings" : loadSource === "starting" ? "Loading…" : isSaved ? "Saved" : "Unsaved changes";
   const scaledWidth = CANVAS_WIDTH * zoom / 100, scaledHeight = CANVAS_HEIGHT * zoom / 100;
   const draftRect = draft?.kind === "bed" ? { x: Math.min(draft.start.x, draft.end.x), y: Math.min(draft.start.y, draft.end.y), w: Math.abs(draft.end.x - draft.start.x), h: Math.abs(draft.end.y - draft.start.y) } : null;
   const draftLine = draft && draft.kind !== "bed" ? { x1: draft.start.x, y1: draft.start.y, x2: draft.end.x, y2: draft.end.y } : null;
 
   return <main className="gv-app">
-    <header className="gv-titlebar"><div className="gv-title-left"><button type="button" className="gv-plan-name">BLENHEIM GARDEN <span>2026</span></button><button type="button" className="gv-settings">⚙ Settings</button><button type="button" className="gv-save" onClick={() => void savePlan()} disabled={saveState === "saving"}>💾 {saveLabel}</button></div><nav className="gv-tabs"><button type="button" className="active">Plan</button><button type="button">Photos</button><button type="button">Notes</button></nav></header>
-    <div className="gv-quickbar"><div className="gv-quick-actions"><button type="button" onClick={undo} disabled={!past.length} title="Undo">↶ <span>Undo</span></button><button type="button" onClick={redo} disabled={!future.length} title="Redo">↷ <span>Redo</span></button><button type="button" className={snapEnabled ? "active" : ""} onClick={() => setSnapEnabled((value) => !value)}>⌗ <span>Snap {snapEnabled ? "10 cm" : "Off"}</span></button></div><div className="gv-quick-center"><button type="button" onClick={() => setZoom((value) => Math.max(50, value - 10))}>−</button><strong>{zoom}%</strong><button type="button" onClick={() => setZoom((value) => Math.min(150, value + 10))}>+</button><select value={month} onChange={(event) => setMonth(event.target.value)}>{months.map((item) => <option key={item}>{item}</option>)}</select></div><div className="gv-cloud-state"><span className={loadSource === "cloud" ? "online" : ""} />{sourceLabel}</div></div>
-    <section className={`gv-body ${panelOpen ? "" : "panel-closed"}`}><aside className="gv-rail"><button type="button" className="gv-menu">☰</button>{tools.map((item) => <button type="button" key={item.id} className={tool === item.id ? "active" : ""} onClick={() => chooseTool(item.id)} title={item.hint}><span>{item.icon}</span><small>{item.label}</small></button>)}</aside>{panelOpen && <aside className="gv-context"><div className="gv-context-header"><strong>{tool === "select" ? "Inspector" : tools.find((item) => item.id === tool)?.label}</strong><button type="button" onClick={() => setPanelOpen(false)}>‹</button></div>{contextPanel()}</aside>}{!panelOpen && <button type="button" className="gv-panel-reopen" onClick={() => setPanelOpen(true)}>›</button>}
-      <section className="gv-stage"><div className="gv-stage-status"><div><strong>{dragPlant ? `Drop ${dragPlant.name} into a bed` : tools.find((item) => item.id === tool)?.hint}</strong><span>{month} 2026</span></div>{cursorPoint && <code>X {Math.round(cursorPoint.x)} · Y {Math.round(cursorPoint.y)} cm</code>}</div><div className="gv-stage-scroll"><div className="gv-ruler-grid" style={{ width: scaledWidth + 30, gridTemplateColumns: `30px ${scaledWidth}px`, gridTemplateRows: `28px ${scaledHeight}px` }}><div className="gv-ruler-corner" /><div className="gv-ruler-top">{[0,2,4,6,8,9].map((mark) => <span key={mark} style={{ left: `${mark / 9 * 100}%` }}>{mark}m</span>)}</div><div className="gv-ruler-left">{[0,2,4,6,8,10].map((mark) => <span key={mark} style={{ top: `${mark / 10.8 * 100}%` }}>{mark}m</span>)}</div><div className="canvas-scale" style={{ width: scaledWidth, height: scaledHeight }}><div ref={canvasRef} className={`garden-canvas tool-${tool} ${snapEnabled ? "snap-on" : ""}`} style={{ transform: `scale(${zoom / 100})` }} onPointerDown={canvasDown} onPointerMove={canvasMove} onPointerUp={canvasUp} onPointerLeave={() => { if (!draft) setCursorPoint(null); }}>
+    <header className="gv-titlebar">
+      <div className="gv-title-left"><button type="button" className="gv-plan-name">BLENHEIM GARDEN <span>Garden ▾</span></button></div>
+      <nav className="gv-primary-nav" aria-label="Garden navigation">
+        <button type="button" className="gv-plan-tab active" data-planner-view="2d" onClick={() => { setTool("select"); setPanelOpen(false); }}>Plan</button>
+        <button type="button" data-season-view="today">Today</button>
+        <details ref={moreRef} className="gv-more" onKeyDown={(event) => { if (event.key === "Escape") { event.stopPropagation(); event.currentTarget.open = false; event.currentTarget.querySelector("summary")?.focus(); } }}><summary>More <span aria-hidden="true">⌄</span></summary><div className="gv-more-panel">
+          <nav className="gv-tabs" aria-label="Garden records"><button type="button">Photos</button><button type="button">Notes</button></nav>
+          <button type="button" data-season-view="week">This Week</button>
+          <a href="/3d" target="_blank" rel="noopener">Live 3D ↗</a>
+          <button type="button" className="gv-settings">Settings</button>
+          <div className="gv-layout-options" />
+        </div></details>
+        <button type="button" className="gv-save" onClick={() => void savePlan()} disabled={saveState === "saving"}> {saveLabel}</button>
+      </nav>
+    </header>
+    <div className="gv-quickbar"><div className="gv-quick-actions"><button type="button" onClick={undo} disabled={!past.length} title="Undo">↶ <span>Undo</span></button><button type="button" onClick={redo} disabled={!future.length} title="Redo">↷ <span>Redo</span></button><button type="button" className={snapEnabled ? "active" : ""} onClick={() => setSnapEnabled((value) => !value)}>⌗ <span>Snap {snapEnabled ? "10 cm" : "Off"}</span></button></div><div className="gv-quick-center"><button type="button" aria-label="Zoom out" onClick={() => { setAutoFit(false); setZoom((value) => Math.max(25, value - 10)); }}>−</button><strong>{zoom}%</strong><button type="button" className="gv-fit-width" onClick={() => setAutoFit(true)}>Fit</button><button type="button" aria-label="Zoom in" onClick={() => { setAutoFit(false); setZoom((value) => Math.min(150, value + 10)); }}>+</button><select aria-label="Planning month" value={month} onChange={(event) => setMonth(event.target.value)}>{months.map((item) => <option key={item}>{item}</option>)}</select></div><div className="gv-cloud-state" role="status" aria-live="polite" data-save-state={saveState}><span className={isSaved ? "online" : ""} />{sourceLabel}</div></div>
+    <section className={`gv-body ${panelOpen ? "" : "panel-closed"}`}><aside className="gv-rail"><button type="button" className="gv-menu" aria-label="Toggle inspector" onClick={() => setPanelOpen((value) => !value)}>☰</button>{tools.map((item) => <button type="button" key={item.id} className={tool === item.id ? "active" : ""} onClick={() => chooseTool(item.id)} aria-pressed={tool === item.id} title={item.hint}><span>{item.icon}</span><small>{item.label}</small></button>)}</aside>{panelOpen && <aside className="gv-context"><div className="gv-context-header"><strong>{tool === "select" ? "Inspector" : tools.find((item) => item.id === tool)?.label}</strong><button type="button" aria-label="Close inspector" onClick={() => setPanelOpen(false)}>×</button></div>{contextPanel()}</aside>}{!panelOpen && <button type="button" className="gv-panel-reopen" aria-label="Open inspector" onClick={() => setPanelOpen(true)}>Details</button>}
+      <section className="gv-stage"><div className="gv-stage-status"><div><strong>{dragPlant ? `Drop ${dragPlant.name} into a bed` : tool === "select" ? "Tap a bed to see what’s growing" : tools.find((item) => item.id === tool)?.hint}</strong><span>{month} 2026</span></div>{cursorPoint && <code>X {Math.round(cursorPoint.x)} · Y {Math.round(cursorPoint.y)} cm</code>}</div><div ref={stageScrollRef} className="gv-stage-scroll"><div className="gv-ruler-grid" style={{ width: scaledWidth + 30, gridTemplateColumns: `30px ${scaledWidth}px`, gridTemplateRows: `28px ${scaledHeight}px` }}><div className="gv-ruler-corner" /><div className="gv-ruler-top">{[0,2,4,6,8,9].map((mark) => <span key={mark} style={{ left: `${mark / 9 * 100}%` }}>{mark}m</span>)}</div><div className="gv-ruler-left">{[0,2,4,6,8,10].map((mark) => <span key={mark} style={{ top: `${mark / 10.8 * 100}%` }}>{mark}m</span>)}</div><div className="canvas-scale" style={{ width: scaledWidth, height: scaledHeight }}><div ref={canvasRef} className={`garden-canvas tool-${tool} ${snapEnabled ? "snap-on" : ""}`} style={{ transform: `scale(${zoom / 100})`, ["--canvas-label-size" as string]: `${Math.min(44, 11 / (zoom / 100))}px` }} onPointerDown={canvasDown} onPointerMove={canvasMove} onPointerUp={canvasUp} onPointerLeave={() => { if (!draft) setCursorPoint(null); }}>
         <div className="berry-strip"><strong>First-year fruiting canes · over winter</strong><div><span>🔴 Raspberry</span><span>🔴 Raspberry</span><span>🔴 Raspberry</span><span>🫐 Blackberry</span></div></div><div className="north-zone" />
         {cursorPoint && snapEnabled && tool !== "select" && <><span className="snap-guide vertical" style={{ left: cursorPoint.x }} /><span className="snap-guide horizontal" style={{ top: cursorPoint.y }} /></>}
         {plan.objects.map((object) => {
@@ -667,7 +728,7 @@ export function GardenPlanner() {
         {plan.beds.map((bed) => {
           const selected = selection?.kind === "bed" && selection.id === String(bed.id);
           const areas = plan.plantingAreas.filter((area) => area.bedId === bed.id);
-          return <div key={bed.id} className={`plan-bed gv-v4-bed ${selected ? "selected" : ""} ${dropBedId === bed.id ? "gv-v4-drop-target" : ""}`} style={{ left: `${bed.x}%`, top: `${bed.y}%`, width: `${bed.w}%`, height: `${bed.h}%` }} onPointerDown={(event) => startBedInteraction(event, bed)} onDragOver={(event) => { if (dragPlant) { event.preventDefault(); event.dataTransfer.dropEffect = "copy"; setDropBedId(bed.id); } }} onDragLeave={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setDropBedId(null); }} onDrop={(event) => dropPlantIntoBed(event, bed)}>
+          return <div key={bed.id} role="button" tabIndex={0} aria-label={`${bed.name}, ${areas.length ? areas.map((area) => `${area.variety}, ${area.count} plants`).join("; ") : "Empty"}`} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setSelection({ kind: "bed", id: String(bed.id) }); setTool("select"); setPanelOpen(true); } }} className={`plan-bed gv-v4-bed ${selected ? "selected" : ""} ${dropBedId === bed.id ? "gv-v4-drop-target" : ""}`} style={{ left: `${bed.x}%`, top: `${bed.y}%`, width: `${bed.w}%`, height: `${bed.h}%` }} onPointerDown={(event) => startBedInteraction(event, bed)} onDragOver={(event) => { if (dragPlant) { event.preventDefault(); event.dataTransfer.dropEffect = "copy"; setDropBedId(bed.id); } }} onDragLeave={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setDropBedId(null); }} onDrop={(event) => dropPlantIntoBed(event, bed)}>
             <strong className="gv-v4-bed-title">{bed.name}</strong>
             {areas.length === 0 && <span className="empty-bed-label">Empty</span>}
             {areas.map(renderPlantingArea)}

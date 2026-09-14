@@ -14,12 +14,11 @@ function defaultMode(): DeviceLayout {
 export function DeviceLayoutToggleBridge() {
   useEffect(() => {
     const app = document.querySelector<HTMLElement>(".gv-app");
-    const quickActions = document.querySelector<HTMLElement>(".gv-quick-actions");
+    const quickActions = document.querySelector<HTMLElement>(".gv-layout-options");
     if (!app || !quickActions || app.querySelector(".gv-device-toggle")) return;
 
     const appRoot = app;
     const quickBarActions = quickActions;
-    let activeMode: DeviceLayout = defaultMode();
 
     const wrapper = document.createElement("div");
     wrapper.className = "gv-device-toggle";
@@ -43,22 +42,10 @@ export function DeviceLayoutToggleBridge() {
 
     const buttons = [mobile, desktop];
 
-    function placeToggle(mode: DeviceLayout) {
-      const needsViewportOverlay = mode === "desktop" && window.matchMedia(NARROW_QUERY).matches;
-      wrapper.classList.toggle("gv-device-toggle-floating", needsViewportOverlay);
-      if (needsViewportOverlay) {
-        if (wrapper.parentElement !== appRoot) appRoot.append(wrapper);
-      } else if (wrapper.parentElement !== quickBarActions) {
-        quickBarActions.prepend(wrapper);
-      }
-    }
-
     function apply(mode: DeviceLayout, persist = true) {
-      activeMode = mode;
       appRoot.classList.toggle("gv-device-mobile", mode === "mobile");
       appRoot.classList.toggle("gv-device-desktop", mode === "desktop");
       appRoot.dataset.deviceLayout = mode;
-      placeToggle(mode);
       buttons.forEach((button) => {
         const active = button.dataset.deviceLayout === mode;
         button.classList.toggle("active", active);
@@ -86,9 +73,9 @@ export function DeviceLayoutToggleBridge() {
     const onClick = (event: Event) => {
       const button = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>("button[data-device-layout]");
       const mode = button?.dataset.deviceLayout;
-      if (mode === "mobile" || mode === "desktop") apply(mode);
+      if (mode === "mobile" || mode === "desktop") { saved = mode; apply(mode); }
     };
-    const onViewportResize = () => placeToggle(activeMode);
+    const onViewportResize = () => { if (!saved && appRoot.dataset.deviceLayout !== defaultMode()) apply(defaultMode(), false); };
 
     wrapper.addEventListener("click", onClick);
     window.addEventListener("resize", onViewportResize);

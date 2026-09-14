@@ -1,0 +1,26 @@
+name: Visual browser checks
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.15
+      - run: bun install
+      - run: bun run build
+      - run: bunx playwright install --with-deps chromium
+      - run: bun run visual:test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visual-browser-evidence
+          path: |
+            playwright-report/
+            visual-artifacts/
+          retention-days: 14

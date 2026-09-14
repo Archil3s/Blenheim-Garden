@@ -355,21 +355,7 @@
   display: none !important;
 }
 
-.gv-app[data-zoom-tier="low"] .planting-area-label,
-.gv-app[data-zoom-tier="medium"] .planting-area-label {
-  opacity: 0;
-}
 
-.gv-app[data-zoom-tier="low"] .planting-area:hover .planting-area-label,
-.gv-app[data-zoom-tier="medium"] .planting-area:hover .planting-area-label,
-.gv-app[data-zoom-tier="low"] .planting-area.selected .planting-area-label,
-.gv-app[data-zoom-tier="medium"] .planting-area.selected .planting-area-label {
-  opacity: 1;
-}
-
-.planting-area-label {
-  transition: opacity .15s ease;
-}
 
 @media (max-width: 900px) {
   .gv-fit-width {

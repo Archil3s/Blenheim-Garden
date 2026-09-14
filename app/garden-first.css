@@ -1,0 +1,115 @@
+/* Garden-first workspace. Layout behaviour lives in device-layout.css. */
+.gv-app { --gv-muted: #65756d; --gv-green: #398267; --gv-green-dark: #245c46; }
+.gv-app .gv-titlebar { height: 52px; overflow: visible; padding: 0 12px; }
+.gv-app .gv-title-left { min-width: 0; flex: 1; }
+.gv-app .gv-plan-name { min-width: 0; font-size: 13px; letter-spacing: .02em; }
+.gv-primary-nav { display: flex; align-items: center; gap: 4px; }
+.gv-app .gv-primary-nav > button, .gv-more > summary { min-height: 40px; border: 0; border-radius: 7px; padding: 0 14px; font-size: 13px; }
+.gv-primary-nav .active { background: #edf4ee; color: #245c46; }
+.gv-app .gv-save { white-space: nowrap; width: auto; min-width: 88px; background: #edf4ee; font-weight: 750; }
+.gv-more { position: relative; }
+.gv-more > summary { display: flex; align-items: center; gap: 10px; cursor: pointer; list-style: none; }
+.gv-more > summary::-webkit-details-marker { display: none; }
+.gv-more-panel { position: absolute; z-index: 200; top: calc(100% + 8px); right: 0; width: 230px; display: grid; gap: 4px; border: 1px solid #d5dfd8; border-radius: 10px; padding: 8px; background: #fff; box-shadow: 0 8px 24px #263c2420; }
+.gv-app .gv-more .gv-tabs { display: grid; max-width: none; overflow: visible; }
+.gv-app .gv-more-panel button, .gv-more-panel a { display: flex; align-items: center; width: 100%; min-height: 44px; padding: 0 12px; border: 0; border-radius: 5px; text-decoration: none; color: #354c40; background: #fff; font-size: 14px; text-align: left; }
+.gv-app .gv-more-panel button:hover, .gv-more-panel a:hover { background: #f0f5f1; }
+.gv-app .gv-more-panel .gv-settings { display: flex !important; }
+.gv-app .gv-layout-options { border-top: 1px solid #e0e7e2; padding-top: 8px; }
+.gv-layout-options .gv-device-toggle { display: flex; }
+.gv-app .gv-layout-options button { font-size: 12px; padding: 0 8px; }
+.gv-app .gv-quickbar { height: 56px; display: flex; justify-content: space-between; gap: 16px; padding: 0 16px; background: #fafbf9; }
+.gv-app .gv-quickbar button, .gv-app .gv-quickbar select { min-height: 36px; font-size: 12px; }
+.gv-app .gv-quick-center strong { font-size: 12px; }
+.gv-app .gv-cloud-state { font-size: 12px; min-width: 0; }
+.gv-cloud-state[data-save-state="error"], .gv-cloud-state[data-save-state="local"] { color: #934c26; }
+.gv-app .gv-body { height: calc(100dvh - 108px); min-height: 0; }
+.gv-app .gv-rail { background: #f8faf7; }
+.gv-app .gv-rail button { min-height: 56px; color: #5b6e61; }
+.gv-app .gv-rail button.active { color: #245c46; background: #e3eee4; box-shadow: inset 3px 0 #398267; }
+.gv-app .gv-rail button small { font-size: 11px; }
+.gv-app .gv-menu { background: #f0f4ef; }
+.gv-app .gv-stage { background: #e9eee6; }
+.gv-app .gv-stage-status { height: 32px; background: #f4f7f1; }
+.gv-app .gv-stage-status strong { font-size: 12px; font-weight: 500; }
+.gv-app .gv-stage-status span { font-size: 11px; }
+.gv-app .gv-stage-scroll { height: calc(100% - 32px); padding: 12px 12px 36px; }
+.gv-app .gv-panel-reopen { position: absolute; left: auto; right: 18px; top: auto; bottom: 14px; width: auto; min-width: 76px; min-height: 44px; border: 1px solid #bdcdbd; border-radius: 8px; background: #fff; color: #345b40; z-index: 40; font-size: 13px; }
+.gv-app .gv-context { background: #fff; }
+.gv-app .gv-context-header { min-height: 48px; }
+.gv-app .gv-context-header strong { font-size: 14px; }
+.gv-app .gv-context-header button { min-width: 44px; min-height: 44px; font-size: 24px; }
+.gv-app .gv-selection-panel, .gv-app .gv-tool-panel { font-size: 13px; grid-auto-rows: max-content; align-content: start; }
+.gv-app .gv-selection-hero h2 { font-size: 18px; }
+.gv-app .gv-selection-hero small, .gv-app .gv-selection-hero p { font-size: 12px; }
+.gv-app .gv-selection-panel dl div { font-size: 12px; padding: 9px; }
+.gv-inspector-section { display: grid; gap: 8px; padding-top: 12px; border-top: 1px solid #e5ebe3; }
+.gv-inspector-section h3, .gv-inspector-section summary { margin: 0; color: #435c49; font-size: 13px; font-weight: 700; }
+.gv-inspector-section summary { cursor: pointer; padding: 4px 0; min-height: 32px; }
+.gv-inspector-section[open] > :not(summary) { margin-top: 10px; }
+.gv-app .gv-planting-summary { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; align-items: center; gap: 8px; padding: 10px 8px; width: 100%; border: 1px solid #dbe5d8; border-radius: 7px; background: #f6f9f3; text-align: left; }
+.gv-planting-summary strong { display: block; font-size: 13px; color: #334c39; }
+.gv-planting-summary small { font-size: 11px; color: #61715f; }
+.gv-inspector-empty { margin: 0; font-size: 13px; }
+.gv-app .gv-danger-zone { border-top-color: #ead9d3; }
+.gv-app .gv-danger-zone summary, .gv-app .danger { color: #a14639; }
+.gv-danger-zone p { font-size: 12px; line-height: 1.5; }
+.gv-app .gv-selection-panel label, .gv-app .gv-field-grid label, .gv-app .gv-tool-panel label { font-size: 12px; }
+.gv-app .gv-primary-action, .gv-app .gv-secondary-action { min-height: 40px; font-size: 13px; }
+.gv-app .gv-help, .gv-app .gv-scale-note, .gv-app .gv-tool-panel p { font-size: 12px; line-height: 1.5; }
+.gv-app .gv-selection-panel input, .gv-app .gv-selection-panel select { font-size: 14px; min-height: 36px; width: 100%; }
+.gv-app :is(button, a, input, select, summary, [tabindex]):focus-visible { outline: 3px solid #276c50; outline-offset: 3px; }
+/* Labels counter-scale, so fitting the garden does not shrink its information. */
+.gv-app .plan-bed > .gv-v4-bed-title { font-size: var(--canvas-label-size); line-height: 1.2; top: 4px; padding: 1px 6px; background: #faf8ed; color: #504b36; }
+.gv-app .plan-bed > .empty-bed-label { font-size: var(--canvas-label-size); text-transform: none; font-weight: 500; color: #655d4b; padding: 0; background: transparent; }
+.gv-app .planting-area.is-overview { background: transparent; border-color: transparent; box-shadow: none; }
+.gv-app .planting-area.is-overview.selected { border-color: #6b9674; }
+.gv-app .planting-area-label { display: flex; justify-content: center; align-items: center; gap: .3em; font-size: var(--canvas-label-size); line-height: 1.3; padding: 2px 5px; bottom: 4px; background: #f9fbf2; color: #324c33; }
+.gv-crop-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gv-crop-symbol, .planting-area-label b { flex-shrink: 0; }
+.gv-app .gv-v4-bed.selected { outline: 2px solid #527d60; outline-offset: 3px; }
+@media (max-width: 760px) {
+  .gv-app .gv-titlebar { padding: 0 4px; }
+  .gv-app .gv-plan-name { max-width: 135px; padding: 0 6px; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .gv-app .gv-primary-nav { gap: 0; }
+  .gv-app .gv-primary-nav > button, .gv-app .gv-more > summary { padding: 0 9px; min-height: 44px; font-size: 13px; }
+  .gv-app .gv-save { min-width: 62px; }
+  .gv-app .gv-more-panel { right: -52px; }
+  .gv-app .gv-quickbar { gap: 10px; padding: 0 6px; }
+  .gv-app .gv-quickbar button, .gv-app .gv-quickbar select { min-height: 44px; font-size: 13px; }
+  .gv-app .gv-quick-actions, .gv-app .gv-quick-center { gap: 4px; flex-shrink: 0; }
+  .gv-app .gv-cloud-state { display: flex; position: fixed; z-index: 2; top: 119px; right: 8px; max-width: 47%; font-size: 11px; background: #f4f7f1; }
+  .gv-app .gv-stage-status strong { max-width: 150px; font-size: 11px; }
+  .gv-app .gv-stage-status span { display: none; }
+  .gv-app .gv-device-toggle { position: static; }
+  .gv-app.gv-device-mobile:not(.gv-view-3d) .gv-titlebar { overflow: visible; }
+  .gv-app.gv-device-mobile:not(.gv-view-3d) .gv-context { display: flex; flex-direction: column; }
+  .gv-app.gv-device-mobile:not(.gv-view-3d) .gv-context-header { flex-shrink: 0; }
+  .gv-app.gv-device-mobile:not(.gv-view-3d) .gv-panel-reopen { left: auto !important; right: 12px; }
+  .gv-app .gv-selection-panel, .gv-app .gv-tool-panel { min-height: 0; }
+  .gv-app .gv-primary-action, .gv-app .gv-secondary-action { min-height: 44px; }
+  .gv-app .gv-crop-symbol { display: none; }
+  .gv-app .gv-stage-scroll { padding-left: 4px; padding-right: 4px; }
+}
+
+.gv-app .gv-v4-bed > .empty-bed-label { inset: auto 4px 2px; width: auto; height: auto; line-height: 1.15; margin: 0; padding: 0; text-align: right; }
+.gv-app .gv-more-panel .gv-tabs { height: auto; border: 0; }
+.gv-app .gv-more-panel .gv-tabs button:not(.active) { display: flex; }
+
+.gv-app .gv-v4-bed-title { pointer-events: auto; }
+
+.gv-app .gv-panel-section-title { display: none; }
+.gv-app .gv-filters { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.gv-app .gv-filters label { min-width: 0; font-size: 12px; }
+.gv-app .gv-filters input, .gv-app .gv-filters select { width: 100%; min-width: 0; }
+.gv-app .gv-context > :not(.gv-plant-list, .gv-selection-panel, .gv-tool-panel) { flex-shrink: 0; }
+.gv-app .gv-plant-list { min-height: 80px; }
+.gv-season-drawer p, .gv-season-drawer button, .gv-season-drawer summary { font-size: 13px; line-height: 1.5; }
+.gv-season-drawer :is(.gv-season-action-title, .gv-frost-title) strong { font-size: 14px; }
+.gv-season-drawer :is(.gv-season-action-title em, .gv-frost-title span) { font-size: 11px; }
+.gv-season-drawer button { min-height: 44px; }
+.gv-season-header > button { min-width: 44px; }
+.gv-season-drawer :is(button, a, summary):focus-visible, .gv-rotation-drawer :is(button, a):focus-visible { outline: 3px solid #276c50; outline-offset: 2px; }
+.gv-app .plan-bed > .gv-v4-bed-title { line-height: 1; padding-block: 0; }
+.gv-app .planting-area-label { line-height: 1.05; padding-block: 0; }
+.gv-app .gv-v4-bed > .empty-bed-label { z-index: 31; }

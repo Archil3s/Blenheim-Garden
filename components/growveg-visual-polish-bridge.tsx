@@ -59,39 +59,6 @@ function decorateZoom() {
   app.dataset.zoomTier = zoom < 80 ? "low" : zoom < 110 ? "medium" : "high";
 }
 
-function fitToWidth() {
-  const stage = document.querySelector<HTMLElement>(".gv-stage-scroll");
-  const quick = document.querySelector<HTMLElement>(".gv-quick-center");
-  if (!stage || !quick) return;
-
-  const minus = Array.from(quick.querySelectorAll<HTMLButtonElement>("button")).find((button) => button.textContent?.trim() === "−");
-  const plus = Array.from(quick.querySelectorAll<HTMLButtonElement>("button")).find((button) => button.textContent?.trim() === "+");
-  if (!minus || !plus) return;
-
-  const current = zoomValue();
-  const usableWidth = Math.max(450, stage.clientWidth - 52);
-  const target = Math.min(150, Math.max(50, Math.round((usableWidth / 900) * 10) * 10));
-  const button = target > current ? plus : minus;
-  const clicks = Math.min(10, Math.round(Math.abs(target - current) / 10));
-  for (let index = 0; index < clicks; index += 1) button.click();
-}
-
-function ensureFitButton() {
-  const quick = document.querySelector<HTMLElement>(".gv-quick-center");
-  if (!quick || quick.querySelector(".gv-fit-width")) return;
-
-  const plus = Array.from(quick.querySelectorAll<HTMLButtonElement>("button")).find((button) => button.textContent?.trim() === "+");
-  if (!plus) return;
-
-  const fit = document.createElement("button");
-  fit.type = "button";
-  fit.className = "gv-fit-width";
-  fit.textContent = "Fit";
-  fit.title = "Fit garden to the available workspace width";
-  fit.addEventListener("click", fitToWidth);
-  plus.before(fit);
-}
-
 function ensureAdvancedLayoutToggle() {
   const context = document.querySelector<HTMLElement>(".gv-context");
   const modebar = context?.querySelector<HTMLElement>(".gv-v4-modebar");
@@ -113,7 +80,6 @@ function ensureAdvancedLayoutToggle() {
 export function GrowVegVisualPolishBridge() {
   useEffect(() => {
     const decorate = () => {
-      ensureFitButton();
       ensureAdvancedLayoutToggle();
       decorateCrops();
       decorateZoom();
@@ -123,35 +89,7 @@ export function GrowVegVisualPolishBridge() {
     const observer = new MutationObserver(decorate);
     observer.observe(document.body, { childList: true, subtree: true, characterData: true });
 
-    let lastViewportWidth = window.innerWidth;
-    let resizeTimer: number | undefined;
-
-    const onResize = () => {
-      decorateZoom();
-      const nextWidth = window.innerWidth;
-      const meaningfulWidthChange = Math.abs(nextWidth - lastViewportWidth) >= 32;
-      lastViewportWidth = nextWidth;
-      if (!meaningfulWidthChange || nextWidth > 760) return;
-      window.clearTimeout(resizeTimer);
-      resizeTimer = window.setTimeout(() => fitToWidth(), 140);
-    };
-    window.addEventListener("resize", onResize);
-
-    const initialFit = window.setTimeout(() => {
-      const app = document.querySelector<HTMLElement>(".gv-app");
-      const shouldAutoFit = window.innerWidth <= 760 || window.innerWidth >= 1100;
-      if (shouldAutoFit && app && !app.dataset.autoFitApplied) {
-        app.dataset.autoFitApplied = "true";
-        fitToWidth();
-      }
-    }, 350);
-
-    return () => {
-      window.clearTimeout(initialFit);
-      window.clearTimeout(resizeTimer);
-      observer.disconnect();
-      window.removeEventListener("resize", onResize);
-    };
+    return () => observer.disconnect();
   }, []);
 
   return null;

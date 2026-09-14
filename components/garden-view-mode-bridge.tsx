@@ -70,6 +70,14 @@ export function GardenViewModeBridge() {
     return () => app.classList.remove("gv-view-3d");
   }, [mode]);
 
+  useEffect(() => {
+    const onPlan = (event: MouseEvent) => {
+      if ((event.target as HTMLElement)?.closest('[data-planner-view="2d"]')) setMode("2d");
+    };
+    document.addEventListener("click", onPlan);
+    return () => document.removeEventListener("click", onPlan);
+  }, []);
+
   const switchMode = (next: "2d" | "3d") => {
     if (next === "3d") setPlan(readLivePlan());
     setMode(next);

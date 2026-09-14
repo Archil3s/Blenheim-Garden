@@ -25,3 +25,8 @@ pnpm-debug.log*
 
 # typescript
 *.tsbuildinfo
+
+# browser verification artifacts
+/playwright-report/
+/visual-artifacts/
+/test-results/
