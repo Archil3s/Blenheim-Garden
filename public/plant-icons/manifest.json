@@ -1,0 +1,582 @@
+[
+  {
+    "id": "tomato-roma",
+    "name": "Roma",
+    "crop": "Tomato",
+    "variety": "Roma",
+    "category": "Vegetable",
+    "filename": "tomato-roma.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "tomato-black-krim",
+    "name": "Black Krim",
+    "crop": "Tomato",
+    "variety": "Black Krim",
+    "category": "Vegetable",
+    "filename": "tomato-black-krim.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "tomato-moneymaker",
+    "name": "Moneymaker",
+    "crop": "Tomato",
+    "variety": "Moneymaker",
+    "category": "Vegetable",
+    "filename": "tomato-moneymaker.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "tomato-beefsteak",
+    "name": "Beefsteak",
+    "crop": "Tomato",
+    "variety": "Beefsteak",
+    "category": "Vegetable",
+    "filename": "tomato-beefsteak.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "strawberry-camarosa",
+    "name": "Camarosa",
+    "crop": "Strawberry",
+    "variety": "Camarosa",
+    "category": "Fruit",
+    "filename": "strawberry-camarosa.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "strawberry-albion",
+    "name": "Albion",
+    "crop": "Strawberry",
+    "variety": "Albion",
+    "category": "Fruit",
+    "filename": "strawberry-albion.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "strawberry-monterey",
+    "name": "Monterey",
+    "crop": "Strawberry",
+    "variety": "Monterey",
+    "category": "Fruit",
+    "filename": "strawberry-monterey.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "strawberry-unknown-crown",
+    "name": "Unknown crown",
+    "crop": "Strawberry",
+    "variety": "Unknown crown",
+    "category": "Fruit",
+    "filename": "strawberry-unknown-crown.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "bean-king-purple",
+    "name": "King Purple",
+    "crop": "Bean",
+    "variety": "King Purple",
+    "category": "Vegetable",
+    "filename": "bean-king-purple.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "bean-superstar",
+    "name": "Superstar",
+    "crop": "Bean",
+    "variety": "Superstar",
+    "category": "Vegetable",
+    "filename": "bean-superstar.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "bean-scarlet-runner",
+    "name": "Scarlet Runner",
+    "crop": "Bean",
+    "variety": "Scarlet Runner",
+    "category": "Vegetable",
+    "filename": "bean-scarlet-runner.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "bean-climbing-bean",
+    "name": "Climbing bean",
+    "crop": "Bean",
+    "variety": "Climbing bean",
+    "category": "Vegetable",
+    "filename": "bean-climbing-bean.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "lettuce-butterhead",
+    "name": "Butterhead",
+    "crop": "Lettuce",
+    "variety": "Butterhead",
+    "category": "Vegetable",
+    "filename": "lettuce-butterhead.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "lettuce-cos",
+    "name": "Cos",
+    "crop": "Lettuce",
+    "variety": "Cos",
+    "category": "Vegetable",
+    "filename": "lettuce-cos.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "lettuce-loose-leaf",
+    "name": "Loose leaf",
+    "crop": "Lettuce",
+    "variety": "Loose leaf",
+    "category": "Vegetable",
+    "filename": "lettuce-loose-leaf.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "lettuce-iceberg",
+    "name": "Iceberg",
+    "crop": "Lettuce",
+    "variety": "Iceberg",
+    "category": "Vegetable",
+    "filename": "lettuce-iceberg.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "pumpkin-crown",
+    "name": "Crown",
+    "crop": "Pumpkin",
+    "variety": "Crown",
+    "category": "Vegetable",
+    "filename": "pumpkin-crown.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "pumpkin-butternut",
+    "name": "Butternut",
+    "crop": "Pumpkin",
+    "variety": "Butternut",
+    "category": "Vegetable",
+    "filename": "pumpkin-butternut.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "pumpkin-gem-squash",
+    "name": "Gem squash",
+    "crop": "Pumpkin",
+    "variety": "Gem squash",
+    "category": "Vegetable",
+    "filename": "pumpkin-gem-squash.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "pumpkin-kabocha",
+    "name": "Kabocha",
+    "crop": "Pumpkin",
+    "variety": "Kabocha",
+    "category": "Vegetable",
+    "filename": "pumpkin-kabocha.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "carrot-nantes",
+    "name": "Nantes",
+    "crop": "Carrot",
+    "variety": "Nantes",
+    "category": "Vegetable",
+    "filename": "carrot-nantes.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "carrot-chantenay",
+    "name": "Chantenay",
+    "crop": "Carrot",
+    "variety": "Chantenay",
+    "category": "Vegetable",
+    "filename": "carrot-chantenay.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "carrot-amsterdam",
+    "name": "Amsterdam",
+    "crop": "Carrot",
+    "variety": "Amsterdam",
+    "category": "Vegetable",
+    "filename": "carrot-amsterdam.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "carrot-rainbow",
+    "name": "Rainbow",
+    "crop": "Carrot",
+    "variety": "Rainbow",
+    "category": "Vegetable",
+    "filename": "carrot-rainbow.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "broccoli-winter-rudolph",
+    "name": "Winter Rudolph",
+    "crop": "Broccoli",
+    "variety": "Winter Rudolph",
+    "category": "Vegetable",
+    "filename": "broccoli-winter-rudolph.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "broccoli-green-dragon",
+    "name": "Green Dragon",
+    "crop": "Broccoli",
+    "variety": "Green Dragon",
+    "category": "Vegetable",
+    "filename": "broccoli-green-dragon.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "broccoli-calabrese",
+    "name": "Calabrese",
+    "crop": "Broccoli",
+    "variety": "Calabrese",
+    "category": "Vegetable",
+    "filename": "broccoli-calabrese.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "raspberry-heritage",
+    "name": "Heritage",
+    "crop": "Raspberry",
+    "variety": "Heritage",
+    "category": "Fruit",
+    "filename": "raspberry-heritage.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "raspberry-aspiring",
+    "name": "Aspiring",
+    "crop": "Raspberry",
+    "variety": "Aspiring",
+    "category": "Fruit",
+    "filename": "raspberry-aspiring.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "raspberry-waiau",
+    "name": "Waiau",
+    "crop": "Raspberry",
+    "variety": "Waiau",
+    "category": "Fruit",
+    "filename": "raspberry-waiau.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "raspberry-unknown-cane",
+    "name": "Unknown cane",
+    "crop": "Raspberry",
+    "variety": "Unknown cane",
+    "category": "Fruit",
+    "filename": "raspberry-unknown-cane.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "blueberry-southern-highbush",
+    "name": "Southern Highbush",
+    "crop": "Blueberry",
+    "variety": "Southern Highbush",
+    "category": "Fruit",
+    "filename": "blueberry-southern-highbush.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "blueberry-rabbiteye",
+    "name": "Rabbiteye",
+    "crop": "Blueberry",
+    "variety": "Rabbiteye",
+    "category": "Fruit",
+    "filename": "blueberry-rabbiteye.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "blueberry-unknown",
+    "name": "Unknown",
+    "crop": "Blueberry",
+    "variety": "Unknown",
+    "category": "Fruit",
+    "filename": "blueberry-unknown.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "herbs-basil",
+    "name": "Basil",
+    "crop": "Herbs",
+    "variety": "Basil",
+    "category": "Herb",
+    "filename": "herbs-basil.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "herbs-chives",
+    "name": "Chives",
+    "crop": "Herbs",
+    "variety": "Chives",
+    "category": "Herb",
+    "filename": "herbs-chives.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "herbs-thyme",
+    "name": "Thyme",
+    "crop": "Herbs",
+    "variety": "Thyme",
+    "category": "Herb",
+    "filename": "herbs-thyme.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "herbs-parsley",
+    "name": "Parsley",
+    "crop": "Herbs",
+    "variety": "Parsley",
+    "category": "Herb",
+    "filename": "herbs-parsley.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "achillea",
+    "name": "Achillea",
+    "crop": "Achillea",
+    "variety": "Achillea",
+    "category": "Flower",
+    "filename": "achillea.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "agastache",
+    "name": "Agastache",
+    "crop": "Agastache",
+    "variety": "Agastache",
+    "category": "Flower",
+    "filename": "agastache.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "ageratum",
+    "name": "Ageratum",
+    "crop": "Ageratum",
+    "variety": "Ageratum",
+    "category": "Flower",
+    "filename": "ageratum.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "agrostemma",
+    "name": "Agrostemma",
+    "crop": "Agrostemma",
+    "variety": "Agrostemma",
+    "category": "Flower",
+    "filename": "agrostemma.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "akeake",
+    "name": "Akeake",
+    "crop": "Akeake",
+    "variety": "Akeake",
+    "category": "Native",
+    "filename": "akeake.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "alyssum",
+    "name": "Alyssum",
+    "crop": "Alyssum",
+    "variety": "Alyssum",
+    "category": "Flower",
+    "filename": "alyssum.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "amaranth-garnet-red",
+    "name": "Garnet Red",
+    "crop": "Amaranth",
+    "variety": "Garnet Red",
+    "category": "Vegetable",
+    "filename": "amaranth-garnet-red.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "amaranth-green-red",
+    "name": "Green Red",
+    "crop": "Amaranth",
+    "variety": "Green Red",
+    "category": "Vegetable",
+    "filename": "amaranth-green-red.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "angelica-chinese",
+    "name": "Chinese",
+    "crop": "Angelica",
+    "variety": "Chinese",
+    "category": "Herb",
+    "filename": "angelica-chinese.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "angelica-holy-ghost",
+    "name": "Holy Ghost",
+    "crop": "Angelica",
+    "variety": "Holy Ghost",
+    "category": "Herb",
+    "filename": "angelica-holy-ghost.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "anise",
+    "name": "Anise",
+    "crop": "Anise",
+    "variety": "Anise",
+    "category": "Herb",
+    "filename": "anise.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "anise-hyssop",
+    "name": "Anise Hyssop",
+    "crop": "Anise Hyssop",
+    "variety": "Anise Hyssop",
+    "category": "Herb",
+    "filename": "anise-hyssop.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "artichoke-green-globe",
+    "name": "Green Globe",
+    "crop": "Artichoke",
+    "variety": "Green Globe",
+    "category": "Vegetable",
+    "filename": "artichoke-green-globe.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "asparagus-mary-washington",
+    "name": "Mary Washington",
+    "crop": "Asparagus",
+    "variety": "Mary Washington",
+    "category": "Vegetable",
+    "filename": "asparagus-mary-washington.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "asparagus-pacific-challenger-f1",
+    "name": "Pacific Challenger F1",
+    "crop": "Asparagus",
+    "variety": "Pacific Challenger F1",
+    "category": "Vegetable",
+    "filename": "asparagus-pacific-challenger-f1.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "asparagus-pacific-purple",
+    "name": "Pacific Purple",
+    "crop": "Asparagus",
+    "variety": "Pacific Purple",
+    "category": "Vegetable",
+    "filename": "asparagus-pacific-purple.png",
+    "status": "complete",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "asparagus-pea",
+    "name": "Asparagus Pea",
+    "crop": "Asparagus Pea",
+    "variety": "Asparagus Pea",
+    "category": "Vegetable",
+    "filename": "asparagus-pea.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "aster",
+    "name": "Aster",
+    "crop": "Aster",
+    "variety": "Aster",
+    "category": "Flower",
+    "filename": "aster.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "astragalus",
+    "name": "Astragalus",
+    "crop": "Astragalus",
+    "variety": "Astragalus",
+    "category": "Herb",
+    "filename": "astragalus.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  },
+  {
+    "id": "basil-compact",
+    "name": "Compact",
+    "crop": "Basil",
+    "variety": "Compact",
+    "category": "Herb",
+    "filename": "basil-compact.png",
+    "status": "missing",
+    "source": "components/garden-planner.tsx"
+  }
+]
