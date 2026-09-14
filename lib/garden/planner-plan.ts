@@ -79,6 +79,33 @@ export type PlannerTree = {
   label?: string;
 };
 
+export type PlannerStructureKind =
+  | "greenhouse"
+  | "polytunnel"
+  | "shed"
+  | "cold-frame"
+  | "compost-bin"
+  | "water-tank"
+  | "rain-barrel"
+  | "potting-bench"
+  | "pergola"
+  | "garden-arch"
+  | "chicken-coop"
+  | "beehive";
+
+export type PlannerStructure = {
+  id: string;
+  type: "structure";
+  kind: PlannerStructureKind;
+  x: number;
+  y: number;
+  widthCm: number;
+  depthCm: number;
+  heightCm: number;
+  rotationDeg: number;
+  label?: string;
+};
+
 export type PlannerText = {
   id: string;
   type: "text";
@@ -88,7 +115,7 @@ export type PlannerText = {
   fontSize: number;
 };
 
-export type PlannerLayoutObject = PlannerPath | PlannerTrellis | PlannerTree | PlannerText;
+export type PlannerLayoutObject = PlannerPath | PlannerTrellis | PlannerTree | PlannerStructure | PlannerText;
 
 export type PlannerPlan = {
   beds: PlannerBed[];
