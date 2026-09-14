@@ -1,3 +1,8 @@
+import { plantIconAtlasData1 } from "./plant-icon-atlas-data-1";
+import { plantIconAtlasData2 } from "./plant-icon-atlas-data-2";
+import { plantIconAtlasData3 } from "./plant-icon-atlas-data-3";
+import { plantIconAtlasData4 } from "./plant-icon-atlas-data-4";
+
 export type PlantIconDefinition = {
   slug: string;
   src: string;
@@ -9,7 +14,7 @@ export type PlantIconDefinition = {
 
 export const PLANT_ICON_ATLAS_COLUMNS = 5;
 export const PLANT_ICON_ATLAS_ROWS = 4;
-export const PLANT_ICON_ATLAS_SRC = "/plant-icons/batch-a.svg";
+export const PLANT_ICON_ATLAS_SRC = `data:image/webp;base64,${plantIconAtlasData1}${plantIconAtlasData2}${plantIconAtlasData3}${plantIconAtlasData4}`;
 
 const defs: PlantIconDefinition[] = [
   { slug: "achillea", src: PLANT_ICON_ATLAS_SRC, label: "Achillea", aliases: ["achillea", "yarrow"], column: 0, row: 0 },
