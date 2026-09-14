@@ -1,3 +1,5 @@
+import manifest from "@/public/plant-icons/manifest.json";
+
 export type PlantIconSprite = {
   src: string;
   index: number;
@@ -48,6 +50,14 @@ const cropOnly: Record<string, number> = {
 export function plantIconSprite(crop: string, variety?: string | null): PlantIconSprite | null {
   const cropKey = normalise(crop);
   const varietyKey = normalise(variety);
+  const individual = manifest.find((icon) => icon.status === "complete"
+    && normalise(icon.crop) === cropKey
+    && (normalise(icon.variety) === varietyKey
+      || (normalise(icon.variety) === cropKey && !varietyKey)));
+  if (individual) return {
+    src: `/plant-icons/individual/${individual.filename}`,
+    index: 0, column: 0, row: 0, columns: 1, rows: 1,
+  };
   const index = exact[`${cropKey}|${varietyKey}`] ?? cropOnly[cropKey];
   if (index === undefined) return null;
   return {

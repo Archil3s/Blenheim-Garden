@@ -1,1 +1,1 @@
-Individual 128×128 transparent PNG plant icons used by the garden planner. These are the small icon files prepared for the standalone HTML icon library.
+Individual transparent RGBA PNG plant icons. The initial 16 supplied master files are preserved at 512×512. See ../manifest.json for availability and ../../../PLANT-ICON-PROGRESS.md for QC and 256×256 derivative work. Existing agastache.b64.txt is preserved.
