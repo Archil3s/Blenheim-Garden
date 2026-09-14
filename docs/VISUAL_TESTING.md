@@ -1,9 +1,9 @@
 # Browser verification
 
-Build the application, then run the browser suite:
+Use Bun 1.2.15, matching Cloudflare and CI. Generate lockfile updates with this version so frozen deployment installs can read them. Build the application, then run the browser suite:
 
 ```sh
-bun install
+bun install --frozen-lockfile
 bun run build
 bunx playwright install chromium
 bun run visual:test
