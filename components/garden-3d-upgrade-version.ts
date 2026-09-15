@@ -1,0 +1,1 @@
+export const GARDEN_3D_VISUAL_UPGRADE_VERSION = 1;
