@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import type { PlannerBed, PlannerPlan, PlannerPlantingArea } from "@/lib/garden/planner-plan";
+import { addStructure3D } from "@/components/garden-structure-3d";
 
 const GARDEN_W = 900;
 const GARDEN_H = 1080;
@@ -25,7 +26,7 @@ type Runtime = {
 
 const DEFAULT_INSPECTOR: InspectItem = {
   title: "Garden simulator",
-  subtitle: "Tap a bed, crop, path, trellis or tree.",
+  subtitle: "Tap a bed, crop, path, trellis, structure or tree.",
   lines: [],
 };
 
@@ -418,6 +419,7 @@ function buildGarden(group: THREE.Group, plan: PlannerPlan, mobile: boolean) {
   for (const object of plan.objects) {
     if (object.type === "path") addPath(group, object);
     if (object.type === "trellis") addTrellis(group, object);
+    if (object.type === "structure") addStructure3D(group, object, !mobile);
     if (object.type === "tree") addTree(group, object, mobile);
   }
 }
