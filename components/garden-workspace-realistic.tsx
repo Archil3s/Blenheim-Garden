@@ -6,6 +6,8 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import type { PlannerBed, PlannerPlan, PlannerPlantingArea } from "@/lib/garden/planner-plan";
 import { addStructure3D } from "@/components/garden-structure-3d";
 
+import { GardenPlantArtwork, surfaceMaterial } from "./garden-scene-artwork";
+
 const GARDEN_W = 900;
 const GARDEN_H = 1080;
 
@@ -91,11 +93,15 @@ function disposeObject(root: THREE.Object3D) {
     if (!(object instanceof THREE.Mesh)) return;
     object.geometry.dispose();
     const materials = Array.isArray(object.material) ? object.material : [object.material];
-    materials.forEach((item) => item.dispose());
+    materials.forEach((item) => {
+      if (item instanceof THREE.MeshStandardMaterial) item.map?.dispose();
+      item.dispose();
+    });
   });
 }
 
 function clearGroup(group: THREE.Group) {
+  (group.userData.artwork as GardenPlantArtwork | undefined)?.dispose();
   disposeObject(group);
   group.clear();
 }
@@ -256,7 +262,7 @@ function addBed(group: THREE.Group, bed: PlannerBed, active: PlannerPlantingArea
 
   const soil = new THREE.Mesh(
     new THREE.BoxGeometry(Math.max(0.05, width - 0.12), 0.15, Math.max(0.05, depth - 0.12)),
-    material(COLORS.soilTop, 1),
+    surfaceMaterial("soil", COLORS.soilTop),
   );
   soil.position.set(x, 0.16, z);
   root.add(soil);
@@ -271,7 +277,7 @@ function addBed(group: THREE.Group, bed: PlannerBed, active: PlannerPlantingArea
   rails.forEach(([w, d, px, pz], index) => {
     const mesh = new THREE.Mesh(
       new THREE.BoxGeometry(w, wallHeight, d),
-      material(index % 2 ? COLORS.timber : COLORS.timberDark, 0.74),
+      surfaceMaterial("wood", index % 2 ? COLORS.timber : COLORS.timberDark),
     );
     mesh.position.set(px, wallHeight / 2, pz);
     root.add(mesh);
@@ -289,7 +295,7 @@ function addBed(group: THREE.Group, bed: PlannerBed, active: PlannerPlantingArea
   group.add(root);
 }
 
-function addPlanting(group: THREE.Group, plan: PlannerPlan, area: PlannerPlantingArea, mobile: boolean) {
+function addPlanting(group: THREE.Group, plan: PlannerPlan, area: PlannerPlantingArea, mobile: boolean, artwork: GardenPlantArtwork) {
   const bed = plan.beds.find((candidate) => candidate.id === area.bedId);
   if (!bed) return;
   const rect = bedRect(bed);
@@ -300,7 +306,7 @@ function addPlanting(group: THREE.Group, plan: PlannerPlan, area: PlannerPlantin
   const root = new THREE.Group();
 
   for (const point of representativePositions(aw, ah, area.count, mobile)) {
-    const plant = plantModel(area.crop, mobile);
+    const plant = artwork.plant(area.crop, area.variety, plantModel(area.crop, mobile), area.bedId + point.x * 11 + point.y * 31);
     plant.position.set(worldX(ax + aw * point.x), 0.23, worldZ(az + ah * point.y));
     plant.scale.setScalar(Math.max(0.72, Math.min(1.12, (area.iconSize || 16) / 16)));
     root.add(plant);
@@ -398,16 +404,18 @@ function addTree(group: THREE.Group, object: Extract<PlannerPlan["objects"][numb
 }
 
 function buildGarden(group: THREE.Group, plan: PlannerPlan, mobile: boolean) {
+  const artwork = new GardenPlantArtwork();
   clearGroup(group);
+  group.userData.artwork = artwork;
   plan.beds.forEach((bed) => addBed(group, bed, plan.plantingAreas.find((area) => area.bedId === bed.id)));
-  plan.plantingAreas.forEach((area) => addPlanting(group, plan, area, mobile));
+  plan.plantingAreas.forEach((area) => addPlanting(group, plan, area, mobile, artwork));
 
   for (const row of plan.rows) {
     const root = new THREE.Group();
     const count = Math.min(mobile ? 8 : 14, Math.max(1, row.count || 1));
     for (let i = 0; i < count; i += 1) {
       const t = count === 1 ? 0.5 : i / (count - 1);
-      const plant = plantModel(row.crop, mobile);
+      const plant = artwork.plant(row.crop, row.variety, plantModel(row.crop, mobile), i);
       plant.scale.setScalar(0.82);
       plant.position.set(worldX(row.x1 + (row.x2 - row.x1) * t), 0.03, worldZ(row.y1 + (row.y2 - row.y1) * t));
       root.add(plant);
@@ -515,13 +523,13 @@ export function GardenWorkspaceRealistic({ plan }: { plan: PlannerPlan }) {
     sun.shadow.bias = -0.00018;
     scene.add(sun);
 
-    const outer = new THREE.Mesh(new THREE.PlaneGeometry(22, 24), material(COLORS.grassDark, 1));
+    const outer = new THREE.Mesh(new THREE.PlaneGeometry(22, 24), surfaceMaterial("grass", COLORS.grassDark));
     outer.rotation.x = -Math.PI / 2;
     outer.position.y = -0.04;
     outer.receiveShadow = true;
     scene.add(outer);
 
-    const ground = new THREE.Mesh(new THREE.PlaneGeometry(9.5, 11.3), material(COLORS.grass, 0.98));
+    const ground = new THREE.Mesh(new THREE.PlaneGeometry(9.5, 11.3), surfaceMaterial("grass", COLORS.grass));
     ground.rotation.x = -Math.PI / 2;
     ground.position.y = -0.015;
     ground.receiveShadow = true;
@@ -614,6 +622,7 @@ export function GardenWorkspaceRealistic({ plan }: { plan: PlannerPlan }) {
 
     renderer.setAnimationLoop(() => {
       controls.update();
+      content.traverse((object) => object.userData.updateArtwork?.());
       renderer.render(scene, camera);
     });
 
@@ -629,8 +638,10 @@ export function GardenWorkspaceRealistic({ plan }: { plan: PlannerPlan }) {
       if (Array.isArray(grassTufts.material)) grassTufts.material.forEach((item) => item.dispose());
       else grassTufts.material.dispose();
       outer.geometry.dispose();
+      outer.material.map?.dispose();
       outer.material.dispose();
       ground.geometry.dispose();
+      ground.material.map?.dispose();
       ground.material.dispose();
       renderer.dispose();
       runtimeRef.current = null;

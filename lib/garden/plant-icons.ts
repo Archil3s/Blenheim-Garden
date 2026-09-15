@@ -10,6 +10,24 @@ export type PlantIconSprite = {
 const BATCH_A_SRC = "/plant-icons/batch-a.svg";
 const BATCH_A_COLUMNS = 5;
 const BATCH_A_ROWS = 4;
+const detailedFiles = [
+  "achillea",
+  "agastache",
+  "ageratum",
+  "agrostemma",
+  "akeake",
+  "alyssum",
+  "amaranth-garnet-red",
+  "amaranth-green-red",
+  "angelica-chinese",
+  "angelica-holy-ghost",
+  "anise",
+  "anise-hyssop",
+  "artichoke-green-globe",
+  "asparagus-mary-washington",
+  "asparagus-pacific-challenger-f1",
+  "asparagus-pacific-purple"
+];
 
 function normalise(value: string | null | undefined) {
   return (value ?? "")
@@ -50,6 +68,9 @@ export function plantIconSprite(crop: string, variety?: string | null): PlantIco
   const varietyKey = normalise(variety);
   const index = exact[`${cropKey}|${varietyKey}`] ?? cropOnly[cropKey];
   if (index === undefined) return null;
+  if (detailedFiles[index]) {
+    return { src: `/plant-icons/individual/${detailedFiles[index]}.png`, index, column: 0, row: 0, columns: 1, rows: 1 };
+  }
   return {
     src: BATCH_A_SRC,
     index,
