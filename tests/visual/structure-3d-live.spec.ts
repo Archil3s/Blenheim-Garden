@@ -26,6 +26,7 @@ async function clickStructure(page: Page) {
   const canvas = page.locator('[aria-label="Visual 3D garden canvas"] canvas');
   const box = await canvas.boundingBox();
   expect(box).not.toBeNull();
+  const selectedHeading = page.getByRole("heading", { name: "Test 3D shed", exact: true });
   const points = [
     [0.5, 0.5], [0.5, 0.44], [0.5, 0.56],
     [0.44, 0.5], [0.56, 0.5], [0.44, 0.44], [0.56, 0.44],
@@ -33,7 +34,7 @@ async function clickStructure(page: Page) {
   ];
   for (const [x, y] of points) {
     await page.mouse.click(box!.x + box!.width * x, box!.y + box!.height * y);
-    if (await page.getByText("Test 3D shed", { exact: true }).count()) return;
+    if (await selectedHeading.count()) return;
   }
 }
 
@@ -55,7 +56,7 @@ test("Live 3D renders a structure already present in the live plan", async ({ pa
   await expect(page.getByText("WebGL could not start", { exact: false })).toHaveCount(0);
   await page.getByRole("button", { name: "Fit garden" }).click();
   await clickStructure(page);
-  await expect(page.getByText("Test 3D shed", { exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Test 3D shed", exact: true })).toBeVisible();
   await page.screenshot({ path: testInfo.outputPath("initial-3d-structure.png"), fullPage: true, animations: "disabled" });
 });
 
@@ -77,7 +78,7 @@ test("Live 3D receives a structure written from another tab", async ({ context, 
   await page.waitForTimeout(350);
   await page.getByRole("button", { name: "Fit garden" }).click();
   await clickStructure(page);
-  await expect(page.getByText("Test 3D shed", { exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Test 3D shed", exact: true })).toBeVisible();
   await page.screenshot({ path: testInfo.outputPath("cross-tab-3d-structure.png"), fullPage: true, animations: "disabled" });
   await writerTab.close();
 });
