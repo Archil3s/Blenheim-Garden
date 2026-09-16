@@ -95,18 +95,18 @@ function visualCount(options: CropPatchOptions, kind: DenseKind) {
   const capacity = Math.max(1, Math.round(area / Math.max(0.01, spacing * spacing)));
 
   if (kind !== "detailed") {
-    const cap = options.mobile ? 42 : 110;
+    const cap = options.mobile ? 54 : 150;
     return Math.min(cap, Math.max(4, Math.min(planned, capacity)));
   }
 
   const name = normalise(options.crop);
   if (isSparseCrop(name)) return Math.min(options.mobile ? 5 : 10, planned);
-  if (/tomato/.test(name)) return Math.min(options.mobile ? 8 : 18, planned);
-  if (/corn|maize/.test(name)) return Math.min(options.mobile ? 12 : 28, planned);
-  if (/broccoli|cauliflower|cabbage|kale/.test(name)) return Math.min(options.mobile ? 12 : 30, planned);
-  if (/strawber/.test(name)) return Math.min(options.mobile ? 18 : 46, planned);
-  if (/bean|pea/.test(name)) return Math.min(options.mobile ? 14 : 34, planned);
-  return Math.min(options.mobile ? 12 : 26, planned);
+  if (/tomato/.test(name)) return Math.min(options.mobile ? 10 : 24, planned);
+  if (/corn|maize/.test(name)) return Math.min(options.mobile ? 18 : 40, planned);
+  if (/broccoli|cauliflower|cabbage|kale/.test(name)) return Math.min(options.mobile ? 16 : 38, planned);
+  if (/strawber/.test(name)) return Math.min(options.mobile ? 24 : 64, planned);
+  if (/bean|pea/.test(name)) return Math.min(options.mobile ? 18 : 44, planned);
+  return Math.min(options.mobile ? 16 : 34, planned);
 }
 
 function positionsForPatch(options: CropPatchOptions, count: number, rand: () => number) {
@@ -196,8 +196,8 @@ function finishInstances(mesh: THREE.InstancedMesh) {
 
 function addRosettePatch(root: THREE.Group, options: CropPatchOptions, count: number, rand: () => number) {
   const points = positionsForPatch(options, count, rand);
-  const leavesPerPlant = options.mobile ? 5 : 7;
-  const geometry = leafShape(0.15, 0.085);
+  const leavesPerPlant = options.mobile ? 6 : 9;
+  const geometry = leafShape(0.17, 0.1);
   const leaves = new THREE.InstancedMesh(geometry, standardMaterial(0x4f914d), count * leavesPerPlant);
   const name = normalise(options.crop);
   const blueGreen = /spinach|chard|silverbeet|bok choy|pak choi|tatsoi/.test(name);
@@ -344,7 +344,7 @@ function addDetailedPatch(root: THREE.Group, options: CropPatchOptions, count: n
 
   points.forEach((point, index) => {
     const plant = createGardenPlant3D(options.crop, options.variety, options.mobile, (options.seed ?? 1) + index * 19 + options.crop.length * 31);
-    const variation = point.scale * (0.94 + rand() * 0.12);
+    const variation = point.scale * (1.02 + rand() * 0.14);
     plant.position.set(point.x, options.baseY, point.z);
     plant.rotation.y += point.rotation;
     plant.scale.setScalar(baseScale * variation);
