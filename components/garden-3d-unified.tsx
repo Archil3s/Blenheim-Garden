@@ -14,6 +14,7 @@ import {
 import { addStructure3D } from "@/components/garden-structure-3d";
 import { addDemonstrationBed3D } from "@/components/garden-demo-bed-3d";
 import { createGardenPlant3D } from "@/components/garden-plant-3d";
+import { addGardenCropPatch3D, addGardenCropRow3D } from "@/components/garden-crop-patch-3d";
 
 const GARDEN_WIDTH_CM = 900;
 const GARDEN_HEIGHT_CM = 1080;
@@ -345,13 +346,20 @@ function addPlantingArea(root: THREE.Group, plan: PlannerPlan, area: PlannerPlan
   const aw = (area.w / 100) * rect.w;
   const ah = (area.h / 100) * rect.h;
   const group = new THREE.Group();
-  const positions = representativePositions(aw, ah, area.count, mobile ? 7 : 14);
-  positions.forEach((position, index) => {
-    const plant = createGardenPlant3D(area.crop, area.variety, mobile, index + area.crop.length * 11);
-    plant.position.set(worldX(ax + aw * position.x), 0.31, worldZ(ay + ah * position.y));
-    const iconScale = Math.max(0.72, Math.min(1.18, (area.iconSize || 18) / 18));
-    plant.scale.setScalar(iconScale);
-    group.add(plant);
+  addGardenCropPatch3D(group, {
+    crop: area.crop,
+    variety: area.variety,
+    count: area.count,
+    spacingCm: area.spacingCm,
+    iconSize: area.iconSize,
+    pattern: area.pattern,
+    widthM: aw / 100,
+    depthM: ah / 100,
+    centerX: worldX(ax + aw / 2),
+    centerZ: worldZ(ay + ah / 2),
+    baseY: 0.31,
+    mobile,
+    seed: area.crop.length * 113 + area.variety.length * 41 + area.bedId * 17,
   });
   inspectable(group, {
     title: area.crop,
@@ -367,14 +375,18 @@ function addPlantingArea(root: THREE.Group, plan: PlannerPlan, area: PlannerPlan
 
 function addRow(root: THREE.Group, row: PlannerPlan["rows"][number], mobile: boolean) {
   const group = new THREE.Group();
-  const count = Math.min(mobile ? 8 : 15, Math.max(1, row.count || 1));
-  for (let index = 0; index < count; index += 1) {
-    const t = count === 1 ? 0.5 : index / (count - 1);
-    const plant = createGardenPlant3D(row.crop, row.variety, mobile, index + row.crop.length * 7);
-    plant.scale.setScalar(0.84);
-    plant.position.set(worldX(row.x1 + (row.x2 - row.x1) * t), 0.03, worldZ(row.y1 + (row.y2 - row.y1) * t));
-    group.add(plant);
-  }
+  addGardenCropRow3D(group, {
+    crop: row.crop,
+    variety: row.variety,
+    count: row.count,
+    startX: worldX(row.x1),
+    startZ: worldZ(row.y1),
+    endX: worldX(row.x2),
+    endZ: worldZ(row.y2),
+    baseY: 0.03,
+    mobile,
+    seed: row.crop.length * 79 + row.variety.length * 37 + row.id.length * 13,
+  });
   inspectable(group, {
     title: row.crop,
     subtitle: row.variety || "Planting row",
