@@ -27,6 +27,23 @@ function addCylinder(root: THREE.Group, radius: number, height: number, color: n
   return mesh;
 }
 
+function addDoor(root: THREE.Group, width: number, height: number, depth: number, color: number) {
+  addBox(root, width, height, 0.035, color, 0, height / 2, depth / 2 + 0.021, 0.88);
+  const handle = addCylinder(root, 0.018, 0.035, 0xd2b56f, height * 0.52, 8);
+  handle.rotation.x = Math.PI / 2;
+  handle.position.set(width * 0.32, height * 0.52, depth / 2 + 0.06);
+}
+
+function addWindow(root: THREE.Group, x: number, y: number, z: number, width: number, height: number) {
+  const glass = addBox(root, width, height, 0.028, 0x9fc5c7, x, y, z, 0.18);
+  const glassMaterial = glass.material as THREE.MeshStandardMaterial;
+  glassMaterial.transparent = true;
+  glassMaterial.opacity = 0.72;
+  addBox(root, width + 0.06, 0.035, 0.04, 0x69513c, x, y - height / 2, z + 0.008, 0.9);
+  addBox(root, width + 0.06, 0.035, 0.04, 0x69513c, x, y + height / 2, z + 0.008, 0.9);
+  addBox(root, 0.035, height, 0.04, 0x69513c, x, y, z + 0.008, 0.9);
+}
+
 function addArchTunnel(root: THREE.Group, width: number, depth: number, height: number, color: number, detailed: boolean, cover?: { color: number; opacity: number }) {
   const radius = Math.max(0.12, width / 2);
   const arches = detailed ? 6 : 4;
@@ -64,11 +81,36 @@ function addFramedCover(root: THREE.Group, width: number, depth: number, height:
   );
   cover.position.y = height + 0.02;
   root.add(cover);
+
+  const sideMaterial = new THREE.MeshPhysicalMaterial({
+    color: coverColor,
+    transparent: true,
+    opacity: opacity * 0.82,
+    roughness: detailed ? 0.58 : 0.72,
+    depthWrite: false,
+    side: THREE.DoubleSide,
+  });
+  for (const z of [-depth / 2, depth / 2]) {
+    const side = new THREE.Mesh(new THREE.PlaneGeometry(width, height), sideMaterial.clone());
+    side.position.set(0, height / 2, z);
+    root.add(side);
+  }
+  for (const x of [-width / 2, width / 2]) {
+    const side = new THREE.Mesh(new THREE.PlaneGeometry(depth, height), sideMaterial.clone());
+    side.rotation.y = Math.PI / 2;
+    side.position.set(x, height / 2, 0);
+    root.add(side);
+  }
+  sideMaterial.dispose();
 }
 
 function addRaisedBed(root: THREE.Group, width: number, depth: number, height: number, wallColor: number, soilColor = 0x4e3d2b) {
-  addBox(root, width, height, depth, wallColor, 0, height / 2, 0, 0.9);
-  addBox(root, width * 0.88, 0.035, depth * 0.82, soilColor, 0, height + 0.02, 0, 1);
+  const wall = Math.max(0.055, Math.min(0.11, Math.min(width, depth) * 0.09));
+  addBox(root, width, height, wall, wallColor, 0, height / 2, -depth / 2 + wall / 2, 0.9);
+  addBox(root, width, height, wall, wallColor, 0, height / 2, depth / 2 - wall / 2, 0.9);
+  addBox(root, wall, height, depth - wall * 2, wallColor, -width / 2 + wall / 2, height / 2, 0, 0.9);
+  addBox(root, wall, height, depth - wall * 2, wallColor, width / 2 - wall / 2, height / 2, 0, 0.9);
+  addBox(root, Math.max(0.05, width - wall * 2), 0.05, Math.max(0.05, depth - wall * 2), soilColor, 0, height * 0.78, 0, 1);
 }
 
 function setInspectable(root: THREE.Group, object: PlannerStructure) {
@@ -120,6 +162,9 @@ export function addStructure3D(group: THREE.Group, object: PlannerStructure, det
       roof.rotation.z = side * -0.48;
       root.add(roof);
     }
+    addBox(root, width, 0.035, 0.035, 0x71847d, 0, height * 0.42, depth / 2 + 0.02, 0.68);
+    addBox(root, 0.035, height * 0.72, 0.035, 0x71847d, 0, height * 0.36, depth / 2 + 0.02, 0.68);
+    addDoor(root, Math.min(0.82, width * 0.4), height * 0.66, depth, 0xb9d8d0);
   } else if (object.kind === "polytunnel") {
     const cover = new THREE.MeshPhysicalMaterial({ color: 0xd2e7df, transparent: true, opacity: 0.34, roughness: 0.28, depthWrite: false, side: THREE.DoubleSide });
     const radius = width / 2;
@@ -142,6 +187,8 @@ export function addStructure3D(group: THREE.Group, object: PlannerStructure, det
     roof.rotation.y = Math.PI / 4;
     roof.scale.set(width / maxSide, 1, depth / maxSide);
     root.add(roof);
+    addDoor(root, Math.min(0.78, width * 0.38), bodyHeight * 0.78, depth, object.kind === "shed" ? 0x76573e : 0x8a6848);
+    addWindow(root, -width * 0.27, bodyHeight * 0.62, depth / 2 + 0.022, Math.min(0.48, width * 0.22), Math.min(0.42, bodyHeight * 0.3));
     if (object.kind === "chicken-coop") {
       addPost(root, -width * 0.36, -depth * 0.36, bodyHeight * 0.35, timberDark);
       addPost(root, width * 0.36, -depth * 0.36, bodyHeight * 0.35, timberDark);
@@ -166,6 +213,15 @@ export function addStructure3D(group: THREE.Group, object: PlannerStructure, det
     const lid = new THREE.Mesh(new THREE.CylinderGeometry(radius * 0.92, radius * 0.92, 0.035, detailed ? 18 : 12), standard(0x667a7f, 0.55));
     lid.position.y = height + 0.02;
     root.add(lid);
+    for (const y of [height * 0.22, height * 0.72]) {
+      const band = new THREE.Mesh(new THREE.TorusGeometry(radius * 1.015, 0.018, 5, detailed ? 20 : 12), standard(0x56666a, 0.42));
+      band.rotation.x = Math.PI / 2;
+      band.position.y = y;
+      root.add(band);
+    }
+    const tap = addCylinder(root, 0.025, 0.13, 0xc2a267, height * 0.2, 8);
+    tap.rotation.x = Math.PI / 2;
+    tap.position.z = depth / 2 + 0.08;
   } else if (object.kind === "potting-bench") {
     const topY = Math.min(height * 0.82, 1.0);
     addBox(root, width, 0.09, depth, timber, 0, topY, 0, 0.86);
@@ -178,17 +234,15 @@ export function addStructure3D(group: THREE.Group, object: PlannerStructure, det
     const slats = detailed ? 7 : 4;
     for (let i = 0; i < slats; i += 1) addBox(root, 0.055, 0.055, depth + 0.18, 0xa9855f, -width / 2 + (width * i) / Math.max(1, slats - 1), height + 0.07, 0);
   } else if (object.kind === "garden-arch") {
-    addPost(root, -width / 2, 0, height * 0.82, metal);
-    addPost(root, width / 2, 0, height * 0.82, metal);
-    const top = new THREE.Mesh(new THREE.TorusGeometry(width / 2, 0.035, 6, detailed ? 18 : 12, Math.PI), standard(metal, 0.55));
-    top.rotation.z = Math.PI;
-    top.position.y = height * 0.82;
-    root.add(top);
-    if (depth > 0.55) {
-      const back = top.clone();
-      back.position.z = depth / 2;
-      root.add(back);
+    for (const z of [-depth / 2, depth / 2]) {
+      addPost(root, -width / 2, z, height * 0.82, metal);
+      addPost(root, width / 2, z, height * 0.82, metal);
+      const top = new THREE.Mesh(new THREE.TorusGeometry(width / 2, 0.035, 6, detailed ? 18 : 12, Math.PI), standard(metal, 0.55));
+      top.rotation.z = Math.PI;
+      top.position.set(0, height * 0.82, z);
+      root.add(top);
     }
+    for (const x of [-width / 2, 0, width / 2]) addBox(root, 0.025, 0.025, depth, metal, x, height * 0.82, 0, 0.56);
   } else if (object.kind === "beehive") {
     const layers = detailed ? 4 : 3;
     for (let i = 0; i < layers; i += 1) addBox(root, width * (1 - i * 0.025), height / layers * 0.88, depth, i % 2 ? 0xd5b454 : 0xe1c66b, 0, 0.08 + (i + 0.5) * (height / layers * 0.88), 0, 0.8);
@@ -205,11 +259,16 @@ export function addStructure3D(group: THREE.Group, object: PlannerStructure, det
     }
   } else if (object.kind === "a-frame-trellis") {
     const diagonal = Math.hypot(width / 2, height);
-    for (const side of [-1, 1]) {
-      const beam = addBox(root, 0.07, diagonal, depth, timber, side * width / 4, height / 2, 0, 0.82);
+    for (const z of [-depth / 2, depth / 2]) for (const side of [-1, 1]) {
+      const beam = addBox(root, 0.07, diagonal, 0.07, timber, side * width / 4, height / 2, z, 0.82);
       beam.rotation.z = side * Math.atan2(width / 2, height);
     }
     addBox(root, 0.08, 0.08, depth + 0.08, timberDark, 0, height, 0, 0.85);
+    for (const y of [height * 0.3, height * 0.55, height * 0.78]) {
+      const span = width * (1 - y / height);
+      addBox(root, span, 0.022, 0.022, 0x7c857b, 0, y, -depth / 2, 0.5);
+      addBox(root, span, 0.022, 0.022, 0x7c857b, 0, y, depth / 2, 0.5);
+    }
   } else if (object.kind === "insect-net-tunnel") {
     addArchTunnel(root, width, depth, height, 0x78958b, detailed, { color: 0xd6ebe4, opacity: 0.18 });
   } else if (object.kind === "frost-cloth-tunnel") {

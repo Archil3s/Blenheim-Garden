@@ -44,22 +44,22 @@ The 3D view must remain a **garden planning tool**, not merely a decorative scen
 
 ## Phase 1 — Audit current 3D system
 
-- [ ] Locate current 3D renderer.
-- [ ] Locate garden scene component.
-- [ ] Locate plant rendering logic.
-- [ ] Locate bed rendering logic.
-- [ ] Locate camera controls.
-- [ ] Locate lighting system.
-- [ ] Locate plant icon/image assets.
-- [ ] Locate plant database.
-- [ ] Locate spacing data.
-- [ ] Locate garden coordinate system.
-- [ ] Determine units currently used and whether 1 world unit corresponds to 1 metre.
-- [ ] Identify performance bottlenecks.
+- [x] Locate current 3D renderer.
+- [x] Locate garden scene component.
+- [x] Locate plant rendering logic.
+- [x] Locate bed rendering logic.
+- [x] Locate camera controls.
+- [x] Locate lighting system.
+- [x] Locate plant icon/image assets.
+- [x] Locate plant database.
+- [x] Locate spacing data.
+- [x] Locate garden coordinate system.
+- [x] Determine units currently used and whether 1 world unit corresponds to 1 metre.
+- [x] Identify performance bottlenecks.
 - [ ] Record current draw calls if practical.
 - [ ] Record approximate FPS on desktop.
-- [ ] Check mobile/iPhone behaviour.
-- [ ] Document findings.
+- [x] Check mobile/iPhone behaviour.
+- [x] Document findings.
 
 Do not start a major renderer rewrite until this audit is complete.
 
@@ -67,8 +67,8 @@ Do not start a major renderer rewrite until this audit is complete.
 
 Use real metric dimensions throughout the 3D garden wherever possible. Target `1 Three.js world unit = 1 metre`. A 2 m × 4 m garden bed must visually occupy 2 × 4 world units.
 
-- [ ] Standardise world scale.
-- [ ] Preserve existing bed dimensions.
+- [x] Standardise world scale.
+- [x] Preserve existing bed dimensions.
 - [ ] Correct plant scale and spacing.
 - [ ] Correct trellis heights, path widths and raised-bed heights.
 - [ ] Add conversion utilities if existing data uses another unit.
@@ -79,14 +79,14 @@ Plant models must not simply be scaled until they look right. Use botanical dime
 
 Before converting the entire garden, create one high-quality **2 m × 4 m raised vegetable bed** containing tomato, lettuce, carrot, strawberry, climbing bean, trellis, soil and mulch. This becomes the visual and performance benchmark.
 
-- [ ] Realistic timber raised-bed geometry and PBR timber material.
+- [x] Realistic timber raised-bed geometry and PBR timber material.
 - [ ] Realistic soil material with normal/bump variation.
-- [ ] Mulch layer.
-- [ ] Realistic plant placement and scale.
-- [ ] Natural plant variation.
-- [ ] Trellis geometry.
-- [ ] Correct shadows and daylight lighting.
-- [ ] Test desktop and iPhone/mobile.
+- [x] Mulch layer.
+- [x] Realistic plant placement and scale.
+- [x] Natural plant variation.
+- [x] Trellis geometry.
+- [x] Correct shadows and daylight lighting.
+- [x] Test desktop and iPhone/mobile.
 
 Do not convert the whole garden until this benchmark works well.
 
@@ -349,4 +349,4 @@ If a task would require a destructive rewrite, stop and document why before proc
 
 ## Current priority
 
-**Start with Phase 1.** Audit the current Blenheim Garden renderer and then build the realistic **2 m × 4 m demonstration bed** as the first visual prototype. Do not attempt the complete plant catalogue first.
+**Complete the demonstration-bed benchmark.** Record desktop/mobile performance, improve soil surface variation, then extract the five benchmark crops into a shared plant registry before expanding the catalogue.

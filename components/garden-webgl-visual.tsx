@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import type { GardenPlanApiResponse, PlannerBed, PlannerPlan, PlannerPlantingArea } from "@/lib/garden/planner-plan";
@@ -126,6 +126,23 @@ function clearSelectionHelper(ref: React.MutableRefObject<THREE.BoxHelper | null
 
 function material(color: number, roughness = 0.84) {
   return new THREE.MeshStandardMaterial({ color, roughness, metalness: 0 });
+}
+
+function skyTexture() {
+  const canvas = document.createElement("canvas");
+  canvas.width = 4;
+  canvas.height = 512;
+  const context = canvas.getContext("2d");
+  if (!context) return null;
+  const gradient = context.createLinearGradient(0, 0, 0, canvas.height);
+  gradient.addColorStop(0, "#75a4ba");
+  gradient.addColorStop(0.5, "#c7d9d8");
+  gradient.addColorStop(1, "#e8ddc7");
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
 }
 
 function applyShadow(root: THREE.Object3D, enabled: boolean) {
@@ -536,16 +553,17 @@ export function GardenWebGLVisual() {
   const [renderError, setRenderError] = useState<string | null>(null);
   const [inspector, setInspector] = useState<InspectorItem>(DEFAULT_INSPECTOR);
   const [hasSelection, setHasSelection] = useState(false);
+  const structureCount = plan?.objects.filter((object) => object.type === "structure").length ?? 0;
 
-  const present = (runtime: Runtime) => {
+  const present = useCallback((runtime: Runtime) => {
     runtime.render();
     window.requestAnimationFrame(() => {
       runtime.render();
       window.requestAnimationFrame(runtime.render);
     });
-  };
+  }, []);
 
-  const applyPlan = (nextPlan: PlannerPlan, nextSource: string) => {
+  const applyPlan = useCallback((nextPlan: PlannerPlan, nextSource: string) => {
     planRef.current = nextPlan;
     setPlan(nextPlan);
     setSource(nextSource);
@@ -557,15 +575,15 @@ export function GardenWebGLVisual() {
     setInspector(DEFAULT_INSPECTOR);
     setHasSelection(false);
     present(runtime);
-  };
+  }, [present]);
 
   useEffect(() => {
     let cancelled = false;
     const fromQuery = new URL(window.location.href).searchParams.get("gardenId")?.trim();
     const selected = fromQuery || readActiveGardenId();
-    setGardenId(selected);
+    queueMicrotask(() => setGardenId(selected));
     const live = readPlanFromStorage(gardenLivePlanKey(selected));
-    if (live) applyPlan(live, "Live 2D planner");
+    if (live) queueMicrotask(() => applyPlan(live, "Live 2D planner"));
     else {
       void (async () => {
         try {
@@ -584,8 +602,7 @@ export function GardenWebGLVisual() {
       })();
     }
     return () => { cancelled = true; };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [applyPlan]);
 
   useEffect(() => {
     const onLivePlan = (event: Event) => {
@@ -594,7 +611,7 @@ export function GardenWebGLVisual() {
     };
     window.addEventListener(LIVE_PLAN_EVENT, onLivePlan as EventListener);
     return () => window.removeEventListener(LIVE_PLAN_EVENT, onLivePlan as EventListener);
-  }, [gardenId]);
+  }, [gardenId, applyPlan]);
 
   useEffect(() => {
     const mount = canvasMountRef.current;
@@ -604,17 +621,20 @@ export function GardenWebGLVisual() {
     try {
       renderer = new THREE.WebGLRenderer({ antialias: detailed, alpha: false, powerPreference: detailed ? "high-performance" : "low-power" });
       renderer.outputColorSpace = THREE.SRGBColorSpace;
-      renderer.setPixelRatio(detailed ? Math.min(window.devicePixelRatio || 1, 1.35) : 1);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = detailed ? 1.08 : 1.02;
+      renderer.setPixelRatio(detailed ? Math.min(window.devicePixelRatio || 1, 1.5) : 1);
       renderer.shadowMap.enabled = detailed;
       renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     } catch {
-      setRenderError("WebGL could not start on this device.");
+      queueMicrotask(() => setRenderError("WebGL could not start on this device."));
       return;
     }
     mount.appendChild(renderer.domElement);
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xcbded7);
-    scene.fog = new THREE.Fog(0xcbded7, 18, 31);
+    const sky = skyTexture();
+    scene.background = sky ?? new THREE.Color(0xcbded7);
+    scene.fog = new THREE.Fog(0xb9cecc, 18, 31);
     scene.add(new THREE.HemisphereLight(0xf8fff8, 0x76624c, 1.45));
     const sun = new THREE.DirectionalLight(0xffefd2, detailed ? 2.25 : 1.55);
     sun.position.set(-6, 10, 7);
@@ -735,12 +755,12 @@ export function GardenWebGLVisual() {
       controls.dispose();
       clearSelectionHelper(selectionHelperRef);
       clearGroup(content);
+      sky?.dispose();
       renderer.dispose();
       runtimeRef.current = null;
       if (renderer.domElement.parentNode === mount) mount.removeChild(renderer.domElement);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [present]);
 
   const resetCamera = () => {
     const runtime = runtimeRef.current;
@@ -758,7 +778,7 @@ export function GardenWebGLVisual() {
           <a href={`/?gardenId=${encodeURIComponent(gardenId)}`} className={styles.back}>← 2D Plan</a>
           <div><strong>Blenheim Garden</strong><span>Visual 3D garden</span></div>
         </div>
-        <div className={styles.headerActions}><span className={styles.source}>{source}</span><button type="button" onClick={resetCamera}>Fit garden</button></div>
+        <div className={styles.headerActions}><span className={styles.source}>{source} · {structureCount} {structureCount === 1 ? "structure" : "structures"}</span><button type="button" onClick={resetCamera}>Fit garden</button></div>
       </header>
       <section className={styles.toolbar}>
         <span className={styles.hint}>Recognisable crops · tap to inspect · drag to orbit · pinch/wheel to zoom</span>

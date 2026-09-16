@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import type { PlannerBed, PlannerPlan, PlannerPlantingArea } from "@/lib/garden/planner-plan";
+import { addDemonstrationBed3D } from "@/components/garden-demo-bed-3d";
 import { addStructure3D } from "@/components/garden-structure-3d";
 
 import { GardenPlantArtwork, surfaceMaterial } from "./garden-scene-artwork";
@@ -60,6 +61,23 @@ function worldZ(cm: number) {
 
 function material(color: number, roughness = 0.84, metalness = 0) {
   return new THREE.MeshStandardMaterial({ color, roughness, metalness });
+}
+
+function skyTexture() {
+  const canvas = document.createElement("canvas");
+  canvas.width = 4;
+  canvas.height = 512;
+  const context = canvas.getContext("2d");
+  if (!context) return null;
+  const gradient = context.createLinearGradient(0, 0, 0, canvas.height);
+  gradient.addColorStop(0, "#75a4ba");
+  gradient.addColorStop(0.48, "#c7d9d8");
+  gradient.addColorStop(1, "#e8ddc7");
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
 }
 
 function bedRect(bed: PlannerBed) {
@@ -438,13 +456,18 @@ function addGrassTufts(scene: THREE.Scene, mobile: boolean) {
   const grassMaterial = material(0x517944, 0.94);
   const mesh = new THREE.InstancedMesh(geometry, grassMaterial, count);
   const dummy = new THREE.Object3D();
+  let seed = 0x51f15e;
+  const random = () => {
+    seed = seed * 1664525 + 1013904223 >>> 0;
+    return seed / 0x100000000;
+  };
 
   for (let i = 0; i < count; i += 1) {
-    const x = (Math.random() - 0.5) * 14.5;
-    const z = (Math.random() - 0.5) * 16.5;
+    const x = (random() - 0.5) * 14.5;
+    const z = (random() - 0.5) * 16.5;
     dummy.position.set(x, 0.055, z);
-    dummy.rotation.y = Math.random() * Math.PI;
-    const scale = 0.65 + Math.random() * 0.7;
+    dummy.rotation.y = random() * Math.PI;
+    const scale = 0.65 + random() * 0.7;
     dummy.scale.set(scale, scale, scale);
     dummy.updateMatrix();
     mesh.setMatrixAt(i, dummy.matrix);
@@ -463,13 +486,33 @@ export function GardenWorkspaceRealistic({ plan }: { plan: PlannerPlan }) {
   const [inspector, setInspector] = useState<InspectItem>(DEFAULT_INSPECTOR);
   const [renderError, setRenderError] = useState<string | null>(null);
   const [quality, setQuality] = useState("AUTO");
+  const [cameraView, setCameraView] = useState<"perspective" | "top">("perspective");
+  const [showDemo, setShowDemo] = useState(false);
+  const structureCount = plan.objects.filter((object) => object.type === "structure").length;
 
   useEffect(() => {
     const runtime = runtimeRef.current;
     if (!runtime) return;
     clearSelection(selectionRef);
-    buildGarden(runtime.content, plan, runtime.mobile);
-  }, [plan]);
+    setInspector(DEFAULT_INSPECTOR);
+    clearGroup(runtime.content);
+    if (showDemo) {
+      addDemonstrationBed3D(runtime.content, runtime.mobile);
+      runtime.camera.position.set(4.6, 4.2, 6.4);
+      runtime.controls.target.set(0, 0.45, 0);
+    } else {
+      buildGarden(runtime.content, plan, runtime.mobile);
+      runtime.camera.position.set(
+        runtime.mobile ? 7.7 : 8.7,
+        runtime.mobile ? 8.2 : 8.6,
+        runtime.mobile ? 11.4 : 12.2,
+      );
+      runtime.controls.target.set(0, 0.3, 0);
+    }
+    runtime.camera.up.set(0, 1, 0);
+    runtime.controls.update();
+    setCameraView("perspective");
+  }, [plan, showDemo]);
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -502,8 +545,9 @@ export function GardenWorkspaceRealistic({ plan }: { plan: PlannerPlan }) {
     mount.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xa7c1c9);
-    scene.fog = new THREE.FogExp2(0xa7c1c9, mobile ? 0.026 : 0.021);
+    const sky = skyTexture();
+    scene.background = sky ?? new THREE.Color(0xa7c1c9);
+    scene.fog = new THREE.FogExp2(0xb9cecc, mobile ? 0.024 : 0.019);
 
     const hemi = new THREE.HemisphereLight(0xeef8ff, 0x4a3a2f, 1.2);
     scene.add(hemi);
@@ -643,6 +687,7 @@ export function GardenWorkspaceRealistic({ plan }: { plan: PlannerPlan }) {
       ground.geometry.dispose();
       ground.material.map?.dispose();
       ground.material.dispose();
+      sky?.dispose();
       renderer.dispose();
       runtimeRef.current = null;
       if (renderer.domElement.parentNode === mount) mount.removeChild(renderer.domElement);
@@ -654,6 +699,7 @@ export function GardenWorkspaceRealistic({ plan }: { plan: PlannerPlan }) {
   const setPerspective = () => {
     const runtime = runtimeRef.current;
     if (!runtime) return;
+    setCameraView("perspective");
     runtime.camera.position.set(runtime.mobile ? 7.7 : 8.7, runtime.mobile ? 8.2 : 8.6, runtime.mobile ? 11.4 : 12.2);
     runtime.camera.up.set(0, 1, 0);
     runtime.controls.target.set(0, 0.3, 0);
@@ -663,6 +709,7 @@ export function GardenWorkspaceRealistic({ plan }: { plan: PlannerPlan }) {
   const setTop = () => {
     const runtime = runtimeRef.current;
     if (!runtime) return;
+    setCameraView("top");
     runtime.camera.position.set(0.01, 16.2, 0.01);
     runtime.camera.up.set(0, 0, -1);
     runtime.controls.target.set(0, 0, 0);
@@ -676,12 +723,20 @@ export function GardenWorkspaceRealistic({ plan }: { plan: PlannerPlan }) {
       <div className="gv-3d-hud gv-3d-hud-left">
         <span className="gv-3d-live-dot" />
         <strong>GARDEN SIM</strong>
-        <small>Live plan</small>
+        <small>{showDemo ? "2 × 4 m benchmark" : `${structureCount} ${structureCount === 1 ? "structure" : "structures"} · Live plan`}</small>
       </div>
       <div className="gv-3d-hud gv-3d-camera-controls" aria-label="3D camera controls">
-        <button type="button" onClick={setPerspective}>Perspective</button>
-        <button type="button" onClick={setTop}>Top</button>
+        <button type="button" className={cameraView === "perspective" ? "active" : ""} aria-pressed={cameraView === "perspective"} onClick={setPerspective}>Perspective</button>
+        <button type="button" className={cameraView === "top" ? "active" : ""} aria-pressed={cameraView === "top"} onClick={setTop}>Top</button>
         <button type="button" onClick={setPerspective}>Fit</button>
+        <button
+          type="button"
+          className={showDemo ? "active" : ""}
+          aria-pressed={showDemo}
+          onClick={() => setShowDemo((value) => !value)}
+        >
+          Demo bed
+        </button>
         <span>{quality}</span>
       </div>
       <div className="gv-3d-selection-card" aria-live="polite">

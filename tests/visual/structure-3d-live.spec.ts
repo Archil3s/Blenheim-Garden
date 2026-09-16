@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { STRUCTURE_PRESETS } from "../../lib/garden/structure-catalog";
 
 const liveKey = "blenheim-garden-live-plan";
 const emptyPlan = { beds: [], plantingAreas: [], rows: [], objects: [] };
@@ -20,6 +21,24 @@ const structurePlan = {
       label: "Test 3D shed",
     },
   ],
+};
+
+const catalogPlan = {
+  beds: [],
+  plantingAreas: [],
+  rows: [],
+  objects: STRUCTURE_PRESETS.map((preset, index) => ({
+    id: `catalog-${preset.kind}`,
+    type: "structure",
+    kind: preset.kind,
+    x: 75 + index % 6 * 150,
+    y: 90 + Math.floor(index / 6) * 180,
+    widthCm: Math.min(preset.widthCm, 120),
+    depthCm: Math.min(preset.depthCm, 140),
+    heightCm: preset.heightCm,
+    rotationDeg: index % 2 ? 10 : -10,
+    label: preset.label,
+  })),
 };
 
 async function clickStructure(page: Page) {
@@ -81,4 +100,28 @@ test("Live 3D receives a structure written from another tab", async ({ context, 
   await expect(page.getByRole("heading", { name: "Test 3D shed", exact: true })).toBeVisible();
   await page.screenshot({ path: testInfo.outputPath("cross-tab-3d-structure.png"), fullPage: true, animations: "disabled" });
   await writerTab.close();
+});
+
+test("Live 3D renders every structure preset without browser errors", async ({ page }, testInfo) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => {
+    if (message.type() === "error") errors.push(message.text());
+  });
+  await page.addInitScript(
+    ({ key, plan }) => localStorage.setItem(key, JSON.stringify(plan)),
+    { key: liveKey, plan: catalogPlan },
+  );
+  await page.goto("/3d");
+
+  await expect(page.locator('[aria-label="Visual 3D garden canvas"] canvas')).toBeVisible();
+  await expect(page.locator("body")).toContainText("36 structures");
+  await expect(page.getByText("WebGL could not start", { exact: false })).toHaveCount(0);
+  await page.getByRole("button", { name: "Fit garden" }).click();
+  await page.screenshot({
+    path: testInfo.outputPath("complete-structure-catalog.png"),
+    fullPage: true,
+    animations: "disabled",
+  });
+  expect(errors).toEqual([]);
 });
