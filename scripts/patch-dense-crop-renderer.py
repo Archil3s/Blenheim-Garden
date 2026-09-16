@@ -1,0 +1,74 @@
+from pathlib import Path
+
+path = Path("components/garden-3d-unified.tsx")
+text = path.read_text()
+
+old_import = 'import { createGardenPlant3D } from "@/components/garden-plant-3d";\n'
+new_import = 'import { addGardenCropPatch3D, addGardenCropRow3D } from "@/components/garden-crop-patch-3d";\n'
+if new_import not in text:
+    if old_import not in text:
+        raise SystemExit("plant renderer import anchor not found")
+    text = text.replace(old_import, old_import + new_import, 1)
+
+old_area = '''  const group = new THREE.Group();
+  const positions = representativePositions(aw, ah, area.count, mobile ? 7 : 14);
+  positions.forEach((position, index) => {
+    const plant = createGardenPlant3D(area.crop, area.variety, mobile, index + area.crop.length * 11);
+    plant.position.set(worldX(ax + aw * position.x), 0.31, worldZ(ay + ah * position.y));
+    const iconScale = Math.max(0.72, Math.min(1.18, (area.iconSize || 18) / 18));
+    plant.scale.setScalar(iconScale);
+    group.add(plant);
+  });
+'''
+new_area = '''  const group = new THREE.Group();
+  addGardenCropPatch3D(group, {
+    crop: area.crop,
+    variety: area.variety,
+    count: area.count,
+    spacingCm: area.spacingCm,
+    iconSize: area.iconSize,
+    pattern: area.pattern,
+    widthM: aw / 100,
+    depthM: ah / 100,
+    centerX: worldX(ax + aw / 2),
+    centerZ: worldZ(ay + ah / 2),
+    baseY: 0.31,
+    mobile,
+    seed: area.crop.length * 113 + area.variety.length * 41 + area.bedId * 17,
+  });
+'''
+if new_area not in text:
+    if old_area not in text:
+        raise SystemExit("planting area block not found")
+    text = text.replace(old_area, new_area, 1)
+
+old_row = '''  const group = new THREE.Group();
+  const count = Math.min(mobile ? 8 : 15, Math.max(1, row.count || 1));
+  for (let index = 0; index < count; index += 1) {
+    const t = count === 1 ? 0.5 : index / (count - 1);
+    const plant = createGardenPlant3D(row.crop, row.variety, mobile, index + row.crop.length * 7);
+    plant.scale.setScalar(0.84);
+    plant.position.set(worldX(row.x1 + (row.x2 - row.x1) * t), 0.03, worldZ(row.y1 + (row.y2 - row.y1) * t));
+    group.add(plant);
+  }
+'''
+new_row = '''  const group = new THREE.Group();
+  addGardenCropRow3D(group, {
+    crop: row.crop,
+    variety: row.variety,
+    count: row.count,
+    startX: worldX(row.x1),
+    startZ: worldZ(row.y1),
+    endX: worldX(row.x2),
+    endZ: worldZ(row.y2),
+    baseY: 0.03,
+    mobile,
+    seed: row.crop.length * 79 + row.variety.length * 37 + row.id.length * 13,
+  });
+'''
+if new_row not in text:
+    if old_row not in text:
+        raise SystemExit("planting row block not found")
+    text = text.replace(old_row, new_row, 1)
+
+path.write_text(text)
