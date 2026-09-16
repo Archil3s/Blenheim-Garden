@@ -13,6 +13,7 @@ import {
 } from "@/lib/garden/active-garden";
 import { addStructure3D } from "@/components/garden-structure-3d";
 import { addDemonstrationBed3D } from "@/components/garden-demo-bed-3d";
+import { createGardenPlant3D } from "@/components/garden-plant-3d";
 
 const GARDEN_WIDTH_CM = 900;
 const GARDEN_HEIGHT_CM = 1080;
@@ -346,7 +347,7 @@ function addPlantingArea(root: THREE.Group, plan: PlannerPlan, area: PlannerPlan
   const group = new THREE.Group();
   const positions = representativePositions(aw, ah, area.count, mobile ? 7 : 14);
   positions.forEach((position, index) => {
-    const plant = createPlant(area.crop, mobile, index + area.crop.length * 11);
+    const plant = createGardenPlant3D(area.crop, area.variety, mobile, index + area.crop.length * 11);
     plant.position.set(worldX(ax + aw * position.x), 0.31, worldZ(ay + ah * position.y));
     const iconScale = Math.max(0.72, Math.min(1.18, (area.iconSize || 18) / 18));
     plant.scale.setScalar(iconScale);
@@ -369,7 +370,7 @@ function addRow(root: THREE.Group, row: PlannerPlan["rows"][number], mobile: boo
   const count = Math.min(mobile ? 8 : 15, Math.max(1, row.count || 1));
   for (let index = 0; index < count; index += 1) {
     const t = count === 1 ? 0.5 : index / (count - 1);
-    const plant = createPlant(row.crop, mobile, index + row.crop.length * 7);
+    const plant = createGardenPlant3D(row.crop, row.variety, mobile, index + row.crop.length * 7);
     plant.scale.setScalar(0.84);
     plant.position.set(worldX(row.x1 + (row.x2 - row.x1) * t), 0.03, worldZ(row.y1 + (row.y2 - row.y1) * t));
     group.add(plant);
