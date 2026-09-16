@@ -15,6 +15,7 @@
     "incremental": true,
     "plugins": [{ "name": "next" }],
     "paths": {
+      "@/components/garden-structure-3d": ["./components/garden-structure-3d-v2.ts"],
       "@/*": ["./*"]
     }
   },
