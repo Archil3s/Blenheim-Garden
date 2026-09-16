@@ -9,7 +9,7 @@ import { LIVE_PLAN_EVENT, gardenLivePlanKey, readActiveGardenId } from "@/lib/ga
 const EMPTY_PLAN: PlannerPlan = { beds: [], plantingAreas: [], rows: [], objects: [] };
 
 const GardenWorkspace3D = dynamic(
-  () => import("@/components/garden-workspace-realistic").then((module) => module.GardenWorkspaceRealistic),
+  () => import("@/components/garden-3d-unified").then((module) => module.Garden3DUnified),
   {
     ssr: false,
     loading: () => <div className="gv-inline-3d-loading">Loading simulator…</div>,
@@ -98,7 +98,7 @@ export function GardenViewModeBridge() {
           data-testid="inline-3d-root"
           data-bed-count={plan.beds.length}
           data-planting-count={plan.plantingAreas.length}
-          data-renderer="three-webgl"
+          data-renderer="three-webgl-unified"
         >
           <GardenWorkspace3D plan={plan} />
         </div>,
