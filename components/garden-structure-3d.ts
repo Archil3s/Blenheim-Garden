@@ -6,18 +6,18 @@ const GARDEN_WIDTH_CM = 900;
 const GARDEN_HEIGHT_CM = 1080;
 
 const PALETTE = {
-  timber: 0x9a6742,
-  timberLight: 0xb18158,
-  timberDark: 0x69452f,
-  roof: 0x4f514d,
-  roofEdge: 0x383b38,
-  metal: 0x6f7976,
-  metalLight: 0x8c9893,
-  glass: 0xbfded4,
-  plastic: 0xd7e8e3,
-  soil: 0x4b3024,
-  waterTank: 0x778f96,
-  waterTankDark: 0x53676c,
+  timber: 0xa96d3f,
+  timberLight: 0xc98a52,
+  timberDark: 0x74472d,
+  roof: 0x59645f,
+  roofEdge: 0x404945,
+  metal: 0x8e9a99,
+  metalLight: 0xb8c0c8,
+  glass: 0xbfe6dd,
+  plastic: 0xe1efea,
+  soil: 0x65412d,
+  waterTank: 0x78a4ae,
+  waterTankDark: 0x537780,
 };
 
 function worldX(cm: number) {
@@ -29,7 +29,7 @@ function worldZ(cm: number) {
 }
 
 function standard(color: number, roughness = 0.8, metalness = 0) {
-  return new THREE.MeshStandardMaterial({ color, roughness, metalness });
+  return new THREE.MeshStandardMaterial({ color, roughness, metalness, flatShading: true });
 }
 
 function glassMaterial(color = PALETTE.glass, opacity = 0.3) {
@@ -39,9 +39,10 @@ function glassMaterial(color = PALETTE.glass, opacity = 0.3) {
     opacity,
     roughness: 0.18,
     metalness: 0,
-    transmission: 0.08,
+    transmission: 0,
     thickness: 0.02,
     depthWrite: false,
+    flatShading: true,
     side: THREE.DoubleSide,
   });
 }

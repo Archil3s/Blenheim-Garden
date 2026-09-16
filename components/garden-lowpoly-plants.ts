@@ -63,8 +63,8 @@ function branch(
   root: THREE.Object3D,
   from: THREE.Vector3,
   to: THREE.Vector3,
-  radius = 0.018,
-  color = C.stemDark,
+  radius: number = 0.018,
+  color: number = C.stemDark,
 ) {
   const direction = to.clone().sub(from);
   const length = direction.length();
@@ -109,7 +109,7 @@ function fruit(
   return mesh;
 }
 
-function flower(root: THREE.Object3D, position: THREE.Vector3, color = C.flowerYellow, size = 0.028) {
+function flower(root: THREE.Object3D, position: THREE.Vector3, color: number = C.flowerYellow, size: number = 0.028) {
   for (let i = 0; i < 5; i += 1) {
     const a = (i / 5) * Math.PI * 2;
     const petal = makeCartoonSphere(size, color, 0, [1.15, 0.45, 0.75]);

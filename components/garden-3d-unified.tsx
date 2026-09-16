@@ -21,21 +21,21 @@ const GARDEN_HEIGHT_CM = 1080;
 const EMPTY_PLAN: PlannerPlan = { beds: [], plantingAreas: [], rows: [], objects: [] };
 
 const palette = {
-  grass: 0x789b62,
-  grassDark: 0x668951,
-  timber: 0x9a6742,
-  timberLight: 0xb18158,
-  timberDark: 0x69452f,
-  timberCap: 0xc08a5e,
-  soil: 0x4b3024,
-  mulch: 0xb58a54,
-  leaf: 0x3e7d43,
-  leafLight: 0x67a653,
-  leafDark: 0x2f6638,
-  stem: 0x557842,
-  metal: 0x6f7976,
-  path: 0xb4ad9b,
-  pathDark: 0x858075,
+  grass: 0x79b85a,
+  grassDark: 0x4f8f42,
+  timber: 0xa96d3f,
+  timberLight: 0xc98a52,
+  timberDark: 0x74472d,
+  timberCap: 0xd29a5d,
+  soil: 0x65412d,
+  mulch: 0xc69a5c,
+  leaf: 0x4f9f50,
+  leafLight: 0x76bb59,
+  leafDark: 0x35783d,
+  stem: 0x4f7b42,
+  metal: 0x9ca9aa,
+  path: 0xc8b18b,
+  pathDark: 0x9b8668,
 };
 
 type InspectItem = {
@@ -77,7 +77,7 @@ function bedRectCm(bed: PlannerBed) {
 }
 
 function mat(color: number, roughness = 0.86, metalness = 0) {
-  return new THREE.MeshStandardMaterial({ color, roughness, metalness });
+  return new THREE.MeshStandardMaterial({ color, roughness, metalness, flatShading: true });
 }
 
 function box(
@@ -145,9 +145,9 @@ function skyTexture() {
   const context = canvas.getContext("2d");
   if (!context) return null;
   const gradient = context.createLinearGradient(0, 0, 0, canvas.height);
-  gradient.addColorStop(0, "#72a8bf");
-  gradient.addColorStop(0.52, "#c8dcda");
-  gradient.addColorStop(1, "#efe3cb");
+  gradient.addColorStop(0, "#76b8df");
+  gradient.addColorStop(0.52, "#c7e6e8");
+  gradient.addColorStop(1, "#f6dfb7");
   context.fillStyle = gradient;
   context.fillRect(0, 0, canvas.width, canvas.height);
   const texture = new THREE.CanvasTexture(canvas);
@@ -464,15 +464,15 @@ function addTree(root: THREE.Group, object: Extract<PlannerPlan["objects"][numbe
   const z = worldZ(object.y);
   const radius = Math.min(0.95, Math.max(0.3, object.diameterCm / 200));
   const trunkHeight = 0.78 + radius * 0.25;
-  const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.11, trunkHeight, 8), mat(0x755137, 1));
+  const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.12, trunkHeight, 6), mat(0x765036, 1));
   trunk.position.set(x, trunkHeight / 2, z);
   trunk.castShadow = true;
   group.add(trunk);
   const lobes = mobile ? 3 : 6;
   for (let index = 0; index < lobes; index += 1) {
     const angle = (index / lobes) * Math.PI * 2;
-    const crown = new THREE.Mesh(new THREE.SphereGeometry(radius * (index === 0 ? 0.82 : 0.62), 9, 7), mat(index % 2 ? 0x477a48 : 0x568c4f, 0.96));
-    crown.scale.y = 0.76;
+    const crown = new THREE.Mesh(new THREE.DodecahedronGeometry(radius * (index === 0 ? 0.82 : 0.62), 1), mat(index % 2 ? 0x4f964d : 0x67aa55, 0.96));
+    crown.scale.set(1.08, 0.82, 1);
     crown.position.set(x + Math.cos(angle) * radius * 0.3, trunkHeight + radius * (0.44 + (index % 2) * 0.08), z + Math.sin(angle) * radius * 0.3);
     crown.castShadow = true;
     group.add(crown);

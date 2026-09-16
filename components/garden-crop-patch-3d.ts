@@ -35,14 +35,14 @@ type CropRowOptions = {
 type DenseKind = "rosette" | "allium" | "root-top" | "herb" | "detailed";
 
 const COLORS = {
-  leaf: new THREE.Color(0x3f7e43),
-  leafLight: new THREE.Color(0x69a856),
-  leafDark: new THREE.Color(0x2e6639),
-  leafBlue: new THREE.Color(0x4f7659),
-  carrot: new THREE.Color(0xdc7629),
-  beet: new THREE.Color(0x8d3150),
-  radish: new THREE.Color(0xd94e66),
-  onion: new THREE.Color(0xddd0a7),
+  leaf: new THREE.Color(0x4f9f50),
+  leafLight: new THREE.Color(0x76bb59),
+  leafDark: new THREE.Color(0x35783d),
+  leafBlue: new THREE.Color(0x5c8c69),
+  carrot: new THREE.Color(0xe8842f),
+  beet: new THREE.Color(0x943653),
+  radish: new THREE.Color(0xdf536c),
+  onion: new THREE.Color(0xe6d2a8),
 };
 
 function normalise(value: string | null | undefined) {
@@ -169,7 +169,7 @@ function leafShape(length = 0.16, width = 0.08) {
 }
 
 function standardMaterial(color: number) {
-  return new THREE.MeshStandardMaterial({ color, roughness: 0.88, side: THREE.DoubleSide });
+  return new THREE.MeshStandardMaterial({ color, roughness: 0.92, side: THREE.DoubleSide, flatShading: true });
 }
 
 function setInstance(
