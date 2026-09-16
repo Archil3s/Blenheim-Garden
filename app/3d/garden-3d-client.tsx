@@ -20,8 +20,8 @@ const loading = () => (
   </main>
 );
 
-const GardenWebGLVisual = dynamic(
-  () => import("@/components/garden-webgl-visual").then((module) => module.GardenWebGLVisual),
+const Garden3DUnified = dynamic(
+  () => import("@/components/garden-3d-unified").then((module) => module.Garden3DUnified),
   { ssr: false, loading },
 );
 
@@ -86,5 +86,5 @@ function LivePlanCrossTabBridge() {
 }
 
 export default function Garden3DClient() {
-  return <><LivePlanCrossTabBridge /><GardenWebGLVisual /></>;
+  return <><LivePlanCrossTabBridge /><Garden3DUnified /></>;
 }
