@@ -83,7 +83,7 @@ export function lowPolyMaterial(
   return created;
 }
 
-export function lowPolyGlassMaterial(color = LOWPOLY_COLORS.glass) {
+export function lowPolyGlassMaterial(color: number = LOWPOLY_COLORS.glass) {
   return lowPolyMaterial(color, {
     roughness: 0.24,
     transparent: true,
@@ -101,7 +101,7 @@ export function enableCartoonShadow<T extends THREE.Mesh>(mesh: T) {
 export function makeCartoonSphere(
   radius: number,
   color: number,
-  detail = 1,
+  detail: number = 1,
   scale: [number, number, number] = [1, 1, 1],
 ) {
   const geometry = new THREE.IcosahedronGeometry(radius, detail);
@@ -112,9 +112,9 @@ export function makeCartoonSphere(
 
 export function makeCartoonStem(
   height: number,
-  radius = 0.025,
-  color = LOWPOLY_COLORS.stemDark,
-  segments = 6,
+  radius: number = 0.025,
+  color: number = LOWPOLY_COLORS.stemDark,
+  segments: number = 6,
 ) {
   return enableCartoonShadow(
     new THREE.Mesh(
@@ -125,10 +125,10 @@ export function makeCartoonStem(
 }
 
 export function makeCartoonLeaf(
-  length = 0.24,
-  width = 0.13,
-  color = LOWPOLY_COLORS.leaf,
-  lobes = 0,
+  length: number = 0.24,
+  width: number = 0.13,
+  color: number = LOWPOLY_COLORS.leaf,
+  lobes: number = 0,
 ) {
   const shape = new THREE.Shape();
   shape.moveTo(0, 0);
