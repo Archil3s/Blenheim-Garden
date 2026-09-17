@@ -113,3 +113,46 @@
 .gv-app .plan-bed > .gv-v4-bed-title { line-height: 1; padding-block: 0; }
 .gv-app .planting-area-label { line-height: 1.05; padding-block: 0; }
 .gv-app .gv-v4-bed > .empty-bed-label { z-index: 31; }
+
+.gv-seasonal-generator {
+  display: flex;
+  margin-left: 3px;
+}
+
+.gv-app .gv-quickbar .gv-seasonal-generator button {
+  border-color: #91c9b3;
+  color: #126b4d;
+  background: #edf8f3;
+  font-weight: 800;
+}
+
+.gv-app .gv-quickbar .gv-seasonal-generator button:hover:not(:disabled),
+.gv-app .gv-quickbar .gv-seasonal-generator button:focus-visible {
+  border-color: #198b68;
+  color: #fff;
+  background: #198b68;
+}
+
+.gv-app .gv-quickbar .gv-seasonal-generator button[data-generated="true"] {
+  border-color: #198b68;
+  color: #fff;
+  background: #198b68;
+}
+
+@media (max-width: 760px) {
+  .gv-app .gv-quickbar .gv-seasonal-generator button {
+    width: 40px;
+    min-width: 40px;
+    padding: 0;
+    font-size: 0;
+  }
+
+  .gv-app .gv-quickbar .gv-seasonal-generator button::after {
+    content: "✦";
+    font-size: 16px;
+  }
+
+  .gv-app .gv-quickbar .gv-seasonal-generator button[data-generated="true"]::after {
+    content: "✓";
+  }
+}

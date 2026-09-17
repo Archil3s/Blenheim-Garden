@@ -149,3 +149,83 @@
     display: none;
   }
 }
+
+.gv-3d-realistic.gv-3d-demo-active .gv-3d-hud-left {
+  min-height: 52px;
+  padding-inline: 18px;
+  border-radius: 14px;
+}
+
+.gv-3d-realistic.gv-3d-demo-active .gv-3d-hud-left strong {
+  font-size: 13px;
+  letter-spacing: .16em;
+}
+
+.gv-3d-realistic.gv-3d-demo-active .gv-3d-hud-left small {
+  display: none;
+}
+
+.gv-3d-realistic.gv-3d-demo-active .gv-3d-camera-controls {
+  min-height: 52px;
+  padding: 5px;
+  border-radius: 14px;
+}
+
+.gv-3d-realistic.gv-3d-demo-active .gv-3d-camera-controls button {
+  min-height: 40px;
+  padding-inline: 18px;
+  font-size: 11px;
+}
+
+.gv-3d-realistic.gv-3d-demo-active .gv-3d-selection-card {
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  width: auto;
+  min-height: 92px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-content: center;
+  padding: 15px 20px;
+  border-radius: 14px;
+}
+
+.gv-3d-realistic.gv-3d-demo-active .gv-3d-selection-card > strong {
+  font-size: 20px;
+}
+
+.gv-3d-realistic.gv-3d-demo-active .gv-3d-selection-card > small {
+  font-size: 11px;
+}
+
+.gv-3d-realistic.gv-3d-demo-active .gv-3d-selection-card > div {
+  display: none;
+}
+
+.gv-3d-realistic.gv-3d-demo-active .gv-3d-help {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .gv-3d-realistic.gv-3d-demo-active .gv-3d-hud-left {
+    min-height: 40px;
+    padding-inline: 11px;
+  }
+
+  .gv-3d-realistic.gv-3d-demo-active .gv-3d-camera-controls {
+    min-height: 40px;
+  }
+
+  .gv-3d-realistic.gv-3d-demo-active .gv-3d-camera-controls button {
+    min-height: 30px;
+    padding-inline: 9px;
+  }
+
+  .gv-3d-realistic.gv-3d-demo-active .gv-3d-selection-card {
+    min-height: 76px;
+    padding: 11px 13px;
+  }
+
+  .gv-3d-realistic.gv-3d-demo-active .gv-3d-selection-card > strong {
+    font-size: 16px;
+  }
+}

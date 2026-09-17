@@ -12,7 +12,7 @@ import type {
   PlannerRow as PlantingRow,
 } from "@/lib/garden/planner-plan";
 import { plantCountForArea, plantPositionsForArea } from "@/lib/garden/plant-spacing-layout";
-import { DEFAULT_GARDEN_ID, LIVE_PLAN_EVENT, gardenLivePlanKey, gardenLocalPlanKey, readActiveGardenId } from "@/lib/garden/active-garden";
+import { DEFAULT_GARDEN_ID, LIVE_PLAN_EVENT, SEASONAL_PLAN_EVENT, gardenLivePlanKey, gardenLocalPlanKey, readActiveGardenId } from "@/lib/garden/active-garden";
 import { STRUCTURE_PRESETS, structurePreset } from "@/lib/garden/structure-catalog";
 import { PlantArt } from "@/components/plant-art";
 
@@ -119,6 +119,20 @@ const baseObjects: PlannerLayoutObject[] = [
 ];
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const seasonalCrops: Record<string, readonly string[]> = {
+  Jan: ["Tomato", "Bean", "Lettuce", "Carrot", "Pumpkin", "Herbs", "Strawberry"],
+  Feb: ["Bean", "Lettuce", "Carrot", "Broccoli", "Herbs", "Strawberry", "Tomato"],
+  Mar: ["Lettuce", "Carrot", "Broccoli", "Herbs", "Strawberry"],
+  Apr: ["Lettuce", "Broccoli", "Herbs", "Carrot", "Strawberry"],
+  May: ["Broccoli", "Lettuce", "Herbs", "Strawberry", "Carrot"],
+  Jun: ["Broccoli", "Lettuce", "Herbs", "Strawberry", "Raspberry", "Blueberry"],
+  Jul: ["Broccoli", "Lettuce", "Carrot", "Strawberry", "Raspberry", "Blueberry", "Herbs"],
+  Aug: ["Lettuce", "Carrot", "Broccoli", "Strawberry", "Raspberry", "Blueberry", "Herbs"],
+  Sep: ["Lettuce", "Carrot", "Broccoli", "Strawberry", "Herbs"],
+  Oct: ["Bean", "Lettuce", "Carrot", "Broccoli", "Herbs", "Strawberry"],
+  Nov: ["Tomato", "Bean", "Lettuce", "Pumpkin", "Carrot", "Herbs", "Strawberry"],
+  Dec: ["Tomato", "Bean", "Lettuce", "Pumpkin", "Carrot", "Herbs", "Strawberry"],
+};
 const basePlan: PlanState = { beds: baseBeds, plantingAreas: basePlantingAreas, rows: [], objects: baseObjects };
 const emptyPlan: PlanState = { beds: [], plantingAreas: [], rows: [], objects: [] };
 
@@ -182,6 +196,7 @@ export function GardenPlanner() {
   const [panelOpen, setPanelOpen] = useState(false);
   const [zoom, setZoom] = useState(90);
   const [month, setMonth] = useState("Sep");
+  const [generatedMonth, setGeneratedMonth] = useState<string | null>(null);
   const [snapEnabled, setSnapEnabled] = useState(true);
   const [plan, setPlan] = useState<PlanState>(basePlan);
   const [past, setPast] = useState<PlanState[]>([]);
@@ -320,6 +335,31 @@ export function GardenPlanner() {
     setPlan(next); setSaveState("idle"); setInteraction(null); setDraft(null);
   }
 
+  function generateSeasonalGarden() {
+    if (!plan.beds.length) return;
+    const monthIndex = Math.max(0, months.indexOf(month));
+    const palette = seasonalCrops[month] ?? seasonalCrops.Sep;
+    const generatedAt = Date.now();
+    const plantingAreas = plan.beds.flatMap((bed, index) => {
+      const cropName = palette[(index + monthIndex) % palette.length];
+      const plant = plants.find((candidate) => candidate.name === cropName);
+      if (!plant) return [];
+      const pattern: PlannerPlantingPattern = cropName === "Pumpkin" || cropName === "Blueberry" ? "single" : cropName === "Carrot" || cropName === "Bean" ? "rows" : cropName === "Herbs" ? "natural" : index % 2 ? "staggered" : "grid";
+      const area: PlannerPlantingArea = {
+        id: `seasonal-${month.toLowerCase()}-${bed.id}-${generatedAt}`,
+        bedId: bed.id, crop: plant.name, cropIcon: plant.icon,
+        variety: plant.varieties[(monthIndex + index) % plant.varieties.length],
+        spacingCm: plant.spacingCm, x: 0, y: 0, w: 100, h: 100, count: 1,
+        pattern, iconSize: pattern === "single" ? 24 : 17,
+        visualSpacing: pattern === "single" ? "wide" : cropName === "Carrot" ? "tight" : "normal",
+      };
+      area.count = areaCount(area, bed);
+      return [area];
+    });
+    commit({ ...plan, plantingAreas });
+    setSelection(null); setTool("select"); setGeneratedMonth(month);
+    window.dispatchEvent(new Event(SEASONAL_PLAN_EVENT));
+  }
   function makePlantingArea(bed: Bed, plant: PlantOption, variety: string, center?: { x: number; y: number }, full = false) {
     const size = bedCm(bed);
     const existing = plan.plantingAreas.filter((area) => area.bedId === bed.id).length;
@@ -762,7 +802,7 @@ export function GardenPlanner() {
         <button type="button" className="gv-save" onClick={() => void savePlan()} disabled={saveState === "saving"}> {saveLabel}</button>
       </nav>
     </header>
-    <div className="gv-quickbar"><div className="gv-quick-actions"><button type="button" onClick={undo} disabled={!past.length} title="Undo">↶ <span>Undo</span></button><button type="button" onClick={redo} disabled={!future.length} title="Redo">↷ <span>Redo</span></button><button type="button" className={snapEnabled ? "active" : ""} onClick={() => setSnapEnabled((value) => !value)}>⌗ <span>Snap {snapEnabled ? "10 cm" : "Off"}</span></button></div><div className="gv-quick-center"><button type="button" aria-label="Zoom out" onClick={() => { setAutoFit(false); setZoom((value) => Math.max(25, value - 10)); }}>−</button><strong>{zoom}%</strong><button type="button" className="gv-fit-width" onClick={() => setAutoFit(true)}>Fit</button><button type="button" aria-label="Zoom in" onClick={() => { setAutoFit(false); setZoom((value) => Math.min(150, value + 10)); }}>+</button><select aria-label="Planning month" value={month} onChange={(event) => setMonth(event.target.value)}>{months.map((item) => <option key={item}>{item}</option>)}</select></div><div className="gv-cloud-state" role="status" aria-live="polite" data-save-state={saveState}><span className={isSaved ? "online" : ""} />{sourceLabel}</div></div>
+    <div className="gv-quickbar"><div className="gv-quick-actions"><button type="button" onClick={undo} disabled={!past.length} title="Undo">↶ <span>Undo</span></button><button type="button" onClick={redo} disabled={!future.length} title="Redo">↷ <span>Redo</span></button><button type="button" className={snapEnabled ? "active" : ""} onClick={() => setSnapEnabled((value) => !value)}>⌗ <span>Snap {snapEnabled ? "10 cm" : "Off"}</span></button></div><div className="gv-quick-center"><button type="button" aria-label="Zoom out" onClick={() => { setAutoFit(false); setZoom((value) => Math.max(25, value - 10)); }}>−</button><strong>{zoom}%</strong><button type="button" className="gv-fit-width" onClick={() => setAutoFit(true)}>Fit</button><button type="button" aria-label="Zoom in" onClick={() => { setAutoFit(false); setZoom((value) => Math.min(150, value + 10)); }}>+</button><select aria-label="Planning month" value={month} onChange={(event) => { setMonth(event.target.value); setGeneratedMonth(null); }}>{months.map((item) => <option key={item}>{item}</option>)}</select><div className="gv-seasonal-generator"><button type="button" aria-label="Generate seasonal garden" data-generated={generatedMonth === month} title={`Generate a Blenheim seasonal garden for ${month}`} disabled={!plan.beds.length} onClick={generateSeasonalGarden}>{generatedMonth === month ? `✓ ${month}` : "✦ Generate"}</button></div></div><div className="gv-cloud-state" role="status" aria-live="polite" data-save-state={saveState}><span className={isSaved ? "online" : ""} />{sourceLabel}</div></div>
     <section className={`gv-body ${panelOpen ? "" : "panel-closed"}`}><aside className="gv-rail"><button type="button" className="gv-menu" aria-label="Toggle inspector" onClick={() => setPanelOpen((value) => !value)}>☰</button>{tools.map((item) => <button type="button" key={item.id} className={tool === item.id ? "active" : ""} onClick={() => chooseTool(item.id)} aria-pressed={tool === item.id} title={item.hint}><span>{item.icon}</span><small>{item.label}</small></button>)}</aside>{panelOpen && <aside className="gv-context"><div className="gv-context-header"><strong>{tool === "select" ? "Inspector" : tools.find((item) => item.id === tool)?.label}</strong><button type="button" aria-label="Close inspector" onClick={() => setPanelOpen(false)}>×</button></div>{contextPanel()}</aside>}{!panelOpen && <button type="button" className="gv-panel-reopen" aria-label="Open inspector" onClick={() => setPanelOpen(true)}>Details</button>}
       <section className="gv-stage"><div className="gv-stage-status"><div><strong>{dragPlant ? `Drop ${dragPlant.name} into a bed` : tool === "select" ? "Tap a bed to see what’s growing" : tools.find((item) => item.id === tool)?.hint}</strong><span>{month} 2026</span></div>{cursorPoint && <code>X {Math.round(cursorPoint.x)} · Y {Math.round(cursorPoint.y)} cm</code>}</div><div ref={stageScrollRef} className="gv-stage-scroll"><div className="gv-ruler-grid" style={{ width: scaledWidth + 30, gridTemplateColumns: `30px ${scaledWidth}px`, gridTemplateRows: `28px ${scaledHeight}px` }}><div className="gv-ruler-corner" /><div className="gv-ruler-top">{[0,2,4,6,8,9].map((mark) => <span key={mark} style={{ left: `${mark / 9 * 100}%` }}>{mark}m</span>)}</div><div className="gv-ruler-left">{[0,2,4,6,8,10].map((mark) => <span key={mark} style={{ top: `${mark / 10.8 * 100}%` }}>{mark}m</span>)}</div><div className="canvas-scale" style={{ width: scaledWidth, height: scaledHeight }}><div ref={canvasRef} className={`garden-canvas tool-${tool} ${snapEnabled ? "snap-on" : ""}`} style={{ transform: `scale(${zoom / 100})`, ["--canvas-label-size" as string]: `${Math.min(44, 11 / (zoom / 100))}px` }} onPointerDown={canvasDown} onPointerMove={canvasMove} onPointerUp={canvasUp} onPointerLeave={() => { if (!draft) setCursorPoint(null); }}>
         <div className="berry-strip"><strong>First-year fruiting canes · over winter</strong><div><span>🔴 Raspberry</span><span>🔴 Raspberry</span><span>🔴 Raspberry</span><span>🫐 Blackberry</span></div></div><div className="north-zone" />
