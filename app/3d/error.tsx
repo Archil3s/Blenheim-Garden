@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect } from "react";
 
 export default function Garden3DError({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
@@ -16,7 +17,7 @@ export default function Garden3DError({ error, reset }: { error: Error & { diges
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
           <button type="button" onClick={reset} style={{ minHeight: 44, border: "1px solid #198b68", borderRadius: 8, padding: "0 14px", color: "#fff", background: "#198b68", fontWeight: 700 }}>Try 3D again</button>
-          <a href="/" style={{ minHeight: 44, display: "inline-flex", alignItems: "center", border: "1px solid #c8d5cf", borderRadius: 8, padding: "0 14px", color: "#315c4d", background: "#f7faf8", fontWeight: 700, textDecoration: "none" }}>Back to 2D garden</a>
+          <Link href="/" style={{ minHeight: 44, display: "inline-flex", alignItems: "center", border: "1px solid #c8d5cf", borderRadius: 8, padding: "0 14px", color: "#315c4d", background: "#f7faf8", fontWeight: 700, textDecoration: "none" }}>Back to 2D garden</Link>
         </div>
       </section>
     </main>

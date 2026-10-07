@@ -53,12 +53,6 @@ function seeded(seed: number) {
   };
 }
 
-function add(root: THREE.Object3D, mesh: THREE.Object3D, x = 0, y = 0, z = 0) {
-  mesh.position.set(x, y, z);
-  root.add(mesh);
-  return mesh;
-}
-
 function branch(
   root: THREE.Object3D,
   from: THREE.Vector3,

@@ -256,7 +256,7 @@ export function GardenWebGLMobileV2() {
     let cancelled = false;
     const fromQuery = new URL(window.location.href).searchParams.get("gardenId")?.trim();
     const selected = fromQuery || readActiveGardenId();
-    setGardenId(selected);
+    queueMicrotask(() => { if (!cancelled) setGardenId(selected); });
 
     void (async () => {
       try {
@@ -294,7 +294,7 @@ export function GardenWebGLMobileV2() {
       renderer.shadowMap.enabled = false;
       renderer.outputColorSpace = THREE.SRGBColorSpace;
     } catch {
-      setRenderError("WebGL could not start on this phone.");
+      queueMicrotask(() => setRenderError("WebGL could not start on this phone."));
       return;
     }
 

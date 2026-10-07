@@ -1,0 +1,154 @@
+import type { PlannerBed, PlannerPlan, PlannerPlantingArea, PlannerRow } from "./planner-plan";
+import { plantPositionsForArea } from "./plant-spacing-layout";
+
+export type PointCm = { x: number; y: number };
+export type PlanSelection = { kind: "bed" | "area" | "row" | "object"; id: string; plantId?: string };
+export const gardenWidthCm = 900;
+export const gardenHeightCm = 1080;
+
+export function bedRectangle(bed: PlannerBed) {
+  return { x: bed.x * 9, y: bed.y * 10.8, w: bed.w * 9, h: bed.h * 10.8 };
+}
+
+export function areaRectangle(plan: PlannerPlan, area: PlannerPlantingArea) {
+  const bed = plan.beds.find((item) => item.id === area.bedId);
+  if (!bed) throw new Error("Planting bed is missing.");
+  const rect = bedRectangle(bed);
+  return { x: rect.x + area.x * rect.w / 100, y: rect.y + area.y * rect.h / 100, w: area.w * rect.w / 100, h: area.h * rect.h / 100 };
+}
+
+export function areaPlants(plan: PlannerPlan, area: PlannerPlantingArea) {
+  const rect = areaRectangle(plan, area);
+  if (area.placements) return area.placements.map((p) => ({ id: p.id, x: rect.x + p.x * rect.w / 100, y: rect.y + p.y * rect.h / 100 }));
+  return plantPositionsForArea(area, rect.w, rect.h, 10000).map((p, index) => ({ id: `${area.id}:generated-${index}`, x: rect.x + p.x, y: rect.y + p.y }));
+}
+
+export function rowPlants(row: PlannerRow) {
+  const dx = row.x2 - row.x1, dy = row.y2 - row.y1;
+  const length = Math.hypot(dx, dy) || 1;
+  const placements = row.placements ?? Array.from({ length: row.count }, (_, index) => ({ id: `${row.id}:generated-${index}`, x: row.count === 1 ? 50 : index * 100 / (row.count - 1), y: 0 }));
+  return placements.map((p) => dx === 0 && dy === 0 ? { id: p.id, x: row.x1 + p.x, y: row.y1 + p.y } : { id: p.id, x: row.x1 + dx * p.x / 100 - dy / length * p.y, y: row.y1 + dy * p.x / 100 + dx / length * p.y });
+}
+
+export function selectionItem(plan: PlannerPlan, selection: PlanSelection) {
+  if (selection.kind === "bed") return plan.beds.find((item) => String(item.id) === selection.id);
+  if (selection.kind === "area") return plan.plantingAreas.find((item) => item.id === selection.id);
+  if (selection.kind === "row") return plan.rows.find((item) => item.id === selection.id);
+  return plan.objects.find((item) => item.id === selection.id);
+}
+
+function editPlant(plan: PlannerPlan, selection: PlanSelection, point?: PointCm, duplicate = false): PlannerPlan {
+  if (selection.kind === "area") {
+    const area = plan.plantingAreas.find((item) => item.id === selection.id);
+    if (!area) return plan;
+    if (!area.placements && area.count > 10000) throw new Error("Split this planting into areas of at most 10,000 plants before editing individual positions.");
+    const rect = areaRectangle(plan, area);
+    const plants = areaPlants(plan, area);
+    const target = plants.find((p) => p.id === selection.plantId);
+    if (!target) return plan;
+    const next = plants.filter((p) => duplicate || p.id !== target.id);
+    if (point || duplicate) next.push({ id: duplicate ? crypto.randomUUID() : target.id, ...(point ?? { x: target.x + 10, y: target.y + 10 }) });
+    if (next.some((p) => p.x < rect.x || p.y < rect.y || p.x > rect.x + rect.w || p.y > rect.y + rect.h)) {
+      if (duplicate) throw new Error("Duplicate inside the planting area, then move the copy.");
+      if (!point) return plan;
+      const bed = plan.beds.find((b) => { const r = bedRectangle(b); return point.x >= r.x && point.x <= r.x + r.w && point.y >= r.y && point.y <= r.y + r.h; });
+      if (bed?.id === area.bedId) {
+        const r = bedRectangle(bed);
+        const placements = next.map((p) => ({ id: p.id, x: (p.x - r.x) * 100 / r.w, y: (p.y - r.y) * 100 / r.h }));
+        return { ...plan, plantingAreas: plan.plantingAreas.map((a) => a.id === area.id ? { ...area, x: 0, y: 0, w: 100, h: 100, placements, count: placements.length } : a) };
+      }
+      const removed = editPlant(plan, selection);
+      if (bed) {
+        const r = bedRectangle(bed);
+        const copy = { ...area, id: crypto.randomUUID(), plantingId: undefined, bedId: bed.id, x: 0, y: 0, w: 100, h: 100, count: 1, pattern: "single" as const, placements: [{ id: target.id, x: (point.x - r.x) * 100 / r.w, y: (point.y - r.y) * 100 / r.h }] };
+        return { ...removed, plantingAreas: [...removed.plantingAreas, copy] };
+      }
+      const row: PlannerRow = { id: crypto.randomUUID(), crop: area.crop, cropIcon: area.cropIcon, variety: area.variety, spacingCm: area.spacingCm, x1: point.x, y1: point.y, x2: point.x, y2: point.y, count: 1, placements: [{ id: target.id, x: 0, y: 0 }] };
+      return { ...removed, rows: [...removed.rows, row] };
+    }
+    const placements = next.map((p) => ({ id: p.id, x: (p.x - rect.x) * 100 / rect.w, y: (p.y - rect.y) * 100 / rect.h }));
+    return { ...plan, plantingAreas: next.length ? plan.plantingAreas.map((item) => item.id === area.id ? { ...area, placements, count: placements.length } : item) : plan.plantingAreas.filter((item) => item.id !== area.id) };
+  }
+  if (selection.kind === "row") {
+    const row = plan.rows.find((item) => item.id === selection.id);
+    if (!row) return plan;
+    if (!row.placements && row.count > 10000) throw new Error("Split this row before editing individual plants.");
+    const plants = rowPlants(row), target = plants.find((p) => p.id === selection.plantId);
+    if (!target) return plan;
+    const next = plants.filter((p) => duplicate || p.id !== target.id);
+    if (point || duplicate) next.push({ id: duplicate ? crypto.randomUUID() : target.id, ...(point ?? { x: target.x + 10, y: target.y + 10 }) });
+    const dx = row.x2 - row.x1, dy = row.y2 - row.y1, length = Math.hypot(dx, dy) || 1;
+    const placements = next.map((p) => dx === 0 && dy === 0 ? { id: p.id, x: p.x - row.x1, y: p.y - row.y1 } : { id: p.id, x: ((p.x - row.x1) * dx + (p.y - row.y1) * dy) * 100 / (length * length), y: ((p.y - row.y1) * dx - (p.x - row.x1) * dy) / length });
+    return { ...plan, rows: next.length ? plan.rows.map((item) => item.id === row.id ? { ...row, placements, count: placements.length } : item) : plan.rows.filter((item) => item.id !== row.id) };
+  }
+  return plan;
+}
+
+export function movePlanSelection(plan: PlannerPlan, selection: PlanSelection, delta: PointCm): PlannerPlan {
+  if (selection.plantId) {
+    const parent = selectionItem(plan, selection);
+    if (!parent || !("crop" in parent)) return plan;
+    const plants = selection.kind === "area" ? areaPlants(plan, parent as PlannerPlantingArea) : rowPlants(parent as PlannerRow);
+    const target = plants.find((p) => p.id === selection.plantId);
+    return target ? editPlant(plan, selection, { x: target.x + delta.x, y: target.y + delta.y }) : plan;
+  }
+  if (selection.kind === "bed") return { ...plan, beds: plan.beds.map((bed) => String(bed.id) === selection.id ? { ...bed, x: bed.x + delta.x / 9, y: bed.y + delta.y / 10.8 } : bed) };
+  if (selection.kind === "area") {
+    const area = plan.plantingAreas.find((item) => item.id === selection.id);
+    const bed = plan.beds.find((item) => item.id === area?.bedId);
+    if (!area || !bed) return plan;
+    return { ...plan, plantingAreas: plan.plantingAreas.map((item) => item.id === area.id ? { ...item, x: item.x + delta.x / (bed.w * 9) * 100, y: item.y + delta.y / (bed.h * 10.8) * 100 } : item) };
+  }
+  if (selection.kind === "row") return { ...plan, rows: plan.rows.map((row) => row.id === selection.id ? { ...row, x1: row.x1 + delta.x, y1: row.y1 + delta.y, x2: row.x2 + delta.x, y2: row.y2 + delta.y } : row) };
+  return { ...plan, objects: plan.objects.map((object) => object.id !== selection.id ? object : "x1" in object ? { ...object, x1: object.x1 + delta.x, y1: object.y1 + delta.y, x2: object.x2 + delta.x, y2: object.y2 + delta.y } : { ...object, x: object.x + delta.x, y: object.y + delta.y }) };
+}
+
+export function deletePlanSelection(plan: PlannerPlan, selection: PlanSelection): PlannerPlan {
+  if (selection.plantId) return editPlant(plan, selection);
+  if (selection.kind === "bed") {
+    if (plan.plantingAreas.some((area) => String(area.bedId) === selection.id)) throw new Error("Remove the bed's plantings before deleting the bed.");
+    return { ...plan, beds: plan.beds.filter((bed) => String(bed.id) !== selection.id) };
+  }
+  if (selection.kind === "area") return { ...plan, plantingAreas: plan.plantingAreas.filter((area) => area.id !== selection.id) };
+  if (selection.kind === "row") return { ...plan, rows: plan.rows.filter((row) => row.id !== selection.id) };
+  return { ...plan, objects: plan.objects.filter((object) => object.id !== selection.id) };
+}
+
+export function duplicatePlanSelection(plan: PlannerPlan, selection: PlanSelection): PlannerPlan {
+  if (selection.plantId) return editPlant(plan, selection, undefined, true);
+  const item = selectionItem(plan, selection);
+  if (!item) return plan;
+  const id = crypto.randomUUID();
+  if (selection.kind === "bed") {
+    const bed = item as PlannerBed, bedId = Date.now();
+    const copy = { ...bed, id: bedId, name: `${bed.name} copy` };
+    return movePlanSelection({ ...plan, beds: [...plan.beds, copy], plantingAreas: [...plan.plantingAreas, ...plan.plantingAreas.filter((a) => a.bedId === bed.id).map((a) => ({ ...a, id: crypto.randomUUID(), plantingId: undefined, bedId, placements: a.placements?.map((p) => ({ ...p, id: crypto.randomUUID() })) }))] }, { kind: "bed", id: String(bedId) }, { x: 20, y: 20 });
+  }
+  const key = selection.kind === "area" ? "plantingAreas" : selection.kind === "row" ? "rows" : "objects";
+  const next = { ...plan, [key]: [...plan[key], { ...item, id, plantingId: undefined, ...("placements" in item ? { placements: item.placements?.map((p) => ({ ...p, id: crypto.randomUUID() })) } : {}) }] } as PlannerPlan;
+  return movePlanSelection(next, { ...selection, id }, { x: 10, y: 10 });
+}
+
+export function validateEditorPlan(plan: PlannerPlan) {
+  const inGarden = (p: PointCm) => Number.isFinite(p.x) && Number.isFinite(p.y) && p.x >= 0 && p.y >= 0 && p.x <= gardenWidthCm && p.y <= gardenHeightCm;
+  for (const bed of plan.beds) {
+    const rect = bedRectangle(bed);
+    if (![rect.x, rect.y, rect.w, rect.h].every(Number.isFinite) || rect.w < 10 || rect.h < 10 || rect.x < 0 || rect.y < 0 || rect.x + rect.w > gardenWidthCm * 1.0501 || rect.y + rect.h > gardenHeightCm * 1.0501) throw new Error("The bed must fit inside the garden.");
+  }
+  for (const area of plan.plantingAreas) {
+    if (area.x < 0 || area.y < 0 || area.w <= 0 || area.h <= 0 || area.x + area.w > 100.01 || area.y + area.h > 100.01) throw new Error("The planting must fit inside its bed.");
+    if (area.placements && area.placements.some((p) => !Number.isFinite(p.x) || !Number.isFinite(p.y) || p.x < 0 || p.y < 0 || p.x > 100 || p.y > 100)) throw new Error("Plant placement is outside its bed.");
+  }
+  for (const row of plan.rows) if (!inGarden({ x: row.x1, y: row.y1 }) || !inGarden({ x: row.x2, y: row.y2 }) || rowPlants(row).some((p) => !inGarden(p))) throw new Error("The row must fit inside the garden.");
+  for (const object of plan.objects) {
+    if (object.type === "structure") {
+      const angle = object.rotationDeg * Math.PI / 180;
+      const halfW = (Math.abs(Math.cos(angle)) * object.widthCm + Math.abs(Math.sin(angle)) * object.depthCm) / 2;
+      const halfH = (Math.abs(Math.sin(angle)) * object.widthCm + Math.abs(Math.cos(angle)) * object.depthCm) / 2;
+      if (object.widthCm < 30 || object.depthCm < 30 || object.heightCm < 20 || object.heightCm > 600 || !inGarden({ x: object.x - halfW, y: object.y - halfH }) || !inGarden({ x: object.x + halfW, y: object.y + halfH })) throw new Error("The structure footprint must fit inside the garden.");
+    }
+    if ("x1" in object) {
+      if (!inGarden({ x: object.x1, y: object.y1 }) || !inGarden({ x: object.x2, y: object.y2 }) || Math.hypot(object.x2 - object.x1, object.y2 - object.y1) < 5) throw new Error("Draw a line at least 5 cm long inside the garden.");
+    } else if (!inGarden(object)) throw new Error("Place the object inside the garden.");
+  }
+}

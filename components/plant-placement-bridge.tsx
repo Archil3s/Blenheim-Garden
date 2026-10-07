@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
 
 const EDIT_KEY_SESSION = "blenheim-garden-edit-key";
 const CANVAS_WIDTH = 900;
@@ -292,8 +292,13 @@ export function PlantPlacementBridge() {
     }
   }
 
+  const loadStylesFromEffect = useEffectEvent(loadStyles);
+  const plantIntoBedFromEffect = useEffectEvent(plantIntoBed);
+  const queueSyncFromEffect = useEffectEvent(queueSync);
+  const saveLayoutForSelectedBedFromEffect = useEffectEvent(saveLayoutForSelectedBed);
+
   useEffect(() => {
-    void loadStyles();
+    void loadStylesFromEffect();
 
     function onDragStart(event: DragEvent) {
       const button = (event.target as HTMLElement | null)?.closest<HTMLElement>(".gv-plant-list > button");
@@ -344,8 +349,8 @@ export function PlantPlacementBridge() {
       const layout = modeRef.current;
       clearDropState();
       try {
-        await plantIntoBed(bed, plant);
-        await saveLayoutForSelectedBed(layout);
+        await plantIntoBedFromEffect(bed, plant);
+        await saveLayoutForSelectedBedFromEffect(layout);
       } catch {
         showToast("That plant could not be placed. Try selecting Plants and dropping it again.");
       }
@@ -356,13 +361,13 @@ export function PlantPlacementBridge() {
       clearDropState();
     }
 
-    const observer = new MutationObserver(queueSync);
+    const observer = new MutationObserver(queueSyncFromEffect);
     observer.observe(document.body, { childList: true, subtree: true });
     document.addEventListener("dragstart", onDragStart, true);
     document.addEventListener("dragover", onDragOver, true);
     document.addEventListener("drop", onDrop, true);
     document.addEventListener("dragend", onDragEnd, true);
-    queueSync();
+    queueSyncFromEffect();
 
     return () => {
       observer.disconnect();
@@ -375,7 +380,7 @@ export function PlantPlacementBridge() {
 
   useEffect(() => {
     modeRef.current = mode;
-    queueSync();
+    queueSyncFromEffect();
   }, [mode]);
 
   return <>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
 
 const EDIT_KEY_SESSION = "blenheim-garden-edit-key";
 
@@ -156,8 +156,11 @@ export function PlantingStyleDialogBridge() {
     }
   }
 
+  const loadStylesFromEffect = useEffectEvent(loadStyles);
+  const queueSyncFromEffect = useEffectEvent(queueSync);
+
   useEffect(() => {
-    void loadStyles();
+    queueMicrotask(() => void loadStylesFromEffect());
 
     function openStyle(event: MouseEvent) {
       const clicked = event.target as HTMLElement | null;
@@ -179,24 +182,24 @@ export function PlantingStyleDialogBridge() {
       previewRef.current = nextStyle;
       setError("");
       dialogRef.current?.showModal();
-      queueSync();
+      queueSyncFromEffect();
     }
 
-    const observer = new MutationObserver(queueSync);
+    const observer = new MutationObserver(queueSyncFromEffect);
     observer.observe(document.body, { childList: true, subtree: true });
     document.addEventListener("click", openStyle, true);
-    window.addEventListener("resize", queueSync);
+    window.addEventListener("resize", queueSyncFromEffect);
 
     return () => {
       observer.disconnect();
       document.removeEventListener("click", openStyle, true);
-      window.removeEventListener("resize", queueSync);
+      window.removeEventListener("resize", queueSyncFromEffect);
     };
   }, []);
 
   useEffect(() => {
     stylesRef.current = styles;
-    queueSync();
+    queueSyncFromEffect();
   }, [styles]);
 
   function updateDraft(patch: Partial<PlantingStyle>) {

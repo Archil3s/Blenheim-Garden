@@ -509,8 +509,10 @@ export function GardenWebGL() {
     let cancelled = false;
     const fromQuery = new URL(window.location.href).searchParams.get("gardenId")?.trim();
     const selectedGardenId = fromQuery || readActiveGardenId();
-    setGardenId(selectedGardenId);
+    queueMicrotask(() => { if (!cancelled) setGardenId(selectedGardenId); });
     async function load() {
+      await Promise.resolve();
+      if (cancelled) return;
       const live = readLivePlan(selectedGardenId);
       if (live) {
         if (!cancelled) { setPlan(live); setSource("Live 2D planner"); }
@@ -590,9 +592,8 @@ export function GardenWebGL() {
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "high-performance" });
-      setRenderError(null);
     } catch {
-      setRenderError("WebGL could not start in this browser. Try reloading the page or enabling hardware acceleration.");
+      queueMicrotask(() => setRenderError("WebGL could not start in this browser. Try reloading the page or enabling hardware acceleration."));
       return;
     }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));

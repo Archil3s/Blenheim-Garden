@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 
 const EDIT_KEY_SESSION = "blenheim-garden-edit-key";
 
@@ -126,6 +126,8 @@ export function GardenRecordsDialogBridge() {
     }
   }
 
+  const loadRecordsFromEffect = useEffectEvent(loadRecords);
+
   useEffect(() => {
     function openRecords(event: MouseEvent) {
       const clicked = event.target as HTMLElement | null;
@@ -165,7 +167,7 @@ export function GardenRecordsDialogBridge() {
       setNotes([]);
       setHarvests([]);
       dialogRef.current?.showModal();
-      if (!needsSave) void loadRecords(nextTarget);
+      if (!needsSave) void loadRecordsFromEffect(nextTarget);
     }
 
     document.addEventListener("click", openRecords, true);

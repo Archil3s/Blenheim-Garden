@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import type { DragEvent as ReactDragEvent, PointerEvent as ReactPointerEvent } from "react";
 import type {
   GardenPlanApiResponse,
@@ -14,6 +14,8 @@ import type {
 import { plantCountForArea, plantPositionsForArea } from "@/lib/garden/plant-spacing-layout";
 import { DEFAULT_GARDEN_ID, LIVE_PLAN_EVENT, SEASONAL_PLAN_EVENT, gardenLivePlanKey, gardenLocalPlanKey, readActiveGardenId } from "@/lib/garden/active-garden";
 import { STRUCTURE_PRESETS, structurePreset } from "@/lib/garden/structure-catalog";
+import { plants, type PlantOption } from "@/lib/garden/plant-catalog";
+import { persistGardenPlan, publishGardenPlan } from "@/lib/garden/plan-persistence";
 import { PlantArt } from "@/components/plant-art";
 
 type Tool = "select" | "plant" | "row" | "bed" | "path" | "trellis" | "structure" | "tree" | "note";
@@ -30,21 +32,9 @@ type Interaction =
 
 type RowInteraction = Extract<Interaction, { row: PlantingRow }>;
 type PlantingInteraction = Extract<Interaction, { area: PlannerPlantingArea }>;
-type PlantType = "Vegetable" | "Fruit" | "Herb" | "Flower" | "Native";
-
-type PlantOption = {
-  name: string;
-  icon: string;
-  spacingCm: number;
-  spacing: string;
-  type: PlantType;
-  varieties: string[];
-};
-
 const CANVAS_WIDTH = 900;
 const CANVAS_HEIGHT = 1080;
 const SNAP_CM = 10;
-const EDIT_KEY_SESSION = "blenheim-garden-edit-key";
 
 const tools: Array<{ id: Tool; icon: string; label: string; hint: string }> = [
   { id: "select", icon: "↖", label: "Select", hint: "Move, resize and edit" },
@@ -56,35 +46,6 @@ const tools: Array<{ id: Tool; icon: string; label: string; hint: string }> = [
   { id: "structure", icon: "⌂", label: "Structures", hint: "Choose an object, then click the plan" },
   { id: "tree", icon: "🌳", label: "Tree", hint: "Click to place a tree" },
   { id: "note", icon: "A", label: "Text", hint: "Click to place a label" },
-];
-
-const plants: PlantOption[] = [
-  { name: "Tomato", icon: "🍅", spacingCm: 50, spacing: "45–60 cm", type: "Vegetable", varieties: ["Roma", "Black Krim", "Moneymaker", "Beefsteak"] },
-  { name: "Strawberry", icon: "🍓", spacingCm: 35, spacing: "30–40 cm", type: "Fruit", varieties: ["Camarosa", "Albion", "Monterey", "Unknown crown"] },
-  { name: "Bean", icon: "🫘", spacingCm: 18, spacing: "15–20 cm", type: "Vegetable", varieties: ["King Purple", "Superstar", "Scarlet Runner", "Climbing bean"] },
-  { name: "Lettuce", icon: "🥬", spacingCm: 28, spacing: "25–30 cm", type: "Vegetable", varieties: ["Butterhead", "Cos", "Loose leaf", "Iceberg"] },
-  { name: "Pumpkin", icon: "🎃", spacingCm: 105, spacing: "90–120 cm", type: "Vegetable", varieties: ["Crown", "Butternut", "Gem squash", "Kabocha"] },
-  { name: "Carrot", icon: "🥕", spacingCm: 7, spacing: "5–8 cm", type: "Vegetable", varieties: ["Nantes", "Chantenay", "Amsterdam", "Rainbow"] },
-  { name: "Broccoli", icon: "🥦", spacingCm: 50, spacing: "45–60 cm", type: "Vegetable", varieties: ["Winter Rudolph", "Green Dragon", "Calabrese"] },
-  { name: "Raspberry", icon: "🔴", spacingCm: 50, spacing: "45–60 cm", type: "Fruit", varieties: ["Heritage", "Aspiring", "Waiau", "Unknown cane"] },
-  { name: "Blueberry", icon: "🫐", spacingCm: 120, spacing: "1–1.5 m", type: "Fruit", varieties: ["Southern Highbush", "Rabbiteye", "Unknown"] },
-  { name: "Herbs", icon: "🌿", spacingCm: 25, spacing: "20–30 cm", type: "Herb", varieties: ["Basil", "Chives", "Thyme", "Parsley"] },
-  { name: "Achillea", icon: "🌼", spacingCm: 40, spacing: "35–45 cm", type: "Flower", varieties: ["Achillea"] },
-  { name: "Agastache", icon: "💜", spacingCm: 40, spacing: "35–45 cm", type: "Flower", varieties: ["Agastache"] },
-  { name: "Ageratum", icon: "🌸", spacingCm: 25, spacing: "20–30 cm", type: "Flower", varieties: ["Ageratum"] },
-  { name: "Agrostemma", icon: "🌸", spacingCm: 30, spacing: "25–35 cm", type: "Flower", varieties: ["Agrostemma"] },
-  { name: "Akeake", icon: "🌿", spacingCm: 100, spacing: "80–120 cm", type: "Native", varieties: ["Akeake"] },
-  { name: "Alyssum", icon: "🌼", spacingCm: 20, spacing: "15–25 cm", type: "Flower", varieties: ["Alyssum"] },
-  { name: "Amaranth", icon: "🌿", spacingCm: 30, spacing: "25–35 cm", type: "Vegetable", varieties: ["Garnet Red", "Green Red"] },
-  { name: "Angelica", icon: "🌿", spacingCm: 60, spacing: "50–70 cm", type: "Herb", varieties: ["Chinese", "Holy Ghost"] },
-  { name: "Anise", icon: "🌿", spacingCm: 25, spacing: "20–30 cm", type: "Herb", varieties: ["Anise"] },
-  { name: "Anise Hyssop", icon: "💜", spacingCm: 35, spacing: "30–40 cm", type: "Herb", varieties: ["Anise Hyssop"] },
-  { name: "Artichoke", icon: "🌱", spacingCm: 100, spacing: "90–120 cm", type: "Vegetable", varieties: ["Green Globe"] },
-  { name: "Asparagus", icon: "🌱", spacingCm: 40, spacing: "35–45 cm", type: "Vegetable", varieties: ["Mary Washington", "Pacific Challenger F1", "Pacific Purple"] },
-  { name: "Asparagus Pea", icon: "🌱", spacingCm: 20, spacing: "15–25 cm", type: "Vegetable", varieties: ["Asparagus Pea"] },
-  { name: "Aster", icon: "🌸", spacingCm: 30, spacing: "25–35 cm", type: "Flower", varieties: ["Aster"] },
-  { name: "Astragalus", icon: "🌼", spacingCm: 30, spacing: "25–35 cm", type: "Herb", varieties: ["Astragalus"] },
-  { name: "Basil", icon: "🌿", spacingCm: 20, spacing: "15–25 cm", type: "Herb", varieties: ["Compact"] },
 ];
 
 const baseBeds: Bed[] = [
@@ -182,8 +143,18 @@ function normalisePlan(value: Partial<PlanState> | null | undefined): PlanState 
   };
 }
 
-function readLocalPlan(gardenId: string) {
-  try { return normalisePlan(JSON.parse(localStorage.getItem(gardenLocalPlanKey(gardenId)) ?? "null") as Partial<PlanState>); } catch { return null; }
+function readStoredPlan(key: string) {
+  try { return normalisePlan(JSON.parse(localStorage.getItem(key) ?? "null") as Partial<PlanState>); } catch { return null; }
+}
+function readLocalPlan(gardenId: string) { return readStoredPlan(gardenLocalPlanKey(gardenId)); }
+
+function areaSizeCm(area: PlannerPlantingArea, bed: Bed) {
+  const size = bedCm(bed);
+  return { width: size.w * area.w / 100, height: size.h * area.h / 100 };
+}
+function areaCount(area: PlannerPlantingArea, bed: Bed) {
+  const size = areaSizeCm(area, bed);
+  return plantCountForArea(area, size.width, size.height);
 }
 
 export function GardenPlanner() {
@@ -223,8 +194,12 @@ export function GardenPlanner() {
 
   useEffect(() => {
     let cancelled = false;
+    queueMicrotask(() => {
+      if (cancelled) return;
+
     const gardenId = readActiveGardenId();
-    const local = readLocalPlan(gardenId);
+    const live = readStoredPlan(gardenLivePlanKey(gardenId));
+    const local = live ?? readLocalPlan(gardenId);
     if (local) {
       setPlan(local);
       setLoadSource("local");
@@ -239,6 +214,7 @@ export function GardenPlanner() {
         const data = await response.json() as GardenPlanApiResponse;
         const cloud = normalisePlan(data.plan);
         if (cancelled || !response.ok || !data.ok || !cloud) return;
+        if (live) return;
         setPlan(cloud);
         setSelection(null);
         localStorage.setItem(gardenLocalPlanKey(gardenId), JSON.stringify(cloud));
@@ -246,6 +222,7 @@ export function GardenPlanner() {
         setSavedSnapshot(JSON.stringify(cloud));
       } catch { /* keep local or blank plan */ }
     })();
+    });
     return () => { cancelled = true; };
   }, []);
 
@@ -253,12 +230,33 @@ export function GardenPlanner() {
     if (loadSource === "starting") return;
     try {
       const gardenId = readActiveGardenId();
-      localStorage.setItem(gardenLivePlanKey(gardenId), JSON.stringify(plan));
-      window.dispatchEvent(new CustomEvent(LIVE_PLAN_EVENT, { detail: { gardenId, plan } }));
+      publishGardenPlan(gardenId, plan, "2d");
     } catch {
       // Live preview is best-effort; planner editing must keep working if storage is unavailable.
     }
   }, [plan, loadSource]);
+
+  const applyExternalPlan = useEffectEvent((next: PlanState) => {
+    if (JSON.stringify(plan) === JSON.stringify(next)) return;
+    setPast((items) => [...items, clonePlan(plan)].slice(-40));
+    setFuture([]);
+    setPlan(next);
+    setSaveState("idle");
+  });
+
+  useEffect(() => {
+    const onLive = (event: Event) => {
+      const detail = (event as CustomEvent<{ gardenId: string; plan: PlanState; source?: string }>).detail;
+      if (detail?.source === "3d" && detail.gardenId === readActiveGardenId()) applyExternalPlan(detail.plan);
+    };
+    const onStorage = (event: StorageEvent) => {
+      if (event.key !== gardenLivePlanKey(readActiveGardenId()) || !event.newValue) return;
+      try { const next = normalisePlan(JSON.parse(event.newValue)); if (next) applyExternalPlan(next); } catch { setSaveState("error"); }
+    };
+    window.addEventListener(LIVE_PLAN_EVENT, onLive);
+    window.addEventListener("storage", onStorage);
+    return () => { window.removeEventListener(LIVE_PLAN_EVENT, onLive); window.removeEventListener("storage", onStorage); };
+  }, []);
 
   useEffect(() => {
     const stage = stageScrollRef.current;
@@ -304,14 +302,6 @@ export function GardenPlanner() {
     const rect = canvas.getBoundingClientRect();
     const scale = zoom / 100;
     return snapPoint({ x: (clientX - rect.left) / scale, y: (clientY - rect.top) / scale });
-  }
-  function areaSizeCm(area: PlannerPlantingArea, bed: Bed) {
-    const size = bedCm(bed);
-    return { width: size.w * area.w / 100, height: size.h * area.h / 100 };
-  }
-  function areaCount(area: PlannerPlantingArea, bed: Bed) {
-    const size = areaSizeCm(area, bed);
-    return plantCountForArea(area, size.width, size.height);
   }
   function remember() { setPast((items) => [...items, clonePlan(plan)].slice(-40)); setFuture([]); }
   function commit(next: PlanState) { remember(); setPlan(next); setSaveState("idle"); }
@@ -454,11 +444,14 @@ export function GardenPlanner() {
     setInteraction({ kind: mode, id: object.id, start: point, object: structuredClone(object) });
   }
 
+  const canvasPointFromEffect = useEffectEvent(canvasPoint);
+
   useEffect(() => {
     if (!interaction) return;
     const active = interaction;
     const move = (event: PointerEvent) => {
-      const point = canvasPoint(event.clientX, event.clientY);
+      const snapForDrag = (value: number) => snapEnabled ? Math.round(value / SNAP_CM) * SNAP_CM : Math.round(value);
+      const point = canvasPointFromEffect(event.clientX, event.clientY);
       if (!point) return;
       const dx = point.x - active.start.x;
       const dy = point.y - active.start.y;
@@ -469,12 +462,12 @@ export function GardenPlanner() {
           const beds = current.beds.map((bed) => {
             if (bed.id !== active.id) return bed;
             if (active.kind === "bed-drag") {
-              const x = clamp(snap(start.x + dx), 0, CANVAS_WIDTH - start.w);
-              const y = clamp(snap(start.y + dy), 0, CANVAS_HEIGHT - start.h);
+              const x = clamp(snapForDrag(start.x + dx), 0, CANVAS_WIDTH - start.w);
+              const y = clamp(snapForDrag(start.y + dy), 0, CANVAS_HEIGHT - start.h);
               changedBed = { ...bed, x: x / CANVAS_WIDTH * 100, y: y / CANVAS_HEIGHT * 100 };
             } else {
-              const w = clamp(snap(start.w + dx), 40, CANVAS_WIDTH - start.x);
-              const h = clamp(snap(start.h + dy), 40, CANVAS_HEIGHT - start.y);
+              const w = clamp(snapForDrag(start.w + dx), 40, CANVAS_WIDTH - start.x);
+              const h = clamp(snapForDrag(start.h + dy), 40, CANVAS_HEIGHT - start.y);
               changedBed = { ...bed, w: w / CANVAS_WIDTH * 100, h: h / CANVAS_HEIGHT * 100 };
             }
             return changedBed;
@@ -510,30 +503,30 @@ export function GardenPlanner() {
           return { ...current, rows: current.rows.map((row) => {
             if (row.id !== active.id) return row;
             let next = { ...row };
-            if (active.kind === "row-drag") next = { ...next, x1: clamp(snap(active.row.x1 + dx), 0, CANVAS_WIDTH), y1: clamp(snap(active.row.y1 + dy), 0, CANVAS_HEIGHT), x2: clamp(snap(active.row.x2 + dx), 0, CANVAS_WIDTH), y2: clamp(snap(active.row.y2 + dy), 0, CANVAS_HEIGHT) };
+            if (active.kind === "row-drag") next = { ...next, x1: clamp(snapForDrag(active.row.x1 + dx), 0, CANVAS_WIDTH), y1: clamp(snapForDrag(active.row.y1 + dy), 0, CANVAS_HEIGHT), x2: clamp(snapForDrag(active.row.x2 + dx), 0, CANVAS_WIDTH), y2: clamp(snapForDrag(active.row.y2 + dy), 0, CANVAS_HEIGHT) };
             if (active.kind === "row-start") next = { ...next, x1: point.x, y1: point.y };
             if (active.kind === "row-end") next = { ...next, x2: point.x, y2: point.y };
-            return { ...next, count: rowCount(next, next.spacingCm) };
+            return { ...next, count: next.placements?.length ?? rowCount(next, next.spacingCm) };
           }) };
         }
         if (!("object" in active)) return current;
         const original = active.object;
         return { ...current, objects: current.objects.map((object) => {
           if (object.id !== active.id) return object;
-          if (active.kind === "tree-resize" && original.type === "tree") return { ...object, ...(object.type === "tree" ? { diameterCm: clamp(snap(Math.hypot(point.x - original.x, point.y - original.y) * 2), 30, 1000) } : {}) } as PlannerLayoutObject;
+          if (active.kind === "tree-resize" && original.type === "tree") return { ...object, ...(object.type === "tree" ? { diameterCm: clamp(snapForDrag(Math.hypot(point.x - original.x, point.y - original.y) * 2), 30, 1000) } : {}) } as PlannerLayoutObject;
           if (original.type === "path" || original.type === "trellis") {
             if (object.type !== original.type) return object;
             if (active.kind === "object-start") return { ...object, x1: point.x, y1: point.y };
             if (active.kind === "object-end") return { ...object, x2: point.x, y2: point.y };
-            return { ...object, x1: clamp(snap(original.x1 + dx), 0, CANVAS_WIDTH), y1: clamp(snap(original.y1 + dy), 0, CANVAS_HEIGHT), x2: clamp(snap(original.x2 + dx), 0, CANVAS_WIDTH), y2: clamp(snap(original.y2 + dy), 0, CANVAS_HEIGHT) };
+            return { ...object, x1: clamp(snapForDrag(original.x1 + dx), 0, CANVAS_WIDTH), y1: clamp(snapForDrag(original.y1 + dy), 0, CANVAS_HEIGHT), x2: clamp(snapForDrag(original.x2 + dx), 0, CANVAS_WIDTH), y2: clamp(snapForDrag(original.y2 + dy), 0, CANVAS_HEIGHT) };
           }
-          if (original.type === "tree" && object.type === "tree") return { ...object, x: clamp(snap(original.x + dx), 0, CANVAS_WIDTH), y: clamp(snap(original.y + dy), 0, CANVAS_HEIGHT) };
+          if (original.type === "tree" && object.type === "tree") return { ...object, x: clamp(snapForDrag(original.x + dx), 0, CANVAS_WIDTH), y: clamp(snapForDrag(original.y + dy), 0, CANVAS_HEIGHT) };
           if (original.type === "structure" && object.type === "structure") {
             const halfW = object.widthCm / 2;
             const halfD = object.depthCm / 2;
-            return { ...object, x: clamp(snap(original.x + dx), halfW, CANVAS_WIDTH - halfW), y: clamp(snap(original.y + dy), halfD, CANVAS_HEIGHT - halfD) };
+            return { ...object, x: clamp(snapForDrag(original.x + dx), halfW, CANVAS_WIDTH - halfW), y: clamp(snapForDrag(original.y + dy), halfD, CANVAS_HEIGHT - halfD) };
           }
-          if (original.type === "text" && object.type === "text") return { ...object, x: clamp(snap(original.x + dx), 0, CANVAS_WIDTH), y: clamp(snap(original.y + dy), 0, CANVAS_HEIGHT) };
+          if (original.type === "text" && object.type === "text") return { ...object, x: clamp(snapForDrag(original.x + dx), 0, CANVAS_WIDTH), y: clamp(snapForDrag(original.y + dy), 0, CANVAS_HEIGHT) };
           return object;
         }) };
       });
@@ -657,16 +650,8 @@ export function GardenPlanner() {
     const snapshot = JSON.stringify(plan);
     setSaveState("saving");
     try {
-      localStorage.setItem(gardenLocalPlanKey(gardenId), snapshot);
-      const editKey = sessionStorage.getItem(EDIT_KEY_SESSION)?.trim() ?? "";
-      if (!editKey) { setSaveState("local"); return; }
-      const response = await fetch("/api/garden?gardenId=" + encodeURIComponent(gardenId), { method: "PUT", headers: { "content-type": "application/json", authorization: "Bearer " + editKey }, body: JSON.stringify({ plan }) });
-      const data = await response.json() as GardenPlanApiResponse;
-      if (!response.ok || !data.ok) {
-        if (response.status === 401) sessionStorage.removeItem(EDIT_KEY_SESSION);
-        setSaveState("error");
-        return;
-      }
+      const result = await persistGardenPlan(gardenId, plan);
+      if (result === "local") { setSaveState("local"); return; }
       setSavedSnapshot(snapshot);
       setLoadSource("cloud");
       setSaveState("cloud");
@@ -716,14 +701,14 @@ export function GardenPlanner() {
         <section className="gv-inspector-section gv-records-group"><h3>Records</h3><button type="button" className="gv-secondary-action">📝 Notes & harvests</button><button type="button" className="gv-secondary-action">📷 Photos & video</button></section>
         <details className="gv-inspector-section gv-edit-section"><summary>Edit bed</summary>
         <label>Name<input value={selectedBed.name} onChange={(event) => setPlan((current) => ({ ...current, beds: current.beds.map((bed) => bed.id === selectedBed.id ? { ...bed, name: event.target.value } : bed) }))} /></label>
-        <div className="gv-field-grid"><label>Width (cm)<input type="number" value={Math.round(size.w)} onChange={(event) => { const w = clamp(Number(event.target.value) || 40, 40, CANVAS_WIDTH - size.x); setPlan((current) => { const nextBed = { ...selectedBed, w: w / CANVAS_WIDTH * 100 }; return { ...current, beds: current.beds.map((bed) => bed.id === selectedBed.id ? nextBed : bed), plantingAreas: current.plantingAreas.map((area) => area.bedId === selectedBed.id ? { ...area, count: areaCount(area, nextBed) } : area) }; }); }} /></label><label>Length (cm)<input type="number" value={Math.round(size.h)} onChange={(event) => { const h = clamp(Number(event.target.value) || 40, 40, CANVAS_HEIGHT - size.y); setPlan((current) => { const nextBed = { ...selectedBed, h: h / CANVAS_HEIGHT * 100 }; return { ...current, beds: current.beds.map((bed) => bed.id === selectedBed.id ? nextBed : bed), plantingAreas: current.plantingAreas.map((area) => area.bedId === selectedBed.id ? { ...area, count: areaCount(area, nextBed) } : area) }; }); }} /></label></div>
+        <div className="gv-field-grid"><label>Width (cm)<input type="number" value={Math.round(size.w)} onChange={(event) => { const w = clamp(Number(event.target.value) || 40, 40, CANVAS_WIDTH - size.x); setPlan((current) => { const nextBed = { ...selectedBed, w: w / CANVAS_WIDTH * 100 }; return { ...current, beds: current.beds.map((bed) => bed.id === selectedBed.id ? nextBed : bed), plantingAreas: current.plantingAreas.map((area) => area.bedId === selectedBed.id ? { ...area, count: area.placements?.length ?? areaCount(area, nextBed) } : area) }; }); }} /></label><label>Length (cm)<input type="number" value={Math.round(size.h)} onChange={(event) => { const h = clamp(Number(event.target.value) || 40, 40, CANVAS_HEIGHT - size.y); setPlan((current) => { const nextBed = { ...selectedBed, h: h / CANVAS_HEIGHT * 100 }; return { ...current, beds: current.beds.map((bed) => bed.id === selectedBed.id ? nextBed : bed), plantingAreas: current.plantingAreas.map((area) => area.bedId === selectedBed.id ? { ...area, count: area.placements?.length ?? areaCount(area, nextBed) } : area) }; }); }} /></label></div>
           <button type="button" className="gv-primary-action" onClick={() => chooseTool("plant")}>🌱 Add planting area</button>
           <button type="button" className="gv-secondary-action" onClick={duplicateSelection}>Duplicate bed</button>
         </details>
         <details className="gv-inspector-section gv-danger-zone"><summary>Danger zone</summary><p>Removing a bed preserves its saved history.</p>{areas.length > 0 && <button type="button" className="gv-secondary-action danger" onClick={clearBed}>Clear all plantings</button>}<button type="button" className="gv-secondary-action danger" onClick={deleteSelection}>Remove bed</button></details>
       </div>;
     }
-    if (selectedRow) return <div className="gv-selection-panel"><div className="gv-selection-hero"><span><PlantArt crop={selectedRow.crop} variety={selectedRow.variety} fallback={selectedRow.cropIcon} /></span><div><small>PLANTING ROW</small><h2>{selectedRow.variety}</h2><p>{(lineLength(selectedRow) / 100).toFixed(1)} m · ≈ {selectedRow.count} plants</p></div></div><label>Spacing (cm)<input type="number" value={selectedRow.spacingCm} min={2} onChange={(event) => { const spacing = Math.max(2, Number(event.target.value) || 2); setPlan((current) => ({ ...current, rows: current.rows.map((row) => row.id === selectedRow.id ? { ...row, spacingCm: spacing, count: rowCount(row, spacing) } : row) })); }} /></label><p className="gv-help">Drag the row to move it. Drag either round endpoint to change its length or angle.</p><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
+    if (selectedRow) return <div className="gv-selection-panel"><div className="gv-selection-hero"><span><PlantArt crop={selectedRow.crop} variety={selectedRow.variety} fallback={selectedRow.cropIcon} /></span><div><small>PLANTING ROW</small><h2>{selectedRow.variety}</h2><p>{(lineLength(selectedRow) / 100).toFixed(1)} m · ≈ {selectedRow.count} plants</p></div></div><label>Spacing (cm)<input type="number" value={selectedRow.spacingCm} min={2} onChange={(event) => { const spacing = Math.max(2, Number(event.target.value) || 2); setPlan((current) => ({ ...current, rows: current.rows.map((row) => row.id === selectedRow.id ? { ...row, spacingCm: spacing, count: row.placements?.length ?? rowCount(row, spacing) } : row) })); }} /></label><p className="gv-help">Drag the row to move it. Drag either round endpoint to change its length or angle.</p><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
     if (!selectedObject) return null;
     if (selectedObject.type === "path") return <div className="gv-selection-panel"><div className="gv-selection-hero"><span>═</span><div><small>PATH</small><h2>{selectedObject.label ?? "Path"}</h2><p>{(lineLength(selectedObject) / 100).toFixed(1)} m long</p></div></div><label>Label<input value={selectedObject.label ?? ""} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "path" ? { ...object, label: event.target.value } : object) }))} /></label><label>Width (cm)<input type="number" min={20} max={400} value={selectedObject.widthCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "path" ? { ...object, widthCm: clamp(Number(event.target.value) || 20, 20, 400) } : object) }))} /></label><p className="gv-help">Drag the path to move it. Drag either endpoint to reshape it.</p><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
     if (selectedObject.type === "trellis") return <div className="gv-selection-panel"><div className="gv-selection-hero"><span>⋮</span><div><small>TRELLIS</small><h2>{selectedObject.label ?? "Trellis"}</h2><p>{(lineLength(selectedObject) / 100).toFixed(1)} m long</p></div></div><label>Label<input value={selectedObject.label ?? ""} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "trellis" ? { ...object, label: event.target.value } : object) }))} /></label><div className="gv-field-grid"><label>Height (cm)<input type="number" value={selectedObject.heightCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "trellis" ? { ...object, heightCm: clamp(Number(event.target.value) || 50, 50, 500) } : object) }))} /></label><label>Posts (cm)<input type="number" value={selectedObject.postSpacingCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "trellis" ? { ...object, postSpacingCm: clamp(Number(event.target.value) || 50, 30, 1000) } : object) }))} /></label></div><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
@@ -770,9 +755,9 @@ export function GardenPlanner() {
     const bed = plan.beds.find((item) => item.id === area.bedId);
     const areaSize = bed ? areaSizeCm(area, bed) : { width: 1, height: 1 };
     const overview = zoom < 110;
-    const positions = bed && !overview ? plantPositionsForArea(area, areaSize.width, areaSize.height) : [];
-    return <div key={area.id} className={`planting-area ${overview ? "is-overview" : ""} ${selected ? "selected" : ""}`} data-crop={area.crop} data-pattern={area.pattern} style={{ left: `${area.x}%`, top: `${area.y}%`, width: `${area.w}%`, height: `${area.h}%`, ["--area-icon-size" as string]: `${area.iconSize}px` }} onPointerDown={(event) => overview && bed && tool === "select" ? startBedInteraction(event, bed) : startPlantingInteraction(event, area)}>
-      <span className="planting-area-icons">{overview && zoom >= 45 && <i className="gv-overview-art" style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)", ["--area-icon-size" as string]: `${30 / (zoom / 100)}px` }}><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></i>}{positions.map((position, index) => <i key={index} style={{ left: position.x, top: position.y, transform: `translate(-50%, -50%) rotate(${position.rotation}deg)` }}><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></i>)}</span>
+    const positions = bed && (!overview || area.placements) ? plantPositionsForArea(area, areaSize.width, areaSize.height) : [];
+    return <div key={area.id} className={`planting-area ${area.placements ? "has-explicit-placements" : ""} ${overview ? "is-overview" : ""} ${selected ? "selected" : ""}`} data-crop={area.crop} data-pattern={area.pattern} style={{ left: `${area.x}%`, top: `${area.y}%`, width: `${area.w}%`, height: `${area.h}%`, ["--area-icon-size" as string]: `${area.iconSize}px` }} onPointerDown={(event) => overview && bed && tool === "select" ? startBedInteraction(event, bed) : startPlantingInteraction(event, area)}>
+      <span className="planting-area-icons">{overview && !area.placements && zoom >= 45 && <i className="gv-overview-art" style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)", ["--area-icon-size" as string]: `${30 / (zoom / 100)}px` }}><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></i>}{positions.map((position, index) => <i key={index} style={{ left: position.x, top: position.y, transform: `translate(-50%, -50%) rotate(${position.rotation}deg)` }}><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></i>)}</span>
       <span className="planting-area-label" title={`${area.crop} · ${area.variety} · ${area.count} plants · ${area.spacingCm} cm spacing`}><span className="gv-crop-symbol" aria-hidden="true"><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></span><span className="gv-crop-name">{area.variety}</span><b>×{area.count}</b></span>
       {selected && !overview && <span className="planting-spacing-badge">↔ {area.spacingCm} cm</span>}
       {selected && <span className="planting-area-resize" onPointerDown={(event) => startPlantingInteraction(event, area, true)} />}
@@ -814,7 +799,7 @@ export function GardenPlanner() {
           if (object.type === "structure") { const preset = structurePreset(object.kind); return <div key={object.id} data-kind={object.kind} className={`layout-object structure-object ${selected ? "selected" : ""}`} style={{ left: object.x - object.widthCm / 2, top: object.y - object.depthCm / 2, width: object.widthCm, height: object.depthCm, transform: `rotate(${object.rotationDeg}deg)` }} onPointerDown={(event) => startObjectInteraction(event, object)}><span className="structure-symbol">{preset.icon}</span><small>{object.label ?? preset.label}</small></div>; }
           return <div key={object.id} className={`layout-object text-object ${selected ? "selected" : ""}`} style={{ left: object.x, top: object.y, fontSize: object.fontSize }} onPointerDown={(event) => startObjectInteraction(event, object)}>{object.text}</div>;
         })}
-        {plan.rows.map((row) => { const visual = lineVisual(row), selected = selection?.kind === "row" && selection.id === row.id; return <div key={row.id} className={`planting-row ${selected ? "selected" : ""}`} data-crop={row.crop} style={{ left: row.x1, top: row.y1 - 12, width: visual.length, transform: `rotate(${visual.angle}deg)` }} onPointerDown={(event) => startRowInteraction(event, row)}><span className="row-dots">{Array.from({ length: Math.min(row.count, 24) }, (_, index) => <i key={index} />)}</span><span className="row-caption"><PlantArt crop={row.crop} variety={row.variety} fallback={row.cropIcon} /> {row.variety} · {row.count}</span>{selected && <><span className="line-handle start" onPointerDown={(event) => startRowInteraction(event, row, "row-start")} /><span className="line-handle end" onPointerDown={(event) => startRowInteraction(event, row, "row-end")} /></>}</div>; })}
+        {plan.rows.map((row) => { const visual = lineVisual(row), selected = selection?.kind === "row" && selection.id === row.id; return <div key={row.id} className={`planting-row ${selected ? "selected" : ""}`} data-crop={row.crop} style={{ left: row.x1, top: row.y1 - 12, width: visual.length, transform: `rotate(${visual.angle}deg)` }} onPointerDown={(event) => startRowInteraction(event, row)}><span className="row-dots">{row.placements ? row.placements.map((p) => <i key={p.id} style={{ position: "absolute", left: `${p.x}%`, top: p.y, transform: "translate(-50%, -50%)" }}><PlantArt crop={row.crop} variety={row.variety} fallback={row.cropIcon} /></i>) : Array.from({ length: Math.min(row.count, 24) }, (_, index) => <i key={index} />)}</span><span className="row-caption"><PlantArt crop={row.crop} variety={row.variety} fallback={row.cropIcon} /> {row.variety} · {row.count}</span>{selected && <><span className="line-handle start" onPointerDown={(event) => startRowInteraction(event, row, "row-start")} /><span className="line-handle end" onPointerDown={(event) => startRowInteraction(event, row, "row-end")} /></>}</div>; })}
         {plan.beds.map((bed) => {
           const selected = selection?.kind === "bed" && selection.id === String(bed.id);
           const areas = plan.plantingAreas.filter((area) => area.bedId === bed.id);
