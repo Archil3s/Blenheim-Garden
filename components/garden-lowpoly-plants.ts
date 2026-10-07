@@ -8,39 +8,8 @@ import {
   makeCartoonStem,
 } from "@/components/garden-lowpoly-style";
 
-type PlantKind =
-  | "tomato"
-  | "strawberry"
-  | "blueberry"
-  | "raspberry"
-  | "pumpkin"
-  | "zucchini"
-  | "cucumber"
-  | "melon"
-  | "lettuce"
-  | "spinach"
-  | "chard"
-  | "broccoli"
-  | "cauliflower"
-  | "cabbage"
-  | "kale"
-  | "bush-bean"
-  | "climbing-bean"
-  | "pea"
-  | "broad-bean"
-  | "carrot"
-  | "beet"
-  | "radish"
-  | "onion"
-  | "garlic"
-  | "leek"
-  | "corn"
-  | "pepper"
-  | "basil"
-  | "rosemary"
-  | "parsley"
-  | "dill"
-  | "leafy";
+export const LOWPOLY_PLANT_KINDS = ["tomato","strawberry","blueberry","raspberry","pumpkin","zucchini","cucumber","melon","lettuce","spinach","chard","broccoli","cauliflower","cabbage","kale","bush-bean","climbing-bean","pea","broad-bean","carrot","beet","radish","onion","garlic","leek","corn","pepper","basil","rosemary","parsley","dill","leafy"] as const;
+export type PlantKind = typeof LOWPOLY_PLANT_KINDS[number];
 
 function seeded(seed: number) {
   let value = (Math.floor(seed * 2654435761) ^ 0x9e3779b9) >>> 0;
@@ -397,7 +366,7 @@ function createHerb(root: THREE.Group, kind: "basil" | "rosemary" | "parsley" | 
   }
 }
 
-function inferKind(crop: string, variety?: string | null): PlantKind {
+export function resolveLowpolyPlantKind(crop: string, variety?: string | null): PlantKind {
   const name = `${crop} ${variety ?? ""}`.toLowerCase();
   if (name.includes("tomato")) return "tomato";
   if (name.includes("strawber")) return "strawberry";
@@ -440,7 +409,7 @@ export function createLowpolyPlant3D(
 ) {
   const root = new THREE.Group();
   const name = `${crop} ${variety ?? ""}`.toLowerCase();
-  const kind = inferKind(crop, variety);
+  const kind = resolveLowpolyPlantKind(crop, variety);
   const rand = seeded(seedValue + crop.length * 31 + (variety?.length ?? 0) * 17);
 
   if (kind === "tomato") createTomato(root, name, mobile, rand);
@@ -459,6 +428,8 @@ export function createLowpolyPlant3D(
   const variation = 0.93 + rand() * 0.14;
   root.scale.setScalar(variation);
   root.rotation.y = (rand() - 0.5) * 0.22;
+  root.userData.rendererKind = kind;
+  root.userData.genericFallback = kind === "leafy";
   root.userData.lowPolyPlant = true;
   root.userData.crop = crop;
   root.userData.variety = variety ?? "";

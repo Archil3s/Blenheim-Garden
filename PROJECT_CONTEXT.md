@@ -7,6 +7,14 @@ _Last updated: 22 August 2026_
 
 ## Product
 
+The developer route `/3d-audit` is a static, isolated asset showroom. Its
+catalogue is generated at build time; its scene has no API/storage hooks.
+`PlannerBridges` excludes `/3d*`, including this route. Shared production beds,
+rows, paths, trellises, trees and decoration live in
+`components/garden-object-renderers.ts`. Structures must use the existing
+`@/components/garden-structure-3d` alias, which selects the V2 renderer and its
+legacy fallbacks. Audit-only modules are imported exclusively by the audit route.
+
 Blenheim Garden is a visual home-garden planner for Blenheim, Marlborough. The measured garden canvas is the application: keep it visually dominant, keep controls compact, and use a GrowVeg-like interaction model without copying proprietary code or artwork.
 
 The working canvas is **900 × 1080 cm-equivalent pixels**, treated as approximately **9 m × 10.8 m**. The base plan contains the existing 12 numbered beds plus the berry/cane area.

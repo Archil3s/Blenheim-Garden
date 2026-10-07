@@ -6,6 +6,15 @@ _Last updated: 22 August 2026_
 
 ## Current status
 
+### Isolated 3D asset showroom
+
+`/3d-audit` generates a deterministic catalogue from the planner, artwork
+registries, production geometry kinds, resolver aliases, structure presets and
+public artwork files. It never reads or saves a garden. Search IDs, inspect
+measured bounds and warnings, force desktop/mobile detail, compare existing
+render paths, and hide panels with Screenshot mode. See
+[the audit guide](docs/3d-audit.md).
+
 The measured garden canvas is the main application. The working plan is approximately **9 m × 10.8 m** and preserves the original 12 numbered beds plus the berry/cane area.
 
 ### Drawing Interface V2

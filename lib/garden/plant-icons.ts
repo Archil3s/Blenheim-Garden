@@ -234,3 +234,10 @@ export function plantIconBackground(sprite: PlantIconSprite) {
     backgroundPosition: `${x}% ${y}%`,
   } as const;
 }
+
+export function plantArtworkCatalogue() {
+  const pairs = new Map<string, { crop: string; variety: string }>();
+  for (const key of [...Object.keys(exact), ...Object.keys(standaloneExact)]) { const [crop, variety] = key.split("|"); pairs.set(key, { crop, variety }); }
+  for (const crop of [...Object.keys(cropOnly), ...Object.keys(standaloneCropOnly)]) pairs.set(crop + "|", { crop, variety: "" });
+  return [...pairs.values()].map((entry) => ({ ...entry, artwork: plantIconSprite(entry.crop, entry.variety) }));
+}

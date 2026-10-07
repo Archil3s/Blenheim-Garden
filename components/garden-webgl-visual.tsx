@@ -183,7 +183,7 @@ function fruitSphere(color: number, radius: number, x: number, y: number, z: num
   return mesh;
 }
 
-function cropKind(crop: string) {
+export function cropKind(crop: string) {
   const name = crop.toLowerCase();
   if (name.includes("tomato")) return "tomato";
   if (name.includes("strawber")) return "strawberry";
@@ -204,7 +204,7 @@ function cropKind(crop: string) {
   return "leafy";
 }
 
-function createPlant(crop: string, detailed: boolean) {
+export function createLegacyProceduralPlant(crop: string, detailed: boolean) {
   const root = new THREE.Group();
   const kind = cropKind(crop);
 
@@ -307,12 +307,12 @@ function createPlant(crop: string, detailed: boolean) {
   return root;
 }
 
-function makePlantIconMaterial(crop: string, variety: string | null | undefined, requestRender?: () => void) {
+export function makePlantIconMaterial(crop: string, variety: string | null | undefined, requestRender?: () => void, onAssetError?: () => void) {
   const sprite = plantIconSprite(crop, variety);
   if (!sprite) return null;
   const texture = new THREE.TextureLoader().load(sprite.src, () => {
     try { requestRender?.(); } catch { /* renderer may already be disposed */ }
-  });
+  }, undefined, onAssetError);
   texture.colorSpace = THREE.SRGBColorSpace;
   texture.wrapS = THREE.ClampToEdgeWrapping;
   texture.wrapT = THREE.ClampToEdgeWrapping;
@@ -405,7 +405,7 @@ function addPlantingArea(group: THREE.Group, plan: PlannerPlan, area: PlannerPla
       plant.scale.set(scale, scale, 1);
       root.add(plant);
     } else {
-      const plant = createPlant(area.crop, detailed);
+      const plant = createLegacyProceduralPlant(area.crop, detailed);
       plant.position.set(worldX(ax + aw * position.x), 0.23, worldZ(ay + ah * position.y));
       plant.scale.setScalar(Math.max(0.72, Math.min(1.25, area.iconSize || 1)));
       root.add(plant);
@@ -524,7 +524,7 @@ function buildGarden(group: THREE.Group, plan: PlannerPlan, detailed: boolean, r
         plant.position.set(worldX(row.x1 + (row.x2 - row.x1) * t), 0.18, worldZ(row.y1 + (row.y2 - row.y1) * t));
         root.add(plant);
       } else {
-        const plant = createPlant(row.crop, detailed);
+        const plant = createLegacyProceduralPlant(row.crop, detailed);
         plant.scale.setScalar(0.82);
         plant.position.set(worldX(row.x1 + (row.x2 - row.x1) * t), 0.03, worldZ(row.y1 + (row.y2 - row.y1) * t));
         root.add(plant);
