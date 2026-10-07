@@ -222,3 +222,6 @@ Live planner updates now rebuild only the WebGL garden-content group rather than
 The D1 schema already supported multiple garden ids. The planner now stores the selected garden id in browser local storage, scopes local/live plan caches by garden id, sends gardenId to /api/garden, and exposes /api/gardens for listing and creating named blank gardens. Live 3D uses the same garden id. New gardens start blank and do not overwrite the original Blenheim Garden.
 
 WebGL dense planting rendering is deliberately capped and live updates are throttled to keep the browser stable while preserving the real saved plant counts in planner data.
+
+
+The shared 3D garden editor and compatible placement persistence are described in [docs/3d-editor.md](docs/3d-editor.md).

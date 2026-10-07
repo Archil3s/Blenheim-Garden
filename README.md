@@ -152,3 +152,6 @@ Never commit or expose `GARDEN_WRITE_TOKEN`.
 ## Development handoff
 
 Read `PROJECT_CONTEXT.md` before making substantial changes. It is the detailed source of truth for current architecture, storage and implementation constraints.
+
+
+The shared 3D garden editor and compatible placement persistence are described in [docs/3d-editor.md](docs/3d-editor.md).

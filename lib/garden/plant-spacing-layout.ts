@@ -50,7 +50,7 @@ function layoutFor(area: PlannerPlantingArea, widthCm: number, heightCm: number)
 }
 
 export function plantCountForArea(area: PlannerPlantingArea, widthCm: number, heightCm: number) {
-  return layoutFor(area, widthCm, heightCm).count;
+  return area.placements?.length ?? layoutFor(area, widthCm, heightCm).count;
 }
 
 export function plantPositionsForArea(
@@ -59,12 +59,25 @@ export function plantPositionsForArea(
   heightCm: number,
   maxRendered = 1600,
 ): PlantCanvasPosition[] {
+  if (area.placements) return area.placements.map((p) => ({
+    x: p.x * widthCm / 100, y: p.y * heightCm / 100, rotation: 0,
+  }));
   const layout = layoutFor(area, widthCm, heightCm);
+  const desired = Math.max(1, Math.round(area.count));
+  if (desired > layout.count) {
+    const columns = Math.max(1, Math.ceil(Math.sqrt(desired * widthCm / Math.max(1, heightCm))));
+    const rows = Math.ceil(desired / columns);
+    const every = Math.max(1, Math.ceil(desired / Math.max(1, maxRendered)));
+    return Array.from({ length: Math.ceil(desired / every) }, (_, sample) => {
+      const index = sample * every;
+      return { x: (index % columns + .5) * widthCm / columns, y: (Math.floor(index / columns) + .5) * heightCm / rows, rotation: 0 };
+    });
+  }
   if (area.pattern === "single") {
     return [{ x: layout.widthCm / 2, y: layout.heightCm / 2, rotation: 0 }];
   }
 
-  const sampleEvery = Math.max(1, Math.ceil(layout.count / Math.max(1, maxRendered)));
+  const sampleEvery = Math.max(1, Math.ceil(desired / Math.max(1, maxRendered)));
   const usedHeight = (layout.rows - 1) * layout.rowStepCm;
   const startY = (layout.heightCm - usedHeight) / 2;
   const positions: PlantCanvasPosition[] = [];
@@ -77,7 +90,7 @@ export function plantPositionsForArea(
     const startX = (layout.widthCm - usedWidth) / 2;
 
     for (let column = 0; column < columns; column += 1) {
-      if (logicalIndex % sampleEvery === 0) {
+      if (logicalIndex < desired && logicalIndex % sampleEvery === 0) {
         positions.push({
           x: startX + column * layout.spacingCm,
           y: startY + row * layout.rowStepCm,

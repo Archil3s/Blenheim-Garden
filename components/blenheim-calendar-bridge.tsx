@@ -39,7 +39,7 @@ export function BlenheimCalendarBridge() {
   const [today, setToday] = useState<Date | null>(null);
 
   useEffect(() => {
-    setToday(new Date());
+    queueMicrotask(() => setToday(new Date()));
   }, []);
 
   useEffect(() => {

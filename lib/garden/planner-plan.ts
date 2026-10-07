@@ -16,6 +16,11 @@ export type PlannerBed = {
 export type PlannerPlantingPattern = "grid" | "staggered" | "rows" | "natural" | "single";
 export type PlannerVisualSpacing = "tight" | "normal" | "wide";
 
+// Area coordinates are percentages; row X is percent along the line and Y is
+// a perpendicular offset in centimetres. Zero-length rows use centimetre offsets.
+// Omitted placements use legacy layout.
+export type PlannerPlantPlacement = { id: string; x: number; y: number };
+
 export type PlannerPlantingArea = {
   id: string;
   plantingId?: string;
@@ -32,6 +37,7 @@ export type PlannerPlantingArea = {
   pattern: PlannerPlantingPattern;
   iconSize: number;
   visualSpacing: PlannerVisualSpacing;
+  placements?: PlannerPlantPlacement[];
 };
 
 export type PlannerRow = {
@@ -45,6 +51,7 @@ export type PlannerRow = {
   x2: number;
   y2: number;
   count: number;
+  placements?: PlannerPlantPlacement[];
 };
 
 export type PlannerPath = {

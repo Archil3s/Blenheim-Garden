@@ -14,7 +14,10 @@ import {
 import { addStructure3D } from "@/components/garden-structure-3d";
 import { addDemonstrationBed3D } from "@/components/garden-demo-bed-3d";
 import { createGardenPlant3D } from "@/components/garden-plant-3d";
-import { addGardenCropPatch3D, addGardenCropRow3D } from "@/components/garden-crop-patch-3d";
+import { areaPlants, rowPlants, type PlanSelection } from "@/lib/garden/plan-editing";
+import { useGarden3DEditor } from "./use-garden-3d-editor";
+import { Garden3DEditorControls } from "./garden-3d-editor-controls";
+import { installGardenEditInteractions } from "./garden-3d-edit-interactions";
 
 const GARDEN_WIDTH_CM = 900;
 const GARDEN_HEIGHT_CM = 1080;
@@ -51,6 +54,8 @@ type Runtime = {
   controls: OrbitControls;
   renderer: THREE.WebGLRenderer;
   mobile: boolean;
+  needsRender?: boolean;
+  cancelEditing?: () => void;
 };
 
 const DEFAULT_INSPECTOR: InspectItem = {
@@ -205,200 +210,51 @@ function addRaisedBed(root: THREE.Group, bed: PlannerBed, active?: PlannerPlanti
       ...(active ? [{ label: "Crop", value: active.crop }, { label: "Spacing", value: `${active.spacingCm} cm` }] : []),
     ],
   });
+  group.userData.planSelection = { kind: "bed", id: String(bed.id) };
   root.add(group);
 }
 
-function leaf(root: THREE.Group, x: number, y: number, z: number, scale: number, angle: number, color = palette.leaf) {
-  const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.11 * scale, 8, 6), mat(color, 0.86));
-  mesh.scale.set(1.55, 0.26, 0.8);
-  mesh.position.set(x, y, z);
-  mesh.rotation.y = angle;
-  mesh.rotation.z = Math.sin(angle) * 0.16;
-  mesh.castShadow = true;
-  root.add(mesh);
-}
-
-function leafRing(root: THREE.Group, count: number, radius: number, y: number, scale: number, color = palette.leaf) {
-  for (let index = 0; index < count; index += 1) {
-    const angle = (index / count) * Math.PI * 2;
-    leaf(root, Math.cos(angle) * radius, y, Math.sin(angle) * radius, scale, -angle, index % 2 ? color : palette.leafLight);
-  }
-}
-
-function stem(root: THREE.Group, height: number, radius = 0.02) {
-  const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius * 1.15, height, 8), mat(palette.stem, 0.9));
-  mesh.position.y = height / 2;
-  mesh.castShadow = true;
-  root.add(mesh);
-}
-
-function fruit(root: THREE.Group, color: number, radius: number, x: number, y: number, z: number, scale?: [number, number, number]) {
-  const mesh = new THREE.Mesh(new THREE.SphereGeometry(radius, 10, 7), mat(color, 0.65));
-  mesh.position.set(x, y, z);
-  if (scale) mesh.scale.set(...scale);
-  mesh.castShadow = true;
-  root.add(mesh);
-}
-
-function cropKind(crop: string) {
-  const name = crop.toLowerCase();
-  if (name.includes("tomato")) return "tomato";
-  if (name.includes("strawber")) return "strawberry";
-  if (name.includes("blueber")) return "blueberry";
-  if (name.includes("raspber")) return "raspberry";
-  if (name.includes("pumpkin") || name.includes("squash") || name.includes("zucchini") || name.includes("courgette")) return "squash";
-  if (name.includes("lettuce")) return "lettuce";
-  if (name.includes("broccoli") || name.includes("cauliflower") || name.includes("cabbage") || name.includes("kale")) return "brassica";
-  if (name.includes("bean") || name.includes("pea")) return "bean";
-  if (name.includes("carrot")) return "carrot";
-  if (name.includes("onion") || name.includes("leek") || name.includes("garlic")) return "onion";
-  if (name.includes("corn") || name.includes("maize")) return "corn";
-  if (name.includes("chilli") || name.includes("pepper")) return "pepper";
-  return "leafy";
-}
-
-function createPlant(crop: string, mobile: boolean, seedValue: number) {
-  const root = new THREE.Group();
-  const kind = cropKind(crop);
-  const offset = ((seedValue * 37) % 17) / 100;
-
-  if (kind === "tomato") {
-    stem(root, 1.0 + offset, 0.026);
-    leafRing(root, mobile ? 5 : 7, 0.18, 0.38, 0.9);
-    leafRing(root, mobile ? 4 : 6, 0.15, 0.68, 0.78, palette.leafDark);
-    for (let index = 0; index < (mobile ? 3 : 5); index += 1) {
-      const angle = (index / 5) * Math.PI * 2;
-      fruit(root, 0xc83f35, 0.055, Math.cos(angle) * 0.12, 0.46 + (index % 2) * 0.13, Math.sin(angle) * 0.12);
-    }
-  } else if (kind === "strawberry") {
-    leafRing(root, mobile ? 6 : 9, 0.1, 0.08, 0.85);
-    fruit(root, 0xd8444b, 0.045, 0.08, 0.07, 0.04, [0.86, 1.18, 0.86]);
-    if (!mobile) fruit(root, 0xd8444b, 0.038, -0.07, 0.065, 0.05, [0.86, 1.18, 0.86]);
-  } else if (kind === "blueberry" || kind === "raspberry") {
-    stem(root, 0.55, 0.018);
-    leafRing(root, mobile ? 5 : 7, 0.11, 0.31, 0.7);
-    const berry = kind === "blueberry" ? 0x5268a9 : 0xc83e5c;
-    for (const [x, y, z] of [[-0.05, 0.25, 0.04], [0.055, 0.29, 0.04], [0, 0.21, -0.05]] as const) fruit(root, berry, 0.035, x, y, z);
-  } else if (kind === "squash") {
-    leafRing(root, mobile ? 6 : 9, 0.17, 0.09, 1.06, palette.leafDark);
-    fruit(root, 0xe58a2d, 0.12, 0.13, 0.1, 0.04, [1.2, 0.78, 1.08]);
-  } else if (kind === "lettuce") {
-    leafRing(root, mobile ? 8 : 12, 0.105, 0.065, 1.1, palette.leafLight);
-    leafRing(root, mobile ? 5 : 8, 0.052, 0.11, 0.82);
-  } else if (kind === "brassica") {
-    stem(root, 0.22, 0.03);
-    leafRing(root, mobile ? 5 : 8, 0.12, 0.11, 0.82, palette.leafDark);
-    fruit(root, 0x477f49, 0.09, 0, 0.26, 0, [1.02, 0.82, 1.02]);
-  } else if (kind === "bean") {
-    stem(root, 1.12, 0.014);
-    leafRing(root, mobile ? 5 : 7, 0.1, 0.42, 0.7, palette.leafLight);
-    leafRing(root, mobile ? 4 : 6, 0.085, 0.78, 0.62);
-  } else if (kind === "carrot") {
-    for (let index = 0; index < (mobile ? 5 : 8); index += 1) {
-      const angle = (index / 8) * Math.PI * 2;
-      const blade = new THREE.Mesh(new THREE.ConeGeometry(0.016, 0.28 + (index % 3) * 0.03, 5), mat(index % 2 ? palette.leaf : palette.leafLight, 0.9));
-      blade.position.set(Math.cos(angle) * 0.04, 0.15, Math.sin(angle) * 0.04);
-      blade.rotation.z = Math.sin(angle) * 0.18;
-      blade.castShadow = true;
-      root.add(blade);
-    }
-  } else if (kind === "onion") {
-    for (let index = 0; index < (mobile ? 4 : 7); index += 1) {
-      const angle = (index / 7) * Math.PI * 2;
-      const blade = new THREE.Mesh(new THREE.CylinderGeometry(0.009, 0.014, 0.34, 5), mat(0x4d8d4f, 0.9));
-      blade.position.set(Math.cos(angle) * 0.027, 0.17, Math.sin(angle) * 0.027);
-      blade.rotation.z = Math.sin(angle) * 0.12;
-      blade.castShadow = true;
-      root.add(blade);
-    }
-  } else if (kind === "corn") {
-    stem(root, 1.15, 0.025);
-    for (const y of [0.34, 0.54, 0.74, 0.94]) {
-      leaf(root, 0.08, y, 0, 0.95, y * 2.1, palette.leafDark);
-      leaf(root, -0.08, y + 0.04, 0, 0.9, -y * 2.2, palette.leafLight);
-    }
-  } else if (kind === "pepper") {
-    stem(root, 0.62, 0.022);
-    leafRing(root, mobile ? 5 : 7, 0.11, 0.34, 0.72);
-    fruit(root, 0xc94c38, 0.05, 0.07, 0.25, 0.04, [0.78, 1.35, 0.78]);
-  } else {
-    leafRing(root, mobile ? 7 : 10, 0.1, 0.08, 1, palette.leafLight);
-    leafRing(root, mobile ? 4 : 6, 0.05, 0.14, 0.75);
-  }
-
-  root.rotation.y = ((seedValue * 29) % 360) * Math.PI / 180;
-  return root;
-}
-
-function representativePositions(widthCm: number, heightCm: number, desired: number, maxCount: number) {
-  const count = Math.min(maxCount, Math.max(1, desired || 1));
-  const aspect = Math.max(0.25, widthCm / Math.max(1, heightCm));
-  const columns = Math.max(1, Math.ceil(Math.sqrt(count * aspect)));
-  const rows = Math.max(1, Math.ceil(count / columns));
-  return Array.from({ length: count }, (_, index) => ({
-    x: ((index % columns) + 1) / (columns + 1),
-    y: (Math.floor(index / columns) + 1) / (rows + 1),
-  }));
+function addEditablePlants(root: THREE.Group, points: Array<{ id: string; x: number; y: number }>, crop: string, variety: string, spacingCm: number, selection: PlanSelection, mobile: boolean, baseY: number, bedName?: string) {
+  const every = Math.max(1, Math.ceil(points.length / (mobile ? 32 : 100)));
+  const templates = new Map<number, THREE.Group>();
+  points.forEach((point, index) => {
+    if (index % every) return;
+    const variant = index % 3;
+    if (!templates.has(variant)) templates.set(variant, createGardenPlant3D(crop, variety, mobile, variant + crop.length * 17));
+    const plant = templates.get(variant)!.clone(true);
+    plant.position.set(worldX(point.x), baseY, worldZ(point.y));
+    inspectable(plant, { title: crop, subtitle: variety, lines: [{ label: "Spacing", value: spacingCm + " cm" }, ...(bedName ? [{ label: "Bed", value: bedName }] : [])] });
+    plant.userData.planSelection = { ...selection, plantId: point.id };
+    root.add(plant);
+  });
 }
 
 function addPlantingArea(root: THREE.Group, plan: PlannerPlan, area: PlannerPlantingArea, mobile: boolean) {
-  const bed = plan.beds.find((candidate) => candidate.id === area.bedId);
+  const bed = plan.beds.find((b) => b.id === area.bedId);
   if (!bed) return;
-  const rect = bedRectCm(bed);
-  const ax = rect.x + (area.x / 100) * rect.w;
-  const ay = rect.y + (area.y / 100) * rect.h;
-  const aw = (area.w / 100) * rect.w;
-  const ah = (area.h / 100) * rect.h;
   const group = new THREE.Group();
-  addGardenCropPatch3D(group, {
-    crop: area.crop,
-    variety: area.variety,
-    count: area.count,
-    spacingCm: area.spacingCm,
-    iconSize: area.iconSize,
-    pattern: area.pattern,
-    widthM: aw / 100,
-    depthM: ah / 100,
-    centerX: worldX(ax + aw / 2),
-    centerZ: worldZ(ay + ah / 2),
-    baseY: 0.31,
-    mobile,
-    seed: area.crop.length * 113 + area.variety.length * 41 + area.bedId * 17,
-  });
-  inspectable(group, {
-    title: area.crop,
-    subtitle: area.variety || "3D planting area",
-    lines: [
-      { label: "Bed", value: bed.name },
-      { label: "Spacing", value: `${area.spacingCm} cm` },
-      { label: "Planned count", value: String(area.count) },
-    ],
-  });
+  group.userData.bedId = area.bedId;
+  addEditablePlants(group, areaPlants(plan, area), area.crop, area.variety, area.spacingCm, { kind: "area", id: area.id }, mobile, .31, bed.name);
   root.add(group);
 }
 
-function addRow(root: THREE.Group, row: PlannerPlan["rows"][number], mobile: boolean) {
+function addRow(root: THREE.Group, row: PlannerPlan["rows"][number], mobile: boolean, plan: PlannerPlan) {
   const group = new THREE.Group();
-  addGardenCropRow3D(group, {
-    crop: row.crop,
-    variety: row.variety,
-    count: row.count,
-    startX: worldX(row.x1),
-    startZ: worldZ(row.y1),
-    endX: worldX(row.x2),
-    endZ: worldZ(row.y2),
-    baseY: 0.03,
-    mobile,
-    seed: row.crop.length * 79 + row.variety.length * 37 + row.id.length * 13,
-  });
-  inspectable(group, {
-    title: row.crop,
-    subtitle: row.variety || "Planting row",
-    lines: [
-      { label: "Spacing", value: `${row.spacingCm} cm` },
-      { label: "Planned count", value: String(row.count) },
-    ],
-  });
+  addEditablePlants(group, rowPlants(row), row.crop, row.variety, row.spacingCm, { kind: "row", id: row.id }, mobile, .03);
+  for (const plant of group.children) {
+    const x = (plant.position.x + 4.5) * 100, y = (plant.position.z + 5.4) * 100;
+    if (plan.beds.some((bed) => { const r = bedRectCm(bed); return x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.h; })) plant.position.y = .31;
+  }
+  // A faint centreline also lets the entire row be selected between its plants.
+  if (Math.hypot(row.x2 - row.x1, row.y2 - row.y1) > 1) {
+    const length = Math.hypot(row.x2 - row.x1, row.y2 - row.y1) / 100;
+    const line = new THREE.Mesh(new THREE.BoxGeometry(length, .015, .025), mat(0x78a55d));
+    line.position.set(worldX((row.x1 + row.x2) / 2), .02, worldZ((row.y1 + row.y2) / 2));
+    line.rotation.y = -Math.atan2(row.y2 - row.y1, row.x2 - row.x1);
+    line.userData.planSelection = { kind: "row", id: row.id };
+    line.userData.selectionRoot = group;
+    group.add(line);
+  }
   root.add(group);
 }
 
@@ -434,6 +290,7 @@ function addPath(root: THREE.Group, object: Extract<PlannerPlan["objects"][numbe
   }
 
   inspectable(group, { title: object.label || "Garden path", lines: [{ label: "Length", value: `${length.toFixed(1)} m` }, { label: "Width", value: `${object.widthCm} cm` }] });
+  group.userData.planSelection = { kind: "object", id: object.id };
   root.add(group);
 }
 
@@ -464,6 +321,7 @@ function addTrellis(root: THREE.Group, object: Extract<PlannerPlan["objects"][nu
     group.add(rail);
   }
   inspectable(group, { title: object.label || "Trellis", lines: [{ label: "Height", value: `${height.toFixed(1)} m` }, { label: "Length", value: `${length.toFixed(1)} m` }] });
+  group.userData.planSelection = { kind: "object", id: object.id };
   root.add(group);
 }
 
@@ -471,7 +329,7 @@ function addTree(root: THREE.Group, object: Extract<PlannerPlan["objects"][numbe
   const group = new THREE.Group();
   const x = worldX(object.x);
   const z = worldZ(object.y);
-  const radius = Math.min(1.05, Math.max(0.34, object.diameterCm / 190));
+  const radius = Math.max(0.12, object.diameterCm / 175);
   const trunkHeight = 0.8 + radius * 0.24;
   const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.145, trunkHeight, 7), mat(0x7a4d2f, 1));
   trunk.position.set(x, trunkHeight / 2, z);
@@ -494,6 +352,7 @@ function addTree(root: THREE.Group, object: Extract<PlannerPlan["objects"][numbe
     group.add(crown);
   }
   inspectable(group, { title: object.label || "Garden tree", lines: [{ label: "Canopy", value: `${(object.diameterCm / 100).toFixed(1)} m` }] });
+  group.userData.planSelection = { kind: "object", id: object.id };
   root.add(group);
 }
 
@@ -572,17 +431,27 @@ function addGardenDecor(root: THREE.Group, mobile: boolean) {
 }
 
 function buildGarden(root: THREE.Group, plan: PlannerPlan, mobile: boolean) {
-  addBoundary(root, mobile);
-  addGardenDecor(root, mobile);
-  for (const bed of plan.beds) addRaisedBed(root, bed, plan.plantingAreas.find((area) => area.bedId === bed.id), mobile);
-  for (const area of plan.plantingAreas) addPlantingArea(root, plan, area, mobile);
-  for (const row of plan.rows) addRow(root, row, mobile);
-  for (const object of plan.objects) {
-    if (object.type === "path") addPath(root, object, mobile);
-    if (object.type === "trellis") addTrellis(root, object, mobile);
-    if (object.type === "structure") addStructure3D(root, object, !mobile);
-    if (object.type === "tree") addTree(root, object, mobile);
-  }
+  const expected = new Set<string>();
+  const reconcile = (key: string, signature: unknown, build: (holder: THREE.Group) => void) => {
+    expected.add(key);
+    const stamp = JSON.stringify(signature);
+    const existing = root.children.find((child) => child.userData.planKey === key);
+    if (existing?.userData.planStamp === stamp) return;
+    if (existing) { disposeObject(existing); existing.removeFromParent(); }
+    const holder = new THREE.Group(); holder.userData.planKey = key; holder.userData.planStamp = stamp;
+    build(holder); root.add(holder);
+  };
+  reconcile("decor", mobile, (holder) => { addBoundary(holder, mobile); addGardenDecor(holder, mobile); });
+  for (const bed of plan.beds) reconcile("bed:" + bed.id, bed, (holder) => addRaisedBed(holder, bed, plan.plantingAreas.find((a) => a.bedId === bed.id), mobile));
+  for (const area of plan.plantingAreas) reconcile("area:" + area.id, [area, plan.beds.find((b) => b.id === area.bedId)], (holder) => addPlantingArea(holder, plan, area, mobile));
+  for (const row of plan.rows) reconcile("row:" + row.id, [row, plan.beds], (holder) => addRow(holder, row, mobile, plan));
+  for (const object of plan.objects) reconcile("object:" + object.id, object, (holder) => {
+    if (object.type === "path") addPath(holder, object, mobile);
+    if (object.type === "trellis") addTrellis(holder, object, mobile);
+    if (object.type === "tree") addTree(holder, object, mobile);
+    if (object.type === "structure") { addStructure3D(holder, object, !mobile); holder.children[0].userData.planSelection = { kind: "object", id: object.id }; }
+  });
+  for (const child of [...root.children]) if (!expected.has(child.userData.planKey)) { disposeObject(child); child.removeFromParent(); }
 }
 
 function clearSelection(ref: React.MutableRefObject<THREE.BoxHelper | null>) {
@@ -594,33 +463,48 @@ function clearSelection(ref: React.MutableRefObject<THREE.BoxHelper | null>) {
   ref.current = null;
 }
 
+function fitGardenCamera(runtime: Runtime) {
+  const bounds = new THREE.Box3().setFromObject(runtime.content);
+  if (bounds.isEmpty()) return;
+  const sphere = bounds.getBoundingSphere(new THREE.Sphere());
+  const vertical = THREE.MathUtils.degToRad(runtime.camera.fov);
+  const horizontal = 2 * Math.atan(Math.tan(vertical / 2) * runtime.camera.aspect);
+  const distance = sphere.radius / Math.sin(Math.min(vertical, horizontal) / 2) * 1.08;
+  const direction = runtime.camera.position.clone().sub(runtime.controls.target).normalize();
+  runtime.controls.maxDistance = Math.max(27, distance * 1.5);
+  runtime.camera.far = Math.max(60, distance * 3);
+  runtime.camera.position.copy(sphere.center).addScaledVector(direction, distance);
+  runtime.controls.target.copy(sphere.center);
+  runtime.camera.updateProjectionMatrix();
+  runtime.controls.update();
+  runtime.needsRender = true;
+}
+
 export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) {
   const mountRef = useRef<HTMLDivElement>(null);
   const runtimeRef = useRef<Runtime | null>(null);
   const selectionRef = useRef<THREE.BoxHelper | null>(null);
   const [loadedPlan, setLoadedPlan] = useState<PlannerPlan | null>(suppliedPlan ?? null);
-  const [gardenId, setGardenId] = useState(DEFAULT_GARDEN_ID);
+  const [gardenId] = useState(() => typeof window === "undefined" ? DEFAULT_GARDEN_ID : new URL(window.location.href).searchParams.get("gardenId")?.trim() || readActiveGardenId());
   const [showDemo, setShowDemo] = useState(false);
   const [cameraView, setCameraView] = useState<"perspective" | "top">("perspective");
-  const [quality, setQuality] = useState("HIGH");
-  const [inspector, setInspector] = useState<InspectItem>(DEFAULT_INSPECTOR);
+  const [quality] = useState(() => typeof window !== "undefined" && !window.matchMedia("(min-width: 841px)").matches ? "MOBILE" : "HIGH");
   const [renderError, setRenderError] = useState<string | null>(null);
   const effectivePlan = suppliedPlan ?? loadedPlan ?? EMPTY_PLAN;
   const planRef = useRef<PlannerPlan>(effectivePlan);
   const demoRef = useRef(showDemo);
+  const editor = useGarden3DEditor(effectivePlan, gardenId, setLoadedPlan);
+  const item = editor.item;
+  const inspector: InspectItem = showDemo ? { title: "2 × 4 m demonstration bed", subtitle: "Benchmark style used by the live raised beds", lines: [{ label: "Mode", value: "Demo bed" }] } : !item ? DEFAULT_INSPECTOR : { title: "name" in item ? item.name : "crop" in item ? item.crop : "label" in item ? item.label || item.type : "text" in item ? item.text : "Selection", lines: [] };
+  const editorRef = useRef(editor);
+  useEffect(() => { editorRef.current = editor; }, [editor]);
   const structureCount = useMemo(() => effectivePlan.objects.filter((object) => object.type === "structure").length, [effectivePlan]);
-
-  useEffect(() => {
-    if (suppliedPlan) setLoadedPlan(suppliedPlan);
-  }, [suppliedPlan]);
 
   const rebuild = useCallback(() => {
     const runtime = runtimeRef.current;
     if (!runtime) return;
     clearSelection(selectionRef);
-    disposeObject(runtime.content);
-    runtime.content.clear();
-    if (demoRef.current) addDemonstrationBed3D(runtime.content, runtime.mobile);
+    if (demoRef.current) { disposeObject(runtime.content); runtime.content.clear(); addDemonstrationBed3D(runtime.content, runtime.mobile); }
     else buildGarden(runtime.content, planRef.current, runtime.mobile);
     runtime.renderer.render(runtime.scene, runtime.camera);
   }, []);
@@ -633,21 +517,18 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   useEffect(() => {
     demoRef.current = showDemo;
     rebuild();
-    setInspector(showDemo ? {
-      title: "2 × 4 m demonstration bed",
-      subtitle: "Benchmark style now used by the live raised beds",
-      lines: [{ label: "Mode", value: "Demo bed" }],
-    } : DEFAULT_INSPECTOR);
+
   }, [showDemo, rebuild]);
 
   useEffect(() => {
     if (suppliedPlan) return;
     let cancelled = false;
     const selected = new URL(window.location.href).searchParams.get("gardenId")?.trim() || readActiveGardenId();
-    setGardenId(selected);
-    const live = readPlanFromStorage(gardenLivePlanKey(selected));
-    if (live) setLoadedPlan(live);
-    else void (async () => {
+    void (async () => {
+      await Promise.resolve();
+      const live = readPlanFromStorage(gardenLivePlanKey(selected));
+      if (cancelled) return;
+      if (live) { setLoadedPlan(live); return; }
       try {
         const response = await fetch(`/api/garden?gardenId=${encodeURIComponent(selected)}`, { cache: "no-store" });
         const data = (await response.json()) as GardenPlanApiResponse;
@@ -679,7 +560,6 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     const mount = mountRef.current;
     if (!mount) return;
     const mobile = !window.matchMedia("(min-width: 841px)").matches;
-    setQuality(mobile ? "MOBILE" : "HIGH");
 
     let renderer: THREE.WebGLRenderer;
     try {
@@ -691,7 +571,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
       renderer.shadowMap.enabled = !mobile;
       renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     } catch {
-      setRenderError("WebGL could not start on this device.");
+      queueMicrotask(() => setRenderError("WebGL could not start on this device."));
       return;
     }
 
@@ -756,43 +636,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     if (demoRef.current) addDemonstrationBed3D(content, mobile);
     else buildGarden(content, planRef.current, mobile);
 
-    const raycaster = new THREE.Raycaster();
-    const pointer = new THREE.Vector2();
-    let pointerStart: { id: number; x: number; y: number } | null = null;
-    const onPointerDown = (event: PointerEvent) => {
-      if (event.isPrimary) pointerStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
-    };
-    const onPointerUp = (event: PointerEvent) => {
-      const start = pointerStart;
-      pointerStart = null;
-      if (!start || start.id !== event.pointerId || !event.isPrimary || Math.hypot(event.clientX - start.x, event.clientY - start.y) > 10) return;
-      const rect = renderer.domElement.getBoundingClientRect();
-      pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-      pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-      raycaster.setFromCamera(pointer, camera);
-      for (const hit of raycaster.intersectObjects(content.children, true)) {
-        let current: THREE.Object3D | null = hit.object;
-        while (current) {
-          const item = current.userData.inspect as InspectItem | undefined;
-          const selectionRoot = current.userData.selectionRoot as THREE.Object3D | undefined;
-          if (item && selectionRoot) {
-            clearSelection(selectionRef);
-            const helper = new THREE.BoxHelper(selectionRoot, 0xffc44d);
-            helper.material.depthTest = false;
-            helper.renderOrder = 50;
-            scene.add(helper);
-            selectionRef.current = helper;
-            setInspector(item);
-            return;
-          }
-          current = current.parent;
-        }
-      }
-      clearSelection(selectionRef);
-      setInspector(DEFAULT_INSPECTOR);
-    };
-    renderer.domElement.addEventListener("pointerdown", onPointerDown);
-    renderer.domElement.addEventListener("pointerup", onPointerUp);
+    const removeEditInteractions = installGardenEditInteractions(runtime, () => editorRef.current, () => demoRef.current);
 
     const resize = () => {
       const width = Math.max(1, mount.clientWidth);
@@ -800,21 +644,25 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
       renderer.setSize(width, height, false);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
+      runtime.needsRender = true;
     };
     const observer = new ResizeObserver(resize);
     observer.observe(mount);
     resize();
+    if (mobile) fitGardenCamera(runtime);
 
     renderer.setAnimationLoop(() => {
-      controls.update();
-      renderer.render(scene, camera);
+      if (controls.update() || runtime.needsRender) {
+        selectionRef.current?.update();
+        renderer.render(scene, camera);
+        runtime.needsRender = false;
+      }
     });
 
     return () => {
       renderer.setAnimationLoop(null);
       observer.disconnect();
-      renderer.domElement.removeEventListener("pointerdown", onPointerDown);
-      renderer.domElement.removeEventListener("pointerup", onPointerUp);
+      removeEditInteractions();
       controls.dispose();
       clearSelection(selectionRef);
       disposeObject(content);
@@ -830,6 +678,23 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     };
   }, []);
 
+  useEffect(() => { runtimeRef.current?.cancelEditing?.(); }, [editor.tool, showDemo]);
+
+  useEffect(() => {
+    const runtime = runtimeRef.current;
+    if (!runtime) return;
+    clearSelection(selectionRef);
+    runtime.needsRender = true;
+    const selected = editor.selection;
+    if (!selected) return;
+    runtime.content.traverse((node) => {
+      const target = node.userData.planSelection as PlanSelection | undefined;
+      if (!target || target.kind !== selected.kind || target.id !== selected.id || target.plantId !== selected.plantId) return;
+      const helper = new THREE.BoxHelper(node, 0xffc44d); helper.material.depthTest = false; helper.renderOrder = 50;
+      runtime.scene.add(helper); selectionRef.current = helper;
+    });
+  }, [editor.selection, effectivePlan]);
+
   const setPerspective = () => {
     const runtime = runtimeRef.current;
     if (!runtime) return;
@@ -838,21 +703,26 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     runtime.camera.up.set(0, 1, 0);
     runtime.controls.target.set(0, 0.3, 0);
     runtime.controls.update();
+    runtime.camera.updateMatrixWorld();
+    runtime.needsRender = true;
   };
 
   const setTop = () => {
     const runtime = runtimeRef.current;
     if (!runtime) return;
     setCameraView("top");
-    runtime.camera.position.set(0.01, 16.2, 0.01);
-    runtime.camera.up.set(0, 0, -1);
+    runtime.camera.position.set(0, 16.2, 0.001);
+    runtime.camera.up.set(0, 1, 0);
     runtime.controls.target.set(0, 0, 0);
     runtime.controls.update();
+    runtime.camera.updateMatrixWorld();
+    runtime.needsRender = true;
   };
 
   return (
-    <div className="gv-3d-workspace gv-3d-realistic" data-testid="inline-3d-workspace" style={{ position: "relative", width: "100%", height: "100%", minHeight: 520, overflow: "hidden" }}>
+    <div className="gv-3d-workspace gv-3d-realistic gv-3d-editor" data-demo={showDemo} aria-label="Visual 3D garden canvas" data-testid="inline-3d-workspace" style={{ position: "relative", width: "100%", height: "100%", minHeight: suppliedPlan ? 520 : "100dvh", overflow: "hidden" }}>
       <div className="gv-3d-workspace-canvas" ref={mountRef} aria-label="Interactive 3D garden workspace" style={{ position: "absolute", inset: 0 }} />
+      <Garden3DEditorControls editor={editor} disabled={showDemo || !!renderError || (!suppliedPlan && !loadedPlan)} />
       {renderError && <div className="gv-3d-workspace-error">{renderError}</div>}
       <div className="gv-3d-hud gv-3d-hud-left">
         <span className="gv-3d-live-dot" />
@@ -862,7 +732,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
       <div className="gv-3d-hud gv-3d-camera-controls" aria-label="3D camera controls">
         <button type="button" className={cameraView === "perspective" ? "active" : ""} aria-pressed={cameraView === "perspective"} onClick={setPerspective}>Perspective</button>
         <button type="button" className={cameraView === "top" ? "active" : ""} aria-pressed={cameraView === "top"} onClick={setTop}>Top</button>
-        <button type="button" onClick={setPerspective}>Fit</button>
+        <button type="button" onClick={() => { if (runtimeRef.current) fitGardenCamera(runtimeRef.current); }}>{suppliedPlan ? "Fit" : "Fit garden"}</button>
         <button type="button" className={showDemo ? "active" : ""} aria-pressed={showDemo} onClick={() => setShowDemo((value) => !value)}>Demo bed</button>
         <span>{quality}</span>
       </div>
@@ -872,7 +742,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
         {inspector.subtitle && <small>{inspector.subtitle}</small>}
         {inspector.lines.slice(0, 3).map((line) => <div key={`${line.label}-${line.value}`}><b>{line.label}</b><em>{line.value}</em></div>)}
       </div>
-      <div className="gv-3d-help">Drag to orbit · wheel/pinch to zoom · tap to inspect</div>
+      <div className="gv-3d-help">Drag empty ground to orbit · Move to drag objects · tap to place/select</div>
     </div>
   );
 }

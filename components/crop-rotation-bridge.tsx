@@ -157,9 +157,7 @@ export function CropRotationBridge() {
   useEffect(() => {
     if (!open) return;
     const controller = new AbortController();
-    setLoading(true);
-    setError("");
-    setData(null);
+    queueMicrotask(() => { if (!controller.signal.aborted) { setLoading(true); setError(""); setData(null); } });
     const query = bedId ? `?bedId=${encodeURIComponent(bedId)}` : "";
     fetch(`/api/garden/rotation${query}`, { cache: "no-store", signal: controller.signal })
       .then(async (response) => {

@@ -47,7 +47,7 @@ export function PlannerShortcutsBridge() {
     observer.observe(document.body, { childList: true, subtree: true });
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (!document.querySelector(".gv-app")) return;
+      if (!document.querySelector(".gv-app") || document.querySelector(".gv-app.gv-view-3d")) return;
 
       const key = event.key.toLowerCase();
       const modifier = event.ctrlKey || event.metaKey;

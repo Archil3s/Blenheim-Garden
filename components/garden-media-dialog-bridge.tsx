@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import {
   GARDEN_MEDIA_LIMITS,
@@ -234,7 +235,7 @@ export function GardenMediaDialogBridge() {
         <section className="media-gallery">
           {busy && items.length === 0 ? <p className="media-empty">Loading…</p> : null}
           {!busy && items.length === 0 ? <p className="media-empty">No media attached here yet.</p> : null}
-          {items.map((item) => <article key={item.id}><div className="media-preview">{item.mediaType === "photo" ? <img src={item.url} alt={item.caption || item.fileName} loading="lazy" /> : <video src={item.url} controls preload="metadata" />}</div><div className="media-copy"><strong>{item.caption || item.fileName}</strong><small>{formatBytes(item.sizeBytes)} · {new Date(item.capturedAt || item.createdAt).toLocaleDateString()}</small></div><button type="button" className="delete-media" onClick={() => void remove(item)} disabled={busy}>Delete</button></article>)}
+          {items.map((item) => <article key={item.id}><div className="media-preview">{item.mediaType === "photo" ? <Image src={item.url} alt={item.caption || item.fileName} width={320} height={240} unoptimized loading="lazy" /> : <video src={item.url} controls preload="metadata" />}</div><div className="media-copy"><strong>{item.caption || item.fileName}</strong><small>{formatBytes(item.sizeBytes)} · {new Date(item.capturedAt || item.createdAt).toLocaleDateString()}</small></div><button type="button" className="delete-media" onClick={() => void remove(item)} disabled={busy}>Delete</button></article>)}
         </section>
       </div>
       <style jsx>{`

@@ -229,9 +229,11 @@ export function GardenWebGLMobile() {
     let cancelled = false;
     const fromQuery = new URL(window.location.href).searchParams.get("gardenId")?.trim();
     const selected = fromQuery || readActiveGardenId();
-    setGardenId(selected);
+    queueMicrotask(() => { if (!cancelled) setGardenId(selected); });
 
     async function load() {
+      await Promise.resolve();
+      if (cancelled) return;
       const live = readPlan(gardenLivePlanKey(selected));
       if (live) {
         if (!cancelled) { setPlan(live); setSource("Live 2D planner"); }
@@ -268,9 +270,8 @@ export function GardenWebGLMobile() {
       renderer.setPixelRatio(1);
       renderer.shadowMap.enabled = false;
       renderer.outputColorSpace = THREE.SRGBColorSpace;
-      setRenderError(null);
     } catch {
-      setRenderError("WebGL could not start on this phone.");
+      queueMicrotask(() => setRenderError("WebGL could not start on this phone."));
       return;
     }
 
