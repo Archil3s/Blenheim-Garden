@@ -62,7 +62,7 @@ test("audit covers registries, keeps garden storage isolated and supports inspec
   await expect(page.locator(".audit-toolbar")).toBeVisible();
   await page.getByRole("button", { name: "Show all", exact: true }).click();
   await page.getByLabel("Filter", { exact: true }).selectOption("Missing");
-  await expect(page.locator("[data-audit-id]")).toHaveCount(1);
+  await expect(page.locator("[data-audit-id]")).toHaveCount(high.filter((entry) => entry.badges.includes("MISSING") || entry.badges.includes("ASSET ERROR")).length);
   await page.getByLabel("Filter", { exact: true }).selectOption("Structures");
   await expect(page.locator("[data-audit-id]")).toHaveCount(STRUCTURE_PRESETS.length * 3);
   await page.getByRole("button", { name: "Show all", exact: true }).click();
@@ -90,6 +90,7 @@ test("failed original artwork remains visible as an error placeholder", async ({
   await page.route("**/plant-icons/individual/achillea.png", (route) => route.abort());
   await page.goto("/3d-audit");
   await expect(page.locator("[data-audit-id]").first()).toBeVisible({ timeout: 60_000 });
+  expect((await records(page)).filter((entry) => entry.name === "Achillea").every((entry) => entry.badges.includes("ASSET ERROR") && entry.badges.includes("TRUE 3D"))).toBeTruthy();
   await page.getByLabel("Renderer", { exact: true }).selectOption("Legacy artwork");
   await expect.poll(async () => (await records(page)).filter((entry) => entry.name === "Achillea").every((entry) => entry.badges.includes("ASSET ERROR")), { timeout: 60_000 }).toBeTruthy();
   await page.getByLabel("Filter", { exact: true }).selectOption("Missing");

@@ -51,6 +51,7 @@ type SceneRuntime = { models: AuditModel[]; scene: THREE.Scene; camera: THREE.Pe
 export function GardenAuditScene({ catalogue, options, onRecords, onStats, onSelect, onError }: { catalogue: AuditCatalogue; options: SceneOptions; onRecords: (records: AuditRecord[]) => void; onStats: (stats: SceneStats) => void; onSelect: (id: string) => void; onError: (error: string) => void }) {
   const host = useRef<HTMLDivElement>(null), runtime = useRef<SceneRuntime | null>(null);
   const callbacks = useRef({ onRecords, onStats, onSelect, onError });
+  const assetChecks = useRef(new Map<string, Promise<boolean>>());
   useEffect(() => { callbacks.current = { onRecords, onStats, onSelect, onError }; }, [onRecords, onStats, onSelect, onError]);
   useEffect(() => {
     const element = host.current!;
@@ -65,21 +66,22 @@ export function GardenAuditScene({ catalogue, options, onRecords, onStats, onSel
     scene.add(new THREE.HemisphereLight(0xffffff, 0x85968a, 2.1));
     const sun = new THREE.DirectionalLight(0xffffff, 2.5); sun.position.set(30, 65, 20); scene.add(sun);
     const controls = new OrbitControls(camera, renderer.domElement); controls.enableDamping = false; controls.maxDistance = 1000;
-    let dirty = true, raf = 0, disposed = false;
+    let dirty = true, raf = 0, disposed = false, ready = false;
     const invalidate = () => { dirty = true; };
     const labels = new Map<string, THREE.Sprite>(), zones = new Map<string, THREE.Sprite>();
     const textureSources = new Map<string, THREE.Source>();
     const mobile = options.mobile || options.lod === "Low";
-    const models = catalogue.entries.map((entry) => createAuditModel(entry, mobile, options.mode, mobile ? "Low (forced mobile)" : options.lod === "Medium" ? "Medium (High alias)" : "High", invalidate, (id) => {
+    const models = catalogue.entries.map((entry) => createAuditModel(entry, mobile, options.mode, mobile ? "Low (forced mobile)" : options.lod === "Medium" ? "Medium (High alias)" : "High", invalidate, assetFailed, textureSources));
+    function assetFailed(id: string) {
       if (disposed) return;
       const model = models.find((item) => item.record.id === id);
       if (!model || model.record.badges.includes("ASSET ERROR")) return;
       missingMarker(model.root); model.record.badges.push("ASSET ERROR"); model.record.warnings.push("FAILED ASSET: " + model.record.artwork?.src);
       const old = labels.get(id); if (old) { scene.remove(old); old.material.map?.dispose(); old.material.dispose(); }
       const label = makeLabel(model); labels.set(id, label); scene.add(label);
-      callbacks.current.onRecords(recordSnapshots(models));
+      if (ready) callbacks.current.onRecords(recordSnapshots(models));
       invalidate();
-    }, textureSources));
+    }
     identifySharedModels(models);
     const categories = [...new Set(models.map((model) => model.record.category))];
     let nextZ = 0, nextX = 0, shelfDepth = 0;
@@ -170,7 +172,29 @@ export function GardenAuditScene({ catalogue, options, onRecords, onStats, onSel
       }
       raf = requestAnimationFrame(animate);
     }
-    callbacks.current.onRecords(recordSnapshots(models)); animate();
+    const artworkSources = [...new Set(models.flatMap((model) => model.record.artwork ? [model.record.artwork.src] : []))];
+    const checks = artworkSources.map((src) => {
+      let check = assetChecks.current.get(src);
+      if (!check) {
+        check = new Promise<boolean>((resolve) => {
+          const image = new Image();
+          image.onload = () => resolve(true);
+          image.onerror = () => resolve(false);
+          image.src = src;
+        });
+        assetChecks.current.set(src, check);
+      }
+      return check.then((valid) => {
+        if (!valid && !disposed) for (const model of models) if (model.record.artwork?.src === src) assetFailed(model.record.id);
+      });
+    });
+    void Promise.all(checks).then(() => {
+      if (disposed) return;
+      ready = true;
+      callbacks.current.onRecords(recordSnapshots(models));
+      invalidate();
+    });
+    animate();
     return () => {
       disposed = true; cancelAnimationFrame(raf); observer.disconnect(); controls.dispose(); runtime.current = null;
       scene.traverse((object) => { if (object instanceof THREE.Mesh || object instanceof THREE.LineSegments) object.geometry.dispose(); if (object instanceof THREE.Mesh || object instanceof THREE.Sprite || object instanceof THREE.LineSegments) for (const material of Array.isArray(object.material) ? object.material : [object.material]) { (material as THREE.MeshStandardMaterial).map?.dispose(); material.dispose(); } });

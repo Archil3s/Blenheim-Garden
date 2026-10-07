@@ -98,3 +98,10 @@ structure variants, IDs, search, filters, inspection, screenshot mode, detail
 forcing, deterministic shared-model fingerprints, asset failure placeholders,
 and absence of all Storage method calls and `/api/` requests on the audit route.
 Run `bun run visual:test tests/visual/3d-audit.spec.ts` for all four viewports.
+
+Registered artwork is checked with native image loading on startup in every
+renderer mode. Two existing PNG files return HTTP 200 but cannot decode:
+`tomato_green_ripe.png` and `tomato_standard_orange.png`. These affect P105,
+P127, P180, P181 and P184. Each remains visible and carries ASSET ERROR; the
+original files are unchanged. Together with unsupported text, six specimens
+appear under Missing. Of 53 artwork files, 51 decode successfully.
