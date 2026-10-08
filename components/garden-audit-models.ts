@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
+import { consolidateGardenMeshes } from "./garden-mesh-optimization";
 import { auditSeed, type AuditEntry } from "@/lib/garden/audit-catalog";
 import type { PlannerPlan } from "@/lib/garden/planner-plan";
 import { createGardenPlant3D } from "./garden-plant-3d";
@@ -41,29 +41,6 @@ function measure(root: THREE.Group) {
   return { bounds, size, triangles, geometries: geometries.size, materials: materials.size, fingerprint: (hash >>> 0).toString(16) };
 }
 
-// Preserve production geometry and material appearance while reducing showroom
-// draw calls. Only compatible opaque meshes using the same material are merged.
-function consolidate(root: THREE.Group) {
-  root.updateMatrixWorld(true);
-  const groups = new Map<string, { material: THREE.Material; meshes: THREE.Mesh[] }>();
-  root.traverse((object) => {
-    if (!(object instanceof THREE.Mesh) || Array.isArray(object.material) || object.material.transparent) return;
-    const appearance = object.material.toJSON();
-    delete appearance.uuid; delete appearance.metadata;
-    const key = JSON.stringify(appearance) + Object.keys(object.geometry.attributes).sort().join("|");
-    const group = groups.get(key) ?? { material: object.material, meshes: [] as THREE.Mesh[] };
-    group.meshes.push(object); groups.set(key, group);
-  });
-  for (const group of groups.values()) {
-    if (group.meshes.length < 2) continue;
-    const copies = group.meshes.map((mesh) => (mesh.geometry.index ? mesh.geometry.toNonIndexed() : mesh.geometry.clone()).applyMatrix4(mesh.matrixWorld));
-    const geometry = mergeGeometries(copies);
-    copies.forEach((copy) => copy.dispose());
-    if (!geometry) continue;
-    group.meshes.forEach((mesh) => mesh.removeFromParent());
-    root.add(new THREE.Mesh(geometry, group.material));
-  }
-}
 
 export function createAuditModel(entry: AuditEntry, mobile: boolean, mode: AuditMode, lod: string, invalidate: () => void, assetError: (id: string) => void, textureSources: Map<string, THREE.Source>): AuditModel {
   const root = new THREE.Group(), warnings: string[] = [], badges: string[] = [];
@@ -155,7 +132,7 @@ export function createAuditModel(entry: AuditEntry, mobile: boolean, mode: Audit
     const badge = warning.split(":")[0];
     if (["DIMENSION MISMATCH", "FLOATING", "BURIED", "EXTREME SCALE"].includes(badge) && !badges.includes(badge)) badges.push(badge);
   }
-  consolidate(root);
+  consolidateGardenMeshes(root);
   return { root, bounds: measured.bounds, record: { ...entry, renderer, inferredKind, badges, warnings, bounds: [measured.size.x, measured.size.y, measured.size.z], triangles: measured.triangles, geometries: measured.geometries, materials: measured.materials, fingerprint, sharedWith: [], lod } };
 }
 

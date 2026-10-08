@@ -76,14 +76,18 @@ coop runs or renderer clamps may explain a difference. All geometry warnings are
 also shown on scene labels. Bounds remain visible through the neutral ground so
 buried geometry can be inspected.
 
-The verified registry snapshot contains 204 plant pairs (91 named pairs and 113
+The current registry snapshot contains 209 plant pairs (91 named pairs and 118
 default/alias pairs), 36 structure types at three sizes, 20 other rendered objects,
-16 V2 artwork references and one missing text renderer. The 117 crop names include
-aliases; the planner itself has 26 crop options. Production mode uses true 3D for
-all 204 plants, including 49 generic fallbacks. The 16 sprites are artwork
-references. There are 198 shared-model plant entries, 24 structure dimension
-warnings, and three mostly buried hoop-arch specimens (S046–S048). These counts
-overlap. Every plant has SIZE FALLBACK because mature-size metadata is absent.
+28 artwork references and one missing text renderer: 366 specimens. Production
+mode uses true 3D for all 209 plants, including three unspecified generic models.
+The sprites are artwork references. The repaired hoops and covers no longer
+trigger buried or dimension warnings. Three chicken-coop variants still warrant
+dimension review because of their ramps. Every plant retains SIZE FALLBACK
+because authoritative mature-size metadata is absent.
+
+See [the redesign guide](plant-structure-redesign.md) for model and icon details.
+Filtered views pack specimens together and hide zone headings for clearer
+comparisons; Show all restores the original complete arrangement.
 
 Validation exceptions inherited from the project: the phone
 `plant-art-3d.spec.ts:41` expectation for all 16 PNG responses fails on the earlier
@@ -100,8 +104,6 @@ and absence of all Storage method calls and `/api/` requests on the audit route.
 Run `bun run visual:test tests/visual/3d-audit.spec.ts` for all four viewports.
 
 Registered artwork is checked with native image loading on startup in every
-renderer mode. Two existing PNG files return HTTP 200 but cannot decode:
-`tomato_green_ripe.png` and `tomato_standard_orange.png`. These affect P105,
-P127, P180, P181 and P184. Each remains visible and carries ASSET ERROR; the
-original files are unchanged. Together with unsupported text, six specimens
-appear under Missing. Of 53 artwork files, 51 decode successfully.
+renderer mode. The two previously corrupt tomato PNGs have been replaced with
+transparent 1280-pixel illustrated icons. All 65 registered artwork files decode.
+Unsupported planner text remains the only Missing specimen.

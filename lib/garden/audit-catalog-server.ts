@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { plants } from "./plant-catalog";
 import { plantArtworkCatalogue, plantIconSprite } from "./plant-icons";
-import { PLANT_ICON_V2 } from "./plant-icon-v2";
+import { PLANT_ICON_V2, plantVariantArtworkCatalogue } from "./plant-icon-v2";
 import { STRUCTURE_PRESETS } from "./structure-catalog";
 import { LOWPOLY_PLANT_KINDS } from "@/components/garden-lowpoly-plants";
 import type { AuditCatalogue, AuditEntry } from "./audit-catalog";
@@ -24,6 +24,7 @@ export function buildAuditCatalogue(): AuditCatalogue {
   for (const plant of plants) for (const variety of plant.varieties) addPlant(plant.name, variety, "Planner crop catalogue");
   for (const entry of plantArtworkCatalogue()) addPlant(entry.crop, entry.variety, "Artwork registry");
   for (const icon of PLANT_ICON_V2) for (const keyword of icon.keywords) addPlant(keyword, "", "V2 icon registry");
+  for (const icon of plantVariantArtworkCatalogue()) addPlant(icon.crop, icon.variety, "V2 variety artwork registry");
   for (const kind of LOWPOLY_PLANT_KINDS) addPlant(kind.replaceAll("-", " "), "", "Production geometry registry");
   // Read the current resolver definitions at build time, including legacy-only
   // names such as potato. Runtime never reads a garden or a database.
@@ -68,6 +69,10 @@ export function buildAuditCatalogue(): AuditCatalogue {
   for (const icon of PLANT_ICON_V2) {
     used.add(icon.src);
     addObject({ kind: "asset", name: icon.label, category: "Artwork reference", variety: "V2 SVG", artwork: { src: icon.src, index: 0, column: 0, row: 0, columns: 1, rows: 1 }, assetExists: existsSync(join(process.cwd(), "public", icon.src)) });
+  }
+  for (const icon of plantVariantArtworkCatalogue()) {
+    used.add(icon.src);
+    addObject({ kind: "asset", name: title(icon.crop) + " · " + title(icon.variety), category: "Artwork reference", variety: "V2 variety SVG", artwork: { src: icon.src, index: 0, column: 0, row: 0, columns: 1, rows: 1 }, assetExists: existsSync(join(process.cwd(), "public", icon.src)) });
   }
   for (const asset of assets.filter((asset) => !used.has(asset)).sort()) addObject({ kind: "asset", name: asset.split("/").at(-1)!, category: "Artwork reference", variety: "Unmapped file", artwork: { src: asset, index: 0, column: 0, row: 0, columns: 1, rows: 1 }, assetExists: true });
   return { entries, assets: assets.sort(), plannerCrops: plants.length, registryCrops: new Set(ordered.map((entry) => entry.name)).size, sourceNotes: ["No authoritative mature-size registry exists: plant specimens retain production scale and show SIZE FALLBACK.", "Production has desktop and mobile detail only. Medium aliases High; Low forces mobile geometry.", "Trees have a single production visual type; fruit-tree labels do not define distinct models.", "Planner text has no renderer in the current unified 3D view and is represented by a MISSING 3D placeholder.", "Artwork aliases and legacy renderer names are included even when absent from the planner palette."] };

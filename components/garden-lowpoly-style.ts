@@ -49,6 +49,8 @@ export const LOWPOLY_COLORS = {
   glass: 0xbfe6dd,
 } as const;
 
+const leafMaterialCache = new Map<number, THREE.MeshStandardMaterial>();
+
 const materialCache = new Map<string, THREE.MeshStandardMaterial>();
 
 export function lowPolyMaterial(
@@ -132,7 +134,7 @@ export function makeCartoonLeaf(
 ) {
   const shape = new THREE.Shape();
   shape.moveTo(0, 0);
-  const samples = 8;
+  const samples = 16;
   for (let i = 1; i <= samples; i += 1) {
     const t = i / samples;
     const taper = Math.sin(Math.PI * t);
@@ -148,12 +150,32 @@ export function makeCartoonLeaf(
   }
   shape.closePath();
 
-  const mesh = enableCartoonShadow(
-    new THREE.Mesh(
-      new THREE.ShapeGeometry(shape, 1),
-      lowPolyMaterial(color, { side: THREE.DoubleSide }),
-    ),
-  );
+  const geometry = new THREE.ShapeGeometry(shape, 1).toNonIndexed();
+  const position = geometry.getAttribute("position");
+  const vertices = Array.from(position.array), colors: number[] = [];
+  const fold = (x: number, y: number) => Math.sin(Math.PI * y / length) * width * .16 * (1 - Math.min(1, Math.abs(x) / (width / 2))) + Math.sin(y / length * Math.PI * 3) * width * .025;
+  for (let i = 0; i < position.count; i += 1) {
+    const x = position.getX(i), y = position.getY(i);
+    vertices[i * 3 + 2] = fold(x, y);
+    const shade = .78 + .22 * (1 - Math.min(1, Math.abs(x) / (width / 2))) + .12 * y / length;
+    colors.push(shade, shade, shade);
+  }
+  for (let i = 0; i < 6; i += 1) {
+    const y0 = length * i / 6, y1 = length * (i + 1) / 6, w = width * .009;
+    for (const [x,y] of [[-w,y0],[w,y0],[-w,y1],[-w,y1],[w,y0],[w,y1]]) {
+      vertices.push(x,y,fold(0,y) + .001); colors.push(1.24,1.24,1.08);
+    }
+  }
+  geometry.setAttribute("position", new THREE.Float32BufferAttribute(vertices, 3));
+  geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+  geometry.setAttribute("uv", new THREE.Float32BufferAttribute(vertices.flatMap((_, i) => i % 3 === 0 ? [vertices[i] / width + .5, vertices[i + 1] / length] : []), 2));
+  geometry.computeVertexNormals();
+  let material = leafMaterialCache.get(color);
+  if (!material) {
+    material = new THREE.MeshStandardMaterial({ color, roughness: .8, side: THREE.DoubleSide, vertexColors: true });
+    leafMaterialCache.set(color, material);
+  }
+  const mesh = enableCartoonShadow(new THREE.Mesh(geometry, material));
   return mesh;
 }
 

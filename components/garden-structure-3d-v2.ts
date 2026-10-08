@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { tunnelHoopGeometry, tunnelCoverGeometry } from "./garden-tunnel-geometry";
 import type { PlannerStructure } from "@/lib/garden/planner-plan";
 import { structurePreset } from "@/lib/garden/structure-catalog";
 import { addStructure3D as addStructure3DLegacy } from "./garden-structure-3d";
@@ -136,13 +137,10 @@ function beamBetween(
 }
 
 function torusHoop(root: THREE.Object3D, width: number, height: number, z: number, color: number, detailed: boolean, tube = 0.024) {
-  const radius = width / 2;
   const hoop = new THREE.Mesh(
-    new THREE.TorusGeometry(radius, tube, detailed ? 8 : 6, detailed ? 40 : 24, Math.PI),
+    tunnelHoopGeometry(width, height, tube, detailed),
     material(color, 0.48, 0.16),
   );
-  hoop.rotation.z = Math.PI;
-  hoop.scale.y = Math.max(0.35, height / Math.max(0.1, radius));
   hoop.position.z = z;
   root.add(hoop);
   return hoop;
@@ -370,13 +368,10 @@ function addPolytunnel(root: THREE.Group, width: number, depth: number, height: 
   for (const x of [-width * 0.43, width * 0.43]) box(root, 0.03, 0.03, depth, C.metalLight, x, height * 0.34, 0, 0.48, 0.16);
 
   const cover = transparentMaterial(C.plastic, detailed ? 0.2 : 0.28, 0.32);
-  const radius = width / 2;
   const shell = new THREE.Mesh(
-    new THREE.CylinderGeometry(radius * 0.985, radius * 0.985, depth * 0.99, detailed ? 36 : 24, 1, true, 0, Math.PI),
+    tunnelCoverGeometry(width * 0.99, height * 0.99, depth * 0.99, detailed),
     cover.clone(),
   );
-  shell.rotation.x = Math.PI / 2;
-  shell.position.y = Math.min(height * 0.5, radius * 0.9);
   root.add(shell);
 
   for (const x of [-width / 2, width / 2]) {
@@ -631,10 +626,9 @@ function addGardenArch(root: THREE.Group, width: number, depth: number, height: 
 
   for (const z of [-depth / 2, depth / 2]) {
     const arch = new THREE.Mesh(
-      new THREE.TorusGeometry(width / 2, metalArch ? 0.025 : 0.04, 7, detailed ? 30 : 20, Math.PI),
+      tunnelHoopGeometry(width, height - uprightH, metalArch ? 0.025 : 0.04, detailed),
       material(postColor, metalArch ? 0.5 : 0.88, metalArch ? 0.16 : 0),
     );
-    arch.rotation.z = Math.PI;
     arch.position.set(0, uprightH, z);
     root.add(arch);
   }
@@ -684,14 +678,10 @@ function addArchTunnel(root: THREE.Group, width: number, depth: number, height: 
   for (const x of [-width * 0.43, width * 0.43]) box(root, 0.02, 0.02, depth, color, x, height * 0.34, 0, 0.5, 0.1);
 
   if (cover) {
-    const radius = width / 2;
     const shell = new THREE.Mesh(
-      new THREE.CylinderGeometry(radius * 0.99, radius * 0.99, depth * 0.98, detailed ? 28 : 18, 1, true, 0, Math.PI),
+      tunnelCoverGeometry(width * 0.99, height * 0.99, depth * 0.99, detailed),
       transparentMaterial(cover.color, cover.opacity, 0.5),
     );
-    shell.rotation.x = Math.PI / 2;
-    shell.scale.y = Math.max(0.35, height / Math.max(radius, 0.1));
-    shell.position.y = Math.min(height * 0.5, radius * 0.9);
     root.add(shell);
   }
 }

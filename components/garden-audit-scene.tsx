@@ -97,14 +97,15 @@ export function GardenAuditScene({ catalogue, options, onRecords, onStats, onSel
       title.scale.set(Math.min(columns * cellWidth, 14), 1.1, 1); title.position.set(startX + (columns - 1) * cellWidth / 2, .6, nextZ); scene.add(title);
       zone.forEach((model, index) => {
         model.root.position.set(startX + (index % columns) * cellWidth, 0, startZ + Math.floor(index / columns) * cellDepth);
-        model.root.userData.auditId = model.record.id; scene.add(model.root);
+        model.root.userData.auditId = model.record.id; model.root.userData.auditPosition = model.root.position.clone(); scene.add(model.root);
         const label = makeLabel(model); labels.set(model.record.id, label); scene.add(label);
       });
       nextX += zoneWidth + 3; shelfDepth = Math.max(shelfDepth, zoneDepth);
     }
     function makeLabel(model: AuditModel) {
       const label = labelTexture([model.record.name, model.record.variety, model.record.badges.slice(0, 2).join(" · "), model.record.badges.slice(2).join(" · "), model.record.dimensions ?? `H ${model.record.bounds[1].toFixed(2)} m · spread ${Math.max(model.record.bounds[0], model.record.bounds[2]).toFixed(2)} m`], model.record.warnings.length > 0, model.record.id, mobile);
-      label.position.copy(model.root.position); label.position.z += model.record.bounds[2] / 2 + .85; label.position.y = -.9;
+      if (model.record.kind === "plant") label.scale.set(1.6,.9,1);
+      label.position.copy(model.root.position); label.position.z += model.record.bounds[2] / 2 + .85; label.position.y = model.record.kind === "plant" ? -.55 : -.9;
       label.userData.auditId = model.record.id; return label;
     }
     nextZ += shelfDepth;
@@ -130,7 +131,7 @@ export function GardenAuditScene({ catalogue, options, onRecords, onStats, onSel
       else if (categories.includes(preset)) items = items.filter((model) => model.record.category === preset);
       if (!items.length) return;
       const box = new THREE.Box3();
-      for (const model of items) { const moved = model.bounds.clone().translate(model.root.position); box.union(moved); const label = labels.get(model.record.id); if (label) { box.expandByPoint(label.position.clone().add(new THREE.Vector3(1.5, .8, .5))); box.expandByPoint(label.position.clone().add(new THREE.Vector3(-1.5, -.8, -.5))); } }
+      for (const model of items) { const moved = model.bounds.clone().translate(model.root.position); box.union(moved); const label = labels.get(model.record.id); if (label) { box.expandByPoint(label.position.clone().add(new THREE.Vector3(label.scale.x / 2 + .1, label.scale.y / 2 + .1, .5))); box.expandByPoint(label.position.clone().add(new THREE.Vector3(-label.scale.x / 2 - .1, -label.scale.y / 2 - .1, -.5))); } }
       const center = box.getCenter(new THREE.Vector3()), size = box.getSize(new THREE.Vector3());
       const distance = Math.max(3, Math.max(size.y, size.z, size.x / camera.aspect) / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2))) * 1.2);
       const direction = preset === "Top-down" ? new THREE.Vector3(0, 1, .001) : preset === "Eye level" ? new THREE.Vector3(.1, .07, 1) : new THREE.Vector3(.25, .85, .75);
@@ -208,14 +209,23 @@ export function GardenAuditScene({ catalogue, options, onRecords, onStats, onSel
     const current = runtime.current; if (!current) return; current.options = options;
     current.helpers.traverse((object) => { if (object instanceof THREE.LineSegments) { object.geometry.dispose(); for (const material of Array.isArray(object.material) ? object.material : [object.material]) material.dispose(); } });
     current.helpers.clear();
+    const filtered = options.filter !== "All" || options.search.trim() !== "";
+    const visible = current.models.filter((model) => matchesAudit(model.record, options.filter, options.search));
+    const columns = host.current!.clientWidth < 600 ? 1 : Math.min(6, Math.ceil(Math.sqrt(visible.length * current.camera.aspect * .6)));
+    const cellWidth = Math.max(3.4, ...visible.map((model) => model.record.bounds[0] + 1.2));
+    const cellDepth = Math.max(3.5, ...visible.map((model) => model.record.bounds[2] + 2));
     for (const model of current.models) {
+      if (filtered) {
+        const index = visible.indexOf(model);
+        if (index >= 0) model.root.position.set(index % columns * cellWidth, 0, Math.floor(index / columns) * cellDepth + 2);
+      } else model.root.position.copy(model.root.userData.auditPosition);
       model.root.visible = matchesAudit(model.record, options.filter, options.search);
-      const label = current.labels.get(model.record.id); if (label) label.visible = model.root.visible;
+      const label = current.labels.get(model.record.id); if (label) { label.visible = model.root.visible; label.position.copy(model.root.position); label.position.z += model.record.bounds[2] / 2 + .85; label.position.y = model.record.kind === "plant" ? -.55 : -.9; }
       if (!model.root.visible) continue;
       if (options.bounds) { const box = new THREE.Box3Helper(model.bounds.clone().translate(model.root.position), 0x49745c); const material = box.material as THREE.LineBasicMaterial; material.depthTest = false; material.transparent = true; material.opacity = .65; current.helpers.add(box); }
       if (options.origins) { const axes = new THREE.AxesHelper(.3); axes.position.copy(model.root.position); current.helpers.add(axes); }
     }
-    for (const [category, title] of current.zones) title.visible = current.models.some((model) => model.root.visible && model.record.category === category);
+    for (const [category, title] of current.zones) title.visible = !filtered && options.camera !== "Close-up" && current.models.some((model) => model.root.visible && model.record.category === category);
     current.grid.visible = options.grid; current.invalidate(); current.frame(options.camera);
   }, [options]);
   return <div className="audit-canvas" ref={host} />;

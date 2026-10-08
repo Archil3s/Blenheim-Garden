@@ -1,4 +1,6 @@
 import * as THREE from "three";
+import { consolidateGardenMeshes } from "./garden-mesh-optimization";
+import { BOTANICAL_PLANT_KINDS, createBotanicalPlant } from "./garden-botanical-plants";
 import {
   LOWPOLY_COLORS as C,
   enableCartoonShadow,
@@ -8,7 +10,7 @@ import {
   makeCartoonStem,
 } from "@/components/garden-lowpoly-style";
 
-export const LOWPOLY_PLANT_KINDS = ["tomato","strawberry","blueberry","raspberry","pumpkin","zucchini","cucumber","melon","lettuce","spinach","chard","broccoli","cauliflower","cabbage","kale","bush-bean","climbing-bean","pea","broad-bean","carrot","beet","radish","onion","garlic","leek","corn","pepper","basil","rosemary","parsley","dill","leafy"] as const;
+export const LOWPOLY_PLANT_KINDS = ["tomato","strawberry","blueberry","raspberry","pumpkin","zucchini","cucumber","melon","lettuce","spinach","chard","broccoli","cauliflower","cabbage","kale","bush-bean","climbing-bean","pea","broad-bean","carrot","beet","radish","onion","garlic","leek","corn","pepper","basil","rosemary","parsley","dill","leafy", ...BOTANICAL_PLANT_KINDS] as const;
 export type PlantKind = typeof LOWPOLY_PLANT_KINDS[number];
 
 function seeded(seed: number) {
@@ -64,7 +66,7 @@ function fruit(
   color: number,
   position: THREE.Vector3,
   scale: [number, number, number] = [1, 1, 1],
-  detail = 1,
+  detail = 2,
 ) {
   const mesh = makeCartoonSphere(radius, color, detail, scale);
   mesh.position.copy(position);
@@ -87,6 +89,9 @@ function tomatoColor(name: string) {
   if (/purple|black|indigo/.test(name)) return C.tomatoPurple;
   if (/yellow|gold/.test(name)) return C.tomatoYellow;
   if (/orange/.test(name)) return C.tomatoOrange;
+  if (/green/.test(name)) return 0x8fa755;
+  if (/pink/.test(name)) return 0xdd8899;
+  if (/white|cream/.test(name)) return 0xf2e4ad;
   return C.tomato;
 }
 
@@ -97,18 +102,19 @@ function pepperColor(name: string) {
 }
 
 function createTomato(root: THREE.Group, name: string, mobile: boolean, rand: () => number) {
-  const height = 0.82 + rand() * 0.16;
+  const trailing = /trailing|hanging|basket/.test(name), dwarf = /dwarf|bush/.test(name);
+  const height = (trailing ? .3 : dwarf ? .45 : .82) + rand() * .08;
   branch(root, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, height, 0), 0.028);
 
   const stake = enableCartoonShadow(
     new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.016, height + 0.2, 5), lowPolyMaterial(C.woodDark)),
   );
   stake.position.set(-0.07, (height + 0.2) * 0.5, 0.02);
-  root.add(stake);
+  if (!trailing && !dwarf) root.add(stake);
 
   const leafLevels = mobile ? 3 : 5;
   for (let level = 0; level < leafLevels; level += 1) {
-    const y = 0.2 + level * (height * 0.12);
+    const y = height * .18 + level * (height * .12);
     const baseYaw = level * 2.25 + rand() * 0.35;
     for (const side of [0, Math.PI]) {
       const yaw = baseYaw + side;
@@ -121,26 +127,43 @@ function createTomato(root: THREE.Group, name: string, mobile: boolean, rand: ()
     }
   }
 
-  const cherry = /cherry|grape/.test(name);
+  const cherry = /cherry|grape/.test(name), grape = /grape/.test(name), pear = /pear/.test(name), beef = /beefsteak|krim/.test(name);
   const roma = /roma|plum|paste/.test(name);
   const color = tomatoColor(name);
   const clusters = mobile ? 1 : 2;
   for (let cluster = 0; cluster < clusters; cluster += 1) {
-    const y = 0.36 + cluster * 0.23;
+    const y = height * (.4 + cluster * .25);
     const yaw = 0.7 + cluster * 2.15;
     const tip = new THREE.Vector3(Math.cos(yaw) * 0.14, y - 0.03, Math.sin(yaw) * 0.14);
     branch(root, new THREE.Vector3(0, y, 0), tip, 0.006, C.stem);
     const count = cherry ? (mobile ? 4 : 6) : mobile ? 2 : 4;
     for (let i = 0; i < count; i += 1) {
       const a = yaw + (i - (count - 1) / 2) * 0.4;
-      const r = cherry ? 0.035 : 0.055;
-      fruit(
+      const r = cherry ? 0.03 : beef ? .085 : 0.055;
+      const tomato = fruit(
         root,
         r,
         color,
         new THREE.Vector3(tip.x + Math.cos(a) * 0.065, y - 0.07 - i * 0.01, tip.z + Math.sin(a) * 0.065),
-        roma ? [0.82, 1.28, 0.82] : [1, 1, 1],
+        roma || grape ? [0.75, 1.5, 0.75] : pear ? [.8,1.4,.8] : beef ? [1.12,.72,1.12] : [1, 1, 1],
       );
+      const positions = tomato.geometry.getAttribute("position");
+      for (let v = 0; v < positions.count; v += 1) {
+        const x = positions.getX(v), y = positions.getY(v), z = positions.getZ(v);
+        const rib = beef ? 1 + .09 * Math.cos(Math.atan2(z,x) * 8) : pear ? 1 - .45 * Math.max(0,y / r) : 1;
+        positions.setXYZ(v,x * rib,y,z * rib);
+      }
+      tomato.geometry.computeVertexNormals();
+      if (/striped|bicolour|bi colour/.test(name)) {
+        const colors: number[] = [];
+        for (let v = 0; v < positions.count; v += 1) {
+          const stripe = Math.sin(Math.atan2(positions.getZ(v),positions.getX(v)) * 9) > .25;
+          const c = new THREE.Color(stripe ? 0xf4c45b : C.tomato); colors.push(c.r,c.g,c.b);
+        }
+        tomato.geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors,3));
+        const material = (tomato.material as THREE.MeshStandardMaterial).clone(); material.color.set(0xffffff); material.vertexColors = true; tomato.material = material;
+      }
+      for (let l = 0; l < (mobile ? 3 : 5); l += 1) leaf(root,r * .7,r * .22,C.leafDark,tomato.position.clone().add(new THREE.Vector3(0,r * tomato.scale.y,0)),l * Math.PI * 2 / (mobile ? 3 : 5),1.35);
     }
   }
   if (!mobile) flower(root, new THREE.Vector3(0.08, height * 0.8, 0.03), C.flowerYellow, 0.025);
@@ -192,20 +215,21 @@ function createBerry(root: THREE.Group, kind: "blueberry" | "raspberry", mobile:
   }
 }
 
-function createRosette(root: THREE.Group, kind: "lettuce" | "spinach" | "chard", mobile: boolean, rand: () => number) {
+function createRosette(root: THREE.Group, name: string, kind: "lettuce" | "spinach" | "chard", mobile: boolean, rand: () => number) {
+  const cos = /cos|romaine/.test(name), loose = /loose|oak|red/.test(name), iceberg = /iceberg/.test(name);
   const layers = mobile ? 2 : 3;
   for (let layer = 0; layer < layers; layer += 1) {
     const count = 5 + layer * 2;
     const radius = 0.03 + layer * 0.045;
     for (let i = 0; i < count; i += 1) {
       const yaw = (i / count) * Math.PI * 2 + layer * 0.35;
-      const p = new THREE.Vector3(Math.cos(yaw) * radius, 0.025 + layer * 0.02, Math.sin(yaw) * radius);
-      const color = kind === "chard" ? C.leafBlue : i % 3 === 0 ? C.leafLight : i % 2 ? C.leaf : C.leafDark;
+      const p = new THREE.Vector3(Math.cos(yaw) * radius, 0.025 + layer * (cos ? .05 : .02), Math.sin(yaw) * radius);
+      const color = /red|purple/.test(name) ? (i % 2 ? 0x915267 : 0x6d4858) : kind === "chard" ? C.leafBlue : i % 3 === 0 ? C.leafLight : i % 2 ? C.leaf : C.leafDark;
       const width = kind === "spinach" ? 0.075 : kind === "chard" ? 0.09 : 0.12;
-      leaf(root, 0.17 + layer * 0.025, width, color, p, yaw - Math.PI / 2, 1.0 - layer * 0.12, kind === "lettuce" ? 2 : 0, 1 + rand() * 0.08);
+      leaf(root, (cos ? .32 : .17) + layer * .025, cos ? width * .7 : width, color, p, yaw - Math.PI / 2, cos ? .35 : 1.0 - layer * .12, kind === "lettuce" ? (loose ? 5 : 2) : 0, 1 + rand() * 0.08);
     }
   }
-  if (kind === "lettuce") fruit(root, 0.09, 0x8fc66d, new THREE.Vector3(0, 0.09, 0), [1.25, 0.72, 1.25], 1);
+  if (kind === "lettuce" && !loose && !cos) fruit(root, iceberg ? .12 : .09, 0x8fc66d, new THREE.Vector3(0, .12, 0), [1.1,.9,1.1], 2);
 }
 
 function createBrassica(root: THREE.Group, kind: "broccoli" | "cauliflower" | "cabbage" | "kale", mobile: boolean, rand: () => number) {
@@ -230,7 +254,7 @@ function createBrassica(root: THREE.Group, kind: "broccoli" | "cauliflower" | "c
   }
 }
 
-function createCucurbit(root: THREE.Group, kind: "pumpkin" | "zucchini" | "cucumber" | "melon", mobile: boolean, rand: () => number) {
+function createCucurbit(root: THREE.Group, name: string, kind: "pumpkin" | "zucchini" | "cucumber" | "melon", mobile: boolean, rand: () => number) {
   const vineLength = kind === "pumpkin" || kind === "melon" ? 0.5 : 0.34;
   const vineEnd = new THREE.Vector3(vineLength, 0.035, 0.06);
   branch(root, new THREE.Vector3(-vineLength * 0.45, 0.025, -0.02), vineEnd, 0.012, C.stemDark);
@@ -245,7 +269,18 @@ function createCucurbit(root: THREE.Group, kind: "pumpkin" | "zucchini" | "cucum
   for (let i = 0; i < count; i += 1) {
     const x = -0.05 + i * 0.16;
     const z = i % 2 ? 0.08 : -0.07;
-    if (kind === "pumpkin") fruit(root, 0.115, C.pumpkin, new THREE.Vector3(x, 0.07, z), [1.25, 0.78, 1.25], 1);
+    if (kind === "pumpkin") {
+      const butternut = /butternut/.test(name), gem = /gem/.test(name), green = /kabocha|buttercup|gem|kamo/.test(name), crown = /crown/.test(name);
+      const squash = fruit(root, gem ? .075 : .115, butternut ? 0xdcb47b : crown ? 0x9baaa1 : green ? 0x4e7554 : C.pumpkin, new THREE.Vector3(x,.1,z), butternut ? [.7,1.55,.7] : [1.25,.78,1.25], 2);
+      const positions = squash.geometry.getAttribute("position");
+      for (let v = 0; v < positions.count; v += 1) {
+        const px = positions.getX(v), py = positions.getY(v), pz = positions.getZ(v);
+        const ribs = butternut ? 1 - .4 * Math.max(0,py / .115) : 1 + .07 * Math.cos(Math.atan2(pz,px) * 10);
+        positions.setXYZ(v,px * ribs,py,pz * ribs);
+      }
+      squash.geometry.computeVertexNormals();
+      branch(root,new THREE.Vector3(x,.18,z),new THREE.Vector3(x + .015,.23,z),.009,C.bark);
+    }
     else if (kind === "zucchini") {
       const f = fruit(root, 0.055, C.courgette, new THREE.Vector3(x, 0.08, z), [0.75, 2.15, 0.75], 1);
       f.rotation.z = Math.PI * 0.42;
@@ -256,7 +291,7 @@ function createCucurbit(root: THREE.Group, kind: "pumpkin" | "zucchini" | "cucum
   }
 }
 
-function createBean(root: THREE.Group, kind: "bush-bean" | "climbing-bean" | "pea" | "broad-bean", mobile: boolean, rand: () => number) {
+function createBean(root: THREE.Group, name: string, kind: "bush-bean" | "climbing-bean" | "pea" | "broad-bean", mobile: boolean, rand: () => number) {
   const climbing = kind === "climbing-bean" || kind === "pea";
   const height = climbing ? 0.76 : kind === "broad-bean" ? 0.58 : 0.4;
   if (climbing) {
@@ -274,17 +309,19 @@ function createBean(root: THREE.Group, kind: "bush-bean" | "climbing-bean" | "pe
       leaf(root, 0.13, 0.075, i % 2 ? C.leaf : C.leafLight, p, yaw + (i % 2 ? 1.1 : -1.1), Math.PI * 0.42, kind === "pea" ? 0 : 1);
     }
     if (s % 2 === 0) {
-      const podColor = kind === "pea" ? C.pea : C.bean;
+      const podColor = /purple/.test(name) ? 0x74538b : kind === "pea" ? C.pea : C.bean;
       const pod = fruit(root, 0.032, podColor, tip.clone().add(new THREE.Vector3(0.02, -0.12, 0)), [0.7, 2.5, 0.7], 1);
       pod.rotation.z = 0.25;
+      if (/scarlet|runner/.test(name)) flower(root, tip.clone(), 0xd65043, .025);
     }
   }
 }
 
-function createRootCrop(root: THREE.Group, kind: "carrot" | "beet" | "radish", mobile: boolean, rand: () => number) {
-  const color = kind === "carrot" ? C.carrot : kind === "beet" ? C.beet : C.radish;
-  const shape: [number, number, number] = kind === "carrot" ? [0.78, 1.55, 0.78] : kind === "radish" ? [1, 0.9, 1] : [1.05, 0.86, 1.05];
+function createRootCrop(root: THREE.Group, name: string, kind: "carrot" | "beet" | "radish", mobile: boolean, rand: () => number) {
+  const color = kind === "carrot" ? (/purple/.test(name) ? 0x855078 : /yellow/.test(name) ? 0xe7c66a : C.carrot) : kind === "beet" ? C.beet : C.radish;
+  const shape: [number, number, number] = kind === "carrot" ? (/chantenay/.test(name) ? [1,1.15,1] : /amsterdam/.test(name) ? [.55,1.75,.55] : [.78,1.55,.78]) : kind === "radish" ? [1, 0.9, 1] : [1.05, 0.86, 1.05];
   fruit(root, kind === "carrot" ? 0.065 : 0.072, color, new THREE.Vector3(0, 0.015, 0), shape, 1);
+  if (kind === "carrot" && /rainbow/.test(name)) for (const [x,c] of [[-.05,0x8e507b],[.05,0xe6cb76]]) fruit(root,.04,c,new THREE.Vector3(x,.015,0),[.6,1.8,.6],1);
   const tops = mobile ? 5 : kind === "carrot" ? 9 : 7;
   for (let i = 0; i < tops; i += 1) {
     const yaw = (i / tops) * Math.PI * 2 + rand() * 0.15;
@@ -368,11 +405,21 @@ function createHerb(root: THREE.Group, kind: "basil" | "rosemary" | "parsley" | 
 
 export function resolveLowpolyPlantKind(crop: string, variety?: string | null): PlantKind {
   const name = `${crop} ${variety ?? ""}`.toLowerCase();
+  if (/anise hyssop/.test(name)) return "agastache";
+  const botanical = BOTANICAL_PLANT_KINDS.find((kind) => name.includes(kind.replaceAll("-", " ")));
+  if (botanical) return botanical;
+  if (/chive/.test(name)) return "chives";
+  if (/brussel/.test(name)) return "brussels-sprout";
+  if (/oregano/.test(name)) return "thyme";
+  if (/beefsteak|roma|plum|paste|^cherry |^grape /.test(name)) return "tomato";
+  if (/scarlet runner/.test(name)) return "climbing-bean";
+  if (/brassica/.test(name)) return "cabbage";
+  if (/broccaflower/.test(name)) return "cauliflower";
   if (name.includes("tomato")) return "tomato";
   if (name.includes("strawber")) return "strawberry";
   if (name.includes("blueber")) return "blueberry";
   if (name.includes("raspber")) return "raspberry";
-  if (name.includes("pumpkin") || name.includes("butternut") || name.includes("buttercup") || name.includes("kabocha") || name.includes("kamo kamo")) return "pumpkin";
+  if (name.includes("pumpkin") || name.includes("squash") || name.includes("butternut") || name.includes("buttercup") || name.includes("kabocha") || name.includes("kamo kamo")) return "pumpkin";
   if (name.includes("zucchini") || name.includes("courgette") || name.includes("scallopini")) return "zucchini";
   if (name.includes("cucumber") || name.includes("gherkin")) return "cucumber";
   if (name.includes("melon") || name.includes("watermelon")) return "melon";
@@ -412,19 +459,21 @@ export function createLowpolyPlant3D(
   const kind = resolveLowpolyPlantKind(crop, variety);
   const rand = seeded(seedValue + crop.length * 31 + (variety?.length ?? 0) * 17);
 
-  if (kind === "tomato") createTomato(root, name, mobile, rand);
+  if ((BOTANICAL_PLANT_KINDS as readonly string[]).includes(kind)) createBotanicalPlant(root, kind as typeof BOTANICAL_PLANT_KINDS[number], name, mobile);
+  else if (kind === "tomato") createTomato(root, name, mobile, rand);
   else if (kind === "strawberry") createStrawberry(root, mobile, rand);
   else if (kind === "blueberry" || kind === "raspberry") createBerry(root, kind, mobile, rand);
-  else if (kind === "pumpkin" || kind === "zucchini" || kind === "cucumber" || kind === "melon") createCucurbit(root, kind, mobile, rand);
-  else if (kind === "lettuce" || kind === "spinach" || kind === "chard") createRosette(root, kind, mobile, rand);
+  else if (kind === "pumpkin" || kind === "zucchini" || kind === "cucumber" || kind === "melon") createCucurbit(root, name, kind, mobile, rand);
+  else if (kind === "lettuce" || kind === "spinach" || kind === "chard") createRosette(root, name, kind, mobile, rand);
   else if (kind === "broccoli" || kind === "cauliflower" || kind === "cabbage" || kind === "kale") createBrassica(root, kind, mobile, rand);
-  else if (kind === "bush-bean" || kind === "climbing-bean" || kind === "pea" || kind === "broad-bean") createBean(root, kind, mobile, rand);
-  else if (kind === "carrot" || kind === "beet" || kind === "radish") createRootCrop(root, kind, mobile, rand);
+  else if (kind === "bush-bean" || kind === "climbing-bean" || kind === "pea" || kind === "broad-bean") createBean(root, name, kind, mobile, rand);
+  else if (kind === "carrot" || kind === "beet" || kind === "radish") createRootCrop(root, name, kind, mobile, rand);
   else if (kind === "onion" || kind === "garlic" || kind === "leek") createAllium(root, kind, mobile, rand);
   else if (kind === "corn") createCorn(root, mobile, rand);
   else if (kind === "pepper") createPepper(root, name, mobile, rand);
   else createHerb(root, kind === "basil" || kind === "rosemary" || kind === "parsley" || kind === "dill" ? kind : "leafy", mobile, rand);
 
+  consolidateGardenMeshes(root);
   const variation = 0.93 + rand() * 0.14;
   root.scale.setScalar(variation);
   root.rotation.y = (rand() - 0.5) * 0.22;
