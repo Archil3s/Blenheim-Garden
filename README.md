@@ -167,3 +167,5 @@ The shared 3D garden editor and compatible placement persistence are described i
 
 The upright hoop/cover fixes, crop-specific models and variety artwork are
 described in [docs/plant-structure-redesign.md](docs/plant-structure-redesign.md).
+
+The shared vegetable artwork and 3D botanical theme are described in [docs/vegetable-theme.md](docs/vegetable-theme.md).

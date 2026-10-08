@@ -1,3 +1,4 @@
+import botanicalArtwork from "./botanical-artwork.json";
 export type PlantIconSprite = {
   src: string;
   index: number;
@@ -206,14 +207,17 @@ export function plantIconSprite(crop: string, variety?: string | null): PlantIco
   const cropKey = normalise(crop);
   const varietyKey = normalise(variety);
 
+  const index = exact[`${cropKey}|${varietyKey}`] ?? cropOnly[cropKey];
+  if (index !== undefined && detailedFiles[index]) {
+    return { src: `/plant-icons/individual/${detailedFiles[index]}.png`, index, column: 0, row: 0, columns: 1, rows: 1 };
+  }
+  const botanical = (botanicalArtwork as Record<string, string>)[cropKey + "|" + varietyKey] ?? (botanicalArtwork as Record<string, string>)[cropKey + "|"];
+  if (botanical) return { src: botanical, index: 0, column: 0, row: 0, columns: 1, rows: 1 };
   const standaloneFile = inferStandalone(cropKey, varietyKey);
   if (standaloneFile && standaloneFiles.has(standaloneFile)) return standalone(standaloneFile);
 
-  const index = exact[`${cropKey}|${varietyKey}`] ?? cropOnly[cropKey];
   if (index === undefined) return null;
-  if (detailedFiles[index]) {
-    return { src: `/plant-icons/individual/${detailedFiles[index]}.png`, index, column: 0, row: 0, columns: 1, rows: 1 };
-  }
+
   return {
     src: BATCH_A_SRC,
     index,
@@ -239,5 +243,8 @@ export function plantArtworkCatalogue() {
   const pairs = new Map<string, { crop: string; variety: string }>();
   for (const key of [...Object.keys(exact), ...Object.keys(standaloneExact)]) { const [crop, variety] = key.split("|"); pairs.set(key, { crop, variety }); }
   for (const crop of [...Object.keys(cropOnly), ...Object.keys(standaloneCropOnly)]) pairs.set(crop + "|", { crop, variety: "" });
+  for (const key of Object.keys(botanicalArtwork)) {
+    const [crop, variety] = key.split("|"); pairs.set(key, { crop, variety });
+  }
   return [...pairs.values()].map((entry) => ({ ...entry, artwork: plantIconSprite(entry.crop, entry.variety) }));
 }

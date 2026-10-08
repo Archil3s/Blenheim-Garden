@@ -16,6 +16,7 @@ export function PlantArt({ crop, variety, fallback, className, style }: PlantArt
   if (vector && !sprite) {
     return (
       <span
+        data-plant-art="true"
         className={className}
         aria-hidden="true"
         title={`${crop}${variety ? ` · ${variety}` : ""}`}
@@ -38,6 +39,7 @@ export function PlantArt({ crop, variety, fallback, className, style }: PlantArt
   if (!sprite) return <span className={className} style={style} aria-hidden="true">{fallback}</span>;
   return (
     <span
+      data-plant-art="true"
       className={className}
       aria-hidden="true"
       title={`${crop}${variety ? ` · ${variety}` : ""}`}
@@ -53,3 +55,4 @@ export function PlantArt({ crop, variety, fallback, className, style }: PlantArt
     />
   );
 }
+

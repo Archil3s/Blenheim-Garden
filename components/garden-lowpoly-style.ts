@@ -49,6 +49,21 @@ export const LOWPOLY_COLORS = {
   glass: 0xbfe6dd,
 } as const;
 
+const botanicalMaterialCache = new Map<string, THREE.MeshStandardMaterial>();
+
+export function botanicalMaterial(source: THREE.MeshStandardMaterial) {
+  const key = source.uuid;
+  let material = botanicalMaterialCache.get(key);
+  if (!material) {
+    material = source.clone();
+    material.flatShading = false;
+    material.roughness = 0.64;
+    material.vertexColors = source.vertexColors;
+    botanicalMaterialCache.set(key, material);
+  }
+  return material;
+}
+
 const leafMaterialCache = new Map<number, THREE.MeshStandardMaterial>();
 
 const materialCache = new Map<string, THREE.MeshStandardMaterial>();
@@ -106,7 +121,7 @@ export function makeCartoonSphere(
   detail: number = 1,
   scale: [number, number, number] = [1, 1, 1],
 ) {
-  const geometry = new THREE.IcosahedronGeometry(radius, detail);
+  const geometry = detail === 0 ? new THREE.IcosahedronGeometry(radius, 0) : new THREE.SphereGeometry(radius, detail > 1 ? 20 : 14, detail > 1 ? 14 : 10);
   const mesh = enableCartoonShadow(new THREE.Mesh(geometry, lowPolyMaterial(color)));
   mesh.scale.set(...scale);
   return mesh;
@@ -160,10 +175,26 @@ export function makeCartoonLeaf(
     const shade = .78 + .22 * (1 - Math.min(1, Math.abs(x) / (width / 2))) + .12 * y / length;
     colors.push(shade, shade, shade);
   }
-  for (let i = 0; i < 6; i += 1) {
-    const y0 = length * i / 6, y1 = length * (i + 1) / 6, w = width * .009;
-    for (const [x,y] of [[-w,y0],[w,y0],[-w,y1],[-w,y1],[w,y0],[w,y1]]) {
-      vertices.push(x,y,fold(0,y) + .001); colors.push(1.24,1.24,1.08);
+  const ribbon = (x0: number, y0: number, x1: number, y1: number, width: number, shade: number) => {
+    const dx = x1 - x0, dy = y1 - y0;
+    const distance = Math.hypot(dx, dy);
+    if (!distance) return;
+    const nx = -dy / distance * width, ny = dx / distance * width;
+    for (const [x, y] of [[x0-nx,y0-ny],[x0+nx,y0+ny],[x1-nx,y1-ny],[x1-nx,y1-ny],[x0+nx,y0+ny],[x1+nx,y1+ny]]) {
+      vertices.push(x, y, fold(x, y) + .0015);
+      colors.push(shade, shade, shade * .83);
+    }
+  };
+  ribbon(0, .01 * length, 0, .96 * length, width * .014, 1.4);
+  for (const side of [-1, 1]) {
+    for (let i = 1; i < 6; i += 1) {
+      const t = i / 7;
+      ribbon(0, length * t, side * width * .39 * Math.sin(Math.PI * (t + .12)), length * (t + .12), width * .007, 1.22);
+    }
+    for (let i = 0; i < samples; i += 1) {
+      const edge = (t: number) => side * width * .5 * Math.sin(Math.PI * t) * (lobes > 0 ? .78 + Math.sin(t * Math.PI * lobes * 2) * .22 : 1);
+      const t0 = i / samples, t1 = (i + 1) / samples;
+      ribbon(edge(t0), length * t0, edge(t1), length * t1, width * .009, .47);
     }
   }
   geometry.setAttribute("position", new THREE.Float32BufferAttribute(vertices, 3));
