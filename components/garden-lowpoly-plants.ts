@@ -122,6 +122,14 @@ function createTomato(root: THREE.Group, name: string, mobile: boolean, rand: ()
       const tip = new THREE.Vector3(Math.cos(yaw) * 0.22, y + 0.055, Math.sin(yaw) * 0.22);
       branch(root, new THREE.Vector3(0, y, 0), tip, 0.008, C.stem);
       leaf(root, 0.2, 0.105, level % 2 ? C.leaf : C.leafDark, tip, yaw + Math.PI / 2, Math.PI * 0.42, 2, 1.05);
+      for (const attachment of (mobile ? [.55] : [.35, .6, .82])) {
+        const p = new THREE.Vector3(0, y, 0).lerp(tip, attachment);
+        for (const wing of [-1, 1]) {
+          const leafletTip = p.clone().add(new THREE.Vector3(Math.cos(yaw + wing * 1.1) * .045, .025, Math.sin(yaw + wing * 1.1) * .045));
+          branch(root, p, leafletTip, .0035, C.stem);
+          leaf(root, .11, .07, wing > 0 ? C.leafLight : C.leaf, leafletTip, yaw + wing * 1.1 + Math.PI / 2, 1.1, 2);
+        }
+      }
       if (!mobile) {
         leaf(root, 0.12, 0.065, C.leafLight, tip.clone().multiply(new THREE.Vector3(0.72, 1, 0.72)), yaw + 0.65, Math.PI * 0.42, 1, 0.9);
       }
@@ -450,6 +458,7 @@ function createHerb(root: THREE.Group, kind: "basil" | "rosemary" | "parsley" | 
 
 export function resolveLowpolyPlantKind(crop: string, variety?: string | null): PlantKind {
   const name = `${crop} ${variety ?? ""}`.toLowerCase();
+  if (/asparagus pea/.test(name)) return "bush-bean";
   if (/anise hyssop/.test(name)) return "agastache";
   const botanical = BOTANICAL_PLANT_KINDS.find((kind) => name.includes(kind.replaceAll("-", " ")));
   if (botanical) return botanical;
