@@ -19,3 +19,5 @@ The script imports the production TypeScript models into a local Playwright Chro
 The vegetable-theme browser test decodes every image and checks all planner vegetable options have detailed art. It captures 2D and 3D with a mocked garden and verifies switching views at all four existing viewports. Existing geometry, audit, realistic bed, plant-art and planner tests provide regression coverage.
 
 The legacy canvas CSS silhouettes are bypassed only for PlantArt nodes that have a real sprite or SVG. Their children have explicit percentage dimensions so font-size-zero rules cannot hide the artwork. Unknown emoji fallbacks keep their previous behavior.
+
+Fitted cameras move farther back on portrait screens. Fog limits now follow the fitted garden sphere so this distance does not wash out the botanical colours.

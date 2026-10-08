@@ -155,6 +155,10 @@ function fitGardenCamera(runtime: Runtime) {
   const direction = runtime.camera.position.clone().sub(runtime.controls.target).normalize();
   runtime.controls.maxDistance = Math.max(27, distance * 1.5);
   runtime.camera.far = Math.max(60, distance * 3);
+  if (runtime.scene.fog instanceof THREE.Fog) {
+    runtime.scene.fog.near = Math.max(23, distance + sphere.radius);
+    runtime.scene.fog.far = Math.max(40, distance + sphere.radius * 5);
+  }
   runtime.camera.position.copy(sphere.center).addScaledVector(direction, distance);
   runtime.controls.target.copy(sphere.center);
   runtime.camera.updateProjectionMatrix();

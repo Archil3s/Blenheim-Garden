@@ -55,4 +55,3 @@ export function PlantArt({ crop, variety, fallback, className, style }: PlantArt
     />
   );
 }
-
