@@ -33,6 +33,7 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
   return <>
     <div className="garden-edit-toolbar" role="toolbar" aria-label="3D garden editing">
       <Link href="/3d-models/tomato">Tomato model</Link>
+      <Link href="/3d-models">Vegetable models</Link>
       {tools.map((tool) => <button key={tool.id} type="button" disabled={disabled} aria-pressed={editor.tool === tool.id} onClick={() => { editor.setTool(tool.id); if (tool.id !== "move" && tool.id !== "select") editor.setSelection(null); }}>{tool.label}</button>)}
       <button type="button" disabled={disabled || !selection} onClick={editor.duplicate}>Duplicate</button>
       <button type="button" disabled={disabled || !selection} onClick={editor.remove}>Delete</button>

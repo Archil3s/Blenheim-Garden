@@ -19,6 +19,8 @@ import { useGarden3DEditor } from "./use-garden-3d-editor";
 import { Garden3DEditorControls } from "./garden-3d-editor-controls";
 import { installGardenEditInteractions } from "./garden-3d-edit-interactions";
 import { isTomatoCrop, loadGardenTomatoModel, tomatoModelVersion } from "./garden-tomato-model";
+import { loadGardenVegetableModel, vegetableModelVersion } from "./garden-vegetable-model";
+import { vegetableModelFor, vegetableModels } from "@/lib/garden/vegetable-model-catalog";
 
 const EMPTY_PLAN: PlannerPlan = { beds: [], plantingAreas: [], rows: [], objects: [] };
 
@@ -70,7 +72,7 @@ function mat(color: number, roughness = 0.86, metalness = 0) {
 function disposeObject(root: THREE.Object3D) {
   root.traverse((object) => {
     if (!(object instanceof THREE.Mesh)) return;
-    if (object.userData.sharedTomatoResources) return;
+    if (object.userData.sharedTomatoResources || object.userData.sharedPlantResources) return;
     object.geometry.dispose();
     const materials = Array.isArray(object.material) ? object.material : [object.material];
     for (const material of materials) {
@@ -127,8 +129,8 @@ function buildGarden(root: THREE.Group, plan: PlannerPlan, mobile: boolean) {
   };
   reconcile("decor", mobile, (holder) => { addBoundary(holder, mobile); addGardenDecor(holder, mobile); });
   for (const bed of plan.beds) reconcile("bed:" + bed.id, bed, (holder) => addRaisedBed(holder, bed, plan.plantingAreas.find((a) => a.bedId === bed.id), mobile));
-  for (const area of plan.plantingAreas) reconcile("area:" + area.id, [area, plan.beds.find((b) => b.id === area.bedId), isTomatoCrop(area.crop) ? tomatoModelVersion(mobile) : 0], (holder) => addPlantingArea(holder, plan, area, mobile));
-  for (const row of plan.rows) reconcile("row:" + row.id, [row, plan.beds, isTomatoCrop(row.crop) ? tomatoModelVersion(mobile) : 0], (holder) => addRow(holder, row, mobile, plan));
+  for (const area of plan.plantingAreas) reconcile("area:" + area.id, [area, plan.beds.find((b) => b.id === area.bedId), isTomatoCrop(area.crop) ? tomatoModelVersion(mobile) : vegetableModelVersion(area.crop, area.variety, mobile)], (holder) => addPlantingArea(holder, plan, area, mobile));
+  for (const row of plan.rows) reconcile("row:" + row.id, [row, plan.beds, isTomatoCrop(row.crop) ? tomatoModelVersion(mobile) : vegetableModelVersion(row.crop, row.variety, mobile)], (holder) => addRow(holder, row, mobile, plan));
   for (const object of plan.objects) reconcile("object:" + object.id, object, (holder) => {
     if (object.type === "path") addPath(holder, object, mobile);
     if (object.type === "trellis") addTrellis(holder, object, mobile);
@@ -180,6 +182,8 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   const [renderError, setRenderError] = useState<string | null>(null);
   const [tomatoError, setTomatoError] = useState<string | null>(null);
   const [tomatoReady, setTomatoReady] = useState(false);
+  const [vegetableError, setVegetableError] = useState<string | null>(null);
+  const [vegetableRevision, setVegetableRevision] = useState(0);
   const effectivePlan = suppliedPlan ?? loadedPlan ?? EMPTY_PLAN;
   const planRef = useRef<PlannerPlan>(effectivePlan);
   const demoRef = useRef(showDemo);
@@ -215,6 +219,37 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     });
     return () => { active = false; };
   }, [needsTomatoes, quality, rebuild]);
+
+  const vegetableIds = [...new Set([
+    ...effectivePlan.plantingAreas.map((area) => vegetableModelFor(area.crop, area.variety)),
+    ...effectivePlan.rows.map((row) => vegetableModelFor(row.crop, row.variety)),
+    editor.tool === "plant" || editor.tool === "row" ? vegetableModelFor(editor.settings.crop, editor.settings.variety) : undefined,
+    showDemo ? vegetableModelFor("Lettuce", "Butterhead") : undefined,
+  ].filter((model) => model && model.kind !== "tomato").map((model) => model!.id))].sort().join("|");
+  useEffect(() => {
+    let active = true;
+    const requested = vegetableModels.filter((model) => vegetableIds.split("|").includes(model.id));
+    const mobile = quality === "MOBILE";
+    void (async () => {
+      const failed: string[] = [], loaded: string[] = [];
+      for (let i = 0; i < requested.length; i += 4) {
+        const batch = requested.slice(i, i + 4);
+        const previouslyLoaded = batch.map((model) => vegetableModelVersion(model.crop, model.variety, mobile) === 2);
+        const results = await Promise.allSettled(batch.map((model) => loadGardenVegetableModel(model, mobile)));
+        results.forEach((result, index) => {
+          if (result.status === "fulfilled") loaded.push(batch[index].id);
+          else { failed.push(batch[index].crop); console.warn(`Vegetable model load failed: ${batch[index].id}`, result.reason); }
+        });
+        if (!active) return;
+        if (results.some((result, index) => result.status === "fulfilled" && !previouslyLoaded[index])) rebuild();
+      }
+      if (!active) return;
+      setVegetableError(failed.length ? `Detailed vegetable models could not load for ${[...new Set(failed)].join(", ")}. Basic plants are still available.` : null);
+      setVegetableRevision((revision) => revision + 1);
+      runtimeRef.current?.renderer.domElement.setAttribute("data-vegetable-models", loaded.sort().join("|"));
+    })();
+    return () => { active = false; };
+  }, [vegetableIds, quality, rebuild]);
 
   useEffect(() => {
     planRef.current = effectivePlan;
@@ -400,7 +435,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
       const helper = new THREE.BoxHelper(node, 0xffc44d); helper.material.depthTest = false; helper.renderOrder = 50;
       runtime.scene.add(helper); selectionRef.current = helper;
     });
-  }, [editor.selection, effectivePlan, tomatoReady]);
+  }, [editor.selection, effectivePlan, tomatoReady, vegetableRevision]);
 
   const setPerspective = () => {
     const runtime = runtimeRef.current;
@@ -432,6 +467,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
       <Garden3DEditorControls editor={editor} disabled={showDemo || !!renderError || (!suppliedPlan && !loadedPlan)} />
       {renderError && <div className="gv-3d-workspace-error">{renderError}</div>}
       {tomatoError && <div role="status" style={{ position: "absolute", top: 118, left: 12, right: 12, padding: 8, background: "#fff5dd", color: "#674b20", fontSize: 12 }}>{tomatoError}</div>}
+      {vegetableError && <div role="status" style={{ position: "absolute", top: tomatoError ? 168 : 118, left: 12, right: 12, padding: 8, background: "#fff5dd", color: "#674b20", fontSize: 12 }}>{vegetableError}</div>}
       <div className="gv-3d-hud gv-3d-hud-left">
         <span className="gv-3d-live-dot" />
         <strong>GARDEN SIM</strong>

@@ -6,6 +6,14 @@ _Last updated: 22 August 2026_
 
 ## Current status
 
+### Vegetable 3D model library
+
+Open `/3d-models`, or choose **Vegetable models** in the 3D garden toolbar.
+All indexed vegetables have textured plant-only GLB models, with desktop/mobile
+detail and garden integration. The library covers 29 vegetable types and 49
+catalogue entries, including all 30 indexed vegetable varieties.
+See [the model library guide](docs/vegetable-model-library.md).
+
 ### Detailed tomato model test
 
 Open `/3d-models/tomato`, or choose **Tomato model** in the 3D garden toolbar,

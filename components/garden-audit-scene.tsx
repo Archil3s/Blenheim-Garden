@@ -198,7 +198,7 @@ export function GardenAuditScene({ catalogue, options, onRecords, onStats, onSel
     animate();
     return () => {
       disposed = true; cancelAnimationFrame(raf); observer.disconnect(); controls.dispose(); runtime.current = null;
-      scene.traverse((object) => { if (object instanceof THREE.Mesh || object instanceof THREE.LineSegments) object.geometry.dispose(); if (object instanceof THREE.Mesh || object instanceof THREE.Sprite || object instanceof THREE.LineSegments) for (const material of Array.isArray(object.material) ? object.material : [object.material]) { (material as THREE.MeshStandardMaterial).map?.dispose(); material.dispose(); } });
+      scene.traverse((object) => { if (object.userData.sharedPlantResources || object.userData.sharedTomatoResources) return; if (object instanceof THREE.Mesh || object instanceof THREE.LineSegments) object.geometry.dispose(); if (object instanceof THREE.Mesh || object instanceof THREE.Sprite || object instanceof THREE.LineSegments) for (const material of Array.isArray(object.material) ? object.material : [object.material]) { (material as THREE.MeshStandardMaterial).map?.dispose(); material.dispose(); } });
       renderer.dispose(); renderer.domElement.remove();
     };
     // Model recreation is deliberately restricted to forced rendering options.

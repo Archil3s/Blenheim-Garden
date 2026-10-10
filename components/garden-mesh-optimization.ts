@@ -7,6 +7,7 @@ export function consolidateGardenMeshes(root: THREE.Group) {
   const groups = new Map<string, { material: THREE.Material; meshes: THREE.Mesh[] }>();
   root.traverse((object) => {
     if (!(object instanceof THREE.Mesh) || Array.isArray(object.material) || object.material.transparent) return;
+    if (object.userData.sharedPlantResources || object.userData.sharedTomatoResources) return;
     const appearance = object.material.toJSON();
     delete appearance.uuid; delete appearance.metadata;
     const key = JSON.stringify(appearance) + Object.keys(object.geometry.attributes).sort().join("|") + [object.castShadow, object.receiveShadow, object.visible, object.renderOrder].join(":");

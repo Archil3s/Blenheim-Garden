@@ -71,7 +71,7 @@ export function createAuditModel(entry: AuditEntry, mobile: boolean, mode: Audit
       if (!legacy) {
         const probe = createGardenPlant3D(entry.name, variety, mobile, 173 - entry.name.length * 31 - variety.length * 17);
         fingerprint = measure(probe).fingerprint;
-        probe.traverse((object) => { if (object instanceof THREE.Mesh) object.geometry.dispose(); });
+        probe.traverse((object) => { if (object instanceof THREE.Mesh && !object.userData.sharedPlantResources && !object.userData.sharedTomatoResources) object.geometry.dispose(); });
       } else fingerprint = measure(plant).fingerprint;
       if (inferredKind === "leafy" || (legacy && ["herb", "brassica"].includes(inferredKind))) {
         badges.push("GENERIC FALLBACK"); warnings.push("GENERIC FALLBACK: no dedicated crop renderer in this path.");

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vegetable models</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;font:14px system-ui,sans-serif;color:#294030;background:#e6ede6}button,select,a{font:inherit}button,select,.download{border:1px solid #b5c6b7;border-radius:8px;padding:9px 12px;background:#f8fbf6;color:#294030}button{cursor:pointer}button[aria-pressed=true]{background:#d4ebcd}a{color:#294030}header{padding:12px 16px;display:flex;align-items:end;gap:12px;flex-wrap:wrap;border-bottom:1px solid #c4d1c5;background:#edf3e9}label{display:grid;gap:4px;font-size:12px}select{max-width:245px}main{display:grid;grid-template-columns:220px minmax(0,1fr);height:calc(100dvh - var(--header-height,90px))}aside{overflow:auto;padding:12px;border-right:1px solid #c4d1c5;background:#f1f5ed}.crop-card{width:100%;margin-bottom:8px;display:flex;align-items:center;gap:8px;padding:6px;text-align:left}.crop-card img{width:52px;height:52px;object-fit:contain}.crop-card span{font-size:12px}#stage{position:relative;min-width:0;min-height:0}canvas{display:block;width:100%;height:100%;touch-action:none}#description{position:absolute;left:16px;right:16px;bottom:14px;pointer-events:none;max-width:550px;font-size:13px;line-height:1.5;padding:10px 14px;border-radius:10px;background:#f4f8eddd}#status{margin-left:auto;font-size:12px;align-self:center}#status[data-error=true]{color:#9d2727}@media(max-width:700px){header{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:10px}label{min-width:0}select{width:100%;max-width:none}.download,button{padding:8px}main{grid-template-columns:1fr}aside{display:none}#description{font-size:12px;left:10px;right:10px;bottom:10px}#status{grid-column:1/-1;margin:0}}
+  </style>
+  <script type="importmap">{"imports":{"three":"/models/tomato/vendor/three.module.js"}}</script>
+</head>
+<body>
+  <header>
+    <label>Vegetable<select id="crop" aria-label="Vegetable"></select></label>
+    <label>Variety<select id="variety" aria-label="Variety"></select></label>
+    <button id="quality" aria-pressed="false">Mobile detail</button>
+    <button id="spin" aria-pressed="false">Rotate</button>
+    <button id="reset">Reset view</button>
+    <a class="download" id="download" download>Download GLB</a>
+    <span id="status" role="status">Loading library…</span>
+  </header>
+  <main><aside aria-label="Vegetable catalogue"></aside><div id="stage"><div id="description"></div></div></main>
+  <script type="module">
+    import * as THREE from 'three';
+    import {OrbitControls} from '/models/tomato/vendor/OrbitControls.js';
+    import {GLTFLoader} from '/models/tomato/vendor/GLTFLoader.js';
+    const $=id=>document.getElementById(id), stage=$('stage'), status=$('status');
+    const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputColorSpace=THREE.SRGBColorSpace;
+    renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
+    renderer.domElement.setAttribute('aria-label','Interactive vegetable model');stage.prepend(renderer.domElement);
+    const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(35,1,.01,40);
+    const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.minDistance=.1;controls.maxDistance=12;
+    scene.add(new THREE.HemisphereLight(0xfff5e3,0x476a49,2));
+    const key=new THREE.DirectionalLight(0xfff2d8,3);key.position.set(-3,5,4);scene.add(key);
+    const fill=new THREE.DirectionalLight(0xd4e9ff,.8);fill.position.set(3,2,-3);scene.add(fill);
+    const loader=new GLTFLoader();let models=[], plant=null, selected=null, mobile=false, rotation=false, request=0;
+    const dispose=object=>{object.traverse(node=>{if(!node.isMesh)return;node.geometry.dispose();for(const m of Array.isArray(node.material)?node.material:[node.material]){m.map?.dispose();m.dispose()}});object.removeFromParent()};
+    const fit=()=>{if(!plant)return;const box=new THREE.Box3().setFromObject(plant),center=box.getCenter(new THREE.Vector3()),radius=box.getBoundingSphere(new THREE.Sphere()).radius;const fov=THREE.MathUtils.degToRad(camera.fov),angle=Math.min(fov,2*Math.atan(Math.tan(fov/2)*camera.aspect));camera.position.copy(center).addScaledVector(new THREE.Vector3(1.2,1,3).normalize(),radius/Math.sin(angle/2)*1.18);controls.target.copy(center);controls.update()};
+    const resize=()=>{document.documentElement.style.setProperty('--header-height',document.querySelector('header').offsetHeight+'px');const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h);camera.aspect=w/Math.max(1,h);camera.updateProjectionMatrix();fit()};
+    new ResizeObserver(resize).observe(stage);addEventListener('resize',resize);
+    async function show(model){
+      selected=model;const token=++request;status.textContent='Loading '+model.crop+'…';status.dataset.error='false';renderer.domElement.dataset.modelReady='false';
+      const url=mobile?model.mobile:model.desktop;
+      $('download').href=url;$('download').setAttribute('download',model.id+(mobile?'-mobile':'')+'.glb');
+      $('description').textContent=model.crop+' · '+model.variety+' — '+model.features;
+      document.querySelectorAll('.crop-card').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.crop===model.crop)));
+      try{const gltf=await loader.loadAsync(url);if(token!==request){dispose(gltf.scene);return}if(plant)dispose(plant);plant=gltf.scene;scene.add(plant);fit();status.textContent=model.crop+' ready';renderer.domElement.dataset.modelReady='true';renderer.domElement.dataset.modelId=model.id;window.vegetableLibrary.current=model.id}
+      catch(error){if(token===request){status.textContent='Model could not load. Choose it again to retry.';status.dataset.error='true';console.error(error)}}
+    }
+    function choose(crop,variety){const choices=models.filter(model=>model.crop===crop);$('crop').value=crop;$('variety').replaceChildren(...choices.map(model=>new Option(model.variety,model.id)));const model=choices.find(model=>model.variety===variety)||choices[0];$('variety').value=model.id;return show(model)}
+    $('crop').addEventListener('change',()=>choose($('crop').value));$('variety').addEventListener('change',()=>show(models.find(model=>model.id===$('variety').value)));
+    $('quality').addEventListener('click',()=>{mobile=!mobile;$('quality').setAttribute('aria-pressed',String(mobile));show(selected)});
+    $('spin').addEventListener('click',()=>{rotation=!rotation;$('spin').setAttribute('aria-pressed',String(rotation))});$('reset').addEventListener('click',()=>{if(plant)plant.rotation.y=0;fit()});
+    let previous=performance.now();renderer.setAnimationLoop(time=>{const delta=Math.min(.05,(time-previous)/1000);previous=time;if(rotation&&plant)plant.rotation.y+=delta*.35;controls.update();renderer.render(scene,camera)});
+    window.vegetableLibrary={current:null,select:choose};
+    try{
+      const response=await fetch('/models/vegetables/manifest.json');if(!response.ok)throw new Error('Catalogue unavailable');models=await response.json();window.vegetableLibrary.models=models;
+      const crops=[...new Set(models.map(model=>model.crop))];$('crop').replaceChildren(...crops.map(crop=>new Option(crop,crop)));
+      for(const crop of crops){const model=models.find(model=>model.crop===crop),button=document.createElement('button');button.className='crop-card';button.dataset.crop=crop;button.setAttribute('aria-label','View '+crop);const img=document.createElement('img');img.src=model.thumbnail;img.alt='';const label=document.createElement('span');label.textContent=crop;button.append(img,label);button.addEventListener('click',()=>choose(crop));document.querySelector('aside').append(button)}
+      const params=new URLSearchParams(location.search);await choose(crops.find(crop=>crop.toLowerCase()===params.get('crop')?.toLowerCase())||crops[0],params.get('variety'));resize();
+    }catch(error){status.textContent='Library could not load. Refresh to retry.';status.dataset.error='true';console.error(error)}
+  </script>
+</body>
+</html>

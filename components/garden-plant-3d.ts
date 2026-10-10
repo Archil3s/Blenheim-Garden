@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { createLowpolyPlant3D } from "@/components/garden-lowpoly-plants";
 import { createLoadedTomatoModel, isTomatoCrop } from "./garden-tomato-model";
+import { createLoadedVegetableModel } from "./garden-vegetable-model";
 
 /**
  * Public plant-rendering entry point used by the unified 3D garden and crop-patch
@@ -18,5 +19,7 @@ export function createGardenPlant3D(
     const tomato = createLoadedTomatoModel(mobile, seedValue);
     if (tomato) return tomato;
   }
+  const vegetable = createLoadedVegetableModel(crop, variety, mobile, seedValue);
+  if (vegetable) return vegetable;
   return createLowpolyPlant3D(crop, variety, mobile, seedValue);
 }
