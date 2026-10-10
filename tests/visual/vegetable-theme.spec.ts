@@ -50,6 +50,7 @@ test("the same vegetable theme renders in the 2D planner and interactive 3D", as
   expect(await page.locator('.planting-area-icons i:has([data-plant-art])').first().evaluate(element => getComputedStyle(element, '::before').display)).toBe('none');
   await page.screenshot({ path: testInfo.outputPath("vegetable-theme-2d.png") });
   await page.getByRole("button", { name: "3D", exact: true }).click();
+  await page.getByRole("button", { name: "Detailed 3D", exact: true }).click();
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   await expect(canvas).toBeVisible();
   await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));

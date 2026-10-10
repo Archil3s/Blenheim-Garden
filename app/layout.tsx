@@ -18,6 +18,7 @@ import "./device-layout-recovery.css";
 import "./garden-first.css";
 import "./structure-objects.css";
 import "./garden-3d-editor.css";
+import "./garden-pixel.css";
 
 export const metadata: Metadata = {
   title: "Blenheim Garden",

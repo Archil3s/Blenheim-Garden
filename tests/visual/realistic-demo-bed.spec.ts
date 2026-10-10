@@ -66,6 +66,7 @@ test("real-scale demonstration bed renders in the planner 3D view", async ({
 
   await page.goto("/");
   await page.getByRole("button", { name: "3D", exact: true }).click();
+  await page.getByRole("button", { name: "Detailed 3D", exact: true }).click();
   await page.getByRole("button", { name: "Demo bed", exact: true }).click();
 
   await expect(page.locator(".gv-3d-hud-left small")).toHaveText(

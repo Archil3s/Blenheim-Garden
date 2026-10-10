@@ -16,7 +16,7 @@ test("refined tomatoes render in beds and rows and remain editable", async ({ pa
     if (response.ok() && /tomato-(garden|mobile)\.glb/.test(response.url())) models.push(response.url());
   });
   await context.route("**/api/**", (route) => route.fulfill({ json: { ok: true, plan, gardens: [], items: [] } }));
-  await page.goto("/3d");
+  await page.goto("/3d?view=3d");
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   await expect(canvas).toHaveAttribute("data-tomato-model", "refined", { timeout: 60_000 });
   const expectedAsset = testInfo.project.name === "phone" ? "tomato-mobile.glb" : "tomato-garden.glb";
@@ -57,12 +57,13 @@ test("tomato asset failure keeps the garden usable and inline 3D loads the model
   test.setTimeout(60_000);
   await context.route("**/api/**", (route) => route.fulfill({ json: { ok: true, plan, gardens: [], items: [] } }));
   await context.route("**/models/tomato/*.glb", (route) => route.fulfill({ status: 503, body: "Temporarily unavailable" }));
-  await page.goto("/3d");
+  await page.goto("/3d?view=3d");
   await expect(page.getByRole("status").filter({ hasText: "Detailed tomato model" })).toContainText("Basic tomatoes are still available");
   await expect(page.locator('[aria-label="Interactive 3D garden workspace"] canvas')).toBeVisible();
   await expect(page.getByRole("button", { name: "Select", exact: true })).toBeEnabled();
   await context.unroute("**/models/tomato/*.glb");
   await page.goto("/");
   await page.getByRole("button", { name: "3D", exact: true }).click();
+  await page.getByRole("button", { name: "Detailed 3D", exact: true }).click();
   await expect(page.locator('[aria-label="Interactive 3D garden workspace"] canvas')).toHaveAttribute("data-tomato-model", "refined", { timeout: 30_000 });
 });

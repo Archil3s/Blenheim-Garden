@@ -123,7 +123,7 @@ test("all indexed vegetables render in garden beds and rows with mobile assets",
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("response", (response) => { if (response.ok() && /\/models\/vegetables\/.*\.glb/.test(response.url())) models.push(response.url()); });
   await context.route("**/api/**", (route) => route.fulfill({ json: { ok: true, plan, gardens: [], items: [] } }));
-  await page.goto("/3d");
+  await page.goto("/3d?view=3d");
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   const expected = [...new Set([...plan.plantingAreas, ...plan.rows].filter((area) => area.crop !== "Tomato").map((area) => vegetableModelFor(area.crop, area.variety)!.id))].sort().join("|");
   await expect(canvas).toHaveAttribute("data-vegetable-models", expected, { timeout: 60_000 });
@@ -140,6 +140,7 @@ test("all indexed vegetables render in garden beds and rows with mobile assets",
   await page.getByRole("button", { name: "Select", exact: true }).click();
   await page.goto("/");
   await page.getByRole("button", { name: "3D", exact: true }).click();
+  await page.getByRole("button", { name: "Detailed 3D", exact: true }).click();
   await expect(page.locator('[aria-label="Interactive 3D garden workspace"] canvas')).toHaveAttribute("data-vegetable-models", expected, { timeout: 60_000 });
   expect(errors).toEqual([]);
 });
@@ -147,7 +148,7 @@ test("all indexed vegetables render in garden beds and rows with mobile assets",
 test("failed vegetable assets preserve editing and can recover", async ({ page, context }) => {
   await context.route("**/api/**", (route) => route.fulfill({ json: { ok: true, plan, gardens: [], items: [] } }));
   await context.route("**/models/vegetables/*.glb", (route) => route.fulfill({ status: 503, body: "Unavailable" }));
-  await page.goto("/3d");
+  await page.goto("/3d?view=3d");
   await expect(page.getByRole("status").filter({ hasText: "Detailed vegetable models" })).toContainText("Basic plants are still available", { timeout: 30_000 });
   await expect(page.getByRole("button", { name: "Select", exact: true })).toBeEnabled();
   await context.unroute("**/models/vegetables/*.glb");

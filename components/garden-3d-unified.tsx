@@ -21,6 +21,7 @@ import { installGardenEditInteractions } from "./garden-3d-edit-interactions";
 import { isTomatoCrop, loadGardenTomatoModel, tomatoModelVersion } from "./garden-tomato-model";
 import { loadGardenVegetableModel, vegetableModelVersion } from "./garden-vegetable-model";
 import { vegetableModelFor, vegetableModels } from "@/lib/garden/vegetable-model-catalog";
+import { GardenPixelCanvas } from "./garden-pixel-canvas";
 
 const EMPTY_PLAN: PlannerPlan = { beds: [], plantingAreas: [], rows: [], objects: [] };
 
@@ -177,6 +178,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   const [loadedPlan, setLoadedPlan] = useState<PlannerPlan | null>(suppliedPlan ?? null);
   const [gardenId] = useState(() => typeof window === "undefined" ? DEFAULT_GARDEN_ID : new URL(window.location.href).searchParams.get("gardenId")?.trim() || readActiveGardenId());
   const [showDemo, setShowDemo] = useState(false);
+  const [gardenStyle, setGardenStyle] = useState<"pixel" | "3d">(() => typeof window !== "undefined" && new URL(window.location.href).searchParams.get("view") === "3d" ? "3d" : "pixel");
   const [cameraView, setCameraView] = useState<"perspective" | "top">("perspective");
   const [quality] = useState(() => typeof window !== "undefined" && !window.matchMedia("(min-width: 841px)").matches ? "MOBILE" : "HIGH");
   const [renderError, setRenderError] = useState<string | null>(null);
@@ -205,7 +207,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
 
   const needsTomatoes = showDemo || effectivePlan.plantingAreas.some((area) => isTomatoCrop(area.crop)) || effectivePlan.rows.some((row) => isTomatoCrop(row.crop)) || (editor.tool === "plant" && isTomatoCrop(editor.settings.crop));
   useEffect(() => {
-    if (!needsTomatoes) return;
+    if (gardenStyle !== "3d" || !needsTomatoes) return;
     let active = true;
     const mobile = quality === "MOBILE";
     void loadGardenTomatoModel(mobile).then(() => {
@@ -218,7 +220,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
       if (active) setTomatoError(`Detailed tomato model could not load: ${error instanceof Error ? error.message : String(error)}. Basic tomatoes are still available.`);
     });
     return () => { active = false; };
-  }, [needsTomatoes, quality, rebuild]);
+  }, [needsTomatoes, quality, rebuild, gardenStyle]);
 
   const vegetableIds = [...new Set([
     ...effectivePlan.plantingAreas.map((area) => vegetableModelFor(area.crop, area.variety)),
@@ -227,6 +229,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     showDemo ? vegetableModelFor("Lettuce", "Butterhead") : undefined,
   ].filter((model) => model && model.kind !== "tomato").map((model) => model!.id))].sort().join("|");
   useEffect(() => {
+    if (gardenStyle !== "3d") return;
     let active = true;
     const requested = vegetableModels.filter((model) => vegetableIds.split("|").includes(model.id));
     const mobile = quality === "MOBILE";
@@ -249,7 +252,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
       runtimeRef.current?.renderer.domElement.setAttribute("data-vegetable-models", loaded.sort().join("|"));
     })();
     return () => { active = false; };
-  }, [vegetableIds, quality, rebuild]);
+  }, [vegetableIds, quality, rebuild, gardenStyle]);
 
   useEffect(() => {
     planRef.current = effectivePlan;
@@ -299,6 +302,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   }, [gardenId, suppliedPlan]);
 
   useEffect(() => {
+    if (gardenStyle !== "3d") return;
     const mount = mountRef.current;
     if (!mount) return;
     const mobile = !window.matchMedia("(min-width: 841px)").matches;
@@ -418,7 +422,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
       runtimeRef.current = null;
       if (renderer.domElement.parentNode === mount) mount.removeChild(renderer.domElement);
     };
-  }, []);
+  }, [gardenStyle]);
 
   useEffect(() => { runtimeRef.current?.cancelEditing?.(); }, [editor.tool, showDemo]);
 
@@ -435,7 +439,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
       const helper = new THREE.BoxHelper(node, 0xffc44d); helper.material.depthTest = false; helper.renderOrder = 50;
       runtime.scene.add(helper); selectionRef.current = helper;
     });
-  }, [editor.selection, effectivePlan, tomatoReady, vegetableRevision]);
+  }, [editor.selection, effectivePlan, tomatoReady, vegetableRevision, gardenStyle]);
 
   const setPerspective = () => {
     const runtime = runtimeRef.current;
@@ -462,31 +466,35 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   };
 
   return (
-    <div className="gv-3d-workspace gv-3d-realistic gv-3d-editor" data-demo={showDemo} aria-label="Visual 3D garden canvas" data-testid="inline-3d-workspace" style={{ position: "relative", width: "100%", height: "100%", minHeight: suppliedPlan ? 520 : "100dvh", overflow: "hidden" }}>
-      <div className="gv-3d-workspace-canvas" ref={mountRef} aria-label="Interactive 3D garden workspace" style={{ position: "absolute", inset: 0 }} />
-      <Garden3DEditorControls editor={editor} disabled={showDemo || !!renderError || (!suppliedPlan && !loadedPlan)} />
-      {renderError && <div className="gv-3d-workspace-error">{renderError}</div>}
-      {tomatoError && <div role="status" style={{ position: "absolute", top: 118, left: 12, right: 12, padding: 8, background: "#fff5dd", color: "#674b20", fontSize: 12 }}>{tomatoError}</div>}
-      {vegetableError && <div role="status" style={{ position: "absolute", top: tomatoError ? 168 : 118, left: 12, right: 12, padding: 8, background: "#fff5dd", color: "#674b20", fontSize: 12 }}>{vegetableError}</div>}
+    <div className={`gv-3d-workspace gv-3d-editor ${gardenStyle === "pixel" ? "garden-pixel-workspace" : "gv-3d-realistic"}`} data-demo={showDemo} data-render-style={gardenStyle} aria-label={gardenStyle === "pixel" ? "Visual pixel garden canvas" : "Visual 3D garden canvas"} data-testid="inline-3d-workspace" style={{ position: "relative", width: "100%", height: "100%", minHeight: suppliedPlan ? 520 : "100dvh", overflow: "hidden" }}>
+      {gardenStyle === "pixel" ? <GardenPixelCanvas plan={effectivePlan} editor={editor} disabled={!suppliedPlan && !loadedPlan} /> : <div className="gv-3d-workspace-canvas" ref={mountRef} aria-label="Interactive 3D garden workspace" style={{ position: "absolute", inset: 0 }} />}
+      <Garden3DEditorControls editor={editor} disabled={gardenStyle === "3d" && (showDemo || !!renderError) || (!suppliedPlan && !loadedPlan)} />
+      {gardenStyle === "3d" && renderError && <div className="gv-3d-workspace-error">{renderError}</div>}
+      {gardenStyle === "3d" && tomatoError && <div role="status" style={{ position: "absolute", top: 118, left: 12, right: 12, padding: 8, background: "#fff5dd", color: "#674b20", fontSize: 12 }}>{tomatoError}</div>}
+      {gardenStyle === "3d" && vegetableError && <div role="status" style={{ position: "absolute", top: tomatoError ? 168 : 118, left: 12, right: 12, padding: 8, background: "#fff5dd", color: "#674b20", fontSize: 12 }}>{vegetableError}</div>}
+      <div className="garden-render-style" role="group" aria-label="Garden appearance">
+        <button type="button" aria-pressed={gardenStyle === "pixel"} onClick={() => { setShowDemo(false); setGardenStyle("pixel"); }}>Pixel garden</button>
+        <button type="button" aria-pressed={gardenStyle === "3d"} onClick={() => setGardenStyle("3d")}>Detailed 3D</button>
+      </div>
       <div className="gv-3d-hud gv-3d-hud-left">
         <span className="gv-3d-live-dot" />
-        <strong>GARDEN SIM</strong>
+        <strong>{gardenStyle === "pixel" ? "PIXEL GARDEN" : "GARDEN SIM"}</strong>
         <small>{showDemo ? "2 × 4 m benchmark" : `${effectivePlan.beds.length} beds · ${structureCount} structures`}</small>
       </div>
-      <div className="gv-3d-hud gv-3d-camera-controls" aria-label="3D camera controls">
+      {gardenStyle === "3d" && <div className="gv-3d-hud gv-3d-camera-controls" aria-label="3D camera controls">
         <button type="button" className={cameraView === "perspective" ? "active" : ""} aria-pressed={cameraView === "perspective"} onClick={setPerspective}>Perspective</button>
         <button type="button" className={cameraView === "top" ? "active" : ""} aria-pressed={cameraView === "top"} onClick={setTop}>Top</button>
         <button type="button" onClick={() => { if (runtimeRef.current) fitGardenCamera(runtimeRef.current); }}>{suppliedPlan ? "Fit" : "Fit garden"}</button>
         <button type="button" className={showDemo ? "active" : ""} aria-pressed={showDemo} onClick={() => setShowDemo((value) => !value)}>Demo bed</button>
         <span>{quality}</span>
-      </div>
+      </div>}
       <div className="gv-3d-selection-card" aria-live="polite">
         <span>{inspector === DEFAULT_INSPECTOR ? "EXPLORE" : "SELECTED"}</span>
         <strong>{inspector.title}</strong>
         {inspector.subtitle && <small>{inspector.subtitle}</small>}
         {inspector.lines.slice(0, 3).map((line) => <div key={`${line.label}-${line.value}`}><b>{line.label}</b><em>{line.value}</em></div>)}
       </div>
-      <div className="gv-3d-help">Drag empty ground to orbit · Move to drag objects · tap to place/select</div>
+      {gardenStyle === "3d" && <div className="gv-3d-help">Drag empty ground to orbit · Move to drag objects · tap to place/select</div>}
     </div>
   );
 }

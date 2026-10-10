@@ -2,9 +2,19 @@
 
 A visual home-garden planner for Blenheim, Marlborough.
 
-_Last updated: 22 August 2026_
+_Last updated: 11 October 2026_
 
 ## Current status
+
+### Pixel garden
+
+The live `/3d` garden and inline garden now open with 48 detailed original plant
+sprites, layered trees, a timber shed and greenhouse, tiled soil, wooden beds
+and fences. Drag to pan; scroll,
+pinch or use the zoom buttons to inspect plants. The same editor retains exact
+centimetre-based placements, 10 cm snap, undo/redo, named gardens and protected
+cloud Save. **Detailed 3D** switches to the existing textured models; use
+`/3d?view=3d` to open that view directly. See [the pixel garden guide](docs/pixel-garden.md).
 
 ### Vegetable 3D model library
 

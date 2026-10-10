@@ -182,7 +182,7 @@ test("save reports local-only, failure, in-flight and successful states", async 
 });
 
 test("live 3D renders and returns to the planner", async ({ page }, testInfo) => {
-  await page.goto("/3d");
+  await page.goto("/3d?view=3d");
   await expect(page.locator('[aria-label="Visual 3D garden canvas"] canvas')).toBeVisible();
   await expect(page.getByText("WebGL could not start", { exact: false })).toHaveCount(0);
   await capture(page, testInfo, "3d");

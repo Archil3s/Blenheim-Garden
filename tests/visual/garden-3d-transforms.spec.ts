@@ -20,7 +20,7 @@ test("dragging, resizing, rotation and bidirectional live edits", async ({ conte
   page.on("pageerror", (e) => errors.push(e.message));
   await context.route("**/api/**", (route) => route.fulfill({ json: { ok: true, plan: fixture, gardens: [{ id: "blenheim-garden", name: "Test garden", year: 2026 }], beds: [], items: [], notes: [], harvests: [] } }));
   await page.addInitScript(({ key, fixture }) => localStorage.setItem(key, JSON.stringify(fixture)), { key, fixture });
-  await page.goto("/3d");
+  await page.goto("/3d?view=3d");
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   await expect(canvas).toBeVisible();
   await expect(page.locator(".gv-3d-hud-left")).toContainText("1 beds · 1 structures");
