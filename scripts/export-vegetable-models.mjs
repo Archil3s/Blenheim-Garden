@@ -5,6 +5,8 @@ import { chromium } from "@playwright/test";
 
 const root = path.resolve(import.meta.dirname, "..");
 const output = path.join(root, "public/models/vegetables");
+const requestedCrop = process.argv.find(arg => arg.startsWith("--crop="))?.slice(7);
+const mobileOnly = process.argv.includes("--mobile");
 fs.mkdirSync(output, { recursive: true });
 const browser = await chromium.launch();
 try {
@@ -56,11 +58,15 @@ try {
         if ((Array.isArray(object.material) ? object.material : [object.material]).some(m => m.map)) textured++;
         const positions = object.geometry.getAttribute("position").array;
         if (!Array.from(positions).every(Number.isFinite)) throw new Error("Nonfinite vertices: " + model.id);
+        const colors = object.geometry.getAttribute("color");
+        if (model.kind !== "tomato" && colors) for (let i = 0; i < colors.count; i++) {
+          if ([colors.getX(i), colors.getY(i), colors.getZ(i)].some(value => !Number.isFinite(value) || value < 0 || value > 1)) throw new Error("Invalid vertex colour: " + model.id);
+        }
       });
       if (box.isEmpty() || box.min.y < -.0001 || !triangles || !textured) throw new Error("Invalid plant: " + model.id);
       let encoded = null;
       if (model.kind !== "tomato") {
-        const binary = await exporter.parseAsync(plant, { binary: true, maxTextureSize: 256 });
+        const binary = await exporter.parseAsync(plant, { binary: true, maxTextureSize: mobile ? 256 : 512 });
         const bytes = new Uint8Array(binary);
         let string = ""; for (let i = 0; i < bytes.length; i += 16384) string += String.fromCharCode(...bytes.subarray(i, i + 16384));
         encoded = btoa(string);
@@ -71,15 +77,21 @@ try {
       scene.add(plant); renderer.render(scene, camera);
       const thumbnail = renderer.domElement.toDataURL("image/webp", .94);
       scene.remove(plant);
-      plant.traverse(object => { if (object.isMesh) object.geometry.dispose(); });
+      const materials = new Set();
+      plant.traverse(object => { if (object.isMesh) { object.geometry.dispose(); for (const material of Array.isArray(object.material) ? object.material : [object.material]) materials.add(material); } });
+      for (const material of materials) material.dispose();
       return { encoded, thumbnail, triangles, meshes, textured, dimensions: [size.x, size.y, size.z] };
     };
     return vegetableModels;
   });
+  if (requestedCrop && !catalog.some(model => model.crop.toLowerCase() === requestedCrop.toLowerCase())) throw new Error("Unknown crop: " + requestedCrop);
+  const previous = requestedCrop || mobileOnly ? JSON.parse(fs.readFileSync(path.join(output, "manifest.json"), "utf8")) : [];
   const manifest = [];
-  for (const model of catalog) {
-    const stats = {};
-    for (const mobile of [false, true]) {
+  for (const model of catalog.filter(model => !requestedCrop || model.crop.toLowerCase() === requestedCrop.toLowerCase())) {
+    const saved = previous.find(entry => entry.id === model.id);
+    if (mobileOnly && !saved) throw new Error("Run a complete export before --mobile");
+    const stats = mobileOnly ? { ...saved.stats } : {};
+    for (const mobile of mobileOnly ? [true] : [false, true]) {
       const result = await page.evaluate(({ model, mobile }) => window.exportVegetable(model, mobile), { model, mobile });
       const url = mobile ? model.mobile : model.desktop;
       if (result.encoded) fs.writeFileSync(path.join(root, "public", url), Buffer.from(result.encoded, "base64"));
@@ -89,8 +101,13 @@ try {
     manifest.push({ ...model, thumbnail: `/models/vegetables/${model.id}.webp`, stats });
     console.log(model.id + " · " + stats.desktop.triangles + "/" + stats.mobile.triangles + " triangles");
   }
-  fs.writeFileSync(path.join(output, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
-  console.log(`Exported ${manifest.length} models covering ${new Set(manifest.map(m => m.crop)).size} vegetable types.`);
+  const complete = catalog.map(model => {
+    const entry = manifest.find(entry => entry.id === model.id) ?? previous.find(entry => entry.id === model.id);
+    if (!entry) throw new Error("Missing export: " + model.id + "; run a full export first");
+    return { ...entry, ...model };
+  });
+  fs.writeFileSync(path.join(output, "manifest.json"), JSON.stringify(complete, null, 2) + "\n");
+  console.log(`Exported ${manifest.length} models; catalogue covers ${complete.length} entries and ${new Set(complete.map(m => m.crop)).size} crop types.`);
 } finally {
   await browser.close();
 }

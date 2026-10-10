@@ -151,26 +151,26 @@
     "thumbnail": "/models/vegetables/bean-king-purple.webp",
     "stats": {
       "desktop": {
-        "triangles": 46476,
+        "triangles": 86364,
         "meshes": 6,
         "textured": 4,
         "dimensions": [
-          0.5543390512466431,
-          0.5702837742865086,
-          0.5159609019756317
+          0.6137318313121796,
+          0.5336552746593952,
+          0.563781350851059
         ],
-        "bytes": 1334548
+        "bytes": 3153036
       },
       "mobile": {
-        "triangles": 3872,
+        "triangles": 11424,
         "meshes": 6,
         "textured": 4,
         "dimensions": [
-          0.4901212155818939,
-          0.5002180188894272,
-          0.4621347188949585
+          0.5559234619140625,
+          0.48507769958814606,
+          0.5294556617736816
         ],
-        "bytes": 270068
+        "bytes": 587832
       }
     }
   },
@@ -186,26 +186,26 @@
     "thumbnail": "/models/vegetables/bean-superstar.webp",
     "stats": {
       "desktop": {
-        "triangles": 46476,
+        "triangles": 86364,
         "meshes": 6,
         "textured": 4,
         "dimensions": [
-          0.5543390512466431,
-          0.5702837742865086,
-          0.5159609019756317
+          0.6137318313121796,
+          0.5336552746593952,
+          0.563781350851059
         ],
-        "bytes": 1334540
+        "bytes": 3153028
       },
       "mobile": {
-        "triangles": 3872,
+        "triangles": 11424,
         "meshes": 6,
         "textured": 4,
         "dimensions": [
-          0.4901212155818939,
-          0.5002180188894272,
-          0.4621347188949585
+          0.5559234619140625,
+          0.48507769958814606,
+          0.5294556617736816
         ],
-        "bytes": 270064
+        "bytes": 587824
       }
     }
   },
@@ -221,26 +221,26 @@
     "thumbnail": "/models/vegetables/bean-scarlet-runner.webp",
     "stats": {
       "desktop": {
-        "triangles": 51372,
+        "triangles": 93708,
         "meshes": 7,
         "textured": 4,
         "dimensions": [
-          0.5543390512466431,
-          1.1806643810414243,
-          0.5159609019756317
+          0.6126067340373993,
+          1.1804674086160958,
+          0.5624063014984131
         ],
-        "bytes": 1459208
+        "bytes": 3332700
       },
       "mobile": {
-        "triangles": 5504,
+        "triangles": 13872,
         "meshes": 7,
         "textured": 4,
         "dimensions": [
-          0.49953755736351013,
-          1.1807125581544824,
-          0.4621347188949585
+          0.564665675163269,
+          1.1804480216524098,
+          0.5323172807693481
         ],
-        "bytes": 314656
+        "bytes": 650760
       }
     }
   },
@@ -256,26 +256,26 @@
     "thumbnail": "/models/vegetables/bean-climbing-bean.webp",
     "stats": {
       "desktop": {
-        "triangles": 51372,
+        "triangles": 93708,
         "meshes": 7,
         "textured": 4,
         "dimensions": [
-          0.5543390512466431,
-          1.1806643810414243,
-          0.5159609019756317
+          0.6126067340373993,
+          1.1804674086160958,
+          0.5624063014984131
         ],
-        "bytes": 1459200
+        "bytes": 3332692
       },
       "mobile": {
-        "triangles": 5504,
+        "triangles": 13872,
         "meshes": 7,
         "textured": 4,
         "dimensions": [
-          0.49953755736351013,
-          1.1807125581544824,
-          0.4621347188949585
+          0.564665675163269,
+          1.1804480216524098,
+          0.5323172807693481
         ],
-        "bytes": 314648
+        "bytes": 650752
       }
     }
   },
@@ -284,33 +284,33 @@
     "crop": "Lettuce",
     "variety": "Butterhead",
     "kind": "lettuce",
-    "features": "Layered folded leaves with distinct head and loose-leaf forms",
+    "features": "Softly curved, finely veined leaves with distinct head and loose-leaf forms",
     "desktop": "/models/vegetables/lettuce-butterhead.glb",
     "mobile": "/models/vegetables/lettuce-butterhead-mobile.glb",
     "plantingDepth": 0,
     "thumbnail": "/models/vegetables/lettuce-butterhead.webp",
     "stats": {
       "desktop": {
-        "triangles": 20160,
-        "meshes": 3,
-        "textured": 3,
+        "triangles": 46080,
+        "meshes": 4,
+        "textured": 4,
         "dimensions": [
-          0.4193801134824753,
-          0.20935787819325924,
-          0.4297840744256973
+          0.38848501443862915,
+          0.18237932585179806,
+          0.35890209674835205
         ],
-        "bytes": 598812
+        "bytes": 1885684
       },
       "mobile": {
-        "triangles": 2160,
-        "meshes": 3,
-        "textured": 3,
+        "triangles": 8640,
+        "meshes": 4,
+        "textured": 4,
         "dimensions": [
-          0.40328966081142426,
-          0.20657922886312008,
-          0.41730955243110657
+          0.3728627860546112,
+          0.18063577078282833,
+          0.33784689009189606
         ],
-        "bytes": 168688
+        "bytes": 421996
       }
     }
   },
@@ -319,33 +319,33 @@
     "crop": "Lettuce",
     "variety": "Cos",
     "kind": "lettuce",
-    "features": "Layered folded leaves with distinct head and loose-leaf forms",
+    "features": "Softly curved, finely veined leaves with distinct head and loose-leaf forms",
     "desktop": "/models/vegetables/lettuce-cos.glb",
     "mobile": "/models/vegetables/lettuce-cos-mobile.glb",
     "plantingDepth": 0,
     "thumbnail": "/models/vegetables/lettuce-cos.webp",
     "stats": {
       "desktop": {
-        "triangles": 12960,
+        "triangles": 25920,
         "meshes": 2,
         "textured": 2,
         "dimensions": [
-          0.40796051919460297,
-          0.2420888002961874,
-          0.4456512928009033
+          0.4775145351886749,
+          0.19353035651147366,
+          0.45174942910671234
         ],
-        "bytes": 422328
+        "bytes": 1358692
       },
       "mobile": {
-        "triangles": 1360,
+        "triangles": 4896,
         "meshes": 2,
         "textured": 2,
         "dimensions": [
-          0.38626326620578766,
-          0.24166536889970303,
-          0.4319640249013901
+          0.46526195108890533,
+          0.1930964943021536,
+          0.4280971586704254
         ],
-        "bytes": 145020
+        "bytes": 314564
       }
     }
   },
@@ -354,33 +354,33 @@
     "crop": "Lettuce",
     "variety": "Loose leaf",
     "kind": "lettuce",
-    "features": "Layered folded leaves with distinct head and loose-leaf forms",
+    "features": "Softly curved, finely veined leaves with distinct head and loose-leaf forms",
     "desktop": "/models/vegetables/lettuce-loose-leaf.glb",
     "mobile": "/models/vegetables/lettuce-loose-leaf-mobile.glb",
     "plantingDepth": 0,
     "thumbnail": "/models/vegetables/lettuce-loose-leaf.webp",
     "stats": {
       "desktop": {
-        "triangles": 19440,
+        "triangles": 25920,
         "meshes": 2,
         "textured": 2,
         "dimensions": [
-          0.3650216907262802,
-          0.19392267800867558,
-          0.3969459980726242
+          0.39625874161720276,
+          0.18309183977544308,
+          0.3738265037536621
         ],
-        "bytes": 575312
+        "bytes": 1358744
       },
       "mobile": {
-        "triangles": 1904,
+        "triangles": 4896,
         "meshes": 2,
         "textured": 2,
         "dimensions": [
-          0.34850339591503143,
-          0.19221598096191883,
-          0.37989576160907745
+          0.3830861300230026,
+          0.18196125887334347,
+          0.3484985828399658
         ],
-        "bytes": 159224
+        "bytes": 314612
       }
     }
   },
@@ -389,33 +389,33 @@
     "crop": "Lettuce",
     "variety": "Iceberg",
     "kind": "lettuce",
-    "features": "Layered folded leaves with distinct head and loose-leaf forms",
+    "features": "Softly curved, finely veined leaves with distinct head and loose-leaf forms",
     "desktop": "/models/vegetables/lettuce-iceberg.glb",
     "mobile": "/models/vegetables/lettuce-iceberg-mobile.glb",
     "plantingDepth": 0,
     "thumbnail": "/models/vegetables/lettuce-iceberg.webp",
     "stats": {
       "desktop": {
-        "triangles": 20160,
-        "meshes": 3,
-        "textured": 3,
+        "triangles": 40320,
+        "meshes": 4,
+        "textured": 4,
         "dimensions": [
-          0.4193801134824753,
-          0.20935787819325924,
-          0.4297840744256973
+          0.33206377923488617,
+          0.21208680234849453,
+          0.30227531492710114
         ],
-        "bytes": 598804
+        "bytes": 1735988
       },
       "mobile": {
-        "triangles": 2160,
-        "meshes": 3,
-        "textured": 3,
+        "triangles": 7776,
+        "meshes": 4,
+        "textured": 4,
         "dimensions": [
-          0.40328966081142426,
-          0.20657922886312008,
-          0.41730955243110657
+          0.32656151056289673,
+          0.21208680234849453,
+          0.2888925224542618
         ],
-        "bytes": 168680
+        "bytes": 397900
       }
     }
   },
@@ -431,26 +431,26 @@
     "thumbnail": "/models/vegetables/pumpkin-crown.webp",
     "stats": {
       "desktop": {
-        "triangles": 21204,
+        "triangles": 44292,
         "meshes": 8,
         "textured": 5,
         "dimensions": [
-          1.088556945323944,
-          0.31235066801309586,
-          0.9951373040676117
+          1.131492018699646,
+          0.26113844150677323,
+          1.1497742533683777
         ],
-        "bytes": 698208
+        "bytes": 2023704
       },
       "mobile": {
-        "triangles": 3736,
+        "triangles": 8752,
         "meshes": 8,
         "textured": 5,
         "dimensions": [
-          0.9415735006332397,
-          0.2956802621483803,
-          0.9155732691287994
+          0.9642748534679413,
+          0.24451777152717113,
+          0.9132924377918243
         ],
-        "bytes": 264908
+        "bytes": 506024
       }
     }
   },
@@ -466,26 +466,26 @@
     "thumbnail": "/models/vegetables/pumpkin-butternut.webp",
     "stats": {
       "desktop": {
-        "triangles": 22764,
+        "triangles": 49260,
         "meshes": 8,
         "textured": 5,
         "dimensions": [
-          1.088556945323944,
-          0.3830312117934227,
-          0.9951373040676117
+          1.131492018699646,
+          0.3785850927233696,
+          1.1497742533683777
         ],
-        "bytes": 737636
+        "bytes": 2142128
       },
       "mobile": {
-        "triangles": 3976,
+        "triangles": 9632,
         "meshes": 8,
         "textured": 5,
         "dimensions": [
-          0.9415735006332397,
-          0.37923871725797653,
-          0.9155732691287994
+          0.9642748534679413,
+          0.37857481092214584,
+          0.9132924377918243
         ],
-        "bytes": 271860
+        "bytes": 528660
       }
     }
   },
@@ -501,26 +501,26 @@
     "thumbnail": "/models/vegetables/pumpkin-gem-squash.webp",
     "stats": {
       "desktop": {
-        "triangles": 21204,
+        "triangles": 44292,
         "meshes": 8,
         "textured": 5,
         "dimensions": [
-          1.088556945323944,
-          0.31235066801309586,
-          0.9951373040676117
+          1.131492018699646,
+          0.26113844150677323,
+          1.1497742533683777
         ],
-        "bytes": 698224
+        "bytes": 2023724
       },
       "mobile": {
-        "triangles": 3736,
+        "triangles": 8752,
         "meshes": 8,
         "textured": 5,
         "dimensions": [
-          0.9415735006332397,
-          0.2956802621483803,
-          0.9155732691287994
+          0.9642748534679413,
+          0.24451777152717113,
+          0.9132924377918243
         ],
-        "bytes": 264920
+        "bytes": 506040
       }
     }
   },
@@ -536,26 +536,26 @@
     "thumbnail": "/models/vegetables/pumpkin-kabocha.webp",
     "stats": {
       "desktop": {
-        "triangles": 21204,
+        "triangles": 44292,
         "meshes": 8,
         "textured": 5,
         "dimensions": [
-          1.088556945323944,
-          0.31235066801309586,
-          0.9951373040676117
+          1.131492018699646,
+          0.26113844150677323,
+          1.1497742533683777
         ],
-        "bytes": 698212
+        "bytes": 2023712
       },
       "mobile": {
-        "triangles": 3736,
+        "triangles": 8752,
         "meshes": 8,
         "textured": 5,
         "dimensions": [
-          0.9415735006332397,
-          0.2956802621483803,
-          0.9155732691287994
+          0.9642748534679413,
+          0.24451777152717113,
+          0.9132924377918243
         ],
-        "bytes": 264916
+        "bytes": 506028
       }
     }
   },
@@ -571,26 +571,26 @@
     "thumbnail": "/models/vegetables/carrot-nantes.webp",
     "stats": {
       "desktop": {
-        "triangles": 21324,
+        "triangles": 19052,
         "meshes": 5,
         "textured": 3,
         "dimensions": [
-          0.2816062569618225,
-          0.45287379203364253,
-          0.27853088080883026
+          0.2793831080198288,
+          0.45138464064802974,
+          0.2762127220630646
         ],
-        "bytes": 729456
+        "bytes": 1438800
       },
       "mobile": {
-        "triangles": 1416,
+        "triangles": 4936,
         "meshes": 5,
         "textured": 3,
         "dimensions": [
-          0.2821227163076401,
-          0.4528801643755287,
-          0.2550012990832329
+          0.2792131006717682,
+          0.4514412429416552,
+          0.25203217566013336
         ],
-        "bytes": 198936
+        "bytes": 406924
       }
     }
   },
@@ -606,26 +606,26 @@
     "thumbnail": "/models/vegetables/carrot-chantenay.webp",
     "stats": {
       "desktop": {
-        "triangles": 21324,
+        "triangles": 19052,
         "meshes": 5,
         "textured": 3,
         "dimensions": [
-          0.2816062569618225,
-          0.3828737991861999,
-          0.27853088080883026
+          0.2793831080198288,
+          0.3813846478005871,
+          0.2762127220630646
         ],
-        "bytes": 729464
+        "bytes": 1438808
       },
       "mobile": {
-        "triangles": 1416,
+        "triangles": 4936,
         "meshes": 5,
         "textured": 3,
         "dimensions": [
-          0.2821227163076401,
-          0.38288017152808607,
-          0.2550012990832329
+          0.2792131006717682,
+          0.3814412500942126,
+          0.25203217566013336
         ],
-        "bytes": 198944
+        "bytes": 406928
       }
     }
   },
@@ -641,26 +641,26 @@
     "thumbnail": "/models/vegetables/carrot-amsterdam.webp",
     "stats": {
       "desktop": {
-        "triangles": 21324,
+        "triangles": 19052,
         "meshes": 5,
         "textured": 3,
         "dimensions": [
-          0.2816062569618225,
-          0.45287379203364253,
-          0.27853088080883026
+          0.2793831080198288,
+          0.45138464064802974,
+          0.2762127220630646
         ],
-        "bytes": 729468
+        "bytes": 1438812
       },
       "mobile": {
-        "triangles": 1416,
+        "triangles": 4936,
         "meshes": 5,
         "textured": 3,
         "dimensions": [
-          0.2821227163076401,
-          0.4528801643755287,
-          0.2550012990832329
+          0.2792131006717682,
+          0.4514412429416552,
+          0.25203217566013336
         ],
-        "bytes": 198944
+        "bytes": 406932
       }
     }
   },
@@ -676,26 +676,26 @@
     "thumbnail": "/models/vegetables/carrot-rainbow.webp",
     "stats": {
       "desktop": {
-        "triangles": 21324,
+        "triangles": 19052,
         "meshes": 5,
         "textured": 3,
         "dimensions": [
-          0.2816062569618225,
-          0.45287379203364253,
-          0.27853088080883026
+          0.2793831080198288,
+          0.45138464064802974,
+          0.2762127220630646
         ],
-        "bytes": 729460
+        "bytes": 1438804
       },
       "mobile": {
-        "triangles": 1416,
+        "triangles": 4936,
         "meshes": 5,
         "textured": 3,
         "dimensions": [
-          0.2821227163076401,
-          0.4528801643755287,
-          0.2550012990832329
+          0.2792131006717682,
+          0.4514412429416552,
+          0.25203217566013336
         ],
-        "bytes": 198940
+        "bytes": 406924
       }
     }
   },
@@ -711,26 +711,26 @@
     "thumbnail": "/models/vegetables/broccoli-winter-rudolph.webp",
     "stats": {
       "desktop": {
-        "triangles": 105872,
+        "triangles": 121664,
         "meshes": 5,
         "textured": 4,
         "dimensions": [
-          0.44884537160396576,
-          0.46630001068115234,
-          0.4483506679534912
+          0.4342171847820282,
+          0.46718090772628784,
+          0.42895835638046265
         ],
-        "bytes": 3154488
+        "bytes": 4447036
       },
       "mobile": {
-        "triangles": 7608,
+        "triangles": 20264,
         "meshes": 5,
         "textured": 4,
         "dimensions": [
-          0.4418000280857086,
-          0.46779999136924744,
-          0.4483506679534912
+          0.4342171847820282,
+          0.4676603376865387,
+          0.42895835638046265
         ],
-        "bytes": 407420
+        "bytes": 909080
       }
     }
   },
@@ -746,26 +746,26 @@
     "thumbnail": "/models/vegetables/broccoli-green-dragon.webp",
     "stats": {
       "desktop": {
-        "triangles": 105872,
+        "triangles": 121664,
         "meshes": 5,
         "textured": 4,
         "dimensions": [
-          0.44884537160396576,
-          0.46630001068115234,
-          0.4483506679534912
+          0.4342171847820282,
+          0.46718090772628784,
+          0.42895835638046265
         ],
-        "bytes": 3154484
+        "bytes": 4447028
       },
       "mobile": {
-        "triangles": 7608,
+        "triangles": 20264,
         "meshes": 5,
         "textured": 4,
         "dimensions": [
-          0.4418000280857086,
-          0.46779999136924744,
-          0.4483506679534912
+          0.4342171847820282,
+          0.4676603376865387,
+          0.42895835638046265
         ],
-        "bytes": 407416
+        "bytes": 909076
       }
     }
   },
@@ -781,26 +781,166 @@
     "thumbnail": "/models/vegetables/broccoli-calabrese.webp",
     "stats": {
       "desktop": {
-        "triangles": 105872,
+        "triangles": 121664,
         "meshes": 5,
         "textured": 4,
         "dimensions": [
-          0.44884537160396576,
-          0.46630001068115234,
-          0.4483506679534912
+          0.4342171847820282,
+          0.46718090772628784,
+          0.42895835638046265
         ],
-        "bytes": 3154476
+        "bytes": 4447020
       },
       "mobile": {
-        "triangles": 7608,
+        "triangles": 20264,
         "meshes": 5,
         "textured": 4,
         "dimensions": [
-          0.4418000280857086,
-          0.46779999136924744,
-          0.4483506679534912
+          0.4342171847820282,
+          0.4676603376865387,
+          0.42895835638046265
         ],
-        "bytes": 407404
+        "bytes": 909068
+      }
+    }
+  },
+  {
+    "id": "raspberry-heritage",
+    "crop": "Raspberry",
+    "variety": "Heritage",
+    "kind": "raspberry",
+    "features": "Arching canes, serrated compound leaves, leafy calyces and individually modelled drupelets",
+    "desktop": "/models/vegetables/raspberry-heritage.glb",
+    "mobile": "/models/vegetables/raspberry-heritage-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/raspberry-heritage.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 202932,
+        "meshes": 12,
+        "textured": 6,
+        "dimensions": [
+          0.45000340044498444,
+          0.8807640447485028,
+          0.45366494357585907
+        ],
+        "bytes": 6713000
+      },
+      "mobile": {
+        "triangles": 52344,
+        "meshes": 10,
+        "textured": 6,
+        "dimensions": [
+          0.5133862942457199,
+          0.8806811277172528,
+          0.5505126118659973
+        ],
+        "bytes": 1960584
+      }
+    }
+  },
+  {
+    "id": "raspberry-aspiring",
+    "crop": "Raspberry",
+    "variety": "Aspiring",
+    "kind": "raspberry",
+    "features": "Arching canes, serrated compound leaves, leafy calyces and individually modelled drupelets",
+    "desktop": "/models/vegetables/raspberry-aspiring.glb",
+    "mobile": "/models/vegetables/raspberry-aspiring-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/raspberry-aspiring.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 202932,
+        "meshes": 12,
+        "textured": 6,
+        "dimensions": [
+          0.45000340044498444,
+          0.8807640447485028,
+          0.45366494357585907
+        ],
+        "bytes": 6713000
+      },
+      "mobile": {
+        "triangles": 52344,
+        "meshes": 10,
+        "textured": 6,
+        "dimensions": [
+          0.5133862942457199,
+          0.8806811277172528,
+          0.5505126118659973
+        ],
+        "bytes": 1960584
+      }
+    }
+  },
+  {
+    "id": "raspberry-waiau",
+    "crop": "Raspberry",
+    "variety": "Waiau",
+    "kind": "raspberry",
+    "features": "Arching canes, serrated compound leaves, leafy calyces and individually modelled drupelets",
+    "desktop": "/models/vegetables/raspberry-waiau.glb",
+    "mobile": "/models/vegetables/raspberry-waiau-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/raspberry-waiau.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 202932,
+        "meshes": 12,
+        "textured": 6,
+        "dimensions": [
+          0.45000340044498444,
+          0.8807640447485028,
+          0.45366494357585907
+        ],
+        "bytes": 6712988
+      },
+      "mobile": {
+        "triangles": 52344,
+        "meshes": 10,
+        "textured": 6,
+        "dimensions": [
+          0.5133862942457199,
+          0.8806811277172528,
+          0.5505126118659973
+        ],
+        "bytes": 1960576
+      }
+    }
+  },
+  {
+    "id": "raspberry-unknown-cane",
+    "crop": "Raspberry",
+    "variety": "Unknown cane",
+    "kind": "raspberry",
+    "features": "Arching canes, serrated compound leaves, leafy calyces and individually modelled drupelets",
+    "desktop": "/models/vegetables/raspberry-unknown-cane.glb",
+    "mobile": "/models/vegetables/raspberry-unknown-cane-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/raspberry-unknown-cane.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 202932,
+        "meshes": 12,
+        "textured": 6,
+        "dimensions": [
+          0.45000340044498444,
+          0.8807640447485028,
+          0.45366494357585907
+        ],
+        "bytes": 6713012
+      },
+      "mobile": {
+        "triangles": 52344,
+        "meshes": 10,
+        "textured": 6,
+        "dimensions": [
+          0.5133862942457199,
+          0.8806811277172528,
+          0.5505126118659973
+        ],
+        "bytes": 1960596
       }
     }
   },
@@ -816,26 +956,26 @@
     "thumbnail": "/models/vegetables/amaranth-garnet-red.webp",
     "stats": {
       "desktop": {
-        "triangles": 31584,
+        "triangles": 36944,
         "meshes": 4,
         "textured": 3,
         "dimensions": [
-          0.3145328611135483,
-          0.9386766298557632,
-          0.3257163316011429
+          0.30384567379951477,
+          0.9386715219297912,
+          0.2963187098503113
         ],
-        "bytes": 1018304
+        "bytes": 1916700
       },
       "mobile": {
-        "triangles": 4128,
+        "triangles": 7764,
         "meshes": 4,
         "textured": 3,
         "dimensions": [
-          0.3145328611135483,
-          0.9304541774909012,
-          0.3257163316011429
+          0.2979656159877777,
+          0.9303861339722062,
+          0.2849327474832535
         ],
-        "bytes": 288800
+        "bytes": 499944
       }
     }
   },
@@ -851,26 +991,26 @@
     "thumbnail": "/models/vegetables/amaranth-green-red.webp",
     "stats": {
       "desktop": {
-        "triangles": 31584,
+        "triangles": 36944,
         "meshes": 4,
         "textured": 3,
         "dimensions": [
-          0.3145328611135483,
-          0.9386766298557632,
-          0.3257163316011429
+          0.30384567379951477,
+          0.9386715219297912,
+          0.2963187098503113
         ],
-        "bytes": 1018300
+        "bytes": 1916696
       },
       "mobile": {
-        "triangles": 4128,
+        "triangles": 7764,
         "meshes": 4,
         "textured": 3,
         "dimensions": [
-          0.3145328611135483,
-          0.9304541774909012,
-          0.3257163316011429
+          0.2979656159877777,
+          0.9303861339722062,
+          0.2849327474832535
         ],
-        "bytes": 288796
+        "bytes": 499940
       }
     }
   },
@@ -886,26 +1026,26 @@
     "thumbnail": "/models/vegetables/artichoke-green-globe.webp",
     "stats": {
       "desktop": {
-        "triangles": 69332,
+        "triangles": 118068,
         "meshes": 5,
         "textured": 4,
         "dimensions": [
-          0.8260643482208252,
-          0.7709943056106567,
-          0.8272190392017365
+          0.7555005848407745,
+          0.757114827632904,
+          0.756895124912262
         ],
-        "bytes": 1850612
+        "bytes": 4022456
       },
       "mobile": {
-        "triangles": 8312,
+        "triangles": 30768,
         "meshes": 5,
         "textured": 4,
         "dimensions": [
-          0.8152065575122833,
-          0.7709915637969971,
-          0.8272190392017365
+          0.7555005848407745,
+          0.757114827632904,
+          0.7487572729587555
         ],
-        "bytes": 389036
+        "bytes": 1146532
       }
     }
   },
@@ -921,26 +1061,26 @@
     "thumbnail": "/models/vegetables/asparagus-mary-washington.webp",
     "stats": {
       "desktop": {
-        "triangles": 46500,
-        "meshes": 4,
-        "textured": 4,
+        "triangles": 52704,
+        "meshes": 6,
+        "textured": 6,
         "dimensions": [
-          0.17815348505973816,
-          0.5824999916553502,
-          0.16731981933116913
+          0.14631516486406326,
+          0.5543842532206327,
+          0.15167593210935593
         ],
-        "bytes": 1471868
+        "bytes": 2417468
       },
       "mobile": {
-        "triangles": 4500,
-        "meshes": 4,
-        "textured": 4,
+        "triangles": 22540,
+        "meshes": 6,
+        "textured": 6,
         "dimensions": [
-          0.13436582311987877,
-          0.5824999916553502,
-          0.13553128391504288
+          0.14577054232358932,
+          0.5543900020420551,
+          0.1421327404677868
         ],
-        "bytes": 310592
+        "bytes": 951616
       }
     }
   },
@@ -956,26 +1096,26 @@
     "thumbnail": "/models/vegetables/asparagus-pacific-challenger-f1.webp",
     "stats": {
       "desktop": {
-        "triangles": 46500,
-        "meshes": 4,
-        "textured": 4,
+        "triangles": 52704,
+        "meshes": 6,
+        "textured": 6,
         "dimensions": [
-          0.17815348505973816,
-          0.5824999916553502,
-          0.16731981933116913
+          0.14631516486406326,
+          0.5543842532206327,
+          0.15167593210935593
         ],
-        "bytes": 1471884
+        "bytes": 2417488
       },
       "mobile": {
-        "triangles": 4500,
-        "meshes": 4,
-        "textured": 4,
+        "triangles": 22540,
+        "meshes": 6,
+        "textured": 6,
         "dimensions": [
-          0.13436582311987877,
-          0.5824999916553502,
-          0.13553128391504288
+          0.14577054232358932,
+          0.5543900020420551,
+          0.1421327404677868
         ],
-        "bytes": 310612
+        "bytes": 951636
       }
     }
   },
@@ -991,26 +1131,26 @@
     "thumbnail": "/models/vegetables/asparagus-pacific-purple.webp",
     "stats": {
       "desktop": {
-        "triangles": 46500,
-        "meshes": 4,
-        "textured": 4,
+        "triangles": 52704,
+        "meshes": 6,
+        "textured": 6,
         "dimensions": [
-          0.17815348505973816,
-          0.5824999916553502,
-          0.16731981933116913
+          0.14631516486406326,
+          0.5543842532206327,
+          0.15167593210935593
         ],
-        "bytes": 1471864
+        "bytes": 2417468
       },
       "mobile": {
-        "triangles": 4500,
-        "meshes": 4,
-        "textured": 4,
+        "triangles": 22540,
+        "meshes": 6,
+        "textured": 6,
         "dimensions": [
-          0.13436582311987877,
-          0.5824999916553502,
-          0.13553128391504288
+          0.14577054232358932,
+          0.5543900020420551,
+          0.1421327404677868
         ],
-        "bytes": 310592
+        "bytes": 951616
       }
     }
   },
@@ -1026,26 +1166,26 @@
     "thumbnail": "/models/vegetables/asparagus-pea-asparagus-pea.webp",
     "stats": {
       "desktop": {
-        "triangles": 60300,
+        "triangles": 101724,
         "meshes": 7,
         "textured": 5,
         "dimensions": [
-          0.47836361825466156,
-          0.37245249934494495,
-          0.44164344668388367
+          0.5262450724840164,
+          0.3552649673074484,
+          0.47677427530288696
         ],
-        "bytes": 1701800
+        "bytes": 3600972
       },
       "mobile": {
-        "triangles": 5664,
+        "triangles": 16032,
         "meshes": 7,
         "textured": 5,
         "dimensions": [
-          0.4114913195371628,
-          0.3231872678734362,
-          0.37635162472724915
+          0.47009849548339844,
+          0.3303327093599364,
+          0.44166214764118195
         ],
-        "bytes": 320132
+        "bytes": 717836
       }
     }
   },
@@ -1061,26 +1201,26 @@
     "thumbnail": "/models/vegetables/zucchini-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 20952,
+        "triangles": 43320,
         "meshes": 7,
         "textured": 5,
         "dimensions": [
-          0.7745022475719452,
-          0.347597636282444,
-          0.7127954959869385
+          0.8319153785705566,
+          0.2847093353047967,
+          0.8401041030883789
         ],
-        "bytes": 690240
+        "bytes": 1998512
       },
       "mobile": {
-        "triangles": 3672,
+        "triangles": 8512,
         "meshes": 7,
         "textured": 5,
         "dimensions": [
-          0.652442455291748,
-          0.33089737221598625,
-          0.5161437690258026
+          0.6963200867176056,
+          0.26826813258230686,
+          0.6648025214672089
         ],
-        "bytes": 261796
+        "bytes": 498532
       }
     }
   },
@@ -1096,26 +1236,26 @@
     "thumbnail": "/models/vegetables/cucumber-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 27432,
+        "triangles": 46776,
         "meshes": 8,
         "textured": 6,
         "dimensions": [
-          1.088556945323944,
-          1.0416685370728374,
-          0.9951373040676117
+          1.133756697177887,
+          0.986500654136762,
+          1.149688184261322
         ],
-        "bytes": 878948
+        "bytes": 2110384
       },
       "mobile": {
-        "triangles": 4320,
+        "triangles": 9160,
         "meshes": 8,
         "textured": 6,
         "dimensions": [
-          0.9415735006332397,
-          0.9270690525881946,
-          0.9155732691287994
+          0.96730837225914,
+          0.9264530588407069,
+          0.9132924377918243
         ],
-        "bytes": 285888
+        "bytes": 522680
       }
     }
   },
@@ -1131,26 +1271,26 @@
     "thumbnail": "/models/vegetables/melon-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 21204,
+        "triangles": 44292,
         "meshes": 8,
         "textured": 5,
         "dimensions": [
-          1.0860137343406677,
-          0.31235066801309586,
-          0.991280198097229
+          1.12216717004776,
+          0.2611394547857344,
+          1.1420202255249023
         ],
-        "bytes": 766688
+        "bytes": 2410536
       },
       "mobile": {
-        "triangles": 3736,
+        "triangles": 8752,
         "meshes": 8,
         "textured": 5,
         "dimensions": [
-          0.9415735006332397,
-          0.2956802621483803,
-          0.9155732691287994
+          0.9642748534679413,
+          0.24451777152717113,
+          0.9132924377918243
         ],
-        "bytes": 333376
+        "bytes": 651296
       }
     }
   },
@@ -1166,26 +1306,26 @@
     "thumbnail": "/models/vegetables/spinach-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 12960,
+        "triangles": 25920,
         "meshes": 2,
         "textured": 2,
         "dimensions": [
-          0.30704884231090546,
-          0.16765310429036617,
-          0.3312237858772278
+          0.335177406668663,
+          0.16381110809743404,
+          0.3164267987012863
         ],
-        "bytes": 422372
+        "bytes": 1358740
       },
       "mobile": {
-        "triangles": 1360,
+        "triangles": 4896,
         "meshes": 2,
         "textured": 2,
         "dimensions": [
-          0.292805477976799,
-          0.1667181309312582,
-          0.31701526045799255
+          0.32420022785663605,
+          0.16261476837098598,
+          0.29532019793987274
         ],
-        "bytes": 145072
+        "bytes": 314608
       }
     }
   },
@@ -1201,26 +1341,26 @@
     "thumbnail": "/models/vegetables/chard-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 9588,
+        "triangles": 21828,
         "meshes": 3,
         "textured": 1,
         "dimensions": [
-          0.3813965916633606,
-          0.5205410479102284,
-          0.40128080546855927
+          0.4872281104326248,
+          0.4701798101887107,
+          0.5005419254302979
         ],
-        "bytes": 345688
+        "bytes": 1246528
       },
       "mobile": {
-        "triangles": 1408,
+        "triangles": 4488,
         "meshes": 3,
         "textured": 1,
         "dimensions": [
-          0.3611112982034683,
-          0.5205420998390764,
-          0.39900535345077515
+          0.48602294921875,
+          0.4701388059183955,
+          0.48665034770965576
         ],
-        "bytes": 148204
+        "bytes": 302312
       }
     }
   },
@@ -1236,26 +1376,26 @@
     "thumbnail": "/models/vegetables/cauliflower-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 105872,
+        "triangles": 121664,
         "meshes": 5,
         "textured": 4,
         "dimensions": [
-          0.44884537160396576,
-          0.46630001068115234,
-          0.4483506679534912
+          0.4342171847820282,
+          0.46718090772628784,
+          0.42895835638046265
         ],
-        "bytes": 3154472
+        "bytes": 4447016
       },
       "mobile": {
-        "triangles": 7608,
+        "triangles": 20264,
         "meshes": 5,
         "textured": 4,
         "dimensions": [
-          0.4418000280857086,
-          0.46779999136924744,
-          0.4483506679534912
+          0.4342171847820282,
+          0.4676603376865387,
+          0.42895835638046265
         ],
-        "bytes": 407400
+        "bytes": 909064
       }
     }
   },
@@ -1271,26 +1411,26 @@
     "thumbnail": "/models/vegetables/cabbage-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 20160,
+        "triangles": 40320,
         "meshes": 3,
         "textured": 3,
         "dimensions": [
-          0.4496326297521591,
-          0.22365826927125454,
-          0.4773428291082382
+          0.46161796152591705,
+          0.2676855670288205,
+          0.422713041305542
         ],
-        "bytes": 598808
+        "bytes": 1734480
       },
       "mobile": {
-        "triangles": 2160,
+        "triangles": 7776,
         "meshes": 3,
         "textured": 3,
         "dimensions": [
-          0.41916337609291077,
-          0.21754262410104275,
-          0.46486830711364746
+          0.4567278176546097,
+          0.2676855670288205,
+          0.4034670889377594
         ],
-        "bytes": 168672
+        "bytes": 396396
       }
     }
   },
@@ -1306,26 +1446,26 @@
     "thumbnail": "/models/vegetables/kale-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 15924,
+        "triangles": 29892,
         "meshes": 3,
         "textured": 2,
         "dimensions": [
-          0.4360388517379761,
-          0.742809033516096,
-          0.467661514878273
+          0.4295523911714554,
+          0.6953042958921287,
+          0.41007743775844574
         ],
-        "bytes": 492008
+        "bytes": 1458620
       },
       "mobile": {
-        "triangles": 1504,
+        "triangles": 3864,
         "meshes": 3,
         "textured": 2,
         "dimensions": [
-          0.4360388517379761,
-          0.6809541329275817,
-          0.467661514878273
+          0.41329343616962433,
+          0.6985766933939885,
+          0.37846870720386505
         ],
-        "bytes": 149460
+        "bytes": 286844
       }
     }
   },
@@ -1341,26 +1481,26 @@
     "thumbnail": "/models/vegetables/broad-bean-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 63756,
+        "triangles": 117468,
         "meshes": 7,
         "textured": 5,
         "dimensions": [
-          0.5163140296936035,
-          0.740148460958153,
-          0.4768603593111038
+          0.5770584344863892,
+          0.7215219180798158,
+          0.5274030417203903
         ],
-        "bytes": 1782800
+        "bytes": 3978072
       },
       "mobile": {
-        "triangles": 5248,
+        "triangles": 15328,
         "meshes": 7,
         "textured": 5,
         "dimensions": [
-          0.45162270963191986,
-          0.7223218659637496,
-          0.4238828420639038
+          0.5199708789587021,
+          0.7214598177233711,
+          0.49358992278575897
         ],
-        "bytes": 314064
+        "bytes": 702168
       }
     }
   },
@@ -1376,26 +1516,26 @@
     "thumbnail": "/models/vegetables/pea-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 68652,
+        "triangles": 119820,
         "meshes": 8,
         "textured": 5,
         "dimensions": [
-          0.5550039708614349,
-          1.1806643810414243,
-          0.5159609019756317
+          0.6152901947498322,
+          1.1804674086160958,
+          0.5636404156684875
         ],
-        "bytes": 1907408
+        "bytes": 4031024
       },
       "mobile": {
-        "triangles": 6880,
+        "triangles": 17328,
         "meshes": 8,
         "textured": 5,
         "dimensions": [
-          0.5007044970989227,
-          1.1807125581544824,
-          0.4621347188949585
+          0.5652916133403778,
+          1.1804480216524098,
+          0.5323172807693481
         ],
-        "bytes": 358604
+        "bytes": 752632
       }
     }
   },
@@ -1411,26 +1551,26 @@
     "thumbnail": "/models/vegetables/beet-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 8980,
+        "triangles": 20916,
         "meshes": 3,
         "textured": 2,
         "dimensions": [
-          0.3309117406606674,
-          0.3649644339084625,
-          0.33305755257606506
+          0.4116500914096832,
+          0.311151065826416,
+          0.4069455564022064
         ],
-        "bytes": 373176
+        "bytes": 1426416
       },
       "mobile": {
-        "triangles": 1128,
+        "triangles": 4112,
         "meshes": 3,
         "textured": 2,
         "dimensions": [
-          0.31967729330062866,
-          0.3649644339084625,
-          0.33305755257606506
+          0.4116500914096832,
+          0.30786643266677854,
+          0.4069455564022064
         ],
-        "bytes": 182972
+        "bytes": 373788
       }
     }
   },
@@ -1446,26 +1586,26 @@
     "thumbnail": "/models/vegetables/radish-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 13100,
+        "triangles": 22572,
         "meshes": 4,
         "textured": 3,
         "dimensions": [
-          0.20933499187231064,
-          0.30839879825711247,
-          0.20029660314321518
+          0.26964354515075684,
+          0.27904604390263554,
+          0.2665586322546005
         ],
-        "bytes": 472508
+        "bytes": 1467192
       },
       "mobile": {
-        "triangles": 1536,
+        "triangles": 4552,
         "meshes": 4,
         "textured": 3,
         "dimensions": [
-          0.1998821571469307,
-          0.30839879825711247,
-          0.20014597475528717
+          0.26964354515075684,
+          0.2773099990189075,
+          0.2665586322546005
         ],
-        "bytes": 195224
+        "bytes": 386384
       }
     }
   },
@@ -1481,26 +1621,26 @@
     "thumbnail": "/models/vegetables/onion-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 1696,
+        "triangles": 6192,
         "meshes": 2,
         "textured": 1,
         "dimensions": [
-          0.1762162148952484,
-          0.6215752097219229,
-          0.17406854778528214
+          0.17177745699882507,
+          0.6206967564672232,
+          0.16974716633558273
         ],
-        "bytes": 90440
+        "bytes": 361092
       },
       "mobile": {
-        "triangles": 552,
+        "triangles": 1520,
         "meshes": 2,
         "textured": 1,
         "dimensions": [
-          0.17733778059482574,
-          0.6213027568906546,
-          0.17514795064926147
+          0.171415276825428,
+          0.6206967564672232,
+          0.16940007358789444
         ],
-        "bytes": 61348
+        "bytes": 125460
       }
     }
   },
@@ -1516,26 +1656,26 @@
     "thumbnail": "/models/vegetables/garlic-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 7560,
+        "triangles": 14616,
         "meshes": 3,
         "textured": 3,
         "dimensions": [
-          0.3380618989467621,
-          0.638833025470376,
-          0.20858196169137955
+          0.16174300760030746,
+          0.5580485854297876,
+          0.27230019867420197
         ],
-        "bytes": 337888
+        "bytes": 1274340
       },
       "mobile": {
-        "triangles": 972,
+        "triangles": 3040,
         "meshes": 3,
         "textured": 3,
         "dimensions": [
-          0.24219300597906113,
-          0.638833025470376,
-          0.20858196169137955
+          0.16164252907037735,
+          0.5580485854297876,
+          0.18665781617164612
         ],
-        "bytes": 179228
+        "bytes": 348268
       }
     }
   },
@@ -1551,26 +1691,26 @@
     "thumbnail": "/models/vegetables/leek-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 6784,
+        "triangles": 13504,
         "meshes": 2,
         "textured": 2,
         "dimensions": [
-          0.3380618989467621,
-          0.7370330116152763,
-          0.20887625217437744
+          0.16683512181043625,
+          0.6562486311793327,
+          0.2723938971757889
         ],
-        "bytes": 314916
+        "bytes": 1242756
       },
       "mobile": {
-        "triangles": 784,
+        "triangles": 2656,
         "meshes": 2,
         "textured": 2,
         "dimensions": [
-          0.24496681988239288,
-          0.7370330116152763,
-          0.20858196169137955
+          0.1668037697672844,
+          0.6562486311793327,
+          0.1937454156577587
         ],
-        "bytes": 171704
+        "bytes": 335108
       }
     }
   },
@@ -1586,26 +1726,26 @@
     "thumbnail": "/models/vegetables/corn-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 21632,
+        "triangles": 39008,
         "meshes": 8,
         "textured": 5,
         "dimensions": [
-          0.635652631521225,
-          1.771914142766036,
-          0.4893377721309662
+          0.4425966888666153,
+          1.7710831818985753,
+          0.5970438122749329
         ],
-        "bytes": 704892
+        "bytes": 1906000
       },
       "mobile": {
-        "triangles": 4528,
+        "triangles": 10528,
         "meshes": 8,
         "textured": 5,
         "dimensions": [
-          0.635652631521225,
-          1.7720519959111698,
-          0.3906184285879135
+          0.3226746618747711,
+          1.7709624543203972,
+          0.5934442579746246
         ],
-        "bytes": 292852
+        "bytes": 565428
       }
     }
   },
@@ -1621,26 +1761,26 @@
     "thumbnail": "/models/vegetables/pepper-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 31564,
+        "triangles": 65204,
         "meshes": 7,
         "textured": 6,
         "dimensions": [
-          0.4214693158864975,
-          0.7730172609928943,
-          0.407795250415802
+          0.5240786373615265,
+          0.7396555272981296,
+          0.5185243785381317
         ],
-        "bytes": 953756
+        "bytes": 2586472
       },
       "mobile": {
-        "triangles": 3900,
+        "triangles": 12684,
         "meshes": 7,
         "textured": 6,
         "dimensions": [
-          0.4085809737443924,
-          0.7004284051624907,
-          0.40492212772369385
+          0.5236324667930603,
+          0.7271007586174782,
+          0.517496794462204
         ],
-        "bytes": 272152
+        "bytes": 623500
       }
     }
   },
@@ -1656,26 +1796,26 @@
     "thumbnail": "/models/vegetables/potato-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 26544,
+        "triangles": 52904,
         "meshes": 5,
         "textured": 4,
         "dimensions": [
-          0.3936617374420166,
-          0.5919132728987968,
-          0.3897082805633545
+          0.49439841508865356,
+          0.5597819575270506,
+          0.48965179920196533
         ],
-        "bytes": 818872
+        "bytes": 2273608
       },
       "mobile": {
-        "triangles": 3144,
+        "triangles": 10044,
         "meshes": 5,
         "textured": 4,
         "dimensions": [
-          0.38777802884578705,
-          0.47063752779409995,
-          0.3893599659204483
+          0.49369604885578156,
+          0.5541825125285058,
+          0.48816949129104614
         ],
-        "bytes": 246160
+        "bytes": 547448
       }
     }
   },
@@ -1691,26 +1831,26 @@
     "thumbnail": "/models/vegetables/brussels-sprout-default.webp",
     "stats": {
       "desktop": {
-        "triangles": 27124,
+        "triangles": 66276,
         "meshes": 4,
         "textured": 3,
         "dimensions": [
-          0.319289430975914,
-          0.9409202933311462,
-          0.3175210803747177
+          0.33155880868434906,
+          0.8841173052787781,
+          0.3279208540916443
         ],
-        "bytes": 847848
+        "bytes": 2551288
       },
       "mobile": {
-        "triangles": 4248,
+        "triangles": 14952,
         "meshes": 4,
         "textured": 3,
         "dimensions": [
-          0.319289430975914,
-          0.9409202933311462,
-          0.3175210803747177
+          0.33155880868434906,
+          0.8841173052787781,
+          0.3279208540916443
         ],
-        "bytes": 278404
+        "bytes": 674332
       }
     }
   }

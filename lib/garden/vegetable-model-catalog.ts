@@ -14,7 +14,7 @@ export type VegetableModel = {
 const details: Record<string, [string, string]> = {
   Tomato: ["tomato", "Compound foliage, fruit trusses and textured ripe tomatoes"],
   Bean: ["bean", "Trifoliate leaves, curved pods and flowers; climbing and bush forms"],
-  Lettuce: ["lettuce", "Layered folded leaves with distinct head and loose-leaf forms"],
+  Lettuce: ["lettuce", "Softly curved, finely veined leaves with distinct head and loose-leaf forms"],
   Pumpkin: ["pumpkin", "Lobed leaves, spreading vines, tendrils and ribbed squash"],
   Carrot: ["carrot", "Fine divided fernlike foliage and tapered root shoulders"],
   Broccoli: ["broccoli", "Dense branching florets surrounded by waxy leaves"],
@@ -41,13 +41,14 @@ const details: Record<string, [string, string]> = {
   Pepper: ["pepper", "Branching glossy foliage, lobed bell peppers and white flowers"],
   Potato: ["potato", "Compound foliage, branching stems and five-petalled flowers"],
   "Brussels Sprout": ["brussels-sprout", "Spiral buds along a thick stalk below a leafy crown"],
+  Raspberry: ["raspberry", "Arching canes, serrated compound leaves, leafy calyces and individually modelled drupelets"],
 };
 
 export function vegetableKey(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
-const indexed = plants.filter((plant) => plant.type === "Vegetable");
+const indexed = plants.filter((plant) => plant.type === "Vegetable" || plant.name === "Raspberry");
 const extras = Object.keys(details).filter((crop) => !indexed.some((plant) => plant.name === crop));
 
 export const vegetableModels: VegetableModel[] = [

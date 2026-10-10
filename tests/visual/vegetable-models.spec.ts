@@ -3,9 +3,10 @@ import { plants } from "../../lib/garden/plant-catalog";
 import { vegetableModelFor, vegetableModels } from "../../lib/garden/vegetable-model-catalog";
 
 const vegetables = plants.filter((plant) => plant.type === "Vegetable");
+const modelCrops = [...vegetables, plants.find((plant) => plant.name === "Raspberry")!];
 const plan = {
-  beds: vegetables.map((plant, i) => ({ id: i + 1, name: plant.name, x: 5 + i % 5 * 18, y: 18 + Math.floor(i / 5) * 40, w: 16, h: 30 })),
-  plantingAreas: vegetables.map((plant, i) => ({ id: `vegetable-${i}`, bedId: i + 1, crop: plant.name, variety: plant.varieties[0], cropIcon: "", spacingCm: plant.spacingCm, x: 0, y: 0, w: 100, h: 100, count: 2, pattern: "grid", iconSize: 18, visualSpacing: "normal", placements: [{ id: `one-${i}`, x: 35, y: 50 }, { id: `two-${i}`, x: 65, y: 50 }] })),
+  beds: modelCrops.map((plant, i) => ({ id: i + 1, name: plant.name, x: 5 + i % 5 * 18, y: 10 + Math.floor(i / 5) * 29, w: 16, h: 25 })),
+  plantingAreas: modelCrops.map((plant, i) => ({ id: `vegetable-${i}`, bedId: i + 1, crop: plant.name, variety: plant.varieties[0], cropIcon: "", spacingCm: plant.spacingCm, x: 0, y: 0, w: 100, h: 100, count: 2, pattern: "grid", iconSize: 18, visualSpacing: "normal", placements: [{ id: `one-${i}`, x: 35, y: 50 }, { id: `two-${i}`, x: 65, y: 50 }] })),
   rows: [{ id: "lettuce-row", crop: "Lettuce", variety: "Cos", cropIcon: "", spacingCm: 35, x1: 200, y1: 950, x2: 650, y2: 950, count: 5 }],
   objects: [],
 };
@@ -18,16 +19,16 @@ test("model library has every indexed vegetable and usable download controls", a
   await page.goto("/3d-models");
   const frame = page.frameLocator('iframe[title="Interactive vegetable models"]');
   const canvas = frame.locator("canvas");
-  await expect(canvas).toHaveAttribute("data-model-ready", "true");
+  await expect(canvas).toHaveAttribute("data-model-ready", "true", { timeout: 30_000 });
   const manifest = await (await page.request.get("/models/vegetables/manifest.json")).json();
   expect(manifest).toHaveLength(vegetableModels.length);
-  for (const plant of vegetables) for (const variety of plant.varieties) {
+  for (const plant of modelCrops) for (const variety of plant.varieties) {
     expect(manifest.find((model: { crop: string; variety: string }) => model.crop === plant.name && model.variety === variety), `${plant.name}: ${variety}`).toBeTruthy();
   }
-  for (const crop of vegetables.map((plant) => plant.name)) {
+  for (const crop of modelCrops.map((plant) => plant.name)) {
     await frame.getByLabel("Vegetable", { exact: true }).selectOption(crop);
     await expect(canvas).toHaveAttribute("data-model-id", vegetableModelFor(crop)!.id);
-    await expect(canvas).toHaveAttribute("data-model-ready", "true");
+    await expect(canvas).toHaveAttribute("data-model-ready", "true", { timeout: 30_000 });
   }
   await frame.getByLabel("Vegetable", { exact: true }).selectOption("Artichoke");
   await expect(canvas).toHaveAttribute("data-model-id", "artichoke-green-globe");
@@ -35,7 +36,7 @@ test("model library has every indexed vegetable and usable download controls", a
   await expect(frame.getByRole("button", { name: "Rotate", exact: true })).toHaveAttribute("aria-pressed", "true");
   await frame.getByRole("button", { name: "Reset view" }).click();
   await frame.getByRole("button", { name: "Mobile detail" }).click();
-  await expect(canvas).toHaveAttribute("data-model-ready", "true");
+  await expect(canvas).toHaveAttribute("data-model-ready", "true", { timeout: 30_000 });
   await expect(frame.getByRole("link", { name: "Download GLB" })).toHaveAttribute("href", "/models/vegetables/artichoke-green-globe-mobile.glb");
   const downloadEvent = page.waitForEvent("download");
   await frame.getByRole("link", { name: "Download GLB" }).click();
@@ -51,11 +52,31 @@ test("model library has every indexed vegetable and usable download controls", a
   expect(errors).toEqual([]);
 });
 
+test("organic detail remains visible in desktop and mobile models", async ({ page }, testInfo) => {
+  test.setTimeout(120_000);
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.goto("/3d-models");
+  const frame = page.frameLocator('iframe[title="Interactive vegetable models"]');
+  await expect(frame.locator("canvas")).toHaveAttribute("data-model-ready", "true", { timeout: 30_000 });
+  for (const quality of ["desktop", "mobile"]) {
+    if (quality === "mobile") await frame.getByRole("button", { name: "Mobile detail" }).click();
+    for (const crop of ["Asparagus", "Raspberry", "Lettuce", "Broccoli"]) {
+      await frame.getByLabel("Vegetable", { exact: true }).selectOption(crop);
+      await expect(frame.locator("canvas")).toHaveAttribute("data-model-id", vegetableModelFor(crop)!.id);
+      await expect(frame.locator("canvas")).toHaveAttribute("data-model-ready", "true", { timeout: 30_000 });
+      await expect(frame.getByRole("link", { name: "Download GLB" })).toHaveAttribute("href", quality === "mobile" ? vegetableModelFor(crop)!.mobile : vegetableModelFor(crop)!.desktop);
+      await page.screenshot({ path: testInfo.outputPath(`${crop.toLowerCase()}-${quality}.png`) });
+    }
+  }
+  expect(errors).toEqual([]);
+});
+
 test("every exported desktop and mobile model parses with finite textured geometry", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop", "Asset integrity is independent of viewport");
   test.setTimeout(180_000);
   await page.goto("/models/vegetables/index.html");
-  await expect(page.locator("canvas")).toHaveAttribute("data-model-ready", "true");
+  await expect(page.locator("canvas")).toHaveAttribute("data-model-ready", "true", { timeout: 30_000 });
   const report = await page.evaluate(async () => {
     // Native module imports exercise exactly the locally hosted production loader.
     const dynamicImport = new Function("url", "return import(url)");
@@ -63,32 +84,36 @@ test("every exported desktop and mobile model parses with finite textured geomet
     const { GLTFLoader } = await dynamicImport("/models/tomato/vendor/GLTFLoader.js");
     const manifest = await (await fetch("/models/vegetables/manifest.json")).json();
     const assets = new Map<string, { triangles: number; textured: number; dimensions: number[] }>();
-    const loader = new GLTFLoader(), results: { path: string; triangles: number; textured: number; finite: boolean; grounded: boolean }[] = [];
+    const loader = new GLTFLoader(), results: { path: string; triangles: number; textured: number; normalMapped: number; validColors: boolean; finite: boolean; grounded: boolean }[] = [];
     for (const model of manifest) for (const quality of ["desktop", "mobile"]) assets.set(model[quality], model.stats[quality]);
     for (const [path, stats] of assets) {
       const { scene } = await loader.loadAsync(path);
-      let triangles = 0, textured = 0, finite = true;
-      scene.traverse((object: { isMesh?: boolean; geometry: { index?: { count: number }; getAttribute: (name: string) => { count: number; array: ArrayLike<number> }; dispose: () => void }; material: { map?: { dispose: () => void }; dispose: () => void } | { map?: { dispose: () => void }; dispose: () => void }[] }) => {
+      let triangles = 0, textured = 0, normalMapped = 0, finite = true, validColors = true;
+      scene.traverse((object: { isMesh?: boolean; geometry: { index?: { count: number }; getAttribute: (name: string) => { count: number; array: ArrayLike<number>; getX: (i: number) => number; getY: (i: number) => number; getZ: (i: number) => number }; dispose: () => void }; material: { map?: { dispose: () => void }; normalMap?: { dispose: () => void }; dispose: () => void } | { map?: { dispose: () => void }; normalMap?: { dispose: () => void }; dispose: () => void }[] }) => {
         if (!object.isMesh) return;
         const vertices = object.geometry.getAttribute("position");
         finite &&= Array.from(vertices.array).every(Number.isFinite);
+        const colors = object.geometry.getAttribute("color");
+        if (colors) for (let i = 0; i < colors.count; i++) validColors &&= [colors.getX(i), colors.getY(i), colors.getZ(i)].every(value => Number.isFinite(value) && value >= 0 && value <= 1);
         triangles += (object.geometry.index?.count ?? vertices.count) / 3;
         const materials = Array.isArray(object.material) ? object.material : [object.material];
         if (materials.some(material => material.map)) textured++;
+        if (materials.some(material => material.normalMap)) normalMapped++;
       });
       const box = new THREE.Box3().setFromObject(scene);
       if (triangles !== stats.triangles || textured !== stats.textured) throw new Error("Model statistics mismatch: " + path);
-      results.push({ path, triangles, textured, finite, grounded: Math.abs(box.min.y) < .0001 });
-      scene.traverse((object: { isMesh?: boolean; geometry: { dispose: () => void }; material: { map?: { dispose: () => void }; dispose: () => void } | { map?: { dispose: () => void }; dispose: () => void }[] }) => {
+      results.push({ path, triangles, textured, normalMapped, validColors, finite, grounded: Math.abs(box.min.y) < .0001 });
+      scene.traverse((object: { isMesh?: boolean; geometry: { dispose: () => void }; material: { map?: { dispose: () => void }; normalMap?: { dispose: () => void }; dispose: () => void } | { map?: { dispose: () => void }; normalMap?: { dispose: () => void }; dispose: () => void }[] }) => {
         if (!object.isMesh) return;
         object.geometry.dispose();
-        for (const material of Array.isArray(object.material) ? object.material : [object.material]) { material.map?.dispose(); material.dispose(); }
+        for (const material of Array.isArray(object.material) ? object.material : [object.material]) { material.map?.dispose(); material.normalMap?.dispose(); material.dispose(); }
       });
     }
     return results;
   });
   expect(report.length).toBeGreaterThanOrEqual(vegetables.length * 2);
   expect(report.every((model) => model.finite && model.grounded && model.triangles > 0 && model.textured > 0)).toBeTruthy();
+  expect(report.filter((model) => model.path.includes("/vegetables/")).every((model) => model.normalMapped > 0 && model.validColors)).toBeTruthy();
   await testInfo.attach("all-model-integrity", { body: JSON.stringify(report), contentType: "application/json" });
 });
 
