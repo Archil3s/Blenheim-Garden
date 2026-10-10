@@ -22,3 +22,7 @@ The legacy canvas CSS silhouettes are bypassed only for PlantArt nodes that have
 
 Fitted cameras move farther back on portrait screens. Fog limits now follow the fitted garden sphere so this distance does not wash out the botanical colours.
 The refined leaf surface uses an interior grid and smooth analytical normals. Vein ribbons follow that curvature on both leaf faces. Round harvest shapes have baked tonal shading, tomato branches have paired compound leaflets, and asparagus pea resolves to a low-growing legume.
+
+The audit route imports a bundled catalogue instead of reading source or public files inside Cloudflare Workers. Regenerate it after changing catalogue entries, resolver aliases or artwork files with: node scripts/generate-audit-catalogue.mjs (Node 24). Commit lib/garden/audit-catalogue.generated.json with the corresponding changes.
+
+The full atlas caps label textures at half resolution to reduce GPU memory. The desktop audit test loads and inspects the catalogue, but repeated High/Low/Medium rebuilding exceeded its 120-second limit in the deployment verification environment; this stress-test limitation remains unresolved.

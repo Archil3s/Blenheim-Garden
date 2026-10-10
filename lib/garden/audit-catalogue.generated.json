@@ -1,0 +1,7552 @@
+{
+  "entries": [
+    {
+      "id": "P001",
+      "kind": "plant",
+      "name": "Achillea",
+      "variety": "Achillea",
+      "category": "Flower",
+      "spacingCm": 40,
+      "source": [
+        "Planner crop catalogue"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/achillea.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P002",
+      "kind": "plant",
+      "name": "Achillea",
+      "variety": "Default",
+      "category": "Flower",
+      "spacingCm": 40,
+      "source": [
+        "Artwork registry",
+        "Production geometry registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/achillea.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P003",
+      "kind": "plant",
+      "name": "Agastache",
+      "variety": "Agastache",
+      "category": "Flower",
+      "spacingCm": 40,
+      "source": [
+        "Planner crop catalogue"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/agastache.png",
+        "index": 1,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P004",
+      "kind": "plant",
+      "name": "Agastache",
+      "variety": "Default",
+      "category": "Flower",
+      "spacingCm": 40,
+      "source": [
+        "Artwork registry",
+        "Production geometry registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/agastache.png",
+        "index": 1,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P005",
+      "kind": "plant",
+      "name": "Ageratum",
+      "variety": "Ageratum",
+      "category": "Flower",
+      "spacingCm": 25,
+      "source": [
+        "Planner crop catalogue"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/ageratum.png",
+        "index": 2,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P006",
+      "kind": "plant",
+      "name": "Ageratum",
+      "variety": "Default",
+      "category": "Flower",
+      "spacingCm": 25,
+      "source": [
+        "Artwork registry",
+        "Production geometry registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/ageratum.png",
+        "index": 2,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P007",
+      "kind": "plant",
+      "name": "Agrostemma",
+      "variety": "Agrostemma",
+      "category": "Flower",
+      "spacingCm": 30,
+      "source": [
+        "Planner crop catalogue"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/agrostemma.png",
+        "index": 3,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P008",
+      "kind": "plant",
+      "name": "Agrostemma",
+      "variety": "Default",
+      "category": "Flower",
+      "spacingCm": 30,
+      "source": [
+        "Artwork registry",
+        "Production geometry registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/agrostemma.png",
+        "index": 3,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P009",
+      "kind": "plant",
+      "name": "Akeake",
+      "variety": "Akeake",
+      "category": "Native",
+      "spacingCm": 100,
+      "source": [
+        "Planner crop catalogue"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/akeake.png",
+        "index": 4,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P010",
+      "kind": "plant",
+      "name": "Akeake",
+      "variety": "Default",
+      "category": "Native",
+      "spacingCm": 100,
+      "source": [
+        "Artwork registry",
+        "Production geometry registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/akeake.png",
+        "index": 4,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P011",
+      "kind": "plant",
+      "name": "Alyssum",
+      "variety": "Alyssum",
+      "category": "Flower",
+      "spacingCm": 20,
+      "source": [
+        "Planner crop catalogue"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/alyssum.png",
+        "index": 5,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P012",
+      "kind": "plant",
+      "name": "Alyssum",
+      "variety": "Default",
+      "category": "Flower",
+      "spacingCm": 20,
+      "source": [
+        "Artwork registry",
+        "Production geometry registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/alyssum.png",
+        "index": 5,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P013",
+      "kind": "plant",
+      "name": "Amaranth",
+      "variety": "Default",
+      "category": "Vegetable",
+      "spacingCm": 30,
+      "source": [
+        "Production geometry registry"
+      ]
+    },
+    {
+      "id": "P014",
+      "kind": "plant",
+      "name": "Amaranth",
+      "variety": "Garnet Red",
+      "category": "Vegetable",
+      "spacingCm": 30,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/amaranth-garnet-red.png",
+        "index": 6,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P015",
+      "kind": "plant",
+      "name": "Amaranth",
+      "variety": "Green Red",
+      "category": "Vegetable",
+      "spacingCm": 30,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/amaranth-green-red.png",
+        "index": 7,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P016",
+      "kind": "plant",
+      "name": "Angelica",
+      "variety": "Chinese",
+      "category": "Herb",
+      "spacingCm": 60,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/angelica-chinese.png",
+        "index": 8,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P017",
+      "kind": "plant",
+      "name": "Angelica",
+      "variety": "Default",
+      "category": "Herb",
+      "spacingCm": 60,
+      "source": [
+        "Production geometry registry"
+      ]
+    },
+    {
+      "id": "P018",
+      "kind": "plant",
+      "name": "Angelica",
+      "variety": "Holy Ghost",
+      "category": "Herb",
+      "spacingCm": 60,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/angelica-holy-ghost.png",
+        "index": 9,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P019",
+      "kind": "plant",
+      "name": "Anise",
+      "variety": "Anise",
+      "category": "Herb",
+      "spacingCm": 25,
+      "source": [
+        "Planner crop catalogue"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/anise.png",
+        "index": 10,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P020",
+      "kind": "plant",
+      "name": "Anise",
+      "variety": "Default",
+      "category": "Herb",
+      "spacingCm": 25,
+      "source": [
+        "Artwork registry",
+        "Production geometry registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/anise.png",
+        "index": 10,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P021",
+      "kind": "plant",
+      "name": "Anise Hyssop",
+      "variety": "Anise Hyssop",
+      "category": "Herb",
+      "spacingCm": 35,
+      "source": [
+        "Planner crop catalogue"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/anise-hyssop.png",
+        "index": 11,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P022",
+      "kind": "plant",
+      "name": "Anise Hyssop",
+      "variety": "Default",
+      "category": "Herb",
+      "spacingCm": 35,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/anise-hyssop.png",
+        "index": 11,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P023",
+      "kind": "plant",
+      "name": "Artichoke",
+      "variety": "Default",
+      "category": "Vegetable",
+      "spacingCm": 100,
+      "source": [
+        "Production geometry registry"
+      ]
+    },
+    {
+      "id": "P024",
+      "kind": "plant",
+      "name": "Artichoke",
+      "variety": "Green Globe",
+      "category": "Vegetable",
+      "spacingCm": 100,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/artichoke-green-globe.png",
+        "index": 12,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P025",
+      "kind": "plant",
+      "name": "Asparagus",
+      "variety": "Default",
+      "category": "Vegetable",
+      "spacingCm": 40,
+      "source": [
+        "Production geometry registry"
+      ]
+    },
+    {
+      "id": "P026",
+      "kind": "plant",
+      "name": "Asparagus",
+      "variety": "Mary Washington",
+      "category": "Vegetable",
+      "spacingCm": 40,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/asparagus-mary-washington.png",
+        "index": 13,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P027",
+      "kind": "plant",
+      "name": "Asparagus",
+      "variety": "Pacific Challenger F1",
+      "category": "Vegetable",
+      "spacingCm": 40,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/asparagus-pacific-challenger-f1.png",
+        "index": 14,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P028",
+      "kind": "plant",
+      "name": "Asparagus",
+      "variety": "Pacific Purple",
+      "category": "Vegetable",
+      "spacingCm": 40,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/asparagus-pacific-purple.png",
+        "index": 15,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P029",
+      "kind": "plant",
+      "name": "Asparagus Pea",
+      "variety": "Asparagus Pea",
+      "category": "Vegetable",
+      "spacingCm": 20,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/asparagus-pea--asparagus-pea.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P030",
+      "kind": "plant",
+      "name": "Asparagus Pea",
+      "variety": "Default",
+      "category": "Vegetable",
+      "spacingCm": 20,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/asparagus-pea--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P031",
+      "kind": "plant",
+      "name": "Aster",
+      "variety": "Aster",
+      "category": "Flower",
+      "spacingCm": 30,
+      "source": [
+        "Planner crop catalogue"
+      ],
+      "artwork": {
+        "src": "/plant-icons/batch-a.svg",
+        "index": 17,
+        "column": 2,
+        "row": 3,
+        "columns": 5,
+        "rows": 4
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P032",
+      "kind": "plant",
+      "name": "Aster",
+      "variety": "Default",
+      "category": "Flower",
+      "spacingCm": 30,
+      "source": [
+        "Artwork registry",
+        "Production geometry registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/batch-a.svg",
+        "index": 17,
+        "column": 2,
+        "row": 3,
+        "columns": 5,
+        "rows": 4
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P033",
+      "kind": "plant",
+      "name": "Astragalus",
+      "variety": "Astragalus",
+      "category": "Herb",
+      "spacingCm": 30,
+      "source": [
+        "Planner crop catalogue"
+      ],
+      "artwork": {
+        "src": "/plant-icons/batch-a.svg",
+        "index": 18,
+        "column": 3,
+        "row": 3,
+        "columns": 5,
+        "rows": 4
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P034",
+      "kind": "plant",
+      "name": "Astragalus",
+      "variety": "Default",
+      "category": "Herb",
+      "spacingCm": 30,
+      "source": [
+        "Artwork registry",
+        "Production geometry registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/batch-a.svg",
+        "index": 18,
+        "column": 3,
+        "row": 3,
+        "columns": 5,
+        "rows": 4
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P035",
+      "kind": "plant",
+      "name": "Basil",
+      "variety": "Compact",
+      "category": "Herb",
+      "spacingCm": 20,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/batch-a.svg",
+        "index": 19,
+        "column": 4,
+        "row": 3,
+        "columns": 5,
+        "rows": 4
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P036",
+      "kind": "plant",
+      "name": "Basil",
+      "variety": "Default",
+      "category": "Herb",
+      "spacingCm": 20,
+      "source": [
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ]
+    },
+    {
+      "id": "P037",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "Broad",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--broad.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P038",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "Broad Bean",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--broad-bean.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P039",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "Bush",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--bush.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P040",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "Climbing",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--climbing.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P041",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "Climbing Bean",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--climbing-bean.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P042",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "Default",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P043",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "Dwarf",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--dwarf.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P044",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "Fava",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--fava.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P045",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "Fava Bean",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--fava-bean.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P046",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "Green",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--green.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P047",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "King Purple",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--king-purple.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P048",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "Pole",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--pole.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P049",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "Runner",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--runner.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P050",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "Scarlet Runner",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--scarlet-runner.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P051",
+      "kind": "plant",
+      "name": "Bean",
+      "variety": "Superstar",
+      "category": "Vegetable",
+      "spacingCm": 18,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bean--superstar.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P052",
+      "kind": "plant",
+      "name": "Beefsteak",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry"
+      ]
+    },
+    {
+      "id": "P053",
+      "kind": "plant",
+      "name": "Beefsteak Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_beefsteak_red.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P054",
+      "kind": "plant",
+      "name": "Beet",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/beet--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P055",
+      "kind": "plant",
+      "name": "Bicolour Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_striped_bicolour.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P056",
+      "kind": "plant",
+      "name": "Black Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_black_purple.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P057",
+      "kind": "plant",
+      "name": "Blueberry",
+      "variety": "Default",
+      "category": "Fruit",
+      "spacingCm": 120,
+      "source": [
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ]
+    },
+    {
+      "id": "P058",
+      "kind": "plant",
+      "name": "Blueberry",
+      "variety": "Rabbiteye",
+      "category": "Fruit",
+      "spacingCm": 120,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P059",
+      "kind": "plant",
+      "name": "Blueberry",
+      "variety": "Southern Highbush",
+      "category": "Fruit",
+      "spacingCm": 120,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P060",
+      "kind": "plant",
+      "name": "Blueberry",
+      "variety": "Unknown",
+      "category": "Fruit",
+      "spacingCm": 120,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P061",
+      "kind": "plant",
+      "name": "Brassica",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Renderer resolver: components/garden-webgl-visual.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/brassica--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P062",
+      "kind": "plant",
+      "name": "Broad Bean",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/broad-bean--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P063",
+      "kind": "plant",
+      "name": "Broccaflower",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/broccaflower--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P064",
+      "kind": "plant",
+      "name": "Broccoflower",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/broccoflower--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P065",
+      "kind": "plant",
+      "name": "Broccoli",
+      "variety": "Calabrese",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/broccoli--calabrese.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P066",
+      "kind": "plant",
+      "name": "Broccoli",
+      "variety": "Default",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/broccoli--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P067",
+      "kind": "plant",
+      "name": "Broccoli",
+      "variety": "Green Dragon",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/broccoli--green-dragon.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P068",
+      "kind": "plant",
+      "name": "Broccoli",
+      "variety": "Winter Rudolph",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/broccoli--winter-rudolph.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P069",
+      "kind": "plant",
+      "name": "Broccolini",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/broccolini--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P070",
+      "kind": "plant",
+      "name": "Brussel Sprout",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/brussel-sprout--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P071",
+      "kind": "plant",
+      "name": "Brussels",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/brussels--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P072",
+      "kind": "plant",
+      "name": "Brussels Sprout",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Production geometry registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/brussels-sprout--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P073",
+      "kind": "plant",
+      "name": "Bush Bean",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Production geometry registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/bush-bean--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P074",
+      "kind": "plant",
+      "name": "Bush Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_dwarf_bush.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P075",
+      "kind": "plant",
+      "name": "Buttercup",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/buttercup--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P076",
+      "kind": "plant",
+      "name": "Butternut",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/butternut--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P077",
+      "kind": "plant",
+      "name": "Cabbage",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/cabbage--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P078",
+      "kind": "plant",
+      "name": "Capsicum",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/capsicum--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P079",
+      "kind": "plant",
+      "name": "Carrot",
+      "variety": "Amsterdam",
+      "category": "Vegetable",
+      "spacingCm": 7,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry",
+        "V2 variety artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/carrot--amsterdam.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P080",
+      "kind": "plant",
+      "name": "Carrot",
+      "variety": "Chantenay",
+      "category": "Vegetable",
+      "spacingCm": 7,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry",
+        "V2 variety artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/carrot--chantenay.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P081",
+      "kind": "plant",
+      "name": "Carrot",
+      "variety": "Default",
+      "category": "Vegetable",
+      "spacingCm": 7,
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/carrot--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P082",
+      "kind": "plant",
+      "name": "Carrot",
+      "variety": "Nantes",
+      "category": "Vegetable",
+      "spacingCm": 7,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry",
+        "V2 variety artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/carrot--nantes.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P083",
+      "kind": "plant",
+      "name": "Carrot",
+      "variety": "Rainbow",
+      "category": "Vegetable",
+      "spacingCm": 7,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry",
+        "V2 variety artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/carrot--rainbow.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P084",
+      "kind": "plant",
+      "name": "Cauliflower",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/cauliflower--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P085",
+      "kind": "plant",
+      "name": "Chard",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/chard--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P086",
+      "kind": "plant",
+      "name": "Cherry",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry"
+      ]
+    },
+    {
+      "id": "P087",
+      "kind": "plant",
+      "name": "Cherry Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_cherry_red.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P088",
+      "kind": "plant",
+      "name": "Chili",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/chili--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P089",
+      "kind": "plant",
+      "name": "Chilli",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/chilli--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P090",
+      "kind": "plant",
+      "name": "Chives",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Production geometry registry"
+      ]
+    },
+    {
+      "id": "P091",
+      "kind": "plant",
+      "name": "Cilantro",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ]
+    },
+    {
+      "id": "P092",
+      "kind": "plant",
+      "name": "Climbing Bean",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Production geometry registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/climbing-bean--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P093",
+      "kind": "plant",
+      "name": "Coriander",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ]
+    },
+    {
+      "id": "P094",
+      "kind": "plant",
+      "name": "Corn",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/corn--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P095",
+      "kind": "plant",
+      "name": "Courgette",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/courgette--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P096",
+      "kind": "plant",
+      "name": "Cream Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_white_cream.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P097",
+      "kind": "plant",
+      "name": "Cucumber",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/cucumber--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P098",
+      "kind": "plant",
+      "name": "Daikon",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/daikon--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P099",
+      "kind": "plant",
+      "name": "Dill",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ]
+    },
+    {
+      "id": "P100",
+      "kind": "plant",
+      "name": "Dwarf Bean",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/dwarf-bean--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P101",
+      "kind": "plant",
+      "name": "Dwarf Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_dwarf_bush.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P102",
+      "kind": "plant",
+      "name": "Fava",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/fava--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P103",
+      "kind": "plant",
+      "name": "Fava Bean",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/fava-bean--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P104",
+      "kind": "plant",
+      "name": "Fennel",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ]
+    },
+    {
+      "id": "P105",
+      "kind": "plant",
+      "name": "Garlic",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/garlic--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P106",
+      "kind": "plant",
+      "name": "Gherkin",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/gherkin--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P107",
+      "kind": "plant",
+      "name": "Grape",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry"
+      ]
+    },
+    {
+      "id": "P108",
+      "kind": "plant",
+      "name": "Grape Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_grape_red.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P109",
+      "kind": "plant",
+      "name": "Green Bean",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/green-bean--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P110",
+      "kind": "plant",
+      "name": "Green Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_green_ripe.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P111",
+      "kind": "plant",
+      "name": "Hanging Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_trailing_hanging.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P112",
+      "kind": "plant",
+      "name": "Herb",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry"
+      ]
+    },
+    {
+      "id": "P113",
+      "kind": "plant",
+      "name": "Herbs",
+      "variety": "Basil",
+      "category": "Herb",
+      "spacingCm": 25,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P114",
+      "kind": "plant",
+      "name": "Herbs",
+      "variety": "Chives",
+      "category": "Herb",
+      "spacingCm": 25,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P115",
+      "kind": "plant",
+      "name": "Herbs",
+      "variety": "Default",
+      "category": "Herb",
+      "spacingCm": 25,
+      "source": [
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ]
+    },
+    {
+      "id": "P116",
+      "kind": "plant",
+      "name": "Herbs",
+      "variety": "Parsley",
+      "category": "Herb",
+      "spacingCm": 25,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P117",
+      "kind": "plant",
+      "name": "Herbs",
+      "variety": "Thyme",
+      "category": "Herb",
+      "spacingCm": 25,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P118",
+      "kind": "plant",
+      "name": "Kabocha",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/kabocha--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P119",
+      "kind": "plant",
+      "name": "Kale",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/kale--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P120",
+      "kind": "plant",
+      "name": "Kamo Kamo",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/kamo-kamo--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P121",
+      "kind": "plant",
+      "name": "Leafy",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Production geometry registry"
+      ]
+    },
+    {
+      "id": "P122",
+      "kind": "plant",
+      "name": "Leek",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/leek--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P123",
+      "kind": "plant",
+      "name": "Lettuce",
+      "variety": "Butterhead",
+      "category": "Vegetable",
+      "spacingCm": 28,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry",
+        "V2 variety artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/lettuce--butterhead.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P124",
+      "kind": "plant",
+      "name": "Lettuce",
+      "variety": "Cos",
+      "category": "Vegetable",
+      "spacingCm": 28,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry",
+        "V2 variety artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/lettuce--cos.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P125",
+      "kind": "plant",
+      "name": "Lettuce",
+      "variety": "Default",
+      "category": "Vegetable",
+      "spacingCm": 28,
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/lettuce--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P126",
+      "kind": "plant",
+      "name": "Lettuce",
+      "variety": "Iceberg",
+      "category": "Vegetable",
+      "spacingCm": 28,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry",
+        "V2 variety artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/lettuce--iceberg.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P127",
+      "kind": "plant",
+      "name": "Lettuce",
+      "variety": "Loose Leaf",
+      "category": "Vegetable",
+      "spacingCm": 28,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry",
+        "V2 variety artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/lettuce--loose-leaf.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P128",
+      "kind": "plant",
+      "name": "Maize",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/maize--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P129",
+      "kind": "plant",
+      "name": "Melon",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/melon--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P130",
+      "kind": "plant",
+      "name": "Mint",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry",
+        "Production geometry registry"
+      ]
+    },
+    {
+      "id": "P131",
+      "kind": "plant",
+      "name": "Onion",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/onion--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P132",
+      "kind": "plant",
+      "name": "Orange Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_standard_orange.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P133",
+      "kind": "plant",
+      "name": "Oregano",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry"
+      ]
+    },
+    {
+      "id": "P134",
+      "kind": "plant",
+      "name": "Parsley",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ]
+    },
+    {
+      "id": "P135",
+      "kind": "plant",
+      "name": "Paste",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry"
+      ]
+    },
+    {
+      "id": "P136",
+      "kind": "plant",
+      "name": "Pea",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/pea--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P137",
+      "kind": "plant",
+      "name": "Pear Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_pear_yellow.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P138",
+      "kind": "plant",
+      "name": "Pepper",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/pepper--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P139",
+      "kind": "plant",
+      "name": "Pink Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_pink.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P140",
+      "kind": "plant",
+      "name": "Plum",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry"
+      ]
+    },
+    {
+      "id": "P141",
+      "kind": "plant",
+      "name": "Plum Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_roma_red.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P142",
+      "kind": "plant",
+      "name": "Pole Bean",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/pole-bean--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P143",
+      "kind": "plant",
+      "name": "Potato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-webgl-visual.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/potato--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P144",
+      "kind": "plant",
+      "name": "Pumpkin",
+      "variety": "Butternut",
+      "category": "Vegetable",
+      "spacingCm": 105,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry",
+        "V2 variety artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/pumpkin--butternut.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P145",
+      "kind": "plant",
+      "name": "Pumpkin",
+      "variety": "Crown",
+      "category": "Vegetable",
+      "spacingCm": 105,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry",
+        "V2 variety artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/pumpkin--crown.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P146",
+      "kind": "plant",
+      "name": "Pumpkin",
+      "variety": "Default",
+      "category": "Vegetable",
+      "spacingCm": 105,
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/pumpkin--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P147",
+      "kind": "plant",
+      "name": "Pumpkin",
+      "variety": "Gem Squash",
+      "category": "Vegetable",
+      "spacingCm": 105,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry",
+        "V2 variety artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/pumpkin--gem-squash.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P148",
+      "kind": "plant",
+      "name": "Pumpkin",
+      "variety": "Kabocha",
+      "category": "Vegetable",
+      "spacingCm": 105,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry",
+        "V2 variety artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/pumpkin--kabocha.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P149",
+      "kind": "plant",
+      "name": "Purple Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_black_purple.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P150",
+      "kind": "plant",
+      "name": "Radish",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/radish--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P151",
+      "kind": "plant",
+      "name": "Raspberry",
+      "variety": "Aspiring",
+      "category": "Fruit",
+      "spacingCm": 50,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P152",
+      "kind": "plant",
+      "name": "Raspberry",
+      "variety": "Default",
+      "category": "Fruit",
+      "spacingCm": 50,
+      "source": [
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ]
+    },
+    {
+      "id": "P153",
+      "kind": "plant",
+      "name": "Raspberry",
+      "variety": "Heritage",
+      "category": "Fruit",
+      "spacingCm": 50,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P154",
+      "kind": "plant",
+      "name": "Raspberry",
+      "variety": "Unknown Cane",
+      "category": "Fruit",
+      "spacingCm": 50,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P155",
+      "kind": "plant",
+      "name": "Raspberry",
+      "variety": "Waiau",
+      "category": "Fruit",
+      "spacingCm": 50,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P156",
+      "kind": "plant",
+      "name": "Roma",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry"
+      ]
+    },
+    {
+      "id": "P157",
+      "kind": "plant",
+      "name": "Roma Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_roma_red.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P158",
+      "kind": "plant",
+      "name": "Rosemary",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ]
+    },
+    {
+      "id": "P159",
+      "kind": "plant",
+      "name": "Runner Bean",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/runner-bean--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P160",
+      "kind": "plant",
+      "name": "Sage",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry",
+        "Production geometry registry"
+      ]
+    },
+    {
+      "id": "P161",
+      "kind": "plant",
+      "name": "Scallopini",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/scallopini--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P162",
+      "kind": "plant",
+      "name": "Scarlet Runner",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/scarlet-runner--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P163",
+      "kind": "plant",
+      "name": "Shallot",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/shallot--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P164",
+      "kind": "plant",
+      "name": "Silverbeet",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/silverbeet--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P165",
+      "kind": "plant",
+      "name": "Spinach",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/spinach--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P166",
+      "kind": "plant",
+      "name": "Squash",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/squash--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P167",
+      "kind": "plant",
+      "name": "Strawberry",
+      "variety": "Albion",
+      "category": "Fruit",
+      "spacingCm": 35,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P168",
+      "kind": "plant",
+      "name": "Strawberry",
+      "variety": "Camarosa",
+      "category": "Fruit",
+      "spacingCm": 35,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P169",
+      "kind": "plant",
+      "name": "Strawberry",
+      "variety": "Default",
+      "category": "Fruit",
+      "spacingCm": 35,
+      "source": [
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ]
+    },
+    {
+      "id": "P170",
+      "kind": "plant",
+      "name": "Strawberry",
+      "variety": "Monterey",
+      "category": "Fruit",
+      "spacingCm": 35,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P171",
+      "kind": "plant",
+      "name": "Strawberry",
+      "variety": "Unknown Crown",
+      "category": "Fruit",
+      "spacingCm": 35,
+      "source": [
+        "Planner crop catalogue"
+      ]
+    },
+    {
+      "id": "P172",
+      "kind": "plant",
+      "name": "Striped Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_striped_bicolour.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P173",
+      "kind": "plant",
+      "name": "Thyme",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ]
+    },
+    {
+      "id": "P174",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Beefsteak",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_beefsteak_red.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P175",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Bicolour",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_striped_bicolour.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P176",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Black",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_black_purple.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P177",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Black Krim",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Planner crop catalogue"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_standard_red.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P178",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Black Purple",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_black_purple.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P179",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Bush",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_dwarf_bush.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P180",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Cherry",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_cherry_red.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P181",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Cream",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_white_cream.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P182",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Default",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry",
+        "V2 icon registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx",
+        "Renderer resolver: components/garden-workspace-realistic.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_standard_red.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P183",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Dwarf",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_dwarf_bush.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P184",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Grape",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_grape_red.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P185",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Green",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_green_ripe.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P186",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Green Ripe",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_green_ripe.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P187",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Hanging",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_trailing_hanging.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P188",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Moneymaker",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Planner crop catalogue"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_standard_red.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P189",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Orange",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_standard_orange.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P190",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Pear",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_pear_yellow.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P191",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Pink",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_pink.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P192",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Plum",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_roma_red.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P193",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Purple",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_black_purple.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P194",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Red Cherry",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_cherry_red.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P195",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Roma",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Planner crop catalogue",
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_roma_red.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P196",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Striped",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_striped_bicolour.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P197",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Trailing",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_trailing_hanging.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P198",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "White",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_white_cream.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P199",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Yellow",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_standard_yellow.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P200",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Yellow Cherry",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_cherry_yellow.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P201",
+      "kind": "plant",
+      "name": "Tomato",
+      "variety": "Yellow Pear",
+      "category": "Vegetable",
+      "spacingCm": 50,
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_pear_yellow.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P202",
+      "kind": "plant",
+      "name": "Trailing Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_trailing_hanging.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P203",
+      "kind": "plant",
+      "name": "Turnip",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/turnip--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P204",
+      "kind": "plant",
+      "name": "Watermelon",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/watermelon--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P205",
+      "kind": "plant",
+      "name": "White Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_white_cream.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P206",
+      "kind": "plant",
+      "name": "Yellow Cherry Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_cherry_yellow.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P207",
+      "kind": "plant",
+      "name": "Yellow Pear Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_pear_yellow.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P208",
+      "kind": "plant",
+      "name": "Yellow Tomato",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry"
+      ],
+      "artwork": {
+        "src": "/plant-icons/individual/tomato_standard_yellow.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "P209",
+      "kind": "plant",
+      "name": "Zucchini",
+      "variety": "Default",
+      "category": "Other plants",
+      "source": [
+        "Artwork registry",
+        "Production geometry registry",
+        "Renderer resolver: components/garden-lowpoly-plants.ts",
+        "Renderer resolver: components/garden-webgl-visual.tsx"
+      ],
+      "artwork": {
+        "src": "/plant-icons/botanical/zucchini--.webp",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true
+    },
+    {
+      "id": "S001",
+      "kind": "structure",
+      "name": "Greenhouse",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S001",
+        "type": "structure",
+        "kind": "greenhouse",
+        "x": 450,
+        "y": 540,
+        "widthCm": 240,
+        "depthCm": 360,
+        "heightCm": 220,
+        "rotationDeg": 0,
+        "label": "Greenhouse"
+      },
+      "dimensions": "2.4 × 3.6 × 2.2 m"
+    },
+    {
+      "id": "S002",
+      "kind": "structure",
+      "name": "Greenhouse",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S002",
+        "type": "structure",
+        "kind": "greenhouse",
+        "x": 450,
+        "y": 540,
+        "widthCm": 120,
+        "depthCm": 180,
+        "heightCm": 110,
+        "rotationDeg": 0,
+        "label": "Greenhouse"
+      },
+      "dimensions": "1.2 × 1.8 × 1.1 m"
+    },
+    {
+      "id": "S003",
+      "kind": "structure",
+      "name": "Greenhouse",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S003",
+        "type": "structure",
+        "kind": "greenhouse",
+        "x": 450,
+        "y": 540,
+        "widthCm": 360,
+        "depthCm": 540,
+        "heightCm": 330,
+        "rotationDeg": 0,
+        "label": "Greenhouse"
+      },
+      "dimensions": "3.6 × 5.4 × 3.3 m"
+    },
+    {
+      "id": "S004",
+      "kind": "structure",
+      "name": "Polytunnel",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S004",
+        "type": "structure",
+        "kind": "polytunnel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 300,
+        "depthCm": 500,
+        "heightCm": 220,
+        "rotationDeg": 0,
+        "label": "Polytunnel"
+      },
+      "dimensions": "3 × 5 × 2.2 m"
+    },
+    {
+      "id": "S005",
+      "kind": "structure",
+      "name": "Polytunnel",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S005",
+        "type": "structure",
+        "kind": "polytunnel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 150,
+        "depthCm": 250,
+        "heightCm": 110,
+        "rotationDeg": 0,
+        "label": "Polytunnel"
+      },
+      "dimensions": "1.5 × 2.5 × 1.1 m"
+    },
+    {
+      "id": "S006",
+      "kind": "structure",
+      "name": "Polytunnel",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S006",
+        "type": "structure",
+        "kind": "polytunnel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 450,
+        "depthCm": 750,
+        "heightCm": 330,
+        "rotationDeg": 0,
+        "label": "Polytunnel"
+      },
+      "dimensions": "4.5 × 7.5 × 3.3 m"
+    },
+    {
+      "id": "S007",
+      "kind": "structure",
+      "name": "Garden shed",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S007",
+        "type": "structure",
+        "kind": "shed",
+        "x": 450,
+        "y": 540,
+        "widthCm": 240,
+        "depthCm": 240,
+        "heightCm": 230,
+        "rotationDeg": 0,
+        "label": "Garden shed"
+      },
+      "dimensions": "2.4 × 2.4 × 2.3 m"
+    },
+    {
+      "id": "S008",
+      "kind": "structure",
+      "name": "Garden shed",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S008",
+        "type": "structure",
+        "kind": "shed",
+        "x": 450,
+        "y": 540,
+        "widthCm": 120,
+        "depthCm": 120,
+        "heightCm": 115,
+        "rotationDeg": 0,
+        "label": "Garden shed"
+      },
+      "dimensions": "1.2 × 1.2 × 1.15 m"
+    },
+    {
+      "id": "S009",
+      "kind": "structure",
+      "name": "Garden shed",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S009",
+        "type": "structure",
+        "kind": "shed",
+        "x": 450,
+        "y": 540,
+        "widthCm": 360,
+        "depthCm": 360,
+        "heightCm": 345,
+        "rotationDeg": 0,
+        "label": "Garden shed"
+      },
+      "dimensions": "3.6 × 3.6 × 3.45 m"
+    },
+    {
+      "id": "S010",
+      "kind": "structure",
+      "name": "Cold frame",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S010",
+        "type": "structure",
+        "kind": "cold-frame",
+        "x": 450,
+        "y": 540,
+        "widthCm": 120,
+        "depthCm": 90,
+        "heightCm": 50,
+        "rotationDeg": 0,
+        "label": "Cold frame"
+      },
+      "dimensions": "1.2 × 0.9 × 0.5 m"
+    },
+    {
+      "id": "S011",
+      "kind": "structure",
+      "name": "Cold frame",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S011",
+        "type": "structure",
+        "kind": "cold-frame",
+        "x": 450,
+        "y": 540,
+        "widthCm": 60,
+        "depthCm": 45,
+        "heightCm": 25,
+        "rotationDeg": 0,
+        "label": "Cold frame"
+      },
+      "dimensions": "0.6 × 0.45 × 0.25 m"
+    },
+    {
+      "id": "S012",
+      "kind": "structure",
+      "name": "Cold frame",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S012",
+        "type": "structure",
+        "kind": "cold-frame",
+        "x": 450,
+        "y": 540,
+        "widthCm": 180,
+        "depthCm": 135,
+        "heightCm": 75,
+        "rotationDeg": 0,
+        "label": "Cold frame"
+      },
+      "dimensions": "1.8 × 1.35 × 0.75 m"
+    },
+    {
+      "id": "S013",
+      "kind": "structure",
+      "name": "Compost bin",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S013",
+        "type": "structure",
+        "kind": "compost-bin",
+        "x": 450,
+        "y": 540,
+        "widthCm": 100,
+        "depthCm": 100,
+        "heightCm": 110,
+        "rotationDeg": 0,
+        "label": "Compost bin"
+      },
+      "dimensions": "1 × 1 × 1.1 m"
+    },
+    {
+      "id": "S014",
+      "kind": "structure",
+      "name": "Compost bin",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S014",
+        "type": "structure",
+        "kind": "compost-bin",
+        "x": 450,
+        "y": 540,
+        "widthCm": 50,
+        "depthCm": 50,
+        "heightCm": 55,
+        "rotationDeg": 0,
+        "label": "Compost bin"
+      },
+      "dimensions": "0.5 × 0.5 × 0.55 m"
+    },
+    {
+      "id": "S015",
+      "kind": "structure",
+      "name": "Compost bin",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S015",
+        "type": "structure",
+        "kind": "compost-bin",
+        "x": 450,
+        "y": 540,
+        "widthCm": 150,
+        "depthCm": 150,
+        "heightCm": 165,
+        "rotationDeg": 0,
+        "label": "Compost bin"
+      },
+      "dimensions": "1.5 × 1.5 × 1.65 m"
+    },
+    {
+      "id": "S016",
+      "kind": "structure",
+      "name": "Water tank",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S016",
+        "type": "structure",
+        "kind": "water-tank",
+        "x": 450,
+        "y": 540,
+        "widthCm": 120,
+        "depthCm": 120,
+        "heightCm": 180,
+        "rotationDeg": 0,
+        "label": "Water tank"
+      },
+      "dimensions": "1.2 × 1.2 × 1.8 m"
+    },
+    {
+      "id": "S017",
+      "kind": "structure",
+      "name": "Water tank",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S017",
+        "type": "structure",
+        "kind": "water-tank",
+        "x": 450,
+        "y": 540,
+        "widthCm": 60,
+        "depthCm": 60,
+        "heightCm": 90,
+        "rotationDeg": 0,
+        "label": "Water tank"
+      },
+      "dimensions": "0.6 × 0.6 × 0.9 m"
+    },
+    {
+      "id": "S018",
+      "kind": "structure",
+      "name": "Water tank",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S018",
+        "type": "structure",
+        "kind": "water-tank",
+        "x": 450,
+        "y": 540,
+        "widthCm": 180,
+        "depthCm": 180,
+        "heightCm": 270,
+        "rotationDeg": 0,
+        "label": "Water tank"
+      },
+      "dimensions": "1.8 × 1.8 × 2.7 m"
+    },
+    {
+      "id": "S019",
+      "kind": "structure",
+      "name": "Rain barrel",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S019",
+        "type": "structure",
+        "kind": "rain-barrel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 70,
+        "depthCm": 70,
+        "heightCm": 100,
+        "rotationDeg": 0,
+        "label": "Rain barrel"
+      },
+      "dimensions": "0.7 × 0.7 × 1 m"
+    },
+    {
+      "id": "S020",
+      "kind": "structure",
+      "name": "Rain barrel",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S020",
+        "type": "structure",
+        "kind": "rain-barrel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 35,
+        "depthCm": 35,
+        "heightCm": 50,
+        "rotationDeg": 0,
+        "label": "Rain barrel"
+      },
+      "dimensions": "0.35 × 0.35 × 0.5 m"
+    },
+    {
+      "id": "S021",
+      "kind": "structure",
+      "name": "Rain barrel",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S021",
+        "type": "structure",
+        "kind": "rain-barrel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 105,
+        "depthCm": 105,
+        "heightCm": 150,
+        "rotationDeg": 0,
+        "label": "Rain barrel"
+      },
+      "dimensions": "1.05 × 1.05 × 1.5 m"
+    },
+    {
+      "id": "S022",
+      "kind": "structure",
+      "name": "Potting bench",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S022",
+        "type": "structure",
+        "kind": "potting-bench",
+        "x": 450,
+        "y": 540,
+        "widthCm": 160,
+        "depthCm": 70,
+        "heightCm": 95,
+        "rotationDeg": 0,
+        "label": "Potting bench"
+      },
+      "dimensions": "1.6 × 0.7 × 0.95 m"
+    },
+    {
+      "id": "S023",
+      "kind": "structure",
+      "name": "Potting bench",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S023",
+        "type": "structure",
+        "kind": "potting-bench",
+        "x": 450,
+        "y": 540,
+        "widthCm": 80,
+        "depthCm": 35,
+        "heightCm": 47.5,
+        "rotationDeg": 0,
+        "label": "Potting bench"
+      },
+      "dimensions": "0.8 × 0.35 × 0.475 m"
+    },
+    {
+      "id": "S024",
+      "kind": "structure",
+      "name": "Potting bench",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S024",
+        "type": "structure",
+        "kind": "potting-bench",
+        "x": 450,
+        "y": 540,
+        "widthCm": 240,
+        "depthCm": 105,
+        "heightCm": 142.5,
+        "rotationDeg": 0,
+        "label": "Potting bench"
+      },
+      "dimensions": "2.4 × 1.05 × 1.425 m"
+    },
+    {
+      "id": "S025",
+      "kind": "structure",
+      "name": "Pergola",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S025",
+        "type": "structure",
+        "kind": "pergola",
+        "x": 450,
+        "y": 540,
+        "widthCm": 240,
+        "depthCm": 240,
+        "heightCm": 230,
+        "rotationDeg": 0,
+        "label": "Pergola"
+      },
+      "dimensions": "2.4 × 2.4 × 2.3 m"
+    },
+    {
+      "id": "S026",
+      "kind": "structure",
+      "name": "Pergola",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S026",
+        "type": "structure",
+        "kind": "pergola",
+        "x": 450,
+        "y": 540,
+        "widthCm": 120,
+        "depthCm": 120,
+        "heightCm": 115,
+        "rotationDeg": 0,
+        "label": "Pergola"
+      },
+      "dimensions": "1.2 × 1.2 × 1.15 m"
+    },
+    {
+      "id": "S027",
+      "kind": "structure",
+      "name": "Pergola",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S027",
+        "type": "structure",
+        "kind": "pergola",
+        "x": 450,
+        "y": 540,
+        "widthCm": 360,
+        "depthCm": 360,
+        "heightCm": 345,
+        "rotationDeg": 0,
+        "label": "Pergola"
+      },
+      "dimensions": "3.6 × 3.6 × 3.45 m"
+    },
+    {
+      "id": "S028",
+      "kind": "structure",
+      "name": "Garden arch",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S028",
+        "type": "structure",
+        "kind": "garden-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 120,
+        "depthCm": 50,
+        "heightCm": 220,
+        "rotationDeg": 0,
+        "label": "Garden arch"
+      },
+      "dimensions": "1.2 × 0.5 × 2.2 m"
+    },
+    {
+      "id": "S029",
+      "kind": "structure",
+      "name": "Garden arch",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S029",
+        "type": "structure",
+        "kind": "garden-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 60,
+        "depthCm": 30,
+        "heightCm": 110,
+        "rotationDeg": 0,
+        "label": "Garden arch"
+      },
+      "dimensions": "0.6 × 0.3 × 1.1 m"
+    },
+    {
+      "id": "S030",
+      "kind": "structure",
+      "name": "Garden arch",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S030",
+        "type": "structure",
+        "kind": "garden-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 180,
+        "depthCm": 75,
+        "heightCm": 330,
+        "rotationDeg": 0,
+        "label": "Garden arch"
+      },
+      "dimensions": "1.8 × 0.75 × 3.3 m"
+    },
+    {
+      "id": "S031",
+      "kind": "structure",
+      "name": "Chicken coop",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S031",
+        "type": "structure",
+        "kind": "chicken-coop",
+        "x": 450,
+        "y": 540,
+        "widthCm": 200,
+        "depthCm": 140,
+        "heightCm": 170,
+        "rotationDeg": 0,
+        "label": "Chicken coop"
+      },
+      "dimensions": "2 × 1.4 × 1.7 m"
+    },
+    {
+      "id": "S032",
+      "kind": "structure",
+      "name": "Chicken coop",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S032",
+        "type": "structure",
+        "kind": "chicken-coop",
+        "x": 450,
+        "y": 540,
+        "widthCm": 100,
+        "depthCm": 70,
+        "heightCm": 85,
+        "rotationDeg": 0,
+        "label": "Chicken coop"
+      },
+      "dimensions": "1 × 0.7 × 0.85 m"
+    },
+    {
+      "id": "S033",
+      "kind": "structure",
+      "name": "Chicken coop",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S033",
+        "type": "structure",
+        "kind": "chicken-coop",
+        "x": 450,
+        "y": 540,
+        "widthCm": 300,
+        "depthCm": 210,
+        "heightCm": 255,
+        "rotationDeg": 0,
+        "label": "Chicken coop"
+      },
+      "dimensions": "3 × 2.1 × 2.55 m"
+    },
+    {
+      "id": "S034",
+      "kind": "structure",
+      "name": "Beehive",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S034",
+        "type": "structure",
+        "kind": "beehive",
+        "x": 450,
+        "y": 540,
+        "widthCm": 60,
+        "depthCm": 50,
+        "heightCm": 100,
+        "rotationDeg": 0,
+        "label": "Beehive"
+      },
+      "dimensions": "0.6 × 0.5 × 1 m"
+    },
+    {
+      "id": "S035",
+      "kind": "structure",
+      "name": "Beehive",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S035",
+        "type": "structure",
+        "kind": "beehive",
+        "x": 450,
+        "y": 540,
+        "widthCm": 30,
+        "depthCm": 30,
+        "heightCm": 50,
+        "rotationDeg": 0,
+        "label": "Beehive"
+      },
+      "dimensions": "0.3 × 0.3 × 0.5 m"
+    },
+    {
+      "id": "S036",
+      "kind": "structure",
+      "name": "Beehive",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S036",
+        "type": "structure",
+        "kind": "beehive",
+        "x": 450,
+        "y": 540,
+        "widthCm": 90,
+        "depthCm": 75,
+        "heightCm": 150,
+        "rotationDeg": 0,
+        "label": "Beehive"
+      },
+      "dimensions": "0.9 × 0.75 × 1.5 m"
+    },
+    {
+      "id": "S037",
+      "kind": "structure",
+      "name": "Bent cattle panel arch",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S037",
+        "type": "structure",
+        "kind": "cattle-panel-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 120,
+        "depthCm": 250,
+        "heightCm": 200,
+        "rotationDeg": 0,
+        "label": "Bent cattle panel arch"
+      },
+      "dimensions": "1.2 × 2.5 × 2 m"
+    },
+    {
+      "id": "S038",
+      "kind": "structure",
+      "name": "Bent cattle panel arch",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S038",
+        "type": "structure",
+        "kind": "cattle-panel-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 60,
+        "depthCm": 125,
+        "heightCm": 100,
+        "rotationDeg": 0,
+        "label": "Bent cattle panel arch"
+      },
+      "dimensions": "0.6 × 1.25 × 1 m"
+    },
+    {
+      "id": "S039",
+      "kind": "structure",
+      "name": "Bent cattle panel arch",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S039",
+        "type": "structure",
+        "kind": "cattle-panel-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 180,
+        "depthCm": 375,
+        "heightCm": 300,
+        "rotationDeg": 0,
+        "label": "Bent cattle panel arch"
+      },
+      "dimensions": "1.8 × 3.75 × 3 m"
+    },
+    {
+      "id": "S040",
+      "kind": "structure",
+      "name": "Bean arch",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S040",
+        "type": "structure",
+        "kind": "bean-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 120,
+        "depthCm": 180,
+        "heightCm": 200,
+        "rotationDeg": 0,
+        "label": "Bean arch"
+      },
+      "dimensions": "1.2 × 1.8 × 2 m"
+    },
+    {
+      "id": "S041",
+      "kind": "structure",
+      "name": "Bean arch",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S041",
+        "type": "structure",
+        "kind": "bean-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 60,
+        "depthCm": 90,
+        "heightCm": 100,
+        "rotationDeg": 0,
+        "label": "Bean arch"
+      },
+      "dimensions": "0.6 × 0.9 × 1 m"
+    },
+    {
+      "id": "S042",
+      "kind": "structure",
+      "name": "Bean arch",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S042",
+        "type": "structure",
+        "kind": "bean-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 180,
+        "depthCm": 270,
+        "heightCm": 300,
+        "rotationDeg": 0,
+        "label": "Bean arch"
+      },
+      "dimensions": "1.8 × 2.7 × 3 m"
+    },
+    {
+      "id": "S043",
+      "kind": "structure",
+      "name": "Cucumber arch",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S043",
+        "type": "structure",
+        "kind": "cucumber-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 100,
+        "depthCm": 160,
+        "heightCm": 180,
+        "rotationDeg": 0,
+        "label": "Cucumber arch"
+      },
+      "dimensions": "1 × 1.6 × 1.8 m"
+    },
+    {
+      "id": "S044",
+      "kind": "structure",
+      "name": "Cucumber arch",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S044",
+        "type": "structure",
+        "kind": "cucumber-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 50,
+        "depthCm": 80,
+        "heightCm": 90,
+        "rotationDeg": 0,
+        "label": "Cucumber arch"
+      },
+      "dimensions": "0.5 × 0.8 × 0.9 m"
+    },
+    {
+      "id": "S045",
+      "kind": "structure",
+      "name": "Cucumber arch",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S045",
+        "type": "structure",
+        "kind": "cucumber-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 150,
+        "depthCm": 240,
+        "heightCm": 270,
+        "rotationDeg": 0,
+        "label": "Cucumber arch"
+      },
+      "dimensions": "1.5 × 2.4 × 2.7 m"
+    },
+    {
+      "id": "S046",
+      "kind": "structure",
+      "name": "Walk-through hoop arch",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S046",
+        "type": "structure",
+        "kind": "hoop-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 150,
+        "depthCm": 250,
+        "heightCm": 210,
+        "rotationDeg": 0,
+        "label": "Walk-through hoop arch"
+      },
+      "dimensions": "1.5 × 2.5 × 2.1 m"
+    },
+    {
+      "id": "S047",
+      "kind": "structure",
+      "name": "Walk-through hoop arch",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S047",
+        "type": "structure",
+        "kind": "hoop-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 75,
+        "depthCm": 125,
+        "heightCm": 105,
+        "rotationDeg": 0,
+        "label": "Walk-through hoop arch"
+      },
+      "dimensions": "0.75 × 1.25 × 1.05 m"
+    },
+    {
+      "id": "S048",
+      "kind": "structure",
+      "name": "Walk-through hoop arch",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S048",
+        "type": "structure",
+        "kind": "hoop-arch",
+        "x": 450,
+        "y": 540,
+        "widthCm": 225,
+        "depthCm": 375,
+        "heightCm": 315,
+        "rotationDeg": 0,
+        "label": "Walk-through hoop arch"
+      },
+      "dimensions": "2.25 × 3.75 × 3.15 m"
+    },
+    {
+      "id": "S049",
+      "kind": "structure",
+      "name": "A-frame trellis",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S049",
+        "type": "structure",
+        "kind": "a-frame-trellis",
+        "x": 450,
+        "y": 540,
+        "widthCm": 120,
+        "depthCm": 200,
+        "heightCm": 180,
+        "rotationDeg": 0,
+        "label": "A-frame trellis"
+      },
+      "dimensions": "1.2 × 2 × 1.8 m"
+    },
+    {
+      "id": "S050",
+      "kind": "structure",
+      "name": "A-frame trellis",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S050",
+        "type": "structure",
+        "kind": "a-frame-trellis",
+        "x": 450,
+        "y": 540,
+        "widthCm": 60,
+        "depthCm": 100,
+        "heightCm": 90,
+        "rotationDeg": 0,
+        "label": "A-frame trellis"
+      },
+      "dimensions": "0.6 × 1 × 0.9 m"
+    },
+    {
+      "id": "S051",
+      "kind": "structure",
+      "name": "A-frame trellis",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S051",
+        "type": "structure",
+        "kind": "a-frame-trellis",
+        "x": 450,
+        "y": 540,
+        "widthCm": 180,
+        "depthCm": 300,
+        "heightCm": 270,
+        "rotationDeg": 0,
+        "label": "A-frame trellis"
+      },
+      "dimensions": "1.8 × 3 × 2.7 m"
+    },
+    {
+      "id": "S052",
+      "kind": "structure",
+      "name": "Low hoop frame",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S052",
+        "type": "structure",
+        "kind": "low-hoop-frame",
+        "x": 450,
+        "y": 540,
+        "widthCm": 100,
+        "depthCm": 240,
+        "heightCm": 70,
+        "rotationDeg": 0,
+        "label": "Low hoop frame"
+      },
+      "dimensions": "1 × 2.4 × 0.7 m"
+    },
+    {
+      "id": "S053",
+      "kind": "structure",
+      "name": "Low hoop frame",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S053",
+        "type": "structure",
+        "kind": "low-hoop-frame",
+        "x": 450,
+        "y": 540,
+        "widthCm": 50,
+        "depthCm": 120,
+        "heightCm": 35,
+        "rotationDeg": 0,
+        "label": "Low hoop frame"
+      },
+      "dimensions": "0.5 × 1.2 × 0.35 m"
+    },
+    {
+      "id": "S054",
+      "kind": "structure",
+      "name": "Low hoop frame",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S054",
+        "type": "structure",
+        "kind": "low-hoop-frame",
+        "x": 450,
+        "y": 540,
+        "widthCm": 150,
+        "depthCm": 360,
+        "heightCm": 105,
+        "rotationDeg": 0,
+        "label": "Low hoop frame"
+      },
+      "dimensions": "1.5 × 3.6 × 1.05 m"
+    },
+    {
+      "id": "S055",
+      "kind": "structure",
+      "name": "Insect net tunnel",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S055",
+        "type": "structure",
+        "kind": "insect-net-tunnel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 120,
+        "depthCm": 300,
+        "heightCm": 120,
+        "rotationDeg": 0,
+        "label": "Insect net tunnel"
+      },
+      "dimensions": "1.2 × 3 × 1.2 m"
+    },
+    {
+      "id": "S056",
+      "kind": "structure",
+      "name": "Insect net tunnel",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S056",
+        "type": "structure",
+        "kind": "insect-net-tunnel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 60,
+        "depthCm": 150,
+        "heightCm": 60,
+        "rotationDeg": 0,
+        "label": "Insect net tunnel"
+      },
+      "dimensions": "0.6 × 1.5 × 0.6 m"
+    },
+    {
+      "id": "S057",
+      "kind": "structure",
+      "name": "Insect net tunnel",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S057",
+        "type": "structure",
+        "kind": "insect-net-tunnel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 180,
+        "depthCm": 450,
+        "heightCm": 180,
+        "rotationDeg": 0,
+        "label": "Insect net tunnel"
+      },
+      "dimensions": "1.8 × 4.5 × 1.8 m"
+    },
+    {
+      "id": "S058",
+      "kind": "structure",
+      "name": "Bird net frame",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S058",
+        "type": "structure",
+        "kind": "bird-net-frame",
+        "x": 450,
+        "y": 540,
+        "widthCm": 200,
+        "depthCm": 300,
+        "heightCm": 180,
+        "rotationDeg": 0,
+        "label": "Bird net frame"
+      },
+      "dimensions": "2 × 3 × 1.8 m"
+    },
+    {
+      "id": "S059",
+      "kind": "structure",
+      "name": "Bird net frame",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S059",
+        "type": "structure",
+        "kind": "bird-net-frame",
+        "x": 450,
+        "y": 540,
+        "widthCm": 100,
+        "depthCm": 150,
+        "heightCm": 90,
+        "rotationDeg": 0,
+        "label": "Bird net frame"
+      },
+      "dimensions": "1 × 1.5 × 0.9 m"
+    },
+    {
+      "id": "S060",
+      "kind": "structure",
+      "name": "Bird net frame",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S060",
+        "type": "structure",
+        "kind": "bird-net-frame",
+        "x": 450,
+        "y": 540,
+        "widthCm": 300,
+        "depthCm": 450,
+        "heightCm": 270,
+        "rotationDeg": 0,
+        "label": "Bird net frame"
+      },
+      "dimensions": "3 × 4.5 × 2.7 m"
+    },
+    {
+      "id": "S061",
+      "kind": "structure",
+      "name": "Frost cloth tunnel",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S061",
+        "type": "structure",
+        "kind": "frost-cloth-tunnel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 100,
+        "depthCm": 250,
+        "heightCm": 80,
+        "rotationDeg": 0,
+        "label": "Frost cloth tunnel"
+      },
+      "dimensions": "1 × 2.5 × 0.8 m"
+    },
+    {
+      "id": "S062",
+      "kind": "structure",
+      "name": "Frost cloth tunnel",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S062",
+        "type": "structure",
+        "kind": "frost-cloth-tunnel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 50,
+        "depthCm": 125,
+        "heightCm": 40,
+        "rotationDeg": 0,
+        "label": "Frost cloth tunnel"
+      },
+      "dimensions": "0.5 × 1.25 × 0.4 m"
+    },
+    {
+      "id": "S063",
+      "kind": "structure",
+      "name": "Frost cloth tunnel",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S063",
+        "type": "structure",
+        "kind": "frost-cloth-tunnel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 150,
+        "depthCm": 375,
+        "heightCm": 120,
+        "rotationDeg": 0,
+        "label": "Frost cloth tunnel"
+      },
+      "dimensions": "1.5 × 3.75 × 1.2 m"
+    },
+    {
+      "id": "S064",
+      "kind": "structure",
+      "name": "Shade cloth frame",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S064",
+        "type": "structure",
+        "kind": "shade-cloth-frame",
+        "x": 450,
+        "y": 540,
+        "widthCm": 250,
+        "depthCm": 300,
+        "heightCm": 200,
+        "rotationDeg": 0,
+        "label": "Shade cloth frame"
+      },
+      "dimensions": "2.5 × 3 × 2 m"
+    },
+    {
+      "id": "S065",
+      "kind": "structure",
+      "name": "Shade cloth frame",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S065",
+        "type": "structure",
+        "kind": "shade-cloth-frame",
+        "x": 450,
+        "y": 540,
+        "widthCm": 125,
+        "depthCm": 150,
+        "heightCm": 100,
+        "rotationDeg": 0,
+        "label": "Shade cloth frame"
+      },
+      "dimensions": "1.25 × 1.5 × 1 m"
+    },
+    {
+      "id": "S066",
+      "kind": "structure",
+      "name": "Shade cloth frame",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S066",
+        "type": "structure",
+        "kind": "shade-cloth-frame",
+        "x": 450,
+        "y": 540,
+        "widthCm": 375,
+        "depthCm": 450,
+        "heightCm": 300,
+        "rotationDeg": 0,
+        "label": "Shade cloth frame"
+      },
+      "dimensions": "3.75 × 4.5 × 3 m"
+    },
+    {
+      "id": "S067",
+      "kind": "structure",
+      "name": "Cloche",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S067",
+        "type": "structure",
+        "kind": "cloche",
+        "x": 450,
+        "y": 540,
+        "widthCm": 60,
+        "depthCm": 100,
+        "heightCm": 45,
+        "rotationDeg": 0,
+        "label": "Cloche"
+      },
+      "dimensions": "0.6 × 1 × 0.45 m"
+    },
+    {
+      "id": "S068",
+      "kind": "structure",
+      "name": "Cloche",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S068",
+        "type": "structure",
+        "kind": "cloche",
+        "x": 450,
+        "y": 540,
+        "widthCm": 30,
+        "depthCm": 50,
+        "heightCm": 22.5,
+        "rotationDeg": 0,
+        "label": "Cloche"
+      },
+      "dimensions": "0.3 × 0.5 × 0.225 m"
+    },
+    {
+      "id": "S069",
+      "kind": "structure",
+      "name": "Cloche",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S069",
+        "type": "structure",
+        "kind": "cloche",
+        "x": 450,
+        "y": 540,
+        "widthCm": 90,
+        "depthCm": 150,
+        "heightCm": 67.5,
+        "rotationDeg": 0,
+        "label": "Cloche"
+      },
+      "dimensions": "0.9 × 1.5 × 0.675 m"
+    },
+    {
+      "id": "S070",
+      "kind": "structure",
+      "name": "Row cover hoops",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S070",
+        "type": "structure",
+        "kind": "row-cover-hoops",
+        "x": 450,
+        "y": 540,
+        "widthCm": 100,
+        "depthCm": 300,
+        "heightCm": 75,
+        "rotationDeg": 0,
+        "label": "Row cover hoops"
+      },
+      "dimensions": "1 × 3 × 0.75 m"
+    },
+    {
+      "id": "S071",
+      "kind": "structure",
+      "name": "Row cover hoops",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S071",
+        "type": "structure",
+        "kind": "row-cover-hoops",
+        "x": 450,
+        "y": 540,
+        "widthCm": 50,
+        "depthCm": 150,
+        "heightCm": 37.5,
+        "rotationDeg": 0,
+        "label": "Row cover hoops"
+      },
+      "dimensions": "0.5 × 1.5 × 0.375 m"
+    },
+    {
+      "id": "S072",
+      "kind": "structure",
+      "name": "Row cover hoops",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S072",
+        "type": "structure",
+        "kind": "row-cover-hoops",
+        "x": 450,
+        "y": 540,
+        "widthCm": 150,
+        "depthCm": 450,
+        "heightCm": 112.5,
+        "rotationDeg": 0,
+        "label": "Row cover hoops"
+      },
+      "dimensions": "1.5 × 4.5 × 1.125 m"
+    },
+    {
+      "id": "S073",
+      "kind": "structure",
+      "name": "Garden pot",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S073",
+        "type": "structure",
+        "kind": "pot",
+        "x": 450,
+        "y": 540,
+        "widthCm": 45,
+        "depthCm": 45,
+        "heightCm": 40,
+        "rotationDeg": 0,
+        "label": "Garden pot"
+      },
+      "dimensions": "0.45 × 0.45 × 0.4 m"
+    },
+    {
+      "id": "S074",
+      "kind": "structure",
+      "name": "Garden pot",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S074",
+        "type": "structure",
+        "kind": "pot",
+        "x": 450,
+        "y": 540,
+        "widthCm": 30,
+        "depthCm": 30,
+        "heightCm": 20,
+        "rotationDeg": 0,
+        "label": "Garden pot"
+      },
+      "dimensions": "0.3 × 0.3 × 0.2 m"
+    },
+    {
+      "id": "S075",
+      "kind": "structure",
+      "name": "Garden pot",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S075",
+        "type": "structure",
+        "kind": "pot",
+        "x": 450,
+        "y": 540,
+        "widthCm": 67.5,
+        "depthCm": 67.5,
+        "heightCm": 60,
+        "rotationDeg": 0,
+        "label": "Garden pot"
+      },
+      "dimensions": "0.675 × 0.675 × 0.6 m"
+    },
+    {
+      "id": "S076",
+      "kind": "structure",
+      "name": "Grow bag",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S076",
+        "type": "structure",
+        "kind": "grow-bag",
+        "x": 450,
+        "y": 540,
+        "widthCm": 40,
+        "depthCm": 40,
+        "heightCm": 35,
+        "rotationDeg": 0,
+        "label": "Grow bag"
+      },
+      "dimensions": "0.4 × 0.4 × 0.35 m"
+    },
+    {
+      "id": "S077",
+      "kind": "structure",
+      "name": "Grow bag",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S077",
+        "type": "structure",
+        "kind": "grow-bag",
+        "x": 450,
+        "y": 540,
+        "widthCm": 30,
+        "depthCm": 30,
+        "heightCm": 17.5,
+        "rotationDeg": 0,
+        "label": "Grow bag"
+      },
+      "dimensions": "0.3 × 0.3 × 0.175 m"
+    },
+    {
+      "id": "S078",
+      "kind": "structure",
+      "name": "Grow bag",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S078",
+        "type": "structure",
+        "kind": "grow-bag",
+        "x": 450,
+        "y": 540,
+        "widthCm": 60,
+        "depthCm": 60,
+        "heightCm": 52.5,
+        "rotationDeg": 0,
+        "label": "Grow bag"
+      },
+      "dimensions": "0.6 × 0.6 × 0.525 m"
+    },
+    {
+      "id": "S079",
+      "kind": "structure",
+      "name": "Planter box",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S079",
+        "type": "structure",
+        "kind": "planter-box",
+        "x": 450,
+        "y": 540,
+        "widthCm": 120,
+        "depthCm": 50,
+        "heightCm": 45,
+        "rotationDeg": 0,
+        "label": "Planter box"
+      },
+      "dimensions": "1.2 × 0.5 × 0.45 m"
+    },
+    {
+      "id": "S080",
+      "kind": "structure",
+      "name": "Planter box",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S080",
+        "type": "structure",
+        "kind": "planter-box",
+        "x": 450,
+        "y": 540,
+        "widthCm": 60,
+        "depthCm": 30,
+        "heightCm": 22.5,
+        "rotationDeg": 0,
+        "label": "Planter box"
+      },
+      "dimensions": "0.6 × 0.3 × 0.225 m"
+    },
+    {
+      "id": "S081",
+      "kind": "structure",
+      "name": "Planter box",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S081",
+        "type": "structure",
+        "kind": "planter-box",
+        "x": 450,
+        "y": 540,
+        "widthCm": 180,
+        "depthCm": 75,
+        "heightCm": 67.5,
+        "rotationDeg": 0,
+        "label": "Planter box"
+      },
+      "dimensions": "1.8 × 0.75 × 0.675 m"
+    },
+    {
+      "id": "S082",
+      "kind": "structure",
+      "name": "Trough planter",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S082",
+        "type": "structure",
+        "kind": "trough-planter",
+        "x": 450,
+        "y": 540,
+        "widthCm": 150,
+        "depthCm": 45,
+        "heightCm": 50,
+        "rotationDeg": 0,
+        "label": "Trough planter"
+      },
+      "dimensions": "1.5 × 0.45 × 0.5 m"
+    },
+    {
+      "id": "S083",
+      "kind": "structure",
+      "name": "Trough planter",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S083",
+        "type": "structure",
+        "kind": "trough-planter",
+        "x": 450,
+        "y": 540,
+        "widthCm": 75,
+        "depthCm": 30,
+        "heightCm": 25,
+        "rotationDeg": 0,
+        "label": "Trough planter"
+      },
+      "dimensions": "0.75 × 0.3 × 0.25 m"
+    },
+    {
+      "id": "S084",
+      "kind": "structure",
+      "name": "Trough planter",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S084",
+        "type": "structure",
+        "kind": "trough-planter",
+        "x": 450,
+        "y": 540,
+        "widthCm": 225,
+        "depthCm": 67.5,
+        "heightCm": 75,
+        "rotationDeg": 0,
+        "label": "Trough planter"
+      },
+      "dimensions": "2.25 × 0.675 × 0.75 m"
+    },
+    {
+      "id": "S085",
+      "kind": "structure",
+      "name": "Half barrel planter",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S085",
+        "type": "structure",
+        "kind": "half-barrel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 65,
+        "depthCm": 65,
+        "heightCm": 50,
+        "rotationDeg": 0,
+        "label": "Half barrel planter"
+      },
+      "dimensions": "0.65 × 0.65 × 0.5 m"
+    },
+    {
+      "id": "S086",
+      "kind": "structure",
+      "name": "Half barrel planter",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S086",
+        "type": "structure",
+        "kind": "half-barrel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 32.5,
+        "depthCm": 32.5,
+        "heightCm": 25,
+        "rotationDeg": 0,
+        "label": "Half barrel planter"
+      },
+      "dimensions": "0.325 × 0.325 × 0.25 m"
+    },
+    {
+      "id": "S087",
+      "kind": "structure",
+      "name": "Half barrel planter",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S087",
+        "type": "structure",
+        "kind": "half-barrel",
+        "x": 450,
+        "y": 540,
+        "widthCm": 97.5,
+        "depthCm": 97.5,
+        "heightCm": 75,
+        "rotationDeg": 0,
+        "label": "Half barrel planter"
+      },
+      "dimensions": "0.975 × 0.975 × 0.75 m"
+    },
+    {
+      "id": "S088",
+      "kind": "structure",
+      "name": "Wicking bed",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S088",
+        "type": "structure",
+        "kind": "wicking-bed",
+        "x": 450,
+        "y": 540,
+        "widthCm": 180,
+        "depthCm": 90,
+        "heightCm": 65,
+        "rotationDeg": 0,
+        "label": "Wicking bed"
+      },
+      "dimensions": "1.8 × 0.9 × 0.65 m"
+    },
+    {
+      "id": "S089",
+      "kind": "structure",
+      "name": "Wicking bed",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S089",
+        "type": "structure",
+        "kind": "wicking-bed",
+        "x": 450,
+        "y": 540,
+        "widthCm": 90,
+        "depthCm": 45,
+        "heightCm": 32.5,
+        "rotationDeg": 0,
+        "label": "Wicking bed"
+      },
+      "dimensions": "0.9 × 0.45 × 0.325 m"
+    },
+    {
+      "id": "S090",
+      "kind": "structure",
+      "name": "Wicking bed",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S090",
+        "type": "structure",
+        "kind": "wicking-bed",
+        "x": 450,
+        "y": 540,
+        "widthCm": 270,
+        "depthCm": 135,
+        "heightCm": 97.5,
+        "rotationDeg": 0,
+        "label": "Wicking bed"
+      },
+      "dimensions": "2.7 × 1.35 × 0.975 m"
+    },
+    {
+      "id": "S091",
+      "kind": "structure",
+      "name": "Seed tray",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S091",
+        "type": "structure",
+        "kind": "seed-tray",
+        "x": 450,
+        "y": 540,
+        "widthCm": 55,
+        "depthCm": 35,
+        "heightCm": 8,
+        "rotationDeg": 0,
+        "label": "Seed tray"
+      },
+      "dimensions": "0.55 × 0.35 × 0.08 m"
+    },
+    {
+      "id": "S092",
+      "kind": "structure",
+      "name": "Seed tray",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S092",
+        "type": "structure",
+        "kind": "seed-tray",
+        "x": 450,
+        "y": 540,
+        "widthCm": 30,
+        "depthCm": 30,
+        "heightCm": 8,
+        "rotationDeg": 0,
+        "label": "Seed tray"
+      },
+      "dimensions": "0.3 × 0.3 × 0.08 m"
+    },
+    {
+      "id": "S093",
+      "kind": "structure",
+      "name": "Seed tray",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S093",
+        "type": "structure",
+        "kind": "seed-tray",
+        "x": 450,
+        "y": 540,
+        "widthCm": 82.5,
+        "depthCm": 52.5,
+        "heightCm": 12,
+        "rotationDeg": 0,
+        "label": "Seed tray"
+      },
+      "dimensions": "0.825 × 0.525 × 0.12 m"
+    },
+    {
+      "id": "S094",
+      "kind": "structure",
+      "name": "Timber raised bed",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S094",
+        "type": "structure",
+        "kind": "raised-bed-timber",
+        "x": 450,
+        "y": 540,
+        "widthCm": 200,
+        "depthCm": 100,
+        "heightCm": 45,
+        "rotationDeg": 0,
+        "label": "Timber raised bed"
+      },
+      "dimensions": "2 × 1 × 0.45 m"
+    },
+    {
+      "id": "S095",
+      "kind": "structure",
+      "name": "Timber raised bed",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S095",
+        "type": "structure",
+        "kind": "raised-bed-timber",
+        "x": 450,
+        "y": 540,
+        "widthCm": 100,
+        "depthCm": 50,
+        "heightCm": 22.5,
+        "rotationDeg": 0,
+        "label": "Timber raised bed"
+      },
+      "dimensions": "1 × 0.5 × 0.225 m"
+    },
+    {
+      "id": "S096",
+      "kind": "structure",
+      "name": "Timber raised bed",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S096",
+        "type": "structure",
+        "kind": "raised-bed-timber",
+        "x": 450,
+        "y": 540,
+        "widthCm": 300,
+        "depthCm": 150,
+        "heightCm": 67.5,
+        "rotationDeg": 0,
+        "label": "Timber raised bed"
+      },
+      "dimensions": "3 × 1.5 × 0.675 m"
+    },
+    {
+      "id": "S097",
+      "kind": "structure",
+      "name": "Corrugated raised bed",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S097",
+        "type": "structure",
+        "kind": "raised-bed-corrugated",
+        "x": 450,
+        "y": 540,
+        "widthCm": 200,
+        "depthCm": 100,
+        "heightCm": 60,
+        "rotationDeg": 0,
+        "label": "Corrugated raised bed"
+      },
+      "dimensions": "2 × 1 × 0.6 m"
+    },
+    {
+      "id": "S098",
+      "kind": "structure",
+      "name": "Corrugated raised bed",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S098",
+        "type": "structure",
+        "kind": "raised-bed-corrugated",
+        "x": 450,
+        "y": 540,
+        "widthCm": 100,
+        "depthCm": 50,
+        "heightCm": 30,
+        "rotationDeg": 0,
+        "label": "Corrugated raised bed"
+      },
+      "dimensions": "1 × 0.5 × 0.3 m"
+    },
+    {
+      "id": "S099",
+      "kind": "structure",
+      "name": "Corrugated raised bed",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S099",
+        "type": "structure",
+        "kind": "raised-bed-corrugated",
+        "x": 450,
+        "y": 540,
+        "widthCm": 300,
+        "depthCm": 150,
+        "heightCm": 90,
+        "rotationDeg": 0,
+        "label": "Corrugated raised bed"
+      },
+      "dimensions": "3 × 1.5 × 0.9 m"
+    },
+    {
+      "id": "S100",
+      "kind": "structure",
+      "name": "Round raised bed",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S100",
+        "type": "structure",
+        "kind": "raised-bed-round",
+        "x": 450,
+        "y": 540,
+        "widthCm": 120,
+        "depthCm": 120,
+        "heightCm": 50,
+        "rotationDeg": 0,
+        "label": "Round raised bed"
+      },
+      "dimensions": "1.2 × 1.2 × 0.5 m"
+    },
+    {
+      "id": "S101",
+      "kind": "structure",
+      "name": "Round raised bed",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S101",
+        "type": "structure",
+        "kind": "raised-bed-round",
+        "x": 450,
+        "y": 540,
+        "widthCm": 60,
+        "depthCm": 60,
+        "heightCm": 25,
+        "rotationDeg": 0,
+        "label": "Round raised bed"
+      },
+      "dimensions": "0.6 × 0.6 × 0.25 m"
+    },
+    {
+      "id": "S102",
+      "kind": "structure",
+      "name": "Round raised bed",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S102",
+        "type": "structure",
+        "kind": "raised-bed-round",
+        "x": 450,
+        "y": 540,
+        "widthCm": 180,
+        "depthCm": 180,
+        "heightCm": 75,
+        "rotationDeg": 0,
+        "label": "Round raised bed"
+      },
+      "dimensions": "1.8 × 1.8 × 0.75 m"
+    },
+    {
+      "id": "S103",
+      "kind": "structure",
+      "name": "Square raised bed",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S103",
+        "type": "structure",
+        "kind": "raised-bed-square",
+        "x": 450,
+        "y": 540,
+        "widthCm": 120,
+        "depthCm": 120,
+        "heightCm": 50,
+        "rotationDeg": 0,
+        "label": "Square raised bed"
+      },
+      "dimensions": "1.2 × 1.2 × 0.5 m"
+    },
+    {
+      "id": "S104",
+      "kind": "structure",
+      "name": "Square raised bed",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S104",
+        "type": "structure",
+        "kind": "raised-bed-square",
+        "x": 450,
+        "y": 540,
+        "widthCm": 60,
+        "depthCm": 60,
+        "heightCm": 25,
+        "rotationDeg": 0,
+        "label": "Square raised bed"
+      },
+      "dimensions": "0.6 × 0.6 × 0.25 m"
+    },
+    {
+      "id": "S105",
+      "kind": "structure",
+      "name": "Square raised bed",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S105",
+        "type": "structure",
+        "kind": "raised-bed-square",
+        "x": 450,
+        "y": 540,
+        "widthCm": 180,
+        "depthCm": 180,
+        "heightCm": 75,
+        "rotationDeg": 0,
+        "label": "Square raised bed"
+      },
+      "dimensions": "1.8 × 1.8 × 0.75 m"
+    },
+    {
+      "id": "S106",
+      "kind": "structure",
+      "name": "Keyhole raised bed",
+      "variety": "Default",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S106",
+        "type": "structure",
+        "kind": "keyhole-bed",
+        "x": 450,
+        "y": 540,
+        "widthCm": 220,
+        "depthCm": 220,
+        "heightCm": 60,
+        "rotationDeg": 0,
+        "label": "Keyhole raised bed"
+      },
+      "dimensions": "2.2 × 2.2 × 0.6 m"
+    },
+    {
+      "id": "S107",
+      "kind": "structure",
+      "name": "Keyhole raised bed",
+      "variety": "Small",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S107",
+        "type": "structure",
+        "kind": "keyhole-bed",
+        "x": 450,
+        "y": 540,
+        "widthCm": 110,
+        "depthCm": 110,
+        "heightCm": 30,
+        "rotationDeg": 0,
+        "label": "Keyhole raised bed"
+      },
+      "dimensions": "1.1 × 1.1 × 0.3 m"
+    },
+    {
+      "id": "S108",
+      "kind": "structure",
+      "name": "Keyhole raised bed",
+      "variety": "Large",
+      "category": "Structures",
+      "source": [
+        "Structure presets"
+      ],
+      "object": {
+        "id": "S108",
+        "type": "structure",
+        "kind": "keyhole-bed",
+        "x": 450,
+        "y": 540,
+        "widthCm": 330,
+        "depthCm": 330,
+        "heightCm": 90,
+        "rotationDeg": 0,
+        "label": "Keyhole raised bed"
+      },
+      "dimensions": "3.3 × 3.3 × 0.9 m"
+    },
+    {
+      "name": "Square bed",
+      "kind": "bed",
+      "category": "Raised beds",
+      "variety": "Default",
+      "dimensions": "1.2 × 1.2 × 0.34 m",
+      "bed": {
+        "id": 1,
+        "name": "Square bed",
+        "x": 43.333333333333336,
+        "y": 44.44444444444444,
+        "w": 13.333333333333334,
+        "h": 11.11111111111111
+      },
+      "id": "O001",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Long narrow bed",
+      "kind": "bed",
+      "category": "Raised beds",
+      "variety": "Default",
+      "dimensions": "1.2 × 4 × 0.34 m",
+      "bed": {
+        "id": 1,
+        "name": "Long narrow bed",
+        "x": 43.333333333333336,
+        "y": 31.48148148148148,
+        "w": 13.333333333333334,
+        "h": 37.03703703703704
+      },
+      "id": "O002",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Wide bed",
+      "kind": "bed",
+      "category": "Raised beds",
+      "variety": "Default",
+      "dimensions": "3 × 2 × 0.34 m",
+      "bed": {
+        "id": 1,
+        "name": "Wide bed",
+        "x": 33.333333333333336,
+        "y": 40.74074074074074,
+        "w": 33.333333333333336,
+        "h": 18.51851851851852
+      },
+      "id": "O003",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Empty bed",
+      "kind": "bed",
+      "category": "Raised beds",
+      "variety": "Default",
+      "dimensions": "2 × 2.4 × 0.34 m",
+      "bed": {
+        "id": 1,
+        "name": "Empty bed",
+        "x": 38.888888888888886,
+        "y": 38.888888888888886,
+        "w": 22.22222222222222,
+        "h": 22.22222222222222
+      },
+      "id": "O004",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Planted bed",
+      "kind": "bed",
+      "category": "Raised beds",
+      "variety": "Default",
+      "dimensions": "2 × 2.4 × 0.34 m",
+      "bed": {
+        "id": 1,
+        "name": "Planted bed",
+        "x": 38.888888888888886,
+        "y": 38.888888888888886,
+        "w": 22.22222222222222,
+        "h": 22.22222222222222
+      },
+      "id": "O005",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Short trellis",
+      "kind": "trellis",
+      "category": "Trellises",
+      "variety": "Default",
+      "dimensions": "1 m long × 1.8 m high · posts 100 cm",
+      "object": {
+        "id": "Short trellis",
+        "type": "trellis",
+        "x1": 400,
+        "y1": 540,
+        "x2": 500,
+        "y2": 540,
+        "heightCm": 180,
+        "postSpacingCm": 100,
+        "label": "Short trellis"
+      },
+      "id": "O006",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Long trellis",
+      "kind": "trellis",
+      "category": "Trellises",
+      "variety": "Default",
+      "dimensions": "4 m long × 1.8 m high · posts 150 cm",
+      "object": {
+        "id": "Long trellis",
+        "type": "trellis",
+        "x1": 250,
+        "y1": 540,
+        "x2": 650,
+        "y2": 540,
+        "heightCm": 180,
+        "postSpacingCm": 150,
+        "label": "Long trellis"
+      },
+      "id": "O007",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Low trellis",
+      "kind": "trellis",
+      "category": "Trellises",
+      "variety": "Default",
+      "dimensions": "2.5 m long × 0.8 m high · posts 75 cm",
+      "object": {
+        "id": "Low trellis",
+        "type": "trellis",
+        "x1": 325,
+        "y1": 540,
+        "x2": 575,
+        "y2": 540,
+        "heightCm": 80,
+        "postSpacingCm": 75,
+        "label": "Low trellis"
+      },
+      "id": "O008",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Tall trellis",
+      "kind": "trellis",
+      "category": "Trellises",
+      "variety": "Default",
+      "dimensions": "2.5 m long × 2.5 m high · posts 200 cm",
+      "object": {
+        "id": "Tall trellis",
+        "type": "trellis",
+        "x1": 325,
+        "y1": 540,
+        "x2": 575,
+        "y2": 540,
+        "heightCm": 250,
+        "postSpacingCm": 200,
+        "label": "Tall trellis"
+      },
+      "id": "O009",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Climber and trellis",
+      "kind": "trellis",
+      "category": "Trellises",
+      "variety": "Default",
+      "dimensions": "2.5 m long × 1.8 m high · posts 150 cm",
+      "object": {
+        "id": "Climber and trellis",
+        "type": "trellis",
+        "x1": 325,
+        "y1": 540,
+        "x2": 575,
+        "y2": 540,
+        "heightCm": 180,
+        "postSpacingCm": 150,
+        "label": "Climber and trellis"
+      },
+      "id": "O010",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Garden tree",
+      "kind": "tree",
+      "category": "Trees",
+      "variety": "Shared tree model",
+      "dimensions": "Canopy diameter 1.5 m",
+      "object": {
+        "id": "Garden tree",
+        "type": "tree",
+        "x": 450,
+        "y": 540,
+        "diameterCm": 150,
+        "label": "Garden tree"
+      },
+      "id": "O011",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Small canopy",
+      "kind": "tree",
+      "category": "Trees",
+      "variety": "Shared tree model",
+      "dimensions": "Canopy diameter 1 m",
+      "object": {
+        "id": "Small canopy",
+        "type": "tree",
+        "x": 450,
+        "y": 540,
+        "diameterCm": 100,
+        "label": "Small canopy"
+      },
+      "id": "O012",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Large canopy",
+      "kind": "tree",
+      "category": "Trees",
+      "variety": "Shared tree model",
+      "dimensions": "Canopy diameter 3 m",
+      "object": {
+        "id": "Large canopy",
+        "type": "tree",
+        "x": 450,
+        "y": 540,
+        "diameterCm": 300,
+        "label": "Large canopy"
+      },
+      "id": "O013",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Garden path",
+      "kind": "path",
+      "category": "Paths",
+      "variety": "20 cm wide",
+      "dimensions": "3 × 0.2 m",
+      "object": {
+        "id": "path-20",
+        "type": "path",
+        "x1": 300,
+        "y1": 540,
+        "x2": 600,
+        "y2": 540,
+        "widthCm": 20
+      },
+      "id": "O014",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Garden path",
+      "kind": "path",
+      "category": "Paths",
+      "variety": "60 cm wide",
+      "dimensions": "3 × 0.6 m",
+      "object": {
+        "id": "path-60",
+        "type": "path",
+        "x1": 300,
+        "y1": 540,
+        "x2": 600,
+        "y2": 540,
+        "widthCm": 60
+      },
+      "id": "O015",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "name": "Garden path",
+      "kind": "path",
+      "category": "Paths",
+      "variety": "120 cm wide",
+      "dimensions": "3 × 1.2 m",
+      "object": {
+        "id": "path-120",
+        "type": "path",
+        "x1": 300,
+        "y1": 540,
+        "x2": 600,
+        "y2": 540,
+        "widthCm": 120
+      },
+      "id": "O016",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "row",
+      "name": "Planting row",
+      "category": "Planting rows",
+      "variety": "Production default",
+      "id": "O017",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "text",
+      "name": "Planner text",
+      "category": "Other objects",
+      "variety": "Production default",
+      "id": "O018",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "boundary",
+      "name": "Garden boundary fence",
+      "category": "Other objects",
+      "variety": "Production default",
+      "id": "O019",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "decor",
+      "name": "Garden ground decoration",
+      "category": "Other objects",
+      "variety": "Production default",
+      "id": "O020",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "demo",
+      "name": "2 × 4 m demonstration bed",
+      "category": "Raised beds",
+      "variety": "Production default",
+      "id": "O021",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Tomato",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/tomato.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O022",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Cherry tomato",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/cherry-tomato.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O023",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Lettuce",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/lettuce.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O024",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Carrot",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/carrot.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O025",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Strawberry",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/strawberry.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O026",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Bush bean",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/bean-bush.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O027",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Climbing bean",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/bean-climbing.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O028",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Broccoli",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/broccoli.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O029",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Onion",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/onion.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O030",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Garlic",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/garlic.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O031",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Pumpkin / squash",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/pumpkin.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O032",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Cucumber",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/cucumber.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O033",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Blueberry",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/blueberry.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O034",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Raspberry",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/raspberry.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O035",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Herb",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/herb.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O036",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Brassica",
+      "category": "Artwork reference",
+      "variety": "V2 SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/brassica.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O037",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Lettuce · Butterhead",
+      "category": "Artwork reference",
+      "variety": "V2 variety SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/lettuce-butterhead.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O038",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Lettuce · Cos",
+      "category": "Artwork reference",
+      "variety": "V2 variety SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/lettuce-cos.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O039",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Lettuce · Loose Leaf",
+      "category": "Artwork reference",
+      "variety": "V2 variety SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/lettuce-loose-leaf.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O040",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Lettuce · Iceberg",
+      "category": "Artwork reference",
+      "variety": "V2 variety SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/lettuce-iceberg.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O041",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Pumpkin · Crown",
+      "category": "Artwork reference",
+      "variety": "V2 variety SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/pumpkin-crown.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O042",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Pumpkin · Butternut",
+      "category": "Artwork reference",
+      "variety": "V2 variety SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/pumpkin-butternut.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O043",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Pumpkin · Gem Squash",
+      "category": "Artwork reference",
+      "variety": "V2 variety SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/pumpkin-gem-squash.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O044",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Pumpkin · Kabocha",
+      "category": "Artwork reference",
+      "variety": "V2 variety SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/pumpkin-kabocha.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O045",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Carrot · Nantes",
+      "category": "Artwork reference",
+      "variety": "V2 variety SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/carrot-nantes.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O046",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Carrot · Chantenay",
+      "category": "Artwork reference",
+      "variety": "V2 variety SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/carrot-chantenay.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O047",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Carrot · Amsterdam",
+      "category": "Artwork reference",
+      "variety": "V2 variety SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/carrot-amsterdam.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O048",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "Carrot · Rainbow",
+      "category": "Artwork reference",
+      "variety": "V2 variety SVG",
+      "artwork": {
+        "src": "/plant-icons/v2/carrot-rainbow.svg",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O049",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "bean_broad_fava.png",
+      "category": "Artwork reference",
+      "variety": "Unmapped file",
+      "artwork": {
+        "src": "/plant-icons/individual/bean_broad_fava.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O050",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "bean_bush_green.png",
+      "category": "Artwork reference",
+      "variety": "Unmapped file",
+      "artwork": {
+        "src": "/plant-icons/individual/bean_bush_green.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O051",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "bean_climbing_green.png",
+      "category": "Artwork reference",
+      "variety": "Unmapped file",
+      "artwork": {
+        "src": "/plant-icons/individual/bean_climbing_green.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O052",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    },
+    {
+      "kind": "asset",
+      "name": "bean_runner_scarlet.png",
+      "category": "Artwork reference",
+      "variety": "Unmapped file",
+      "artwork": {
+        "src": "/plant-icons/individual/bean_runner_scarlet.png",
+        "index": 0,
+        "column": 0,
+        "row": 0,
+        "columns": 1,
+        "rows": 1
+      },
+      "assetExists": true,
+      "id": "O053",
+      "source": [
+        "Production garden renderer / PlannerPlan"
+      ]
+    }
+  ],
+  "assets": [
+    "/plant-icons/batch-a.svg",
+    "/plant-icons/botanical/asparagus-pea--.webp",
+    "/plant-icons/botanical/asparagus-pea--asparagus-pea.webp",
+    "/plant-icons/botanical/bean--.webp",
+    "/plant-icons/botanical/bean--broad-bean.webp",
+    "/plant-icons/botanical/bean--broad.webp",
+    "/plant-icons/botanical/bean--bush.webp",
+    "/plant-icons/botanical/bean--climbing-bean.webp",
+    "/plant-icons/botanical/bean--climbing.webp",
+    "/plant-icons/botanical/bean--dwarf.webp",
+    "/plant-icons/botanical/bean--fava-bean.webp",
+    "/plant-icons/botanical/bean--fava.webp",
+    "/plant-icons/botanical/bean--green.webp",
+    "/plant-icons/botanical/bean--king-purple.webp",
+    "/plant-icons/botanical/bean--pole.webp",
+    "/plant-icons/botanical/bean--runner.webp",
+    "/plant-icons/botanical/bean--scarlet-runner.webp",
+    "/plant-icons/botanical/bean--superstar.webp",
+    "/plant-icons/botanical/beet--.webp",
+    "/plant-icons/botanical/brassica--.webp",
+    "/plant-icons/botanical/broad-bean--.webp",
+    "/plant-icons/botanical/broccaflower--.webp",
+    "/plant-icons/botanical/broccoflower--.webp",
+    "/plant-icons/botanical/broccoli--.webp",
+    "/plant-icons/botanical/broccoli--calabrese.webp",
+    "/plant-icons/botanical/broccoli--green-dragon.webp",
+    "/plant-icons/botanical/broccoli--winter-rudolph.webp",
+    "/plant-icons/botanical/broccolini--.webp",
+    "/plant-icons/botanical/brussel-sprout--.webp",
+    "/plant-icons/botanical/brussels--.webp",
+    "/plant-icons/botanical/brussels-sprout--.webp",
+    "/plant-icons/botanical/bush-bean--.webp",
+    "/plant-icons/botanical/buttercup--.webp",
+    "/plant-icons/botanical/butternut--.webp",
+    "/plant-icons/botanical/cabbage--.webp",
+    "/plant-icons/botanical/capsicum--.webp",
+    "/plant-icons/botanical/carrot--.webp",
+    "/plant-icons/botanical/carrot--amsterdam.webp",
+    "/plant-icons/botanical/carrot--chantenay.webp",
+    "/plant-icons/botanical/carrot--nantes.webp",
+    "/plant-icons/botanical/carrot--rainbow.webp",
+    "/plant-icons/botanical/cauliflower--.webp",
+    "/plant-icons/botanical/chard--.webp",
+    "/plant-icons/botanical/chili--.webp",
+    "/plant-icons/botanical/chilli--.webp",
+    "/plant-icons/botanical/climbing-bean--.webp",
+    "/plant-icons/botanical/corn--.webp",
+    "/plant-icons/botanical/courgette--.webp",
+    "/plant-icons/botanical/cucumber--.webp",
+    "/plant-icons/botanical/daikon--.webp",
+    "/plant-icons/botanical/dwarf-bean--.webp",
+    "/plant-icons/botanical/fava--.webp",
+    "/plant-icons/botanical/fava-bean--.webp",
+    "/plant-icons/botanical/garlic--.webp",
+    "/plant-icons/botanical/gherkin--.webp",
+    "/plant-icons/botanical/green-bean--.webp",
+    "/plant-icons/botanical/kabocha--.webp",
+    "/plant-icons/botanical/kale--.webp",
+    "/plant-icons/botanical/kamo-kamo--.webp",
+    "/plant-icons/botanical/leek--.webp",
+    "/plant-icons/botanical/lettuce--.webp",
+    "/plant-icons/botanical/lettuce--butterhead.webp",
+    "/plant-icons/botanical/lettuce--cos.webp",
+    "/plant-icons/botanical/lettuce--iceberg.webp",
+    "/plant-icons/botanical/lettuce--loose-leaf.webp",
+    "/plant-icons/botanical/maize--.webp",
+    "/plant-icons/botanical/melon--.webp",
+    "/plant-icons/botanical/onion--.webp",
+    "/plant-icons/botanical/pea--.webp",
+    "/plant-icons/botanical/pepper--.webp",
+    "/plant-icons/botanical/pole-bean--.webp",
+    "/plant-icons/botanical/potato--.webp",
+    "/plant-icons/botanical/pumpkin--.webp",
+    "/plant-icons/botanical/pumpkin--butternut.webp",
+    "/plant-icons/botanical/pumpkin--crown.webp",
+    "/plant-icons/botanical/pumpkin--gem-squash.webp",
+    "/plant-icons/botanical/pumpkin--kabocha.webp",
+    "/plant-icons/botanical/radish--.webp",
+    "/plant-icons/botanical/runner-bean--.webp",
+    "/plant-icons/botanical/scallopini--.webp",
+    "/plant-icons/botanical/scarlet-runner--.webp",
+    "/plant-icons/botanical/shallot--.webp",
+    "/plant-icons/botanical/silverbeet--.webp",
+    "/plant-icons/botanical/spinach--.webp",
+    "/plant-icons/botanical/squash--.webp",
+    "/plant-icons/botanical/turnip--.webp",
+    "/plant-icons/botanical/watermelon--.webp",
+    "/plant-icons/botanical/zucchini--.webp",
+    "/plant-icons/individual/achillea.png",
+    "/plant-icons/individual/agastache.png",
+    "/plant-icons/individual/ageratum.png",
+    "/plant-icons/individual/agrostemma.png",
+    "/plant-icons/individual/akeake.png",
+    "/plant-icons/individual/alyssum.png",
+    "/plant-icons/individual/amaranth-garnet-red.png",
+    "/plant-icons/individual/amaranth-green-red.png",
+    "/plant-icons/individual/angelica-chinese.png",
+    "/plant-icons/individual/angelica-holy-ghost.png",
+    "/plant-icons/individual/anise-hyssop.png",
+    "/plant-icons/individual/anise.png",
+    "/plant-icons/individual/artichoke-green-globe.png",
+    "/plant-icons/individual/asparagus-mary-washington.png",
+    "/plant-icons/individual/asparagus-pacific-challenger-f1.png",
+    "/plant-icons/individual/asparagus-pacific-purple.png",
+    "/plant-icons/individual/bean_broad_fava.png",
+    "/plant-icons/individual/bean_bush_green.png",
+    "/plant-icons/individual/bean_climbing_green.png",
+    "/plant-icons/individual/bean_runner_scarlet.png",
+    "/plant-icons/individual/tomato_beefsteak_red.png",
+    "/plant-icons/individual/tomato_black_purple.png",
+    "/plant-icons/individual/tomato_cherry_red.png",
+    "/plant-icons/individual/tomato_cherry_yellow.png",
+    "/plant-icons/individual/tomato_dwarf_bush.png",
+    "/plant-icons/individual/tomato_grape_red.png",
+    "/plant-icons/individual/tomato_green_ripe.png",
+    "/plant-icons/individual/tomato_pear_yellow.png",
+    "/plant-icons/individual/tomato_pink.png",
+    "/plant-icons/individual/tomato_roma_red.png",
+    "/plant-icons/individual/tomato_standard_orange.png",
+    "/plant-icons/individual/tomato_standard_red.png",
+    "/plant-icons/individual/tomato_standard_yellow.png",
+    "/plant-icons/individual/tomato_striped_bicolour.png",
+    "/plant-icons/individual/tomato_trailing_hanging.png",
+    "/plant-icons/individual/tomato_white_cream.png",
+    "/plant-icons/v2/bean-bush.svg",
+    "/plant-icons/v2/bean-climbing.svg",
+    "/plant-icons/v2/blueberry.svg",
+    "/plant-icons/v2/brassica.svg",
+    "/plant-icons/v2/broccoli.svg",
+    "/plant-icons/v2/carrot-amsterdam.svg",
+    "/plant-icons/v2/carrot-chantenay.svg",
+    "/plant-icons/v2/carrot-nantes.svg",
+    "/plant-icons/v2/carrot-rainbow.svg",
+    "/plant-icons/v2/carrot.svg",
+    "/plant-icons/v2/cherry-tomato.svg",
+    "/plant-icons/v2/cucumber.svg",
+    "/plant-icons/v2/garlic.svg",
+    "/plant-icons/v2/herb.svg",
+    "/plant-icons/v2/lettuce-butterhead.svg",
+    "/plant-icons/v2/lettuce-cos.svg",
+    "/plant-icons/v2/lettuce-iceberg.svg",
+    "/plant-icons/v2/lettuce-loose-leaf.svg",
+    "/plant-icons/v2/lettuce.svg",
+    "/plant-icons/v2/onion.svg",
+    "/plant-icons/v2/pumpkin-butternut.svg",
+    "/plant-icons/v2/pumpkin-crown.svg",
+    "/plant-icons/v2/pumpkin-gem-squash.svg",
+    "/plant-icons/v2/pumpkin-kabocha.svg",
+    "/plant-icons/v2/pumpkin.svg",
+    "/plant-icons/v2/raspberry.svg",
+    "/plant-icons/v2/strawberry.svg",
+    "/plant-icons/v2/tomato.svg"
+  ],
+  "plannerCrops": 26,
+  "registryCrops": 118,
+  "sourceNotes": [
+    "No authoritative mature-size registry exists: plant specimens retain production scale and show SIZE FALLBACK.",
+    "Production has desktop and mobile detail only. Medium aliases High; Low forces mobile geometry.",
+    "Trees have a single production visual type; fruit-tree labels do not define distinct models.",
+    "Planner text has no renderer in the current unified 3D view and is represented by a MISSING 3D placeholder.",
+    "Artwork aliases and legacy renderer names are included even when absent from the planner palette."
+  ]
+}

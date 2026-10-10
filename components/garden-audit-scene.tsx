@@ -31,7 +31,7 @@ function recordSnapshots(models: AuditModel[]) {
 }
 
 function labelTexture(lines: string[], warning: boolean, auditId = "", low = false) {
-  const height = auditId ? 430 : 220, resolution = low || window.innerWidth <= 600 ? .5 : 1;
+  const height = auditId ? 430 : 220, resolution = Math.min(.5, low || window.innerWidth <= 600 ? .5 : 1);
   const canvas = document.createElement("canvas"); canvas.width = 768 * resolution; canvas.height = height * resolution;
   const ctx = canvas.getContext("2d")!;
   ctx.scale(resolution, resolution);
