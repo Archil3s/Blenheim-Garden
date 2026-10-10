@@ -6,6 +6,12 @@ _Last updated: 22 August 2026_
 
 ## Current status
 
+### Detailed tomato model test
+
+Open `/3d-models/tomato`, or choose **Tomato model** in the 3D garden toolbar,
+to rotate the revised vegetable-only mesh, adjust its growth/density/ripeness
+and download it as GLB. See [the model test guide](docs/tomato-model-test.md).
+
 ### Isolated 3D asset showroom
 
 `/3d-audit` generates a deterministic catalogue from the planner, artwork
