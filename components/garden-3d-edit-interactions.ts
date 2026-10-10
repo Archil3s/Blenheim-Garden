@@ -61,7 +61,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
   const resetPreview = () => { preview.visible = false; startPoint = null; runtime.needsRender = true; };
   const restoreDrag = () => { if (drag) for (const { root, position } of drag.roots) root.position.copy(position); drag = null; controls.enabled = true; };
   const disposeGhost = () => {
-    ghost?.traverse((node) => { if (node instanceof THREE.Mesh) { node.geometry.dispose(); const materials = Array.isArray(node.material) ? node.material : [node.material]; for (const m of materials) m.dispose(); } });
+    ghost?.traverse((node) => { if (node instanceof THREE.Mesh) { if (!node.userData.sharedTomatoResources) node.geometry.dispose(); const materials = Array.isArray(node.material) ? node.material : [node.material]; for (const m of materials) m.dispose(); } });
     ghost?.removeFromParent(); ghost = null;
   };
   const showPreview = (event: PointerEvent) => {
@@ -116,6 +116,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
       if (key !== ghostCrop) {
         disposeGhost(); ghostCrop = key;
         ghost = createGardenPlant3D(crop.name, editor.settings.variety, true, 1);
+        ghost.traverse((node) => { if (node instanceof THREE.Mesh && node.userData.sharedTomatoResources) node.material = Array.isArray(node.material) ? node.material.map((material) => material.clone()) : node.material.clone(); });
         ghost.traverse((node) => { if (node instanceof THREE.Mesh) { const materials = Array.isArray(node.material) ? node.material : [node.material]; for (const m of materials) { m.transparent = true; m.opacity = .4; m.depthWrite = false; } } });
         preview.add(ghost);
       }

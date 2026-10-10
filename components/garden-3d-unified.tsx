@@ -18,6 +18,7 @@ import { type PlanSelection } from "@/lib/garden/plan-editing";
 import { useGarden3DEditor } from "./use-garden-3d-editor";
 import { Garden3DEditorControls } from "./garden-3d-editor-controls";
 import { installGardenEditInteractions } from "./garden-3d-edit-interactions";
+import { isTomatoCrop, loadGardenTomatoModel, tomatoModelVersion } from "./garden-tomato-model";
 
 const EMPTY_PLAN: PlannerPlan = { beds: [], plantingAreas: [], rows: [], objects: [] };
 
@@ -69,6 +70,7 @@ function mat(color: number, roughness = 0.86, metalness = 0) {
 function disposeObject(root: THREE.Object3D) {
   root.traverse((object) => {
     if (!(object instanceof THREE.Mesh)) return;
+    if (object.userData.sharedTomatoResources) return;
     object.geometry.dispose();
     const materials = Array.isArray(object.material) ? object.material : [object.material];
     for (const material of materials) {
@@ -125,8 +127,8 @@ function buildGarden(root: THREE.Group, plan: PlannerPlan, mobile: boolean) {
   };
   reconcile("decor", mobile, (holder) => { addBoundary(holder, mobile); addGardenDecor(holder, mobile); });
   for (const bed of plan.beds) reconcile("bed:" + bed.id, bed, (holder) => addRaisedBed(holder, bed, plan.plantingAreas.find((a) => a.bedId === bed.id), mobile));
-  for (const area of plan.plantingAreas) reconcile("area:" + area.id, [area, plan.beds.find((b) => b.id === area.bedId)], (holder) => addPlantingArea(holder, plan, area, mobile));
-  for (const row of plan.rows) reconcile("row:" + row.id, [row, plan.beds], (holder) => addRow(holder, row, mobile, plan));
+  for (const area of plan.plantingAreas) reconcile("area:" + area.id, [area, plan.beds.find((b) => b.id === area.bedId), isTomatoCrop(area.crop) ? tomatoModelVersion(mobile) : 0], (holder) => addPlantingArea(holder, plan, area, mobile));
+  for (const row of plan.rows) reconcile("row:" + row.id, [row, plan.beds, isTomatoCrop(row.crop) ? tomatoModelVersion(mobile) : 0], (holder) => addRow(holder, row, mobile, plan));
   for (const object of plan.objects) reconcile("object:" + object.id, object, (holder) => {
     if (object.type === "path") addPath(holder, object, mobile);
     if (object.type === "trellis") addTrellis(holder, object, mobile);
@@ -176,6 +178,8 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   const [cameraView, setCameraView] = useState<"perspective" | "top">("perspective");
   const [quality] = useState(() => typeof window !== "undefined" && !window.matchMedia("(min-width: 841px)").matches ? "MOBILE" : "HIGH");
   const [renderError, setRenderError] = useState<string | null>(null);
+  const [tomatoError, setTomatoError] = useState<string | null>(null);
+  const [tomatoReady, setTomatoReady] = useState(false);
   const effectivePlan = suppliedPlan ?? loadedPlan ?? EMPTY_PLAN;
   const planRef = useRef<PlannerPlan>(effectivePlan);
   const demoRef = useRef(showDemo);
@@ -194,6 +198,23 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     else buildGarden(runtime.content, planRef.current, runtime.mobile);
     runtime.renderer.render(runtime.scene, runtime.camera);
   }, []);
+
+  const needsTomatoes = showDemo || effectivePlan.plantingAreas.some((area) => isTomatoCrop(area.crop)) || effectivePlan.rows.some((row) => isTomatoCrop(row.crop)) || (editor.tool === "plant" && isTomatoCrop(editor.settings.crop));
+  useEffect(() => {
+    if (!needsTomatoes) return;
+    let active = true;
+    const mobile = quality === "MOBILE";
+    void loadGardenTomatoModel(mobile).then(() => {
+      if (!active) return;
+      setTomatoError(null);
+      rebuild();
+      setTomatoReady(true);
+      runtimeRef.current?.renderer.domElement.setAttribute("data-tomato-model", "refined");
+    }).catch((error: unknown) => {
+      if (active) setTomatoError(`Detailed tomato model could not load: ${error instanceof Error ? error.message : String(error)}. Basic tomatoes are still available.`);
+    });
+    return () => { active = false; };
+  }, [needsTomatoes, quality, rebuild]);
 
   useEffect(() => {
     planRef.current = effectivePlan;
@@ -379,7 +400,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
       const helper = new THREE.BoxHelper(node, 0xffc44d); helper.material.depthTest = false; helper.renderOrder = 50;
       runtime.scene.add(helper); selectionRef.current = helper;
     });
-  }, [editor.selection, effectivePlan]);
+  }, [editor.selection, effectivePlan, tomatoReady]);
 
   const setPerspective = () => {
     const runtime = runtimeRef.current;
@@ -410,6 +431,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
       <div className="gv-3d-workspace-canvas" ref={mountRef} aria-label="Interactive 3D garden workspace" style={{ position: "absolute", inset: 0 }} />
       <Garden3DEditorControls editor={editor} disabled={showDemo || !!renderError || (!suppliedPlan && !loadedPlan)} />
       {renderError && <div className="gv-3d-workspace-error">{renderError}</div>}
+      {tomatoError && <div role="status" style={{ position: "absolute", top: 118, left: 12, right: 12, padding: 8, background: "#fff5dd", color: "#674b20", fontSize: 12 }}>{tomatoError}</div>}
       <div className="gv-3d-hud gv-3d-hud-left">
         <span className="gv-3d-live-dot" />
         <strong>GARDEN SIM</strong>

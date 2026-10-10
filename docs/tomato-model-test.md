@@ -16,5 +16,23 @@ the currently adjusted plant. The frame, bed and scenery are excluded.
 
 The viewer and Three.js modules are served as Worker static assets. There are
 no CDN dependencies, credentials, APIs or new packages. Three.js's MIT license
-is included in the vendor directory. The full model is intentionally tested in
-isolation before using its geometry for repeated crops across the garden.
+is included in the vendor directory.
+
+## Garden rendering
+
+The revised tomato now renders in `/3d` and the inline 3D garden, including
+raised-bed planting areas, ground rows and new editor placements. Other crops
+retain their existing models. The existing crop counts, coordinates, selection,
+move, duplicate, delete and Save payloads are preserved.
+
+Garden and mobile GLBs are exported from the same procedural source with lower
+surface tessellation. They retain the foliage layout, fruit clusters and embedded
+textures: 69,728 triangles / 2.63 MB for desktop and 43,600 triangles / 1.86 MB
+for mobile. The full standalone asset remains available on the model test page.
+
+Two document-lifetime templates share geometry, materials and textures among
+plant clones. Scene edits do not dispose shared template resources. Placement
+ghosts clone materials before changing transparency. Tomatoes temporarily use
+the existing model while the asset loads; successful loading updates tomato
+holders without resetting the camera. Load failures show a status message and
+leave the basic model usable.
