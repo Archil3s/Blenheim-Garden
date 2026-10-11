@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { PlannerPlan } from "@/lib/garden/planner-plan";
-import { validateEditorPlan, type PlanSelection, type PointCm } from "@/lib/garden/plan-editing";
+import { areaPlants, areaRectangle, bedRectangle, rowPlants, selectionItem, validateEditorPlan, type PlanSelection, type PointCm } from "@/lib/garden/plan-editing";
 import { structurePreset } from "@/lib/garden/structure-catalog";
 import { placementPlan, type Garden3DEditor } from "./use-garden-3d-editor";
 import { drawPixelGarden, pickPixel, pixelCrop, projectPixel, unprojectPixel, type PixelHit, type PixelView } from "./garden-pixel-scene";
 import { loadPixelArtwork, pixelArtworkReady } from "./garden-pixel-assets";
 
-type PixelRuntime = { fit: () => void; zoom: (factor: number) => void; paint: () => void; cancel: () => void };
+type PixelRuntime = { fit: () => void; detail: () => void; zoom: (factor: number) => void; paint: () => void; cancel: () => void };
 
 function plantLocationBlocked(plan: PlannerPlan, point: PointCm) {
   return plan.objects.some((o) => {
@@ -27,7 +27,8 @@ function plantLocationBlocked(plan: PlannerPlan, point: PointCm) {
 
 export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPlan; editor: Garden3DEditor; disabled: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null), runtimeRef = useRef<PixelRuntime | null>(null);
-  const stateRef = useRef({ plan, editor, disabled });
+  const [presentation, setPresentation] = useState<"artwork" | "exact">("artwork");
+  const stateRef = useRef({ plan, editor, disabled, presentation });
   const [zoom, setZoom] = useState(100);
   const [artworkError, setArtworkError] = useState(false);
   const [artworkAttempt, setArtworkAttempt] = useState(0);
@@ -36,7 +37,7 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
     loadPixelArtwork().then(() => { if (active) { setArtworkError(false); runtimeRef.current?.paint(); } }).catch(() => { if (active) { setArtworkError(true); runtimeRef.current?.paint(); } });
     return () => { active = false; };
   }, [artworkAttempt]);
-  useEffect(() => { stateRef.current = { plan, editor, disabled }; runtimeRef.current?.paint(); }, [plan, editor, disabled]);
+  useEffect(() => { stateRef.current = { plan, editor, disabled, presentation }; runtimeRef.current?.paint(); }, [plan, editor, disabled, presentation]);
   useEffect(() => { runtimeRef.current?.cancel(); }, [editor.tool]);
 
   useEffect(() => {
@@ -55,7 +56,7 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
     const paintNow = () => {
       frame = 0;
       const { plan: current, editor: e } = stateRef.current;
-      hits = drawPixelGarden(c, previewPlan ?? current, view, e.selection);
+      hits = drawPixelGarden(c, previewPlan ?? current, view, e.selection, stateRef.current.presentation);
       canvas.dataset.pixelArt = pixelArtworkReady() ? "detailed" : "fallback";
       canvas.dataset.pixelReady = "true"; canvas.dataset.pixelView = JSON.stringify({ ...view, width: canvas.width, height: canvas.height });
       canvas.dataset.pixelCrops = [...new Set([...current.plantingAreas.map((a) => a.crop), ...current.rows.map((r) => r.crop)])].sort().join("|");
@@ -66,7 +67,7 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
         try { validateEditorPlan(placementPlan(current, e.tool, p, start, e.settings)); } catch { valid = false; }
         const q = projectPixel(p, view); c.strokeStyle = valid ? "#fff2b7" : "#da745e"; c.fillStyle = valid ? "#fff2b733" : "#da745e44"; c.lineWidth = 2;
         if (start) { const a = projectPixel(start, view); c.beginPath(); c.moveTo(a.x, a.y); c.lineTo(q.x, q.y); c.stroke(); }
-        else if (e.tool === "plant") { const w = 70 * view.scale, h = w * 1.4; c.globalAlpha = .65; c.drawImage(pixelCrop(e.settings.crop, e.settings.variety), q.x - w / 2, q.y - h, w, h); c.globalAlpha = 1; c.strokeRect(q.x - 8, q.y - 3, 16, 6); }
+        else if (e.tool === "plant") { const img = pixelCrop(e.settings.crop, e.settings.variety), w = (stateRef.current.presentation === "artwork" ? 112 : 70) * view.scale, h = w * img.height / img.width; c.globalAlpha = .65; c.drawImage(img, q.x - w / 2, q.y - h, w, h); c.globalAlpha = 1; c.strokeRect(q.x - 8, q.y - 3, 16, 6); }
         else {
           const preset = structurePreset(e.settings.structureKind);
           const w = (e.tool === "bed" ? e.settings.width : e.tool === "tree" ? e.settings.diameter : e.tool === "structure" ? preset.widthCm : 20) * view.scale;
@@ -86,14 +87,30 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
       view.x = anchor.x - (world.x - 450) * view.scale; view.y = anchor.y - (world.y - 540) * view.scale * view.tilt;
       setZoom(Math.round(view.scale / baseScale * 100)); paint();
     };
-    const fit = () => { baseScale = Math.min(canvas.width / 1140, Math.max(1, canvas.height - 170 / resolution) / 1120); view = { x: canvas.width / 2, y: canvas.height / 2 + 12 / resolution, scale: baseScale, tilt: .82 }; setZoom(100); paint(); };
+    const fittedScale = () => Math.min(canvas.width / 1040, Math.max(1, canvas.height - 180 / resolution) / 1000);
+    const fit = () => { baseScale = fittedScale(); view = { x: canvas.width / 2, y: canvas.height / 2 + 12 / resolution, scale: baseScale, tilt: .82 }; setZoom(100); paint(); };
+    const detail = () => {
+      const { plan: current, editor: e } = stateRef.current;
+      const item = e.selection ? selectionItem(current, e.selection) : null;
+      let center = { x: 450, y: 540 }, focusWidth = 300;
+      if (item && "bedId" in item) { const r = areaRectangle(current, item), plant = areaPlants(current, item).find((p) => p.id === e.selection?.plantId); center = plant ?? { x: r.x + r.w / 2, y: r.y + r.h / 2 }; focusWidth = plant ? 150 : r.w + 100; }
+      else if (item && "x1" in item) center = { x: (item.x1 + item.x2) / 2, y: (item.y1 + item.y2) / 2 };
+      else if (item && "type" in item && "x" in item) center = { x: item.x, y: item.y };
+      else if (item && "name" in item) { const r = bedRectangle(item); center = { x: r.x + r.w / 2, y: r.y + r.h / 2 }; focusWidth = r.w + 100; }
+      else if (current.plantingAreas[0]) { const r = areaRectangle(current, current.plantingAreas[0]); center = { x: r.x + r.w / 2, y: r.y + r.h / 2 }; focusWidth = r.w + 100; }
+      if (item && "crop" in item && "x1" in item && e.selection?.plantId) { center = rowPlants(item).find((p) => p.id === e.selection?.plantId) ?? center; focusWidth = 150; }
+      view.scale = Math.max(baseScale, Math.min(baseScale * 4, Math.max(baseScale * 2, 1.5), (canvas.width - 32) / focusWidth));
+      view.x = canvas.width / 2 - (center.x - 450) * view.scale;
+      view.y = canvas.height / 2 + 65 - (center.y - 540) * view.scale * view.tilt;
+      setZoom(Math.round(view.scale / baseScale * 100)); paint();
+    };
     const resize = () => {
       const r = canvas.getBoundingClientRect(), previousWidth = canvas.width, previousHeight = canvas.height, previousScale = baseScale;
       const nextResolution = 1, width = Math.max(1, Math.round(r.width / nextResolution)), height = Math.max(1, Math.round(r.height / nextResolution));
       if (fitted && width === previousWidth && height === previousHeight && resolution === nextResolution) return;
       resolution = nextResolution; canvas.width = width; canvas.height = height;
       if (!fitted) { fit(); fitted = true; }
-      else { baseScale = Math.min(width / 1140, Math.max(1, height - 170 / resolution) / 1120); const ratio = baseScale / previousScale; view.x = width / 2 + (view.x - previousWidth / 2) * ratio; view.y = height / 2 + (view.y - previousHeight / 2) * ratio; view.scale *= ratio; paint(); }
+      else { baseScale = fittedScale(); const ratio = baseScale / previousScale; view.x = width / 2 + (view.x - previousWidth / 2) * ratio; view.y = height / 2 + (view.y - previousHeight / 2) * ratio; view.scale *= ratio; paint(); }
     };
     const cancel = () => { start = null; down = null; hover = null; previewPlan = null; pointers.clear(); pinch = null; pinching = false; paint(); };
     const onDown = (e: PointerEvent) => {
@@ -157,7 +174,7 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
       if (event.target === canvas && ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) { event.preventDefault(); view.x += event.key === "ArrowLeft" ? 16 : event.key === "ArrowRight" ? -16 : 0; view.y += event.key === "ArrowUp" ? 16 : event.key === "ArrowDown" ? -16 : 0; paint(); }
       if (event.target === canvas && ["+", "=", "-"].includes(event.key)) { event.preventDefault(); zoomAt(event.key === "-" ? .8 : 1.25); }
     };
-    runtimeRef.current = { fit, zoom: zoomAt, paint, cancel };
+    runtimeRef.current = { fit, detail, zoom: zoomAt, paint, cancel };
     const observer = new ResizeObserver(resize); observer.observe(canvas); resize();
     canvas.addEventListener("pointerdown", onDown); canvas.addEventListener("pointermove", onMove); canvas.addEventListener("pointerup", onUp); canvas.addEventListener("pointercancel", cancel); canvas.addEventListener("wheel", onWheel, { passive: false }); window.addEventListener("keydown", onKey); window.addEventListener("blur", cancel);
     return () => { observer.disconnect(); cancelAnimationFrame(frame); canvas.removeEventListener("pointerdown", onDown); canvas.removeEventListener("pointermove", onMove); canvas.removeEventListener("pointerup", onUp); canvas.removeEventListener("pointercancel", cancel); canvas.removeEventListener("wheel", onWheel); window.removeEventListener("keydown", onKey); window.removeEventListener("blur", cancel); runtimeRef.current = null; };
@@ -172,6 +189,12 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
       <span>{zoom}%</span>
       <button type="button" aria-label="Zoom in" onClick={() => runtimeRef.current?.zoom(1.25)}>+</button>
       <button type="button" onClick={() => runtimeRef.current?.fit()}>Fit garden</button>
+      <button type="button" onClick={() => runtimeRef.current?.detail()}>Crop detail</button>
+    </div>
+    <div className="garden-pixel-presentation" aria-label="Plant display">
+      <button type="button" aria-pressed={presentation === "artwork"} onClick={() => setPresentation("artwork")}>Artwork spacing</button>
+      <button type="button" aria-pressed={presentation === "exact"} onClick={() => setPresentation("exact")}>All plants</button>
+      <small>{presentation === "artwork" ? "Dense crops grouped for clarity · saved counts retained" : "Every planting position · foliage may overlap"}</small>
     </div>
     <div className="garden-pixel-help">Drag to pan · scroll or pinch to zoom · tap to select</div>
     {artworkError && <div className="garden-pixel-art-error" role="status">Detailed artwork could not load. Simple artwork is available. <button type="button" onClick={() => { setArtworkError(false); setArtworkAttempt((value) => value + 1); }}>Retry artwork</button></div>}

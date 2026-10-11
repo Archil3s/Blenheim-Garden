@@ -33,9 +33,9 @@ async function loadSheet(url: string, names: string[], columns: number, rows: nu
 
 export function loadPixelArtwork() {
   if (!pending) pending = Promise.all([
-    loadSheet("/artwork/pixel-garden/crops-v1.webp", pixelCropNames, 6, 6),
+    loadSheet("/artwork/pixel-garden/crops-v2.webp", pixelCropNames, 6, 6),
     loadSheet("/artwork/pixel-garden/scenery-v1.webp", ["tree-broadleaf", "tree-conifer", "tree-apple", "shed", "greenhouse", "flower-shrub"], 3, 2),
-    loadSheet("/artwork/pixel-garden/herbs-v1.webp", pixelHerbNames, 4, 3),
+    loadSheet("/artwork/pixel-garden/herbs-v2.webp", pixelHerbNames, 4, 3),
   ]).then(() => { loaded = true; }).catch((error: unknown) => { pending = null; throw error; });
   return pending;
 }

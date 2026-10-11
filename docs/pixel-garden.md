@@ -31,14 +31,24 @@ dependency or cloud binding is required.
   drawing at one canvas pixel per CSS pixel preserves detail while zooming.
   Artwork loading and retries repaint without resetting the camera or plan.
   Failed loads retain procedural artwork and editing with an explicit retry.
-  Dense areas sample at most 1,500 visible
-  plants; saved counts and positions remain intact.
+  Plant atlases use 192 × 240 cells, preserving more of the original foliage
+  detail. Crops render at the source aspect ratio without stretching.
+- **Artwork spacing** is the default illustration layout. Dense areas display
+  representative plants in evenly spaced slots within each planting area so
+  leaves and fruit remain distinguishable. Each planted area remains visible;
+  this display does not change saved coordinates or counts. Selecting a plant
+  shows it at its measured location. **All plants** returns to the measured
+  planting positions (up to 1,500 drawn sprites per area, with ground selection
+  targets for the remaining generated positions).
 
 ## Interaction and persistence
 
 Drag empty ground to pan. Scroll, pinch, or use **+ / −** to zoom. **Fit garden**
 returns to the measured plot. Focus the canvas to use arrow keys for panning
 and **+ / −** for zooming.
+**Crop detail** frames the selected plant, planting area, bed or row; without a
+selection it frames the first planting area. Its scale accounts for the available
+screen width so a whole bed can fit on a phone. **Fit garden** restores the overview.
 
 The existing toolbar supports selecting, moving, placing plants, drawing rows,
 adding beds, paths, trellises, trees and structures, editing measurements,

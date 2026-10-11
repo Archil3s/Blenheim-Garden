@@ -1,6 +1,6 @@
 import sharp from "sharp";
 
-const [source, destination, columnArg, rowArg, rowBoundsArg] = process.argv.slice(2);
+const [source, destination, columnArg, rowArg, rowBoundsArg, cellWidthArg] = process.argv.slice(2);
 if (!source || !destination || !columnArg || !rowArg) throw new Error("Usage: node scripts/pack-pixel-atlas.mjs source.png output.webp columns rows");
 const columns = Number(columnArg), rows = Number(rowArg);
 if (!Number.isInteger(columns) || !Number.isInteger(rows) || columns < 1 || rows < 1) throw new Error("Invalid atlas grid");
@@ -8,7 +8,8 @@ const metadata = await sharp(source).metadata();
 if (!metadata.hasAlpha) throw new Error("Sprite atlas must have transparency");
 const rowBounds = rowBoundsArg ? rowBoundsArg.split(",").map(Number) : Array.from({ length: rows + 1 }, (_, row) => Math.round(row * metadata.height / rows));
 if (rowBounds.length !== rows + 1 || rowBounds[0] !== 0 || rowBounds[rows] !== metadata.height || rowBounds.some((value, index) => !Number.isInteger(value) || (index > 0 && value <= rowBounds[index - 1]))) throw new Error("Invalid source row boundaries");
-const cellWidth = 128, cellHeight = 160, composites = [];
+const cellWidth = Number(cellWidthArg ?? 128), cellHeight = cellWidth * 1.25, composites = [];
+if (!Number.isInteger(cellWidth) || !Number.isInteger(cellHeight) || cellWidth < 32) throw new Error("Invalid sprite cell size");
 for (let row = 0; row < rows; row++) for (let column = 0; column < columns; column++) {
   const left = Math.round(column * metadata.width / columns), top = rowBounds[row];
   const width = Math.round((column + 1) * metadata.width / columns) - left, height = rowBounds[row + 1] - top;
@@ -32,7 +33,7 @@ for (let row = 0; row < rows; row++) for (let column = 0; column < columns; colu
   }
   if (!largest.count) throw new Error(`Empty sprite at ${column},${row}`);
   const bounds = { left: largest.left, top: largest.top, width: largest.right - largest.left + 1, height: largest.bottom - largest.top + 1 };
-  const input = await sharp(cell).extract(bounds).resize({ width: 120, height: 144, fit: "inside", kernel: "nearest" }).png().toBuffer();
+  const input = await sharp(cell).extract(bounds).resize({ width: cellWidth - 16, height: cellHeight - 24, fit: "inside", kernel: "nearest", withoutEnlargement: true }).png().toBuffer();
   const sprite = await sharp(input).metadata();
   composites.push({ input, left: column * cellWidth + Math.floor((cellWidth - sprite.width) / 2), top: row * cellHeight + cellHeight - 8 - sprite.height });
 }

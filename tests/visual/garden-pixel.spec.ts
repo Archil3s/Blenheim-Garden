@@ -75,7 +75,7 @@ test("pixel garden mirrors measured crops, zooms, pans and keeps the detailed vi
 test("pixel artwork failure keeps the garden usable and retry preserves its viewpoint", async ({ page, context }, info) => {
   let fail = true;
   await context.route("**/api/**", (route) => route.fulfill({ json: { ok: true, plan: fixture, gardens: [], items: [], beds: [] } }));
-  await context.route("**/artwork/pixel-garden/crops-v1.webp", (route) => fail ? route.abort() : route.continue());
+  await context.route("**/artwork/pixel-garden/crops-v2.webp", (route) => fail ? route.abort() : route.continue());
   await page.goto("/3d");
   const canvas = pixelCanvas(page);
   await expect(canvas).toHaveAttribute("data-pixel-ready", "true");
@@ -90,6 +90,50 @@ test("pixel artwork failure keeps the garden usable and retry preserves its view
   await expect(page.getByRole("button", { name: "Retry artwork", exact: true })).toHaveCount(0);
   expect(await canvas.getAttribute("data-pixel-view")).toBe(view);
   await page.screenshot({ path: info.outputPath("pixel-art-recovered.png") });
+});
+
+test("dense crop artwork stays distinct and exact planting retains every saved position", async ({ page, context }, info) => {
+  const dense: PlannerPlan = {
+    beds: [{ id: 1, name: "Basil", x: 30, y: 35, w: 35, h: 25 }],
+    plantingAreas: [{ ...fixture.plantingAreas[11], id: "dense-herbs", bedId: 1, crop: "Herbs", variety: "Basil", count: 120, spacingCm: 25, placements: Array.from({ length: 120 }, (_, i) => ({ id: `basil-${i}`, x: 8 + i % 12 * 7.5, y: 8 + Math.floor(i / 12) * 9 })) }],
+    rows: [], objects: [],
+  };
+  let writes = 0;
+  await context.route("**/api/**", (route) => { if (route.request().method() !== "GET") writes++; return route.fulfill({ json: { ok: true, plan: dense, gardens: [], items: [], beds: [] } }); });
+  await page.goto("/3d");
+  const canvas = pixelCanvas(page);
+  await expect(canvas).toHaveAttribute("data-pixel-art", "detailed");
+  await expect(canvas).toHaveAttribute("data-pixel-plant-count", "120");
+  const count = Number(await canvas.getAttribute("data-pixel-drawn-plants"));
+  expect(count).toBeGreaterThan(1); expect(count).toBeLessThan(120);
+  const before = await livePlan(page);
+  await page.getByRole("button", { name: "Crop detail", exact: true }).click();
+  await page.screenshot({ path: info.outputPath("dense-artwork-detail.png") });
+  await page.getByRole("button", { name: "All plants", exact: true }).click();
+  await expect(canvas).toHaveAttribute("data-pixel-presentation", "exact");
+  await expect(canvas).toHaveAttribute("data-pixel-drawn-plants", "120");
+  await page.getByRole("button", { name: "Artwork spacing", exact: true }).click();
+  await expect(canvas).toHaveAttribute("data-pixel-presentation", "artwork");
+  await expect(canvas).toHaveAttribute("data-pixel-drawn-plants", String(count));
+  expect(await livePlan(page)).toEqual(before); expect(writes).toBe(0);
+  await page.getByRole("button", { name: "Fit garden", exact: true }).click();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test("upright hoop illustrations retain measured rotation and undo", async ({ page, context }, info) => {
+  const hoops: PlannerPlan = { ...empty, objects: [0, 90, 180, 270].map((rotationDeg, i) => ({ id: `hoop-${i}`, type: "structure", kind: "hoop-tunnel", x: 260 + i % 2 * 380, y: 390 + Math.floor(i / 2) * 340, widthCm: 180, depthCm: 100, heightCm: 120, rotationDeg, label: `Hoop ${rotationDeg}°` })) };
+  await context.route("**/api/**", (route) => route.fulfill({ json: { ok: true, plan: hoops, gardens: [], items: [], beds: [] } }));
+  await page.goto("/3d"); await expect(pixelCanvas(page)).toHaveAttribute("data-pixel-art", "detailed");
+  await page.screenshot({ path: info.outputPath("upright-hoops-four-rotations.png") });
+  await clickWorld(page, 640, 730, info.project.name === "phone");
+  const rotation = page.locator(".garden-edit-inspector").getByLabel("Rotation (degrees)");
+  await expect(rotation).toHaveValue("270");
+  await page.getByRole("button", { name: "Rotate", exact: true }).click();
+  await expect(rotation).toHaveValue("285");
+  await expect.poll(async () => (await livePlan(page)).objects[3]).toMatchObject({ rotationDeg: 285 });
+  await page.getByRole("button", { name: "Undo", exact: true }).click();
+  await expect(rotation).toHaveValue("270");
+  await page.screenshot({ path: info.outputPath("rotated-hoop-selection.png") });
 });
 
 test("pixel editing preserves centimetres, drag history, cloud save and refresh", async ({ page, context }, info) => {

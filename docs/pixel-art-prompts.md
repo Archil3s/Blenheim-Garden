@@ -6,22 +6,45 @@ detail, not copied game assets. The browser renderer uses Canvas 2D.
 
 ## Production files
 
-- `public/artwork/pixel-garden/crops-v1.webp`: 6 × 6 cells, 36 plants.
-- `public/artwork/pixel-garden/herbs-v1.webp`: 4 × 3 cells, 12 flowers and herbs.
+- `public/artwork/pixel-garden/crops-v2.webp`: 6 × 6 cells, 36 plants.
+- `public/artwork/pixel-garden/herbs-v2.webp`: 4 × 3 cells, 12 flowers and herbs.
 - `public/artwork/pixel-garden/scenery-v1.webp`: 3 × 2 cells, six scenery items.
 
-Each production cell is 128 × 160 pixels with a centred ground anchor and
-transparent margins. Species ordering is defined in `garden-pixel-assets.ts`.
+Plant cells are 192 × 240 pixels; scenery cells are 128 × 160 pixels, all with
+a centred ground anchor and transparent margins. Species ordering is defined in
+`garden-pixel-assets.ts`. The v2 crop source repairs clipped leaf and flower tips
+while retaining the original botanical art direction. Previous v1 assets remain
+available for older cached application bundles.
 Source images are retained in the task's `outputs/pixel-garden/` directory.
 The packing script extracts each cell's main connected sprite bounds, excludes
 neighbouring row fragments, resizes with nearest-neighbour sampling and packs
 lossless WebP. It does not recolour or repaint generated art.
 
 ```powershell
-node scripts/pack-pixel-atlas.mjs crops-source.png public/artwork/pixel-garden/crops-v1.webp 6 6 0,209,418,627,833,1026,1254
-node scripts/pack-pixel-atlas.mjs herbs-source.png public/artwork/pixel-garden/herbs-v1.webp 4 3
+node scripts/pack-pixel-atlas.mjs crops-corrected-source.png public/artwork/pixel-garden/crops-v2.webp 6 6 0,224,437,649,850,1040,1254 192
+node scripts/pack-pixel-atlas.mjs herbs-source.png public/artwork/pixel-garden/herbs-v2.webp 4 3 "" 192
 node scripts/pack-pixel-atlas.mjs scenery-source.png public/artwork/pixel-garden/scenery-v1.webp 3 2
 ```
+
+## V2 crop correction prompt
+
+Edit the original garden sprite atlas for production use. Preserve the exact
+subjects, ordering, warm detailed botanical pixel-art style, colours, fruit,
+veined foliage, upper-left lighting and elevated front viewpoint of every plant.
+It is a 6 column by 6 row atlas of 36 sprites. Give every sprite clear transparent
+margins on all four sides of its equal square cell, so entire leaf silhouettes,
+flower tips and roots are visible, with no cropped tops or sides and no overlap.
+Restore missing tips on tomato, carrot, chard, broccoli and Brussels sprout
+leaves. Slightly reduce each complete plant within its cell rather than cutting
+leaves. Preserve rich illustration detail. Truly transparent background, no soil,
+no shadows outside sprites, no labels. Use the original crop ordering listed below.
+Consistent bottom-centre anchor; each entire sprite inside its own cell.
+This is a corrected game asset atlas, not a garden scene.
+
+Input: original `crops-source.png`. Generated using the built-in imagegen edit
+tool with transparency, then packed using the v2 command above. The corrected
+source is retained as `outputs/pixel-garden/crops-corrected-source.png` in the
+task workspace. Packing preserves native detail without artificial enlargement.
 
 ## Crop atlas prompt
 

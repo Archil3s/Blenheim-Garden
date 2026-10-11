@@ -34,7 +34,7 @@ export function pickPixel(hits: PixelHit[], point: PointCm) {
   return null;
 }
 
-export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, view: PixelView, selection: PlanSelection | null) {
+export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, view: PixelView, selection: PlanSelection | null, presentation: "artwork" | "exact" = "artwork") {
   tiles ??= [createPixelTile("grass"), createPixelTile("soil"), createPixelTile("path")];
   trees ??= [createPixelTree(), createPixelTree(1)];
   const hits: PixelHit[] = [], sprites: { y: number; draw: () => void }[] = [];
@@ -95,11 +95,39 @@ export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, 
       fill("#5c442e", p.x - w / 2, p.y - 4, w, 11); fill("#dfbe84", p.x - w / 2 + 1, p.y - 4, w - 2, 9); c.fillStyle = "#61482f"; c.textAlign = "center"; c.fillText(label, Math.round(p.x), Math.round(p.y + 3));
     } });
   }
-  const addPlants = (points: (PointCm & { id: string })[], crop: string, variety: string, s: PlanSelection, spacing: number) => {
+  let drawnPlants = 0, totalPlants = 0;
+  const addPlants = (points: (PointCm & { id: string })[], crop: string, variety: string, s: PlanSelection, spacing: number, rect?: { x: number; y: number; w: number; h: number }) => {
+    const plantBounds: { x: number; y: number; w: number; h: number }[] = [];
     const stride = Math.max(1, Math.ceil(points.length / 1500));
-    points.forEach((p, i) => { if (i % stride) return;
-      const ps = { ...s, plantId: p.id }, w = Math.min(76, Math.max(/carrot|radish|onion|garlic/i.test(crop) ? 28 : 48, spacing * 1.28)), h = w * 1.4;
-      sprites.push({ y: p.y, draw: () => { const q = projectPixel(p, view); image(pixelCrop(crop, variety, i % 3), p.x, p.y + 5, w, h); hits.push({ x: q.x - w * view.scale / 2, y: q.y - h * view.scale, w: w * view.scale, h: h * view.scale + 6, selection: ps, title: `${crop} · ${variety}` }); if (selected(ps)) { c.strokeStyle = "#ffe4a1"; c.lineWidth = 2; c.strokeRect(Math.round(q.x - w * view.scale / 2 - 2), Math.round(q.y - h * view.scale - 2), Math.round(w * view.scale + 4), Math.round(h * view.scale + 7)); } } });
+    totalPlants += points.length;
+    // Ground targets preserve access to every saved plant in the illustrated view.
+    points.forEach((p) => { const q = projectPixel(p, view), radius = Math.max(3, Math.min(10, spacing * view.scale / 3)); hits.push({ x: q.x - radius, y: q.y - radius, w: radius * 2, h: radius * 2, selection: { ...s, plantId: p.id }, title: `${crop} · ${variety}` }); });
+    let illustrations = points;
+    if (presentation === "artwork" && rect && points.length > 12) {
+      const columns = Math.max(1, Math.floor(rect.w / 124)), rows = Math.max(1, Math.floor(rect.h * view.tilt / 156));
+      const used = new Set<string>();
+      illustrations = Array.from({ length: columns * rows }, (_, i) => {
+        const target = { x: rect.x + (i % columns + .5) * rect.w / columns, y: rect.y + (Math.floor(i / columns) + 1) * rect.h / rows - 8 };
+        const representative = points.filter((p) => !used.has(p.id)).reduce<(PointCm & { id: string }) | null>((best, p) => !best || Math.hypot(p.x - target.x, p.y - target.y) < Math.hypot(best.x - target.x, best.y - target.y) ? p : best, null);
+        if (!representative) return null;
+        used.add(representative.id);
+        return { ...target, id: representative.id };
+      }).filter((p): p is PointCm & { id: string } => p !== null);
+      const chosen = points.find((p) => selected({ ...s, plantId: p.id }));
+      if (chosen) illustrations = [...illustrations.filter((p) => p.id !== chosen.id), chosen];
+    }
+    illustrations.forEach((p, i) => {
+      const ps = { ...s, plantId: p.id }, chosen = selected(ps);
+      if (presentation === "exact" && i % stride && !chosen) return;
+      const img = pixelCrop(crop, variety, i % 3);
+      const artworkWidth = Math.min(/carrot|radish|onion|garlic/i.test(crop) ? 90 : 112, rect ? Math.max(60, (rect.h * view.tilt + 15) * img.width / img.height) : 112);
+      const w = presentation === "artwork" ? artworkWidth : Math.min(76, Math.max(/carrot|radish|onion|garlic/i.test(crop) ? 28 : 48, spacing * 1.28));
+      const h = w * img.height / img.width, q = projectPixel({ x: p.x, y: p.y + 5 }, view);
+      const bounds = { x: q.x - w * view.scale / 2, y: q.y - h * view.scale, w: w * view.scale, h: h * view.scale };
+      const gap = 10 * view.scale;
+      if (presentation === "artwork" && !chosen && plantBounds.some((b) => bounds.x < b.x + b.w + gap && bounds.x + bounds.w + gap > b.x && bounds.y < b.y + b.h + gap && bounds.y + bounds.h + gap > b.y)) return;
+      plantBounds.push(bounds); drawnPlants++;
+      sprites.push({ y: chosen ? Infinity : p.y, draw: () => { image(img, p.x, p.y + 5, w, h); hits.push({ ...bounds, h: bounds.h + 6, selection: ps, title: `${crop} · ${variety}` }); if (chosen) { c.strokeStyle = "#ffe4a1"; c.lineWidth = 2; c.strokeRect(Math.round(bounds.x - 2), Math.round(bounds.y - 2), Math.round(bounds.w + 4), Math.round(bounds.h + 7)); } } });
     });
   };
   for (const area of plan.plantingAreas) {
@@ -107,7 +135,7 @@ export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, 
     const r = areaRectangle(plan, area), s: PlanSelection = { kind: "area", id: area.id };
     groundHit(r.x, r.y, r.w, r.h, s, `${area.crop} · ${area.variety}`);
     if (selected(s)) border(r.x, r.y, r.w, r.h);
-    addPlants(areaPlants(plan, area), area.crop, area.variety, s, area.spacingCm);
+    addPlants(areaPlants(plan, area), area.crop, area.variety, s, area.spacingCm, r);
   }
   for (const row of plan.rows) {
     const s: PlanSelection = { kind: "row", id: row.id };
@@ -126,7 +154,7 @@ export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, 
         if (o.type === "structure") { if (!structures.has(o.kind)) structures.set(o.kind, createPixelStructure(o.kind)); image(pixelScenery(o.kind) ?? structures.get(o.kind)!, o.x, o.y, w, h); }
         else image(pixelScenery(/apple|fruit/i.test(o.label ?? "") ? "tree-apple" : "tree-broadleaf") ?? trees![0], o.x, o.y, w, h);
         const sw = w * view.scale, sh = h * view.scale;
-        hits.push({ x: p.x - sw / 2, y: p.y - sh, w: sw, h: sh, selection: s, title: o.label || o.type });
+        hits.push({ x: p.x - sw / 2, y: p.y - sh, w: sw, h: sh + 6, selection: s, title: o.label || o.type });
         if (selected(s)) {
           if (o.type === "tree") border(o.x - w / 2, o.y - w / 2, w, w);
           else {
@@ -153,5 +181,8 @@ export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, 
   }
   sprites.sort((a, b) => a.y - b.y).forEach((sprite) => sprite.draw());
   for (let x = 0; x < 900; x += 50) if (x < 375 || x >= 525) fence(x, 1080);
+  c.canvas.dataset.pixelPresentation = presentation;
+  c.canvas.dataset.pixelPlantCount = String(totalPlants);
+  c.canvas.dataset.pixelDrawnPlants = String(drawnPlants);
   return hits;
 }

@@ -10,7 +10,10 @@ _Last updated: 11 October 2026_
 
 The live `/3d` garden and inline garden now open with 48 detailed original plant
 sprites, layered trees, a timber shed and greenhouse, tiled soil, wooden beds
-and fences. Drag to pan; scroll,
+and fences. **Artwork spacing** separates representative crop illustrations;
+**All plants** displays saved planting positions. **Crop detail** frames a bed or
+selected plant for a closer look. Plant sprites use 192 × 240 cells and retain
+their source proportions. Drag to pan; scroll,
 pinch or use the zoom buttons to inspect plants. The same editor retains exact
 centimetre-based placements, 10 cm snap, undo/redo, named gardens and protected
 cloud Save. **Detailed 3D** switches to the existing textured models; use
