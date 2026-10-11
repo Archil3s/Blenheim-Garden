@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import type { PlannerBed, PlannerPlan, PlannerPlantingArea } from "@/lib/garden/planner-plan";
 import { areaPlants, rowPlants, type PlanSelection } from "@/lib/garden/plan-editing";
+import { surfaceAt } from "@/lib/garden/planting-surfaces";
 import { createGardenPlant3D } from "./garden-plant-3d";
 const GARDEN_WIDTH_CM = 900, GARDEN_HEIGHT_CM = 1080;
 type InspectItem = { title: string; subtitle?: string; lines: Array<{ label: string; value: string }> };
@@ -155,7 +156,11 @@ export function addRow(root: THREE.Group, row: PlannerPlan["rows"][number], mobi
   addEditablePlants(group, rowPlants(row), row.crop, row.variety, row.spacingCm, { kind: "row", id: row.id }, mobile, .03);
   for (const plant of group.children) {
     const x = (plant.position.x + 4.5) * 100, y = (plant.position.z + 5.4) * 100;
-    if (plan.beds.some((bed) => { const r = bedRectCm(bed); return x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.h; })) plant.position.y = .31;
+    const surface = surfaceAt(plan, { x, y });
+    if (surface) {
+      plant.position.y = surface.height;
+      if (surface.kind === "object") plant.userData.containerId = surface.id;
+    }
   }
   // A faint centreline also lets the entire row be selected between its plants.
   if (Math.hypot(row.x2 - row.x1, row.y2 - row.y1) > 1) {

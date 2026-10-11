@@ -2,7 +2,8 @@ import * as THREE from "three";
 import { vegetableModelVersion } from "./garden-vegetable-model";
 import { tomatoModelVersion } from "./garden-tomato-model";
 import type { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { areaPlants, bedRectangle, rowPlants, validateEditorPlan, type PlanSelection, type PointCm } from "@/lib/garden/plan-editing";
+import { areaPlants, rowPlants, validateEditorPlan, type PlanSelection, type PointCm } from "@/lib/garden/plan-editing";
+import { plantingSurfaces, surfaceContains, plantingPointBlocked, type PlantingSurface } from "@/lib/garden/planting-surfaces";
 import type { PlannerPlan } from "@/lib/garden/planner-plan";
 import { plants } from "@/lib/garden/plant-catalog";
 import { structurePreset } from "@/lib/garden/structure-catalog";
@@ -36,18 +37,20 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
   const groundPoint = (event: PointerEvent) => {
     setRay(event);
     const editor = getEditor();
-    const hits: { point: THREE.Vector3; height: number }[] = [];
+    const hits: { point: THREE.Vector3; height: number; surface?: PlantingSurface }[] = [];
     const ground = raycaster.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), new THREE.Vector3());
     if (ground) hits.push({ point: ground.clone(), height: 0 });
-    for (const bed of editor.plan.beds) {
-      const p = raycaster.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0, 1, 0), -.31), new THREE.Vector3());
-      const rect = bedRectangle(bed);
-      if (p && p.x * 100 + 450 >= rect.x && p.x * 100 + 450 <= rect.x + rect.w && p.z * 100 + 540 >= rect.y && p.z * 100 + 540 <= rect.y + rect.h) hits.push({ point: p.clone(), height: .31 });
+    for (const surface of plantingSurfaces(editor.plan)) {
+      const p = raycaster.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0, 1, 0), -surface.height), new THREE.Vector3());
+      if (p && surfaceContains(surface, { x: p.x * 100 + 450, y: p.z * 100 + 540 })) hits.push({ point: p.clone(), height: surface.height, surface });
     }
     hits.sort((a, b) => raycaster.ray.origin.distanceTo(a.point) - raycaster.ray.origin.distanceTo(b.point));
     const hit = hits[0]; if (!hit) return null;
     const step = editor.settings.snap ? 10 : 1;
-    return { x: Math.round((hit.point.x * 100 + 450) / step) * step, y: Math.round((hit.point.z * 100 + 540) / step) * step, height: hit.height };
+    const actual = { x: hit.point.x * 100 + 450, y: hit.point.z * 100 + 540 };
+    const snapped = { x: Math.round(actual.x / step) * step, y: Math.round(actual.y / step) * step };
+    const point = hit.surface && !surfaceContains(hit.surface, snapped) ? actual : snapped;
+    return { ...point, height: hit.height };
   };
   const pick = (event: PointerEvent) => {
     setRay(event);
@@ -75,19 +78,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     let valid = point.x >= 0 && point.x <= 900 && point.y >= 0 && point.y <= 1080;
     try { validateEditorPlan(placementPlan(editor.plan, editor.tool, point, startPoint, editor.settings)); } catch { valid = false; }
     if (editor.tool === "plant") {
-      for (const object of editor.plan.objects) {
-        if (object.type === "structure" && !/bed|planter|pot|bag|barrel|tray/.test(object.kind)) {
-          const angle = object.rotationDeg * Math.PI / 180;
-          const dx = point.x - object.x, dy = point.y - object.y;
-          const x = dx * Math.cos(angle) + dy * Math.sin(angle), y = -dx * Math.sin(angle) + dy * Math.cos(angle);
-          if (Math.abs(x) < object.widthCm / 2 && Math.abs(y) < object.depthCm / 2) valid = false;
-        }
-        if (object.type === "path") {
-          const dx = object.x2 - object.x1, dy = object.y2 - object.y1;
-          const t = Math.max(0, Math.min(1, ((point.x - object.x1) * dx + (point.y - object.y1) * dy) / (dx * dx + dy * dy)));
-          if (Math.hypot(point.x - object.x1 - t * dx, point.y - object.y1 - t * dy) < object.widthCm / 2) valid = false;
-        }
-      }
+      if (plantingPointBlocked(editor.plan, point)) valid = false;
     }
     preview.userData.valid = valid;
     let color = valid ? 0x66e0ac : 0xf27878;
@@ -140,6 +131,9 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     if (hit.selection.kind === "bed") content.traverse((node) => {
       if (node.userData.bedId === Number(hit.selection.id)) roots.push({ root: node, position: node.position.clone() });
     });
+    if (hit.selection.kind === "object") content.traverse((node) => {
+      if (node.userData.containerId === hit.selection.id) roots.push({ root: node, position: node.position.clone() });
+    });
     drag = { plan: editor.plan, selection: hit.selection, start: point, delta: { x: 0, y: 0 }, roots, valid: true };
     controls.enabled = false; canvas.setPointerCapture(event.pointerId);
   };
@@ -149,7 +143,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
       const point = groundPoint(event); if (!point) return;
       drag.delta = { x: point.x - drag.start.x, y: point.y - drag.start.y };
       drag.valid = !!getEditor().move(drag.plan, drag.selection, drag.delta);
-      if (drag.valid) for (const { root, position } of drag.roots) root.position.set(position.x + drag.delta.x / 100, position.y, position.z + drag.delta.y / 100);
+      if (drag.valid) for (const { root, position } of drag.roots) root.position.set(position.x + drag.delta.x / 100, drag.selection.plantId ? point.height || .03 : position.y, position.z + drag.delta.y / 100);
       if (drag.selection.plantId) {
         const editor = getEditor();
         const parent = drag.selection.kind === "area" ? drag.plan.plantingAreas.find((a) => a.id === drag!.selection.id) : drag.plan.rows.find((r) => r.id === drag!.selection.id);
@@ -195,6 +189,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
   const cancel = () => { pointerStart = null; restoreDrag(); resetPreview(); };
   runtime.cancelEditing = cancel;
   const onKey = (event: KeyboardEvent) => {
+    if ((event.target as HTMLElement)?.closest(".garden-bed-dialog")) return;
     if (!disabled() && (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "s") { event.preventDefault(); void getEditor().save(); return; }
     if ((event.target as HTMLElement)?.closest("input, select, textarea")) return;
     const editor = getEditor();

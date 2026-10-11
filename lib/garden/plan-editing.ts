@@ -1,5 +1,6 @@
-import type { PlannerBed, PlannerPlan, PlannerPlantingArea, PlannerRow } from "./planner-plan";
+import type { PlannerBed, PlannerPlan, PlannerPlantingArea, PlannerRow, PlannerStructure } from "./planner-plan";
 import { plantPositionsForArea } from "./plant-spacing-layout";
+import { isPlantableStructure, plantingPointBlocked, structureSurface, surfaceAt, surfaceContains, surfaceLocal, surfaceWorld } from "./planting-surfaces";
 
 export type PointCm = { x: number; y: number };
 export type PlanSelection = { kind: "bed" | "area" | "row" | "object"; id: string; plantId?: string };
@@ -37,7 +38,29 @@ export function selectionItem(plan: PlannerPlan, selection: PlanSelection) {
   return plan.objects.find((item) => item.id === selection.id);
 }
 
+export function transformContainerPlants(before: PlannerPlan, next: PlannerPlan, previous: PlannerStructure, replacement: PlannerStructure): PlannerPlan {
+  if (!isPlantableStructure(previous)) return next;
+  const from = structureSurface(previous), to = structureSurface(replacement);
+  const rows = before.rows.map((row) => {
+    let changed = false;
+    const points = rowPlants(row).map((point) => {
+      const owner = surfaceAt(before, point);
+      if (owner?.kind !== "object" || owner.id !== previous.id) return point;
+      changed = true;
+      const local = surfaceLocal(from, point);
+      const moved = { id: point.id, ...surfaceWorld(to, { x: local.x * to.width / from.width, y: local.y * to.depth / from.depth }) };
+      if (!surfaceContains(to, moved)) throw new Error("The resized container must hold all its plants.");
+      return moved;
+    });
+    if (!changed) return next.rows.find((item) => item.id === row.id) ?? row;
+    return { ...row, x1: replacement.x, y1: replacement.y, x2: replacement.x, y2: replacement.y,
+      count: points.length, placements: points.map((point) => ({ id: point.id, x: point.x - replacement.x, y: point.y - replacement.y })) };
+  });
+  return { ...next, rows };
+}
+
 function editPlant(plan: PlannerPlan, selection: PlanSelection, point?: PointCm, duplicate = false): PlannerPlan {
+  if (point && plantingPointBlocked(plan, point)) throw new Error("Move the plant onto soil, away from walls and paths.");
   if (selection.kind === "area") {
     const area = plan.plantingAreas.find((item) => item.id === selection.id);
     if (!area) return plan;
@@ -46,6 +69,12 @@ function editPlant(plan: PlannerPlan, selection: PlanSelection, point?: PointCm,
     const plants = areaPlants(plan, area);
     const target = plants.find((p) => p.id === selection.plantId);
     if (!target) return plan;
+    if (point && surfaceAt(plan, point)?.kind === "object") {
+      const removed = editPlant(plan, selection);
+      const row: PlannerRow = { id: crypto.randomUUID(), crop: area.crop, cropIcon: area.cropIcon, variety: area.variety, spacingCm: area.spacingCm,
+        x1: point.x, y1: point.y, x2: point.x, y2: point.y, count: 1, placements: [{ id: target.id, x: 0, y: 0 }] };
+      return { ...removed, rows: [...removed.rows, row] };
+    }
     const next = plants.filter((p) => duplicate || p.id !== target.id);
     if (point || duplicate) next.push({ id: duplicate ? crypto.randomUUID() : target.id, ...(point ?? { x: target.x + 10, y: target.y + 10 }) });
     if (next.some((p) => p.x < rect.x || p.y < rect.y || p.x > rect.x + rect.w || p.y > rect.y + rect.h)) {
@@ -100,7 +129,10 @@ export function movePlanSelection(plan: PlannerPlan, selection: PlanSelection, d
     return { ...plan, plantingAreas: plan.plantingAreas.map((item) => item.id === area.id ? { ...item, x: item.x + delta.x / (bed.w * 9) * 100, y: item.y + delta.y / (bed.h * 10.8) * 100 } : item) };
   }
   if (selection.kind === "row") return { ...plan, rows: plan.rows.map((row) => row.id === selection.id ? { ...row, x1: row.x1 + delta.x, y1: row.y1 + delta.y, x2: row.x2 + delta.x, y2: row.y2 + delta.y } : row) };
-  return { ...plan, objects: plan.objects.map((object) => object.id !== selection.id ? object : "x1" in object ? { ...object, x1: object.x1 + delta.x, y1: object.y1 + delta.y, x2: object.x2 + delta.x, y2: object.y2 + delta.y } : { ...object, x: object.x + delta.x, y: object.y + delta.y }) };
+  const next = { ...plan, objects: plan.objects.map((object) => object.id !== selection.id ? object : "x1" in object ? { ...object, x1: object.x1 + delta.x, y1: object.y1 + delta.y, x2: object.x2 + delta.x, y2: object.y2 + delta.y } : { ...object, x: object.x + delta.x, y: object.y + delta.y }) };
+  const object = plan.objects.find((item) => item.id === selection.id);
+  const replacement = next.objects.find((item) => item.id === selection.id);
+  return object?.type === "structure" && replacement?.type === "structure" ? transformContainerPlants(plan, next, object, replacement) : next;
 }
 
 export function deletePlanSelection(plan: PlannerPlan, selection: PlanSelection): PlannerPlan {
@@ -111,6 +143,10 @@ export function deletePlanSelection(plan: PlannerPlan, selection: PlanSelection)
   }
   if (selection.kind === "area") return { ...plan, plantingAreas: plan.plantingAreas.filter((area) => area.id !== selection.id) };
   if (selection.kind === "row") return { ...plan, rows: plan.rows.filter((row) => row.id !== selection.id) };
+  const object = plan.objects.find((item) => item.id === selection.id);
+  if (object && isPlantableStructure(object) && plan.rows.some((row) => rowPlants(row).some((point) => {
+    const owner = surfaceAt(plan, point); return owner?.kind === "object" && owner.id === object.id;
+  }))) throw new Error("Remove the container's plants before deleting it.");
   return { ...plan, objects: plan.objects.filter((object) => object.id !== selection.id) };
 }
 
@@ -118,6 +154,9 @@ export function duplicatePlanSelection(plan: PlannerPlan, selection: PlanSelecti
   if (selection.plantId) return editPlant(plan, selection, undefined, true);
   const item = selectionItem(plan, selection);
   if (!item) return plan;
+  if (selection.kind === "object" && "type" in item && isPlantableStructure(item) && plan.rows.some((row) => rowPlants(row).some((point) => {
+    const owner = surfaceAt(plan, point); return owner?.kind === "object" && owner.id === item.id;
+  }))) throw new Error("Duplicate an empty container, then generate its own planting layout.");
   const id = crypto.randomUUID();
   if (selection.kind === "bed") {
     const bed = item as PlannerBed, bedId = Date.now();
@@ -145,7 +184,7 @@ export function validateEditorPlan(plan: PlannerPlan) {
       const angle = object.rotationDeg * Math.PI / 180;
       const halfW = (Math.abs(Math.cos(angle)) * object.widthCm + Math.abs(Math.sin(angle)) * object.depthCm) / 2;
       const halfH = (Math.abs(Math.sin(angle)) * object.widthCm + Math.abs(Math.cos(angle)) * object.depthCm) / 2;
-      if (object.widthCm < 30 || object.depthCm < 30 || object.heightCm < 20 || object.heightCm > 600 || !inGarden({ x: object.x - halfW, y: object.y - halfH }) || !inGarden({ x: object.x + halfW, y: object.y + halfH })) throw new Error("The structure footprint must fit inside the garden.");
+      if (object.widthCm < 30 || object.depthCm < 30 || object.heightCm < (object.kind === "seed-tray" ? 8 : 20) || object.heightCm > 600 || !inGarden({ x: object.x - halfW, y: object.y - halfH }) || !inGarden({ x: object.x + halfW, y: object.y + halfH })) throw new Error("The structure footprint must fit inside the garden.");
     }
     if ("x1" in object) {
       if (!inGarden({ x: object.x1, y: object.y1 }) || !inGarden({ x: object.x2, y: object.y2 }) || Math.hypot(object.x2 - object.x1, object.y2 - object.y1) < 5) throw new Error("Draw a line at least 5 cm long inside the garden.");

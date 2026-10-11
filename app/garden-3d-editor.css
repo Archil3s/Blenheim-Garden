@@ -50,3 +50,34 @@
 .gv-3d-editor[data-demo="true"] .gv-3d-selection-card { display: block; bottom: 80px; max-width: 220px; }
 
 .garden-edit-inspector summary h2 { display: inline; margin: 0; font: inherit; }
+
+.garden-bed-dialog { position: fixed; inset: 0; margin: auto; width: min(520px, calc(100vw - 28px)); max-height: calc(100dvh - 28px); padding: 0; overflow: auto; box-sizing: border-box; background: #faf5e9; color: #283d2d; border: 1px solid #a9b69c; border-radius: 16px; box-shadow: 0 20px 80px #132d2360; font: 14px Arial, sans-serif; }
+.garden-bed-dialog::backdrop { background: #132b246b; }
+.garden-bed-dialog[open] { display: flex; flex-direction: column; }
+.garden-bed-dialog-heading { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 12px; }
+.garden-bed-dialog-heading, .garden-bed-dialog-actions, .garden-bed-save-note { flex-shrink: 0; }
+.garden-bed-dialog-heading small { font-size: 10px; letter-spacing: 1.5px; color: #64735c; }
+.garden-bed-dialog-heading h2 { margin: 5px 0 0; font-size: 23px; }
+.garden-bed-dialog button { min-height: 42px; padding: 9px 14px; border: 1px solid #a1b294; border-radius: 7px; color: #284631; background: #eef1e4; cursor: pointer; font: inherit; }
+.garden-bed-dialog button:disabled { opacity: .5; cursor: default; }
+.garden-bed-dialog-heading button { min-width: 42px; font-size: 22px; }
+.garden-bed-dialog-body { display: grid; gap: 12px; padding: 0 20px 14px; min-height: 0; overflow-y: auto; }
+.garden-bed-dialog label { display: grid; gap: 6px; font-weight: 600; }
+.garden-bed-dialog .garden-bed-replace { display: flex; align-items: center; gap: 8px; font-size: 12px; min-height: 34px; }
+.garden-bed-replace input { width: 18px; height: 18px; accent-color: #335a3c; }
+.garden-bed-dialog select { width: 100%; min-width: 0; min-height: 42px; box-sizing: border-box; padding: 7px; background: white; color: #283d2d; border: 1px solid #bcc5af; border-radius: 6px; font: inherit; }
+.garden-bed-dialog p { margin: 0; line-height: 1.45; }
+.garden-bed-dimensions { font-size: 12px; color: #657158; }
+.garden-bed-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.garden-bed-season-note { border-left: 3px solid #bd995a; padding: 8px 12px; background: #f0e7d3; font-size: 12px; }
+.garden-bed-layout-preview { width: 100%; height: 170px; border-radius: 8px; background: #f2e7d0; }
+.garden-bed-layout-crops { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; font-size: 12px; }
+.garden-bed-layout-crops li { display: flex; align-items: center; gap: 8px; }
+.garden-bed-layout-crops i { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.garden-bed-guidance-sources { font-size: 11px; color: #68765e; }
+.garden-bed-guidance-sources a { color: #3f6847; }
+.garden-bed-dialog-actions { display: flex; gap: 8px; padding: 12px 20px; border-top: 1px solid #dedecb; }
+.garden-bed-dialog-actions > button { flex: 1; }
+.garden-bed-dialog .garden-bed-apply { background: #335a3c; color: white; border-color: #335a3c; }
+.garden-bed-dialog .garden-bed-save-note { text-align: center; font-size: 11px; padding: 0 16px 14px; color: #68765e; }
+@media (max-width: 600px) { .garden-bed-dialog-body { padding: 0 14px 12px; gap: 10px; } .garden-bed-dialog-heading { padding: 14px; } .garden-bed-layout-preview { height: 120px; } .garden-bed-options { gap: 8px; } .garden-bed-dialog-actions { padding: 12px 14px; } }

@@ -7,6 +7,8 @@ import { STRUCTURE_PRESETS } from "@/lib/garden/structure-catalog";
 import { bedRectangle, movePlanSelection } from "@/lib/garden/plan-editing";
 import type { PlannerStructureKind } from "@/lib/garden/planner-plan";
 import type { EditorTool, Garden3DEditor } from "./use-garden-3d-editor";
+import { isPlantableStructure } from "@/lib/garden/planting-surfaces";
+import { GardenBedPlanting } from "./garden-bed-planting";
 
 const tools: { id: EditorTool; label: string }[] = [
   { id: "select", label: "Select" }, { id: "move", label: "Move" },
@@ -24,6 +26,7 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
   const [keyOpen, setKeyOpen] = useState(false);
   const [editKey, setEditKey] = useState("");
   const [search, setSearch] = useState("");
+  const [bedPlantingOpen, setBedPlantingOpen] = useState(false);
   const { settings, item, selection } = editor;
   const crop = plants.find((p) => p.name === settings.crop) ?? plants[0];
   const field = (label: string, name: string, value: number, min?: number, max?: number) => <NumberField key={name} label={label} value={value} min={min} max={max} onCommit={(n) => editor.update(name, n)} />;
@@ -32,6 +35,7 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
   const title = item ? "name" in item ? item.name : "crop" in item ? `${item.crop} · ${item.variety}` : "label" in item ? item.label || item.type : "text" in item ? item.text : "Selection" : "Select an object";
   return <>
     <div className="garden-edit-toolbar" role="toolbar" aria-label="3D garden editing">
+      <button type="button" disabled={disabled} onClick={() => setBedPlantingOpen(true)}>Plant a bed</button>
       <Link href="/3d-models/tomato">Tomato model</Link>
       <Link href="/3d-models">Vegetable models</Link>
       {tools.map((tool) => <button key={tool.id} type="button" disabled={disabled} aria-pressed={editor.tool === tool.id} onClick={() => { editor.setTool(tool.id); if (tool.id !== "move" && tool.id !== "select") editor.setSelection(null); }}>{tool.label}</button>)}
@@ -71,6 +75,7 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
       <summary><h2>{title}</h2></summary>
       <div>
         {"crop" in item && typeof item.spacingCm === "number" && field("Spacing (cm)", "spacingCm", item.spacingCm, 2, 500)}
+        {!selection.plantId && (selection.kind === "bed" || ("type" in item && isPlantableStructure(item))) && <button type="button" onClick={() => setBedPlantingOpen(true)}>Generate seasonal layout</button>}
         {editor.plantPoint ? <>
           <p>Individual plant · {"spacingCm" in item ? item.spacingCm : 0} cm recommended spacing</p>
           {"bedId" in item && <p>{editor.plan.beds.find((b) => b.id === item.bedId)?.name}</p>}
@@ -90,7 +95,7 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
           {"x1" in item && <>{field("Start X (cm)", "x1", item.x1, 0, 900)}{field("Start Y (cm)", "y1", item.y1, 0, 1080)}{field("End X (cm)", "x2", item.x2, 0, 900)}{field("End Y (cm)", "y2", item.y2, 0, 1080)}</>}
           {"widthCm" in item && field("Width (cm)", "widthCm", item.widthCm, 30, item.type === "path" ? 400 : 900)}
           {"depthCm" in item && field("Depth (cm)", "depthCm", item.depthCm, 30, 1080)}
-          {"heightCm" in item && field("Height (cm)", "heightCm", item.heightCm, 20, item.type === "trellis" ? 500 : 600)}
+          {"heightCm" in item && field("Height (cm)", "heightCm", item.heightCm, item.type === "structure" && item.kind === "seed-tray" ? 8 : 20, item.type === "trellis" ? 500 : 600)}
           {"postSpacingCm" in item && field("Post spacing (cm)", "postSpacingCm", item.postSpacingCm, 30, 1000)}
           {"diameterCm" in item && field("Canopy diameter (cm)", "diameterCm", item.diameterCm, 20, 1000)}
           {"rotationDeg" in item && <>{field("Rotation (degrees)", "rotationDeg", item.rotationDeg)}<button type="button" onClick={rotate}>Rotate +15°</button></>}
@@ -106,5 +111,6 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
       <button type="button" onClick={() => setKeyOpen(!keyOpen)}>Edit key</button>
       {keyOpen && <form onSubmit={(e) => { e.preventDefault(); editor.setEditKey(editKey); setEditKey(""); setKeyOpen(false); }}><label>Garden edit key<input type="password" autoComplete="off" value={editKey} onChange={(e) => setEditKey(e.target.value)} /></label><button type="submit">Set key</button></form>}
     </div>
+    {!disabled && bedPlantingOpen && <GardenBedPlanting key={editor.gardenId} editor={editor} onClose={() => setBedPlantingOpen(false)} />}
   </>;
 }

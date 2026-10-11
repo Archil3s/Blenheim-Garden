@@ -15,6 +15,7 @@ import { addStructure3D } from "@/components/garden-structure-3d";
 import { addDemonstrationBed3D } from "@/components/garden-demo-bed-3d";
 import { addRaisedBed, addPlantingArea, addRow, addPath, addTrellis, addTree, addBoundary, addGardenDecor } from "./garden-object-renderers";
 import { type PlanSelection } from "@/lib/garden/plan-editing";
+import { isPlantableStructure } from "@/lib/garden/planting-surfaces";
 import { useGarden3DEditor } from "./use-garden-3d-editor";
 import { Garden3DEditorControls } from "./garden-3d-editor-controls";
 import { installGardenEditInteractions } from "./garden-3d-edit-interactions";
@@ -131,7 +132,7 @@ function buildGarden(root: THREE.Group, plan: PlannerPlan, mobile: boolean) {
   reconcile("decor", mobile, (holder) => { addBoundary(holder, mobile); addGardenDecor(holder, mobile); });
   for (const bed of plan.beds) reconcile("bed:" + bed.id, bed, (holder) => addRaisedBed(holder, bed, plan.plantingAreas.find((a) => a.bedId === bed.id), mobile));
   for (const area of plan.plantingAreas) reconcile("area:" + area.id, [area, plan.beds.find((b) => b.id === area.bedId), isTomatoCrop(area.crop) ? tomatoModelVersion(mobile) : vegetableModelVersion(area.crop, area.variety, mobile)], (holder) => addPlantingArea(holder, plan, area, mobile));
-  for (const row of plan.rows) reconcile("row:" + row.id, [row, plan.beds, isTomatoCrop(row.crop) ? tomatoModelVersion(mobile) : vegetableModelVersion(row.crop, row.variety, mobile)], (holder) => addRow(holder, row, mobile, plan));
+  for (const row of plan.rows) reconcile("row:" + row.id, [row, plan.beds, plan.objects.filter(isPlantableStructure), isTomatoCrop(row.crop) ? tomatoModelVersion(mobile) : vegetableModelVersion(row.crop, row.variety, mobile)], (holder) => addRow(holder, row, mobile, plan));
   for (const object of plan.objects) reconcile("object:" + object.id, object, (holder) => {
     if (object.type === "path") addPath(holder, object, mobile);
     if (object.type === "trellis") addTrellis(holder, object, mobile);

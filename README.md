@@ -6,6 +6,14 @@ _Last updated: 11 October 2026_
 
 ## Current status
 
+### Raised-bed planting in detailed 3D
+
+Open `/3d?view=3d` and choose **Plant a bed**. Plant directly on raised-bed soil,
+or preview and apply a layout for Blenheim's current NZ season. Existing plants
+and other beds are preserved. Plants follow container movement, rotation and
+resizing. Use Undo to reverse a layout and Save to persist it. See the
+[3D editor guide](docs/3d-editor.md).
+
 ### Pixel garden
 
 The live `/3d` garden and inline garden now open with 48 detailed original plant

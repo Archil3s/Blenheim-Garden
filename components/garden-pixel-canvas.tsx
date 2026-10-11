@@ -7,22 +7,12 @@ import { structurePreset } from "@/lib/garden/structure-catalog";
 import { placementPlan, type Garden3DEditor } from "./use-garden-3d-editor";
 import { drawPixelGarden, pickPixel, pixelCrop, projectPixel, unprojectPixel, type PixelHit, type PixelView } from "./garden-pixel-scene";
 import { loadPixelArtwork, pixelArtworkReady } from "./garden-pixel-assets";
+import { plantingPointBlocked } from "@/lib/garden/planting-surfaces";
 
 type PixelRuntime = { fit: () => void; detail: () => void; zoom: (factor: number) => void; paint: () => void; cancel: () => void };
 
 function plantLocationBlocked(plan: PlannerPlan, point: PointCm) {
-  return plan.objects.some((o) => {
-    if (o.type === "structure" && !/bed|planter|pot|bag|barrel|tray/.test(o.kind)) {
-      const angle = o.rotationDeg * Math.PI / 180, dx = point.x - o.x, dy = point.y - o.y;
-      return Math.abs(dx * Math.cos(angle) + dy * Math.sin(angle)) < o.widthCm / 2 && Math.abs(-dx * Math.sin(angle) + dy * Math.cos(angle)) < o.depthCm / 2;
-    }
-    if (o.type === "path") {
-      const dx = o.x2 - o.x1, dy = o.y2 - o.y1;
-      const t = Math.max(0, Math.min(1, ((point.x - o.x1) * dx + (point.y - o.y1) * dy) / (dx * dx + dy * dy || 1)));
-      return Math.hypot(point.x - o.x1 - t * dx, point.y - o.y1 - t * dy) < o.widthCm / 2;
-    }
-    return false;
-  });
+  return plantingPointBlocked(plan, point);
 }
 
 export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPlan; editor: Garden3DEditor; disabled: boolean }) {

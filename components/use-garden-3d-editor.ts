@@ -7,6 +7,8 @@ import { editKeySession, persistGardenPlan, publishGardenPlan } from "@/lib/gard
 import { plantCountForArea } from "@/lib/garden/plant-spacing-layout";
 import { plants } from "@/lib/garden/plant-catalog";
 import { structurePreset } from "@/lib/garden/structure-catalog";
+import { plantingPointBlocked, surfaceAt } from "@/lib/garden/planting-surfaces";
+import { transformContainerPlants } from "@/lib/garden/plan-editing";
 
 export type EditorTool = "select" | "move" | "plant" | "row" | "bed" | "path" | "trellis" | "tree" | "structure";
 export type PlacementSettings = { crop: string; variety: string; structureKind: PlannerStructureKind; width: number; depth: number; height: number; pathWidth: number; postSpacing: number; diameter: number; snap: boolean };
@@ -16,7 +18,9 @@ export function placementPlan(plan: PlannerPlan, tool: EditorTool, point: PointC
   const crop = plants.find((p) => p.name === settings.crop) ?? plants[0];
   const cropFields = { crop: crop.name, cropIcon: crop.icon, variety: settings.variety, spacingCm: crop.spacingCm };
   if (tool === "plant") {
-    const bed = plan.beds.find((bed) => { const r = bedRectangle(bed); return point.x >= r.x && point.x <= r.x + r.w && point.y >= r.y && point.y <= r.y + r.h; });
+    if (plantingPointBlocked(plan, point)) throw new Error("Plant on soil inside the bed or container, away from walls and paths.");
+    const surface = surfaceAt(plan, point);
+    const bed = surface?.kind === "bed" ? plan.beds.find((bed) => String(bed.id) === surface.id) : undefined;
     if (bed) {
       const rect = bedRectangle(bed);
       const area: PlannerPlantingArea = { id, bedId: bed.id, ...cropFields, x: 0, y: 0, w: 100, h: 100, count: 1, pattern: "single", iconSize: 16, visualSpacing: "normal", placements: [{ id: crypto.randomUUID(), x: (point.x - rect.x) * 100 / rect.w, y: (point.y - rect.y) * 100 / rect.h }] };
@@ -115,7 +119,10 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
         return { ...area, count: plantCountForArea(area, rect.w, rect.h) };
       });
       if (key === "rows") next.rows = next.rows.map((row) => row.id === selection.id && !row.placements ? { ...row, count: Math.max(1, Math.floor(Math.hypot(row.x2 - row.x1, row.y2 - row.y1) / row.spacingCm) + 1) } : row);
-      return next;
+      const previous = p.objects.find((item) => item.id === selection.id);
+      const replacement = next.objects.find((item) => item.id === selection.id);
+      return selection.kind === "object" && previous?.type === "structure" && replacement?.type === "structure"
+        ? transformContainerPlants(p, next, previous, replacement) : next;
     });
   };
   const move = (base: PlannerPlan, selected: PlanSelection, delta: PointCm) => { try { const next = movePlanSelection(base, selected, delta); validateEditorPlan(next); return next; } catch { return null; } };
