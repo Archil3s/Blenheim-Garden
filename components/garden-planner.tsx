@@ -1,7 +1,10 @@
 "use client";
 
-import { useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import type { DragEvent as ReactDragEvent, PointerEvent as ReactPointerEvent } from "react";
+import { reconcileOwnedPlants } from "@/lib/garden/plan-editing";
+import { cropSelectionSummary, cropsInBox, deleteSelectedCrops, resizeBedRect, selectCrops, type CropSelection, type ResizeEdge } from "@/lib/garden/planner-selection";
+import { isPlantableStructure } from "@/lib/garden/planting-surfaces";
 import type {
   GardenPlanApiResponse,
   PlannerBed as Bed,
@@ -18,26 +21,25 @@ import { plants, type PlantOption } from "@/lib/garden/plant-catalog";
 import { persistGardenPlan, publishGardenPlan } from "@/lib/garden/plan-persistence";
 import { PlantArt } from "@/components/plant-art";
 
-type Tool = "select" | "plant" | "row" | "bed" | "path" | "trellis" | "structure" | "tree" | "note";
+type Tool = "select" | "marquee" | "plant" | "row" | "bed" | "path" | "trellis" | "structure" | "tree" | "note";
 type SaveState = "idle" | "saving" | "cloud" | "local" | "error";
 type LoadSource = "starting" | "cloud" | "local" | "default";
 type Point = { x: number; y: number };
 type Selection = { kind: "bed" | "planting" | "row" | "object"; id: string } | null;
 type Draft = { kind: "bed" | "row" | "path" | "trellis"; start: Point; end: Point } | null;
 type Interaction =
-  | { kind: "bed-drag" | "bed-resize"; id: number; start: Point; bed: Bed }
+  | { kind: "bed-drag" | "bed-resize"; id: number; start: Point; bed: Bed; edge?: ResizeEdge }
   | { kind: "planting-drag" | "planting-resize"; id: string; start: Point; area: PlannerPlantingArea }
   | { kind: "row-drag" | "row-start" | "row-end"; id: string; start: Point; row: PlantingRow }
-  | { kind: "object-drag" | "object-start" | "object-end" | "tree-resize"; id: string; start: Point; object: PlannerLayoutObject };
+  | { kind: "object-drag" | "object-start" | "object-end" | "tree-resize" | "structure-resize"; id: string; start: Point; object: PlannerLayoutObject; edge?: ResizeEdge };
 
 type RowInteraction = Extract<Interaction, { row: PlantingRow }>;
 type PlantingInteraction = Extract<Interaction, { area: PlannerPlantingArea }>;
-const CANVAS_WIDTH = 900;
-const CANVAS_HEIGHT = 1080;
 const SNAP_CM = 10;
 
 const tools: Array<{ id: Tool; icon: string; label: string; hint: string }> = [
   { id: "select", icon: "↖", label: "Select", hint: "Move, resize and edit" },
+  { id: "marquee", icon: "⬚", label: "Box select", hint: "Drag a box to select planting patches and rows" },
   { id: "plant", icon: "🌱", label: "Plants", hint: "Drag crops into beds" },
   { id: "row", icon: "•••", label: "Rows", hint: "Drag a planting row" },
   { id: "bed", icon: "▭", label: "Bed", hint: "Drag a new garden bed" },
@@ -100,9 +102,6 @@ const emptyPlan: PlanState = { beds: [], plantingAreas: [], rows: [], objects: [
 function clamp(value: number, min: number, max: number) { return Math.min(max, Math.max(min, value)); }
 function lineLength(line: { x1: number; y1: number; x2: number; y2: number }) { return Math.hypot(line.x2 - line.x1, line.y2 - line.y1); }
 function lineVisual(line: { x1: number; y1: number; x2: number; y2: number }) { return { length: lineLength(line), angle: Math.atan2(line.y2 - line.y1, line.x2 - line.x1) * 180 / Math.PI }; }
-function bedCm(bed: Bed) { return { x: bed.x / 100 * CANVAS_WIDTH, y: bed.y / 100 * CANVAS_HEIGHT, w: bed.w / 100 * CANVAS_WIDTH, h: bed.h / 100 * CANVAS_HEIGHT }; }
-function cmBed(id: number, name: string, rect: { x: number; y: number; w: number; h: number }): Bed { return { id, name, x: rect.x / CANVAS_WIDTH * 100, y: rect.y / CANVAS_HEIGHT * 100, w: rect.w / CANVAS_WIDTH * 100, h: rect.h / CANVAS_HEIGHT * 100 }; }
-function bedSizeLabel(bed: Bed) { const size = bedCm(bed); return `${(size.w / 100).toFixed(1)} × ${(size.h / 100).toFixed(1)} m`; }
 function rowCount(row: { x1: number; y1: number; x2: number; y2: number }, spacing: number) { return Math.max(1, Math.floor(lineLength(row) / spacing) + 1); }
 function uuid(prefix: string) { return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; }
 function uniqueBedId() { return Date.now() * 1000 + Math.floor(Math.random() * 1000); }
@@ -116,6 +115,10 @@ function nextBedLabel(beds: Bed[]) {
 function isRowInteraction(interaction: Interaction): interaction is RowInteraction { return interaction.kind === "row-drag" || interaction.kind === "row-start" || interaction.kind === "row-end"; }
 function isPlantingInteraction(interaction: Interaction): interaction is PlantingInteraction { return interaction.kind === "planting-drag" || interaction.kind === "planting-resize"; }
 function clonePlan(plan: PlanState): PlanState { return structuredClone(plan); }
+
+function StructureResizeHandles({ label, onResize }: { label: string; onResize: (event: ReactPointerEvent<HTMLElement>, edge: ResizeEdge) => void }) {
+  return ["nw", "ne", "se", "sw"].map((edge) => <span key={edge} className={`gv-bed-handle handle-${edge}`} aria-label={`Resize ${label} ${edge}`} onPointerDown={(event) => onResize(event, edge as ResizeEdge)} />);
+}
 
 function legacyAreas(beds: Bed[]): PlannerPlantingArea[] {
   return beds.flatMap((bed) => bed.crop && bed.cropIcon && bed.spacingCm ? [{
@@ -136,6 +139,7 @@ function legacyAreas(beds: Bed[]): PlannerPlantingArea[] {
 function normalisePlan(value: Partial<PlanState> | null | undefined): PlanState | null {
   if (!value || !Array.isArray(value.beds) || !Array.isArray(value.rows)) return null;
   return {
+    ...value,
     beds: value.beds,
     plantingAreas: Array.isArray(value.plantingAreas) ? value.plantingAreas : legacyAreas(value.beds),
     rows: value.rows,
@@ -147,15 +151,6 @@ function readStoredPlan(key: string) {
   try { return normalisePlan(JSON.parse(localStorage.getItem(key) ?? "null") as Partial<PlanState>); } catch { return null; }
 }
 function readLocalPlan(gardenId: string) { return readStoredPlan(gardenLocalPlanKey(gardenId)); }
-
-function areaSizeCm(area: PlannerPlantingArea, bed: Bed) {
-  const size = bedCm(bed);
-  return { width: size.w * area.w / 100, height: size.h * area.h / 100 };
-}
-function areaCount(area: PlannerPlantingArea, bed: Bed) {
-  const size = areaSizeCm(area, bed);
-  return plantCountForArea(area, size.width, size.height);
-}
 
 export function GardenPlanner() {
   const canvasRef = useRef<HTMLDivElement>(null);
@@ -169,10 +164,24 @@ export function GardenPlanner() {
   const [month, setMonth] = useState("Sep");
   const [generatedMonth, setGeneratedMonth] = useState<string | null>(null);
   const [snapEnabled, setSnapEnabled] = useState(true);
-  const [plan, setPlan] = useState<PlanState>(basePlan);
+  const [plan, storePlan] = useState<PlanState>(basePlan);
+  const setPlan = useCallback((update: PlanState | ((plan: PlanState) => PlanState)) => {
+    storePlan((before) => typeof update === "function" ? reconcileOwnedPlants(before, update(before)) : update);
+  }, []);
+  const CANVAS_WIDTH = plan.canvasWidthCm ?? 900, CANVAS_HEIGHT = plan.canvasHeightCm ?? 1080;
+  const bedCm = useCallback((bed: Bed) => ({ x: bed.x * CANVAS_WIDTH / 100, y: bed.y * CANVAS_HEIGHT / 100, w: bed.w * CANVAS_WIDTH / 100, h: bed.h * CANVAS_HEIGHT / 100 }), [CANVAS_WIDTH, CANVAS_HEIGHT]);
+  const cmBed = (id: number, name: string, rect: { x: number; y: number; w: number; h: number }): Bed => ({ id, name, x: rect.x * 100 / CANVAS_WIDTH, y: rect.y * 100 / CANVAS_HEIGHT, w: rect.w * 100 / CANVAS_WIDTH, h: rect.h * 100 / CANVAS_HEIGHT });
+  const areaSizeCm = useCallback((area: PlannerPlantingArea, bed: Bed) => { const r = bedCm(bed); return { width: r.w * area.w / 100, height: r.h * area.h / 100 }; }, [bedCm]);
+  const areaCount = useCallback((area: PlannerPlantingArea, bed: Bed) => { const r = areaSizeCm(area, bed); return plantCountForArea(area, r.width, r.height); }, [areaSizeCm]);
+  const bedSizeLabel = (bed: Bed) => { const r = bedCm(bed); return `${(r.w / 100).toFixed(1)} × ${(r.h / 100).toFixed(1)} m`; };
   const [past, setPast] = useState<PlanState[]>([]);
   const [future, setFuture] = useState<PlanState[]>([]);
-  const [selection, setSelection] = useState<Selection>(null);
+  const [selection, storeSelection] = useState<Selection>(null);
+  const [cropSelection, setCropSelection] = useState<CropSelection[]>([]);
+  const setSelection = useCallback((next: Selection) => { storeSelection(next); setCropSelection([]); }, []);
+  const [selectionBox, setSelectionBox] = useState<{ start: Point; end: Point; additive: boolean } | null>(null);
+  const [selectionMode, setSelectionMode] = useState(false);
+  const [selectionMessage, setSelectionMessage] = useState("");
   const [interaction, setInteraction] = useState<Interaction | null>(null);
   const [draft, setDraft] = useState<Draft>(null);
   const [cursorPoint, setCursorPoint] = useState<Point | null>(null);
@@ -214,7 +223,10 @@ export function GardenPlanner() {
         const data = await response.json() as GardenPlanApiResponse;
         const cloud = normalisePlan(data.plan);
         if (cancelled || !response.ok || !data.ok || !cloud) return;
-        if (live) return;
+        if (live) {
+          if (JSON.stringify(live) === JSON.stringify(cloud)) { setSavedSnapshot(JSON.stringify(cloud)); setLoadSource("cloud"); }
+          return;
+        }
         setPlan(cloud);
         setSelection(null);
         localStorage.setItem(gardenLocalPlanKey(gardenId), JSON.stringify(cloud));
@@ -224,7 +236,7 @@ export function GardenPlanner() {
     })();
     });
     return () => { cancelled = true; };
-  }, []);
+  }, [setPlan, setSelection]);
 
   useEffect(() => {
     if (loadSource === "starting") return;
@@ -260,17 +272,17 @@ export function GardenPlanner() {
 
   useEffect(() => {
     const stage = stageScrollRef.current;
-    if (!stage || !autoFit) return;
+    if (!stage || !autoFit || interaction || draft || selectionBox) return;
     const fit = () => {
       const width = stage.clientWidth - 54;
       const height = stage.clientHeight - 52;
-      setZoom(Math.max(25, Math.min(100, Math.floor(Math.min(width / CANVAS_WIDTH, height / (CANVAS_HEIGHT * 1.04)) * 100))));
+      setZoom(Math.max(5, Math.min(100, Math.floor(Math.min(width / CANVAS_WIDTH, height / (CANVAS_HEIGHT * 1.04)) * 100))));
     };
     const observer = new ResizeObserver(fit);
     observer.observe(stage);
     fit();
     return () => observer.disconnect();
-  }, [autoFit, panelOpen]);
+  }, [autoFit, panelOpen, CANVAS_WIDTH, CANVAS_HEIGHT, interaction, draft, selectionBox]);
 
   useEffect(() => {
     const closeMore = (event: MouseEvent) => {
@@ -307,7 +319,7 @@ export function GardenPlanner() {
   function commit(next: PlanState) { remember(); setPlan(next); setSaveState("idle"); }
   function edit(mutator: (current: PlanState) => PlanState) { remember(); setPlan((current) => mutator(current)); setSaveState("idle"); }
 
-  function chooseTool(next: Tool) { if (next !== "select" && selection?.kind !== "bed") setSelection(selectedPlanting ? { kind: "bed", id: String(selectedPlanting.bedId) } : null); setTool(next); setPanelOpen(true); setDraft(null); setInteraction(null); }
+  function chooseTool(next: Tool) { setSelectionMode(next === "marquee"); setCropSelection([]); setSelectionMessage(""); if (next !== "select" && selection?.kind !== "bed") setSelection(selectedPlanting ? { kind: "bed", id: String(selectedPlanting.bedId) } : null); setTool(next); setPanelOpen(next !== "marquee"); setDraft(null); setInteraction(null); }
   function choosePlant(plant: PlantOption) { setSelectedPlant(plant); setSelectedVariety(plant.varieties[0]); }
 
   function undo() {
@@ -315,14 +327,14 @@ export function GardenPlanner() {
     const previous = past[past.length - 1];
     setFuture((items) => [clonePlan(plan), ...items].slice(0, 40));
     setPast((items) => items.slice(0, -1));
-    setPlan(previous); setSaveState("idle"); setInteraction(null); setDraft(null);
+    setPlan(previous); setSaveState("idle"); setInteraction(null); setDraft(null); setCropSelection([]); setSelectionMessage("Change undone");
   }
   function redo() {
     if (!future.length) return;
     const next = future[0];
     setPast((items) => [...items, clonePlan(plan)].slice(-40));
     setFuture((items) => items.slice(1));
-    setPlan(next); setSaveState("idle"); setInteraction(null); setDraft(null);
+    setPlan(next); setSaveState("idle"); setInteraction(null); setDraft(null); setCropSelection([]); setSelectionMessage("Change restored");
   }
 
   function generateSeasonalGarden() {
@@ -405,7 +417,8 @@ export function GardenPlanner() {
     setDropBedId(null);
   }
 
-  function startBedInteraction(event: ReactPointerEvent<HTMLElement>, bed: Bed, resize = false) {
+  function startBedInteraction(event: ReactPointerEvent<HTMLElement>, bed: Bed, resize: ResizeEdge | false = false) {
+    if (tool === "marquee" || event.button !== 0) return;
     event.stopPropagation();
     setSelection({ kind: "bed", id: String(bed.id) });
     if (tool === "plant") { plantBed(bed); return; }
@@ -413,11 +426,13 @@ export function GardenPlanner() {
     const point = canvasPoint(event.clientX, event.clientY);
     if (!point) return;
     remember();
-    setInteraction({ kind: resize ? "bed-resize" : "bed-drag", id: bed.id, start: point, bed: structuredClone(bed) });
+    setInteraction({ kind: resize ? "bed-resize" : "bed-drag", id: bed.id, start: point, bed: structuredClone(bed), edge: resize || undefined });
   }
 
   function startPlantingInteraction(event: ReactPointerEvent<HTMLElement>, area: PlannerPlantingArea, resize = false) {
+    if (tool === "marquee" || event.button !== 0) return;
     event.stopPropagation();
+    if (!resize && (event.shiftKey || selectionMode)) { toggleCrop({ kind: "planting", id: area.id }); return; }
     if (tool !== "select" && tool !== "plant") return;
     const point = canvasPoint(event.clientX, event.clientY);
     if (!point) return;
@@ -427,7 +442,9 @@ export function GardenPlanner() {
   }
 
   function startRowInteraction(event: ReactPointerEvent<HTMLElement>, row: PlantingRow, mode: "row-drag" | "row-start" | "row-end" = "row-drag") {
+    if (tool === "marquee" || event.button !== 0) return;
     event.stopPropagation();
+    if (mode === "row-drag" && (event.shiftKey || selectionMode)) { toggleCrop({ kind: "row", id: row.id }); return; }
     if (tool !== "select" && tool !== "row") return;
     const point = canvasPoint(event.clientX, event.clientY);
     if (!point) return;
@@ -435,13 +452,14 @@ export function GardenPlanner() {
     setInteraction({ kind: mode, id: row.id, start: point, row: { ...row } });
   }
 
-  function startObjectInteraction(event: ReactPointerEvent<HTMLElement>, object: PlannerLayoutObject, mode: "object-drag" | "object-start" | "object-end" | "tree-resize" = "object-drag") {
+  function startObjectInteraction(event: ReactPointerEvent<HTMLElement>, object: PlannerLayoutObject, mode: "object-drag" | "object-start" | "object-end" | "tree-resize" | "structure-resize" = "object-drag", edge?: ResizeEdge) {
+    if (tool === "marquee" || event.button !== 0) return;
     event.stopPropagation();
     if (tool !== "select" && tool !== object.type && !(tool === "note" && object.type === "text")) return;
     const point = canvasPoint(event.clientX, event.clientY);
     if (!point) return;
-    setSelection({ kind: "object", id: object.id }); setPanelOpen(true); remember();
-    setInteraction({ kind: mode, id: object.id, start: point, object: structuredClone(object) });
+    setSelection({ kind: "object", id: object.id }); remember();
+    setInteraction({ kind: mode, id: object.id, start: point, object: structuredClone(object), edge });
   }
 
   const canvasPointFromEffect = useEffectEvent(canvasPoint);
@@ -466,9 +484,8 @@ export function GardenPlanner() {
               const y = clamp(snapForDrag(start.y + dy), 0, CANVAS_HEIGHT - start.h);
               changedBed = { ...bed, x: x / CANVAS_WIDTH * 100, y: y / CANVAS_HEIGHT * 100 };
             } else {
-              const w = clamp(snapForDrag(start.w + dx), 40, CANVAS_WIDTH - start.x);
-              const h = clamp(snapForDrag(start.h + dy), 40, CANVAS_HEIGHT - start.y);
-              changedBed = { ...bed, w: w / CANVAS_WIDTH * 100, h: h / CANVAS_HEIGHT * 100 };
+              const r = resizeBedRect(start, active.edge ?? "se", { x: dx, y: dy }, { width: CANVAS_WIDTH, height: CANVAS_HEIGHT }, snapEnabled);
+              changedBed = { ...bed, x: r.x / CANVAS_WIDTH * 100, y: r.y / CANVAS_HEIGHT * 100, w: r.w / CANVAS_WIDTH * 100, h: r.h / CANVAS_HEIGHT * 100 };
             }
             return changedBed;
           });
@@ -522,6 +539,17 @@ export function GardenPlanner() {
           }
           if (original.type === "tree" && object.type === "tree") return { ...object, x: clamp(snapForDrag(original.x + dx), 0, CANVAS_WIDTH), y: clamp(snapForDrag(original.y + dy), 0, CANVAS_HEIGHT) };
           if (original.type === "structure" && object.type === "structure") {
+            if (active.kind === "structure-resize") {
+              const angle = original.rotationDeg * Math.PI / 180;
+              const localX = dx * Math.cos(angle) + dy * Math.sin(angle), localY = -dx * Math.sin(angle) + dy * Math.cos(angle);
+              const edge = active.edge ?? "se";
+              const widthCm = Math.max(40, snapForDrag(original.widthCm + (edge.includes("w") ? -localX : localX) * 2));
+              const depthCm = Math.max(40, snapForDrag(original.depthCm + (edge.includes("n") ? -localY : localY) * 2));
+              const halfX = (widthCm * Math.abs(Math.cos(angle)) + depthCm * Math.abs(Math.sin(angle))) / 2;
+              const halfY = (widthCm * Math.abs(Math.sin(angle)) + depthCm * Math.abs(Math.cos(angle))) / 2;
+              if (original.x - halfX < 0 || original.x + halfX > CANVAS_WIDTH || original.y - halfY < 0 || original.y + halfY > CANVAS_HEIGHT) return object;
+              return { ...object, widthCm, depthCm };
+            }
             const halfW = object.widthCm / 2;
             const halfD = object.depthCm / 2;
             return { ...object, x: clamp(snapForDrag(original.x + dx), halfW, CANVAS_WIDTH - halfW), y: clamp(snapForDrag(original.y + dy), halfD, CANVAS_HEIGHT - halfD) };
@@ -532,17 +560,24 @@ export function GardenPlanner() {
       });
       setSaveState("idle");
     };
-    const up = () => { setInteraction(null); setPanelOpen(true); };
+    const up = () => { setInteraction(null); if (!active.kind.includes("resize")) setPanelOpen(true); };
     window.addEventListener("pointermove", move);
     window.addEventListener("pointerup", up, { once: true });
     return () => { window.removeEventListener("pointermove", move); window.removeEventListener("pointerup", up); };
-  }, [interaction, snapEnabled, zoom]);
+  }, [interaction, snapEnabled, zoom, CANVAS_WIDTH, CANVAS_HEIGHT, areaCount, bedCm, setPlan]);
 
   function canvasDown(event: ReactPointerEvent<HTMLDivElement>) {
+    if (event.button !== 0) return;
+    if (tool === "marquee") {
+      const point = canvasPoint(event.clientX, event.clientY);
+      if (point) { event.currentTarget.setPointerCapture(event.pointerId); setSelectionBox({ start: point, end: point, additive: event.shiftKey }); }
+      return;
+    }
     if ((event.target as HTMLElement).closest(".plan-bed,.planting-area,.planting-row,.layout-object")) return;
     const point = canvasPoint(event.clientX, event.clientY);
     if (!point) return;
     setCursorPoint(point);
+    if (tool === "select") { setSelection(null); setSelectionMessage(""); }
     if (["bed", "row", "path", "trellis"].includes(tool)) {
       event.currentTarget.setPointerCapture(event.pointerId);
       setDraft({ kind: tool as "bed" | "row" | "path" | "trellis", start: point, end: point });
@@ -578,9 +613,18 @@ export function GardenPlanner() {
     const point = canvasPoint(event.clientX, event.clientY);
     if (point) setCursorPoint(point);
     if (point && draft) setDraft((current) => current ? { ...current, end: point } : null);
+    if (point && selectionBox) setSelectionBox((current) => current ? { ...current, end: point } : null);
   }
 
   function canvasUp() {
+    if (selectionBox) {
+      const selected = cropsInBox(plan, selectionBox.start, selectionBox.end);
+      storeSelection(null);
+      setCropSelection((current) => selectionBox.additive ? [...current, ...selected.filter((s) => !current.some((c) => c.kind === s.kind && c.id === s.id))] : selected);
+      setSelectionBox(null); setSelectionMessage(selected.length ? "Plantings selected · tap to adjust" : "No plantings in this box");
+      setTool("select"); setSelectionMode(true); setPanelOpen(false);
+      return;
+    }
     if (!draft) return;
     const current = draft; setDraft(null);
     if (current.kind === "bed") {
@@ -589,7 +633,7 @@ export function GardenPlanner() {
       if (w < 40 || h < 40) return;
       const id = uniqueBedId();
       const bed = cmBed(id, nextBedLabel(plan.beds), { x, y, w, h });
-      commit({ ...plan, beds: [...plan.beds, bed] }); setSelection({ kind: "bed", id: String(id) }); return;
+      commit({ ...plan, beds: [...plan.beds, bed] }); setSelection({ kind: "bed", id: String(id) }); setTool("select"); setPanelOpen(false); return;
     }
     if (lineLength({ x1: current.start.x, y1: current.start.y, x2: current.end.x, y2: current.end.y }) < 20) return;
     if (current.kind === "row") {
@@ -615,6 +659,38 @@ export function GardenPlanner() {
     });
     setSelection(null);
   }
+
+  function toggleCrop(item: CropSelection) {
+    storeSelection(null); setSelectionMode(true); setPanelOpen(false); setSelectionMessage("");
+    setCropSelection((current) => current.some((s) => s.kind === item.kind && s.id === item.id)
+      ? current.filter((s) => s.kind !== item.kind || s.id !== item.id) : [...current, item]);
+  }
+
+  function selectAllCrops(vegetablesOnly: boolean) {
+    storeSelection(null); setTool("select"); setSelectionMode(true); setPanelOpen(false);
+    setCropSelection(selectCrops(plan, vegetablesOnly)); setSelectionMessage("");
+  }
+
+  function deleteCropSelection() {
+    const summary = cropSelectionSummary(plan, cropSelection);
+    if (!summary.plantings) return;
+    edit((current) => deleteSelectedCrops(current, cropSelection));
+    setCropSelection([]); setSelectionMode(false);
+    setSelectionMessage(`${summary.plants} plants removed · Undo to restore`);
+  }
+
+  const keyboardAction = useEffectEvent((event: KeyboardEvent) => {
+    if (document.querySelector(".gv-app.gv-view-3d")) return;
+    if ((event.target as HTMLElement)?.closest("input,textarea,select,[contenteditable=true],[role=dialog]")) return;
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "a") { event.preventDefault(); selectAllCrops(false); }
+    else if ((event.key === "Delete" || event.key === "Backspace") && cropSelection.length) { event.preventDefault(); deleteCropSelection(); }
+    else if (event.key === "Escape") { setSelectionBox(null); setDraft(null); setSelection(null); setSelectionMode(false); setTool("select"); setSelectionMessage(""); }
+  });
+  useEffect(() => {
+    const handler = (event: KeyboardEvent) => keyboardAction(event);
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
 
   function duplicateSelection() {
     if (!selection) return;
@@ -695,6 +771,7 @@ export function GardenPlanner() {
       return <div className="gv-selection-panel" data-bed-id={selectedBed.id}>
         <div className="gv-selection-hero"><span>▭</span><div><small>BED</small><h2>{selectedBed.name}</h2><p>{bedSizeLabel(selectedBed)}</p></div></div>
         <dl><div><dt>Area</dt><dd>{(size.w * size.h / 10000).toFixed(1)} m²</dd></div><div><dt>Plantings</dt><dd>{areas.length}</dd></div><div><dt>Plants</dt><dd>≈ {totalPlants}</dd></div></dl>
+        <p className="gv-help">Drag the bed to move it. Drag a green corner or edge to resize; use arrow keys on a handle for 10 cm adjustments.</p>
         <section className="gv-inspector-section"><h3>Current planting</h3>
           {areas.length ? areas.map((area) => <button type="button" className="gv-planting-summary" key={area.id} onClick={() => setSelection({ kind: "planting", id: area.id })}><span><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></span><span><strong>{area.variety}</strong><small>{area.crop} · {area.spacingCm} cm spacing</small></span><b>×{area.count}</b></button>) : <p className="gv-inspector-empty">Empty · ready for your next planting</p>}
         </section>
@@ -752,15 +829,17 @@ export function GardenPlanner() {
 
   function renderPlantingArea(area: PlannerPlantingArea) {
     const selected = selection?.kind === "planting" && selection.id === area.id;
+    const bulkSelected = cropSelection.some((s) => s.kind === "planting" && s.id === area.id);
     const bed = plan.beds.find((item) => item.id === area.bedId);
     const areaSize = bed ? areaSizeCm(area, bed) : { width: 1, height: 1 };
     const overview = zoom < 110;
     const positions = bed && (!overview || area.placements) ? plantPositionsForArea(area, areaSize.width, areaSize.height) : [];
-    return <div key={area.id} className={`planting-area ${area.placements ? "has-explicit-placements" : ""} ${overview ? "is-overview" : ""} ${selected ? "selected" : ""}`} data-crop={area.crop} data-pattern={area.pattern} style={{ left: `${area.x}%`, top: `${area.y}%`, width: `${area.w}%`, height: `${area.h}%`, ["--area-icon-size" as string]: `${area.iconSize}px` }} onPointerDown={(event) => overview && bed && tool === "select" ? startBedInteraction(event, bed) : startPlantingInteraction(event, area)}>
+    return <div key={area.id} className={`planting-area ${area.placements ? "has-explicit-placements" : ""} ${overview ? "is-overview" : ""} ${selected ? "selected" : ""} ${bulkSelected ? "bulk-selected" : ""}`} data-crop={area.crop} data-pattern={area.pattern} role={selectionMode ? "checkbox" : undefined} aria-checked={selectionMode ? bulkSelected : undefined} aria-label={selectionMode ? `${area.crop}, ${area.count} plants` : undefined} tabIndex={selectionMode ? 0 : undefined} onKeyDown={(event) => { if (selectionMode && ["Enter", " "].includes(event.key)) { event.preventDefault(); event.stopPropagation(); toggleCrop({ kind: "planting", id: area.id }); } }} style={{ left: `${area.x}%`, top: `${area.y}%`, width: `${area.w}%`, height: `${area.h}%`, ["--area-icon-size" as string]: `${area.iconSize}px` }} onPointerDown={(event) => overview && bed && tool === "select" && !event.shiftKey && !selectionMode ? startBedInteraction(event, bed) : startPlantingInteraction(event, area)}>
       <span className="planting-area-icons">{overview && !area.placements && zoom >= 45 && <i className="gv-overview-art" style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)", ["--area-icon-size" as string]: `${30 / (zoom / 100)}px` }}><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></i>}{positions.map((position, index) => <i key={index} style={{ left: position.x, top: position.y, transform: `translate(-50%, -50%) rotate(${position.rotation}deg)` }}><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></i>)}</span>
       <span className="planting-area-label" title={`${area.crop} · ${area.variety} · ${area.count} plants · ${area.spacingCm} cm spacing`}><span className="gv-crop-symbol" aria-hidden="true"><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></span><span className="gv-crop-name">{area.variety}</span><b>×{area.count}</b></span>
       {selected && !overview && <span className="planting-spacing-badge">↔ {area.spacingCm} cm</span>}
       {selected && <span className="planting-area-resize" onPointerDown={(event) => startPlantingInteraction(event, area, true)} />}
+      {bulkSelected && <span className="gv-crop-check" aria-hidden="true">✓</span>}
     </div>;
   }
 
@@ -770,8 +849,11 @@ export function GardenPlanner() {
   const scaledWidth = CANVAS_WIDTH * zoom / 100, scaledHeight = CANVAS_HEIGHT * zoom / 100;
   const draftRect = draft?.kind === "bed" ? { x: Math.min(draft.start.x, draft.end.x), y: Math.min(draft.start.y, draft.end.y), w: Math.abs(draft.end.x - draft.start.x), h: Math.abs(draft.end.y - draft.start.y) } : null;
   const draftLine = draft && draft.kind !== "bed" ? { x1: draft.start.x, y1: draft.start.y, x2: draft.end.x, y2: draft.end.y } : null;
+  const cropSummary = cropSelectionSummary(plan, cropSelection);
+  const resizeEdges: ResizeEdge[] = ["nw", "n", "ne", "e", "se", "s", "sw", "w"];
+  const boxRect = selectionBox ? { x: Math.min(selectionBox.start.x, selectionBox.end.x), y: Math.min(selectionBox.start.y, selectionBox.end.y), w: Math.abs(selectionBox.start.x - selectionBox.end.x), h: Math.abs(selectionBox.start.y - selectionBox.end.y) } : null;
 
-  return <main className="gv-app">
+  return <main className="gv-app" data-panel-open={panelOpen}>
     <header className="gv-titlebar">
       <div className="gv-title-left"><button type="button" className="gv-plan-name">BLENHEIM GARDEN <span>Garden ▾</span></button></div>
       <nav className="gv-primary-nav" aria-label="Garden navigation">
@@ -787,19 +869,34 @@ export function GardenPlanner() {
         <button type="button" className="gv-save" onClick={() => void savePlan()} disabled={saveState === "saving"}> {saveLabel}</button>
       </nav>
     </header>
-    <div className="gv-quickbar"><div className="gv-quick-actions"><button type="button" onClick={undo} disabled={!past.length} title="Undo">↶ <span>Undo</span></button><button type="button" onClick={redo} disabled={!future.length} title="Redo">↷ <span>Redo</span></button><button type="button" className={snapEnabled ? "active" : ""} onClick={() => setSnapEnabled((value) => !value)}>⌗ <span>Snap {snapEnabled ? "10 cm" : "Off"}</span></button></div><div className="gv-quick-center"><button type="button" aria-label="Zoom out" onClick={() => { setAutoFit(false); setZoom((value) => Math.max(25, value - 10)); }}>−</button><strong>{zoom}%</strong><button type="button" className="gv-fit-width" onClick={() => setAutoFit(true)}>Fit</button><button type="button" aria-label="Zoom in" onClick={() => { setAutoFit(false); setZoom((value) => Math.min(150, value + 10)); }}>+</button><select aria-label="Planning month" value={month} onChange={(event) => { setMonth(event.target.value); setGeneratedMonth(null); }}>{months.map((item) => <option key={item}>{item}</option>)}</select><div className="gv-seasonal-generator"><button type="button" aria-label="Generate seasonal garden" data-generated={generatedMonth === month} title={`Generate a Blenheim seasonal garden for ${month}`} disabled={!plan.beds.length} onClick={generateSeasonalGarden}>{generatedMonth === month ? `✓ ${month}` : "✦ Generate"}</button></div></div><div className="gv-cloud-state" role="status" aria-live="polite" data-save-state={saveState}><span className={isSaved ? "online" : ""} />{sourceLabel}</div></div>
+    <div className="gv-quickbar"><div className="gv-quick-actions"><button type="button" onClick={undo} disabled={!past.length} title="Undo" aria-label="Undo">↶ <span>Undo</span></button><button type="button" onClick={redo} disabled={!future.length} title="Redo" aria-label="Redo">↷ <span>Redo</span></button><button type="button" className={snapEnabled ? "active" : ""} onClick={() => setSnapEnabled((value) => !value)}>⌗ <span>Snap {snapEnabled ? "10 cm" : "Off"}</span></button></div><div className="gv-quick-center"><button type="button" aria-label="Zoom out" onClick={() => { setAutoFit(false); setZoom((value) => Math.max(5, value - 10)); }}>−</button><strong>{zoom}%</strong><button type="button" className="gv-fit-width" onClick={() => setAutoFit(true)}>Fit</button><button type="button" aria-label="Zoom in" onClick={() => { setAutoFit(false); setZoom((value) => Math.min(150, value + 10)); }}>+</button><select aria-label="Planning month" value={month} onChange={(event) => { setMonth(event.target.value); setGeneratedMonth(null); }}>{months.map((item) => <option key={item}>{item}</option>)}</select><div className="gv-seasonal-generator"><button type="button" aria-label="Generate seasonal garden" data-generated={generatedMonth === month} title={`Generate a Blenheim seasonal garden for ${month}`} disabled={!plan.beds.length} onClick={generateSeasonalGarden}>{generatedMonth === month ? `✓ ${month}` : "✦ Generate"}</button></div></div><div className="gv-cloud-state" role="status" aria-live="polite" data-save-state={saveState}><span className={isSaved ? "online" : ""} />{sourceLabel}</div></div>
     <section className={`gv-body ${panelOpen ? "" : "panel-closed"}`}><aside className="gv-rail"><button type="button" className="gv-menu" aria-label="Toggle inspector" onClick={() => setPanelOpen((value) => !value)}>☰</button>{tools.map((item) => <button type="button" key={item.id} className={tool === item.id ? "active" : ""} onClick={() => chooseTool(item.id)} aria-pressed={tool === item.id} title={item.hint}><span>{item.icon}</span><small>{item.label}</small></button>)}</aside>{panelOpen && <aside className="gv-context"><div className="gv-context-header"><strong>{tool === "select" ? "Inspector" : tools.find((item) => item.id === tool)?.label}</strong><button type="button" aria-label="Close inspector" onClick={() => setPanelOpen(false)}>×</button></div>{contextPanel()}</aside>}{!panelOpen && <button type="button" className="gv-panel-reopen" aria-label="Open inspector" onClick={() => setPanelOpen(true)}>Details</button>}
-      <section className="gv-stage"><div className="gv-stage-status"><div><strong>{dragPlant ? `Drop ${dragPlant.name} into a bed` : tool === "select" ? "Tap a bed to see what’s growing" : tools.find((item) => item.id === tool)?.hint}</strong><span>{month} 2026</span></div>{cursorPoint && <code>X {Math.round(cursorPoint.x)} · Y {Math.round(cursorPoint.y)} cm</code>}</div><div ref={stageScrollRef} className="gv-stage-scroll"><div className="gv-ruler-grid" style={{ width: scaledWidth + 30, gridTemplateColumns: `30px ${scaledWidth}px`, gridTemplateRows: `28px ${scaledHeight}px` }}><div className="gv-ruler-corner" /><div className="gv-ruler-top">{[0,2,4,6,8,9].map((mark) => <span key={mark} style={{ left: `${mark / 9 * 100}%` }}>{mark}m</span>)}</div><div className="gv-ruler-left">{[0,2,4,6,8,10].map((mark) => <span key={mark} style={{ top: `${mark / 10.8 * 100}%` }}>{mark}m</span>)}</div><div className="canvas-scale" style={{ width: scaledWidth, height: scaledHeight }}><div ref={canvasRef} className={`garden-canvas tool-${tool} ${snapEnabled ? "snap-on" : ""}`} style={{ transform: `scale(${zoom / 100})`, ["--canvas-label-size" as string]: `${Math.min(44, 11 / (zoom / 100))}px` }} onPointerDown={canvasDown} onPointerMove={canvasMove} onPointerUp={canvasUp} onPointerLeave={() => { if (!draft) setCursorPoint(null); }}>
+      <section className="gv-stage">
+        <div className="gv-buildbar" aria-label="Garden building tools">
+          <div className="gv-build-actions">
+            <button type="button" className={tool === "bed" ? "active" : ""} onClick={() => { chooseTool("bed"); setSelection(null); setPanelOpen(false); }}>＋ Draw bed</button>
+            <button type="button" onClick={() => selectAllCrops(true)} disabled={!selectCrops(plan, true).length}>Select vegetables</button>
+            <button type="button" onClick={() => selectAllCrops(false)} disabled={!selectCrops(plan).length}>Select all plants</button>
+            <button type="button" aria-pressed={tool === "marquee"} onClick={() => chooseTool(tool === "marquee" ? "select" : "marquee")}>⬚ Box select</button>
+            <button type="button" aria-pressed={selectionMode} onClick={() => { setSelection(null); setSelectionMode((value) => !value); setTool("select"); setPanelOpen(false); }}>Multi-select</button>
+          </div>
+          <div className="gv-bulk-actions" role="status" aria-live="polite">
+            <span>{cropSummary.plantings ? `${cropSummary.plants} plants · ${cropSummary.plantings} plantings selected` : selectionMessage || (tool === "bed" ? "Drag on the grid to draw a bed" : selectionMode ? "Tap plantings to select them" : "Draw beds · drag corners to resize")}</span>
+            {cropSummary.plantings > 0 && <button type="button" className="danger" onClick={deleteCropSelection}>Delete selected</button>}
+            {(selectionMode || cropSummary.plantings > 0) && <button type="button" onClick={() => { setSelection(null); setSelectionMode(false); setTool("select"); setSelectionMessage(""); }}>Clear selection</button>}
+          </div>
+        </div>
+        <div className="gv-stage-status"><div><strong>{dragPlant ? `Drop ${dragPlant.name} into a bed` : tool === "select" ? "Tap a bed to see what’s growing" : tools.find((item) => item.id === tool)?.hint}</strong><span>{month} 2026</span></div>{cursorPoint && <code>X {Math.round(cursorPoint.x)} · Y {Math.round(cursorPoint.y)} cm</code>}</div><div ref={stageScrollRef} className="gv-stage-scroll"><div className="gv-ruler-grid" style={{ width: scaledWidth + 30, gridTemplateColumns: `30px ${scaledWidth}px`, gridTemplateRows: `28px ${scaledHeight}px` }}><div className="gv-ruler-corner" /><div className="gv-ruler-top">{Array.from({ length: Math.floor(CANVAS_WIDTH / 200) + 1 }, (_, i) => i * 2).map((mark) => <span key={mark} style={{ left: `${mark * 10000 / CANVAS_WIDTH}%` }}>{mark}m</span>)}</div><div className="gv-ruler-left">{Array.from({ length: Math.floor(CANVAS_HEIGHT / 200) + 1 }, (_, i) => i * 2).map((mark) => <span key={mark} style={{ top: `${mark * 10000 / CANVAS_HEIGHT}%` }}>{mark}m</span>)}</div><div className="canvas-scale" style={{ width: scaledWidth, height: scaledHeight }}><div ref={canvasRef} className={`garden-canvas tool-${tool} ${snapEnabled ? "snap-on" : ""}`} style={{ width: CANVAS_WIDTH, height: CANVAS_HEIGHT, transform: `scale(${zoom / 100})`, ["--canvas-label-size" as string]: `${Math.min(44, 11 / (zoom / 100))}px`, ["--handle-size" as string]: `${24 / (zoom / 100)}px`, ["--canvas-scale" as string]: zoom / 100 }} onPointerDown={canvasDown} onPointerMove={canvasMove} onPointerUp={canvasUp} onPointerCancel={() => { setDraft(null); setSelectionBox(null); }} onPointerLeave={() => { if (!draft) setCursorPoint(null); }}>
         <div className="berry-strip"><strong>First-year fruiting canes · over winter</strong><div><span>🔴 Raspberry</span><span>🔴 Raspberry</span><span>🔴 Raspberry</span><span>🫐 Blackberry</span></div></div><div className="north-zone" />
         {cursorPoint && snapEnabled && tool !== "select" && <><span className="snap-guide vertical" style={{ left: cursorPoint.x }} /><span className="snap-guide horizontal" style={{ top: cursorPoint.y }} /></>}
         {plan.objects.map((object) => {
           if (object.type === "path" || object.type === "trellis") return lineObject(object);
           const selected = selection?.kind === "object" && selection.id === object.id;
           if (object.type === "tree") return <div key={object.id} className={`layout-object tree-object ${selected ? "selected" : ""}`} style={{ left: object.x - object.diameterCm / 2, top: object.y - object.diameterCm / 2, width: object.diameterCm, height: object.diameterCm }} onPointerDown={(event) => startObjectInteraction(event, object)}><span>🌳</span><small>{object.label}</small>{selected && <span className="tree-resize-handle" onPointerDown={(event) => startObjectInteraction(event, object, "tree-resize")} />}</div>;
-          if (object.type === "structure") { const preset = structurePreset(object.kind); return <div key={object.id} data-kind={object.kind} className={`layout-object structure-object ${selected ? "selected" : ""}`} style={{ left: object.x - object.widthCm / 2, top: object.y - object.depthCm / 2, width: object.widthCm, height: object.depthCm, transform: `rotate(${object.rotationDeg}deg)` }} onPointerDown={(event) => startObjectInteraction(event, object)}><span className="structure-symbol">{preset.icon}</span><small>{object.label ?? preset.label}</small></div>; }
+          if (object.type === "structure") { const preset = structurePreset(object.kind); return <div key={object.id} data-kind={object.kind} className={`layout-object structure-object ${selected ? "selected" : ""}`} style={{ left: object.x - object.widthCm / 2, top: object.y - object.depthCm / 2, width: object.widthCm, height: object.depthCm, transform: `rotate(${object.rotationDeg}deg)` }} onPointerDown={(event) => startObjectInteraction(event, object)}><span className="structure-symbol">{preset.icon}</span><small>{object.label ?? preset.label}</small>{selected && isPlantableStructure(object) && <StructureResizeHandles label={object.label ?? preset.label} onResize={(event, edge) => startObjectInteraction(event, object, "structure-resize", edge)} />}</div>; }
           return <div key={object.id} className={`layout-object text-object ${selected ? "selected" : ""}`} style={{ left: object.x, top: object.y, fontSize: object.fontSize }} onPointerDown={(event) => startObjectInteraction(event, object)}>{object.text}</div>;
         })}
-        {plan.rows.map((row) => { const visual = lineVisual(row), selected = selection?.kind === "row" && selection.id === row.id; return <div key={row.id} className={`planting-row ${selected ? "selected" : ""}`} data-crop={row.crop} style={{ left: row.x1, top: row.y1 - 12, width: visual.length, transform: `rotate(${visual.angle}deg)` }} onPointerDown={(event) => startRowInteraction(event, row)}><span className="row-dots">{row.placements ? row.placements.map((p) => <i key={p.id} style={{ position: "absolute", left: `${p.x}%`, top: p.y, transform: "translate(-50%, -50%)" }}><PlantArt crop={row.crop} variety={row.variety} fallback={row.cropIcon} /></i>) : Array.from({ length: Math.min(row.count, 24) }, (_, index) => <i key={index} />)}</span><span className="row-caption"><PlantArt crop={row.crop} variety={row.variety} fallback={row.cropIcon} /> {row.variety} · {row.count}</span>{selected && <><span className="line-handle start" onPointerDown={(event) => startRowInteraction(event, row, "row-start")} /><span className="line-handle end" onPointerDown={(event) => startRowInteraction(event, row, "row-end")} /></>}</div>; })}
+        {plan.rows.map((row) => { const visual = lineVisual(row), selected = selection?.kind === "row" && selection.id === row.id, bulkSelected = cropSelection.some((s) => s.kind === "row" && s.id === row.id); return <div key={row.id} className={`planting-row ${selected ? "selected" : ""} ${bulkSelected ? "bulk-selected" : ""}`} role={selectionMode ? "checkbox" : undefined} aria-checked={selectionMode ? bulkSelected : undefined} aria-label={selectionMode ? `${row.crop}, ${row.count} plants` : undefined} tabIndex={selectionMode ? 0 : undefined} onKeyDown={(event) => { if (selectionMode && ["Enter", " "].includes(event.key)) { event.preventDefault(); event.stopPropagation(); toggleCrop({ kind: "row", id: row.id }); } }} data-crop={row.crop} style={{ left: row.x1, top: row.y1 - 12, width: visual.length, transform: `rotate(${visual.angle}deg)` }} onPointerDown={(event) => startRowInteraction(event, row)}><span className="row-dots">{row.placements ? row.placements.map((p) => <i key={p.id} style={{ position: "absolute", left: row.x1 === row.x2 && row.y1 === row.y2 ? p.x : `${p.x}%`, top: p.y, transform: "translate(-50%, -50%)" }}><PlantArt crop={row.crop} variety={row.variety} fallback={row.cropIcon} /></i>) : Array.from({ length: Math.min(row.count, 24) }, (_, index) => <i key={index} />)}</span><span className="row-caption"><PlantArt crop={row.crop} variety={row.variety} fallback={row.cropIcon} /> {row.variety} · {row.count}</span>{bulkSelected && <span className="gv-crop-check" aria-hidden="true">✓</span>}{selected && <><span className="line-handle start" onPointerDown={(event) => startRowInteraction(event, row, "row-start")} /><span className="line-handle end" onPointerDown={(event) => startRowInteraction(event, row, "row-end")} /></>}</div>; })}
         {plan.beds.map((bed) => {
           const selected = selection?.kind === "bed" && selection.id === String(bed.id);
           const areas = plan.plantingAreas.filter((area) => area.bedId === bed.id);
@@ -807,9 +904,15 @@ export function GardenPlanner() {
             <strong className="gv-v4-bed-title">{bed.name}</strong>
             {areas.length === 0 && <span className="empty-bed-label">Empty</span>}
             {areas.map(renderPlantingArea)}
-            {selected && <span className="resize-handle" onPointerDown={(event) => startBedInteraction(event, bed, true)} />}
+            {selected && <><span className="gv-bed-dimensions">{bedSizeLabel(bed)}</span>{resizeEdges.map((edge) => <span key={edge} role="slider" tabIndex={0} aria-label={`Resize ${bed.name} ${edge}`} aria-valuetext={bedSizeLabel(bed)} aria-valuemin={40} aria-valuemax={edge === "n" || edge === "s" ? CANVAS_HEIGHT : CANVAS_WIDTH} aria-valuenow={Math.round(edge === "n" || edge === "s" ? bedCm(bed).h : bedCm(bed).w)} className={`resize-handle gv-bed-handle handle-${edge}`} onPointerDown={(event) => startBedInteraction(event, bed, edge)} onKeyDown={(event) => {
+              if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return;
+              event.preventDefault(); event.stopPropagation();
+              const r = resizeBedRect(bedCm(bed), edge, { x: event.key === "ArrowRight" ? 10 : event.key === "ArrowLeft" ? -10 : 0, y: event.key === "ArrowDown" ? 10 : event.key === "ArrowUp" ? -10 : 0 }, { width: CANVAS_WIDTH, height: CANVAS_HEIGHT }, snapEnabled);
+              edit((current) => { const next = { ...bed, x: r.x * 100 / CANVAS_WIDTH, y: r.y * 100 / CANVAS_HEIGHT, w: r.w * 100 / CANVAS_WIDTH, h: r.h * 100 / CANVAS_HEIGHT }; return { ...current, beds: current.beds.map((b) => b.id === bed.id ? next : b), plantingAreas: current.plantingAreas.map((a) => a.bedId === bed.id ? { ...a, count: areaCount(a, next) } : a) }; });
+            }} />)}</>}
           </div>;
         })}
+        {boxRect && <div className="gv-selection-box" style={{ left: boxRect.x, top: boxRect.y, width: boxRect.w, height: boxRect.h }} />}
         {draftRect && <div className="draft-bed" style={{ left: draftRect.x, top: draftRect.y, width: draftRect.w, height: draftRect.h }}><span>{(draftRect.w / 100).toFixed(1)} × {(draftRect.h / 100).toFixed(1)} m</span></div>}
         {draftLine && draft && (() => { const visual = lineVisual(draftLine); return <div className={`draft-line ${draft.kind}`} style={{ left: draftLine.x1, top: draftLine.y1 - 10, width: visual.length, transform: `rotate(${visual.angle}deg)` }}><span>{(visual.length / 100).toFixed(1)} m</span></div>; })()}
       </div></div></div></div></section></section>

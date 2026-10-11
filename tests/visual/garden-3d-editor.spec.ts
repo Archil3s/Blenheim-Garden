@@ -61,7 +61,7 @@ test("3D design session saves, refreshes, and mirrors in 2D", async ({ context, 
     }
     return route.fulfill({ json: { ok: true, gardens: [{ id: "blenheim-garden", name: "Test garden", year: 2026 }], beds: [], items: [], notes: [], harvests: [] } });
   });
-  await page.goto("/3d");
+  await page.goto("/3d?view=3d");
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   await expect(canvas).toBeVisible();
   await page.getByRole("button", { name: "Top", exact: true }).click();
@@ -130,6 +130,7 @@ test("inline 3D keyboard history and save stay within the active editor", async 
   await page.addInitScript((plan) => localStorage.setItem("blenheim-garden-live-plan", JSON.stringify(plan)), fixture);
   await page.goto("/");
   await page.getByRole("button", { name: "3D", exact: true }).click();
+  await page.getByRole("button", { name: "Detailed 3D", exact: true }).click();
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   await expect(canvas).toBeVisible();
   await page.getByRole("button", { name: "Top", exact: true }).click();

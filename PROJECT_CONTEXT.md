@@ -1,15 +1,23 @@
 # Blenheim Garden — Project Context
 
-_Last updated: 22 August 2026_
+_Last updated: 11 October 2026_
 
 **Repository:** `Archil3s/Blenheim-Garden`  
 **Production branch:** `main`
 
 ## Product
 
+The developer route `/3d-audit` is a static, isolated asset showroom. Its
+catalogue is generated at build time; its scene has no API/storage hooks.
+`PlannerBridges` excludes `/3d*`, including this route. Shared production beds,
+rows, paths, trellises, trees and decoration live in
+`components/garden-object-renderers.ts`. Structures must use the existing
+`@/components/garden-structure-3d` alias, which selects the V2 renderer and its
+legacy fallbacks. Audit-only modules are imported exclusively by the audit route.
+
 Blenheim Garden is a visual home-garden planner for Blenheim, Marlborough. The measured garden canvas is the application: keep it visually dominant, keep controls compact, and use a GrowVeg-like interaction model without copying proprietary code or artwork.
 
-The working canvas is **900 × 1080 cm-equivalent pixels**, treated as approximately **9 m × 10.8 m**. The base plan contains the existing 12 numbered beds plus the berry/cane area.
+The default working canvas is **900 × 1080 cm-equivalent pixels**, approximately **9 m × 10.8 m**. The 3D editor’s Garden size control supports dimensions from 2–50 m while preserving existing physical positions and sizes. Dimensions persist per named garden in the existing `gardens.canvas_width_cm` and `canvas_height_cm` columns; optional soil conditions and explicit row ownership persist in an idempotently added `editor_settings_json` column. The base plan contains the existing 12 numbered beds plus the berry/cane area.
 
 ## Stack and live Cloudflare storage
 
@@ -27,6 +35,14 @@ D1 has the 12 original beds saved. R2 photo/video upload, viewing and deletion a
 Never commit or expose `GARDEN_WRITE_TOKEN`. The browser stores an entered edit key only in `sessionStorage`.
 
 ## Drawing Interface V2
+
+The main 2D planner's building bar supports drag-created beds, eight accessible
+bed resize handles, rotated raised-container corner resizing, crop multi-select,
+box selection and vegetable-only/all-crop selection. Bulk deletion is a single
+undoable plan edit; Save retains archived planting history through the existing
+API. Selection helpers and anchored resize geometry live in
+`lib/garden/planner-selection.ts`; appearance is scoped in
+`app/garden-2d-builder.css`. See [docs/2d-building.md](docs/2d-building.md).
 
 The planner uses a simplified two-row application chrome:
 
@@ -225,3 +241,8 @@ WebGL dense planting rendering is deliberately capped and live updates are throt
 
 
 The shared 3D garden editor and compatible placement persistence are described in [docs/3d-editor.md](docs/3d-editor.md).
+
+The upright hoop/cover fixes, crop-specific models and variety artwork are
+described in [docs/plant-structure-redesign.md](docs/plant-structure-redesign.md).
+
+Vegetable 2D artwork is generated from the production botanical geometry. See [docs/vegetable-theme.md](docs/vegetable-theme.md) for mappings and regeneration.

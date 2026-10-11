@@ -20,6 +20,12 @@ export type PlantIconDefinition = {
 
 const ROOT = "/plant-icons/v2";
 
+const variants: Record<string, Record<string, string>> = {
+  lettuce: { butterhead: "butterhead", cos: "cos", romaine: "cos", "loose leaf": "loose-leaf", iceberg: "iceberg" },
+  pumpkin: { crown: "crown", butternut: "butternut", "gem squash": "gem-squash", kabocha: "kabocha" },
+  carrot: { nantes: "nantes", chantenay: "chantenay", amsterdam: "amsterdam", rainbow: "rainbow" },
+};
+
 export const PLANT_ICON_V2: PlantIconDefinition[] = [
   { key: "tomato", label: "Tomato", archetype: "fruiting", src: `${ROOT}/tomato.svg`, keywords: ["tomato", "beefsteak", "roma", "plum", "paste", "grape", "dwarf tomato"] },
   { key: "cherry-tomato", label: "Cherry tomato", archetype: "fruiting", src: `${ROOT}/cherry-tomato.svg`, keywords: ["cherry tomato", "cherry"] },
@@ -39,6 +45,15 @@ export const PLANT_ICON_V2: PlantIconDefinition[] = [
   { key: "brassica", label: "Brassica", archetype: "brassica", src: `${ROOT}/brassica.svg`, keywords: ["brassica", "cabbage", "kale", "cauliflower", "brussels sprout", "brussel sprout"] },
 ];
 
+export function plantVariantArtworkCatalogue() {
+  const unique = new Map<string, { crop: string; variety: string; src: string }>();
+  for (const [crop, choices] of Object.entries(variants)) for (const [variety, key] of Object.entries(choices)) {
+    const src = ROOT + "/" + crop + "-" + key + ".svg";
+    if (!unique.has(src)) unique.set(src, { crop, variety, src });
+  }
+  return [...unique.values()];
+}
+
 function normalise(value: string | null | undefined) {
   return (value ?? "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().replace(/\s+/g, " ");
 }
@@ -51,6 +66,11 @@ export function getPlantIconV2(crop: string, variety?: string | null): PlantIcon
   const cropKey = normalise(crop);
   const varietyKey = normalise(variety);
   const combined = `${cropKey} ${varietyKey}`.trim();
+  const variant = variants[cropKey]?.[varietyKey];
+  if (variant) {
+    const base = PLANT_ICON_V2.find((item) => item.key === cropKey)!;
+    return { ...base, key: cropKey + "-" + variant, label: crop + " · " + variety, src: ROOT + "/" + cropKey + "-" + variant + ".svg" };
+  }
 
   if ((cropKey.includes("tomato") || cropKey === "tomato") && /\bcherry\b/.test(combined)) {
     return PLANT_ICON_V2.find((item) => item.key === "cherry-tomato") ?? null;

@@ -11,10 +11,12 @@ type PlantArtProps = {
 };
 
 export function PlantArt({ crop, variety, fallback, className, style }: PlantArtProps) {
+  const sprite = plantIconSprite(crop, variety);
   const vector = getPlantIconV2(crop, variety);
-  if (vector) {
+  if (vector && !sprite) {
     return (
       <span
+        data-plant-art="true"
         className={className}
         aria-hidden="true"
         title={`${crop}${variety ? ` · ${variety}` : ""}`}
@@ -34,10 +36,10 @@ export function PlantArt({ crop, variety, fallback, className, style }: PlantArt
     );
   }
 
-  const sprite = plantIconSprite(crop, variety);
   if (!sprite) return <span className={className} style={style} aria-hidden="true">{fallback}</span>;
   return (
     <span
+      data-plant-art="true"
       className={className}
       aria-hidden="true"
       title={`${crop}${variety ? ` · ${variety}` : ""}`}

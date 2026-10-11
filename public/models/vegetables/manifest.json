@@ -1,0 +1,1857 @@
+[
+  {
+    "id": "tomato-roma",
+    "crop": "Tomato",
+    "variety": "Roma",
+    "kind": "tomato",
+    "features": "Compound foliage, fruit trusses and textured ripe tomatoes",
+    "desktop": "/models/tomato/tomato-garden.glb",
+    "mobile": "/models/tomato/tomato-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/tomato-roma.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 69728,
+        "meshes": 31,
+        "textured": 19,
+        "dimensions": [
+          1.1947882771492004,
+          1.665003776550293,
+          1.1625580191612244
+        ],
+        "bytes": 2626716
+      },
+      "mobile": {
+        "triangles": 43600,
+        "meshes": 31,
+        "textured": 19,
+        "dimensions": [
+          1.1948286294937134,
+          1.665003776550293,
+          1.163016676902771
+        ],
+        "bytes": 1861272
+      }
+    }
+  },
+  {
+    "id": "tomato-black-krim",
+    "crop": "Tomato",
+    "variety": "Black Krim",
+    "kind": "tomato",
+    "features": "Compound foliage, fruit trusses and textured ripe tomatoes",
+    "desktop": "/models/tomato/tomato-garden.glb",
+    "mobile": "/models/tomato/tomato-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/tomato-black-krim.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 69728,
+        "meshes": 31,
+        "textured": 19,
+        "dimensions": [
+          1.1947882771492004,
+          1.665003776550293,
+          1.1625580191612244
+        ],
+        "bytes": 2626716
+      },
+      "mobile": {
+        "triangles": 43600,
+        "meshes": 31,
+        "textured": 19,
+        "dimensions": [
+          1.1948286294937134,
+          1.665003776550293,
+          1.163016676902771
+        ],
+        "bytes": 1861272
+      }
+    }
+  },
+  {
+    "id": "tomato-moneymaker",
+    "crop": "Tomato",
+    "variety": "Moneymaker",
+    "kind": "tomato",
+    "features": "Compound foliage, fruit trusses and textured ripe tomatoes",
+    "desktop": "/models/tomato/tomato-garden.glb",
+    "mobile": "/models/tomato/tomato-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/tomato-moneymaker.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 69728,
+        "meshes": 31,
+        "textured": 19,
+        "dimensions": [
+          1.1947882771492004,
+          1.665003776550293,
+          1.1625580191612244
+        ],
+        "bytes": 2626716
+      },
+      "mobile": {
+        "triangles": 43600,
+        "meshes": 31,
+        "textured": 19,
+        "dimensions": [
+          1.1948286294937134,
+          1.665003776550293,
+          1.163016676902771
+        ],
+        "bytes": 1861272
+      }
+    }
+  },
+  {
+    "id": "tomato-beefsteak",
+    "crop": "Tomato",
+    "variety": "Beefsteak",
+    "kind": "tomato",
+    "features": "Compound foliage, fruit trusses and textured ripe tomatoes",
+    "desktop": "/models/tomato/tomato-garden.glb",
+    "mobile": "/models/tomato/tomato-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/tomato-beefsteak.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 69728,
+        "meshes": 31,
+        "textured": 19,
+        "dimensions": [
+          1.1947882771492004,
+          1.665003776550293,
+          1.1625580191612244
+        ],
+        "bytes": 2626716
+      },
+      "mobile": {
+        "triangles": 43600,
+        "meshes": 31,
+        "textured": 19,
+        "dimensions": [
+          1.1948286294937134,
+          1.665003776550293,
+          1.163016676902771
+        ],
+        "bytes": 1861272
+      }
+    }
+  },
+  {
+    "id": "bean-king-purple",
+    "crop": "Bean",
+    "variety": "King Purple",
+    "kind": "bean",
+    "features": "Trifoliate leaves, curved pods and flowers; climbing and bush forms",
+    "desktop": "/models/vegetables/bean-king-purple.glb",
+    "mobile": "/models/vegetables/bean-king-purple-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/bean-king-purple.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 86364,
+        "meshes": 6,
+        "textured": 4,
+        "dimensions": [
+          0.6137318313121796,
+          0.5336552746593952,
+          0.563781350851059
+        ],
+        "bytes": 3153036
+      },
+      "mobile": {
+        "triangles": 11424,
+        "meshes": 6,
+        "textured": 4,
+        "dimensions": [
+          0.5559234619140625,
+          0.48507769958814606,
+          0.5294556617736816
+        ],
+        "bytes": 587832
+      }
+    }
+  },
+  {
+    "id": "bean-superstar",
+    "crop": "Bean",
+    "variety": "Superstar",
+    "kind": "bean",
+    "features": "Trifoliate leaves, curved pods and flowers; climbing and bush forms",
+    "desktop": "/models/vegetables/bean-superstar.glb",
+    "mobile": "/models/vegetables/bean-superstar-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/bean-superstar.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 86364,
+        "meshes": 6,
+        "textured": 4,
+        "dimensions": [
+          0.6137318313121796,
+          0.5336552746593952,
+          0.563781350851059
+        ],
+        "bytes": 3153028
+      },
+      "mobile": {
+        "triangles": 11424,
+        "meshes": 6,
+        "textured": 4,
+        "dimensions": [
+          0.5559234619140625,
+          0.48507769958814606,
+          0.5294556617736816
+        ],
+        "bytes": 587824
+      }
+    }
+  },
+  {
+    "id": "bean-scarlet-runner",
+    "crop": "Bean",
+    "variety": "Scarlet Runner",
+    "kind": "bean",
+    "features": "Trifoliate leaves, curved pods and flowers; climbing and bush forms",
+    "desktop": "/models/vegetables/bean-scarlet-runner.glb",
+    "mobile": "/models/vegetables/bean-scarlet-runner-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/bean-scarlet-runner.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 93708,
+        "meshes": 7,
+        "textured": 4,
+        "dimensions": [
+          0.6126067340373993,
+          1.1804674086160958,
+          0.5624063014984131
+        ],
+        "bytes": 3332700
+      },
+      "mobile": {
+        "triangles": 13872,
+        "meshes": 7,
+        "textured": 4,
+        "dimensions": [
+          0.564665675163269,
+          1.1804480216524098,
+          0.5323172807693481
+        ],
+        "bytes": 650760
+      }
+    }
+  },
+  {
+    "id": "bean-climbing-bean",
+    "crop": "Bean",
+    "variety": "Climbing bean",
+    "kind": "bean",
+    "features": "Trifoliate leaves, curved pods and flowers; climbing and bush forms",
+    "desktop": "/models/vegetables/bean-climbing-bean.glb",
+    "mobile": "/models/vegetables/bean-climbing-bean-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/bean-climbing-bean.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 93708,
+        "meshes": 7,
+        "textured": 4,
+        "dimensions": [
+          0.6126067340373993,
+          1.1804674086160958,
+          0.5624063014984131
+        ],
+        "bytes": 3332692
+      },
+      "mobile": {
+        "triangles": 13872,
+        "meshes": 7,
+        "textured": 4,
+        "dimensions": [
+          0.564665675163269,
+          1.1804480216524098,
+          0.5323172807693481
+        ],
+        "bytes": 650752
+      }
+    }
+  },
+  {
+    "id": "lettuce-butterhead",
+    "crop": "Lettuce",
+    "variety": "Butterhead",
+    "kind": "lettuce",
+    "features": "Softly curved, finely veined leaves with distinct head and loose-leaf forms",
+    "desktop": "/models/vegetables/lettuce-butterhead.glb",
+    "mobile": "/models/vegetables/lettuce-butterhead-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/lettuce-butterhead.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 46080,
+        "meshes": 4,
+        "textured": 4,
+        "dimensions": [
+          0.38848501443862915,
+          0.18237932585179806,
+          0.35890209674835205
+        ],
+        "bytes": 1885684
+      },
+      "mobile": {
+        "triangles": 8640,
+        "meshes": 4,
+        "textured": 4,
+        "dimensions": [
+          0.3728627860546112,
+          0.18063577078282833,
+          0.33784689009189606
+        ],
+        "bytes": 421996
+      }
+    }
+  },
+  {
+    "id": "lettuce-cos",
+    "crop": "Lettuce",
+    "variety": "Cos",
+    "kind": "lettuce",
+    "features": "Softly curved, finely veined leaves with distinct head and loose-leaf forms",
+    "desktop": "/models/vegetables/lettuce-cos.glb",
+    "mobile": "/models/vegetables/lettuce-cos-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/lettuce-cos.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 25920,
+        "meshes": 2,
+        "textured": 2,
+        "dimensions": [
+          0.4775145351886749,
+          0.19353035651147366,
+          0.45174942910671234
+        ],
+        "bytes": 1358692
+      },
+      "mobile": {
+        "triangles": 4896,
+        "meshes": 2,
+        "textured": 2,
+        "dimensions": [
+          0.46526195108890533,
+          0.1930964943021536,
+          0.4280971586704254
+        ],
+        "bytes": 314564
+      }
+    }
+  },
+  {
+    "id": "lettuce-loose-leaf",
+    "crop": "Lettuce",
+    "variety": "Loose leaf",
+    "kind": "lettuce",
+    "features": "Softly curved, finely veined leaves with distinct head and loose-leaf forms",
+    "desktop": "/models/vegetables/lettuce-loose-leaf.glb",
+    "mobile": "/models/vegetables/lettuce-loose-leaf-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/lettuce-loose-leaf.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 25920,
+        "meshes": 2,
+        "textured": 2,
+        "dimensions": [
+          0.39625874161720276,
+          0.18309183977544308,
+          0.3738265037536621
+        ],
+        "bytes": 1358744
+      },
+      "mobile": {
+        "triangles": 4896,
+        "meshes": 2,
+        "textured": 2,
+        "dimensions": [
+          0.3830861300230026,
+          0.18196125887334347,
+          0.3484985828399658
+        ],
+        "bytes": 314612
+      }
+    }
+  },
+  {
+    "id": "lettuce-iceberg",
+    "crop": "Lettuce",
+    "variety": "Iceberg",
+    "kind": "lettuce",
+    "features": "Softly curved, finely veined leaves with distinct head and loose-leaf forms",
+    "desktop": "/models/vegetables/lettuce-iceberg.glb",
+    "mobile": "/models/vegetables/lettuce-iceberg-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/lettuce-iceberg.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 40320,
+        "meshes": 4,
+        "textured": 4,
+        "dimensions": [
+          0.33206377923488617,
+          0.21208680234849453,
+          0.30227531492710114
+        ],
+        "bytes": 1735988
+      },
+      "mobile": {
+        "triangles": 7776,
+        "meshes": 4,
+        "textured": 4,
+        "dimensions": [
+          0.32656151056289673,
+          0.21208680234849453,
+          0.2888925224542618
+        ],
+        "bytes": 397900
+      }
+    }
+  },
+  {
+    "id": "pumpkin-crown",
+    "crop": "Pumpkin",
+    "variety": "Crown",
+    "kind": "pumpkin",
+    "features": "Lobed leaves, spreading vines, tendrils and ribbed squash",
+    "desktop": "/models/vegetables/pumpkin-crown.glb",
+    "mobile": "/models/vegetables/pumpkin-crown-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/pumpkin-crown.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 44292,
+        "meshes": 8,
+        "textured": 5,
+        "dimensions": [
+          1.131492018699646,
+          0.26113844150677323,
+          1.1497742533683777
+        ],
+        "bytes": 2023704
+      },
+      "mobile": {
+        "triangles": 8752,
+        "meshes": 8,
+        "textured": 5,
+        "dimensions": [
+          0.9642748534679413,
+          0.24451777152717113,
+          0.9132924377918243
+        ],
+        "bytes": 506024
+      }
+    }
+  },
+  {
+    "id": "pumpkin-butternut",
+    "crop": "Pumpkin",
+    "variety": "Butternut",
+    "kind": "pumpkin",
+    "features": "Lobed leaves, spreading vines, tendrils and ribbed squash",
+    "desktop": "/models/vegetables/pumpkin-butternut.glb",
+    "mobile": "/models/vegetables/pumpkin-butternut-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/pumpkin-butternut.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 49260,
+        "meshes": 8,
+        "textured": 5,
+        "dimensions": [
+          1.131492018699646,
+          0.3785850927233696,
+          1.1497742533683777
+        ],
+        "bytes": 2142128
+      },
+      "mobile": {
+        "triangles": 9632,
+        "meshes": 8,
+        "textured": 5,
+        "dimensions": [
+          0.9642748534679413,
+          0.37857481092214584,
+          0.9132924377918243
+        ],
+        "bytes": 528660
+      }
+    }
+  },
+  {
+    "id": "pumpkin-gem-squash",
+    "crop": "Pumpkin",
+    "variety": "Gem squash",
+    "kind": "pumpkin",
+    "features": "Lobed leaves, spreading vines, tendrils and ribbed squash",
+    "desktop": "/models/vegetables/pumpkin-gem-squash.glb",
+    "mobile": "/models/vegetables/pumpkin-gem-squash-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/pumpkin-gem-squash.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 44292,
+        "meshes": 8,
+        "textured": 5,
+        "dimensions": [
+          1.131492018699646,
+          0.26113844150677323,
+          1.1497742533683777
+        ],
+        "bytes": 2023724
+      },
+      "mobile": {
+        "triangles": 8752,
+        "meshes": 8,
+        "textured": 5,
+        "dimensions": [
+          0.9642748534679413,
+          0.24451777152717113,
+          0.9132924377918243
+        ],
+        "bytes": 506040
+      }
+    }
+  },
+  {
+    "id": "pumpkin-kabocha",
+    "crop": "Pumpkin",
+    "variety": "Kabocha",
+    "kind": "pumpkin",
+    "features": "Lobed leaves, spreading vines, tendrils and ribbed squash",
+    "desktop": "/models/vegetables/pumpkin-kabocha.glb",
+    "mobile": "/models/vegetables/pumpkin-kabocha-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/pumpkin-kabocha.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 44292,
+        "meshes": 8,
+        "textured": 5,
+        "dimensions": [
+          1.131492018699646,
+          0.26113844150677323,
+          1.1497742533683777
+        ],
+        "bytes": 2023712
+      },
+      "mobile": {
+        "triangles": 8752,
+        "meshes": 8,
+        "textured": 5,
+        "dimensions": [
+          0.9642748534679413,
+          0.24451777152717113,
+          0.9132924377918243
+        ],
+        "bytes": 506028
+      }
+    }
+  },
+  {
+    "id": "carrot-nantes",
+    "crop": "Carrot",
+    "variety": "Nantes",
+    "kind": "carrot",
+    "features": "Fine divided fernlike foliage and tapered root shoulders",
+    "desktop": "/models/vegetables/carrot-nantes.glb",
+    "mobile": "/models/vegetables/carrot-nantes-mobile.glb",
+    "plantingDepth": 0.18,
+    "thumbnail": "/models/vegetables/carrot-nantes.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 19052,
+        "meshes": 5,
+        "textured": 3,
+        "dimensions": [
+          0.2793831080198288,
+          0.45138464064802974,
+          0.2762127220630646
+        ],
+        "bytes": 1438800
+      },
+      "mobile": {
+        "triangles": 4936,
+        "meshes": 5,
+        "textured": 3,
+        "dimensions": [
+          0.2792131006717682,
+          0.4514412429416552,
+          0.25203217566013336
+        ],
+        "bytes": 406924
+      }
+    }
+  },
+  {
+    "id": "carrot-chantenay",
+    "crop": "Carrot",
+    "variety": "Chantenay",
+    "kind": "carrot",
+    "features": "Fine divided fernlike foliage and tapered root shoulders",
+    "desktop": "/models/vegetables/carrot-chantenay.glb",
+    "mobile": "/models/vegetables/carrot-chantenay-mobile.glb",
+    "plantingDepth": 0.11,
+    "thumbnail": "/models/vegetables/carrot-chantenay.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 19052,
+        "meshes": 5,
+        "textured": 3,
+        "dimensions": [
+          0.2793831080198288,
+          0.3813846478005871,
+          0.2762127220630646
+        ],
+        "bytes": 1438808
+      },
+      "mobile": {
+        "triangles": 4936,
+        "meshes": 5,
+        "textured": 3,
+        "dimensions": [
+          0.2792131006717682,
+          0.3814412500942126,
+          0.25203217566013336
+        ],
+        "bytes": 406928
+      }
+    }
+  },
+  {
+    "id": "carrot-amsterdam",
+    "crop": "Carrot",
+    "variety": "Amsterdam",
+    "kind": "carrot",
+    "features": "Fine divided fernlike foliage and tapered root shoulders",
+    "desktop": "/models/vegetables/carrot-amsterdam.glb",
+    "mobile": "/models/vegetables/carrot-amsterdam-mobile.glb",
+    "plantingDepth": 0.18,
+    "thumbnail": "/models/vegetables/carrot-amsterdam.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 19052,
+        "meshes": 5,
+        "textured": 3,
+        "dimensions": [
+          0.2793831080198288,
+          0.45138464064802974,
+          0.2762127220630646
+        ],
+        "bytes": 1438812
+      },
+      "mobile": {
+        "triangles": 4936,
+        "meshes": 5,
+        "textured": 3,
+        "dimensions": [
+          0.2792131006717682,
+          0.4514412429416552,
+          0.25203217566013336
+        ],
+        "bytes": 406932
+      }
+    }
+  },
+  {
+    "id": "carrot-rainbow",
+    "crop": "Carrot",
+    "variety": "Rainbow",
+    "kind": "carrot",
+    "features": "Fine divided fernlike foliage and tapered root shoulders",
+    "desktop": "/models/vegetables/carrot-rainbow.glb",
+    "mobile": "/models/vegetables/carrot-rainbow-mobile.glb",
+    "plantingDepth": 0.18,
+    "thumbnail": "/models/vegetables/carrot-rainbow.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 19052,
+        "meshes": 5,
+        "textured": 3,
+        "dimensions": [
+          0.2793831080198288,
+          0.45138464064802974,
+          0.2762127220630646
+        ],
+        "bytes": 1438804
+      },
+      "mobile": {
+        "triangles": 4936,
+        "meshes": 5,
+        "textured": 3,
+        "dimensions": [
+          0.2792131006717682,
+          0.4514412429416552,
+          0.25203217566013336
+        ],
+        "bytes": 406924
+      }
+    }
+  },
+  {
+    "id": "broccoli-winter-rudolph",
+    "crop": "Broccoli",
+    "variety": "Winter Rudolph",
+    "kind": "broccoli",
+    "features": "Dense branching florets surrounded by waxy leaves",
+    "desktop": "/models/vegetables/broccoli-winter-rudolph.glb",
+    "mobile": "/models/vegetables/broccoli-winter-rudolph-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/broccoli-winter-rudolph.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 121664,
+        "meshes": 5,
+        "textured": 4,
+        "dimensions": [
+          0.4342171847820282,
+          0.46718090772628784,
+          0.42895835638046265
+        ],
+        "bytes": 4447036
+      },
+      "mobile": {
+        "triangles": 20264,
+        "meshes": 5,
+        "textured": 4,
+        "dimensions": [
+          0.4342171847820282,
+          0.4676603376865387,
+          0.42895835638046265
+        ],
+        "bytes": 909080
+      }
+    }
+  },
+  {
+    "id": "broccoli-green-dragon",
+    "crop": "Broccoli",
+    "variety": "Green Dragon",
+    "kind": "broccoli",
+    "features": "Dense branching florets surrounded by waxy leaves",
+    "desktop": "/models/vegetables/broccoli-green-dragon.glb",
+    "mobile": "/models/vegetables/broccoli-green-dragon-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/broccoli-green-dragon.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 121664,
+        "meshes": 5,
+        "textured": 4,
+        "dimensions": [
+          0.4342171847820282,
+          0.46718090772628784,
+          0.42895835638046265
+        ],
+        "bytes": 4447028
+      },
+      "mobile": {
+        "triangles": 20264,
+        "meshes": 5,
+        "textured": 4,
+        "dimensions": [
+          0.4342171847820282,
+          0.4676603376865387,
+          0.42895835638046265
+        ],
+        "bytes": 909076
+      }
+    }
+  },
+  {
+    "id": "broccoli-calabrese",
+    "crop": "Broccoli",
+    "variety": "Calabrese",
+    "kind": "broccoli",
+    "features": "Dense branching florets surrounded by waxy leaves",
+    "desktop": "/models/vegetables/broccoli-calabrese.glb",
+    "mobile": "/models/vegetables/broccoli-calabrese-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/broccoli-calabrese.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 121664,
+        "meshes": 5,
+        "textured": 4,
+        "dimensions": [
+          0.4342171847820282,
+          0.46718090772628784,
+          0.42895835638046265
+        ],
+        "bytes": 4447020
+      },
+      "mobile": {
+        "triangles": 20264,
+        "meshes": 5,
+        "textured": 4,
+        "dimensions": [
+          0.4342171847820282,
+          0.4676603376865387,
+          0.42895835638046265
+        ],
+        "bytes": 909068
+      }
+    }
+  },
+  {
+    "id": "raspberry-heritage",
+    "crop": "Raspberry",
+    "variety": "Heritage",
+    "kind": "raspberry",
+    "features": "Arching canes, serrated compound leaves, leafy calyces and individually modelled drupelets",
+    "desktop": "/models/vegetables/raspberry-heritage.glb",
+    "mobile": "/models/vegetables/raspberry-heritage-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/raspberry-heritage.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 202932,
+        "meshes": 12,
+        "textured": 6,
+        "dimensions": [
+          0.45000340044498444,
+          0.8807640447485028,
+          0.45366494357585907
+        ],
+        "bytes": 6713000
+      },
+      "mobile": {
+        "triangles": 52344,
+        "meshes": 10,
+        "textured": 6,
+        "dimensions": [
+          0.5133862942457199,
+          0.8806811277172528,
+          0.5505126118659973
+        ],
+        "bytes": 1960584
+      }
+    }
+  },
+  {
+    "id": "raspberry-aspiring",
+    "crop": "Raspberry",
+    "variety": "Aspiring",
+    "kind": "raspberry",
+    "features": "Arching canes, serrated compound leaves, leafy calyces and individually modelled drupelets",
+    "desktop": "/models/vegetables/raspberry-aspiring.glb",
+    "mobile": "/models/vegetables/raspberry-aspiring-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/raspberry-aspiring.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 202932,
+        "meshes": 12,
+        "textured": 6,
+        "dimensions": [
+          0.45000340044498444,
+          0.8807640447485028,
+          0.45366494357585907
+        ],
+        "bytes": 6713000
+      },
+      "mobile": {
+        "triangles": 52344,
+        "meshes": 10,
+        "textured": 6,
+        "dimensions": [
+          0.5133862942457199,
+          0.8806811277172528,
+          0.5505126118659973
+        ],
+        "bytes": 1960584
+      }
+    }
+  },
+  {
+    "id": "raspberry-waiau",
+    "crop": "Raspberry",
+    "variety": "Waiau",
+    "kind": "raspberry",
+    "features": "Arching canes, serrated compound leaves, leafy calyces and individually modelled drupelets",
+    "desktop": "/models/vegetables/raspberry-waiau.glb",
+    "mobile": "/models/vegetables/raspberry-waiau-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/raspberry-waiau.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 202932,
+        "meshes": 12,
+        "textured": 6,
+        "dimensions": [
+          0.45000340044498444,
+          0.8807640447485028,
+          0.45366494357585907
+        ],
+        "bytes": 6712988
+      },
+      "mobile": {
+        "triangles": 52344,
+        "meshes": 10,
+        "textured": 6,
+        "dimensions": [
+          0.5133862942457199,
+          0.8806811277172528,
+          0.5505126118659973
+        ],
+        "bytes": 1960576
+      }
+    }
+  },
+  {
+    "id": "raspberry-unknown-cane",
+    "crop": "Raspberry",
+    "variety": "Unknown cane",
+    "kind": "raspberry",
+    "features": "Arching canes, serrated compound leaves, leafy calyces and individually modelled drupelets",
+    "desktop": "/models/vegetables/raspberry-unknown-cane.glb",
+    "mobile": "/models/vegetables/raspberry-unknown-cane-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/raspberry-unknown-cane.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 202932,
+        "meshes": 12,
+        "textured": 6,
+        "dimensions": [
+          0.45000340044498444,
+          0.8807640447485028,
+          0.45366494357585907
+        ],
+        "bytes": 6713012
+      },
+      "mobile": {
+        "triangles": 52344,
+        "meshes": 10,
+        "textured": 6,
+        "dimensions": [
+          0.5133862942457199,
+          0.8806811277172528,
+          0.5505126118659973
+        ],
+        "bytes": 1960596
+      }
+    }
+  },
+  {
+    "id": "amaranth-garnet-red",
+    "crop": "Amaranth",
+    "variety": "Garnet Red",
+    "kind": "amaranth",
+    "features": "Dense seed plumes and alternating red or green leaves",
+    "desktop": "/models/vegetables/amaranth-garnet-red.glb",
+    "mobile": "/models/vegetables/amaranth-garnet-red-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/amaranth-garnet-red.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 36944,
+        "meshes": 4,
+        "textured": 3,
+        "dimensions": [
+          0.30384567379951477,
+          0.9386715219297912,
+          0.2963187098503113
+        ],
+        "bytes": 1916700
+      },
+      "mobile": {
+        "triangles": 7764,
+        "meshes": 4,
+        "textured": 3,
+        "dimensions": [
+          0.2979656159877777,
+          0.9303861339722062,
+          0.2849327474832535
+        ],
+        "bytes": 499944
+      }
+    }
+  },
+  {
+    "id": "amaranth-green-red",
+    "crop": "Amaranth",
+    "variety": "Green Red",
+    "kind": "amaranth",
+    "features": "Dense seed plumes and alternating red or green leaves",
+    "desktop": "/models/vegetables/amaranth-green-red.glb",
+    "mobile": "/models/vegetables/amaranth-green-red-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/amaranth-green-red.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 36944,
+        "meshes": 4,
+        "textured": 3,
+        "dimensions": [
+          0.30384567379951477,
+          0.9386715219297912,
+          0.2963187098503113
+        ],
+        "bytes": 1916696
+      },
+      "mobile": {
+        "triangles": 7764,
+        "meshes": 4,
+        "textured": 3,
+        "dimensions": [
+          0.2979656159877777,
+          0.9303861339722062,
+          0.2849327474832535
+        ],
+        "bytes": 499940
+      }
+    }
+  },
+  {
+    "id": "artichoke-green-globe",
+    "crop": "Artichoke",
+    "variety": "Green Globe",
+    "kind": "artichoke",
+    "features": "Layered pointed bracts, side buds and deeply lobed silver leaves",
+    "desktop": "/models/vegetables/artichoke-green-globe.glb",
+    "mobile": "/models/vegetables/artichoke-green-globe-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/artichoke-green-globe.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 118068,
+        "meshes": 5,
+        "textured": 4,
+        "dimensions": [
+          0.7555005848407745,
+          0.757114827632904,
+          0.756895124912262
+        ],
+        "bytes": 4022456
+      },
+      "mobile": {
+        "triangles": 30768,
+        "meshes": 5,
+        "textured": 4,
+        "dimensions": [
+          0.7555005848407745,
+          0.757114827632904,
+          0.7487572729587555
+        ],
+        "bytes": 1146532
+      }
+    }
+  },
+  {
+    "id": "asparagus-mary-washington",
+    "crop": "Asparagus",
+    "variety": "Mary Washington",
+    "kind": "asparagus",
+    "features": "Tapered spears with overlapping scales and pointed tips",
+    "desktop": "/models/vegetables/asparagus-mary-washington.glb",
+    "mobile": "/models/vegetables/asparagus-mary-washington-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/asparagus-mary-washington.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 52704,
+        "meshes": 6,
+        "textured": 6,
+        "dimensions": [
+          0.14631516486406326,
+          0.5543842532206327,
+          0.15167593210935593
+        ],
+        "bytes": 2417468
+      },
+      "mobile": {
+        "triangles": 22540,
+        "meshes": 6,
+        "textured": 6,
+        "dimensions": [
+          0.14577054232358932,
+          0.5543900020420551,
+          0.1421327404677868
+        ],
+        "bytes": 951616
+      }
+    }
+  },
+  {
+    "id": "asparagus-pacific-challenger-f1",
+    "crop": "Asparagus",
+    "variety": "Pacific Challenger F1",
+    "kind": "asparagus",
+    "features": "Tapered spears with overlapping scales and pointed tips",
+    "desktop": "/models/vegetables/asparagus-pacific-challenger-f1.glb",
+    "mobile": "/models/vegetables/asparagus-pacific-challenger-f1-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/asparagus-pacific-challenger-f1.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 52704,
+        "meshes": 6,
+        "textured": 6,
+        "dimensions": [
+          0.14631516486406326,
+          0.5543842532206327,
+          0.15167593210935593
+        ],
+        "bytes": 2417488
+      },
+      "mobile": {
+        "triangles": 22540,
+        "meshes": 6,
+        "textured": 6,
+        "dimensions": [
+          0.14577054232358932,
+          0.5543900020420551,
+          0.1421327404677868
+        ],
+        "bytes": 951636
+      }
+    }
+  },
+  {
+    "id": "asparagus-pacific-purple",
+    "crop": "Asparagus",
+    "variety": "Pacific Purple",
+    "kind": "asparagus",
+    "features": "Tapered spears with overlapping scales and pointed tips",
+    "desktop": "/models/vegetables/asparagus-pacific-purple.glb",
+    "mobile": "/models/vegetables/asparagus-pacific-purple-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/asparagus-pacific-purple.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 52704,
+        "meshes": 6,
+        "textured": 6,
+        "dimensions": [
+          0.14631516486406326,
+          0.5543842532206327,
+          0.15167593210935593
+        ],
+        "bytes": 2417468
+      },
+      "mobile": {
+        "triangles": 22540,
+        "meshes": 6,
+        "textured": 6,
+        "dimensions": [
+          0.14577054232358932,
+          0.5543900020420551,
+          0.1421327404677868
+        ],
+        "bytes": 951616
+      }
+    }
+  },
+  {
+    "id": "asparagus-pea-asparagus-pea",
+    "crop": "Asparagus Pea",
+    "variety": "Asparagus Pea",
+    "kind": "asparagus-pea",
+    "features": "Low trifoliate foliage, red flowers and four-winged pods",
+    "desktop": "/models/vegetables/asparagus-pea-asparagus-pea.glb",
+    "mobile": "/models/vegetables/asparagus-pea-asparagus-pea-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/asparagus-pea-asparagus-pea.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 101724,
+        "meshes": 7,
+        "textured": 5,
+        "dimensions": [
+          0.5262450724840164,
+          0.3552649673074484,
+          0.47677427530288696
+        ],
+        "bytes": 3600972
+      },
+      "mobile": {
+        "triangles": 16032,
+        "meshes": 7,
+        "textured": 5,
+        "dimensions": [
+          0.47009849548339844,
+          0.3303327093599364,
+          0.44166214764118195
+        ],
+        "bytes": 717836
+      }
+    }
+  },
+  {
+    "id": "zucchini-default",
+    "crop": "Zucchini",
+    "variety": "Default",
+    "kind": "zucchini",
+    "features": "Radiating lobed foliage, striped fruit and squash flowers",
+    "desktop": "/models/vegetables/zucchini-default.glb",
+    "mobile": "/models/vegetables/zucchini-default-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/zucchini-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 43320,
+        "meshes": 7,
+        "textured": 5,
+        "dimensions": [
+          0.8319153785705566,
+          0.2847093353047967,
+          0.8401041030883789
+        ],
+        "bytes": 1998512
+      },
+      "mobile": {
+        "triangles": 8512,
+        "meshes": 7,
+        "textured": 5,
+        "dimensions": [
+          0.6963200867176056,
+          0.26826813258230686,
+          0.6648025214672089
+        ],
+        "bytes": 498532
+      }
+    }
+  },
+  {
+    "id": "cucumber-default",
+    "crop": "Cucumber",
+    "variety": "Default",
+    "kind": "cucumber",
+    "features": "Climbing stems, coiled tendrils and textured hanging cucumbers",
+    "desktop": "/models/vegetables/cucumber-default.glb",
+    "mobile": "/models/vegetables/cucumber-default-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/cucumber-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 46776,
+        "meshes": 8,
+        "textured": 6,
+        "dimensions": [
+          1.133756697177887,
+          0.986500654136762,
+          1.149688184261322
+        ],
+        "bytes": 2110384
+      },
+      "mobile": {
+        "triangles": 9160,
+        "meshes": 8,
+        "textured": 6,
+        "dimensions": [
+          0.96730837225914,
+          0.9264530588407069,
+          0.9132924377918243
+        ],
+        "bytes": 522680
+      }
+    }
+  },
+  {
+    "id": "melon-default",
+    "crop": "Melon",
+    "variety": "Default",
+    "kind": "melon",
+    "features": "Trailing vines, broad leaves and netted fruit",
+    "desktop": "/models/vegetables/melon-default.glb",
+    "mobile": "/models/vegetables/melon-default-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/melon-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 44292,
+        "meshes": 8,
+        "textured": 5,
+        "dimensions": [
+          1.12216717004776,
+          0.2611394547857344,
+          1.1420202255249023
+        ],
+        "bytes": 2410536
+      },
+      "mobile": {
+        "triangles": 8752,
+        "meshes": 8,
+        "textured": 5,
+        "dimensions": [
+          0.9642748534679413,
+          0.24451777152717113,
+          0.9132924377918243
+        ],
+        "bytes": 651296
+      }
+    }
+  },
+  {
+    "id": "spinach-default",
+    "crop": "Spinach",
+    "variety": "Default",
+    "kind": "spinach",
+    "features": "Glossy pointed leaves in a dense basal rosette",
+    "desktop": "/models/vegetables/spinach-default.glb",
+    "mobile": "/models/vegetables/spinach-default-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/spinach-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 25920,
+        "meshes": 2,
+        "textured": 2,
+        "dimensions": [
+          0.335177406668663,
+          0.16381110809743404,
+          0.3164267987012863
+        ],
+        "bytes": 1358740
+      },
+      "mobile": {
+        "triangles": 4896,
+        "meshes": 2,
+        "textured": 2,
+        "dimensions": [
+          0.32420022785663605,
+          0.16261476837098598,
+          0.29532019793987274
+        ],
+        "bytes": 314608
+      }
+    }
+  },
+  {
+    "id": "chard-default",
+    "crop": "Chard",
+    "variety": "Default",
+    "kind": "chard",
+    "features": "Crinkled broad leaves with prominent coloured ribs",
+    "desktop": "/models/vegetables/chard-default.glb",
+    "mobile": "/models/vegetables/chard-default-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/chard-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 21828,
+        "meshes": 3,
+        "textured": 1,
+        "dimensions": [
+          0.4872281104326248,
+          0.4701798101887107,
+          0.5005419254302979
+        ],
+        "bytes": 1246528
+      },
+      "mobile": {
+        "triangles": 4488,
+        "meshes": 3,
+        "textured": 1,
+        "dimensions": [
+          0.48602294921875,
+          0.4701388059183955,
+          0.48665034770965576
+        ],
+        "bytes": 302312
+      }
+    }
+  },
+  {
+    "id": "cauliflower-default",
+    "crop": "Cauliflower",
+    "variety": "Default",
+    "kind": "cauliflower",
+    "features": "Cream branching curds enclosed by blue-green leaves",
+    "desktop": "/models/vegetables/cauliflower-default.glb",
+    "mobile": "/models/vegetables/cauliflower-default-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/cauliflower-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 121664,
+        "meshes": 5,
+        "textured": 4,
+        "dimensions": [
+          0.4342171847820282,
+          0.46718090772628784,
+          0.42895835638046265
+        ],
+        "bytes": 4447016
+      },
+      "mobile": {
+        "triangles": 20264,
+        "meshes": 5,
+        "textured": 4,
+        "dimensions": [
+          0.4342171847820282,
+          0.4676603376865387,
+          0.42895835638046265
+        ],
+        "bytes": 909064
+      }
+    }
+  },
+  {
+    "id": "cabbage-default",
+    "crop": "Cabbage",
+    "variety": "Default",
+    "kind": "cabbage",
+    "features": "Tightly cupped inner leaves and spreading veined outer leaves",
+    "desktop": "/models/vegetables/cabbage-default.glb",
+    "mobile": "/models/vegetables/cabbage-default-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/cabbage-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 40320,
+        "meshes": 3,
+        "textured": 3,
+        "dimensions": [
+          0.46161796152591705,
+          0.2676855670288205,
+          0.422713041305542
+        ],
+        "bytes": 1734480
+      },
+      "mobile": {
+        "triangles": 7776,
+        "meshes": 3,
+        "textured": 3,
+        "dimensions": [
+          0.4567278176546097,
+          0.2676855670288205,
+          0.4034670889377594
+        ],
+        "bytes": 396396
+      }
+    }
+  },
+  {
+    "id": "kale-default",
+    "crop": "Kale",
+    "variety": "Default",
+    "kind": "kale",
+    "features": "Tall stalk with densely curled leaf margins",
+    "desktop": "/models/vegetables/kale-default.glb",
+    "mobile": "/models/vegetables/kale-default-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/kale-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 29892,
+        "meshes": 3,
+        "textured": 2,
+        "dimensions": [
+          0.4295523911714554,
+          0.6953042958921287,
+          0.41007743775844574
+        ],
+        "bytes": 1458620
+      },
+      "mobile": {
+        "triangles": 3864,
+        "meshes": 3,
+        "textured": 2,
+        "dimensions": [
+          0.41329343616962433,
+          0.6985766933939885,
+          0.37846870720386505
+        ],
+        "bytes": 286844
+      }
+    }
+  },
+  {
+    "id": "broad-bean-default",
+    "crop": "Broad Bean",
+    "variety": "Default",
+    "kind": "broad-bean",
+    "features": "Upright stems, paired oval leaflets and swollen pods",
+    "desktop": "/models/vegetables/broad-bean-default.glb",
+    "mobile": "/models/vegetables/broad-bean-default-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/broad-bean-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 117468,
+        "meshes": 7,
+        "textured": 5,
+        "dimensions": [
+          0.5770584344863892,
+          0.7215219180798158,
+          0.5274030417203903
+        ],
+        "bytes": 3978072
+      },
+      "mobile": {
+        "triangles": 15328,
+        "meshes": 7,
+        "textured": 5,
+        "dimensions": [
+          0.5199708789587021,
+          0.7214598177233711,
+          0.49358992278575897
+        ],
+        "bytes": 702168
+      }
+    }
+  },
+  {
+    "id": "pea-default",
+    "crop": "Pea",
+    "variety": "Default",
+    "kind": "pea",
+    "features": "Paired leaflets, branched tendrils, pea-filled pods and white flowers",
+    "desktop": "/models/vegetables/pea-default.glb",
+    "mobile": "/models/vegetables/pea-default-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/pea-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 119820,
+        "meshes": 8,
+        "textured": 5,
+        "dimensions": [
+          0.6152901947498322,
+          1.1804674086160958,
+          0.5636404156684875
+        ],
+        "bytes": 4031024
+      },
+      "mobile": {
+        "triangles": 17328,
+        "meshes": 8,
+        "textured": 5,
+        "dimensions": [
+          0.5652916133403778,
+          1.1804480216524098,
+          0.5323172807693481
+        ],
+        "bytes": 752632
+      }
+    }
+  },
+  {
+    "id": "beet-default",
+    "crop": "Beet",
+    "variety": "Default",
+    "kind": "beet",
+    "features": "Red-veined leaves and a rounded burgundy root crown",
+    "desktop": "/models/vegetables/beet-default.glb",
+    "mobile": "/models/vegetables/beet-default-mobile.glb",
+    "plantingDepth": 0.09,
+    "thumbnail": "/models/vegetables/beet-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 20916,
+        "meshes": 3,
+        "textured": 2,
+        "dimensions": [
+          0.4116500914096832,
+          0.311151065826416,
+          0.4069455564022064
+        ],
+        "bytes": 1426416
+      },
+      "mobile": {
+        "triangles": 4112,
+        "meshes": 3,
+        "textured": 2,
+        "dimensions": [
+          0.4116500914096832,
+          0.30786643266677854,
+          0.4069455564022064
+        ],
+        "bytes": 373788
+      }
+    }
+  },
+  {
+    "id": "radish-default",
+    "crop": "Radish",
+    "variety": "Default",
+    "kind": "radish",
+    "features": "Small lobed rosette and two-tone root with fine rootlets",
+    "desktop": "/models/vegetables/radish-default.glb",
+    "mobile": "/models/vegetables/radish-default-mobile.glb",
+    "plantingDepth": 0.055,
+    "thumbnail": "/models/vegetables/radish-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 22572,
+        "meshes": 4,
+        "textured": 3,
+        "dimensions": [
+          0.26964354515075684,
+          0.27904604390263554,
+          0.2665586322546005
+        ],
+        "bytes": 1467192
+      },
+      "mobile": {
+        "triangles": 4552,
+        "meshes": 4,
+        "textured": 3,
+        "dimensions": [
+          0.26964354515075684,
+          0.2773099990189075,
+          0.2665586322546005
+        ],
+        "bytes": 386384
+      }
+    }
+  },
+  {
+    "id": "onion-default",
+    "crop": "Onion",
+    "variety": "Default",
+    "kind": "onion",
+    "features": "Hollow tapered leaves and papery bulb shoulders",
+    "desktop": "/models/vegetables/onion-default.glb",
+    "mobile": "/models/vegetables/onion-default-mobile.glb",
+    "plantingDepth": 0.065,
+    "thumbnail": "/models/vegetables/onion-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 6192,
+        "meshes": 2,
+        "textured": 1,
+        "dimensions": [
+          0.17177745699882507,
+          0.6206967564672232,
+          0.16974716633558273
+        ],
+        "bytes": 361092
+      },
+      "mobile": {
+        "triangles": 1520,
+        "meshes": 2,
+        "textured": 1,
+        "dimensions": [
+          0.171415276825428,
+          0.6206967564672232,
+          0.16940007358789444
+        ],
+        "bytes": 125460
+      }
+    }
+  },
+  {
+    "id": "garlic-default",
+    "crop": "Garlic",
+    "variety": "Default",
+    "kind": "garlic",
+    "features": "Flat arching blades and a segmented garlic bulb",
+    "desktop": "/models/vegetables/garlic-default.glb",
+    "mobile": "/models/vegetables/garlic-default-mobile.glb",
+    "plantingDepth": 0.045,
+    "thumbnail": "/models/vegetables/garlic-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 14616,
+        "meshes": 3,
+        "textured": 3,
+        "dimensions": [
+          0.16174300760030746,
+          0.5580485854297876,
+          0.27230019867420197
+        ],
+        "bytes": 1274340
+      },
+      "mobile": {
+        "triangles": 3040,
+        "meshes": 3,
+        "textured": 3,
+        "dimensions": [
+          0.16164252907037735,
+          0.5580485854297876,
+          0.18665781617164612
+        ],
+        "bytes": 348268
+      }
+    }
+  },
+  {
+    "id": "leek-default",
+    "crop": "Leek",
+    "variety": "Default",
+    "kind": "leek",
+    "features": "Long folded blue-green blades and overlapping white leaf sheaths",
+    "desktop": "/models/vegetables/leek-default.glb",
+    "mobile": "/models/vegetables/leek-default-mobile.glb",
+    "plantingDepth": 0.17,
+    "thumbnail": "/models/vegetables/leek-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 13504,
+        "meshes": 2,
+        "textured": 2,
+        "dimensions": [
+          0.16683512181043625,
+          0.6562486311793327,
+          0.2723938971757889
+        ],
+        "bytes": 1242756
+      },
+      "mobile": {
+        "triangles": 2656,
+        "meshes": 2,
+        "textured": 2,
+        "dimensions": [
+          0.1668037697672844,
+          0.6562486311793327,
+          0.1937454156577587
+        ],
+        "bytes": 335108
+      }
+    }
+  },
+  {
+    "id": "corn-default",
+    "crop": "Corn",
+    "variety": "Default",
+    "kind": "corn",
+    "features": "Tall jointed stalk, arching leaves, silk, husks and tassels",
+    "desktop": "/models/vegetables/corn-default.glb",
+    "mobile": "/models/vegetables/corn-default-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/corn-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 39008,
+        "meshes": 8,
+        "textured": 5,
+        "dimensions": [
+          0.4425966888666153,
+          1.7710831818985753,
+          0.5970438122749329
+        ],
+        "bytes": 1906000
+      },
+      "mobile": {
+        "triangles": 10528,
+        "meshes": 8,
+        "textured": 5,
+        "dimensions": [
+          0.3226746618747711,
+          1.7709624543203972,
+          0.5934442579746246
+        ],
+        "bytes": 565428
+      }
+    }
+  },
+  {
+    "id": "pepper-default",
+    "crop": "Pepper",
+    "variety": "Default",
+    "kind": "pepper",
+    "features": "Branching glossy foliage, lobed bell peppers and white flowers",
+    "desktop": "/models/vegetables/pepper-default.glb",
+    "mobile": "/models/vegetables/pepper-default-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/pepper-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 65204,
+        "meshes": 7,
+        "textured": 6,
+        "dimensions": [
+          0.5240786373615265,
+          0.7396555272981296,
+          0.5185243785381317
+        ],
+        "bytes": 2586472
+      },
+      "mobile": {
+        "triangles": 12684,
+        "meshes": 7,
+        "textured": 6,
+        "dimensions": [
+          0.5236324667930603,
+          0.7271007586174782,
+          0.517496794462204
+        ],
+        "bytes": 623500
+      }
+    }
+  },
+  {
+    "id": "potato-default",
+    "crop": "Potato",
+    "variety": "Default",
+    "kind": "potato",
+    "features": "Compound foliage, branching stems and five-petalled flowers",
+    "desktop": "/models/vegetables/potato-default.glb",
+    "mobile": "/models/vegetables/potato-default-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/potato-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 52904,
+        "meshes": 5,
+        "textured": 4,
+        "dimensions": [
+          0.49439841508865356,
+          0.5597819575270506,
+          0.48965179920196533
+        ],
+        "bytes": 2273608
+      },
+      "mobile": {
+        "triangles": 10044,
+        "meshes": 5,
+        "textured": 4,
+        "dimensions": [
+          0.49369604885578156,
+          0.5541825125285058,
+          0.48816949129104614
+        ],
+        "bytes": 547448
+      }
+    }
+  },
+  {
+    "id": "brussels-sprout-default",
+    "crop": "Brussels Sprout",
+    "variety": "Default",
+    "kind": "brussels-sprout",
+    "features": "Spiral buds along a thick stalk below a leafy crown",
+    "desktop": "/models/vegetables/brussels-sprout-default.glb",
+    "mobile": "/models/vegetables/brussels-sprout-default-mobile.glb",
+    "plantingDepth": 0,
+    "thumbnail": "/models/vegetables/brussels-sprout-default.webp",
+    "stats": {
+      "desktop": {
+        "triangles": 66276,
+        "meshes": 4,
+        "textured": 3,
+        "dimensions": [
+          0.33155880868434906,
+          0.8841173052787781,
+          0.3279208540916443
+        ],
+        "bytes": 2551288
+      },
+      "mobile": {
+        "triangles": 14952,
+        "meshes": 4,
+        "textured": 3,
+        "dimensions": [
+          0.33155880868434906,
+          0.8841173052787781,
+          0.3279208540916443
+        ],
+        "bytes": 674332
+      }
+    }
+  }
+]

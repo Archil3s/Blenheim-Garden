@@ -1,0 +1,85 @@
+.garden-render-style {
+  position: absolute;
+  z-index: 20;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  padding: 3px;
+  border: 1px solid #9b7953;
+  border-radius: 6px;
+  background: #f0e0be;
+  box-shadow: 0 3px 0 #5e483b40;
+}
+.garden-render-style button {
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: #6a5137;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.garden-render-style button[aria-pressed="true"] { background: #805c3b; color: #fff0cf; }
+.garden-pixel-workspace { background: #819c55; font-family: ui-monospace, "Cascadia Code", monospace; }
+.garden-pixel-canvas { position: absolute; inset: 0; }
+.garden-pixel-canvas canvas { display: block; width: 100%; height: 100%; image-rendering: pixelated; touch-action: none; }
+.garden-pixel-canvas canvas:focus-visible { outline: 3px solid #f9d789; outline-offset: -3px; }
+.garden-pixel-workspace .garden-edit-toolbar,
+.garden-pixel-workspace .garden-edit-palette,
+.garden-pixel-workspace .garden-edit-inspector,
+.garden-pixel-workspace .garden-edit-status {
+  border: 2px solid #745438;
+  border-radius: 5px;
+  background: #f2e3c3;
+  color: #533e2c;
+  box-shadow: inset 0 0 0 2px #fff0ce, 0 3px 0 #513a2b35;
+  backdrop-filter: none;
+}
+.garden-pixel-workspace .garden-edit-toolbar { background: #b18755; box-shadow: inset 0 0 0 2px #d5af75, 0 3px 0 #513a2b50; }
+.garden-pixel-workspace .garden-edit-toolbar button,
+.garden-pixel-workspace .garden-edit-toolbar a,
+.garden-pixel-workspace .garden-edit-inspector button,
+.garden-pixel-workspace .garden-edit-status button {
+  border: 1px solid #916d45; border-radius: 3px; background: #edd7ac; color: #513a2b; font-family: inherit;
+}
+.garden-pixel-workspace .garden-edit-toolbar button[aria-pressed="true"] { color: #fef3cf; background: #5d7645; border-color: #3f5534; }
+.garden-pixel-workspace .garden-edit-palette input,
+.garden-pixel-workspace .garden-edit-palette select,
+.garden-pixel-workspace .garden-edit-inspector input,
+.garden-pixel-workspace .garden-edit-status input { background: #fff6df; color: #513a2b; border-color: #ba9767; }
+.garden-pixel-workspace .garden-edit-palette p,
+.garden-pixel-workspace .garden-edit-inspector p { color: #755638; }
+.garden-pixel-workspace .gv-3d-hud-left {
+  border: 1px solid #9b7953; border-radius: 4px; background: #f2e3c3; color: #57412d;
+  box-shadow: 0 3px 0 #513a2b25; padding: 9px 12px;
+}
+.garden-pixel-workspace .gv-3d-hud-left strong,
+.garden-pixel-workspace .gv-3d-hud-left small { color: #57412d; }
+.garden-pixel-workspace .gv-3d-live-dot { background: #66854c; box-shadow: none; }
+.garden-pixel-workspace .garden-render-style { top: 74px; bottom: auto; }
+.garden-pixel-camera {
+  position: absolute; right: 12px; bottom: 16px; z-index: 20; display: flex; align-items: center; gap: 4px;
+  background: #f2e3c3; padding: 4px; border: 1px solid #8b6843; border-radius: 4px; box-shadow: 0 3px 0 #513a2b30;
+}
+.garden-pixel-camera button { border: 0; background: #e4cea2; color: #5c442e; border-radius: 3px; min-width: 30px; min-height: 30px; font: bold 12px ui-monospace, monospace; cursor: pointer; }
+.garden-pixel-camera span { min-width: 38px; text-align: center; font-size: 10px; color: #735434; }
+.garden-pixel-presentation { position: absolute; right: 12px; top: 124px; z-index: 20; max-width: calc(100% - 24px); background: #f2e3c3; border: 1px solid #8b6843; border-radius: 4px; padding: 4px; color: #735434; }
+.garden-pixel-presentation button { border: 0; background: #e4cea2; color: #5c442e; border-radius: 3px; min-height: 30px; padding: 5px 8px; margin-right: 4px; font: bold 11px ui-monospace, monospace; cursor: pointer; }
+.garden-pixel-presentation button[aria-pressed="true"] { color: #fff0cf; background: #5d7645; }
+.garden-pixel-presentation small { display: block; padding: 5px 3px 2px; font-size: 9px; }
+.garden-pixel-workspace .garden-edit-inspector { top: 204px; }
+.garden-pixel-help { position: absolute; bottom: 72px; right: 12px; z-index: 9; color: #f7edce; background: #405334b3; padding: 6px 9px; border-radius: 3px; pointer-events: none; font-size: 10px; }
+.garden-pixel-art-error { position: absolute; bottom: 160px; right: 12px; max-width: min(320px, calc(100% - 24px)); z-index: 20; padding: 8px; background: #f2e3c3; border: 1px solid #8b6843; color: #57412d; font-size: 12px; }
+.garden-pixel-art-error button { margin-top: 4px; cursor: pointer; background: #e4cea2; border: 1px solid #8b6843; padding: 5px; color: #57412d; }
+@media (max-width: 840px) {
+  .garden-render-style { bottom: 66px; right: 6px; }
+  .garden-pixel-workspace .garden-render-style { top: 66px; right: 6px; }
+  .garden-render-style button { min-height: 36px; padding: 6px 8px; font-size: 10px; }
+  .garden-pixel-camera { bottom: 66px; right: 6px; }
+  .garden-pixel-camera button { min-height: 38px; min-width: 36px; }
+  .garden-pixel-help { bottom: 112px; right: 6px; font-size: 9px; }
+  .garden-pixel-presentation { top: 112px; right: 6px; max-width: calc(100% - 12px); }
+  .garden-pixel-presentation button { min-height: 36px; }
+  .garden-pixel-workspace .garden-edit-inspector { top: 192px; }
+}
