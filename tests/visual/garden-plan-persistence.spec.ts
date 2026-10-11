@@ -5,6 +5,7 @@ import { GET, PUT } from "../../app/api/garden/route";
 import type { D1DatabaseLike, D1PreparedStatementLike } from "../../lib/garden/cloudflare-db";
 import type { PlannerPlan } from "../../lib/garden/planner-plan";
 import { ensurePlantPlacementSchema } from "../../lib/garden/plant-placement-schema";
+import { deleteSelectedCrops, selectCrops } from "../../lib/garden/planner-selection";
 
 function sqliteD1(sqlite: DatabaseSync): D1DatabaseLike {
   return {
@@ -72,5 +73,14 @@ test("protected D1 save/load retains exact plants, counts and crop history", asy
     await ensurePlantPlacementSchema(db);
     await ensurePlantPlacementSchema(db);
     expect(sqlite.prepare("SELECT placements_json FROM planting_rows WHERE id = 'row'").get()).toMatchObject({ placements_json: JSON.stringify(payload.rows[0].placements) });
+    const remaining = (await (await GET(new Request(url))).json()).plan as PlannerPlan;
+    const cleared = deleteSelectedCrops(remaining, selectCrops(remaining, true));
+    expect(await (await put(cleared)).json()).toMatchObject({ ok: true });
+    const afterBulk = (await (await GET(new Request(url))).json()).plan as PlannerPlan;
+    expect(afterBulk.rows).toEqual([]);
+    expect(afterBulk.plantingAreas).toEqual([]);
+    expect(afterBulk.beds).toEqual(remaining.beds);
+    expect(afterBulk.objects).toEqual(remaining.objects);
+    expect(sqlite.prepare("SELECT status FROM plantings WHERE id = ?").get(plantingId!)).toMatchObject({ status: "finished" });
   } finally { globals[symbol] = previous; sqlite.close(); }
 });

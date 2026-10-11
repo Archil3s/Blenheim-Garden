@@ -6,6 +6,15 @@ _Last updated: 11 October 2026_
 
 ## Current status
 
+### Easier 2D building
+
+The main planner has a compact building bar, clearer selection, and visible bed
+resize handles. **Draw bed** drags a bed to size; select a bed to resize any edge
+or corner. **Select vegetables**, **Select all plants**, box selection and
+Multi-select support bulk crop removal with one Undo. Raised-bed corner handles
+carry their plant positions, and changes continue to mirror into 3D.
+See [the 2D building guide](docs/2d-building.md).
+
 ### Garden building and adjustable dimensions
 
 In `/3d?view=3d`, **Garden size** edits the measured width and depth while

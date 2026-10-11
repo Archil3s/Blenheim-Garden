@@ -36,6 +36,14 @@ Never commit or expose `GARDEN_WRITE_TOKEN`. The browser stores an entered edit 
 
 ## Drawing Interface V2
 
+The main 2D planner's building bar supports drag-created beds, eight accessible
+bed resize handles, rotated raised-container corner resizing, crop multi-select,
+box selection and vegetable-only/all-crop selection. Bulk deletion is a single
+undoable plan edit; Save retains archived planting history through the existing
+API. Selection helpers and anchored resize geometry live in
+`lib/garden/planner-selection.ts`; appearance is scoped in
+`app/garden-2d-builder.css`. See [docs/2d-building.md](docs/2d-building.md).
+
 The planner uses a simplified two-row application chrome:
 
 - title bar: garden, Settings, Save, Plan/Photos/Notes/**Rotation**
