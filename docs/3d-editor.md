@@ -39,11 +39,46 @@ soil surface. Seed trays accept manual seedlings; mature seasonal layouts need
 a larger growing bed.
 
 Container plants follow moves, rotation, height changes and resizing in the 3D
-editor. Removing or duplicating a planted container is blocked until its plants
-are removed, avoiding accidental orphaning or overlapping duplicates. Plants
-are associated by their centimetre position on the visible soil; there is no
-new persistent container ID or database migration. Container plantings use
+editor. Removing a planted container is blocked until its plants are removed. Duplicating
+a container copies its plants with fresh IDs. New row plantings carry an explicit
+soil owner; legacy rows retain position-based ownership. Ownership and growing
+conditions are stored in an idempotently added gardens.editor_settings_json
+column; the existing garden dimension columns are reused. Container plantings use
 existing explicit row placements, and standard beds use planting areas.
+
+## Garden building and dimensions
+
+**Garden size** changes the measured boundary from 2–50 metres on each axis.
+Existing beds are rebased into the new percentage coordinate system while keeping
+their physical positions and sizes. Structures, rows and plant spacing stay in
+centimetres. Shrinking is rejected if existing geometry would be cut off. Fence,
+ground, rulers, 2D and pixel views follow the same saved dimensions. Defaults
+remain 900 × 1080 cm for older plans and the original garden.
+
+Select a bed for **Plant here**, **Focus bed** and **Fill with [crop]**. Planting
+targets lock to that bed; 10 cm snapping follows rotated soil. Fill patches,
+rows, freehand plant strokes, paths, trellises and timber fences accept dragging;
+rows and paths also accept two endpoint taps. Preview dots and counts use the
+same placement solver as commit. Close planting is indicated separately from
+blocked soil, walls and overlapping building footprints. Open garden covers can
+contain planted beds.
+
+**Resize** shows a corner or endpoint handle. **Build options** supports
+multi-select, grouped movements/duplication, browser-stored bed templates and
+small/mature appearance previews. Small plants are a size preview, not a
+biological growth simulation. Templates contain empty bed dimensions and type;
+they do not overwrite current plantings. Camera focus retains an explicitly
+chosen Top view.
+
+Seasonal layouts include mixed strips, salads and a succession layout reserving
+half the soil. Sun exposure, usable rooting depth and previous crops influence
+automatic mixes. Standard beds read their own named garden's retained rotation
+history; containers can use a manually supplied previous crop. These remain
+seasonal planning aids with linked NZ sources, not weather predictions.
+
+Use **Undo** for a single planting stroke, resize or grouped move, then **Save**
+for protected D1 persistence. Existing history, archived beds, named gardens and
+private media bindings are retained. No credentials are stored in templates.
 
 ## Persistence compatibility
 
@@ -51,7 +86,7 @@ Areas and rows can carry optional explicit placements. Area coordinates are perc
 
 The API idempotently adds nullable placements_json columns to the existing area and row tables. Existing beds, planting IDs, archived history and media are preserved. Explicit counts equal placement length. Bed resizing preserves crop count and scales positions. Deleting an occupied bed requires removing its plantings first.
 
-Individual editing supports up to 10,000 canonical placements per area. Large scenes render representative selectable samples (100 per area on desktop, 32 on mobile); stored counts and all canonical positions remain intact. Generated plantings above the individual-edit limit must be split before editing individual plants.
+Individual editing supports up to 10,000 canonical placements per area. Large scenes render every canonical placement using instanced crop meshes. Desktop crops switch to the shared mobile geometry at distance; selection proxies retain individual identities. Generated plantings above the individual-edit limit must be split before editing individual plants.
 
 ## Verification
 
@@ -80,3 +115,26 @@ Browser writes were mocked and D1 tests used isolated SQLite databases.
 The Flutter commands were repeated: no Dart files to format, analysis reported
 no issues, and Flutter tests remain unavailable because this is a Next.js project
 without a Flutter test directory.
+
+### Garden builder verification (2026-10-11)
+
+The production Next.js build and ESLint with zero warnings pass. All 84 editor,
+geometry, D1 persistence, pixel rendering and raised-bed workflows pass across
+1920×1080, 1440×900, 1024×768 and 390×844. New checks cover physical garden
+resizing, protected dimension/profile persistence, rotated soil snapping,
+fill/brush strokes, fence drawing, resize handles, grouped movement, copied
+plant ownership, templates, Save/refresh and 2D mirroring. The phone Build
+options control is separated from appearance controls and the inspector.
+Screenshots were inspected at every viewport. Test saves use isolated SQLite
+or mocked browser requests.
+
+Dart formatting found no files and Flutter analysis reported no issues.
+Flutter tests are unavailable because this Next.js repository has no Flutter
+`test` directory. The relevant TypeScript/browser suites provide verification.
+
+Shared planner, dialog, replacement, archived-history and named-garden
+compatibility checks also passed. Following the final phone inspector and
+catalogue correction, all 20 affected workflows passed again across the four
+viewports, including protected fence round-tripping. Existing test assertions
+and thresholds were retained; one D1 fixture gained a missing type annotation
+so it compiles under the existing strict TypeScript configuration.

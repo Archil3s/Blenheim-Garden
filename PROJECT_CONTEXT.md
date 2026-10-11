@@ -1,6 +1,6 @@
 # Blenheim Garden — Project Context
 
-_Last updated: 22 August 2026_
+_Last updated: 11 October 2026_
 
 **Repository:** `Archil3s/Blenheim-Garden`  
 **Production branch:** `main`
@@ -17,7 +17,7 @@ legacy fallbacks. Audit-only modules are imported exclusively by the audit route
 
 Blenheim Garden is a visual home-garden planner for Blenheim, Marlborough. The measured garden canvas is the application: keep it visually dominant, keep controls compact, and use a GrowVeg-like interaction model without copying proprietary code or artwork.
 
-The working canvas is **900 × 1080 cm-equivalent pixels**, treated as approximately **9 m × 10.8 m**. The base plan contains the existing 12 numbered beds plus the berry/cane area.
+The default working canvas is **900 × 1080 cm-equivalent pixels**, approximately **9 m × 10.8 m**. The 3D editor’s Garden size control supports dimensions from 2–50 m while preserving existing physical positions and sizes. Dimensions persist per named garden in the existing `gardens.canvas_width_cm` and `canvas_height_cm` columns; optional soil conditions and explicit row ownership persist in an idempotently added `editor_settings_json` column. The base plan contains the existing 12 numbered beds plus the berry/cane area.
 
 ## Stack and live Cloudflare storage
 

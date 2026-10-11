@@ -1,3 +1,4 @@
+import { gardenDimensions } from "@/lib/garden/garden-dimensions";
 import type { PlannerPlan } from "@/lib/garden/planner-plan";
 import { areaPlants, areaRectangle, bedRectangle, rowPlants, type PlanSelection, type PointCm } from "@/lib/garden/plan-editing";
 import { createCropSprite, createPixelStructure, createPixelTile, createPixelTree } from "./garden-pixel-art";
@@ -34,7 +35,8 @@ export function pickPixel(hits: PixelHit[], point: PointCm) {
   return null;
 }
 
-export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, view: PixelView, selection: PlanSelection | null, presentation: "artwork" | "exact" = "artwork") {
+export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, view: PixelView, selection: PlanSelection | null, presentation: "artwork" | "exact" = "artwork", growthScale = 1) {
+  const { width, height } = gardenDimensions(plan);
   tiles ??= [createPixelTile("grass"), createPixelTile("soil"), createPixelTile("path")];
   trees ??= [createPixelTree(), createPixelTree(1)];
   const hits: PixelHit[] = [], sprites: { y: number; draw: () => void }[] = [];
@@ -54,14 +56,14 @@ export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, 
   fill("#829c57", 0, 0, c.canvas.width, c.canvas.height);
   const corner = unprojectPixel({ x: 0, y: 0 }, view), end = unprojectPixel({ x: c.canvas.width, y: c.canvas.height }, view);
   tileRect(tiles[0], Math.floor(corner.x / 100) * 100, Math.floor(corner.y / 100) * 100, end.x - corner.x + 200, end.y - corner.y + 200, 100);
-  tileRect(tiles[2], -160, 1095, 1220, 80, 60);
-  tileRect(tiles[2], -100, -80, 1100, 70, 60);
+  tileRect(tiles[2], -160, height + 15, width + 320, 80, 60);
+  tileRect(tiles[2], -100, -80, width + 200, 70, 60);
   for (let i = 0; i < 21; i++) {
     const x = -165 + i * 62;
     image(pixelScenery(i % 2 ? "tree-conifer" : "tree-broadleaf") ?? trees[i % 2], x, -95 - i % 3 * 36, 145 + i % 3 * 16, 185 + i % 3 * 14);
   }
-  for (let i = 0; i < 8; i++) { image(pixelScenery(i % 2 ? "tree-conifer" : "tree-broadleaf") ?? trees[i % 2], i % 2 ? 1050 : -145, 50 + i * 132, 150, 195); }
-  box("#5c7746", -15, 0, 935, 1095); tileRect(tiles[0], 0, 0, 900, 1080, 100);
+  for (let i = 0; i < 8; i++) { image(pixelScenery(i % 2 ? "tree-conifer" : "tree-broadleaf") ?? trees[i % 2], i % 2 ? width + 150 : -145, 50 + i * 132, 150, 195); }
+  box("#5c7746", -15, 0, width + 35, height + 15); tileRect(tiles[0], 0, 0, width, height, 100);
   const fence = (x: number, y: number, vertical = false) => {
     const p = projectPixel({ x, y }, view), s = view.scale;
     fill("#523e2d", p.x - 4 * s, p.y - 33 * s, 9 * s, 36 * s);
@@ -70,8 +72,8 @@ export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, 
     if (vertical) { fill("#815b39", p.x - 2 * s, p.y - 18 * s, 4 * s, 58 * s * view.tilt); fill("#c4985e", p.x - 1 * s, p.y - 18 * s, 2 * s, 58 * s * view.tilt); }
     else { fill("#664830", p.x, p.y - 24 * s, 52 * s, 5 * s); fill("#d0a16a", p.x, p.y - 24 * s, 52 * s, 2 * s); fill("#9c7245", p.x, p.y - 12 * s, 52 * s, 4 * s); }
   };
-  for (let x = 0; x < 900; x += 50) fence(x, 0);
-  for (let y = 0; y < 1080; y += 50) { fence(0, y, true); fence(900, y, true); }
+  for (let x = 0; x < width; x += 50) fence(x, 0);
+  for (let y = 0; y < height; y += 50) { fence(0, y, true); fence(width, y, true); }
   const drawLine = (a: PointCm, b: PointCm, color: string, width: number) => { const p = projectPixel(a, view), q = projectPixel(b, view); c.beginPath(); c.moveTo(p.x, p.y); c.lineTo(q.x, q.y); c.lineWidth = Math.max(1, width * view.scale); c.strokeStyle = color; c.stroke(); return [p, q] as const; };
   for (const o of plan.objects) if (o.type === "path") {
     const [p, q] = drawLine({ x: o.x1, y: o.y1 }, { x: o.x2, y: o.y2 }, "#ae8a60", o.widthCm);
@@ -80,7 +82,7 @@ export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, 
     if (selected({ kind: "object", id: o.id })) drawLine({ x: o.x1, y: o.y1 }, { x: o.x2, y: o.y2 }, "#f9db82", 4);
   }
   for (const bed of plan.beds) {
-    const r = bedRectangle(bed), s: PlanSelection = { kind: "bed", id: String(bed.id) };
+    const r = bedRectangle(bed, plan), s: PlanSelection = { kind: "bed", id: String(bed.id) };
     box("#4e392b", r.x - 5, r.y, r.w + 10, r.h + 16);
     box("#b58250", r.x - 4, r.y - 5, r.w + 8, r.h + 9);
     tileRect(tiles[1], r.x + 3, r.y + 3, Math.max(1, r.w - 6), Math.max(1, r.h - 6), 50);
@@ -121,7 +123,7 @@ export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, 
       if (presentation === "exact" && i % stride && !chosen) return;
       const img = pixelCrop(crop, variety, i % 3);
       const artworkWidth = Math.min(/carrot|radish|onion|garlic/i.test(crop) ? 90 : 112, rect ? Math.max(60, (rect.h * view.tilt + 15) * img.width / img.height) : 112);
-      const w = presentation === "artwork" ? artworkWidth : Math.min(76, Math.max(/carrot|radish|onion|garlic/i.test(crop) ? 28 : 48, spacing * 1.28));
+      const w = (presentation === "artwork" ? artworkWidth : Math.min(76, Math.max(/carrot|radish|onion|garlic/i.test(crop) ? 28 : 48, spacing * 1.28))) * growthScale;
       const h = w * img.height / img.width, q = projectPixel({ x: p.x, y: p.y + 5 }, view);
       const bounds = { x: q.x - w * view.scale / 2, y: q.y - h * view.scale, w: w * view.scale, h: h * view.scale };
       const gap = 10 * view.scale;
@@ -180,7 +182,7 @@ export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, 
     sprites.push({ y, draw: () => { const p = projectPixel({ x, y }, view); fill("#4c723e", p.x, p.y - 4, 2, 5); fill(i % 3 ? "#e4ce88" : "#e0a18b", p.x - 1, p.y - 5, 4, 3); fill("#f5e4aa", p.x, p.y - 5, 1, 1); } });
   }
   sprites.sort((a, b) => a.y - b.y).forEach((sprite) => sprite.draw());
-  for (let x = 0; x < 900; x += 50) if (x < 375 || x >= 525) fence(x, 1080);
+  for (let x = 0; x < width; x += 50) if (x < 375 || x >= 525) fence(x, height);
   c.canvas.dataset.pixelPresentation = presentation;
   c.canvas.dataset.pixelPlantCount = String(totalPlants);
   c.canvas.dataset.pixelDrawnPlants = String(drawnPlants);

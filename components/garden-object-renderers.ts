@@ -1,8 +1,9 @@
+import { gardenDimensions } from "@/lib/garden/garden-dimensions";
 import * as THREE from "three";
 import type { PlannerBed, PlannerPlan, PlannerPlantingArea } from "@/lib/garden/planner-plan";
-import { areaPlants, rowPlants, type PlanSelection } from "@/lib/garden/plan-editing";
-import { surfaceAt } from "@/lib/garden/planting-surfaces";
-import { createGardenPlant3D } from "./garden-plant-3d";
+import { areaPlants, rowPlants, bedRectangle, type PlanSelection } from "@/lib/garden/plan-editing";
+import { surfaceAt, plantingSurfaces } from "@/lib/garden/planting-surfaces";
+import { addInstancedPlants } from "./garden-instanced-plants";
 const GARDEN_WIDTH_CM = 900, GARDEN_HEIGHT_CM = 1080;
 type InspectItem = { title: string; subtitle?: string; lines: Array<{ label: string; value: string }> };
 const palette = {
@@ -31,14 +32,6 @@ function worldZ(cm: number) {
   return cm / 100 - GARDEN_HEIGHT_CM / 200;
 }
 
-function bedRectCm(bed: PlannerBed) {
-  return {
-    x: (bed.x / 100) * GARDEN_WIDTH_CM,
-    y: (bed.y / 100) * GARDEN_HEIGHT_CM,
-    w: (bed.w / 100) * GARDEN_WIDTH_CM,
-    h: (bed.h / 100) * GARDEN_HEIGHT_CM,
-  };
-}
 
 function mat(color: number, roughness = 0.86, metalness = 0) {
   return new THREE.MeshStandardMaterial({ color, roughness, metalness, flatShading: true });
@@ -73,8 +66,8 @@ function inspectable(root: THREE.Object3D, item: InspectItem) {
   });
 }
 
-export function addRaisedBed(root: THREE.Group, bed: PlannerBed, active?: PlannerPlantingArea, mobile = false) {
-  const rect = bedRectCm(bed);
+export function addRaisedBed(root: THREE.Group, bed: PlannerBed, active?: PlannerPlantingArea, mobile = false, plan?: PlannerPlan) {
+  const rect = bedRectangle(bed, plan);
   const width = Math.max(0.3, rect.w / 100);
   const depth = Math.max(0.3, rect.h / 100);
   const x = worldX(rect.x + rect.w / 2);
@@ -127,46 +120,34 @@ export function addRaisedBed(root: THREE.Group, bed: PlannerBed, active?: Planne
   root.add(group);
 }
 
-function addEditablePlants(root: THREE.Group, points: Array<{ id: string; x: number; y: number }>, crop: string, variety: string, spacingCm: number, selection: PlanSelection, mobile: boolean, baseY: number, bedName?: string) {
-  const every = Math.max(1, Math.ceil(points.length / (mobile ? 32 : 100)));
-  const templates = new Map<number, THREE.Group>();
-  points.forEach((point, index) => {
-    if (index % every) return;
-    const variant = index % 3;
-    if (!templates.has(variant)) templates.set(variant, createGardenPlant3D(crop, variety, mobile, variant + crop.length * 17));
-    const plant = templates.get(variant)!.clone(true);
-    plant.position.set(worldX(point.x), baseY, worldZ(point.y));
-    inspectable(plant, { title: crop, subtitle: variety, lines: [{ label: "Spacing", value: spacingCm + " cm" }, ...(bedName ? [{ label: "Bed", value: bedName }] : [])] });
-    plant.userData.planSelection = { ...selection, plantId: point.id };
-    root.add(plant);
-  });
+function addEditablePlants(root: THREE.Group, points: Array<{ id: string; x: number; y: number; height?: number; containerId?: string }>, crop: string, variety: string, spacingCm: number, selection: PlanSelection, mobile: boolean, baseY: number, bedName?: string, stage = 1) {
+  addInstancedPlants(root, points, crop, variety, selection, mobile, baseY, stage);
+  root.userData.plantCount = points.length;
+  root.userData.inspect = { title: crop, subtitle: variety, lines: [{ label: "Spacing", value: spacingCm + " cm" }, ...(bedName ? [{ label: "Bed", value: bedName }] : [])] };
 }
 
-export function addPlantingArea(root: THREE.Group, plan: PlannerPlan, area: PlannerPlantingArea, mobile: boolean) {
+export function addPlantingArea(root: THREE.Group, plan: PlannerPlan, area: PlannerPlantingArea, mobile: boolean, stage = 1) {
   const bed = plan.beds.find((b) => b.id === area.bedId);
   if (!bed) return;
   const group = new THREE.Group();
   group.userData.bedId = area.bedId;
-  addEditablePlants(group, areaPlants(plan, area), area.crop, area.variety, area.spacingCm, { kind: "area", id: area.id }, mobile, .31, bed.name);
+  addEditablePlants(group, areaPlants(plan, area), area.crop, area.variety, area.spacingCm, { kind: "area", id: area.id }, mobile, .31, bed.name, stage);
   root.add(group);
 }
 
-export function addRow(root: THREE.Group, row: PlannerPlan["rows"][number], mobile: boolean, plan: PlannerPlan) {
+export function addRow(root: THREE.Group, row: PlannerPlan["rows"][number], mobile: boolean, plan: PlannerPlan, stage = 1) {
   const group = new THREE.Group();
-  addEditablePlants(group, rowPlants(row), row.crop, row.variety, row.spacingCm, { kind: "row", id: row.id }, mobile, .03);
-  for (const plant of group.children) {
-    const x = (plant.position.x + 4.5) * 100, y = (plant.position.z + 5.4) * 100;
-    const surface = surfaceAt(plan, { x, y });
-    if (surface) {
-      plant.position.y = surface.height;
-      if (surface.kind === "object") plant.userData.containerId = surface.id;
-    }
-  }
+  if (row.surfaceId?.startsWith("bed:")) group.userData.bedId = Number(row.surfaceId.slice(4));
+  const points = rowPlants(row).map((point) => {
+    const surface = row.surfaceId ? plantingSurfaces(plan).find((s) => `${s.kind}:${s.id}` === row.surfaceId) : surfaceAt(plan, point);
+    return { ...point, height: surface?.height ?? .03, containerId: surface?.kind === "object" ? surface.id : undefined };
+  });
+  addEditablePlants(group, points, row.crop, row.variety, row.spacingCm, { kind: "row", id: row.id }, mobile, points[0]?.height ?? .03, undefined, stage);
   // A faint centreline also lets the entire row be selected between its plants.
   if (Math.hypot(row.x2 - row.x1, row.y2 - row.y1) > 1) {
     const length = Math.hypot(row.x2 - row.x1, row.y2 - row.y1) / 100;
     const line = new THREE.Mesh(new THREE.BoxGeometry(length, .015, .025), mat(0x78a55d));
-    line.position.set(worldX((row.x1 + row.x2) / 2), .02, worldZ((row.y1 + row.y2) / 2));
+    line.position.set(worldX((row.x1 + row.x2) / 2), (points[0]?.height ?? .03) + .015, worldZ((row.y1 + row.y2) / 2));
     line.rotation.y = -Math.atan2(row.y2 - row.y1, row.x2 - row.x1);
     line.userData.planSelection = { kind: "row", id: row.id };
     line.userData.selectionRoot = group;
@@ -273,9 +254,10 @@ export function addTree(root: THREE.Group, object: Extract<PlannerPlan["objects"
   root.add(group);
 }
 
-export function addBoundary(root: THREE.Group, mobile: boolean) {
-  const width = GARDEN_WIDTH_CM / 100;
-  const depth = GARDEN_HEIGHT_CM / 100;
+export function addBoundary(root: THREE.Group, mobile: boolean, plan?: PlannerPlan) {
+  const dimensions = gardenDimensions(plan);
+  const width = dimensions.width / 100;
+  const depth = dimensions.height / 100;
   const sidePosts = mobile ? 10 : 16;
   const endPosts = mobile ? 8 : 13;
   const fence = 0x9b653a;
@@ -307,9 +289,10 @@ export function addBoundary(root: THREE.Group, mobile: boolean) {
   }
 }
 
-export function addGardenDecor(root: THREE.Group, mobile: boolean) {
-  const width = GARDEN_WIDTH_CM / 100;
-  const depth = GARDEN_HEIGHT_CM / 100;
+export function addGardenDecor(root: THREE.Group, mobile: boolean, plan?: PlannerPlan) {
+  const dimensions = gardenDimensions(plan);
+  const width = dimensions.width / 100;
+  const depth = dimensions.height / 100;
   const tufts = mobile ? 18 : 48;
   for (let index = 0; index < tufts; index += 1) {
     const alongSide = index % 2 === 0;

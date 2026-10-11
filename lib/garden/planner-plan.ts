@@ -42,6 +42,7 @@ export type PlannerPlantingArea = {
 
 export type PlannerRow = {
   id: string;
+  surfaceId?: string;
   crop: string;
   cropIcon: string;
   variety: string;
@@ -87,6 +88,7 @@ export type PlannerTree = {
 };
 
 export type PlannerStructureKind =
+  | "fence"
   | "greenhouse"
   | "polytunnel"
   | "shed"
@@ -103,6 +105,7 @@ export type PlannerStructureKind =
   | "bean-arch"
   | "cucumber-arch"
   | "hoop-arch"
+  | "hoop-tunnel"
   | "a-frame-trellis"
   | "low-hoop-frame"
   | "insect-net-tunnel"
@@ -149,10 +152,19 @@ export type PlannerText = {
 export type PlannerLayoutObject = PlannerPath | PlannerTrellis | PlannerTree | PlannerStructure | PlannerText;
 
 export type PlannerPlan = {
+  canvasWidthCm?: number;
+  canvasHeightCm?: number;
+  bedProfiles?: Record<string, BedProfile>;
   beds: PlannerBed[];
   plantingAreas: PlannerPlantingArea[];
   rows: PlannerRow[];
   objects: PlannerLayoutObject[];
+};
+
+export type BedProfile = {
+  sun: "full" | "partial";
+  soilDepthCm: number;
+  previousCrop: string;
 };
 
 export type GardenPlanApiResponse = {

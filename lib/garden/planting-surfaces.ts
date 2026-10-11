@@ -1,3 +1,4 @@
+import { gardenDimensions } from "@/lib/garden/garden-dimensions";
 import type { PlannerPlan, PlannerStructure, PlannerStructureKind } from "./planner-plan";
 
 type Point = { x: number; y: number };
@@ -11,6 +12,11 @@ export type PlantingSurface = {
 const containers = new Set<PlannerStructureKind>([
   "raised-bed-timber", "raised-bed-corrugated", "raised-bed-round", "raised-bed-square",
   "keyhole-bed", "wicking-bed", "planter-box", "trough-planter", "pot", "grow-bag", "half-barrel", "seed-tray",
+]);
+
+export const openGardenCovers = new Set<PlannerStructureKind>([
+  "greenhouse", "polytunnel", "cold-frame", "pergola", "garden-arch", "cattle-panel-arch", "bean-arch", "cucumber-arch", "hoop-arch",
+  "a-frame-trellis", "hoop-tunnel", "low-hoop-frame", "insect-net-tunnel", "bird-net-frame", "frost-cloth-tunnel", "shade-cloth-frame", "cloche", "row-cover-hoops",
 ]);
 
 export function isPlantableStructure(object: PlannerPlan["objects"][number]): object is PlannerStructure {
@@ -36,9 +42,10 @@ export function structureSurface(object: PlannerStructure): PlantingSurface {
 }
 
 export function plantingSurfaces(plan: PlannerPlan): PlantingSurface[] {
+  const { width, height } = gardenDimensions(plan);
   return [...plan.objects.filter(isPlantableStructure).map(structureSurface), ...plan.beds.map((bed): PlantingSurface => ({
-    id: String(bed.id), kind: "bed", label: bed.name, x: (bed.x + bed.w / 2) * 9, y: (bed.y + bed.h / 2) * 10.8,
-    width: Math.max(1, bed.w * 9 - 22), depth: Math.max(1, bed.h * 10.8 - 22), rotation: 0, height: .31, shape: "rectangle",
+    id: String(bed.id), kind: "bed", label: bed.name, x: (bed.x + bed.w / 2) * width / 100, y: (bed.y + bed.h / 2) * height / 100,
+    width: Math.max(1, bed.w * width / 100 - 22), depth: Math.max(1, bed.h * height / 100 - 22), rotation: 0, height: .31, shape: "rectangle",
   }))].sort((a, b) => b.height - a.height);
 }
 
@@ -79,10 +86,11 @@ export function surfaceAt(plan: PlannerPlan, point: Point): PlantingSurface | un
 }
 
 export function plantingPointBlocked(plan: PlannerPlan, point: Point): boolean {
-  if (point.x < 0 || point.x > 900 || point.y < 0 || point.y > 1080) return true;
+  const { width, height } = gardenDimensions(plan);
+  if (point.x < 0 || point.x > width || point.y < 0 || point.y > height) return true;
   const surface = surfaceAt(plan, point);
   for (const object of plan.objects) {
-    if (object.type === "structure") {
+    if (object.type === "structure" && !openGardenCovers.has(object.kind)) {
       const local = surfaceLocal({ ...object, rotation: object.rotationDeg }, point);
       if (Math.abs(local.x) <= object.widthCm / 2 && Math.abs(local.y) <= object.depthCm / 2
         && !(surface?.kind === "object" && surface.id === object.id)) return true;
@@ -94,5 +102,5 @@ export function plantingPointBlocked(plan: PlannerPlan, point: Point): boolean {
     }
   }
   // Bed walls are selectable, but are not planting soil.
-  return !surface && plan.beds.some((bed) => point.x >= bed.x * 9 && point.x <= (bed.x + bed.w) * 9 && point.y >= bed.y * 10.8 && point.y <= (bed.y + bed.h) * 10.8);
+  return !surface && plan.beds.some((bed) => point.x >= bed.x * width / 100 && point.x <= (bed.x + bed.w) * width / 100 && point.y >= bed.y * height / 100 && point.y <= (bed.y + bed.h) * height / 100);
 }

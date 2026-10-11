@@ -1,3 +1,4 @@
+import { cropFamilyFor } from "./crop-rotation";
 import type { PlannerPlan, PlannerPlantingArea, PlannerRow } from "./planner-plan";
 import { plants } from "./plant-catalog";
 import { areaPlants, areaRectangle, bedRectangle, rowPlants } from "./plan-editing";
@@ -53,22 +54,36 @@ export function generateSeasonalBedLayout(plan: PlannerPlan, surface: PlantingSu
     ...plan.rows.flatMap((row) => rowPlants(row).map((p) => ({ ...p, spacing: row.spacingCm })))];
   const existing = occupied.filter((point) => { const owner = surfaceAt(plan, point); return owner?.id === surface.id && owner.kind === surface.kind; }).length;
   if (surface.shape === "cells") return { surface, month, positions, existing, skipped: 0 };
-  const available = seasonalBedCrops(month);
-  if (choice !== "mix" && !available.includes(choice)) throw new Error("Choose a crop suitable for this month.");
-  const cropNames = choice === "mix" ? available.filter((name) => name !== "Carrot") : [choice];
+  const profile = plan.bedProfiles?.[`${surface.kind}:${surface.id}`];
+  const available = seasonalBedCrops(month).filter((name) => !profile ||
+    ((profile.sun !== "partial" || ["Lettuce", "Herbs"].includes(name)) && (profile.soilDepthCm >= 30 || ["Lettuce", "Herbs"].includes(name))));
+  const templates = ["mix", "salad", "mixed", "succession"];
+  const lastFamily = profile?.previousCrop ? cropFamilyFor(profile.previousCrop).key : null;
+  const rotationPalette = available.filter((name) => !lastFamily || cropFamilyFor(name, name === "Herbs" ? "Parsley" : undefined).key !== lastFamily);
+  const palette = rotationPalette.length ? rotationPalette : available;
+  if (!templates.includes(choice) && !available.includes(choice)) throw new Error("Choose a crop suitable for this month.");
+  const cropNames = choice === "salad" || choice === "succession" ? palette.filter((name) => ["Lettuce", "Herbs"].includes(name)) : templates.includes(choice) ? palette.filter((name) => name !== "Carrot") : [choice];
   // Narrow beds get fewer crop strips; retain room for mature plants at every edge.
-  const bands = Math.min(cropNames.length, Math.max(1, Math.floor(surface.depth / 55)));
-  const selected = choice === "mix" && bands === 1 ? ["Lettuce"] : cropNames.slice(0, bands);
+  const rotateBands = choice === "mixed" || choice === "salad" || choice === "succession";
+  const longSide = rotateBands ? surface.width : surface.depth;
+  const bands = Math.min(cropNames.length, Math.max(1, Math.floor(longSide / 55)));
+  const selected = choice === "mix" && bands === 1 ? [palette.includes("Lettuce") ? "Lettuce" : palette[0]].filter(Boolean) : cropNames.slice(0, bands);
   let skipped = 0;
   selected.forEach((name, band) => {
     const crop = plants.find((item) => item.name === name)!;
     const spacing = crop.spacingCm, rowSpacing = name === "Carrot" ? 25 : spacing;
     const variety = name === "Herbs" ? "Parsley" : name === "Broccoli" ? "Calabrese" : crop.varieties[0];
-    const bandDepth = surface.depth / selected.length;
-    const cols = Math.floor(surface.width / spacing), rows = Math.floor(bandDepth / rowSpacing);
+    const bandDepth = (rotateBands ? surface.width : surface.depth) / selected.length;
+    const cols = Math.floor((rotateBands ? bandDepth : surface.width) / spacing), rows = Math.floor((rotateBands ? surface.depth : bandDepth) / rowSpacing);
     for (let row = 0; row < rows; row++) for (let col = 0; col < cols; col++) {
       const point = surfaceWorld(surface, { x: (col - (cols - 1) / 2) * spacing,
         y: -surface.depth / 2 + bandDepth * (band + .5) + (row - (rows - 1) / 2) * rowSpacing });
+      if (rotateBands) {
+        const local = { x: -surface.width / 2 + bandDepth * (band + .5) + (col - (cols - 1) / 2) * spacing,
+          y: (row - (rows - 1) / 2) * rowSpacing };
+        Object.assign(point, surfaceWorld(surface, local));
+        if (choice === "succession" && local.y > 0) continue;
+      }
       const owner = surfaceAt(plan, point);
       if (!surfaceContains(surface, point, spacing / 2) || plantingPointBlocked(plan, point) || owner?.id !== surface.id || owner.kind !== surface.kind
         || occupied.some((p) => Math.hypot(p.x - point.x, p.y - point.y) < (p.spacing + spacing) / 2 - .01)
@@ -97,11 +112,11 @@ export function applySeasonalBedLayout(plan: PlannerPlan, preview: SeasonalBedLa
     const fields = { id: crypto.randomUUID(), crop: name, cropIcon: crop.icon, variety: points[0].variety, spacingCm: crop.spacingCm, count: points.length };
     if (target.kind === "bed") {
       const bed = plan.beds.find((bed) => String(bed.id) === target.id)!;
-      const rect = bedRectangle(bed);
+      const rect = bedRectangle(bed, plan);
       areas.push({ ...fields, bedId: bed.id, x: 0, y: 0, w: 100, h: 100, pattern: "grid", iconSize: 16, visualSpacing: "normal",
         placements: points.map((point) => ({ id: crypto.randomUUID(), x: (point.x - rect.x) * 100 / rect.w, y: (point.y - rect.y) * 100 / rect.h })) });
     } else {
-      rows.push({ ...fields, x1: target.x, y1: target.y, x2: target.x, y2: target.y,
+      rows.push({ ...fields, surfaceId: `${target.kind}:${target.id}`,  x1: target.x, y1: target.y, x2: target.x, y2: target.y,
         placements: points.map((point) => ({ id: crypto.randomUUID(), x: point.x - target.x, y: point.y - target.y })) });
     }
   }

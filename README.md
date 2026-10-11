@@ -6,6 +6,16 @@ _Last updated: 11 October 2026_
 
 ## Current status
 
+### Garden building and adjustable dimensions
+
+In `/3d?view=3d`, **Garden size** edits the measured width and depth while
+preserving existing bed sizes, positions and plant spacing. Select a bed for
+contextual planting and focus, draw planting patches or brush strokes, drag
+paths/fences and resize handles, and use saved bed templates or group movement.
+Seasonal previews support salads, mixed strips and succession planting with
+sun, soil and crop-history inputs. Repeated crop meshes render all saved plants
+with instancing and distance-based detail. See [the editor guide](docs/3d-editor.md).
+
 ### Raised-bed planting in detailed 3D
 
 Open `/3d?view=3d` and choose **Plant a bed**. Plant directly on raised-bed soil,

@@ -773,6 +773,8 @@ const V2_KINDS = new Set([
   "polytunnel",
   "shed",
   "chicken-coop",
+  "fence",
+  "hoop-tunnel",
   "cold-frame",
   "compost-bin",
   "water-tank",
@@ -806,7 +808,12 @@ export function addStructure3D(group: THREE.Group, object: PlannerStructure, det
   const depth = Math.max(0.3, object.depthCm / 100);
   const height = Math.max(0.08, object.heightCm / 100);
 
-  if (object.kind === "greenhouse") addGreenhouse(root, width, depth, height, detailed);
+  if (object.kind === "fence") {
+    const posts = Math.max(2, Math.ceil(width / 1.2) + 1);
+    for (let i = 0; i < posts; i++) { const x = -width / 2 + i * width / (posts - 1); post(root, x, 0, height, C.timberDark); box(root, .1, .025, .1, C.timberCut, x, height + .0125, 0); }
+    for (const y of [.35, .7]) box(root, width, .07, .055, C.timberLight, 0, height * y, 0);
+  }
+  else if (object.kind === "greenhouse") addGreenhouse(root, width, depth, height, detailed);
   else if (object.kind === "polytunnel") addPolytunnel(root, width, depth, height, detailed);
   else if (object.kind === "shed") addShed(root, width, depth, height, detailed);
   else if (object.kind === "chicken-coop") addChickenCoop(root, width, depth, height, detailed);
@@ -825,7 +832,7 @@ export function addStructure3D(group: THREE.Group, object: PlannerStructure, det
   else if (object.kind === "cloche") addArchTunnel(root, width, depth, height, 0x82938e, detailed, { color: 0xe0eeea, opacity: 0.34 });
   else if (object.kind === "cattle-panel-arch" || object.kind === "bean-arch" || object.kind === "cucumber-arch") {
     addGardenArch(root, width, depth, height, detailed, object.kind === "bean-arch" ? 0x718963 : C.metal, true);
-  } else if (object.kind === "hoop-arch" || object.kind === "low-hoop-frame" || object.kind === "row-cover-hoops") {
+  } else if (object.kind === "hoop-arch" || object.kind === "hoop-tunnel" || object.kind === "low-hoop-frame" || object.kind === "row-cover-hoops") {
     addArchTunnel(root, width, depth, height, C.metalLight, detailed);
   }
 
