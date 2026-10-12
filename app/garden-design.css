@@ -1,0 +1,30 @@
+.garden-design-dialog { width: min(640px, calc(100vw - 24px)); color: #254333; border: 1px solid #bdd0bc; }
+.garden-design-dialog::backdrop { background: #10251990; }
+.garden-design-tabs { display: flex; gap: 6px; padding: 0 18px 12px; }
+.garden-design-tabs button, .garden-design-body button, .garden-selection-tools button { min-height: 40px; padding: 8px 12px; border: 1px solid #9ebaab; border-radius: 7px; color: #254333; background: #edf5ed; font-size: 13px; cursor: pointer; }
+.garden-design-tabs button[aria-pressed=true] { color: #fff; background: #357456; border-color: #357456; }
+.garden-design-body { display: grid; gap: 14px; padding: 8px 18px 18px; overflow-y: auto; min-height: 0; }
+.garden-design-body p { margin: 0; font-size: 13px; line-height: 1.5; }
+.garden-design-body label { display: grid; gap: 6px; font-size: 13px; }
+.garden-design-body input, .garden-design-body select { width: 100%; min-height: 40px; padding: 7px; border: 1px solid #b3c4b4; border-radius: 6px; font: inherit; }
+.garden-design-body .garden-design-check { display: flex; align-items: center; gap: 10px; }
+.garden-design-check input { width: 20px; min-height: 20px; flex-shrink: 0; }
+.garden-design-buttons { display: flex; gap: 6px; flex-wrap: wrap; }
+.garden-design-body button:disabled { opacity: .45; cursor: default; }
+.garden-access-issues { margin: 0; padding-left: 20px; max-height: 180px; overflow-y: auto; font-size: 13px; line-height: 1.6; }
+.garden-layout-comparison { width: 100%; border-collapse: collapse; font-size: 13px; }
+.garden-layout-comparison :is(th,td) { text-align: left; padding: 8px; border-bottom: 1px solid #dbe5d9; }
+.garden-design-error { color: #94392e; }
+.garden-clearances { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 11px; }
+.garden-clearances strong { grid-column: 1 / -1; font-size: 12px; }
+.garden-clearances span { padding: 6px; border: 1px solid #78917d; border-radius: 5px; text-transform: capitalize; }
+.garden-selection-tools { position: absolute; z-index: 14; bottom: 165px; left: 12px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; max-width: calc(100% - 270px); padding: 8px; border: 1px solid #9bc4a7; border-radius: 9px; color: #edfff0; background: #17392ee8; font: 12px Arial,sans-serif; }
+.gv-3d-editor[data-multi-selection=true] .garden-edit-inspector { display: none; }
+@media (max-width: 840px) {
+  .garden-design-tabs { padding-inline: 12px; gap: 4px; }
+  .garden-design-tabs button { flex: 1; padding-inline: 5px; min-height: 44px; }
+  .garden-design-body { padding-inline: 14px; }
+  .garden-design-buttons button { min-height: 44px; }
+  .garden-selection-tools { left: 6px; right: 6px; max-width: none; bottom: 165px; }
+  .garden-selection-tools button { min-height: 44px; }
+}

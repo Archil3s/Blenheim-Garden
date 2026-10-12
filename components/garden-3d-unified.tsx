@@ -20,6 +20,7 @@ import { isPlantableStructure } from "@/lib/garden/planting-surfaces";
 import { useGarden3DEditor } from "./use-garden-3d-editor";
 import { Garden3DEditorControls } from "./garden-3d-editor-controls";
 import { installGardenEditInteractions } from "./garden-3d-edit-interactions";
+import { updateGardenDesignOverlay } from "./garden-design-overlay";
 import { isTomatoCrop, loadGardenTomatoModel, tomatoModelVersion } from "./garden-tomato-model";
 import { loadGardenVegetableModel, vegetableModelVersion } from "./garden-vegetable-model";
 import { vegetableModelFor, vegetableModels } from "@/lib/garden/vegetable-model-catalog";
@@ -61,6 +62,7 @@ type Runtime = {
   needsRender?: boolean;
   cancelEditing?: () => void;
   refreshEditing?: () => void;
+  updateEditing?: () => void;
 };
 
 const DEFAULT_INSPECTOR: InspectItem = {
@@ -188,6 +190,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   const mountRef = useRef<HTMLDivElement>(null);
   const runtimeRef = useRef<Runtime | null>(null);
   const selectionRef = useRef<THREE.BoxHelper | null>(null);
+  const handledFocusRef = useRef(0);
   const [loadedPlan, setLoadedPlan] = useState<PlannerPlan | null>(suppliedPlan ?? null);
   const [gardenId] = useState(() => typeof window === "undefined" ? DEFAULT_GARDEN_ID : new URL(window.location.href).searchParams.get("gardenId")?.trim() || readActiveGardenId());
   const [showDemo, setShowDemo] = useState(false);
@@ -405,7 +408,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     renderer.setAnimationLoop(() => {
       if (controls.update() || runtime.needsRender) {
         runtime.content.traverse((o) => { if (o instanceof THREE.LOD) o.update(camera); });
-        selectionRef.current?.update();
+        selectionRef.current?.update(); runtime.updateEditing?.();
         renderer.render(scene, camera);
         renderer.domElement.dataset.drawCalls = String(renderer.info.render.calls);
         renderer.domElement.dataset.triangles = String(renderer.info.render.triangles);
@@ -423,6 +426,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
       clearSelection(selectionRef);
       disposeObject(content);
       content.clear();
+      const designOverlay = scene.getObjectByName("garden-design-overlays"); if (designOverlay) { disposeObject(designOverlay); designOverlay.removeFromParent(); }
       sky?.dispose();
       outer.geometry.dispose();
       (outer.material as THREE.Material).dispose();
@@ -434,7 +438,9 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     };
   }, [gardenStyle]);
 
-  useEffect(() => { runtimeRef.current?.cancelEditing?.(); runtimeRef.current?.refreshEditing?.(); }, [editor.tool, showDemo, editor.selection, effectivePlan]);
+  useEffect(() => { runtimeRef.current?.cancelEditing?.(); runtimeRef.current?.refreshEditing?.(); }, [editor.tool, showDemo, effectivePlan]);
+  useEffect(() => { runtimeRef.current?.refreshEditing?.(); }, [editor.selection, editor.groupSelections]);
+  useEffect(() => { const runtime = runtimeRef.current; if (runtime) updateGardenDesignOverlay(runtime, editor); }, [editor, gardenStyle]);
 
   useEffect(() => {
     const runtime = runtimeRef.current;
@@ -442,10 +448,20 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     clearSelection(selectionRef);
     const group = runtime.scene.getObjectByName("garden-group-highlights"); if (group) { disposeObject(group); group.removeFromParent(); }
     const groupHighlights = new THREE.Group(); groupHighlights.name = "garden-group-highlights"; runtime.scene.add(groupHighlights);
-    runtime.content.traverse((node) => { const target = node.userData.planSelection as PlanSelection | undefined; if (target && editor.groupSelections.some((s) => s.kind === target.kind && s.id === target.id && s.plantId === target.plantId) && (target.kind !== editor.selection?.kind || target.id !== editor.selection.id)) { const helper = new THREE.BoxHelper(node, 0x9de6c1); helper.material.depthTest = false; groupHighlights.add(helper); } });
+    for (const selected of editor.groupSelections) if (!selected.plantId && (selected.kind !== editor.selection?.kind || selected.id !== editor.selection.id)) {
+      const holder = runtime.content.children.find((o) => o.userData.planKey === `${selected.kind}:${selected.id}`);
+      if (holder) { const helper = new THREE.BoxHelper(holder, 0x9de6c1); helper.material.depthTest = false; groupHighlights.add(helper); }
+    }
+    runtime.content.traverse((node) => { const target = node.userData.planSelection as PlanSelection | undefined; if (target?.plantId && editor.groupSelections.some((s) => s.kind === target.kind && s.id === target.id && s.plantId === target.plantId) && (target.kind !== editor.selection?.kind || target.id !== editor.selection.id || target.plantId !== editor.selection.plantId)) { const helper = new THREE.BoxHelper(node, 0x9de6c1); helper.material.depthTest = false; groupHighlights.add(helper); } });
     runtime.needsRender = true;
     const selected = editor.selection;
+    runtime.renderer.domElement.dataset.highlightedSelections = String(groupHighlights.children.length);
     if (!selected) return;
+    if (!selected.plantId) {
+      const holder = runtime.content.children.find((o) => o.userData.planKey === `${selected.kind}:${selected.id}`);
+      if (holder) { const helper = new THREE.BoxHelper(holder, 0xffc44d); helper.material.depthTest = false; helper.renderOrder = 50; runtime.scene.add(helper); selectionRef.current = helper; runtime.renderer.domElement.dataset.highlightedSelections = String(groupHighlights.children.length + 1); }
+      return;
+    }
     runtime.content.traverse((node) => {
       const target = node.userData.planSelection as PlanSelection | undefined;
       if (!target || target.kind !== selected.kind || target.id !== selected.id || target.plantId !== selected.plantId) return;
@@ -455,7 +471,9 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   }, [editor.selection, editor.groupSelections, effectivePlan, tomatoReady, vegetableRevision, gardenStyle]);
 
   useEffect(() => {
-    const runtime = runtimeRef.current; if (!runtime || !editor.selection || !editor.focusRequest || cameraView === "top") return;
+    const runtime = runtimeRef.current; if (!runtime || !editor.selection || !editor.focusRequest) return;
+    if (handledFocusRef.current === editor.focusRequest) return;
+    handledFocusRef.current = editor.focusRequest;
     let target: THREE.Object3D | undefined;
     const selected = editor.selection;
     runtime.content.traverse((o) => { const s = o.userData.planSelection as PlanSelection | undefined; if (s?.kind === selected.kind && s?.id === selected.id && s?.plantId === selected.plantId) target = o; });
@@ -463,7 +481,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     const bounds = new THREE.Box3().setFromObject(target), center = bounds.getCenter(new THREE.Vector3()), radius = Math.max(1, bounds.getSize(new THREE.Vector3()).length() / 2);
     const vertical = THREE.MathUtils.degToRad(runtime.camera.fov), horizontal = 2 * Math.atan(Math.tan(vertical / 2) * runtime.camera.aspect);
     const distance = radius / Math.sin(Math.min(vertical, horizontal) / 2) * 1.3;
-    runtime.controls.target.copy(center); runtime.camera.position.copy(center).add(new THREE.Vector3(0, distance, distance * .25)); runtime.controls.update(); runtime.needsRender = true;
+    runtime.controls.target.copy(center); runtime.camera.position.copy(center).add(new THREE.Vector3(0, distance, cameraView === "top" ? .001 : distance * .25)); runtime.controls.update(); runtime.needsRender = true;
   }, [editor.focusRequest, editor.selection, cameraView]);
   useEffect(() => { const runtime = runtimeRef.current; if (runtime) fitGardenCamera(runtime); }, [effectivePlan.canvasWidthCm, effectivePlan.canvasHeightCm]);
 
@@ -493,7 +511,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   };
 
   return (
-    <div className={`gv-3d-workspace gv-3d-editor ${gardenStyle === "pixel" ? "garden-pixel-workspace" : "gv-3d-realistic"}`} data-demo={showDemo} data-render-style={gardenStyle} data-editor-tool={editor.tool} aria-label={gardenStyle === "pixel" ? "Visual pixel garden canvas" : "Visual 3D garden canvas"} data-testid="inline-3d-workspace" style={{ position: "relative", width: "100%", height: "100%", minHeight: suppliedPlan ? 520 : "100dvh", overflow: "hidden" }}>
+    <div className={`gv-3d-workspace gv-3d-editor ${gardenStyle === "pixel" ? "garden-pixel-workspace" : "gv-3d-realistic"}`} data-demo={showDemo} data-render-style={gardenStyle} data-editor-tool={editor.tool} data-multi-selection={editor.groupSelections.length > 1} aria-label={gardenStyle === "pixel" ? "Visual pixel garden canvas" : "Visual 3D garden canvas"} data-testid="inline-3d-workspace" style={{ position: "relative", width: "100%", height: "100%", minHeight: suppliedPlan ? 520 : "100dvh", overflow: "hidden" }}>
       {gardenStyle === "pixel" ? <GardenPixelCanvas plan={effectivePlan} editor={editor} disabled={!suppliedPlan && !loadedPlan} /> : <div className="gv-3d-workspace-canvas" ref={mountRef} aria-label="Interactive 3D garden workspace" style={{ position: "absolute", inset: 0 }} />}
       <Garden3DEditorControls editor={editor} disabled={gardenStyle === "3d" && (showDemo || !!renderError) || (!suppliedPlan && !loadedPlan)} />
       {gardenStyle === "3d" && renderError && <div className="gv-3d-workspace-error">{renderError}</div>}

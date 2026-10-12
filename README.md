@@ -2,9 +2,21 @@
 
 A visual home-garden planner for Blenheim, Marlborough.
 
-_Last updated: 11 October 2026_
+_Last updated: 12 October 2026_
 
 ## Current status
+
+### Direct 3D editing and design tools
+
+Select a bed or structure to reveal move arrows, eight resize handles and a
+rotation ring. Numbered beds turn in 90° steps while structures allow finer
+rotation. Smart alignment supports edges, centres and preferred walkway gaps;
+overlapping moves and resizes are rejected with a visible reason. **Design tools**
+adds access checks, mature spacing circles, Blenheim sunlight/shade previews,
+vegetable/all-crop selection and saved layout alternatives. Snapshots are kept
+per named garden in this browser; restoring is undoable and normal Save commits
+the active design to the cloud. North direction and preferred walkway width
+persist with the garden. See [the design guide](docs/3d-design.md).
 
 ### Easier 2D building
 

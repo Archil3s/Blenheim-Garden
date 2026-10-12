@@ -23,6 +23,14 @@ export function parseBedProfiles(value: unknown): Record<string, BedProfile> {
 }
 
 export function builderSettings(plan: PlannerPlan) {
-  return JSON.stringify({ bedProfiles: plan.bedProfiles ?? {},
+  return JSON.stringify({ bedProfiles: plan.bedProfiles ?? {}, designSettings: plan.designSettings,
     rowOwners: Object.fromEntries(plan.rows.filter((row) => row.surfaceId).map((row) => [row.id, row.surfaceId])) });
+}
+
+export function parseDesignSettings(value: unknown): PlannerPlan["designSettings"] {
+  if (value === undefined || value === null) return undefined;
+  if (typeof value !== "object" || Array.isArray(value)) throw new Error("Garden design settings are invalid.");
+  const v = value as Record<string, unknown>;
+  if (typeof v.northDeg !== "number" || !Number.isFinite(v.northDeg) || v.northDeg < 0 || v.northDeg >= 360 || typeof v.walkwayCm !== "number" || !Number.isFinite(v.walkwayCm) || v.walkwayCm < 30 || v.walkwayCm > 200) throw new Error("Garden design settings are invalid.");
+  return { northDeg: v.northDeg, walkwayCm: v.walkwayCm };
 }

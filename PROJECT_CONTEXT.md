@@ -1,6 +1,6 @@
 # Blenheim Garden — Project Context
 
-_Last updated: 11 October 2026_
+_Last updated: 12 October 2026_
 
 **Repository:** `Archil3s/Blenheim-Garden`  
 **Production branch:** `main`
@@ -35,6 +35,17 @@ D1 has the 12 original beds saved. R2 photo/video upload, viewing and deletion a
 Never commit or expose `GARDEN_WRITE_TOKEN`. The browser stores an entered edit key only in `sessionStorage`.
 
 ## Drawing Interface V2
+
+Detailed 3D supports direct object dragging, eight resize handles and rotation
+rings, smart edge/centre/walkway alignment, collision checks during moves/resizes,
+access/spacing overlays, approximate NZ sunlight and named browser layout
+snapshots. Numbered beds retain their IDs and turn in 90° steps with canonical
+plant positions; raised structures allow other angles. Design north/walkway
+preferences use the existing editor_settings_json column without a migration.
+See [docs/3d-design.md](docs/3d-design.md). Shared geometry helpers live in
+`lib/garden/garden-design.ts`; per-garden snapshots in
+`lib/garden/garden-design-layouts.ts`; optional overlays in
+`components/garden-design-overlay.ts` and `components/garden-pixel-design.ts`.
 
 The main 2D planner's building bar supports drag-created beds, eight accessible
 bed resize handles, rotated raised-container corner resizing, crop multi-select,

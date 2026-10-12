@@ -30,6 +30,7 @@ test("garden dimensions and bed ownership persist independently with protected w
   global[symbol] = { env: { DB: db, GARDEN_WRITE_TOKEN: "isolated-builder-key" } };
   const url = "https://garden.test/api/garden?gardenId=builder-test";
   const payload: PlannerPlan = { canvasWidthCm: 2000, canvasHeightCm: 1800,
+    designSettings: { northDeg: 90, walkwayCm: 80 },
     bedProfiles: { "object:raised": { sun: "partial", soilDepthCm: 25, previousCrop: "Lettuce" } },
     beds: [{ id: 501, name: "Far bed", x: 60, y: 40, w: 10, h: 10 }], plantingAreas: [],
     objects: [{ id: "raised", type: "structure", kind: "raised-bed-timber", x: 1500, y: 1400, widthCm: 240, depthCm: 160, heightCm: 60, rotationDeg: 30 },
@@ -42,11 +43,14 @@ test("garden dimensions and bed ownership persist independently with protected w
     const loaded = (await (await GET(new Request(url))).json()).plan as PlannerPlan;
     expect(loaded.canvasWidthCm).toBe(2000); expect(loaded.canvasHeightCm).toBe(1800);
     expect(loaded.bedProfiles).toEqual(payload.bedProfiles);
+    expect(loaded.designSettings).toEqual(payload.designSettings);
     expect(loaded.objects.find((o) => o.id === "fence")).toEqual(payload.objects[1]);
     expect(loaded.rows[0].surfaceId).toBe("object:raised");
     expect(loaded.rows[0].placements).toEqual(payload.rows[0].placements);
     expect(sqlite.prepare("SELECT canvas_width_cm, canvas_height_cm FROM gardens WHERE id='other-test'").get()).toMatchObject({ canvas_width_cm: 900, canvas_height_cm: 1080 });
     expect((await put({ ...payload, canvasWidthCm: 100000 })).status).toBe(400);
+    expect((await put({ ...payload, designSettings: { northDeg: 360, walkwayCm: 80 } })).status).toBe(400);
+    expect((await put({ ...payload, designSettings: { northDeg: 90, walkwayCm: 5 } })).status).toBe(400);
     expect((await put({ ...payload, canvasWidthCm: 1400 })).status).toBe(400);
     expect((await put({ ...payload, rows: [{ ...payload.rows[0], surfaceId: "object:missing" }] })).status).toBe(400);
     expect((await put({ ...payload, bedProfiles: { "object:raised": { sun: "full", soilDepthCm: -1, previousCrop: "" } } })).status).toBe(400);

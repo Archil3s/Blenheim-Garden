@@ -197,7 +197,7 @@ export function duplicatePlanSelection(plan: PlannerPlan, selection: PlanSelecti
       return points.length ? [{ ...row, id: crypto.randomUUID(), surfaceId: `object:${id}`, x1: item.x, y1: item.y, x2: item.x, y2: item.y, count: points.length,
         placements: points.map((p) => ({ id: crypto.randomUUID(), x: p.x - item.x, y: p.y - item.y })) }] : [];
     });
-    const next = { ...plan, objects: [...plan.objects, copy], rows: [...plan.rows, ...rows] };
+    const next = { ...plan, objects: [...plan.objects, copy], rows: [...plan.rows, ...rows], ...(plan.bedProfiles?.[`object:${item.id}`] ? { bedProfiles: { ...plan.bedProfiles, [`object:${id}`]: { ...plan.bedProfiles[`object:${item.id}`] } } } : {}) };
     return movePlanSelection(next, { kind: "object", id }, { x: 20, y: 20 });
   }
   const id = crypto.randomUUID();

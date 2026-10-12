@@ -10,6 +10,8 @@ import { placementPlan, type Garden3DEditor } from "./use-garden-3d-editor";
 import { drawPixelGarden, pickPixel, pixelCrop, projectPixel, unprojectPixel, type PixelHit, type PixelView } from "./garden-pixel-scene";
 import { loadPixelArtwork, pixelArtworkReady } from "./garden-pixel-assets";
 import { plantingPointBlocked } from "@/lib/garden/planting-surfaces";
+import { selectionsInRectangle, validateDesignChange } from "@/lib/garden/garden-design";
+import { drawPixelDesign } from "./garden-pixel-design";
 
 type PixelRuntime = { fit: () => void; detail: () => void; zoom: (factor: number) => void; paint: () => void; cancel: () => void };
 
@@ -51,10 +53,12 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
       frame = 0;
       const { plan: current, editor: e } = stateRef.current;
       hits = drawPixelGarden(c, previewPlan ?? current, view, e.selection, stateRef.current.presentation, e.growthStage === "seedling" ? .38 : 1);
+      drawPixelDesign(c, view, e);
+      if (e.tool === "box-select" && down && hover) { const a = projectPixel(down.world, view); c.strokeStyle = "#98e8ff"; c.lineWidth = 2; c.strokeRect(a.x, a.y, hover.x - a.x, hover.y - a.y); }
       canvas.dataset.pixelArt = pixelArtworkReady() ? "detailed" : "fallback";
       canvas.dataset.pixelReady = "true"; canvas.dataset.pixelView = JSON.stringify({ ...view, width: canvas.width, height: canvas.height });
       canvas.dataset.pixelCrops = [...new Set([...current.plantingAreas.map((a) => a.crop), ...current.rows.map((r) => r.crop)])].sort().join("|");
-      if (hover && !stateRef.current.disabled && e.tool !== "select" && e.tool !== "move") {
+      if (hover && !stateRef.current.disabled && e.tool !== "select" && e.tool !== "move" && e.tool !== "box-select") {
         const p = snapped(unprojectPixel(hover, view));
         let valid = p.x >= 0 && p.x <= gardenDimensions(current).width && p.y >= 0 && p.y <= gardenDimensions(current).height;
         if (e.tool === "plant" && plantLocationBlocked(current, p)) valid = false;
@@ -135,7 +139,7 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
         if (Math.hypot(p.x - down.point.x, p.y - down.point.y) * resolution > 5) down.moved = true;
         if (down.moved && down.selection && !stateRef.current.disabled) {
           const now = unprojectPixel(p, down.view), delta = snapped({ x: now.x - down.world.x, y: now.y - down.world.y });
-          try { const e = stateRef.current.editor; previewPlan = e.tool === "resize" ? resizePlanSelection(down.plan, down.selection, snapped(now)) : e.groupSelections.length > 1 ? movePlanGroup(down.plan, e.groupSelections, delta) : e.move(down.plan, down.selection, delta); if (previewPlan) validateEditorPlan(previewPlan); } catch { previewPlan = null; }
+          try { const e = stateRef.current.editor; previewPlan = e.tool === "resize" ? resizePlanSelection(down.plan, down.selection, snapped(now)) : e.groupSelections.length > 1 ? movePlanGroup(down.plan, e.groupSelections, delta) : e.move(down.plan, down.selection, delta); if (previewPlan) validateDesignChange(down.plan, previewPlan); } catch { previewPlan = null; }
           canvas.style.cursor = previewPlan ? "grabbing" : "not-allowed";
         } else if (down.moved && (stateRef.current.editor.tool === "select" || stateRef.current.editor.tool === "move")) { view.x = down.view.x + p.x - down.point.x; view.y = down.view.y + p.y - down.point.y; canvas.style.cursor = "grabbing"; }
       } else { const hit = pickPixel(hits, p); canvas.title = hit?.title ?? "Measured garden · drag to pan, scroll to zoom"; canvas.style.cursor = stateRef.current.editor.tool === "select" ? hit ? "pointer" : "grab" : "crosshair"; }
@@ -147,6 +151,7 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
       const before = down; down = null;
       if (!before || before.id !== event.pointerId) return;
       const e = stateRef.current.editor;
+      if (e.tool === "box-select") { e.selectGroup(selectionsInRectangle(e.plan, before.world, unprojectPixel(local(event), before.view)), event.shiftKey); e.setTool("select"); paint(); return; }
       if (before.moved && ["select", "move", "resize"].includes(e.tool)) {
         if (before.selection) { const next = previewPlan; previewPlan = null; if (next && JSON.stringify(before.plan) === JSON.stringify(stateRef.current.plan)) e.commit(next); else e.setError("Move cancelled: choose a position inside the garden."); }
         paint(); return;
@@ -170,6 +175,7 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
       if (event.key === "Escape") { cancel(); e.setTool("select"); }
       if (stateRef.current.disabled) return;
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "z") { event.preventDefault(); if (event.shiftKey) e.redo(); else e.undo(); }
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "a") { event.preventDefault(); e.selectCrops(); }
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "y") { event.preventDefault(); e.redo(); }
       if (event.key === "Delete" || event.key === "Backspace") { event.preventDefault(); e.remove(); }
       if (event.target === canvas && ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) { event.preventDefault(); view.x += event.key === "ArrowLeft" ? 16 : event.key === "ArrowRight" ? -16 : 0; view.y += event.key === "ArrowUp" ? 16 : event.key === "ArrowDown" ? -16 : 0; paint(); }
