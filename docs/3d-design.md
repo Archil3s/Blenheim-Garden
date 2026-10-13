@@ -19,7 +19,7 @@ conservative bounds for clearance measurements. Collision checks apply to
 creating, moving, resizing and rotating footprints, including paths. Covers
 can contain beds. Existing legacy overlaps can be reduced; unrelated edits
 and valid saved-layout restoration remain available. Invalid edits keep the
-original plan and show the object causing the conflict. Copies seek clear space.
+original plan and show the object causing the conflict. Duplicate creates a preview; you choose where the copy goes.
 
 ## Planting and selection
 
@@ -29,11 +29,36 @@ blocked position. The palette can lock the target soil to a chosen raised bed.
 Fill/row/brush previews show spacing and plant counts before placement.
 
 **Box select** selects footprint centres and whole crop groups with plant
-centres inside the rectangle. Shift-click adds/removes selections. **Select
+centres inside the rectangle. Shift/Ctrl/Cmd-click adds/removes selections. Multi-select works on touch too. **Select
 vegetables** preserves unselected fruit/herbs; **Select all plants** includes
 every crop. Delete selection is one undo step. Occupied beds still require their
 plants to be selected/removed before the container is deleted. Copies of planted
 beds include their plants without copying selected child plantings twice.
+
+
+## Selecting, locking and copying
+
+Use **Selection target** to pick anything, beds/containers, structures/paths or
+plants. Bed mode ignores foliage above the soil. Hover outlines identify the
+click target. **Objects** opens a searchable list, including obscured objects,
+with multiple selection and Focus selection. Clicking a selected entry again in
+Multi-select removes it and keeps the remaining selection active.
+
+**Lock selected** prevents movement, resizing, rotation, deletion and changes to
+a bed/container's contents. Locked objects remain selectable, with no edit
+handles and disabled fields. Unlock the owning bed/group to edit its plants.
+Locks mirror into the main 2D planner and persist per named garden with normal
+protected Save. Undo/Redo can reverse a lock; unlock before restoring a layout
+that changes a locked object. Locks are editing safeguards, not access control.
+
+**Duplicate** (Ctrl/Cmd+D) creates a translucent preview without changing the
+plan, history or cloud data. Click/tap a clear position to place it; green fits
+and red shows the reason a position is blocked. **Cancel copy** or Escape drops
+the preview. Changing tools/gardens cancels it too. A planted bed includes its
+crops and growing conditions once; copied objects start unlocked. Individual
+plants placed into their original planting retain that group; a different soil
+surface gets the correct new owner. Placing is one undoable operation and
+selects the copy for further editing. Detailed 3D and pixel mode share this flow.
 
 ## Access and shade
 

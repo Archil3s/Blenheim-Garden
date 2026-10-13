@@ -439,7 +439,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   }, [gardenStyle]);
 
   useEffect(() => { runtimeRef.current?.cancelEditing?.(); runtimeRef.current?.refreshEditing?.(); }, [editor.tool, showDemo, effectivePlan]);
-  useEffect(() => { runtimeRef.current?.refreshEditing?.(); }, [editor.selection, editor.groupSelections]);
+  useEffect(() => { runtimeRef.current?.refreshEditing?.(); }, [editor.selection, editor.groupSelections, editor.pendingDuplicate, editor.selectionMode]);
   useEffect(() => { const runtime = runtimeRef.current; if (runtime) updateGardenDesignOverlay(runtime, editor); }, [editor, gardenStyle]);
 
   useEffect(() => {

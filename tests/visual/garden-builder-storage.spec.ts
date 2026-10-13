@@ -31,6 +31,7 @@ test("garden dimensions and bed ownership persist independently with protected w
   const url = "https://garden.test/api/garden?gardenId=builder-test";
   const payload: PlannerPlan = { canvasWidthCm: 2000, canvasHeightCm: 1800,
     designSettings: { northDeg: 90, walkwayCm: 80 },
+    objectLocks: ["object:raised", "bed:501"],
     bedProfiles: { "object:raised": { sun: "partial", soilDepthCm: 25, previousCrop: "Lettuce" } },
     beds: [{ id: 501, name: "Far bed", x: 60, y: 40, w: 10, h: 10 }], plantingAreas: [],
     objects: [{ id: "raised", type: "structure", kind: "raised-bed-timber", x: 1500, y: 1400, widthCm: 240, depthCm: 160, heightCm: 60, rotationDeg: 30 },
@@ -44,6 +45,9 @@ test("garden dimensions and bed ownership persist independently with protected w
     expect(loaded.canvasWidthCm).toBe(2000); expect(loaded.canvasHeightCm).toBe(1800);
     expect(loaded.bedProfiles).toEqual(payload.bedProfiles);
     expect(loaded.designSettings).toEqual(payload.designSettings);
+    expect(loaded.objectLocks).toEqual(payload.objectLocks);
+    expect((await (await GET(new Request("https://garden.test/api/garden?gardenId=other-test"))).json()).plan.objectLocks ?? []).toEqual([]);
+    expect((await put({ ...payload, objectLocks: ["invalid"] })).status).toBe(400);
     expect(loaded.objects.find((o) => o.id === "fence")).toEqual(payload.objects[1]);
     expect(loaded.rows[0].surfaceId).toBe("object:raised");
     expect(loaded.rows[0].placements).toEqual(payload.rows[0].placements);

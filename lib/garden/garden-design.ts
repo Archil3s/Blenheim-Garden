@@ -5,6 +5,7 @@ import { openGardenCovers, surfaceLocal, surfaceWorld } from "./planting-surface
 import { movePlanGroup, resizePlanSelection } from "./garden-building";
 import { resizeBedRect, type ResizeEdge } from "./planner-selection";
 import { selectCrops } from "./planner-selection";
+import { assertLocksUnchanged } from "./object-locks";
 
 export type DesignFootprint = { id: string; label: string; x: number; y: number; width: number; depth: number; rotation: number; height: number; kind: "bed" | "structure" | "path" | "tree" };
 export type DesignSettings = { northDeg: number; walkwayCm: number };
@@ -39,6 +40,7 @@ export function overlapArea(a: DesignFootprint, b: DesignFootprint) {
 }
 
 export function validateDesignChange(before: PlannerPlan, next: PlannerPlan) {
+  assertLocksUnchanged(before, next);
   validateEditorPlan(next);
   const covers = new Set(next.objects.filter((o) => o.type === "structure" && openGardenCovers.has(o.kind)).map((o) => `object:${o.id}`));
   const old = new Map(designFootprints(before).map((f) => [f.id, f]));

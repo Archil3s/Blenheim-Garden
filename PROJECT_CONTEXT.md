@@ -1,6 +1,6 @@
 # Blenheim Garden — Project Context
 
-_Last updated: 12 October 2026_
+_Last updated: 13 October 2026_
 
 **Repository:** `Archil3s/Blenheim-Garden`  
 **Production branch:** `main`
@@ -35,6 +35,13 @@ D1 has the 12 original beds saved. R2 photo/video upload, viewing and deletion a
 Never commit or expose `GARDEN_WRITE_TOKEN`. The browser stores an entered edit key only in `sessionStorage`.
 
 ## Drawing Interface V2
+
+The shared editor now has selection target filters, hover outlines, a searchable
+Objects dialog, touch Multi-select, per-garden object locks and interactive
+duplicate placement. Locks use optional objectLocks in editor_settings_json;
+no migration is needed. The main 2D planner honours them. Duplicate drafts never
+publish or save until placed; pure geometry and ownership logic lives in
+lib/garden/duplicate-placement.ts and lib/garden/object-locks.ts.
 
 Detailed 3D supports direct object dragging, eight resize handles and rotation
 rings, smart edge/centre/walkway alignment, collision checks during moves/resizes,

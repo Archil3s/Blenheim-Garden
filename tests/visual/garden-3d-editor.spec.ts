@@ -88,6 +88,9 @@ test("3D design session saves, refreshes, and mirrors in 2D", async ({ context, 
     const previous = Number(await x.inputValue());
     await x.fill(String(previous + 10)); await x.press("Enter");
     await page.getByRole("button", { name: "Duplicate", exact: true }).click();
+    await expect(page.getByRole("button", { name: "Cancel copy", exact: true })).toBeVisible();
+    expect((await plan(page)).plantingAreas[0].count).toBe(1);
+    await click(.5, .515);
     await expect.poll(async () => (await plan(page)).plantingAreas[0].count).toBe(2);
     await page.getByRole("button", { name: "Delete", exact: true }).click();
     await expect.poll(async () => (await plan(page)).plantingAreas[0].count).toBe(1);

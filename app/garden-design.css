@@ -28,3 +28,27 @@
   .garden-selection-tools { left: 6px; right: 6px; max-width: none; bottom: 165px; }
   .garden-selection-tools button { min-height: 44px; }
 }
+.garden-object-fields { border: 0; padding: 0; margin: 0; min-width: 0; display: grid; gap: 10px; }
+.garden-object-fields:disabled { opacity: .58; }
+.garden-pick-options { position: absolute; top: 116px; left: 12px; z-index: 21; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; max-width: calc(100% - 24px); padding: 8px 10px; color: #f1f7ee; background: #23473de8; border: 1px solid #729980; border-radius: 10px; font-size: 12px; }
+.garden-pick-options label { display: flex; align-items: center; gap: 6px; }
+.garden-pick-options select { max-width: 160px; min-height: 32px; color: #1c382f; background: #eff5e9; border-radius: 5px; }
+.garden-object-list { display: grid; gap: 6px; max-height: 48dvh; overflow-y: auto; padding: 8px 0; }
+.garden-object-list button { display: flex; text-align: left; align-items: center; justify-content: space-between; gap: 10px; padding: 10px; min-height: 48px; }
+.garden-object-list button[aria-pressed="true"] { outline: 2px solid #527d49; background: #dceacf; }
+.garden-object-list button span { display: grid; gap: 4px; }
+.garden-object-list small { color: #52634c; }
+.garden-object-picker footer { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.garden-object-picker { padding: 16px; gap: 12px; }
+.garden-object-picker header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.garden-object-picker h2 { font-size: 20px; margin: 0; }
+.garden-object-picker label { display: grid; gap: 6px; }
+.garden-object-picker input[type="search"] { width: 100%; box-sizing: border-box; min-height: 42px; padding: 8px; border: 1px solid #9fb395; border-radius: 6px; }
+.garden-object-picker .garden-edit-snap { display: flex; align-items: center; }
+.garden-pixel-workspace .garden-edit-inspector { max-height: calc(100% - 364px); }
+@media (max-width: 840px) { .garden-pixel-workspace .garden-edit-inspector { max-height: min(28%, calc(100% - 350px)); } .garden-pixel-workspace .garden-pick-options { top: 165px; } }
+@media (max-width: 600px) { .garden-pick-options { top: 111px; left: 6px; max-width: calc(100% - 12px); gap: 8px; padding: 5px 8px; } .garden-selection-tools { flex-wrap: wrap; } }
+@media (max-width: 600px) {
+  .gv-3d-realistic:has(.garden-pick-options) .garden-edit-inspector { top: 164px; }
+  .garden-pixel-workspace:has(.garden-pick-options) .garden-edit-inspector { top: 216px; max-height: min(28%, calc(100% - 374px)); }
+}

@@ -23,7 +23,7 @@ export function parseBedProfiles(value: unknown): Record<string, BedProfile> {
 }
 
 export function builderSettings(plan: PlannerPlan) {
-  return JSON.stringify({ bedProfiles: plan.bedProfiles ?? {}, designSettings: plan.designSettings,
+  return JSON.stringify({ bedProfiles: plan.bedProfiles ?? {}, designSettings: plan.designSettings, objectLocks: plan.objectLocks,
     rowOwners: Object.fromEntries(plan.rows.filter((row) => row.surfaceId).map((row) => [row.id, row.surfaceId])) });
 }
 

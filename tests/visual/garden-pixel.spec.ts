@@ -153,7 +153,11 @@ test("pixel editing preserves centimetres, drag history, cloud save and refresh"
   await page.getByRole("button", { name: "Select", exact: true }).click(); await clickWorld(page, 450, 540, touch);
   const inspector = page.locator(".garden-edit-inspector"); await expect(inspector).toContainText("Individual plant");
   await inspector.getByLabel("X (cm)", { exact: true }).fill("460"); await inspector.getByLabel("X (cm)", { exact: true }).press("Enter");
-  await page.getByRole("button", { name: "Duplicate", exact: true }).click(); await expect.poll(async () => (await livePlan(page)).plantingAreas[0].count).toBe(2);
+  await page.getByRole("button", { name: "Duplicate", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Cancel copy", exact: true })).toBeVisible();
+  expect((await livePlan(page)).plantingAreas[0].count).toBe(1);
+  await clickWorld(page, 470, 550, touch);
+  await expect.poll(async () => (await livePlan(page)).plantingAreas[0].count).toBe(2);
   await page.getByRole("button", { name: "Undo", exact: true }).click(); await expect.poll(async () => (await livePlan(page)).plantingAreas[0].count).toBe(1);
   await page.getByRole("button", { name: "Redo", exact: true }).click(); await expect.poll(async () => (await livePlan(page)).plantingAreas[0].count).toBe(2);
   await page.getByRole("button", { name: "Move", exact: true }).click(); await inspector.locator("summary").click();

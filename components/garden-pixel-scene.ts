@@ -35,7 +35,7 @@ export function pickPixel(hits: PixelHit[], point: PointCm) {
   return null;
 }
 
-export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, view: PixelView, selection: PlanSelection | null, presentation: "artwork" | "exact" = "artwork", growthScale = 1) {
+export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, view: PixelView, selection: PlanSelection | null, presentation: "artwork" | "exact" = "artwork", growthScale = 1, objectsOnly = false) {
   const { width, height } = gardenDimensions(plan);
   tiles ??= [createPixelTile("grass"), createPixelTile("soil"), createPixelTile("path")];
   trees ??= [createPixelTree(), createPixelTree(1)];
@@ -53,6 +53,7 @@ export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, 
   const selected = (s: PlanSelection) => selection?.kind === s.kind && selection.id === s.id && selection.plantId === s.plantId;
   const groundHit = (x: number, y: number, w: number, h: number, s: PlanSelection, title: string) => { const p = projectPixel({ x, y }, view); hits.push({ x: p.x, y: p.y, w: w * view.scale, h: h * view.scale * view.tilt, selection: s, title }); };
   // The scenery sits outside the measured 900 × 1080 cm plot.
+  if (!objectsOnly) {
   fill("#829c57", 0, 0, c.canvas.width, c.canvas.height);
   const corner = unprojectPixel({ x: 0, y: 0 }, view), end = unprojectPixel({ x: c.canvas.width, y: c.canvas.height }, view);
   tileRect(tiles[0], Math.floor(corner.x / 100) * 100, Math.floor(corner.y / 100) * 100, end.x - corner.x + 200, end.y - corner.y + 200, 100);
@@ -64,6 +65,7 @@ export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, 
   }
   for (let i = 0; i < 8; i++) { image(pixelScenery(i % 2 ? "tree-conifer" : "tree-broadleaf") ?? trees[i % 2], i % 2 ? width + 150 : -145, 50 + i * 132, 150, 195); }
   box("#5c7746", -15, 0, width + 35, height + 15); tileRect(tiles[0], 0, 0, width, height, 100);
+  }
   const fence = (x: number, y: number, vertical = false) => {
     const p = projectPixel({ x, y }, view), s = view.scale;
     fill("#523e2d", p.x - 4 * s, p.y - 33 * s, 9 * s, 36 * s);
@@ -72,8 +74,10 @@ export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, 
     if (vertical) { fill("#815b39", p.x - 2 * s, p.y - 18 * s, 4 * s, 58 * s * view.tilt); fill("#c4985e", p.x - 1 * s, p.y - 18 * s, 2 * s, 58 * s * view.tilt); }
     else { fill("#664830", p.x, p.y - 24 * s, 52 * s, 5 * s); fill("#d0a16a", p.x, p.y - 24 * s, 52 * s, 2 * s); fill("#9c7245", p.x, p.y - 12 * s, 52 * s, 4 * s); }
   };
-  for (let x = 0; x < width; x += 50) fence(x, 0);
-  for (let y = 0; y < height; y += 50) { fence(0, y, true); fence(width, y, true); }
+  if (!objectsOnly) {
+    for (let x = 0; x < width; x += 50) fence(x, 0);
+    for (let y = 0; y < height; y += 50) { fence(0, y, true); fence(width, y, true); }
+  }
   const drawLine = (a: PointCm, b: PointCm, color: string, width: number) => { const p = projectPixel(a, view), q = projectPixel(b, view); c.beginPath(); c.moveTo(p.x, p.y); c.lineTo(q.x, q.y); c.lineWidth = Math.max(1, width * view.scale); c.strokeStyle = color; c.stroke(); return [p, q] as const; };
   for (const o of plan.objects) if (o.type === "path") {
     const [p, q] = drawLine({ x: o.x1, y: o.y1 }, { x: o.x2, y: o.y2 }, "#ae8a60", o.widthCm);
@@ -177,14 +181,16 @@ export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, 
       sprites.push({ y: o.y, draw: () => { const p = projectPixel(o, view); c.font = `bold ${Math.max(7, o.fontSize * view.scale)}px monospace`; c.fillStyle = "#493d29"; c.textAlign = "left"; c.fillText(o.text, p.x, p.y); hits.push({ x: p.x, y: p.y - 14, w: c.measureText(o.text).width, h: 17, selection: s, title: o.text }); } });
     }
   }
-  for (let i = 0; i < 36; i++) {
+  for (let i = 0; !objectsOnly && i < 36; i++) {
     const x = i % 2 ? -40 : 940, y = 80 + i * 29;
     sprites.push({ y, draw: () => { const p = projectPixel({ x, y }, view); fill("#4c723e", p.x, p.y - 4, 2, 5); fill(i % 3 ? "#e4ce88" : "#e0a18b", p.x - 1, p.y - 5, 4, 3); fill("#f5e4aa", p.x, p.y - 5, 1, 1); } });
   }
   sprites.sort((a, b) => a.y - b.y).forEach((sprite) => sprite.draw());
-  for (let x = 0; x < width; x += 50) if (x < 375 || x >= 525) fence(x, height);
-  c.canvas.dataset.pixelPresentation = presentation;
-  c.canvas.dataset.pixelPlantCount = String(totalPlants);
-  c.canvas.dataset.pixelDrawnPlants = String(drawnPlants);
+  if (!objectsOnly) for (let x = 0; x < width; x += 50) if (x < 375 || x >= 525) fence(x, height);
+  if (!objectsOnly) {
+    c.canvas.dataset.pixelPresentation = presentation;
+    c.canvas.dataset.pixelPlantCount = String(totalPlants);
+    c.canvas.dataset.pixelDrawnPlants = String(drawnPlants);
+  }
   return hits;
 }

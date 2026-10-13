@@ -1,3 +1,4 @@
+import { parseObjectLocks } from "@/lib/garden/object-locks";
 import { gardenDimensions, validateGardenDimensions } from "@/lib/garden/garden-dimensions";
 import { builderSettings, ensureGardenBuilderSchema, parseBedProfiles, parseDesignSettings } from "@/lib/garden/garden-builder-schema";
 import { plantingSurfaces, surfaceContains } from "@/lib/garden/planting-surfaces";
@@ -300,7 +301,7 @@ function parsePlan(value: unknown): PlannerPlan {
   for (const row of rows) {
     if (row.placements && rowPlants(row).some((p) => p.x < 0 || p.x > CANVAS_WIDTH || p.y < 0 || p.y > CANVAS_HEIGHT)) throw new Error("Plant placement is outside the garden canvas.");
   }
-  const plan = { canvasWidthCm: CANVAS_WIDTH, canvasHeightCm: CANVAS_HEIGHT, bedProfiles: parseBedProfiles(candidate.bedProfiles), designSettings: parseDesignSettings(candidate.designSettings), beds, plantingAreas, rows, objects: objectInput.map((raw, index) => parseLayoutObject(raw, index, dimensions)) };
+  const plan = { canvasWidthCm: CANVAS_WIDTH, canvasHeightCm: CANVAS_HEIGHT, bedProfiles: parseBedProfiles(candidate.bedProfiles), designSettings: parseDesignSettings(candidate.designSettings), objectLocks: parseObjectLocks(candidate.objectLocks), beds, plantingAreas, rows, objects: objectInput.map((raw, index) => parseLayoutObject(raw, index, dimensions)) };
   for (const row of rows) if (row.surfaceId) {
     const surface = plantingSurfaces(plan).find((s) => `${s.kind}:${s.id}` === row.surfaceId);
     if (!surface || rowPlants(row).some((p) => !surfaceContains(surface, p))) throw new Error("Plants must fit on their owning bed soil.");
@@ -350,7 +351,7 @@ export async function GET(request: Request) {
     await ensureGardenBuilderSchema(db);
 
     const garden = await db.prepare("SELECT canvas_width_cm, canvas_height_cm, editor_settings_json FROM gardens WHERE id = ?").bind(gardenId).first<{ canvas_width_cm: number; canvas_height_cm: number; editor_settings_json: string | null }>();
-    const settings = JSON.parse(garden?.editor_settings_json ?? "{}") as { bedProfiles?: unknown; designSettings?: unknown; rowOwners?: Record<string, string> };
+    const settings = JSON.parse(garden?.editor_settings_json ?? "{}") as { bedProfiles?: unknown; designSettings?: unknown; objectLocks?: unknown; rowOwners?: Record<string, string> };
     const bedsResult = await db.prepare(`
       SELECT id, label, x_percent, y_percent, width_percent, height_percent
       FROM beds WHERE garden_id = ? AND archived_at IS NULL
@@ -431,7 +432,7 @@ export async function GET(request: Request) {
       return { id: item.id, type: "text", ...point, text: item.text_value ?? "Label", fontSize: Number(item.font_size ?? 13) };
     });
 
-    return Response.json({ ok: true, source: "d1", gardenId, plan: { canvasWidthCm: Number(garden?.canvas_width_cm ?? 900), canvasHeightCm: Number(garden?.canvas_height_cm ?? 1080), bedProfiles: parseBedProfiles(settings.bedProfiles), designSettings: parseDesignSettings(settings.designSettings), beds, plantingAreas, rows, objects } });
+    return Response.json({ ok: true, source: "d1", gardenId, plan: { canvasWidthCm: Number(garden?.canvas_width_cm ?? 900), canvasHeightCm: Number(garden?.canvas_height_cm ?? 1080), bedProfiles: parseBedProfiles(settings.bedProfiles), designSettings: parseDesignSettings(settings.designSettings), objectLocks: parseObjectLocks(settings.objectLocks), beds, plantingAreas, rows, objects } });
   } catch (error) {
     return Response.json({ ok: false, error: error instanceof Error ? error.message : "Unable to load garden plan." }, { status: 503 });
   }

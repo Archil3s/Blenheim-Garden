@@ -2,9 +2,18 @@
 
 A visual home-garden planner for Blenheim, Marlborough.
 
-_Last updated: 12 October 2026_
+_Last updated: 13 October 2026_
 
 ## Current status
+
+### Object selection, locking and copy placement
+
+**Objects** searches and selects beds, plants and structures. Selection target
+can ignore foliage when picking beds; Multi-select supports touch. Lock objects
+to protect them and their contents. Duplicate creates a ghost you click/tap to
+place, with blocked-position feedback and Cancel copy/Escape. Copies keep their
+crops, select themselves and commit as one undo step. Locks persist with Save
+and are honoured by the mirrored 2D planner.
 
 ### Direct 3D editing and design tools
 

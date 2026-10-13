@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import type { DragEvent as ReactDragEvent, PointerEvent as ReactPointerEvent } from "react";
 import { reconcileOwnedPlants } from "@/lib/garden/plan-editing";
+import { assertLocksUnchanged } from "@/lib/garden/object-locks";
 import { cropSelectionSummary, cropsInBox, deleteSelectedCrops, resizeBedRect, selectCrops, type CropSelection, type ResizeEdge } from "@/lib/garden/planner-selection";
 import { isPlantableStructure } from "@/lib/garden/planting-surfaces";
 import type {
@@ -166,7 +167,11 @@ export function GardenPlanner() {
   const [snapEnabled, setSnapEnabled] = useState(true);
   const [plan, storePlan] = useState<PlanState>(basePlan);
   const setPlan = useCallback((update: PlanState | ((plan: PlanState) => PlanState)) => {
-    storePlan((before) => typeof update === "function" ? reconcileOwnedPlants(before, update(before)) : update);
+    storePlan((before) => {
+      if (typeof update !== "function") return update;
+      try { const next = reconcileOwnedPlants(before, update(before)); assertLocksUnchanged(before, next); return next; }
+      catch (error) { queueMicrotask(() => setSelectionMessage(error instanceof Error ? error.message : "Unable to edit the garden.")); return before; }
+    });
   }, []);
   const CANVAS_WIDTH = plan.canvasWidthCm ?? 900, CANVAS_HEIGHT = plan.canvasHeightCm ?? 1080;
   const bedCm = useCallback((bed: Bed) => ({ x: bed.x * CANVAS_WIDTH / 100, y: bed.y * CANVAS_HEIGHT / 100, w: bed.w * CANVAS_WIDTH / 100, h: bed.h * CANVAS_HEIGHT / 100 }), [CANVAS_WIDTH, CANVAS_HEIGHT]);
@@ -316,7 +321,7 @@ export function GardenPlanner() {
     return snapPoint({ x: (clientX - rect.left) / scale, y: (clientY - rect.top) / scale });
   }
   function remember() { setPast((items) => [...items, clonePlan(plan)].slice(-40)); setFuture([]); }
-  function commit(next: PlanState) { remember(); setPlan(next); setSaveState("idle"); }
+  function commit(next: PlanState) { try { assertLocksUnchanged(plan, next); remember(); setPlan(next); setSaveState("idle"); } catch (error) { setSelectionMessage(error instanceof Error ? error.message : "Unable to edit the garden."); } }
   function edit(mutator: (current: PlanState) => PlanState) { remember(); setPlan((current) => mutator(current)); setSaveState("idle"); }
 
   function chooseTool(next: Tool) { setSelectionMode(next === "marquee"); setCropSelection([]); setSelectionMessage(""); if (next !== "select" && selection?.kind !== "bed") setSelection(selectedPlanting ? { kind: "bed", id: String(selectedPlanting.bedId) } : null); setTool(next); setPanelOpen(next !== "marquee"); setDraft(null); setInteraction(null); }

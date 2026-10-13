@@ -13,6 +13,9 @@ import { alignMove, designFootprints, footprintCorners, resizeDesignSelection, r
 import type { ResizeEdge } from "@/lib/garden/planner-selection";
 import { gardenDimensions } from "@/lib/garden/garden-dimensions";
 import { addCropPoints, brushPlacementPoints, cropPlacementPoints, movePlanGroup, snapPlantingPoint } from "@/lib/garden/garden-building";
+import { duplicatePlacementAt } from "@/lib/garden/duplicate-placement";
+import { matchesSelectionTarget } from "@/lib/garden/selection-target";
+import { rowsForOwner } from "@/lib/garden/object-locks";
 
 type Runtime = { content: THREE.Group; scene: THREE.Scene; camera: THREE.PerspectiveCamera; controls: OrbitControls; renderer: THREE.WebGLRenderer; mobile: boolean; needsRender?: boolean; cancelEditing?: () => void; refreshEditing?: () => void; updateEditing?: () => void };
 
@@ -33,6 +36,10 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
   const resizeHandle = new THREE.Mesh(new THREE.SphereGeometry(.095, 12, 8), new THREE.MeshBasicMaterial({ color: 0xffc44d, depthTest: false })); scene.add(resizeHandle); resizeHandle.visible = false; resizeHandle.renderOrder = 90;
   const gizmos = new THREE.Group(); gizmos.name = "garden-edit-gizmos"; scene.add(gizmos);
   const alignment = new THREE.Group(); scene.add(alignment);
+  const hoverOutline = new THREE.Group(); scene.add(hoverOutline);
+  const copyGhosts = new THREE.Group(); scene.add(copyGhosts);
+  let ghostPending: Garden3DEditor["pendingDuplicate"] = null;
+  let hoveredKey = "";
   let boxStart: PointCm | null = null;
   let pointerStart: { id: number; x: number; y: number } | null = null;
   let drag: { plan: PlannerPlan; mode: "move" | "resize" | "rotate"; edge?: ResizeEdge | "end"; axis?: "x" | "y"; candidate?: PlannerPlan; reason?: string; selection: PlanSelection; start: PointCm; height: number; delta: PointCm; valid: boolean; roots: { root: THREE.Object3D; position: THREE.Vector3 }[] } | null = null;
@@ -75,11 +82,11 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     for (const hit of raycaster.intersectObjects(candidates, true)) {
       if (hit.object instanceof THREE.InstancedMesh && hit.instanceId !== undefined) {
         const root = hit.object.userData.instanceRoots?.[hit.instanceId] as THREE.Object3D | undefined;
-        if (root) return { selection: root.userData.planSelection as PlanSelection, root };
+        if (root && matchesSelectionTarget(getEditor().plan, root.userData.planSelection, getEditor().selectionMode)) return { selection: root.userData.planSelection as PlanSelection, root };
       }
       let node: THREE.Object3D | null = hit.object;
       while (node) {
-        if (node.userData.planSelection) return { selection: node.userData.planSelection as PlanSelection, root: (node.userData.selectionRoot ?? node) as THREE.Object3D };
+        if (node.userData.planSelection && matchesSelectionTarget(getEditor().plan, node.userData.planSelection, getEditor().selectionMode)) return { selection: node.userData.planSelection as PlanSelection, root: (node.userData.selectionRoot ?? node) as THREE.Object3D };
         node = node.parent;
       }
     }
@@ -100,6 +107,37 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     canvas.dataset.designPreview = color === 0xf27878 ? "blocked" : "valid";
   };
   const restoreDrag = () => { if (drag) for (const { root, position } of drag.roots) { if (root.userData.setPlantPosition) root.userData.setPlantPosition(position); else root.position.copy(position); } drag = null; controls.enabled = true; };
+  const clearCopies = () => { copyGhosts.traverse((n) => { if (n instanceof THREE.Mesh) { const materials = Array.isArray(n.material) ? n.material : [n.material]; materials.forEach((m) => m.dispose()); } }); copyGhosts.clear(); ghostPending = null; canvas.dataset.copyPreview = ""; };
+  const showCopy = (event: PointerEvent) => {
+    const e = getEditor(), pending = e.pendingDuplicate;
+    if (!pending) { if (ghostPending) clearCopies(); return; }
+    const p = groundPoint(event); if (!p) return;
+    if (ghostPending !== pending) {
+      clearCopies(); ghostPending = pending;
+      const owners = new Set(pending.sources.filter((s) => !s.plantId).map((s) => `${s.kind}:${s.id}`));
+      const roots: THREE.Object3D[] = [];
+      for (const s of pending.sources) {
+        if (!s.plantId) { const holder = content.children.find((o) => o.userData.planKey === `${s.kind}:${s.id}`); if (holder) roots.push(holder); }
+        else content.traverse((o) => { const t = o.userData.planSelection; if (t?.plantId === s.plantId && t?.id === s.id && t?.kind === s.kind) roots.push(o); });
+      }
+      for (const area of e.plan.plantingAreas) if (owners.has(`bed:${area.bedId}`)) { const holder = content.children.find((o) => o.userData.planKey === `area:${area.id}`); if (holder) roots.push(holder); }
+      for (const owner of owners) for (const row of rowsForOwner(e.plan, owner)) { const holder = content.children.find((o) => o.userData.planKey === `row:${row.id}`); if (holder && !roots.includes(holder)) roots.push(holder); }
+      for (const root of roots) { root.updateMatrixWorld(true); root.traverse((o) => {
+        if (!(o instanceof THREE.Mesh)) return;
+        const material = new THREE.MeshBasicMaterial({ color: 0x66e0ac, transparent: true, opacity: .38, depthWrite: false });
+        const mesh = o instanceof THREE.InstancedMesh ? new THREE.InstancedMesh(o.geometry, material, o.count) : new THREE.Mesh(o.geometry, material);
+        if (mesh instanceof THREE.InstancedMesh && o instanceof THREE.InstancedMesh) { mesh.instanceMatrix.array.set(o.instanceMatrix.array); mesh.instanceMatrix.needsUpdate = true; }
+        mesh.applyMatrix4(o.matrixWorld); copyGhosts.add(mesh);
+      }); }
+    }
+    const delta = { x: p.x - pending.anchor.x, y: p.y - pending.anchor.y };
+    copyGhosts.position.set(delta.x / 100, 0, delta.y / 100);
+    let color = 0x66e0ac;
+    try { duplicatePlacementAt(pending, p); e.setPreviewText("Click to place the copy · Escape cancels"); canvas.dataset.copyPreview = "valid"; }
+    catch (error) { color = 0xf27878; e.setPreviewText(error instanceof Error ? error.message : "Choose a clear space."); canvas.dataset.copyPreview = "blocked"; }
+    copyGhosts.traverse((o) => { if (o instanceof THREE.Mesh) (o.material as THREE.MeshBasicMaterial).color.setHex(color); });
+    clearOverlay(hoverOutline); hoveredKey = ""; preview.visible = false; runtime.needsRender = true;
+  };
   const disposeGhost = () => {
     ghost?.traverse((node) => { if (node instanceof THREE.Mesh) { if (!node.userData.sharedTomatoResources && !node.userData.sharedPlantResources) node.geometry.dispose(); const materials = Array.isArray(node.material) ? node.material : [node.material]; for (const m of materials) m.dispose(); } });
     ghost?.removeFromParent(); ghost = null;
@@ -184,6 +222,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     const editor = getEditor();
     if (previousTool !== editor.tool) { resetPreview(); previousTool = editor.tool; }
     pointerStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
+    if (editor.pendingDuplicate) { controls.enabled = false; canvas.setPointerCapture(event.pointerId); showCopy(event); return; }
     if (editor.tool === "box-select") { boxStart = groundPoint(event); controls.enabled = false; canvas.setPointerCapture(event.pointerId); return; }
     if (!["select", "move", "resize"].includes(editor.tool)) {
       controls.enabled = false; canvas.setPointerCapture(event.pointerId);
@@ -204,9 +243,10 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
       controls.enabled = false; canvas.setPointerCapture(event.pointerId); return;
     }
     if (editor.tool !== "move" && editor.tool !== "select") return;
-    if (event.shiftKey) { const hit = pick(event); editor.select(hit?.selection ?? null, true); pointerStart = null; controls.enabled = false; return; }
+    if (event.shiftKey || event.ctrlKey || event.metaKey || editor.multiSelect) { const hit = pick(event); editor.select(hit?.selection ?? null, true); pointerStart = null; controls.enabled = false; return; }
     const hit = pick(event), point = groundPoint(event);
     if (!hit || !point) return;
+    if (editor.locked(hit.selection) || editor.groupSelections.some(editor.locked)) { editor.select(hit.selection); controls.enabled = false; return; }
     if (!editor.groupSelections.some((s) => s.kind === hit.selection.kind && s.id === hit.selection.id && s.plantId === hit.selection.plantId)) editor.select(hit.selection, event.shiftKey);
     const roots: { root: THREE.Object3D; position: THREE.Vector3 }[] = [{ root: hit.root, position: hit.root.position.clone() }];
     if (hit.selection.kind === "bed") content.traverse((node) => {
@@ -229,6 +269,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
   };
   const onMove = (event: PointerEvent) => {
     runtime.needsRender = true;
+    if (getEditor().pendingDuplicate) { showCopy(event); return; }
     if (drag) {
       const point = groundPoint(event); if (!point) return;
       drag.delta = { x: point.x - drag.start.x, y: point.y - drag.start.y };
@@ -278,6 +319,12 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
       const point = groundPoint(event), e = getEditor();
       if (point && (!strokePoints.length || Math.hypot(point.x - strokePoints.at(-1)!.x, point.y - strokePoints.at(-1)!.y) >= (e.settings.spacingCm || plants.find((p) => p.name === e.settings.crop)!.spacingCm))) strokePoints.push(point);
     }
+    const e = getEditor();
+    if (!disabled() && ["select", "move"].includes(e.tool)) {
+      const hit = pick(event), key = hit ? JSON.stringify(hit.selection) : "";
+      canvas.style.cursor = hit ? e.locked(hit.selection) ? "pointer" : "grab" : "default";
+      if (key !== hoveredKey) { clearOverlay(hoverOutline); hoveredKey = key; if (hit) { const outline = new THREE.BoxHelper(hit.root, e.locked(hit.selection) ? 0xaebac5 : 0x98e8ff); outline.material.depthTest = false; outline.renderOrder = 75; hoverOutline.add(outline); } }
+    }
     showPreview(event);
   };
   const onUp = (event: PointerEvent) => {
@@ -286,8 +333,9 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
     controls.enabled = true;
     const editor = getEditor();
+    if (editor.pendingDuplicate) { const p = groundPoint(event); if (p) editor.placeDuplicate(p); clearCopies(); return; }
     if (boxStart) {
-      const end = groundPoint(event); if (end) editor.selectGroup(selectionsInRectangle(editor.plan, boxStart, end), event.shiftKey);
+      const end = groundPoint(event); if (end) editor.selectGroup(selectionsInRectangle(editor.plan, boxStart, end).filter((s) => matchesSelectionTarget(editor.plan, s, editor.selectionMode)), event.shiftKey || event.ctrlKey || event.metaKey || editor.multiSelect);
       resetPreview(); editor.setTool("select"); return;
     }
     if (drag) {
@@ -302,7 +350,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     }
     const moved = Math.hypot(event.clientX - start.x, event.clientY - start.y) > 10;
     if (disabled() || (moved && (editor.tool === "select" || editor.tool === "move"))) return;
-    if (editor.tool === "select" || editor.tool === "move") { editor.select(pick(event)?.selection ?? null, event.shiftKey); return; }
+    if (editor.tool === "select" || editor.tool === "move") { editor.select(pick(event)?.selection ?? null, event.shiftKey || event.ctrlKey || event.metaKey || editor.multiSelect); return; }
     const point = groundPoint(event);
     if (["row", "path", "trellis", "fence", "fill"].includes(editor.tool) && startPoint && point && !moved && Math.hypot(point.x - startPoint.x, point.y - startPoint.y) < 5) return;
     if (editor.tool === "bed" && !moved) startPoint = null;
@@ -320,7 +368,8 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     clearOverlay(gizmos);
     canvas.dataset.resizeHandles = "0"; canvas.dataset.gizmoPoints = "[]";
     const e = getEditor(), item = e.item; resizeHandle.visible = false;
-    if (!item || e.selection?.plantId || !["select", "move", "resize"].includes(e.tool)) return;
+    if (!e.pendingDuplicate && ghostPending) clearCopies();
+    if (!item || e.selection?.plantId || e.pendingDuplicate || e.groupSelections.some(e.locked) || !["select", "move", "resize"].includes(e.tool)) return;
     const f = designFootprints(e.plan).find((f) => f.id === `${e.selection!.kind}:${e.selection!.id}`);
     const add = (p: PointCm, mode: string, edge?: string, axis?: string) => {
       const radius = runtime.mobile ? .13 : .09;
@@ -361,9 +410,10 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     if (!disabled() && (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "s") { event.preventDefault(); void getEditor().save(); return; }
     if ((event.target as HTMLElement)?.closest("input, select, textarea")) return;
     const editor = getEditor();
-    if (event.key === "Escape") { cancel(); editor.setTool("select"); }
+    if (event.key === "Escape") { cancel(); editor.cancelDuplicate(); editor.select(null); editor.setTool("select"); clearCopies(); }
     if (disabled()) return;
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "a") { event.preventDefault(); editor.selectCrops(); }
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "d") { event.preventDefault(); editor.duplicate(); }
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "z") { event.preventDefault(); if (event.shiftKey) editor.redo(); else editor.undo(); }
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "y") { event.preventDefault(); editor.redo(); }
     if (event.key === "Delete" || event.key === "Backspace") { event.preventDefault(); editor.remove(); }
@@ -377,6 +427,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
   window.addEventListener("keydown", onKey);
   return () => {
     runtime.cancelEditing = undefined; runtime.refreshEditing = undefined; runtime.updateEditing = undefined;
+    clearCopies(); copyGhosts.removeFromParent(); clearOverlay(hoverOutline); hoverOutline.removeFromParent();
     clearOverlay(gizmos); gizmos.removeFromParent(); clearOverlay(alignment); alignment.removeFromParent(); clearGuides(); guides.removeFromParent(); dotGeometry.dispose(); dotMaterial.dispose(); resizeHandle.removeFromParent(); resizeHandle.geometry.dispose(); (resizeHandle.material as THREE.Material).dispose();
     cancel(); canvas.removeEventListener("pointerdown", onDown, true); canvas.removeEventListener("pointermove", onMove); canvas.removeEventListener("pointerup", onUp); canvas.removeEventListener("pointercancel", cancel); window.removeEventListener("blur", cancel); window.removeEventListener("keydown", onKey);
     disposeGhost(); preview.removeFromParent(); footprint.geometry.dispose(); previewMaterial.dispose(); ring.geometry.dispose(); (ring.material as THREE.Material).dispose();

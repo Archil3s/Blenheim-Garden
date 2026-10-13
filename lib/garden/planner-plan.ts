@@ -155,6 +155,7 @@ export type PlannerPlan = {
   canvasWidthCm?: number;
   canvasHeightCm?: number;
   bedProfiles?: Record<string, BedProfile>;
+  objectLocks?: string[];
   designSettings?: { northDeg: number; walkwayCm: number };
   beds: PlannerBed[];
   plantingAreas: PlannerPlantingArea[];
