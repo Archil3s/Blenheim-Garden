@@ -39,6 +39,9 @@ export function selectionItem(plan: PlannerPlan, selection: PlanSelection) {
   if (selection.kind === "row") return plan.rows.find((item) => item.id === selection.id);
   return plan.objects.find((item) => item.id === selection.id);
 }
+export function rowBelongsTo(plan: PlannerPlan, row: PlannerRow, owner: string) {
+  return row.surfaceId ? row.surfaceId === owner : rowPlants(row).every((p) => { const s = surfaceAt(plan, p); return s && `${s.kind}:${s.id}` === owner; });
+}
 
 export function transformContainerPlants(before: PlannerPlan, next: PlannerPlan, previous: PlannerStructure, replacement: PlannerStructure): PlannerPlan {
   if (!isPlantableStructure(previous)) return next;
@@ -57,7 +60,7 @@ export function transformContainerPlants(before: PlannerPlan, next: PlannerPlan,
       return moved;
     });
     if (!changed) return next.rows.find((item) => item.id === row.id) ?? row;
-    return { ...row, x1: replacement.x, y1: replacement.y, x2: replacement.x, y2: replacement.y,
+    return { ...row, surfaceId: rowBelongsTo(before, row, `object:${previous.id}`) ? `object:${replacement.id}` : row.surfaceId, x1: replacement.x, y1: replacement.y, x2: replacement.x, y2: replacement.y,
       count: points.length, placements: points.map((point) => ({ id: point.id, x: point.x - replacement.x, y: point.y - replacement.y })) };
   });
   return { ...next, rows };
@@ -77,10 +80,10 @@ export function reconcileOwnedPlants(before: PlannerPlan, next: PlannerPlan): Pl
     const from = bedRectangle(previous, before), to = bedRectangle(replacement, next);
     if (JSON.stringify(from) === JSON.stringify(to)) continue;
     result = { ...result, rows: result.rows.map((row) => {
-      if (row.surfaceId !== `bed:${previous.id}`) return row;
       const original = before.rows.find((r) => r.id === row.id); if (!original) return row;
+      if (!rowBelongsTo(before, original, `bed:${previous.id}`)) return row;
       const points = rowPlants(original).map((p) => ({ id: p.id, x: to.x + (p.x - from.x) * to.w / from.w, y: to.y + (p.y - from.y) * to.h / from.h }));
-      return { ...row, x1: to.x, y1: to.y, x2: to.x, y2: to.y, count: points.length,
+      return { ...row, surfaceId: `bed:${previous.id}`, x1: to.x, y1: to.y, x2: to.x, y2: to.y, count: points.length,
         placements: points.map((p) => ({ id: p.id, x: p.x - to.x, y: p.y - to.y })) };
     }) };
   }
@@ -157,7 +160,7 @@ export function movePlanSelection(plan: PlannerPlan, selection: PlanSelection, d
     const target = plants.find((p) => p.id === selection.plantId);
     return target ? editPlant(plan, selection, { x: target.x + delta.x, y: target.y + delta.y }) : plan;
   }
-  if (selection.kind === "bed") return { ...plan, rows: plan.rows.map((row) => row.surfaceId === `bed:${selection.id}` ? { ...row, x1: row.x1 + delta.x, y1: row.y1 + delta.y, x2: row.x2 + delta.x, y2: row.y2 + delta.y } : row), beds: plan.beds.map((bed) => String(bed.id) === selection.id ? { ...bed, x: bed.x + delta.x * 100 / gardenDimensions(plan).width, y: bed.y + delta.y * 100 / gardenDimensions(plan).height } : bed) };
+  if (selection.kind === "bed") return { ...plan, rows: plan.rows.map((row) => rowBelongsTo(plan, row, `bed:${selection.id}`) ? { ...row, surfaceId: `bed:${selection.id}`, x1: row.x1 + delta.x, y1: row.y1 + delta.y, x2: row.x2 + delta.x, y2: row.y2 + delta.y } : row), beds: plan.beds.map((bed) => String(bed.id) === selection.id ? { ...bed, x: bed.x + delta.x * 100 / gardenDimensions(plan).width, y: bed.y + delta.y * 100 / gardenDimensions(plan).height } : bed) };
   if (selection.kind === "area") {
     const area = plan.plantingAreas.find((item) => item.id === selection.id);
     const bed = plan.beds.find((item) => item.id === area?.bedId);
@@ -204,7 +207,7 @@ export function duplicatePlanSelection(plan: PlannerPlan, selection: PlanSelecti
   if (selection.kind === "bed") {
     const bed = item as PlannerBed, bedId = Math.max(Date.now(), ...plan.beds.map((b) => b.id + 1));
     const copy = { ...bed, id: bedId, name: `${bed.name} copy` };
-    return movePlanSelection({ ...plan, beds: [...plan.beds, copy], rows: [...plan.rows, ...plan.rows.filter((row) => row.surfaceId === `bed:${bed.id}`).map((row) => ({ ...row, id: crypto.randomUUID(), surfaceId: `bed:${bedId}`, placements: row.placements?.map((p) => ({ ...p, id: crypto.randomUUID() })) }))], bedProfiles: { ...plan.bedProfiles, ...(plan.bedProfiles?.[`bed:${bed.id}`] ? { [`bed:${bedId}`]: plan.bedProfiles[`bed:${bed.id}`] } : {}) }, plantingAreas: [...plan.plantingAreas, ...plan.plantingAreas.filter((a) => a.bedId === bed.id).map((a) => ({ ...a, id: crypto.randomUUID(), plantingId: undefined, bedId, placements: a.placements?.map((p) => ({ ...p, id: crypto.randomUUID() })) }))] }, { kind: "bed", id: String(bedId) }, { x: 20, y: 20 });
+    return movePlanSelection({ ...plan, beds: [...plan.beds, copy], rows: [...plan.rows, ...plan.rows.filter((row) => rowBelongsTo(plan, row, `bed:${bed.id}`)).map((row) => ({ ...row, id: crypto.randomUUID(), surfaceId: `bed:${bedId}`, placements: row.placements?.map((p) => ({ ...p, id: crypto.randomUUID() })) }))], bedProfiles: { ...plan.bedProfiles, ...(plan.bedProfiles?.[`bed:${bed.id}`] ? { [`bed:${bedId}`]: plan.bedProfiles[`bed:${bed.id}`] } : {}) }, plantingAreas: [...plan.plantingAreas, ...plan.plantingAreas.filter((a) => a.bedId === bed.id).map((a) => ({ ...a, id: crypto.randomUUID(), plantingId: undefined, bedId, placements: a.placements?.map((p) => ({ ...p, id: crypto.randomUUID() })) }))] }, { kind: "bed", id: String(bedId) }, { x: 20, y: 20 });
   }
   const key = selection.kind === "area" ? "plantingAreas" : selection.kind === "row" ? "rows" : "objects";
   const next = { ...plan, [key]: [...plan[key], { ...item, id, plantingId: undefined, ...("placements" in item ? { placements: item.placements?.map((p) => ({ ...p, id: crypto.randomUUID() })) } : {}) }] } as PlannerPlan;

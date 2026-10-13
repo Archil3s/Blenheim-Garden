@@ -101,14 +101,14 @@ test("raised-bed planting, seasonal preview, transforms, undo and protected Save
   await expect(dialog.getByRole("combobox", { name: "Planting month", exact: true })).toHaveValue("9");
   await expect(dialog).toContainText("Spring in Blenheim");
   await dialog.getByRole("button", { name: "Plant manually" }).click();
-  const palette = page.locator(".garden-edit-palette");
-  await palette.getByRole("combobox", { name: "Crop", exact: true }).selectOption("Lettuce");
+  const palette = page.getByRole("region", { name: "Plant selected bed" });
+  await palette.getByLabel("Bed crop", { exact: true }).selectOption("Lettuce");
   // Collapse panels to expose the complete planting surface on a small screen.
-  await palette.locator("summary").click();
-  await page.locator(".garden-edit-inspector summary").click();
+  await palette.getByRole("button", { name: "Hide planting controls", exact: true }).click();
   const bounds = (await canvas.boundingBox())!;
-  const camera = new THREE.PerspectiveCamera(testInfo.project.name === "phone" ? 42 : 34, bounds.width / bounds.height, .1, 60);
-  camera.position.set(0, 16.2, .001); camera.lookAt(0, 0, 0); camera.updateMatrixWorld();
+  await expect(canvas).toHaveAttribute("data-camera", /projection/);
+  const view = JSON.parse((await canvas.getAttribute("data-camera"))!), camera = new THREE.PerspectiveCamera();
+  camera.matrixWorld.fromArray(view.world); camera.matrixWorldInverse.copy(camera.matrixWorld).invert(); camera.projectionMatrix.fromArray(view.projection);
   const point = surfaceWorld(structureSurface(container), { x: 0, y: 0 });
   const projected = new THREE.Vector3(point.x / 100 - 4.5, structureSurface(container).height, point.y / 100 - 5.4).project(camera);
   const screen = { x: bounds.x + (projected.x + 1) * bounds.width / 2, y: bounds.y + (1 - projected.y) * bounds.height / 2 };
@@ -136,7 +136,7 @@ test("raised-bed planting, seasonal preview, transforms, undo and protected Save
   expect(await readPlan(page)).toEqual(filled);
   await page.getByRole("button", { name: "Select", exact: true }).click();
   const inspector = page.locator(".garden-edit-inspector");
-  await inspector.locator("summary").click();
+  if (!await inspector.evaluate((node) => (node as HTMLDetailsElement).open)) await inspector.locator(":scope > summary").click();
   await inspector.getByLabel("Rotation (degrees)").fill("60"); await inspector.getByLabel("Rotation (degrees)").press("Enter");
   await inspector.getByLabel("Height (cm)").fill("70"); await inspector.getByLabel("Height (cm)").press("Enter");
   const transformed = await readPlan(page);

@@ -35,7 +35,7 @@ export function pickPixel(hits: PixelHit[], point: PointCm) {
   return null;
 }
 
-export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, view: PixelView, selection: PlanSelection | null, presentation: "artwork" | "exact" = "artwork", growthScale = 1, objectsOnly = false) {
+export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, view: PixelView, selection: PlanSelection | null, presentation: "artwork" | "exact" = "artwork", growthScale = 1, objectsOnly = false, scaleFor?: (key: string) => number) {
   const { width, height } = gardenDimensions(plan);
   tiles ??= [createPixelTile("grass"), createPixelTile("soil"), createPixelTile("path")];
   trees ??= [createPixelTree(), createPixelTree(1)];
@@ -127,7 +127,7 @@ export function drawPixelGarden(c: CanvasRenderingContext2D, plan: PlannerPlan, 
       if (presentation === "exact" && i % stride && !chosen) return;
       const img = pixelCrop(crop, variety, i % 3);
       const artworkWidth = Math.min(/carrot|radish|onion|garlic/i.test(crop) ? 90 : 112, rect ? Math.max(60, (rect.h * view.tilt + 15) * img.width / img.height) : 112);
-      const w = (presentation === "artwork" ? artworkWidth : Math.min(76, Math.max(/carrot|radish|onion|garlic/i.test(crop) ? 28 : 48, spacing * 1.28))) * growthScale;
+      const w = (presentation === "artwork" ? artworkWidth : Math.min(76, Math.max(/carrot|radish|onion|garlic/i.test(crop) ? 28 : 48, spacing * 1.28))) * (scaleFor?.(`${s.kind}:${s.id}`) ?? growthScale);
       const h = w * img.height / img.width, q = projectPixel({ x: p.x, y: p.y + 5 }, view);
       const bounds = { x: q.x - w * view.scale / 2, y: q.y - h * view.scale, w: w * view.scale, h: h * view.scale };
       const gap = 10 * view.scale;

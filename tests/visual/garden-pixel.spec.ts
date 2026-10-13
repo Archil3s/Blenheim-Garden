@@ -160,7 +160,7 @@ test("pixel editing preserves centimetres, drag history, cloud save and refresh"
   await expect.poll(async () => (await livePlan(page)).plantingAreas[0].count).toBe(2);
   await page.getByRole("button", { name: "Undo", exact: true }).click(); await expect.poll(async () => (await livePlan(page)).plantingAreas[0].count).toBe(1);
   await page.getByRole("button", { name: "Redo", exact: true }).click(); await expect.poll(async () => (await livePlan(page)).plantingAreas[0].count).toBe(2);
-  await page.getByRole("button", { name: "Move", exact: true }).click(); await inspector.locator("summary").click();
+  await page.getByRole("button", { name: "Move", exact: true }).click(); await inspector.locator(":scope > summary").click();
   const a = await screenPoint(page, 460, 540), b = await screenPoint(page, 480, 540); await page.mouse.move(a.x, a.y); await page.mouse.down(); await page.mouse.move(b.x, b.y, { steps: 5 }); await page.mouse.up();
   await expect.poll(async () => (await livePlan(page)).plantingAreas[0].placements!.some((p) => p.x > 70)).toBe(true);
   await page.getByRole("button", { name: "Select", exact: true }).click(); await page.getByRole("button", { name: "Add path", exact: true }).click(); await clickWorld(page, 250, 700, touch); await page.keyboard.press("Escape");

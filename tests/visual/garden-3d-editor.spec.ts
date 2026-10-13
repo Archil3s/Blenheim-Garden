@@ -144,7 +144,7 @@ test("inline 3D keyboard history and save stay within the active editor", async 
   await inspector.getByLabel("Name", { exact: true }).fill("Renamed in 3D");
   await inspector.getByLabel("Name", { exact: true }).press("Tab");
   await expect.poll(async () => (await plan(page)).beds[0].name).toBe("Renamed in 3D");
-  await inspector.locator("summary").click();
+  await inspector.locator(":scope > summary").click();
   await page.keyboard.press("Control+z");
   await expect.poll(async () => (await plan(page)).beds[0].name).toBe("Keyboard bed");
   await page.keyboard.press("Control+y");

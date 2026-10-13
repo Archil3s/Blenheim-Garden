@@ -6,6 +6,15 @@ _Last updated: 13 October 2026_
 
 ## Current status
 
+### Garden studio and easier planting
+
+Select soil and choose **Plant here** for single/paint/row/patch planting and a
+counted fill preview. Plants follow their bed; optional rearrangement preserves
+IDs and counts during resizing. Connected paths, camera lock/focus, view-only
+growth timelines, planted-bed templates and a preview-first layout assistant
+are available in detailed 3D and pixel mode. Templates stay per garden in this
+browser; timeline timings are visual estimates. See [Garden studio](docs/garden-studio.md).
+
 ### Object selection, locking and copy placement
 
 **Objects** searches and selects beds, plants and structures. Selection target

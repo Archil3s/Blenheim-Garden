@@ -15,6 +15,9 @@ import { GardenBaseEditor } from "./garden-base-editor";
 import { GardenBedPlanting } from "./garden-bed-planting";
 import { GardenDesignPanel } from "./garden-design-panel";
 import { GardenObjectPicker } from "./garden-object-picker";
+import { GardenWorkflowStudio } from "./garden-workflow-studio";
+import { GardenPlantTools } from "./garden-plant-tools";
+import { reflowSurfacePlants, timelinePhase } from "@/lib/garden/garden-workflows";
 
 const tools: { id: EditorTool; label: string }[] = [
   { id: "select", label: "Select" }, { id: "move", label: "Move" },
@@ -33,6 +36,7 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
   const [baseOpen, setBaseOpen] = useState(false);
   const [designOpen, setDesignOpen] = useState(false);
   const [pickerOpen, setPickerOpen] = useState(false);
+  const [studioOpen, setStudioOpen] = useState(false);
   const [templateName, setTemplateName] = useState("");
   const [templates, setTemplates] = useState<Array<{ name: string; kind?: PlannerStructureKind; width: number; depth: number; height: number }>>([]);
   const [keyOpen, setKeyOpen] = useState(false);
@@ -46,29 +50,34 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
   const surfaces = plantingSurfaces(editor.plan);
   const selectedSurface = surfaces.find((s) => s.id === selection?.id && s.kind === selection.kind);
   const crop = plants.find((p) => p.name === settings.crop) ?? plants[0];
+  const viewOnly = !!editor.previewDraft || editor.timeline.enabled;
+  const editingDisabled = disabled || viewOnly;
+  const plantingHere = ["plant", "row", "fill", "brush"].includes(editor.tool) && !!settings.targetSurfaceId;
   const field = (label: string, name: string, value: number, min?: number, max?: number) => <NumberField key={name} label={label} value={value} min={min} max={max} onCommit={(n) => editor.update(name, n)} />;
   const setting = (label: string, name: "width" | "depth" | "height" | "pathWidth" | "postSpacing" | "diameter", min: number, max: number) => <NumberField label={label} value={settings[name]} min={min} max={max} onCommit={(n) => editor.setSettings({ ...settings, [name]: n })} />;
   const rotate = () => { if (selection && item && "name" in item) editor.action((p) => rotateDesignSelection(p, selection, 90)); else if (item && "rotationDeg" in item) editor.update("rotationDeg", (item.rotationDeg + 15) % 360); };
   const title = item ? "name" in item ? item.name : "crop" in item ? `${item.crop} · ${item.variety}` : "label" in item ? item.label || item.type : "text" in item ? item.text : "Selection" : "Select an object";
   return <>
     <div className="garden-edit-toolbar" role="toolbar" aria-label="3D garden editing">
-      <button type="button" disabled={disabled} onClick={() => { editor.setError(null); setDesignOpen(true); }}>Design tools</button>
-      <button type="button" disabled={disabled} onClick={() => setPickerOpen(true)}>Objects</button>
-      <button type="button" disabled={disabled} onClick={() => setBedPlantingOpen(true)}>Plant a bed</button>
-      <button type="button" disabled={disabled} onClick={() => { editor.setError(null); setBaseOpen(true); }}>Garden size</button>
+      <button type="button" disabled={editingDisabled} onClick={() => { editor.setError(null); setDesignOpen(true); }}>Design tools</button>
+      <button type="button" disabled={disabled} onClick={() => { editor.cancelDuplicate(); editor.cancelPreview(); setStudioOpen(true); }}>Garden studio</button>
+      <button type="button" disabled={editingDisabled} onClick={() => setPickerOpen(true)}>Objects</button>
+      <button type="button" disabled={editingDisabled} onClick={() => setBedPlantingOpen(true)}>Plant a bed</button>
+      <button type="button" disabled={editingDisabled} onClick={() => { editor.setError(null); setBaseOpen(true); }}>Garden size</button>
       <Link href="/3d-models">Vegetable models</Link>
-      {tools.map((tool) => <button key={tool.id} type="button" disabled={disabled} aria-pressed={editor.tool === tool.id} onClick={() => { editor.setTool(tool.id); if (!["move", "select", "plant", "row", "fill", "brush"].includes(tool.id)) editor.select(null); }}>{tool.label}</button>)}
-      <button type="button" disabled={disabled || !selection} onClick={editor.duplicate}>Duplicate</button>
-      <button type="button" disabled={disabled || !selection || selectionLocked} onClick={editor.remove}>Delete</button>
-      <button type="button" disabled={disabled || !selection} onClick={editor.toggleLock}>{editor.groupSelections.length && editor.groupSelections.every(editor.locked) ? "Unlock" : "Lock"}</button>
-      <button type="button" disabled={disabled || selectionLocked || !item || !("rotationDeg" in item || "name" in item)} onClick={rotate}>Rotate</button>
-      <button type="button" disabled={disabled || selectionLocked || !item || !!selection?.plantId} onClick={() => { editor.setTool("resize"); editor.focus(); }}>Resize</button>
-      <button type="button" disabled={disabled || !editor.canUndo} onClick={editor.undo}>Undo</button>
-      <button type="button" disabled={disabled || !editor.canRedo} onClick={editor.redo}>Redo</button>
-      <button type="button" disabled={disabled || editor.status === "Saving…"} onClick={() => void editor.save()}>Save</button>
+      {tools.map((tool) => <button key={tool.id} type="button" disabled={editingDisabled} aria-pressed={editor.tool === tool.id} onClick={() => { editor.setTool(tool.id); if (!["move", "select", "plant", "row", "fill", "brush"].includes(tool.id)) editor.select(null); }}>{tool.label}</button>)}
+      <button type="button" disabled={editingDisabled || !selection} onClick={editor.duplicate}>Duplicate</button>
+      <button type="button" disabled={editingDisabled || !selection || selectionLocked} onClick={editor.remove}>Delete</button>
+      <button type="button" disabled={editingDisabled || !selection} onClick={editor.toggleLock}>{editor.groupSelections.length && editor.groupSelections.every(editor.locked) ? "Unlock" : "Lock"}</button>
+      <button type="button" disabled={editingDisabled || selectionLocked || !item || !("rotationDeg" in item || "name" in item)} onClick={rotate}>Rotate</button>
+      <button type="button" disabled={editingDisabled || selectionLocked || !item || !!selection?.plantId} onClick={() => { editor.setTool("resize"); editor.focus(); }}>Resize</button>
+      <button type="button" disabled={editingDisabled || !editor.canUndo} onClick={editor.undo}>Undo</button>
+      <button type="button" disabled={editingDisabled || !editor.canRedo} onClick={editor.redo}>Redo</button>
+      <button type="button" disabled={editingDisabled || editor.status === "Saving…"} onClick={() => void editor.save()}>Save</button>
       <Link href="/" aria-label="← 2D Plan" data-planner-view="2d">2D</Link>
     </div>
-    {!disabled && editor.tool !== "select" && editor.tool !== "move" && editor.tool !== "resize" && editor.tool !== "box-select" && <details className="garden-edit-palette" open>
+    {!disabled && !viewOnly && plantingHere && <GardenPlantTools editor={editor} />}
+    {!disabled && !viewOnly && !plantingHere && editor.tool !== "select" && editor.tool !== "move" && editor.tool !== "resize" && editor.tool !== "box-select" && <details className="garden-edit-palette" open>
       <summary>Build · {tools.find((t) => t.id === editor.tool)?.label}</summary>
       <div>
         {(["plant", "row", "fill", "brush"].includes(editor.tool)) && <>
@@ -84,7 +93,7 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
         {editor.tool === "structure" && <label>Structure<select value={settings.structureKind} onChange={(e) => editor.setSettings({ ...settings, ...(() => { const preset = STRUCTURE_PRESETS.find((p) => p.kind === e.target.value)!; return { structureKind: preset.kind, width: preset.widthCm, depth: preset.depthCm, height: preset.heightCm }; })() })}>{STRUCTURE_PRESETS.map((p) => <option key={p.kind} value={p.kind}>{p.label}</option>)}</select></label>}
         {(editor.tool === "bed" || editor.tool === "structure") && <>{setting("Width (cm)", "width", 30, size.width)}{setting("Depth (cm)", "depth", 30, size.height)}</>}
         {editor.tool === "structure" && <>{setting("Height (cm)", "height", 8, 600)}<NumberField label="Placement rotation (degrees)" value={settings.rotationDeg ?? 0} onCommit={(n) => editor.setSettings({ ...settings, rotationDeg: n })} /></>}
-        {editor.tool === "path" && setting("Width (cm)", "pathWidth", 20, 400)}
+        {editor.tool === "path" && <>{setting("Width (cm)", "pathWidth", 20, 400)}<label>Path shape<select aria-label="Path shape" value={settings.pathRoute ?? "direct"} onChange={(e) => editor.setSettings({ ...settings, pathRoute: e.target.value as "direct" | "right-angle" })}><option value="direct">Straight</option><option value="right-angle">Right angle · avoids beds</option></select></label><label className="garden-edit-snap"><input type="checkbox" checked={!!settings.continuePath} onChange={(e) => editor.setSettings({ ...settings, continuePath: e.target.checked })} />Continue connected path</label><p>Endpoints join nearby paths when snap is on. Escape finishes a chain.</p></>}
         {editor.tool === "fence" && setting("Fence height (cm)", "height", 20, 300)}
         {editor.tool === "trellis" && <>{setting("Height (cm)", "height", 20, 500)}{setting("Post spacing (cm)", "postSpacing", 30, 1000)}</>}
         {editor.tool === "tree" && setting("Canopy diameter (cm)", "diameter", 20, 1000)}
@@ -92,7 +101,7 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
         <p>{["row", "path", "trellis", "fence", "fill", "brush"].includes(editor.tool) ? "Drag a start to an end, or tap each endpoint. Escape cancels." : "Tap the garden to place. Escape cancels."}</p>
       </div>
     </details>}
-    {!disabled && selection && item && !editor.pendingDuplicate && <details key={`${selection.kind}:${selection.id}:${selection.plantId ?? ""}`} className="garden-edit-inspector" open>
+    {!disabled && !viewOnly && !plantingHere && selection && item && !editor.pendingDuplicate && <details key={`${selection.kind}:${selection.id}:${selection.plantId ?? ""}`} className="garden-edit-inspector" open>
       <summary><h2>{title}</h2></summary>
       <div>
         <div className="garden-context-actions"><button type="button" onClick={editor.toggleLock}>{editor.locked(selection) ? "Unlock selected" : "Lock selected"}</button><button type="button" onClick={() => editor.select(null)}>Deselect</button><button type="button" onClick={editor.duplicate}>Duplicate selected</button><button type="button" disabled={editor.locked(selection)} onClick={editor.remove}>Delete selected</button></div>
@@ -106,7 +115,8 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
           }}>Fill with {settings.crop}</button></div>
           <p>{Math.round(selectedSurface.width)} × {Math.round(selectedSurface.depth)} cm usable soil</p>
         </>}
-        {clearances && <div className="garden-clearances"><strong>Clear space · plan directions</strong>{Object.entries(clearances).map(([direction, value]) => <span key={direction}>{direction}: <b>{Math.round(value)} cm</b></span>)}</div>}
+        {selectedSurface && <><label className="garden-edit-snap"><input type="checkbox" checked={editor.reflowOnResize} onChange={(e) => editor.setReflowOnResize(e.target.checked)} />Rearrange plants when resizing</label><button type="button" onClick={() => { try { editor.preview(reflowSurfacePlants(editor.plan, selection), `Rearrange ${selectedSurface.label} · keep every plant`); } catch (error) { editor.setError(error instanceof Error ? error.message : "Unable to rearrange these plants."); } }}>Preview plant arrangement</button></>}
+        {clearances && <details className="garden-more-settings"><summary>Clear space and access</summary><div className="garden-clearances"><strong>Clear space · plan directions</strong>{Object.entries(clearances).map(([direction, value]) => <span key={direction}>{direction}: <b>{Math.round(value)} cm</b></span>)}</div></details>}
         {editor.plantPoint ? <>
           <p>Individual plant · {"spacingCm" in item ? item.spacingCm : 0} cm recommended spacing</p>
           {"bedId" in item && <p>{editor.plan.beds.find((b) => b.id === item.bedId)?.name}</p>}
@@ -132,17 +142,17 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
           {"rotationDeg" in item && <>{field("Rotation (degrees)", "rotationDeg", item.rotationDeg)}<button type="button" onClick={rotate}>Rotate +15°</button></>}
           {"count" in item && <p>{item.count} plants · {item.spacingCm} cm spacing</p>}
         </>}
-        {selectedSurface && <><label>Template name<input value={templateName} onChange={(e) => setTemplateName(e.target.value)} placeholder="My raised bed" /></label><button type="button" disabled={!templateName.trim()} onClick={() => {
+        {selectedSurface && <details className="garden-more-settings"><summary>Size-only bed template</summary><label>Template name<input value={templateName} onChange={(e) => setTemplateName(e.target.value)} placeholder="My raised bed" /></label><button type="button" disabled={!templateName.trim()} onClick={() => {
           const rect = "name" in item ? bedRectangle(item, editor.plan) : "widthCm" in item && "depthCm" in item ? { w: item.widthCm, h: item.depthCm } : null;
           if (!rect) return;
           const entry = { name: templateName.trim(), kind: "kind" in item ? item.kind : undefined, width: rect.w, depth: rect.h, height: "heightCm" in item ? item.heightCm : 34 };
           try { const saved = JSON.parse(localStorage.getItem("garden-bed-templates") ?? "[]"); const next = [...saved.filter((t: { name: string }) => t.name !== entry.name), entry].slice(-30); localStorage.setItem("garden-bed-templates", JSON.stringify(next)); setTemplates(next); setTemplateName(""); } catch { editor.setError("Could not store this template in your browser."); }
-        }}>Save bed template</button></>}
+        }}>Save bed template</button></details>}
         <button type="button" aria-pressed={editor.tool === "move"} onClick={() => editor.setTool("move")}>Move selected</button>
         </fieldset>
       </div>
     </details>}
-    {!disabled && <details className="garden-build-options"><summary>Build options</summary><div>
+    {!disabled && !viewOnly && <details className="garden-build-options"><summary>Build options</summary><div>
       <label>Crop appearance<select value={editor.growthStage} onChange={(e) => editor.setGrowthStage(e.target.value as "seedling" | "mature")}><option value="mature">Mature plants</option><option value="seedling">Small plants</option></select></label>
       <label>Bed templates<select aria-label="Bed templates" defaultValue="" onFocus={() => { try { setTemplates(JSON.parse(localStorage.getItem("garden-bed-templates") ?? "[]")); } catch { editor.setError("Could not read saved templates."); } }} onChange={(e) => { const t = templates[Number(e.target.value)]; if (!t) return; editor.setSettings({ ...settings, width: t.width, depth: t.depth, height: t.height, structureKind: t.kind ?? settings.structureKind }); editor.setTool(t.kind ? "structure" : "bed"); editor.select(null); }}><option value="">Choose a saved template</option>{templates.map((t, i) => <option key={i} value={i}>{t.name}</option>)}</select></label>
       <details><summary>Select several objects</summary>{[...editor.plan.beds.map((b) => ({ kind: "bed" as const, id: String(b.id), label: b.name })), ...editor.plan.objects.map((o) => ({ kind: "object" as const, id: o.id, label: "label" in o ? o.label || o.type : o.type }))].map((s) => <label className="garden-edit-snap" key={`${s.kind}:${s.id}`}><input type="checkbox" checked={editor.groupSelections.some((a) => a.kind === s.kind && a.id === s.id)} onChange={() => editor.select({ kind: s.kind, id: s.id }, true)} />{s.label}</label>)}</details>
@@ -156,9 +166,11 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
     {!disabled && baseOpen && <GardenBaseEditor editor={editor} onClose={() => setBaseOpen(false)} />}
     {!disabled && designOpen && <GardenDesignPanel editor={editor} onClose={() => setDesignOpen(false)} />}
     {!disabled && pickerOpen && <GardenObjectPicker editor={editor} onClose={() => setPickerOpen(false)} />}
+    {!disabled && studioOpen && <GardenWorkflowStudio key={editor.gardenId} editor={editor} onClose={() => setStudioOpen(false)} />}
+    {!disabled && viewOnly && <div className="garden-preview-actions" role="region" aria-label="Garden preview"><strong>{editor.previewDraft?.label ?? `Timeline · ${timelinePhase(editor.timeline)} · ${editor.timeline.date}`}</strong><span>Preview only · saved garden unchanged</span>{editor.previewDraft && <button type="button" onClick={editor.applyPreview}>Apply preview</button>}<button type="button" onClick={editor.cancelPreview}>{editor.previewDraft ? "Cancel preview" : "Back to editing"}</button></div>}
     {!disabled && editor.pendingDuplicate && <div className="garden-selection-tools"><span>Place {editor.pendingDuplicate.sources.length === 1 ? "copy" : "copies"} · click a clear space</span><button type="button" onClick={editor.cancelDuplicate}>Cancel copy</button></div>}
-    {!disabled && ["select", "move", "box-select"].includes(editor.tool) && !editor.pendingDuplicate && <div className="garden-pick-options"><label>Select<select aria-label="Selection target" value={editor.selectionMode} onChange={(e) => editor.setSelectionMode(e.target.value as typeof editor.selectionMode)}><option value="all">Anything</option><option value="beds">Beds and containers</option><option value="objects">Structures and paths</option><option value="plants">Plants</option></select></label><label><input type="checkbox" checked={editor.multiSelect} onChange={(e) => editor.setMultiSelect(e.target.checked)} />Multi-select</label></div>}
-    {!disabled && !editor.pendingDuplicate && (editor.groupSelections.length > 1 || editor.tool === "box-select" || editor.comparisonPlan) && <div className="garden-selection-tools">
+    {!disabled && !viewOnly && ["select", "move", "box-select"].includes(editor.tool) && !editor.pendingDuplicate && <div className="garden-pick-options"><label>Select<select aria-label="Selection target" value={editor.selectionMode} onChange={(e) => editor.setSelectionMode(e.target.value as typeof editor.selectionMode)}><option value="all">Anything</option><option value="beds">Beds and containers</option><option value="objects">Structures and paths</option><option value="plants">Plants</option></select></label><label><input type="checkbox" checked={editor.multiSelect} onChange={(e) => editor.setMultiSelect(e.target.checked)} />Multi-select</label><details className="garden-camera-options"><summary>Camera</summary><div><label><input type="checkbox" checked={editor.cameraLocked} onChange={(e) => editor.setCameraLocked(e.target.checked)} />Lock camera</label><button type="button" disabled={!selection} onClick={editor.focus}>Focus selection</button><button type="button" onClick={editor.fit}>Whole garden</button></div></details></div>}
+    {!disabled && !viewOnly && !editor.pendingDuplicate && (editor.groupSelections.length > 1 || editor.tool === "box-select" || editor.comparisonPlan) && <div className="garden-selection-tools">
       <span>{editor.tool === "box-select" ? "Drag a box around beds or crops" : `${editor.groupSelections.length} selected`}{editor.comparisonPlan ? " · Blue: saved alternative" : ""}</span>
       {!!editor.groupSelections.length && <><button type="button" onClick={editor.duplicate}>Duplicate selection</button><button type="button" onClick={editor.toggleLock}>{editor.groupSelections.every(editor.locked) ? "Unlock selection" : "Lock selection"}</button><button type="button" disabled={selectionLocked} onClick={editor.remove}>Delete selection</button></>}
       <button type="button" onClick={() => { editor.select(null); editor.setTool("select"); editor.setComparisonPlan(null); }}>Clear</button>

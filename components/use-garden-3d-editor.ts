@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { PlannerPlan, PlannerPlantingArea, PlannerRow, PlannerStructureKind } from "@/lib/garden/planner-plan";
 import { reconcileOwnedPlants, areaPlants, areaRectangle, deletePlanSelection, movePlanSelection, rowPlants, selectionItem, validateEditorPlan, type PlanSelection, type PointCm } from "@/lib/garden/plan-editing";
 import { editKeySession, persistGardenPlan, publishGardenPlan } from "@/lib/garden/plan-persistence";
@@ -13,9 +13,10 @@ import { transformContainerPlants } from "@/lib/garden/plan-editing";
 import { selectPlanCrops, validateDesignChange } from "@/lib/garden/garden-design";
 import { assertLocksUnchanged, isSelectionLocked, selectionKey } from "@/lib/garden/object-locks";
 import { duplicatePlacementAt, placedDuplicateSelections, prepareDuplicatePlacement, type DuplicatePlacement } from "@/lib/garden/duplicate-placement";
+import { addConnectedPath, nzToday, placePlantedTemplate, reflowSurfacePlants, timelinePlan, type GrowthTimeline, type PlantedBedTemplate } from "@/lib/garden/garden-workflows";
 
 export type EditorTool = "select" | "box-select" | "move" | "plant" | "row" | "bed" | "path" | "trellis" | "tree" | "structure" | "fill" | "brush" | "resize" | "fence";
-export type PlacementSettings = { crop: string; variety: string; targetSurfaceId?: string; spacingCm?: number; rotationDeg?: number; structureKind: PlannerStructureKind; width: number; depth: number; height: number; pathWidth: number; postSpacing: number; diameter: number; snap: boolean };
+export type PlacementSettings = { crop: string; variety: string; targetSurfaceId?: string; spacingCm?: number; rotationDeg?: number; pathRoute?: "direct" | "right-angle"; continuePath?: boolean; structureKind: PlannerStructureKind; width: number; depth: number; height: number; pathWidth: number; postSpacing: number; diameter: number; snap: boolean };
 
 export function placementPlan(plan: PlannerPlan, tool: EditorTool, point: PointCm, start: PointCm | null, settings: PlacementSettings): PlannerPlan {
   const id = crypto.randomUUID();
@@ -34,7 +35,7 @@ export function placementPlan(plan: PlannerPlan, tool: EditorTool, point: PointC
     if (!start) return plan;
     const line = { id, x1: start.x, y1: start.y, x2: point.x, y2: point.y };
     if (Math.hypot(point.x - start.x, point.y - start.y) < 5) throw new Error("Choose a second point at least 5 cm away.");
-    if (tool === "path") return { ...plan, objects: [...plan.objects, { ...line, type: "path", widthCm: settings.pathWidth, label: "Path" }] };
+    if (tool === "path") return addConnectedPath(plan, start, point, settings.pathWidth, settings.pathRoute ?? "direct", settings.snap);
     return { ...plan, objects: [...plan.objects, { ...line, type: "trellis", heightCm: settings.height, postSpacingCm: settings.postSpacing, label: "Trellis" }] };
   }
   if (tool === "tree") return { ...plan, objects: [...plan.objects, { id, type: "tree", ...point, diameterCm: settings.diameter, label: "Tree" }] };
@@ -52,6 +53,11 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
   const [selectionMode, setSelectionMode] = useState<"all" | "beds" | "objects" | "plants">("all");
   const [multiSelect, setMultiSelect] = useState(false);
   const [pendingDuplicate, setPendingDuplicate] = useState<DuplicatePlacement | null>(null);
+  const [previewDraft, setPreviewDraft] = useState<{ base: PlannerPlan; plan: PlannerPlan; label: string } | null>(null);
+  const [timeline, setTimeline] = useState<GrowthTimeline>({ enabled: false, surfaceId: "", plantedOn: nzToday(), date: nzToday(), matureDays: 60, harvestDays: 90 });
+  const [cameraLocked, setCameraLocked] = useState(false);
+  const [fitRequest, setFitRequest] = useState(0);
+  const [reflowOnResize, setReflowOnResize] = useState(false);
   const [smartSnap, setSmartSnap] = useState(true);
   const [accessVisible, setAccessVisible] = useState(false);
   const [spacingVisible, setSpacingVisible] = useState(false);
@@ -62,7 +68,7 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
   const [settings, setSettings] = useState<PlacementSettings>({ crop: plants[0].name, variety: plants[0].varieties[0], structureKind: "shed", width: 120, depth: 240, height: 180, pathWidth: 60, postSpacing: 150, diameter: 150, snap: true });
   const [status, setStatus] = useState("Use Save to persist your garden");
   const [previewText, setPreviewText] = useState("");
-  const setTool = (next: EditorTool) => { setPendingDuplicate(null); setPreviewText(""); storeTool(next); };
+  const setTool = (next: EditorTool) => { setPendingDuplicate(null); setPreviewDraft(null); setTimeline((t) => ({ ...t, enabled: false })); setPreviewText(""); storeTool(next); };
   const [error, setError] = useState<string | null>(null);
   const [past, setPast] = useState<PlannerPlan[]>([]);
   const [future, setFuture] = useState<PlannerPlan[]>([]);
@@ -73,6 +79,7 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
     if (JSON.stringify(current.current) !== JSON.stringify(plan)) {
       setPast([]); setFuture([]);
       setPendingDuplicate(null);
+      setPreviewDraft(null); setTimeline((t) => ({ ...t, enabled: false }));
     }
     current.current = plan;
   }, [plan]);
@@ -81,6 +88,7 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
       historyGarden.current = gardenId;
       setPast([]); setFuture([]); setSelection(null); setGroupSelections([]);
       setPendingDuplicate(null);
+      setPreviewDraft(null); setTimeline((t) => ({ ...t, enabled: false }));
     }
   }, [gardenId]);
 
@@ -103,7 +111,7 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
         if (area) setSelection({ kind: "area", id: area.id, plantId: selection.plantId });
         else if (row) setSelection({ kind: "row", id: row.id, plantId: selection.plantId });
       }
-      setPendingDuplicate(null); publish(next); setError(null); return true;
+      setPendingDuplicate(null); setPreviewDraft(null); setTimeline((t) => ({ ...t, enabled: false })); publish(next); setError(null); return true;
     } catch (e) { setError(e instanceof Error ? e.message : "Unable to edit the plan."); return false; }
   }, [publish, selection]);
   const action = (fn: (plan: PlannerPlan) => PlannerPlan) => { try { return commit(fn(current.current)); } catch (e) { setError(e instanceof Error ? e.message : "Unable to edit the plan."); return false; } };
@@ -121,6 +129,17 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
     catch (e) { setError(e instanceof Error ? e.message : "Unable to copy this selection."); }
   };
   const cancelDuplicate = () => { setPendingDuplicate(null); setPreviewText(""); setError(null); };
+  const preview = (next: PlannerPlan, label: string) => {
+    try { validateDesignChange(current.current, next); setPreviewDraft({ base: structuredClone(current.current), plan: next, label }); setPendingDuplicate(null); setTimeline((t) => ({ ...t, enabled: false })); setError(null); return true; }
+    catch (e) { setError(e instanceof Error ? e.message : "Unable to preview this layout."); return false; }
+  };
+  const cancelPreview = () => { setPreviewDraft(null); setTimeline((t) => ({ ...t, enabled: false })); setPreviewText(""); setError(null); };
+  const applyPreview = () => {
+    if (!previewDraft) return false;
+    if (JSON.stringify(current.current) !== JSON.stringify(previewDraft.base)) { cancelPreview(); setError("The garden changed. Generate a fresh preview."); return false; }
+    return commit(previewDraft.plan);
+  };
+  const useTemplate = (template: PlantedBedTemplate) => { try { const draft = placePlantedTemplate(current.current, template); setTool("select"); setPendingDuplicate(draft); setError(null); setPreviewText(`Place ${template.name} · click clear ground`); return true; } catch (e) { setError(e instanceof Error ? e.message : "Unable to open this template."); return false; } };
   const placeDuplicate = (point: PointCm) => {
     if (!pendingDuplicate) return false;
     if (JSON.stringify(current.current) !== JSON.stringify(pendingDuplicate.base)) { cancelDuplicate(); setError("The garden changed. Duplicate your selection again."); return false; }
@@ -164,8 +183,9 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
       if (key === "rows") next.rows = next.rows.map((row) => row.id === selection.id && !row.placements ? { ...row, count: Math.max(1, Math.floor(Math.hypot(row.x2 - row.x1, row.y2 - row.y1) / row.spacingCm) + 1) } : row);
       const previous = p.objects.find((item) => item.id === selection.id);
       const replacement = next.objects.find((item) => item.id === selection.id);
-      return selection.kind === "object" && previous?.type === "structure" && replacement?.type === "structure"
+      const transformed = selection.kind === "object" && previous?.type === "structure" && replacement?.type === "structure"
         ? transformContainerPlants(p, next, previous, replacement) : reconcileOwnedPlants(p, next);
+      return reflowOnResize && ["w", "h", "widthCm", "depthCm"].includes(field) && ["bed", "object"].includes(selection.kind) ? reflowSurfacePlants(transformed, selection) : transformed;
     });
   };
   const move = (base: PlannerPlan, selected: PlanSelection, delta: PointCm) => { try { const next = movePlanSelection(base, selected, delta); validateEditorPlan(next); return next; } catch { return null; } };
@@ -186,6 +206,7 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
     setGroupSelections(selected); setSelection(selected.at(-1) ?? null);
   };
   const focus = () => setFocusRequest((n) => n + 1);
+  const fit = () => setFitRequest((n) => n + 1);
   const plantBed = () => {
     if (!selection) return;
     setSettings((s) => ({ ...s, targetSurfaceId: `${selection.kind}:${selection.id}` }));
@@ -198,7 +219,8 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
   const restoreLayout = (snapshot: PlannerPlan) => commit(structuredClone(snapshot), true);
   const item = selection ? selectionItem(plan, selection) : undefined;
   const plantPoint = selection?.plantId && item && "crop" in item ? (selection.kind === "area" ? areaPlants(plan, item as PlannerPlantingArea) : rowPlants(item as PlannerRow)).find((p) => p.id === selection.plantId) : undefined;
-  return { plan, gardenId, tool, setTool, selection, setSelection, select, selectGroup, selectCrops, restoreLayout, groupSelections, setGroupSelections, selectionMode, setSelectionMode, multiSelect, setMultiSelect, pendingDuplicate, cancelDuplicate, placeDuplicate, locked, toggleLock, smartSnap, setSmartSnap, accessVisible, setAccessVisible, spacingVisible, setSpacingVisible, sunPreview, setSunPreview, comparisonPlan, setComparisonPlan, focusRequest, focus, plantBed, moveGroup, resizeBase, growthStage, setGrowthStage, settings, setSettings, status, previewText, setPreviewText, error, setError, commit, action, undo, redo, remove, duplicate, update, move, save, setEditKey, item, plantPoint, canUndo: past.length > 0, canRedo: future.length > 0 };
+  const displayPlan = useMemo(() => previewDraft?.plan ?? timelinePlan(plan, timeline), [plan, previewDraft, timeline]);
+  return { plan, displayPlan, previewDraft, preview, applyPreview, cancelPreview, timeline, setTimeline, cameraLocked, setCameraLocked, fitRequest, fit, reflowOnResize, setReflowOnResize, useTemplate, gardenId, tool, setTool, selection, setSelection, select, selectGroup, selectCrops, restoreLayout, groupSelections, setGroupSelections, selectionMode, setSelectionMode, multiSelect, setMultiSelect, pendingDuplicate, cancelDuplicate, placeDuplicate, locked, toggleLock, smartSnap, setSmartSnap, accessVisible, setAccessVisible, spacingVisible, setSpacingVisible, sunPreview, setSunPreview, comparisonPlan, setComparisonPlan, focusRequest, focus, plantBed, moveGroup, resizeBase, growthStage, setGrowthStage, settings, setSettings, status, previewText, setPreviewText, error, setError, commit, action, undo, redo, remove, duplicate, update, move, save, setEditKey, item, plantPoint, canUndo: past.length > 0, canRedo: future.length > 0 };
 }
 
 export type Garden3DEditor = ReturnType<typeof useGarden3DEditor>;

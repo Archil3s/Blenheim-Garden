@@ -264,3 +264,17 @@ The upright hoop/cover fixes, crop-specific models and variety artwork are
 described in [docs/plant-structure-redesign.md](docs/plant-structure-redesign.md).
 
 Vegetable 2D artwork is generated from the production botanical geometry. See [docs/vegetable-theme.md](docs/vegetable-theme.md) for mappings and regeneration.
+
+## Garden studio workflows
+
+The shared 3D/pixel editor now holds view-only draft/timeline state independently
+of the canonical plan. Targeted planting and layout proposals use existing
+placement/collision/lock validators; Apply commits one history entry. Bed resize
+rearrangement retains every plant ID/count or rejects insufficient space.
+Legacy rows inferred to belong to a bed acquire explicit ownership when moved,
+rotated or copied, and selected children are not transformed twice. Connected
+paths snap to existing endpoints/centrelines and support chained elbow routes.
+Planted templates snapshot soil/crops/spacing/profiles in per-garden browser
+storage; placing uses the duplicate ghost flow with fresh IDs. Camera focus,
+fit and lock remain view state. No migrations/dependencies/artwork changes.
+See [Garden studio](docs/garden-studio.md) for usage and planning limitations.

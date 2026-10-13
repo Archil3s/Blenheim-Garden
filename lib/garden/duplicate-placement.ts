@@ -5,7 +5,10 @@ import { validateDesignChange } from "./garden-design";
 import { plantingPointBlocked, surfaceAt } from "./planting-surfaces";
 import { rowsForOwner } from "./object-locks";
 
-export type DuplicatePlacement = { base: PlannerPlan; plan: PlannerPlan; selections: PlanSelection[]; sources: PlanSelection[]; anchor: PointCm };
+export type DuplicatePlacement = { base: PlannerPlan; plan: PlannerPlan; selections: PlanSelection[]; sources: PlanSelection[]; anchor: PointCm; fromTemplate?: boolean };
+export function duplicateOnlyPlan(pending: DuplicatePlacement): PlannerPlan {
+  return { ...pending.plan, beds: pending.plan.beds.filter((b) => !pending.base.beds.some((old) => old.id === b.id)), objects: pending.plan.objects.filter((o) => !pending.base.objects.some((old) => old.id === o.id)), plantingAreas: pending.plan.plantingAreas.filter((a) => !pending.base.plantingAreas.some((old) => old.id === a.id)), rows: pending.plan.rows.filter((r) => !pending.base.rows.some((old) => old.id === r.id)) };
+}
 export function selectionCentre(plan: PlannerPlan, s: PlanSelection): PointCm {
   const item = selectionItem(plan, s);
   if (!item) throw new Error("This object is no longer in the garden.");
@@ -23,7 +26,7 @@ export function prepareDuplicatePlacement(base: PlannerPlan, selected: PlanSelec
   const owners = new Set(selected.filter((s) => !s.plantId).map((s) => `${s.kind}:${s.id}`));
   const sources = selected.filter((s, i) => selected.findIndex((a) => JSON.stringify(a) === JSON.stringify(s)) === i).filter((s) => {
     const item = selectionItem(base, s);
-    return item && !(s.plantId && owners.has(`${s.kind}:${s.id}`)) && !("bedId" in item && owners.has(`bed:${item.bedId}`)) && !("surfaceId" in item && item.surfaceId && owners.has(item.surfaceId)) && !(s.kind === "row" && [...owners].some((owner) => owner.startsWith("object:") && rowsForOwner(base, owner).some((r) => r.id === s.id)));
+    return item && !(s.plantId && owners.has(`${s.kind}:${s.id}`)) && !("bedId" in item && owners.has(`bed:${item.bedId}`)) && !("surfaceId" in item && item.surfaceId && owners.has(item.surfaceId)) && !(s.kind === "row" && [...owners].some((owner) => /^(bed|object):/.test(owner) && rowsForOwner(base, owner).some((r) => r.id === s.id)));
   });
   if (!sources.length) throw new Error("Select something to duplicate.");
   let plan = structuredClone(base);

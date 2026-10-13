@@ -123,6 +123,7 @@ test("garden size, contextual planting, templates, save and 2D refresh work", as
   await page.getByLabel("Planting bed").selectOption("object:raised");
   await page.getByRole("button", { name: "Apply seasonal layout", exact: true }).click();
   await expect.poll(async () => (await readPlan(page)).rows.flatMap(rowPlants).length).toBeGreaterThan(0);
+  await page.getByText("Size-only bed template", { exact: true }).click();
   await page.locator('.garden-edit-inspector').getByLabel("Template name").fill("Timber 240");
   await page.getByRole("button", { name: "Save bed template" }).click();
   await page.getByRole("button", { name: "Edit key", exact: true }).click();
@@ -164,7 +165,7 @@ test("drag planting, resize handles, fence drawing and multi-select work", async
   const drag = async (a: { x: number; y: number }, b: { x: number; y: number }) => {
     await page.mouse.move(a.x, a.y); await page.mouse.down(); await page.mouse.move(b.x, b.y, { steps: 15 }); await page.mouse.up();
   };
-  const collapse = async () => { for (const cls of [".garden-edit-palette", ".garden-edit-inspector"]) { const panel = page.locator(`${cls}[open]`); if (await panel.count()) await panel.locator("summary").click(); } };
+  const collapse = async () => { for (const cls of [".garden-edit-palette", ".garden-edit-inspector"]) { const panel = page.locator(`${cls}[open]`); if (await panel.count()) await panel.locator(":scope > summary").click(); } };
   const object = fixture.objects[0]; if (object.type !== "structure") throw new Error("fixture");
   const soil = structureSurface(object);
   await page.getByRole("button", { name: "Fill patch", exact: true }).click();

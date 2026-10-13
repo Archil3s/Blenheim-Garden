@@ -92,3 +92,10 @@ Orientation/walkway settings extend the existing editor_settings_json value;
 there is no new migration. Snapshot validation and storage errors remain visible.
 All production verification uses read-only API requests. Browser Save tests use
 mock APIs and storage tests use isolated SQLite/D1 databases.
+
+## Garden studio
+
+Targeted planting, counted rearrangement, connected paths, camera controls,
+view-only growth timelines, planted-bed templates and layout proposals are
+covered in [Garden studio](garden-studio.md). Preview/Cancel never changes the
+saved garden. Apply is undoable and regular protected Save persists the plan.

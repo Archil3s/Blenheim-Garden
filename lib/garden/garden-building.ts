@@ -1,5 +1,5 @@
 import type { PlannerPlan, PlannerPlantingArea, PlannerRow } from "./planner-plan";
-import { reconcileOwnedPlants, areaPlants, bedRectangle, movePlanSelection, rowPlants, selectionItem, transformContainerPlants, type PlanSelection, type PointCm } from "./plan-editing";
+import { reconcileOwnedPlants, rowBelongsTo, areaPlants, bedRectangle, movePlanSelection, rowPlants, selectionItem, transformContainerPlants, type PlanSelection, type PointCm } from "./plan-editing";
 import { gardenDimensions } from "./garden-dimensions";
 import { openGardenCovers, plantingPointBlocked, plantingSurfaces, surfaceAt, surfaceContains, surfaceLocal, surfaceWorld } from "./planting-surfaces";
 import { plants } from "./plant-catalog";
@@ -110,6 +110,7 @@ export function movePlanGroup(plan: PlannerPlan, selections: PlanSelection[], de
   return selections.filter((s) => {
     const item = selectionItem(plan, s);
     if (item && "bedId" in item && owners.has(`bed:${item.bedId}`)) return false;
+    if (item && "count" in item && "x1" in item && [...owners].some((owner) => rowBelongsTo(plan, item, owner))) return false;
     return !(item && "surfaceId" in item && item.surfaceId && owners.has(item.surfaceId));
   }).reduce((next, s) => movePlanSelection(next, s, delta), plan);
 }
