@@ -32,6 +32,13 @@ test("copies wait for placement, carry contents once, and protect originals", ()
   const inBed = duplicatePlacementAt(plant, { x: 160, y: 340 });
   expect(inBed.plantingAreas[0].count).toBe(3); expect(inBed.rows).toHaveLength(1);
   expect(() => duplicatePlacementAt(plant, plant.anchor)).toThrow(/space/);
+  const individualCopies = prepareDuplicatePlacement(fixture, [{ kind: "area", id: "tomatoes", plantId: "a" }, { kind: "area", id: "tomatoes", plantId: "b" }]);
+  const together = duplicatePlacementAt(individualCopies, { x: individualCopies.anchor.x + 10, y: individualCopies.anchor.y });
+  expect(together.plantingAreas[0].count).toBe(4); expect(new Set(together.plantingAreas[0].placements!.map((p) => p.id)).size).toBe(4);
+  const pair: PlannerPlan = { ...fixture, rows: [{ id: "pair", crop: "Carrot", cropIcon: "C", variety: "Nantes", spacingCm: 10, count: 2, x1: 600, y1: 500, x2: 650, y2: 500, placements: [{ id: "c1", x: 0, y: 0 }, { id: "c2", x: 100, y: 0 }] }] };
+  const rowCopies = prepareDuplicatePlacement(pair, [{ kind: "row", id: "pair", plantId: "c1" }, { kind: "row", id: "pair", plantId: "c2" }]);
+  const rowTogether = duplicatePlacementAt(rowCopies, { x: rowCopies.anchor.x, y: rowCopies.anchor.y + 10 });
+  expect(rowTogether.rows).toHaveLength(1); expect(rowTogether.rows[0].count).toBe(4); expect(rowTogether.rows[0].placements).toHaveLength(4);
 });
 
 test("locks prevent edits and deletion through owners but copies start unlocked", () => {

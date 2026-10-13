@@ -68,15 +68,17 @@ export function duplicatePlacementAt(pending: DuplicatePlacement, point: PointCm
     const row = next.rows.find((r) => r.id === copy.id); if (!row) continue;
     const points = rowPlants(row), original = selectionItem(pending.base, source);
     if (source.plantId && original && "bedId" in original) {
-      const rect = areaRectangle(next, original);
+      const current = next.plantingAreas.find((a) => a.id === source.id) ?? original;
+      const rect = areaRectangle(next, current);
       if (points.every((p) => p.x >= rect.x && p.y >= rect.y && p.x <= rect.x + rect.w && p.y <= rect.y + rect.h)) {
-        const all = [...areaPlants(next, original), ...points];
+        const all = [...areaPlants(next, current), ...points];
         next = { ...next, rows: next.rows.filter((r) => r.id !== row.id), plantingAreas: next.plantingAreas.map((a) => a.id === source.id ? { ...a, count: all.length, placements: all.map((p) => ({ id: p.id, x: (p.x - rect.x) * 100 / rect.w, y: (p.y - rect.y) * 100 / rect.h })) } : a) };
         continue;
       }
     }
     if (source.plantId && source.kind === "row" && original && "x1" in original && "count" in original && row.surfaceId === original.surfaceId) {
-      const all = [...rowPlants(original), ...points], dx = original.x2 - original.x1, dy = original.y2 - original.y1, length = Math.hypot(dx, dy) || 1;
+      const current = next.rows.find((r) => r.id === source.id) ?? original;
+      const all = [...rowPlants(current), ...points], dx = original.x2 - original.x1, dy = original.y2 - original.y1, length = Math.hypot(dx, dy) || 1;
       const replacement: PlannerRow = { ...original, count: all.length, placements: all.map((p) => ({ id: p.id, x: dx === 0 && dy === 0 ? p.x - original.x1 : ((p.x - original.x1) * dx + (p.y - original.y1) * dy) * 100 / (length * length), y: dx === 0 && dy === 0 ? p.y - original.y1 : ((p.y - original.y1) * dx - (p.x - original.x1) * dy) / length })) };
       next = { ...next, rows: next.rows.filter((r) => r.id !== row.id).map((r) => r.id === original.id ? replacement : r) }; continue;
     }

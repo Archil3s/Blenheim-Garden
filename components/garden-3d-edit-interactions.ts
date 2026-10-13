@@ -365,6 +365,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
   };
   runtime.refreshEditing = () => {
     if (drag) return;
+    clearOverlay(hoverOutline); hoveredKey = "";
     clearOverlay(gizmos);
     canvas.dataset.resizeHandles = "0"; canvas.dataset.gizmoPoints = "[]";
     const e = getEditor(), item = e.item; resizeHandle.visible = false;
