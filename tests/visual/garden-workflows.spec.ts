@@ -153,7 +153,8 @@ test("pixel mode shares timeline views and preview-only bed planting", async ({ 
 test("legacy rows rotate with their soil before any move and undo restores ownership", async ({ page, context }, info) => {
   const legacy: PlannerPlan = { ...fixture, rows: [{ ...fixture.rows[0], id: "implicit", surfaceId: undefined, x1: 170, y1: 400, x2: 170, y2: 400 }] };
   await context.route("**/api/garden?*", (route) => route.fulfill({ json: { ok: true, plan: legacy } }));
-  await page.reload(); await expect.poll(async () => (await readPlan(page)).rows[0].id).toBe("implicit");
+  await page.evaluate((plan) => localStorage.setItem("blenheim-garden-live-plan", JSON.stringify(plan)), legacy);
+  await page.reload(); await expect(page.locator('[aria-label="Interactive 3D garden workspace"] canvas')).toHaveAttribute("data-plant-count", "3");
   await chooseBed(page); await page.getByRole("button", { name: "Rotate", exact: true }).click();
   await expect.poll(async () => rowPlants((await readPlan(page)).rows[0])[0].x).toBeCloseTo(210);
   const next = await readPlan(page); expect(rowPlants(next.rows[0])[0].y).toBeCloseTo(340); expect(next.rows[0].surfaceId).toBe("bed:1"); expect(next.rows[0].count).toBe(1); expect(rowPlants(next.rows[0])[0].id).toBe("l1"); expect(next.plantingAreas[0].placements!.map((p) => p.id)).toEqual(["a", "b"]);
