@@ -111,9 +111,10 @@ test("planted templates retain content after the source changes and place with o
   await page.getByRole("button", { name: "Undo", exact: true }).click(); await expect.poll(async () => (await readPlan(page)).beds.length).toBe(1);
 });
 test("layout assistant compares proposals, cancels safely and applies one reversible change", async ({ page }, info) => {
+  await chooseBed(page);
   const d = await studio(page, "Layout assistant"); await d.getByLabel("Planting month", { exact: true }).selectOption("10"); await d.getByRole("button", { name: "Generate layout proposals", exact: true }).click();
   await expect(d.locator(".garden-layout-proposal")).toHaveCount(2); expect((await d.locator(".garden-assistant-crops").boundingBox())!.height).toBeGreaterThanOrEqual(150); await shot(page, info, "layout-proposals");
-  await d.getByRole("button", { name: "Preview Balanced beds", exact: true }).click(); expect(await readPlan(page)).toEqual(fixture); await shot(page, info, "layout-preview");
+  await d.getByRole("button", { name: "Preview Balanced beds", exact: true }).click(); expect(await readPlan(page)).toEqual(fixture); await expect(page.locator('[aria-label="Interactive 3D garden workspace"] canvas')).toHaveAttribute("data-resize-handles", "0"); await shot(page, info, "layout-preview");
   await page.getByRole("button", { name: "Cancel preview", exact: true }).click(); expect(await readPlan(page)).toEqual(fixture);
   const again = await studio(page, "Layout assistant"); await again.getByLabel("Planting month", { exact: true }).selectOption("10"); await again.getByRole("button", { name: "Generate layout proposals", exact: true }).click(); await again.getByRole("button", { name: "Preview Balanced beds", exact: true }).click(); await page.getByRole("button", { name: "Apply preview", exact: true }).click();
   const next = await readPlan(page); expect(next.beds).toEqual(fixture.beds); expect(next.objects).toEqual(fixture.objects); expect(next.plantingAreas.length + next.rows.length).toBeGreaterThan(2);

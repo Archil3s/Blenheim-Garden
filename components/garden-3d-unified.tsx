@@ -450,7 +450,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   }, [gardenStyle]);
 
   useEffect(() => { runtimeRef.current?.cancelEditing?.(); runtimeRef.current?.refreshEditing?.(); }, [editor.tool, showDemo, effectivePlan]);
-  useEffect(() => { runtimeRef.current?.refreshEditing?.(); }, [editor.selection, editor.groupSelections, editor.pendingDuplicate, editor.selectionMode]);
+  useEffect(() => { runtimeRef.current?.refreshEditing?.(); }, [editor.selection, editor.groupSelections, editor.pendingDuplicate, editor.selectionMode, editor.previewDraft, editor.timeline.enabled]);
   useEffect(() => { const runtime = runtimeRef.current; if (runtime) { runtime.controls.enabled = !editor.cameraLocked && ["select", "move", "box-select"].includes(editor.tool) && !editor.pendingDuplicate; runtime.needsRender = true; } }, [editor.cameraLocked, editor.tool, editor.pendingDuplicate, gardenStyle]);
   useEffect(() => { const runtime = runtimeRef.current; if (runtime && editor.fitRequest) fitGardenCamera(runtime); }, [editor.fitRequest]);
   useEffect(() => { const runtime = runtimeRef.current; if (runtime) updateGardenDesignOverlay(runtime, editor); }, [editor, gardenStyle]);
