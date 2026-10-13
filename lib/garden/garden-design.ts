@@ -1,5 +1,5 @@
 import type { PlannerPlan } from "./planner-plan";
-import { areaPlants, bedRectangle, duplicatePlanSelection, reconcileOwnedPlants, rowPlants, selectionItem, validateEditorPlan, type PlanSelection, type PointCm } from "./plan-editing";
+import { areaPlants, bedRectangle, duplicatePlanSelection, reconcileOwnedPlants, rowBelongsTo, rowPlants, selectionItem, validateEditorPlan, type PlanSelection, type PointCm } from "./plan-editing";
 import { gardenDimensions } from "./garden-dimensions";
 import { openGardenCovers, surfaceLocal, surfaceWorld } from "./planting-surfaces";
 import { movePlanGroup, resizePlanSelection } from "./garden-building";
@@ -150,9 +150,9 @@ export function rotateDesignSelection(plan: PlannerPlan, selection: PlanSelectio
       return { ...area, x: 0, y: 0, w: 100, h: 100, placements: points.map((p) => ({ id: p.id, x: (p.x - x) / width * 100, y: (p.y - y) / depth * 100 })), count: points.length };
     });
     const rows = plan.rows.map((row) => {
-      if (row.surfaceId !== `bed:${item.id}`) return row;
+      if (!rowBelongsTo(plan, row, `bed:${item.id}`)) return row;
       const points = rowPlants(row).map((p) => ({ id: p.id, ...rotate(p) }));
-      return { ...row, x1: x, y1: y, x2: x, y2: y, placements: points.map((p) => ({ id: p.id, x: p.x - x, y: p.y - y })), count: points.length };
+      return { ...row, surfaceId: `bed:${item.id}`, x1: x, y1: y, x2: x, y2: y, placements: points.map((p) => ({ id: p.id, x: p.x - x, y: p.y - y })), count: points.length };
     });
     return { ...plan, plantingAreas: areas, rows, beds: plan.beds.map((bed) => bed.id === item.id ? { ...bed, x: x * 100 / dims.width, y: y * 100 / dims.height, w: width * 100 / dims.width, h: depth * 100 / dims.height } : bed) };
   }

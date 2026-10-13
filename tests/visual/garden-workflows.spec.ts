@@ -20,6 +20,8 @@ test("connected paths snap to edges and right angles avoid beds", () => {
 });
 test("bed plants keep IDs through movement, rotation and counted rearrangement", () => {
   const legacy = { ...fixture, rows: [{ ...fixture.rows[0], id: "implicit", surfaceId: undefined, x1: 170, y1: 400, x2: 170, y2: 400 }] };
+  const directTurn = rotateDesignSelection(legacy, { kind: "bed", id: "1" }, 90);
+  expect(rowPlants(directTurn.rows[0])[0].x).toBeCloseTo(210); expect(rowPlants(directTurn.rows[0])[0].y).toBeCloseTo(340); expect(directTurn.rows[0].surfaceId).toBe("bed:1");
   const moved = movePlanGroup(legacy, [{ kind: "bed", id: "1" }, { kind: "row", id: "implicit" }], { x: 20, y: 0 });
   expect(rowPlants(moved.rows[0])[0].x).toBe(190); expect(moved.rows[0].surfaceId).toBe("bed:1");
   const turned = rotateDesignSelection(moved, { kind: "bed", id: "1" }, 90);
@@ -146,4 +148,14 @@ test("pixel mode shares timeline views and preview-only bed planting", async ({ 
   const d = await studio(page, "Timeline"); await d.getByLabel("Timeline bed", { exact: true }).selectOption("bed:1"); await d.getByRole("button", { name: "After harvest", exact: true }).click(); await d.getByRole("button", { name: "View timeline in garden", exact: true }).click();
   await expect(c).toHaveAttribute("data-pixel-crops", "Lettuce"); expect(await readPlan(page)).toEqual(fixture); await shot(page, info, "pixel-harvest-view"); await page.getByRole("button", { name: "Back to editing", exact: true }).click(); await expect(c).toHaveAttribute("data-pixel-crops", "Lettuce|Tomato");
   await chooseBed(page); await page.getByRole("button", { name: "Plant here", exact: true }).click(); await page.getByLabel("Bed crop", { exact: true }).selectOption("Carrot"); await page.getByRole("button", { name: /Preview fill bed/ }).click(); await expect(c).toHaveAttribute("data-pixel-crops", "Carrot|Lettuce|Tomato"); expect(await readPlan(page)).toEqual(fixture); await shot(page, info, "pixel-bed-fill-preview"); await page.getByRole("button", { name: "Cancel preview", exact: true }).click(); await expect(c).toHaveAttribute("data-pixel-crops", "Lettuce|Tomato"); expect(await readPlan(page)).toEqual(fixture);
+});
+
+test("legacy rows rotate with their soil before any move and undo restores ownership", async ({ page, context }, info) => {
+  const legacy: PlannerPlan = { ...fixture, rows: [{ ...fixture.rows[0], id: "implicit", surfaceId: undefined, x1: 170, y1: 400, x2: 170, y2: 400 }] };
+  await context.route("**/api/garden?*", (route) => route.fulfill({ json: { ok: true, plan: legacy } }));
+  await page.reload(); await expect.poll(async () => (await readPlan(page)).rows[0].id).toBe("implicit");
+  await chooseBed(page); await page.getByRole("button", { name: "Rotate", exact: true }).click();
+  await expect.poll(async () => rowPlants((await readPlan(page)).rows[0])[0].x).toBeCloseTo(210);
+  const next = await readPlan(page); expect(rowPlants(next.rows[0])[0].y).toBeCloseTo(340); expect(next.rows[0].surfaceId).toBe("bed:1"); expect(next.rows[0].count).toBe(1); expect(rowPlants(next.rows[0])[0].id).toBe("l1"); expect(next.plantingAreas[0].placements!.map((p) => p.id)).toEqual(["a", "b"]);
+  await shot(page, info, "legacy-row-rotation"); await page.getByRole("button", { name: "Undo", exact: true }).click(); expect(await readPlan(page)).toEqual(legacy);
 });
