@@ -85,7 +85,7 @@
   .gv-3d-workspace.gv-3d-editor .garden-edit-status { display: flex; align-items: center; max-width: 188px; gap: 3px; padding: 5px; }
   .garden-edit-status > span { font-size: 9px; max-width: 112px; margin: 0; }
   .garden-edit-status > button { font-size: 10px; padding-inline: 5px; }
-  .garden-edit-status form { position: absolute; bottom: 100%; left: 0; width: 280px; padding: 10px; background: #214735; border-radius: 10px; }
+  .garden-edit-status form { position: absolute; bottom: 100%; left: 0; width: 280px; padding: 10px; color: #edf7ef; background: #214735; border-radius: 10px; }
   .garden-add-results { grid-template-columns: 1fr; }
   .garden-add-thumbnail { width: 64px; }
   .gv-3d-workspace.gv-3d-editor .garden-build-options { left: 6px; bottom: 65px; max-width: calc(100% - 12px); }
