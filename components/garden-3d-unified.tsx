@@ -24,6 +24,7 @@ import { updateGardenDesignOverlay } from "./garden-design-overlay";
 import { isTomatoCrop, loadGardenTomatoModel, tomatoModelVersion } from "./garden-tomato-model";
 import { loadGardenVegetableModel, vegetableModelVersion } from "./garden-vegetable-model";
 import { vegetableModelFor, vegetableModels } from "@/lib/garden/vegetable-model-catalog";
+import { GardenSceneGuide } from "./garden-scene-guide";
 import { GardenPixelCanvas } from "./garden-pixel-canvas";
 import { timelineGroups, timelineScale } from "@/lib/garden/garden-workflows";
 import type { Garden3DEditor } from "./use-garden-3d-editor";
@@ -195,6 +196,7 @@ function fitGardenCamera(runtime: Runtime) {
 }
 
 export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) {
+  const workspaceRef = useRef<HTMLDivElement>(null);
   const mountRef = useRef<HTMLDivElement>(null);
   const runtimeRef = useRef<Runtime | null>(null);
   const selectionRef = useRef<THREE.BoxHelper | null>(null);
@@ -449,9 +451,9 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     };
   }, [gardenStyle]);
 
-  useEffect(() => { runtimeRef.current?.cancelEditing?.(); runtimeRef.current?.refreshEditing?.(); }, [editor.tool, showDemo, effectivePlan]);
-  useEffect(() => { runtimeRef.current?.refreshEditing?.(); }, [editor.selection, editor.groupSelections, editor.pendingDuplicate, editor.selectionMode, editor.previewDraft, editor.timeline.enabled]);
-  useEffect(() => { const runtime = runtimeRef.current; if (runtime) { runtime.controls.enabled = !editor.cameraLocked && ["select", "move", "box-select"].includes(editor.tool) && !editor.pendingDuplicate; runtime.needsRender = true; } }, [editor.cameraLocked, editor.tool, editor.pendingDuplicate, gardenStyle]);
+  useEffect(() => { runtimeRef.current?.cancelEditing?.(); runtimeRef.current?.refreshEditing?.(); }, [editor.tool, editor.interactionMode, showDemo, effectivePlan]);
+  useEffect(() => { runtimeRef.current?.refreshEditing?.(); }, [editor.selection, editor.groupSelections, editor.pendingDuplicate, editor.selectionMode, editor.previewDraft, editor.timeline.enabled, editor.interactionMode]);
+  useEffect(() => { const runtime = runtimeRef.current; if (runtime) { runtime.controls.enabled = !editor.cameraLocked && (editor.interactionMode === "navigate" || ["select", "move", "box-select"].includes(editor.tool)) && !editor.pendingDuplicate; runtime.needsRender = true; } }, [editor.cameraLocked, editor.tool, editor.pendingDuplicate, editor.interactionMode, gardenStyle]);
   useEffect(() => { const runtime = runtimeRef.current; if (runtime && editor.fitRequest) fitGardenCamera(runtime); }, [editor.fitRequest]);
   useEffect(() => { const runtime = runtimeRef.current; if (runtime) updateGardenDesignOverlay(runtime, editor); }, [editor, gardenStyle]);
 
@@ -524,8 +526,9 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   };
 
   return (
-    <div className={`gv-3d-workspace gv-3d-editor ${gardenStyle === "pixel" ? "garden-pixel-workspace" : "gv-3d-realistic"}`} data-demo={showDemo} data-render-style={gardenStyle} data-editor-tool={editor.tool} data-multi-selection={editor.groupSelections.length > 1} aria-label={gardenStyle === "pixel" ? "Visual pixel garden canvas" : "Visual 3D garden canvas"} data-testid="inline-3d-workspace" style={{ position: "relative", width: "100%", height: "100%", minHeight: suppliedPlan ? 520 : "100dvh", overflow: "hidden" }}>
-      {gardenStyle === "pixel" ? <GardenPixelCanvas plan={editor.displayPlan} editor={editor} disabled={(!suppliedPlan && !loadedPlan) || !!editor.previewDraft || editor.timeline.enabled} /> : <div className="gv-3d-workspace-canvas" ref={mountRef} aria-label="Interactive 3D garden workspace" style={{ position: "absolute", inset: 0 }} />}
+    <div ref={workspaceRef} data-interaction-mode={editor.interactionMode} className={`gv-3d-workspace gv-3d-editor ${gardenStyle === "pixel" ? "garden-pixel-workspace" : "gv-3d-realistic"}`} data-demo={showDemo} data-render-style={gardenStyle} data-editor-tool={editor.tool} data-multi-selection={editor.groupSelections.length > 1} aria-label={gardenStyle === "pixel" ? "Visual pixel garden canvas" : "Visual 3D garden canvas"} data-testid="inline-3d-workspace" style={{ position: "relative", width: "100%", height: "100%", minHeight: suppliedPlan ? 520 : "100dvh", overflow: "hidden" }}>
+      {gardenStyle === "pixel" ? <GardenPixelCanvas plan={editor.displayPlan} editor={editor} disabled={(!suppliedPlan && !loadedPlan) || !!editor.previewDraft || editor.timeline.enabled} /> : <div className="gv-3d-workspace-canvas" ref={mountRef} aria-label="Interactive 3D garden workspace" />}
+      <GardenSceneGuide workspace={workspaceRef} editor={editor} onReset={() => { if (gardenStyle === "3d") setPerspective(); editor.fit(); }} />
       <Garden3DEditorControls editor={editor} disabled={gardenStyle === "3d" && (showDemo || !!renderError) || (!suppliedPlan && !loadedPlan)} />
       {gardenStyle === "3d" && renderError && <div className="gv-3d-workspace-error">{renderError}</div>}
       {gardenStyle === "3d" && tomatoError && <div role="status" style={{ position: "absolute", top: 118, left: 12, right: 12, padding: 8, background: "#fff5dd", color: "#674b20", fontSize: 12 }}>{tomatoError}</div>}
@@ -552,7 +555,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
         {inspector.subtitle && <small>{inspector.subtitle}</small>}
         {inspector.lines.slice(0, 3).map((line) => <div key={`${line.label}-${line.value}`}><b>{line.label}</b><em>{line.value}</em></div>)}
       </div>
-      {gardenStyle === "3d" && <div className="gv-3d-help">Drag empty ground to orbit · Move to drag objects · tap to place/select</div>}
+      {gardenStyle === "3d" && <div className="gv-3d-help">Navigate to look around · Select to edit · Save to keep changes</div>}
     </div>
   );
 }

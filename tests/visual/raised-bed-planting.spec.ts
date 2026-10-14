@@ -1,3 +1,4 @@
+import { editorAction, openInspectorMore } from "./helpers/editor-controls";
 import { expect, test, type Page } from "@playwright/test";
 import * as THREE from "three";
 import type { PlannerPlan, PlannerStructure } from "../../lib/garden/planner-plan";
@@ -95,7 +96,7 @@ test("raised-bed planting, seasonal preview, transforms, undo and protected Save
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   await expect(canvas).toBeVisible();
   await page.getByRole("button", { name: "Top", exact: true }).click();
-  await page.getByRole("button", { name: "Plant a bed", exact: true }).click();
+  await editorAction(page, "Plant a bed");
   const dialog = page.getByRole("dialog", { name: "Plant a bed", exact: true });
   await dialog.getByRole("combobox", { name: "Planting bed", exact: true }).selectOption("object:raised");
   await expect(dialog.getByRole("combobox", { name: "Planting month", exact: true })).toHaveValue("9");
@@ -117,7 +118,7 @@ test("raised-bed planting, seasonal preview, transforms, undo and protected Save
   const manual = await readPlan(page);
   expect(surfaceAt(manual, rowPlants(manual.rows[0])[0])?.id).toBe(container.id);
   expect(manual.plantingAreas).toEqual(fixture.plantingAreas);
-  await page.getByRole("button", { name: "Plant a bed", exact: true }).click();
+  await editorAction(page, "Plant a bed");
   await expect(dialog.getByRole("combobox", { name: "Planting bed", exact: true })).toHaveValue("object:raised");
   await expect(dialog).toContainText("1 existing plant kept");
   const applyBounds = (await dialog.getByRole("button", { name: "Apply seasonal layout" }).boundingBox())!;
@@ -137,7 +138,9 @@ test("raised-bed planting, seasonal preview, transforms, undo and protected Save
   await page.getByRole("button", { name: "Select", exact: true }).click();
   const inspector = page.locator(".garden-edit-inspector");
   if (!await inspector.evaluate((node) => (node as HTMLDetailsElement).open)) await inspector.locator(":scope > summary").click();
+  await openInspectorMore(page);
   await inspector.getByLabel("Rotation (degrees)").fill("60"); await inspector.getByLabel("Rotation (degrees)").press("Enter");
+  await openInspectorMore(page);
   await inspector.getByLabel("Height (cm)").fill("70"); await inspector.getByLabel("Height (cm)").press("Enter");
   const transformed = await readPlan(page);
   expect(transformed.objects[0]).toMatchObject({ rotationDeg: 60, heightCm: 70 });

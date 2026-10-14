@@ -1,3 +1,4 @@
+import { editorAction, openInspectorMore } from "./helpers/editor-controls";
 import { expect, test, type Page, type TestInfo } from "@playwright/test";
 import * as THREE from "three";
 import type { PlannerPlan } from "../../lib/garden/planner-plan";
@@ -67,7 +68,9 @@ test("NZ sunlight, access warnings and layout alternatives handle seasons and is
 async function drag(page: Page, info: TestInfo, a: { x: number; y: number }, b: { x: number; y: number }) {
   if (info.project.name === "phone") {
     const session = await page.context().newCDPSession(page);
+    const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas'), before = await canvas.boundingBox();
     await session.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ ...a, id: 1 }] });
+    expect((await canvas.boundingBox())?.height).toBe(before?.height);
     for (let i = 1; i <= 8; i++) await session.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x: a.x + (b.x - a.x) * i / 8, y: a.y + (b.y - a.y) * i / 8, id: 1 }] });
     await session.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] }); await session.detach();
   } else { await page.mouse.move(a.x, a.y); await page.mouse.down(); await page.mouse.move(b.x, b.y, { steps: 8 }); await page.mouse.up(); }
@@ -90,37 +93,39 @@ test.afterEach(async ({ page }) => expect(errors.get(page)).toEqual([]));
 test("direct handles resize, block collisions, and keep owned plants through rotation", async ({ page }, info) => {
   await page.getByRole("button", { name: "Top", exact: true }).click();
   await page.getByRole("button", { name: "Fit garden", exact: true }).click();
-  const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas'), rect = (await canvas.boundingBox())!;
+  const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   await expect(canvas).toHaveAttribute("data-camera", /projection/);
   await expect.poll(async () => JSON.parse((await canvas.getAttribute("data-camera"))!).world[13]).not.toBe(16.2);
-  const state = JSON.parse((await canvas.getAttribute("data-camera"))!);
-  const camera = new THREE.PerspectiveCamera(); camera.matrixWorld.fromArray(state.world); camera.matrixWorldInverse.copy(camera.matrixWorld).invert(); camera.projectionMatrix.fromArray(state.projection);
-  const screen = (x: number, y: number, height = .34) => { const p = new THREE.Vector3(x / 100 - 4.5, height, y / 100 - 5.4).project(camera); return { x: rect.x + (p.x + 1) * rect.width / 2, y: rect.y + (1 - p.y) * rect.height / 2 }; };
-  await page.mouse.click(screen(102, 435).x, screen(102, 435).y);
+  const screen = async (x: number, y: number, height = .34) => {
+    const rect = (await canvas.boundingBox())!, state = JSON.parse((await canvas.getAttribute("data-camera"))!);
+    const camera = new THREE.PerspectiveCamera(); camera.matrixWorld.fromArray(state.world); camera.matrixWorldInverse.copy(camera.matrixWorld).invert(); camera.projectionMatrix.fromArray(state.projection);
+    const p = new THREE.Vector3(x / 100 - 4.5, height, y / 100 - 5.4).project(camera); return { x: rect.x + (p.x + 1) * rect.width / 2, y: rect.y + (1 - p.y) * rect.height / 2 };
+  };
+  const initial = await screen(102, 435); await page.mouse.click(initial.x, initial.y);
   await expect(page.locator(".garden-edit-inspector")).toContainText("Veg bed");
   await expect(canvas).toHaveAttribute("data-resize-handles", "8");
-  const handle = async (edge: string) => { const list = JSON.parse(await canvas.getAttribute("data-gizmo-points") || "[]") as { mode: string; edge?: string; x: number; y: number }[]; const p = list.find((p) => p.edge === edge)!; return { x: rect.x + p.x, y: rect.y + p.y }; };
-  let a = await handle("se"), b = screen(300, 500, .44);
+  const handle = async (edge: string) => { const list = JSON.parse(await canvas.getAttribute("data-gizmo-points") || "[]") as { mode: string; edge?: string; x: number; y: number }[]; const p = list.find((p) => p.edge === edge)!; const rect = (await canvas.boundingBox())!; return { x: rect.x + p.x, y: rect.y + p.y }; };
+  let a = await handle("se"), b = await screen(300, 500, .44);
   await drag(page, info, a, b);
   await expect(page.locator(".garden-edit-status")).toContainText("Walkway");
   expect((await readPlan(page)).beds[0]).toEqual(fixture.beds[0]);
-  a = await handle("w"); b = screen(80, 380, .44); await drag(page, info, a, b);
+  a = await handle("w"); b = await screen(80, 380, .44); await drag(page, info, a, b);
   await expect.poll(async () => (await readPlan(page)).beds[0].w * 9).toBeGreaterThan(150);
   expect((await readPlan(page)).plantingAreas[0].count).toBe(2);
   await page.getByRole("button", { name: "Undo", exact: true }).click();
-  await page.getByText("Build options", { exact: true }).click();
-  await page.getByText("Select several objects", { exact: true }).click();
-  await page.getByLabel("Raised bed", { exact: true }).check();
-  await page.getByText("Build options", { exact: true }).click();
+  await editorAction(page, "Objects");
+  const objects = page.getByRole("dialog", { name: "Select garden objects" });
+  await objects.locator(".garden-object-list button").filter({ hasText: "Raised bed" }).click();
+  await objects.getByRole("button", { name: "Done", exact: true }).click();
   const radius = Math.hypot(150, 100) / 2 + 30;
-  await drag(page, info, screen(650, 700 - radius - 3, .56), screen(650 + radius + 3, 700, .56));
+  await drag(page, info, await screen(650, 700 - radius - 3, .56), await screen(650 + radius + 3, 700, .56));
   await expect.poll(async () => { const o = (await readPlan(page)).objects.find((o) => o.id === "raised"); return o && "rotationDeg" in o ? o.rotationDeg : 0; }).toBeGreaterThan(45);
   expect((await readPlan(page)).rows[0].placements).toHaveLength(1);
   await screenshot(page, info, "handles-and-rotation");
 });
 
 test("design tools select crops, show access and spacing, preview NZ sun and persist orientation", async ({ page }, info) => {
-  await page.getByRole("button", { name: "Design tools", exact: true }).click();
+  await editorAction(page, "Design tools");
   const dialog = page.getByRole("dialog", { name: "Garden design tools" });
   await dialog.getByLabel("Show mature spacing circles").check();
   await dialog.getByRole("button", { name: "Access", exact: true }).click();
@@ -150,21 +155,23 @@ test("design tools select crops, show access and spacing, preview NZ sun and per
 });
 
 test("named layout snapshots compare without mutation and restore with one undo", async ({ page }, info) => {
-  await page.getByRole("button", { name: "Design tools", exact: true }).click();
+  await editorAction(page, "Design tools");
   const dialog = page.getByRole("dialog", { name: "Garden design tools" });
   await dialog.getByRole("button", { name: "Layouts", exact: true }).click();
   await dialog.getByLabel("Layout name").fill("Layout A"); await dialog.getByRole("button", { name: "Save layout snapshot" }).click();
   await dialog.getByRole("button", { name: "Return to garden" }).click();
-  await page.getByText("Build options", { exact: true }).click(); await page.getByText("Select several objects", { exact: true }).click(); await page.getByLabel("Veg bed", { exact: true }).check(); await page.getByText("Build options", { exact: true }).click();
+  await editorAction(page, "Objects"); const objects = page.getByRole("dialog", { name: "Select garden objects" });
+  await objects.getByRole("button", { name: "Veg bed Bed", exact: true }).click(); await objects.getByRole("button", { name: "Done", exact: true }).click();
+  await openInspectorMore(page);
   await page.locator(".garden-edit-inspector").getByLabel("Width (cm)", { exact: true }).fill("100"); await page.locator(".garden-edit-inspector").getByLabel("Width (cm)", { exact: true }).press("Enter");
   const edited = await readPlan(page);
-  await page.getByRole("button", { name: "Design tools", exact: true }).click(); await dialog.getByRole("button", { name: "Layouts", exact: true }).click();
+  await editorAction(page, "Design tools"); await dialog.getByRole("button", { name: "Layouts", exact: true }).click();
   await expect(dialog.locator(".garden-layout-comparison")).toContainText("Layout A");
   await dialog.getByRole("button", { name: "Compare in garden", exact: true }).click();
   await expect(page.locator('[aria-label="Interactive 3D garden workspace"] canvas')).toHaveAttribute("data-comparison", "true");
   expect(await readPlan(page)).toEqual(edited);
   await screenshot(page, info, "layout-comparison");
-  await page.getByRole("button", { name: "Design tools", exact: true }).click(); await dialog.getByRole("button", { name: "Layouts", exact: true }).click(); await dialog.getByRole("button", { name: "Restore layout", exact: true }).click();
+  await editorAction(page, "Design tools"); await dialog.getByRole("button", { name: "Layouts", exact: true }).click(); await dialog.getByRole("button", { name: "Restore layout", exact: true }).click();
   await expect.poll(async () => (await readPlan(page)).beds[0].w * 9).toBeCloseTo(150);
   await page.getByRole("button", { name: "Undo", exact: true }).click(); expect((await readPlan(page)).beds[0].w * 9).toBeCloseTo(100);
   const snapshots = await page.evaluate(() => JSON.parse(localStorage.getItem("garden-design-layouts:blenheim-garden")!));
@@ -179,7 +186,7 @@ test("box selection includes bed crops and direct dragging works without Move mo
   await expect.poll(async () => JSON.parse((await canvas.getAttribute("data-camera"))!).world[13]).not.toBe(16.2);
   const value = JSON.parse((await canvas.getAttribute("data-camera"))!), camera = new THREE.PerspectiveCamera(); camera.projectionMatrix.fromArray(value.projection); camera.matrixWorld.fromArray(value.world); camera.matrixWorldInverse.copy(camera.matrixWorld).invert();
   const rect = (await canvas.boundingBox())!, screen = (x: number, y: number, height = 0) => { const p = new THREE.Vector3(x / 100 - 4.5, height, y / 100 - 5.4).project(camera); return { x: rect.x + (p.x + 1) * rect.width / 2, y: rect.y + (1 - p.y) * rect.height / 2 }; };
-  await page.getByRole("button", { name: "Box select", exact: true }).click();
+  await editorAction(page, "Box select");
   await drag(page, info, screen(80, 280), screen(260, 480));
   await expect(page.locator(".garden-selection-tools")).toContainText("2 selected");
   await page.getByRole("button", { name: "Clear", exact: true }).click();

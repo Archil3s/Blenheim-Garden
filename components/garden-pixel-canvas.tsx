@@ -35,7 +35,7 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
     return () => { active = false; };
   }, [artworkAttempt]);
   useEffect(() => { stateRef.current = { plan, editor, disabled, presentation }; runtimeRef.current?.paint(); }, [plan, editor, disabled, presentation]);
-  useEffect(() => { runtimeRef.current?.cancel(); }, [editor.tool]);
+  useEffect(() => { runtimeRef.current?.cancel(); }, [editor.tool, editor.interactionMode]);
   useEffect(() => { runtimeRef.current?.fit(); }, [plan.canvasWidthCm, plan.canvasHeightCm]);
   useEffect(() => { if (editor.focusRequest) runtimeRef.current?.detail(); }, [editor.focusRequest]);
   useEffect(() => { if (editor.fitRequest) runtimeRef.current?.fit(); }, [editor.fitRequest]);
@@ -69,7 +69,7 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
       canvas.dataset.pixelArt = pixelArtworkReady() ? "detailed" : "fallback";
       canvas.dataset.pixelReady = "true"; canvas.dataset.pixelView = JSON.stringify({ ...view, width: canvas.width, height: canvas.height });
       canvas.dataset.pixelCrops = [...new Set([...current.plantingAreas.map((a) => a.crop), ...current.rows.map((r) => r.crop)])].sort().join("|");
-      if (hover && !e.pendingDuplicate && !stateRef.current.disabled && e.tool !== "select" && e.tool !== "move" && e.tool !== "box-select") {
+      if (hover && !e.pendingDuplicate && !stateRef.current.disabled && e.interactionMode === "edit" && e.tool !== "select" && e.tool !== "move" && e.tool !== "box-select") {
         const p = snapped(unprojectPixel(hover, view));
         let valid = p.x >= 0 && p.x <= gardenDimensions(current).width && p.y >= 0 && p.y <= gardenDimensions(current).height;
         if (e.tool === "plant" && plantLocationBlocked(current, p)) valid = false;
@@ -135,7 +135,7 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
       const p = local(e); pointers.set(e.pointerId, p);
       if (pointers.size === 2) { const [a, b] = [...pointers.values()], mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }; pinch = { distance: Math.hypot(a.x - b.x, a.y - b.y), scale: view.scale, anchor: unprojectPixel(mid, view) }; pinching = true; down = null; previewPlan = null; return; }
       const { editor: editorNow } = stateRef.current, hit = pick(p);
-      const selected = editorNow.tool === "resize" ? editorNow.selection : editorNow.tool === "move" ? hit?.selection ?? null : null;
+      const selected = editorNow.interactionMode === "navigate" ? null : editorNow.tool === "resize" ? editorNow.selection : editorNow.tool === "move" ? hit?.selection ?? null : null;
       const selection = selected && !editorNow.locked(selected) && !editorNow.pendingDuplicate ? selected : null;
       if (["row", "path", "trellis", "fence", "fill", "brush"].includes(editorNow.tool) && !start) start = snapPlantingPoint(stateRef.current.plan, unprojectPixel(p, view), editorNow.settings.snap, editorNow.settings.targetSurfaceId);
       if (selection) editorNow.select(selection);
@@ -156,7 +156,7 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
           try { const e = stateRef.current.editor; previewPlan = e.tool === "resize" ? resizePlanSelection(down.plan, down.selection, snapped(now)) : e.groupSelections.length > 1 ? movePlanGroup(down.plan, e.groupSelections, delta) : e.move(down.plan, down.selection, delta); if (previewPlan && e.tool === "resize" && e.reflowOnResize) previewPlan = reflowSurfacePlants(previewPlan, down.selection); if (previewPlan) validateDesignChange(down.plan, previewPlan); } catch { previewPlan = null; }
           canvas.style.cursor = previewPlan ? "grabbing" : "not-allowed";
         } else if (down.moved && !stateRef.current.editor.cameraLocked && (stateRef.current.editor.tool === "select" || stateRef.current.editor.tool === "move")) { view.x = down.view.x + p.x - down.point.x; view.y = down.view.y + p.y - down.point.y; canvas.style.cursor = "grabbing"; }
-      } else { const hit = pick(p); canvas.title = hit?.title ?? "Measured garden · drag to pan, scroll to zoom"; canvas.style.cursor = stateRef.current.editor.tool === "select" ? hit ? "pointer" : "grab" : "crosshair"; }
+      } else { const hit = pick(p); canvas.dataset.hoverSelection = hit ? JSON.stringify(hit.selection) : ""; canvas.title = hit?.title ?? "Measured garden · drag to pan, scroll to zoom"; canvas.style.cursor = stateRef.current.editor.tool === "select" ? hit ? "pointer" : "grab" : "crosshair"; }
       paint();
     };
     const onUp = (event: PointerEvent) => {
@@ -171,7 +171,7 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
         if (before.selection) { const next = previewPlan; previewPlan = null; if (next && JSON.stringify(before.plan) === JSON.stringify(stateRef.current.plan)) e.commit(next); else e.setError("Move cancelled: choose a position inside the garden."); }
         paint(); return;
       }
-      if (stateRef.current.disabled) return;
+      if (stateRef.current.disabled || e.interactionMode === "navigate") return;
       const p = local(event);
       if (e.tool === "select" || e.tool === "move") { e.select(pick(p)?.selection ?? null, event.shiftKey || event.ctrlKey || event.metaKey || e.multiSelect); paint(); return; }
       const snappedPoint = snapPlantingPoint(stateRef.current.plan, unprojectPixel(p, view), e.settings.snap, e.settings.targetSurfaceId);
@@ -189,7 +189,7 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
       if (!stateRef.current.disabled && (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "s") { event.preventDefault(); void e.save(); return; }
       if ((event.target as HTMLElement)?.closest("dialog, input, select, textarea")) return;
       if (event.key === "Escape") { cancel(); e.cancelDuplicate(); e.cancelPreview(); e.select(null); e.setTool("select"); }
-      if (stateRef.current.disabled) return;
+      if (stateRef.current.disabled || e.interactionMode === "navigate") return;
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "z") { event.preventDefault(); if (event.shiftKey) e.redo(); else e.undo(); }
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "a") { event.preventDefault(); e.selectCrops(); }
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "d") { event.preventDefault(); e.duplicate(); }

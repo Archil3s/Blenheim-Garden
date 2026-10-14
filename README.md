@@ -2,9 +2,17 @@
 
 A visual home-garden planner for Blenheim, Marlborough.
 
-_Last updated: 13 October 2026_
+_Last updated: 15 October 2026_
 
 ## Current status
+
+### Simpler garden controls
+
+Select, Build, Plant and View group the shared 3D/pixel tools. Phone controls
+use a collapsible sheet below the garden. Navigate protects objects while
+looking around; + Add searches crops and structures with favourites/recent items.
+Bed labels, a north compass, compact selection actions and save/Undo feedback
+keep common tasks close. See [the interface guide](docs/garden-editor-ui.md).
 
 ### Garden studio and easier planting
 

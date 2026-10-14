@@ -278,3 +278,16 @@ Planted templates snapshot soil/crops/spacing/profiles in per-garden browser
 storage; placing uses the duplicate ghost flow with fresh IDs. Camera focus,
 fit and lock remain view state. No migrations/dependencies/artwork changes.
 See [Garden studio](docs/garden-studio.md) for usage and planning limitations.
+
+## Garden editor interface
+
+Four shared UI modes group existing tools. More tools retains studio/design/base
+and object actions; the new Add picker uses existing indexed metadata/artwork.
+Favourites/recent catalogue IDs are browser-only. Selection fields move under
+More; phones reserve the measured sheet height through a scoped CSS variable
+and ResizeObserver, preserving the canvas coordinate system and renderer.
+Navigate/Edit guards canvas mutations and keyboard Delete independently of cloud
+locks. Scene labels and the true-north compass follow the WebGL/pixel cameras
+without serializing view state. Canonical commits emit brief Undo notices and
+normal protected Save remains explicit. No packages/assets/schema changes.
+See [the interface guide](docs/garden-editor-ui.md).

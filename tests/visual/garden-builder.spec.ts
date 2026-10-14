@@ -1,3 +1,4 @@
+import { editorAction, openInspectorMore } from "./helpers/editor-controls";
 import { expect, test, type Page } from "@playwright/test";
 import * as THREE from "three";
 import type { PlannerPlan } from "../../lib/garden/planner-plan";
@@ -110,7 +111,7 @@ test("garden size, contextual planting, templates, save and 2D refresh work", as
   await page.goto("/3d?view=3d");
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   await expect(canvas).toBeVisible();
-  await page.getByRole("button", { name: "Garden size", exact: true }).click();
+  await editorAction(page, "Garden size");
   await page.getByLabel("Garden width (m)").fill("12");
   await page.getByLabel("Garden depth (m)").fill("14");
   await page.getByRole("button", { name: "Apply garden size" }).click();
@@ -119,10 +120,11 @@ test("garden size, contextual planting, templates, save and 2D refresh work", as
   await page.getByRole("button", { name: "Undo", exact: true }).click();
   await expect.poll(async () => gardenDimensions(await readPlan(page)).width).toBe(900);
   await page.getByRole("button", { name: "Redo", exact: true }).click();
-  await page.getByRole("button", { name: "Plant a bed", exact: true }).click();
+  await editorAction(page, "Plant a bed");
   await page.getByLabel("Planting bed").selectOption("object:raised");
   await page.getByRole("button", { name: "Apply seasonal layout", exact: true }).click();
   await expect.poll(async () => (await readPlan(page)).rows.flatMap(rowPlants).length).toBeGreaterThan(0);
+  await openInspectorMore(page);
   await page.getByText("Size-only bed template", { exact: true }).click();
   await page.locator('.garden-edit-inspector').getByLabel("Template name").fill("Timber 240");
   await page.getByRole("button", { name: "Save bed template" }).click();
@@ -135,7 +137,7 @@ test("garden size, contextual planting, templates, save and 2D refresh work", as
   await page.screenshot({ path: info.outputPath("garden-builder.png") });
   await page.reload();
   await expect(canvas).toBeVisible();
-  await page.getByRole("button", { name: "Garden size", exact: true }).click();
+  await editorAction(page, "Garden size");
   await expect(page.getByLabel("Garden width (m)")).toHaveValue("12");
   await page.screenshot({ path: info.outputPath("garden-size.png") });
   await page.getByRole("button", { name: "Close garden size" }).click();
@@ -168,7 +170,7 @@ test("drag planting, resize handles, fence drawing and multi-select work", async
   const collapse = async () => { const hide = page.getByRole("button", { name: "Hide planting controls", exact: true }); if (await hide.isVisible()) await hide.click(); for (const cls of [".garden-edit-palette", ".garden-edit-inspector"]) { const panel = page.locator(`${cls}[open]`); if (await panel.count()) await panel.locator(":scope > summary").click(); } };
   const object = fixture.objects[0]; if (object.type !== "structure") throw new Error("fixture");
   const soil = structureSurface(object);
-  await page.getByRole("button", { name: "Fill patch", exact: true }).click();
+  await editorAction(page, "Fill patch");
   const palette = page.locator(".garden-edit-palette");
   await palette.getByRole("combobox", { name: "Crop", exact: true }).selectOption("Lettuce");
   await palette.getByLabel("Planting target").selectOption("object:raised");
@@ -179,14 +181,15 @@ test("drag planting, resize handles, fence drawing and multi-select work", async
   const filled = await readPlan(page);
   expect(filled.rows.every((r) => r.surfaceId === "object:raised")).toBe(true);
   await page.getByRole("button", { name: "Undo", exact: true }).click();
-  await page.getByRole("button", { name: "Plant brush", exact: true }).click(); await collapse();
+  await editorAction(page, "Plant brush"); await collapse();
   await drag(await screen(a.x, a.y, soil.height), await screen(b.x, b.y, soil.height));
   await expect.poll(async () => (await readPlan(page)).rows.flatMap(rowPlants).length).toBeGreaterThan(1);
   await page.getByRole("button", { name: "Undo", exact: true }).click();
-  await page.getByRole("button", { name: "Add fence", exact: true }).click(); await collapse();
+  await editorAction(page, "Add fence"); await collapse();
   await drag(await screen(400, 780), await screen(700, 780));
   await expect.poll(async () => (await readPlan(page)).objects.some((o) => o.type === "structure" && o.kind === "fence")).toBe(true);
   await page.getByRole("button", { name: "Undo", exact: true }).click();
+  await page.getByRole("button", { name: "Select", exact: true }).click();
   await page.locator(".garden-build-options > summary").click();
   await page.getByText("Select several objects", { exact: true }).click();
   await page.locator(".garden-build-options").getByLabel("Salad bed", { exact: true }).check();
@@ -200,8 +203,8 @@ test("drag planting, resize handles, fence drawing and multi-select work", async
   await page.getByRole("button", { name: "Select", exact: true }).click();
   const center = await screen(550, 550, soil.height); await page.mouse.click(center.x, center.y);
   await expect(page.locator(".garden-edit-inspector")).toContainText("Raised bed");
-  await page.getByRole("button", { name: "Resize", exact: true }).click(); await collapse();
-  const handle = surfaceWorld({ ...soil, width: 240, depth: 160 }, { x: 120, y: 80 });
+  await editorAction(page, "Resize"); await collapse();
+  const handle = surfaceWorld(soil, { x: 120, y: 80 });
   const end = surfaceWorld(soil, { x: 140, y: 95 });
   await drag(await screen(handle.x, handle.y, soil.height), await screen(end.x, end.y, soil.height));
   await expect.poll(async () => ((await readPlan(page)).objects[0] as { widthCm: number }).widthCm).toBeGreaterThan(240);

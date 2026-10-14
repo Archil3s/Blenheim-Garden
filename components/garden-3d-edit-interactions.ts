@@ -109,7 +109,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     for (const guide of lines) drawLine(alignment, guide.axis === "x" ? [{ x: guide.value, y: 0 }, { x: guide.value, y: d.height }] : [{ x: 0, y: guide.value }, { x: d.width, y: guide.value }], 0x98e8ff, .07);
     canvas.dataset.designPreview = color === 0xf27878 ? "blocked" : "valid";
   };
-  const enableCamera = () => { const e = getEditor(); controls.enabled = !e.cameraLocked && ["select", "move", "box-select"].includes(e.tool) && !e.pendingDuplicate; };
+  const enableCamera = () => { const e = getEditor(); controls.enabled = !e.cameraLocked && (e.interactionMode === "navigate" || ["select", "move", "box-select"].includes(e.tool)) && !e.pendingDuplicate; };
   const restoreDrag = () => { if (drag) for (const { root, position } of drag.roots) { if (root.userData.setPlantPosition) root.userData.setPlantPosition(position); else root.position.copy(position); } drag = null; enableCamera(); };
   const clearCopies = () => { copyGhosts.traverse((n) => { if (n instanceof THREE.Mesh) { if (n instanceof THREE.InstancedMesh) n.dispose(); const materials = Array.isArray(n.material) ? n.material : [n.material]; materials.forEach((m) => m.dispose()); } }); copyGhosts.clear(); if (builtGhost) runtime.disposePreview?.(builtGhost); builtGhost = null; ghostPending = null; canvas.dataset.copyPreview = ""; };
   const showCopy = (event: PointerEvent) => {
@@ -152,7 +152,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     runtime.needsRender = true;
     const editor = getEditor();
     if (previousTool !== editor.tool) { resetPreview(); previousTool = editor.tool; }
-    if (disabled() || editor.tool === "select" || editor.tool === "move" || editor.tool === "resize" || editor.tool === "box-select") { preview.visible = false; return; }
+    if (disabled() || editor.interactionMode === "navigate" || editor.tool === "select" || editor.tool === "move" || editor.tool === "resize" || editor.tool === "box-select") { preview.visible = false; return; }
     const point = groundPoint(event); if (!point) return;
     let reason = "";
     let valid = point.x >= 0 && point.x <= gardenDimensions(editor.plan).width && point.y >= 0 && point.y <= gardenDimensions(editor.plan).height;
@@ -231,6 +231,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     if (!event.isPrimary || event.button !== 0 || disabled()) return;
     const editor = getEditor();
     if (previousTool !== editor.tool) { resetPreview(); previousTool = editor.tool; }
+    if (editor.interactionMode === "navigate") { pointerStart = null; enableCamera(); return; }
     pointerStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
     if (editor.pendingDuplicate) { controls.enabled = false; canvas.setPointerCapture(event.pointerId); showCopy(event); return; }
     if (editor.tool === "box-select") { boxStart = groundPoint(event); controls.enabled = false; canvas.setPointerCapture(event.pointerId); return; }
@@ -332,6 +333,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     const e = getEditor();
     if (!disabled() && ["select", "move"].includes(e.tool)) {
       const hit = pick(event), key = hit ? JSON.stringify(hit.selection) : "";
+      canvas.dataset.hoverSelection = key;
       canvas.style.cursor = hit ? e.locked(hit.selection) ? "pointer" : "grab" : "default";
       if (key !== hoveredKey) { clearOverlay(hoverOutline); hoveredKey = key; if (hit) { const outline = new THREE.BoxHelper(hit.root, e.locked(hit.selection) ? 0xaebac5 : 0x98e8ff); outline.material.depthTest = false; outline.renderOrder = 75; hoverOutline.add(outline); } }
     }
@@ -380,7 +382,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     canvas.dataset.resizeHandles = "0"; canvas.dataset.gizmoPoints = "[]";
     const e = getEditor(), item = e.item; resizeHandle.visible = false;
     if (!e.pendingDuplicate && ghostPending) clearCopies();
-    if (!item || e.selection?.plantId || e.previewDraft || e.timeline.enabled || e.pendingDuplicate || e.groupSelections.some(e.locked) || !["select", "move", "resize"].includes(e.tool)) return;
+    if (e.interactionMode === "navigate" || !item || e.selection?.plantId || e.previewDraft || e.timeline.enabled || e.pendingDuplicate || e.groupSelections.some(e.locked) || !["select", "move", "resize"].includes(e.tool)) return;
     const f = designFootprints(e.plan).find((f) => f.id === `${e.selection!.kind}:${e.selection!.id}`);
     const add = (p: PointCm, mode: string, edge?: string, axis?: string) => {
       const radius = runtime.mobile ? .13 : .09;
@@ -422,7 +424,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     if ((event.target as HTMLElement)?.closest("input, select, textarea")) return;
     const editor = getEditor();
     if (event.key === "Escape") { cancel(); editor.cancelDuplicate(); editor.cancelPreview(); editor.select(null); editor.setTool("select"); clearCopies(); }
-    if (disabled()) return;
+    if (disabled() || editor.interactionMode === "navigate") return;
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "a") { event.preventDefault(); editor.selectCrops(); }
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "d") { event.preventDefault(); editor.duplicate(); }
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "z") { event.preventDefault(); if (event.shiftKey) editor.redo(); else editor.undo(); }

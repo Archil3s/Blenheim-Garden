@@ -1,3 +1,4 @@
+import { editorAction, openInspectorMore } from "./helpers/editor-controls";
 import { expect, test, type Page, type TestInfo } from "@playwright/test";
 import * as THREE from "three";
 import type { PlannerPlan } from "../../lib/garden/planner-plan";
@@ -66,7 +67,7 @@ test.beforeEach(async ({ page, context }) => {
 test.afterEach(async ({ page }) => expect(errors.get(page)).toEqual([]));
 
 async function choose(page: Page, name: string) {
-  await page.getByRole("button", { name: "Objects", exact: true }).click();
+  await editorAction(page, "Objects");
   const dialog = page.getByRole("dialog", { name: "Select garden objects" });
   await dialog.getByLabel("Find an object").fill(name);
   await dialog.locator(".garden-object-list button").first().click();
@@ -89,13 +90,14 @@ test("object list selects, toggles multi-selection, locks and saves without losi
   await expect(page.locator(".garden-edit-inspector")).toContainText("Tomato bed");
   await page.getByRole("button", { name: "Lock selected", exact: true }).click();
   await expect(page.locator(".garden-edit-inspector")).toContainText("Locked");
+  await openInspectorMore(page);
   await expect(page.getByLabel("Width (cm)", { exact: true })).toBeDisabled();
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas'); await expect(canvas).toHaveAttribute("data-resize-handles", "0");
   await page.keyboard.press("Delete"); expect((await readPlan(page)).beds).toHaveLength(1); expect((await readPlan(page)).plantingAreas).toHaveLength(1);
   await page.getByRole("button", { name: "Save", exact: true }).click(); await expect(page.locator(".garden-edit-status")).toContainText("Saved to cloud");
   await page.reload(); await choose(page, "Tomato bed"); await expect(page.getByRole("button", { name: "Unlock selected", exact: true })).toBeVisible();
   await shot(page, info, "locked-selection");
-  await page.getByRole("button", { name: "Objects", exact: true }).click();
+  await editorAction(page, "Objects");
   const lockedDialog = page.getByRole("dialog", { name: "Select garden objects" });
   await lockedDialog.getByLabel("Select multiple objects").check();
   await lockedDialog.getByLabel("Find an object").fill("Roma"); await lockedDialog.locator(".garden-object-list button").click();
@@ -103,7 +105,7 @@ test("object list selects, toggles multi-selection, locks and saves without losi
   await expect.poll(async () => (await readPlan(page)).objectLocks).toEqual([]);
   await lockedDialog.getByLabel("Select multiple objects").uncheck(); await lockedDialog.getByRole("button", { name: "Done", exact: true }).click();
   await choose(page, "Tomato bed");
-  await page.getByRole("button", { name: "Objects", exact: true }).click(); const dialog = page.getByRole("dialog", { name: "Select garden objects" });
+  await editorAction(page, "Objects"); const dialog = page.getByRole("dialog", { name: "Select garden objects" });
   await dialog.getByLabel("Select multiple objects").check();
   await dialog.getByLabel("Find an object").fill("Raised bed"); await dialog.locator(".garden-object-list button").click();
   await expect(dialog.locator("footer")).toContainText("2 selected");
