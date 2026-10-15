@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { GardenBedAccess } from "./garden-bed-access";
+import { GardenPlantingLockNotice } from "./garden-planting-lock-notice";
 import { GardenEditorToolbar } from "./garden-editor-toolbar";
 import { GardenAddPicker } from "./garden-add-picker";
 import { plants } from "@/lib/garden/plant-catalog";
@@ -164,6 +165,7 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
       <details><summary>Select several objects</summary>{[...editor.plan.beds.map((b) => ({ kind: "bed" as const, id: String(b.id), label: b.name })), ...editor.plan.objects.map((o) => ({ kind: "object" as const, id: o.id, label: "label" in o ? o.label || o.type : o.type }))].map((s) => <label className="garden-edit-snap" key={`${s.kind}:${s.id}`}><input type="checkbox" checked={editor.groupSelections.some((a) => a.kind === s.kind && a.id === s.id)} onChange={() => editor.select({ kind: s.kind, id: s.id }, true)} />{s.label}</label>)}</details>
       {!!editor.groupSelections.length && <><p>{editor.groupSelections.length} selected · move together</p><fieldset className="garden-object-fields" disabled={selectionLocked}><div className="garden-context-actions"><button type="button" onClick={() => editor.moveGroup({ x: -10, y: 0 })}>← 10 cm</button><button type="button" onClick={() => editor.moveGroup({ x: 10, y: 0 })}>10 cm →</button><button type="button" onClick={() => editor.moveGroup({ x: 0, y: -10 })}>↑ 10 cm</button><button type="button" onClick={() => editor.moveGroup({ x: 0, y: 10 })}>10 cm ↓</button></div></fieldset><button type="button" onClick={editor.duplicate}>Duplicate group</button><button type="button" onClick={() => editor.select(null)}>Clear selection</button></>}
     </div></details>}
+    {!disabled && !viewOnly && <GardenPlantingLockNotice editor={editor} />}
     <div className="garden-edit-status" role="status">
       <span>{editor.error || editor.previewText || editor.status}</span>
       <button type="button" onClick={() => setKeyOpen(!keyOpen)}>Edit key</button>

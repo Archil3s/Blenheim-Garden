@@ -8,6 +8,12 @@ Save writes the same local cache and authenticated PUT /api/garden used by 2D. A
 
 ## Raised-bed planting and seasonal layouts
 
+Planting tools now retain the actual rejection reason for locked soil, spacing
+and edge failures. A blocked attempt on locked soil offers **Unlock bed for
+planting**, resolving the bed beneath a selected cover. This user action removes
+only that bed's lock as one undoable edit; it keeps cover/frame locks, crop,
+spacing and tool, and targets/focuses the soil. No lock is removed automatically.
+
 Open `/3d?view=3d` for the detailed garden. **Plant a bed** lets you choose a
 measured bed or a raised bed/planter without having to pick its mesh. Selecting
 a bed in the garden also exposes **Generate seasonal layout** in its inspector.
@@ -187,3 +193,14 @@ were inspected, including whole-bed visibility on phone. Production build,
 strict TypeScript and zero-warning ESLint pass. Dart format finds no files and
 Flutter analyze passes; Flutter test is unavailable because this Next.js app has
 no Flutter test directory.
+
+Locked-soil verification (15 October 2026): the old build reproduced the reported
+Blueberry brush failure with a locked numbered bed beneath a selected locked
+bird-net frame, returning the generic No room message. All eight new checks now
+pass at 1920×1080, 1440×900, 1024×768 and 390×844, including explicit per-bed
+unlock, retained frame/other-bed locks, planting and two Undo steps. All 36 related
+lock, row, 2D/pixel and protected-storage checks pass without altering their
+assertions. Screenshots were inspected at all four sizes. Production build,
+strict TypeScript and zero-warning ESLint pass. Dart formatting finds no files
+and Flutter analysis passes; Flutter tests are unavailable without a Flutter
+`test` directory in this Next.js repository.

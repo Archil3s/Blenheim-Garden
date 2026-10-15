@@ -8,8 +8,8 @@ import { editKeySession, persistGardenPlan, publishGardenPlan } from "@/lib/gard
 import { addCropPoints, cropPlacementPoints, movePlanGroup, validateNewBuilding } from "@/lib/garden/garden-building";
 import { gardenDimensions, resizeGarden } from "@/lib/garden/garden-dimensions";
 import { plantCountForArea } from "@/lib/garden/plant-spacing-layout";
-import { plantingSurfaces } from "@/lib/garden/planting-surfaces";
-import { plantingPointFeedback } from "@/lib/garden/planting-feedback";
+import { plantingSurfaces, surfaceAt } from "@/lib/garden/planting-surfaces";
+import { plantingPointFeedback, plantingPointIssue } from "@/lib/garden/planting-feedback";
 import { plants } from "@/lib/garden/plant-catalog";
 import { structurePreset } from "@/lib/garden/structure-catalog";
 import { transformContainerPlants } from "@/lib/garden/plan-editing";
@@ -26,6 +26,7 @@ export function placementPlan(plan: PlannerPlan, tool: EditorTool, point: PointC
   const crop = plants.find((p) => p.name === settings.crop) ?? plants[0];
   if (["plant", "row", "fill", "brush"].includes(tool)) {
     const points = cropPlacementPoints(plan, crop.name, point, start, tool as "plant" | "row" | "fill" | "brush", settings.targetSurfaceId, settings.spacingCm);
+    if (!points.length) { const issue = plantingPointIssue(plan, start ?? point, settings.spacingCm || crop.spacingCm, settings.targetSurfaceId) ?? plantingPointIssue(plan, point, settings.spacingCm || crop.spacingCm, settings.targetSurfaceId); if (issue) throw new Error(tool === "row" ? `No room along this row. ${issue}` : issue); }
     if (tool === "plant" && !points.length) throw new Error(plantingPointFeedback(plan, point, settings.spacingCm || crop.spacingCm, settings.targetSurfaceId));
     if (tool === "row" && !points.length) throw new Error("No room along this row. Draw farther inside the soil, choose a planting bed to preview a centred row, or adjust spacing.");
     return addCropPoints(plan, crop.name, settings.variety,
@@ -80,7 +81,8 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
   const [settings, setSettings] = useState<PlacementSettings>({ crop: plants[0].name, variety: plants[0].varieties[0], structureKind: "shed", width: 120, depth: 240, height: 180, pathWidth: 60, postSpacing: 150, diameter: 150, snap: true });
   const [status, setStatus] = useState("Use Save to persist your garden");
   const [previewText, setPreviewText] = useState("");
-  const setTool = (next: EditorTool) => { setUiMode(modeForTool(next)); storeInteractionMode("edit"); setPendingDuplicate(null); setPreviewDraft(null); setTimeline((t) => ({ ...t, enabled: false })); setPreviewText(""); storeTool(next); };
+  const [blockedPlantingSurfaceId, setBlockedPlantingSurfaceId] = useState<string | null>(null);
+  const setTool = (next: EditorTool) => { setBlockedPlantingSurfaceId(null); setUiMode(modeForTool(next)); storeInteractionMode("edit"); setPendingDuplicate(null); setPreviewDraft(null); setTimeline((t) => ({ ...t, enabled: false })); setPreviewText(""); storeTool(next); };
   const setInteractionMode = (next: "edit" | "navigate") => { setTool("select"); storeInteractionMode(next); };
   const [error, setError] = useState<string | null>(null);
   const [past, setPast] = useState<PlannerPlan[]>([]);
@@ -117,7 +119,7 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
       if (restoringLayout) validateEditorPlan(next); else validateDesignChange(current.current, next);
       if (JSON.stringify(current.current) === JSON.stringify(next)) return false;
       const before = structuredClone(current.current);
-      setNotice({ message: planChangeMessage(before, next), id: Date.now() });
+      setNotice({ message: planChangeMessage(before, next), id: Date.now() }); setBlockedPlantingSurfaceId(null);
       setPast((items) => [...items, before].slice(-50)); setFuture([]);
       if (selection?.plantId) {
         const area = next.plantingAreas.find((a) => a.placements?.some((p) => p.id === selection.plantId));
@@ -221,6 +223,17 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
   };
   const focus = () => setFocusRequest((n) => n + 1);
   const fit = () => setFitRequest((n) => n + 1);
+  const reportPlantingBlock = (point: PointCm) => {
+    const soil = settings.targetSurfaceId ? plantingSurfaces(current.current).find(s => `${s.kind}:${s.id}` === settings.targetSurfaceId) : surfaceAt(current.current, point);
+    setBlockedPlantingSurfaceId(soil && locked({ kind: soil.kind, id: soil.id }) ? `${soil.kind}:${soil.id}` : null);
+  };
+  const unlockPlantingBed = () => {
+    const soil = plantingSurfaces(current.current).find(s => `${s.kind}:${s.id}` === blockedPlantingSurfaceId);
+    if (!soil) return;
+    const owner = `${soil.kind}:${soil.id}`;
+    if (!action(p => ({ ...p, objectLocks: p.objectLocks?.filter(key => key !== owner) }))) return;
+    setSettings(s => ({ ...s, targetSurfaceId: owner })); select({ kind: soil.kind, id: soil.id }); setTool(["plant", "row", "fill", "brush"].includes(tool) ? tool : "plant"); focus();
+  };
   const plantBed = () => {
     if (!selection) return;
     const surface = plantingSurfaces(current.current).find(s => s.kind === selection.kind && s.id === selection.id);
@@ -237,7 +250,7 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
   const item = selection ? selectionItem(plan, selection) : undefined;
   const plantPoint = selection?.plantId && item && "crop" in item ? (selection.kind === "area" ? areaPlants(plan, item as PlannerPlantingArea) : rowPlants(item as PlannerRow)).find((p) => p.id === selection.plantId) : undefined;
   const displayPlan = useMemo(() => previewDraft?.plan ?? timelinePlan(plan, timeline), [plan, previewDraft, timeline]);
-  return { breeze, setBreeze, uiMode, setUiMode, interactionMode, setInteractionMode, showLabels, setShowLabels, notice, setNotice, plan, displayPlan, previewDraft, preview, applyPreview, cancelPreview, timeline, setTimeline, cameraLocked, setCameraLocked, fitRequest, fit, reflowOnResize, setReflowOnResize, useTemplate, gardenId, tool, setTool, selection, setSelection, select, selectGroup, selectCrops, restoreLayout, groupSelections, setGroupSelections, selectionMode, setSelectionMode, multiSelect, setMultiSelect, pendingDuplicate, cancelDuplicate, placeDuplicate, locked, toggleLock, smartSnap, setSmartSnap, accessVisible, setAccessVisible, spacingVisible, setSpacingVisible, sunPreview, setSunPreview, comparisonPlan, setComparisonPlan, focusRequest, focus, plantBed, moveGroup, resizeBase, growthStage, setGrowthStage, settings, setSettings, status, previewText, setPreviewText, error, setError, commit, action, undo, redo, remove, duplicate, update, move, save, setEditKey, item, plantPoint, canUndo: past.length > 0, canRedo: future.length > 0 };
+  return { blockedPlantingSurfaceId, reportPlantingBlock, unlockPlantingBed, breeze, setBreeze, uiMode, setUiMode, interactionMode, setInteractionMode, showLabels, setShowLabels, notice, setNotice, plan, displayPlan, previewDraft, preview, applyPreview, cancelPreview, timeline, setTimeline, cameraLocked, setCameraLocked, fitRequest, fit, reflowOnResize, setReflowOnResize, useTemplate, gardenId, tool, setTool, selection, setSelection, select, selectGroup, selectCrops, restoreLayout, groupSelections, setGroupSelections, selectionMode, setSelectionMode, multiSelect, setMultiSelect, pendingDuplicate, cancelDuplicate, placeDuplicate, locked, toggleLock, smartSnap, setSmartSnap, accessVisible, setAccessVisible, spacingVisible, setSpacingVisible, sunPreview, setSunPreview, comparisonPlan, setComparisonPlan, focusRequest, focus, plantBed, moveGroup, resizeBase, growthStage, setGrowthStage, settings, setSettings, status, previewText, setPreviewText, error, setError, commit, action, undo, redo, remove, duplicate, update, move, save, setEditKey, item, plantPoint, canUndo: past.length > 0, canRedo: future.length > 0 };
 }
 
 export type Garden3DEditor = ReturnType<typeof useGarden3DEditor>;

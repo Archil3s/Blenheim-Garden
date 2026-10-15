@@ -181,7 +181,7 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
       if (point.x < 0 || point.x > gardenDimensions(e.plan).width || point.y < 0 || point.y > gardenDimensions(e.plan).height) { e.setError("Choose a location inside the garden fence."); return; }
       if (e.tool === "plant" && plantLocationBlocked(stateRef.current.plan, point)) { e.setError("Choose a planting location away from paths and structures."); return; }
       if (["row", "path", "trellis"].includes(e.tool) && !start) { start = point; paint(); return; }
-      try { if (e.commit(placementPlan(stateRef.current.plan, e.tool, point, start, e.settings))) { start = e.tool === "path" && e.settings.continuePath ? point : null; hover = null; e.setPreviewText(""); } } catch (error) { e.setError(error instanceof Error ? error.message : "Unable to place object."); }
+      try { if (e.commit(placementPlan(stateRef.current.plan, e.tool, point, start, e.settings))) { start = e.tool === "path" && e.settings.continuePath ? point : null; hover = null; e.setPreviewText(""); } } catch (error) { if (["plant", "row", "fill", "brush"].includes(e.tool)) e.reportPlantingBlock(start ?? point); e.setError(error instanceof Error ? error.message : "Unable to place object."); }
       paint();
     };
     const onWheel = (e: WheelEvent) => { e.preventDefault(); if (!stateRef.current.editor.cameraLocked) zoomAt(Math.exp(-e.deltaY * .0015), local(e)); };

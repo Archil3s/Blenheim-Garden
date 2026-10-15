@@ -375,13 +375,15 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     }
     if (editor.tool === "bed" && !moved) startPoint = null;
     showPreview(event);
-    if (!point || (!preview.userData.valid && !(editor.tool === "brush" && strokePoints.length))) { editor.setError(preview.userData.reason || (point && editor.tool === "plant" ? plantingPointFeedback(editor.plan, point, editor.settings.spacingCm || plants.find(p => p.name === editor.settings.crop)!.spacingCm, editor.settings.targetSurfaceId) : "Choose a valid garden location.")); return; }
+    if (!point || (!preview.userData.valid && !(editor.tool === "brush" && strokePoints.length))) { if (point && ["plant", "row", "fill", "brush"].includes(editor.tool)) editor.reportPlantingBlock(startPoint ?? point); editor.setError(preview.userData.reason || (point && editor.tool === "plant" ? plantingPointFeedback(editor.plan, point, editor.settings.spacingCm || plants.find(p => p.name === editor.settings.crop)!.spacingCm, editor.settings.targetSurfaceId) : "Choose a valid garden location.")); return; }
     try {
-      const next = editor.tool === "brush" && strokePoints.length
-        ? addCropPoints(editor.plan, editor.settings.crop, editor.settings.variety, brushPlacementPoints(editor.plan, editor.settings.crop, strokePoints, editor.settings.targetSurfaceId, editor.settings.spacingCm), editor.settings.targetSurfaceId, editor.settings.spacingCm)
+      const brushed = editor.tool === "brush" && strokePoints.length ? brushPlacementPoints(editor.plan, editor.settings.crop, strokePoints, editor.settings.targetSurfaceId, editor.settings.spacingCm) : null;
+      if (brushed && !brushed.length) throw new Error(preview.userData.reason || "No room here. Plant on soil or adjust the spacing.");
+      const next = brushed
+        ? addCropPoints(editor.plan, editor.settings.crop, editor.settings.variety, brushed, editor.settings.targetSurfaceId, editor.settings.spacingCm)
         : placementPlan(editor.plan, editor.tool, point, startPoint, editor.settings);
       if (editor.commit(next)) { resetPreview(); continuedPlan = null; if (editor.tool === "path" && editor.settings.continuePath) { startPoint = point; continuedPlan = next; } editor.setError(null); }
-    } catch (e) { editor.setError(e instanceof Error ? e.message : "Unable to place object."); }
+    } catch (e) { if (["plant", "row", "fill", "brush"].includes(editor.tool)) editor.reportPlantingBlock(startPoint ?? point); editor.setError(e instanceof Error ? e.message : "Unable to place object."); }
   };
   runtime.refreshEditing = () => {
     if (drag) return;

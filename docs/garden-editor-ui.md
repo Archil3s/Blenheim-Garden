@@ -63,6 +63,12 @@ Click it to reset the garden view; the plan and north setting do not change.
 
 ## Feedback and saving
 
+If planting is blocked by a bed lock, the error names the underlying soil even
+when a cover or net frame is selected. **Unlock bed for planting** explicitly
+unlocks only that bed, preserves the chosen crop/tool and keeps other object
+locks. Unlocking and adding plants are separate Undo steps. Existing lock
+semantics are unchanged: a locked bed protects both geometry and its plants.
+
 The Save control shows Ready, Unsaved changes, Saving, Saved to cloud or a local/
 failed state. Phones show a compact status below Save. Editing displays a short
 action message with Undo. Errors remain visible in the existing status panel.

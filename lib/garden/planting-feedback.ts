@@ -16,7 +16,7 @@ export function plantingLocationIssue(plan: PlannerPlan, point: PointCm, target?
   return null;
 }
 
-export function plantingPointFeedback(plan: PlannerPlan, point: PointCm, spacing: number, target?: string) {
+export function plantingPointIssue(plan: PlannerPlan, point: PointCm, spacing: number, target?: string) {
   const issue = plantingLocationIssue(plan, point, target);
   if (issue) return issue;
   const soil = surfaceAt(plan, point);
@@ -24,5 +24,9 @@ export function plantingPointFeedback(plan: PlannerPlan, point: PointCm, spacing
   const occupied = [...plan.plantingAreas.flatMap(a => areaPlants(plan, a).map(p => ({ ...p, spacing: a.spacingCm }))),
     ...plan.rows.flatMap(r => rowPlants(r).map(p => ({ ...p, spacing: r.spacingCm })))];
   if (occupied.some(p => Math.hypot(point.x - p.x, point.y - p.y) < (spacing + p.spacing) / 2 - .01)) return "Too close to another plant. Move to a clear spot or reduce Plant spacing.";
-  return `${soil?.label ?? "Open ground"} · ${spacing} cm spacing · tap to plant`;
+  return null;
+}
+
+export function plantingPointFeedback(plan: PlannerPlan, point: PointCm, spacing: number, target?: string) {
+  return plantingPointIssue(plan, point, spacing, target) ?? `${surfaceAt(plan, point)?.label ?? "Open ground"} · ${spacing} cm spacing · tap to plant`;
 }

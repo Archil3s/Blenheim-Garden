@@ -96,6 +96,10 @@
 }
 
 .garden-pixel-workspace .garden-plant-breeze-control { display: none; }
+.garden-planting-lock-notice { position: absolute; z-index: 36; bottom: 130px; left: 50%; transform: translateX(-50%); width: min(360px, calc(100% - 24px)); box-sizing: border-box; padding: 12px; color: #533d20; background: #fff3d6; border: 1px solid #c19a55; border-radius: 10px; box-shadow: 0 4px 18px #102b2333; font-size: 12px; }
+.garden-planting-lock-notice p { margin: 7px 0; line-height: 1.4; }
+.garden-planting-lock-notice button { min-height: 42px; padding: 8px 12px; border: 1px solid #8da07e; border-radius: 6px; color: #23452e; background: #e2efda; cursor: pointer; }
+@media (max-width:840px) { .garden-planting-lock-notice { bottom: calc(var(--garden-sheet-height, 0px) + 130px); } }
 .garden-pick-options { flex-wrap: wrap; max-width: calc(100% - 24px); }
 .garden-bed-access { position: relative; }
 .garden-bed-access > summary { cursor: pointer; font-weight: 600; padding: 7px; }

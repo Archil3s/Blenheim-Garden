@@ -8,6 +8,9 @@ _Last updated: 15 October 2026_
 
 ### Simpler garden controls
 
+Blocked planting now identifies locked soil and offers **Unlock bed for planting**.
+It unlocks only that bed on request; net frames and other beds keep their locks.
+
 **Beds** jumps between soil surfaces, focuses them and starts scoped planting.
 Pick beds through foliage, switch the planting target, and preview a counted
 fill without replacing existing crops. Single/paint/row/patch placement share

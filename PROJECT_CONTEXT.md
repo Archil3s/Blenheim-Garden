@@ -49,6 +49,12 @@ checks; Preview/Apply/Cancel uses existing draft/history state. Changing the
 target or entering a preview clears unfinished WebGL row endpoints. Focus reads
 the current responsive canvas bounds so long rows fit after sheets close.
 
+Planting failures keep soil/spacing/lock causes across brush/row/fill/single
+tools. Transient blocked-soil state drives an explicit Unlock bed for planting
+notice, including when a locked cover is selected. This undoable action removes
+only the soil owner's lock and scopes the existing crop/tool to it. Saved lock
+semantics are unchanged; a locked bed still protects its contents.
+
 The shared editor now has selection target filters, hover outlines, a searchable
 Objects dialog, touch Multi-select, per-garden object locks and interactive
 duplicate placement. Locks use optional objectLocks in editor_settings_json;
