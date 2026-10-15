@@ -46,7 +46,9 @@ segment/route is independently undoable. Paths retain their centimetre width.
 Garden studio → Timeline previews one soil surface or the whole garden at
 sowing, maturity and harvest. Enter assumed planting date and timing from your
 seed packet, then scrub the date or use the stage buttons. Growth changes visual
-scale; before planting and after harvest the selected crops disappear from the
+scale and detailed-3D appearance: seedlings use young leaves, then foliage,
+flowers and fruit appear in stages. Pixel mode changes sprite scale. Before
+planting and after harvest the selected crops disappear from the
 view. **Back to editing** restores the actual plants. This does not modify saved
 counts, milestone records or D1 history. Default 60/90-day timings are visual
 estimates, not crop-specific harvest predictions.

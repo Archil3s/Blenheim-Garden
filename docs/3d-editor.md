@@ -65,8 +65,9 @@ contain planted beds.
 
 **Resize** shows a corner or endpoint handle. **Build options** supports
 multi-select, grouped movements/duplication, browser-stored bed templates and
-small/mature appearance previews. Small plants are a size preview, not a
-biological growth simulation. Templates contain empty bed dimensions and type;
+seedling, leafy, flowering/developing and harvest-ready appearance previews.
+Detailed 3D uses young-leaf geometry and hides developing flowers/fruit; these
+are illustrative previews, not a biological growth simulation. Templates contain empty bed dimensions and type;
 they do not overwrite current plantings. Camera focus retains an explicitly
 chosen Top view.
 

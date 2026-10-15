@@ -307,3 +307,12 @@ Original deterministic pigment, normal and roughness maps use species-specific
 finishes and remain embedded in desktop/mobile GLBs. The library and thumbnail
 export use matching lighting with less washout. Shared material serialization
 is cached per consolidation pass; shared GPU resource ownership is unchanged.
+
+The natural-form revision adds fuller pepper/berry branching, denser leaf
+tessellation, ripening vertex colours and softer ambient fill. Exported meshes
+retain plantPart metadata through consolidation. `garden-plant-growth.ts` uses
+that metadata for four illustrative growth previews in the model library and
+garden/timeline; seedlings have new geometry. Its generated browser module is
+written by the model exporter. Seedling cleanup releases generated buffers while
+preserving shared mature leaf materials. Stable-ID instance variation and the
+existing desktop/mobile LOD preserve root positions, canonical IDs and counts.

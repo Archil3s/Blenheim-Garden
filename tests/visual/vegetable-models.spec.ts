@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import { plants } from "../../lib/garden/plant-catalog";
 import { vegetableModelFor, vegetableModels } from "../../lib/garden/vegetable-model-catalog";
 import { editorAction } from "./helpers/editor-controls";
+import { readFile } from "node:fs/promises";
 
 const vegetables = plants.filter((plant) => plant.type === "Vegetable");
 const modelCrops = plants.filter((plant) => vegetableModelFor(plant.name, plant.varieties[0]));
@@ -172,4 +173,65 @@ test("failed vegetable assets preserve editing and can recover", async ({ page, 
   await page.reload();
   await expect(page.locator('[aria-label="Interactive 3D garden workspace"] canvas')).toHaveAttribute("data-vegetable-models", /broccoli-winter-rudolph/, { timeout: 60_000 });
   await expect(page.getByRole("status").filter({ hasText: "Detailed vegetable models" })).toHaveCount(0);
+});
+
+test("growth previews change foliage, flowers and fruit and export the displayed stage", async ({ page }, testInfo) => {
+  test.setTimeout(180_000);
+  const errors: string[] = []; page.on("pageerror", error => errors.push(error.message));
+  await page.goto("/3d-models");
+  const frame = page.frameLocator('iframe[title="Interactive vegetable models"]'), canvas = frame.locator("canvas");
+  await expect(canvas).toHaveAttribute("data-model-ready", "true", { timeout: 30_000 });
+  for (const quality of ["desktop", "mobile"]) {
+    if (quality === "mobile") await frame.getByRole("button", { name: "Mobile detail" }).click();
+    for (const crop of ["Lettuce", "Pepper", "Blueberry"]) {
+      await frame.getByLabel("Vegetable", { exact: true }).selectOption(crop);
+      await expect(canvas).toHaveAttribute("data-model-id", vegetableModelFor(crop)!.id);
+      await expect(canvas).toHaveAttribute("data-model-ready", "true", { timeout: 30_000 });
+      for (const phase of ["seedling", "leafy", "flowering", "mature"]) {
+        await frame.getByLabel("Growth stage", { exact: true }).selectOption(phase);
+        await expect(canvas).toHaveAttribute("data-growth-phase", phase);
+        if (phase !== "mature") await expect(canvas).toHaveAttribute("data-fruit-meshes", "0");
+        if (phase === "seedling" || phase === "leafy") await expect(canvas).toHaveAttribute("data-flower-meshes", "0");
+        if (crop !== "Lettuce" && (phase === "flowering" || phase === "mature")) expect(Number(await canvas.getAttribute("data-flower-meshes"))).toBeGreaterThan(0);
+        if (crop !== "Lettuce" && phase === "mature") expect(Number(await canvas.getAttribute("data-fruit-meshes"))).toBeGreaterThan(0);
+        await page.screenshot({ path: testInfo.outputPath(`${crop.toLowerCase()}-${phase}-${quality}.png`) });
+        if (testInfo.project.name === "desktop" && crop === "Pepper" && quality === "desktop" && ["seedling", "flowering"].includes(phase)) {
+          const downloadEvent = page.waitForEvent("download"); await frame.getByRole("link", { name: "Download GLB" }).click();
+          const download = await downloadEvent; expect(download.suggestedFilename()).toBe(`pepper-default-${phase}.glb`);
+          const target = testInfo.outputPath(download.suggestedFilename()); await download.saveAs(target);
+          const bytes = await readFile(target), length = bytes.readUInt32LE(12), json = JSON.parse(bytes.subarray(20, 20 + length).toString("utf8"));
+          expect(json.asset.version).toBe("2.0"); expect(json.nodes.some((node: { extras?: { growthPhase?: string } }) => node.extras?.growthPhase === phase)).toBeTruthy();
+          expect(json.nodes.some((node: { extras?: { plantPart?: string } }) => node.extras?.plantPart === "fruit")).toBeFalsy();
+          if (phase === "seedling") for (const node of json.nodes.filter((node: { mesh?: number; extras?: { plantPart?: string } }) => node.extras?.plantPart === "leaf")) {
+            expect(json.meshes[node.mesh].primitives.every((primitive: { attributes: { COLOR_0?: number } }) => primitive.attributes.COLOR_0 !== undefined)).toBeTruthy();
+          }
+        }
+      }
+    }
+  }
+  expect(errors).toEqual([]);
+});
+
+test("garden growth appearances preserve the plan and camera focus reveals desktop detail", async ({ page, context }, testInfo) => {
+  test.setTimeout(90_000);
+  const errors: string[] = []; page.on("pageerror", error => errors.push(error.message));
+  await context.route("**/api/**", route => route.fulfill({ json: { ok: true, plan, gardens: [], items: [] } }));
+  await page.goto("/3d?view=3d");
+  const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
+  await expect(canvas).toHaveAttribute("data-vegetable-models", /blueberry-southern-highbush/, { timeout: 60_000 });
+  const before = await page.evaluate(() => localStorage.getItem("blenheim-garden-live-plan"));
+  const options = page.locator(".garden-build-options"); await options.locator(":scope > summary").press("Enter");
+  for (const phase of ["seedling", "leafy", "flowering", "mature", "seedling", "mature"]) {
+    await page.getByLabel("Crop appearance", { exact: true }).selectOption(phase);
+    await expect(canvas).toHaveAttribute("data-growth-phases", phase);
+    await page.screenshot({ path: testInfo.outputPath(`garden-${phase}.png`) });
+  }
+  await options.locator(":scope > summary").press("Enter");
+  await page.getByRole("button", { name: "Objects", exact: true }).click();
+  const dialog = page.getByRole("dialog", { name: "Select garden objects" });
+  await dialog.getByLabel("Find an object").fill("Tomato"); await dialog.locator(".garden-object-list button").first().click(); await dialog.getByRole("button", { name: "Done", exact: true }).click();
+  await editorAction(page, "Focus bed");
+  await expect(canvas).toHaveAttribute("data-detail-levels", testInfo.project.name === "phone" ? "mobile" : /desktop/);
+  expect(await page.evaluate(() => localStorage.getItem("blenheim-garden-live-plan"))).toBe(before);
+  expect(errors).toEqual([]);
 });

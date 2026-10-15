@@ -97,6 +97,9 @@ four-lobed fruit, and squash types have different foliage and growth habits.
 Richer leaf mottling, raised vein textures, crop-specific skin markings and
 roughness maps distinguish glossy fruit, waxy foliage and dry roots/bulbs.
 These materials are embedded in both desktop and mobile GLB downloads.
+Smoother leaf folds, fuller pepper/berry branching, ripening colour and softer
+lighting improve close-ups. Growth stage previews and downloads are available
+in the library; Build options → Crop appearance previews them in the garden.
 See [the model library guide](docs/vegetable-model-library.md).
 
 ### Detailed tomato model test

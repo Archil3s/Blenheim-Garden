@@ -58,7 +58,8 @@ export function GardenPixelCanvas({ plan, editor, disabled }: { plan: PlannerPla
       frame = 0;
       const { plan: current, editor: e } = stateRef.current;
       const timelineTargets = timelineGroups(e.plan, e.timeline), stage = e.timeline.enabled ? timelineScale(e.timeline) : 1;
-      hits = drawPixelGarden(c, previewPlan ?? current, view, e.selection, stateRef.current.presentation, e.growthStage === "seedling" ? .38 : 1, false, (key) => e.timeline.enabled && timelineTargets.has(key) ? stage : e.growthStage === "seedling" ? .38 : 1);
+      const appearance = { seedling: .38, leafy: .62, flowering: .84, mature: 1 }[e.growthStage];
+      hits = drawPixelGarden(c, previewPlan ?? current, view, e.selection, stateRef.current.presentation, appearance, false, (key) => e.timeline.enabled && timelineTargets.has(key) ? stage : appearance);
       drawPixelDesign(c, view, { ...e, plan: current });
       if (e.pendingDuplicate && hover) {
         const p = snapped(unprojectPixel(hover, view));

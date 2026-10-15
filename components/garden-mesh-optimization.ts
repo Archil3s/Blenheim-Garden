@@ -16,7 +16,7 @@ export function consolidateGardenMeshes(root: THREE.Group) {
       appearance = JSON.stringify(json);
       appearances.set(object.material, appearance);
     }
-    const key = appearance + Object.keys(object.geometry.attributes).sort().join("|") + [object.castShadow, object.receiveShadow, object.visible, object.renderOrder].join(":");
+    const key = appearance + Object.keys(object.geometry.attributes).sort().join("|") + [object.castShadow, object.receiveShadow, object.visible, object.renderOrder, object.userData.plantPart ?? ""].join(":");
     const group = groups.get(key) ?? { material: object.material, meshes: [] as THREE.Mesh[] };
     group.meshes.push(object); groups.set(key, group);
   });
@@ -28,6 +28,7 @@ export function consolidateGardenMeshes(root: THREE.Group) {
     if (!geometry) continue;
     group.meshes.forEach((mesh) => mesh.removeFromParent());
     const merged = new THREE.Mesh(geometry, group.material);
+    if (group.meshes[0].userData.plantPart) merged.userData.plantPart = group.meshes[0].userData.plantPart;
     merged.castShadow = group.meshes[0].castShadow;
     merged.receiveShadow = group.meshes[0].receiveShadow;
     merged.visible = group.meshes[0].visible;

@@ -8,6 +8,9 @@ const output = path.join(root, "public/models/vegetables");
 const requestedCrop = process.argv.find(arg => arg.startsWith("--crop="))?.slice(7);
 const mobileOnly = process.argv.includes("--mobile");
 fs.mkdirSync(output, { recursive: true });
+const growthSource = fs.readFileSync(path.join(root, "components/garden-plant-growth.ts"), "utf8");
+fs.writeFileSync(path.join(output, "growth.js"), ts.transpileModule(growthSource, { compilerOptions: { target: ts.ScriptTarget.ES2020, module: ts.ModuleKind.ES2020 } }).outputText);
+if (process.argv.includes("--helpers-only")) { console.log("Updated the shared model-growth module."); process.exit(0); }
 const browser = await chromium.launch({ channel: process.env.PLAYWRIGHT_CHANNEL });
 try {
   const page = await browser.newPage();
@@ -39,8 +42,9 @@ try {
     renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1;
     renderer.setClearColor(0x000000, 0);
     const scene = new THREE.Scene();
-    scene.add(new THREE.HemisphereLight(0xfff5e3, 0x344b37, 1.35));
-    const sun = new THREE.DirectionalLight(0xfff2e1, 2.6); sun.position.set(-3, 5, 4); scene.add(sun);
+    scene.add(new THREE.HemisphereLight(0xfff5e3, 0x9fae91, 1.4));
+    scene.add(new THREE.AmbientLight(0xfff4e7, .35));
+    const sun = new THREE.DirectionalLight(0xfff2e1, 2.25); sun.position.set(-3, 5, 4); scene.add(sun);
     const fill = new THREE.DirectionalLight(0xd4e9ff, .65); fill.position.set(3, 2, -3); scene.add(fill);
     const exporter = new GLTFExporter();
     window.exportVegetable = async (model, mobile) => {

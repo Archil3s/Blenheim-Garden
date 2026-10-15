@@ -87,6 +87,7 @@ function disposeObject(root: THREE.Object3D) {
     if (object instanceof THREE.InstancedMesh) object.dispose();
     if (object.userData.sharedTomatoResources || object.userData.sharedPlantResources) return;
     geometries.add(object.geometry);
+    if (object.userData.sharedPlantMaterials) return;
     for (const material of Array.isArray(object.material) ? object.material : [object.material]) {
       materials.add(material); const standard = material as THREE.MeshStandardMaterial;
       if (standard.map) textures.add(standard.map); if (standard.bumpMap) textures.add(standard.bumpMap);
@@ -153,7 +154,8 @@ function buildGarden(root: THREE.Group, plan: PlannerPlan, mobile: boolean, stag
 }
 function growthFor(editor: Garden3DEditor) {
   const keys = timelineGroups(editor.plan, editor.timeline), scale = editor.timeline.enabled ? timelineScale(editor.timeline) : 1;
-  return (key: string) => editor.timeline.enabled && keys.has(key) ? scale : editor.growthStage === "seedling" ? .38 : 1;
+  const appearance = { seedling: .38, leafy: .62, flowering: .84, mature: 1 }[editor.growthStage];
+  return (key: string) => editor.timeline.enabled && keys.has(key) ? scale : appearance;
 }
 
 function updateBase(runtime: Runtime, plan: PlannerPlan) {
@@ -355,7 +357,8 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     const sky = skyTexture();
     scene.background = sky ?? new THREE.Color(0xcbeaf0);
     scene.fog = new THREE.Fog(0xd6e7d5, 23, 40);
-    scene.add(new THREE.HemisphereLight(0xfffdf1, 0x6d7347, 1.72));
+    scene.add(new THREE.HemisphereLight(0xfffdf1, 0x9a9d76, 1.72));
+    scene.add(new THREE.AmbientLight(0xfff4e4, .24));
 
     const sun = new THREE.DirectionalLight(0xffdda2, mobile ? 1.75 : 2.55);
     sun.position.set(-7.5, 11.5, 6.5);
@@ -421,6 +424,10 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     renderer.setAnimationLoop(() => {
       if (controls.update() || runtime.needsRender) {
         runtime.content.traverse((o) => { if (o instanceof THREE.LOD) o.update(camera); });
+        const phases = new Set<string>(), detailLevels = new Set<string>();
+        runtime.content.traverse(o => { if (o instanceof THREE.LOD && o.name === "crop-detail-lod") { phases.add(o.userData.growthPhase); detailLevels.add(mobile || o.getCurrentLevel() > 0 ? "mobile" : "desktop"); } });
+        renderer.domElement.dataset.growthPhases = [...phases].sort().join("|");
+        renderer.domElement.dataset.detailLevels = [...detailLevels].sort().join("|");
         selectionRef.current?.update(); runtime.updateEditing?.();
         renderer.render(scene, camera);
         renderer.domElement.dataset.drawCalls = String(renderer.info.render.calls);

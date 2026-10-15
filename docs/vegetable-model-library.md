@@ -36,7 +36,7 @@ attributes use normalized bytes, keeping values valid and reducing buffer size.
 Reduced mobile leaf and bud counts are spread across the mature stem height,
 preserving the upper canopy and crop silhouette.
 Shared indexed geometry reduces download sizes; the largest file is about
-7.52 MiB. The unique GLBs total about 293 MiB, and the garden downloads only the
+14.1 MiB. The unique GLBs total about 369 MiB, and the garden downloads only the
 models needed for the current plan or selected placement crop.
 
 ## Recognisable crop forms
@@ -55,7 +55,40 @@ Desktop and mobile GLBs embed the new maps, so the garden, library and downloade
 models use the same materials. The library and thumbnail renderer use matching,
 less washed-out lighting. Texture channels share cached resources, and mesh
 batching serializes each shared material once instead of repeatedly encoding its
-images for every leaf. Neither plant positions nor model triangle counts change.
+images for every leaf. The material-only revision preserved plant positions and
+triangle counts; the later natural-form revision adds foliage tessellation.
+
+### Natural forms and growth previews
+
+Leaves use denser curved surfaces, asymmetric outlines and smoother edge folds.
+Lettuce has softer overlapping layers; peppers have three forked stems, more
+secondary foliage and smooth fruit with green-to-ripe shoulder colour. Blueberry
+shrubs have curved canes, several leaves per twig, mixed-ripeness clusters and
+bell-shaped flowers; raspberry canopies include more shoots. Instance variation
+uses stable plant IDs to vary height, width, lean and shade without moving roots.
+
+The library's **Growth stage** and the garden's **Build options → Crop appearance**
+offer seedlings, leafy growth, flowering/developing and harvest-ready previews.
+Seedlings use separate cotyledon/young-leaf geometry. Later stages share mature
+geometry but remove flowers or fruit and their attachments as appropriate, then
+scale the canopy. Models export leaf/stem/flower/fruit metadata, which remains
+intact through batching. The existing tomato is classified by its material
+finish. These are illustrative planning stages, not cultivar-specific biological
+growth or harvest predictions. Leaf crops need not flower in the developing view.
+
+The GLB download exports the displayed growth stage. Preview meshes share mature
+materials; only generated seedling geometry/materials are disposed on stage
+changes. Garden cleanup preserves shared leaf materials while releasing seedling
+buffers. Normal Save, coordinates, counts, IDs and history remain unchanged.
+
+Warmer ambient fill makes leaf undersides readable. The isolated viewer has soft
+ground shadows; its floor is excluded from downloads. Desktop foliage retains
+fine tessellation and existing hairs/seeds, while mobile exports reduce it.
+The viewer renders when the camera/model changes or rotation is enabled, so
+idle inspection avoids repeatedly drawing the detailed canopy and its shadows.
+Garden LOD switches each planting group to reduced geometry at 10 m from its
+centre; phones use the mobile level. Zoom/focus changes detail without removing
+saved planting positions.
 
 The 15 October revision changes exported mesh geometry used in the garden,
 including mobile meshes. Leaves use distinct round, heart-shaped, palmate,
@@ -107,6 +140,9 @@ npm run models:export
 After a complete export exists, regenerate one crop without dropping other
 manifest entries using `npm run models:export -- --crop=Lettuce`.
 Use `npm run models:export -- --mobile` to regenerate only mobile files.
+Use `npm run models:export -- --helpers-only` after editing only the shared growth
+helper. The exporter transpiles `components/garden-plant-growth.ts` into the
+standalone library's `growth.js`; do not edit that generated module directly.
 
 The generator uses original code-defined geometry and procedural textures.
 It exports binary GLBs and transparent 512-pixel library thumbnails into

@@ -70,7 +70,7 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
   const [sunPreview, setSunPreview] = useState({ enabled: false, date: new Intl.DateTimeFormat("en-CA", { timeZone: "Pacific/Auckland", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()), hour: 12 });
   const [comparisonPlan, setComparisonPlan] = useState<PlannerPlan | null>(null);
   const [focusRequest, setFocusRequest] = useState(0);
-  const [growthStage, setGrowthStage] = useState<"seedling" | "mature">("mature");
+  const [growthStage, setGrowthStage] = useState<"seedling" | "leafy" | "flowering" | "mature">("mature");
   const [settings, setSettings] = useState<PlacementSettings>({ crop: plants[0].name, variety: plants[0].varieties[0], structureKind: "shed", width: 120, depth: 240, height: 180, pathWidth: 60, postSpacing: 150, diameter: 150, snap: true });
   const [status, setStatus] = useState("Use Save to persist your garden");
   const [previewText, setPreviewText] = useState("");
