@@ -88,10 +88,12 @@ cloud Save. **Detailed 3D** switches to the existing textured models; use
 
 Open `/3d-models`, or choose **Vegetable models** in the 3D garden toolbar.
 All indexed vegetables have textured plant-only GLB models, with desktop/mobile
-detail and garden integration. The library covers 29 vegetable types plus
-raspberry, with 53 catalogue entries including all 30 indexed vegetable varieties.
-Models have smoother curved foliage, fine veins and surface normals, tapered
-stems, layered asparagus tips and individually modelled raspberry drupelets.
+detail and garden integration. The library now covers 34 crop groups and 65
+entries, including all 30 indexed vegetable varieties, berries and four distinct
+herb forms. Crop-specific leaf outlines, compound leaves, branching, fruit and
+growing habits distinguish plants in the actual garden. Carrots have finely
+divided fronds, leeks have flat fans, corn has broad ribbed blades, peppers have
+four-lobed fruit, and squash types have different foliage and growth habits.
 See [the model library guide](docs/vegetable-model-library.md).
 
 ### Detailed tomato model test

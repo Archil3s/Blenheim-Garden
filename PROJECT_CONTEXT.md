@@ -291,3 +291,13 @@ locks. Scene labels and the true-north compass follow the WebGL/pixel cameras
 without serializing view state. Canonical commits emit brief Undo notices and
 normal protected Save remains explicit. No packages/assets/schema changes.
 See [the interface guide](docs/garden-editor-ui.md).
+
+## Crop model identity
+
+The exported detailed models now use species-specific leaf outlines, veins,
+compound foliage, fruit attachment and growth habits. The catalogue includes
+Strawberry, Blueberry, Herbs (Basil/Chives/Thyme/Parsley) and standalone Basil,
+alongside the existing vegetables and raspberry. The same GLBs are loaded by
+the gallery and garden through the existing shared template/instancing/LOD path.
+Model origins remain grounded in metre units; root planting offsets and all
+canonical plan data are unchanged. See docs/vegetable-model-library.md.

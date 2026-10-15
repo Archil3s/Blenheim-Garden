@@ -42,23 +42,34 @@ const details: Record<string, [string, string]> = {
   Potato: ["potato", "Compound foliage, branching stems and five-petalled flowers"],
   "Brussels Sprout": ["brussels-sprout", "Spiral buds along a thick stalk below a leafy crown"],
   Raspberry: ["raspberry", "Arching canes, serrated compound leaves, leafy calyces and individually modelled drupelets"],
+  Strawberry: ["strawberry", "Low crowns, serrated trifoliate leaves, white flowers and seed-covered hanging fruit"],
+  Blueberry: ["blueberry", "Woody branching shrubs, oval leaves and blue berry clusters with star-shaped calyces"],
+  Herbs: ["herb", "Species-specific basil, chives, thyme and parsley growth habits"],
+  Basil: ["basil", "Opposite pairs of broad aromatic leaves on branching stems"],
 };
 
 export function vegetableKey(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
-const indexed = plants.filter((plant) => plant.type === "Vegetable" || plant.name === "Raspberry");
+const indexed = plants.filter((plant) => Object.hasOwn(details, plant.name));
 const extras = Object.keys(details).filter((crop) => !indexed.some((plant) => plant.name === crop));
+const herbFeatures: Record<string, string> = {
+  basil: "Opposite pairs of broad, cupped leaves on branching stems",
+  chives: "A dense tuft of slender tubular leaves with round purple flower heads",
+  thyme: "Low woody branching stems with tiny opposite leaves and small pink flowers",
+  parsley: "A basal clump of stalks with divided, lobed leaflets",
+};
 
 export const vegetableModels: VegetableModel[] = [
   ...indexed.flatMap((plant) => plant.varieties.map((variety) => ({ crop: plant.name, variety }))),
   ...extras.map((crop) => ({ crop, variety: "Default" })),
 ].map(({ crop, variety }) => {
   const id = vegetableKey(crop + " " + variety);
-  const [kind, features] = details[crop];
+  const [baseKind, features] = details[crop];
+  const kind = baseKind === "herb" ? vegetableKey(variety) : baseKind;
   return {
-    id, crop, variety, kind, features,
+    id, crop, variety, kind, features: baseKind === "herb" ? herbFeatures[kind] ?? features : features,
     desktop: crop === "Tomato" ? "/models/tomato/tomato-garden.glb" : `/models/vegetables/${id}.glb`,
     mobile: crop === "Tomato" ? "/models/tomato/tomato-mobile.glb" : `/models/vegetables/${id}-mobile.glb`,
     plantingDepth: crop === "Carrot" ? /chantenay/i.test(variety) ? .11 : .18 : ({ Beet: .09, Radish: .055, Onion: .065, Garlic: .045, Leek: .17 } as Record<string, number>)[crop] ?? 0,

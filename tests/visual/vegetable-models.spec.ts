@@ -1,9 +1,10 @@
 import { expect, test } from "@playwright/test";
 import { plants } from "../../lib/garden/plant-catalog";
 import { vegetableModelFor, vegetableModels } from "../../lib/garden/vegetable-model-catalog";
+import { editorAction } from "./helpers/editor-controls";
 
 const vegetables = plants.filter((plant) => plant.type === "Vegetable");
-const modelCrops = [...vegetables, plants.find((plant) => plant.name === "Raspberry")!];
+const modelCrops = plants.filter((plant) => vegetableModelFor(plant.name, plant.varieties[0]));
 const plan = {
   beds: modelCrops.map((plant, i) => ({ id: i + 1, name: plant.name, x: 5 + i % 5 * 18, y: 10 + Math.floor(i / 5) * 29, w: 16, h: 25 })),
   plantingAreas: modelCrops.map((plant, i) => ({ id: `vegetable-${i}`, bedId: i + 1, crop: plant.name, variety: plant.varieties[0], cropIcon: "", spacingCm: plant.spacingCm, x: 0, y: 0, w: 100, h: 100, count: 2, pattern: "grid", iconSize: 18, visualSpacing: "normal", placements: [{ id: `one-${i}`, x: 35, y: 50 }, { id: `two-${i}`, x: 65, y: 50 }] })),
@@ -61,12 +62,19 @@ test("organic detail remains visible in desktop and mobile models", async ({ pag
   await expect(frame.locator("canvas")).toHaveAttribute("data-model-ready", "true", { timeout: 30_000 });
   for (const quality of ["desktop", "mobile"]) {
     if (quality === "mobile") await frame.getByRole("button", { name: "Mobile detail" }).click();
-    for (const crop of ["Asparagus", "Raspberry", "Lettuce", "Broccoli"]) {
+  for (const crop of ["Asparagus", "Raspberry", "Lettuce", "Broccoli", "Carrot", "Pumpkin", "Strawberry", "Blueberry", "Herbs", "Leek", "Corn", "Pepper", "Pea", "Kale"]) {
       await frame.getByLabel("Vegetable", { exact: true }).selectOption(crop);
       await expect(frame.locator("canvas")).toHaveAttribute("data-model-id", vegetableModelFor(crop)!.id);
       await expect(frame.locator("canvas")).toHaveAttribute("data-model-ready", "true", { timeout: 30_000 });
       await expect(frame.getByRole("link", { name: "Download GLB" })).toHaveAttribute("href", quality === "mobile" ? vegetableModelFor(crop)!.mobile : vegetableModelFor(crop)!.desktop);
       await page.screenshot({ path: testInfo.outputPath(`${crop.toLowerCase()}-${quality}.png`) });
+    }
+    await frame.getByLabel("Vegetable", { exact: true }).selectOption("Herbs");
+    for (const variety of ["Basil", "Chives", "Thyme", "Parsley"]) {
+      await frame.getByLabel("Variety", { exact: true }).selectOption(vegetableModelFor("Herbs", variety)!.id);
+      await expect(frame.locator("canvas")).toHaveAttribute("data-model-ready", "true", { timeout: 30_000 });
+      await expect(frame.locator("canvas")).toHaveAttribute("data-model-id", vegetableModelFor("Herbs", variety)!.id);
+      await page.screenshot({ path: testInfo.outputPath(`${variety.toLowerCase()}-${quality}.png`) });
     }
   }
   expect(errors).toEqual([]);
@@ -129,14 +137,22 @@ test("all indexed vegetables render in garden beds and rows with mobile assets",
   await expect(canvas).toHaveAttribute("data-vegetable-models", expected, { timeout: 60_000 });
   await expect(canvas).toHaveAttribute("data-tomato-model", "refined");
   expect(models.length).toBeGreaterThanOrEqual(9);
-  expect(models.every((url) => url.endsWith("-mobile.glb") === (testInfo.project.name === "phone"))).toBeTruthy();
+  expect(models.some((url) => url.endsWith("-mobile.glb"))).toBeTruthy();
+  expect(models.some((url) => !url.endsWith("-mobile.glb"))).toBe(testInfo.project.name !== "phone");
   await page.screenshot({ path: testInfo.outputPath("vegetable-models-garden.png") });
   await page.getByRole("button", { name: "Top", exact: true }).click();
   await page.screenshot({ path: testInfo.outputPath("vegetable-models-garden-top.png") });
-  await page.getByRole("button", { name: "Add plant", exact: true }).click();
+  await editorAction(page, "Add plant");
   await page.getByRole("combobox", { name: "Crop", exact: true }).selectOption("Lettuce");
   await page.getByRole("combobox", { name: "Variety", exact: true }).selectOption("Loose leaf");
   await expect(canvas).toHaveAttribute("data-vegetable-models", /lettuce-loose-leaf/);
+  const before = await page.evaluate(() => localStorage.getItem("blenheim-garden-live-plan"));
+  await page.getByRole("combobox", { name: "Crop", exact: true }).selectOption("Herbs");
+  for (const variety of ["Basil", "Chives", "Thyme", "Parsley"]) {
+    await page.getByRole("combobox", { name: "Variety", exact: true }).selectOption(variety);
+    await expect(canvas).toHaveAttribute("data-vegetable-models", new RegExp(vegetableModelFor("Herbs", variety)!.id));
+  }
+  expect(await page.evaluate(() => localStorage.getItem("blenheim-garden-live-plan"))).toBe(before);
   await page.getByRole("button", { name: "Select", exact: true }).click();
   await page.goto("/");
   await page.getByRole("button", { name: "3D", exact: true }).click();

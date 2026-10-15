@@ -8,7 +8,7 @@ const output = path.join(root, "public/models/vegetables");
 const requestedCrop = process.argv.find(arg => arg.startsWith("--crop="))?.slice(7);
 const mobileOnly = process.argv.includes("--mobile");
 fs.mkdirSync(output, { recursive: true });
-const browser = await chromium.launch();
+const browser = await chromium.launch({ channel: process.env.PLAYWRIGHT_CHANNEL });
 try {
   const page = await browser.newPage();
   await page.route("http://vegetables.local/**", async route => {

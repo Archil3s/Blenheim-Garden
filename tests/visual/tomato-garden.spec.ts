@@ -1,4 +1,6 @@
 import { expect, test } from "@playwright/test";
+import * as THREE from "three";
+import { editorAction, openInspectorMore } from "./helpers/editor-controls";
 
 const plan = {
   beds: [{ id: 99, name: "Tomato test bed", x: 35, y: 35, w: 30, h: 30 }],
@@ -31,19 +33,24 @@ test("refined tomatoes render in beds and rows and remain editable", async ({ pa
   const inspector = page.locator(".garden-edit-inspector");
   await expect(inspector).toContainText("Individual plant");
   await expect(inspector).toContainText("Tomato");
+  await openInspectorMore(page);
   const x = inspector.getByLabel("X (cm)");
   const previous = Number(await x.inputValue());
   await x.fill(String(previous + 10));
   await x.press("Enter");
   await expect(x).toHaveValue(String(previous + 10));
-  const duplicate = page.getByRole("button", { name: "Duplicate", exact: true });
-  await duplicate.scrollIntoViewIfNeeded();
-  await duplicate.click();
+  await editorAction(page, "Duplicate");
+  await expect(page.getByRole("button", { name: "Cancel copy", exact: true })).toBeVisible();
+  const state = JSON.parse((await canvas.getAttribute("data-camera"))!), camera = new THREE.PerspectiveCamera();
+  camera.matrixWorld.fromArray(state.world); camera.matrixWorldInverse.copy(camera.matrixWorld).invert(); camera.projectionMatrix.fromArray(state.projection);
+  const point = new THREE.Vector3(.2, .34, .1).project(camera), bounds = (await canvas.boundingBox())!;
+  const target = { x: bounds.x + (point.x + 1) * bounds.width / 2, y: bounds.y + (1 - point.y) * bounds.height / 2 };
+  if (testInfo.project.name === "phone") await page.touchscreen.tap(target.x, target.y); else await page.mouse.click(target.x, target.y);
   await expect.poll(() => page.evaluate(() => {
     const entry = Object.entries(localStorage).find(([key]) => key.startsWith("blenheim-garden-live-plan"));
     return entry ? JSON.parse(entry[1]).plantingAreas[0].count : 0;
   })).toBe(10);
-  await page.getByRole("button", { name: "Delete", exact: true }).click();
+  await editorAction(page, "Delete");
   await expect.poll(() => page.evaluate(() => {
     const entry = Object.entries(localStorage).find(([key]) => key.startsWith("blenheim-garden-live-plan"));
     return entry ? JSON.parse(entry[1]).plantingAreas[0].count : 0;

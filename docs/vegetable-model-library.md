@@ -11,7 +11,9 @@ cauliflower, cabbage, kale, broad bean, pea, beet, radish, onion, garlic, leek,
 corn, pepper, potato and Brussels sprout. Raspberry now has a dedicated mesh for
 each of its four indexed variety entries, using the same representative cane form.
 
-There are 53 catalogue entries and 100 unique desktop/mobile GLB files. The four
+The library also includes indexed strawberries, blueberries, standalone basil,
+and separate basil, chive, thyme and parsley models for the Herbs varieties.
+There are 65 catalogue entries and 124 unique desktop/mobile GLB files. The four
 tomato entries retain the existing shared refined tomato model. Other indexed
 varieties have separate export files, with common species geometry where their
 growth habit is similar. These are representative mature plants, not precise
@@ -34,8 +36,33 @@ attributes use normalized bytes, keeping values valid and reducing buffer size.
 Reduced mobile leaf and bud counts are spread across the mature stem height,
 preserving the upper canopy and crop silhouette.
 Shared indexed geometry reduces download sizes; the largest file is about
-6.40 MiB. The total library is about 161.9 MiB, and the garden downloads only the
+6.34 MiB. The total library is about 210 MiB, and the garden downloads only the
 models needed for the current plan or selected placement crop.
+
+## Recognisable crop forms
+
+The 15 October revision changes exported mesh geometry used in the garden,
+including mobile meshes. Leaves use distinct round, heart-shaped, palmate,
+divided and strap profiles with branching or parallel vein textures. Bean
+trifoliates, paired pea/broad-bean leaflets, compound potato foliage and simple
+pepper leaves use different arrangements. Carrots have secondary feathery
+leaflets; leeks form flat fans while onions retain tubular leaves and garlic
+has flat blades above cloves. Corn has broad arching blades and stem nodes.
+
+Courgettes form compact bushes with deeply lobed leaves and basal fruit;
+pumpkins and melons trail, and cucumbers climb with hanging fruit and tendrils.
+Peppers use a shouldered, four-lobed fruit mesh. Broccoli and cauliflower have
+tighter curds with different surrounding foliage; Winter Rudolph has a purple
+head. Strawberry crowns, blueberry shrubs, raspberry canes, chive tufts, low
+thyme and divided parsley remain distinguishable alongside basil.
+
+The models are representative growing plants rather than exact cultivar
+reconstructions. Botanical habit references include the RHS
+[pea guide](https://www.rhs.org.uk/vegetables/peas/grow-your-own),
+[courgette crop sheet](https://schoolgardening.rhs.org.uk/resources/info-sheet/courgette-crop-sheet.aspx)
+and [leek crop sheet](https://schoolgardening.rhs.org.uk/resources/info-sheet/leek-crop-sheet.aspx).
+Geometry and surface textures are original; these references do not change
+Blenheim planting guidance or saved crop spacing.
 
 ## Garden integration
 
