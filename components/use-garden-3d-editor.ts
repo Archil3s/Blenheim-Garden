@@ -8,6 +8,8 @@ import { editKeySession, persistGardenPlan, publishGardenPlan } from "@/lib/gard
 import { addCropPoints, cropPlacementPoints, movePlanGroup, validateNewBuilding } from "@/lib/garden/garden-building";
 import { gardenDimensions, resizeGarden } from "@/lib/garden/garden-dimensions";
 import { plantCountForArea } from "@/lib/garden/plant-spacing-layout";
+import { plantingSurfaces } from "@/lib/garden/planting-surfaces";
+import { plantingPointFeedback } from "@/lib/garden/planting-feedback";
 import { plants } from "@/lib/garden/plant-catalog";
 import { structurePreset } from "@/lib/garden/structure-catalog";
 import { transformContainerPlants } from "@/lib/garden/plan-editing";
@@ -23,8 +25,10 @@ export function placementPlan(plan: PlannerPlan, tool: EditorTool, point: PointC
   const id = crypto.randomUUID();
   const crop = plants.find((p) => p.name === settings.crop) ?? plants[0];
   if (["plant", "row", "fill", "brush"].includes(tool)) {
+    const points = cropPlacementPoints(plan, crop.name, point, start, tool as "plant" | "row" | "fill" | "brush", settings.targetSurfaceId, settings.spacingCm);
+    if (tool === "plant" && !points.length) throw new Error(plantingPointFeedback(plan, point, settings.spacingCm || crop.spacingCm, settings.targetSurfaceId));
     return addCropPoints(plan, crop.name, settings.variety,
-      cropPlacementPoints(plan, crop.name, point, start, tool as "plant" | "row" | "fill" | "brush", settings.targetSurfaceId, settings.spacingCm), settings.targetSurfaceId, settings.spacingCm);
+      points, settings.targetSurfaceId, settings.spacingCm);
   }
   if (tool === "bed") {
     const rect = start ? { x: Math.min(point.x, start.x), y: Math.min(point.y, start.y), w: Math.abs(point.x - start.x), h: Math.abs(point.y - start.y) } : { x: point.x - settings.width / 2, y: point.y - settings.depth / 2, w: settings.width, h: settings.depth };
@@ -218,7 +222,10 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
   const fit = () => setFitRequest((n) => n + 1);
   const plantBed = () => {
     if (!selection) return;
-    setSettings((s) => ({ ...s, targetSurfaceId: `${selection.kind}:${selection.id}` }));
+    const surface = plantingSurfaces(current.current).find(s => s.kind === selection.kind && s.id === selection.id);
+    if (!surface || locked(selection)) { setError("Select an unlocked bed to plant."); return; }
+    const active = surface.kind === "bed" ? current.current.plantingAreas.find(a => String(a.bedId) === surface.id) : current.current.rows.find(r => r.surfaceId === `object:${surface.id}`);
+    setSettings(s => ({ ...s, targetSurfaceId: `${surface.kind}:${surface.id}`, ...(active ? { crop: active.crop, variety: active.variety, spacingCm: active.spacingCm } : {}) }));
     setTool("plant"); focus();
   };
   const moveGroup = (delta: PointCm) => action((p) => movePlanGroup(p, groupSelections.length ? groupSelections : selection ? [selection] : [], delta));

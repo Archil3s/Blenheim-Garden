@@ -17,6 +17,7 @@ import { duplicateOnlyPlan, duplicatePlacementAt } from "@/lib/garden/duplicate-
 import { matchesSelectionTarget } from "@/lib/garden/selection-target";
 import { rowsForOwner } from "@/lib/garden/object-locks";
 import { connectedPathPoint, reflowSurfacePlants } from "@/lib/garden/garden-workflows";
+import { plantingPointFeedback } from "@/lib/garden/planting-feedback";
 
 type Runtime = { content: THREE.Group; scene: THREE.Scene; camera: THREE.PerspectiveCamera; controls: OrbitControls; renderer: THREE.WebGLRenderer; mobile: boolean; needsRender?: boolean; cancelEditing?: () => void; refreshEditing?: () => void; updateEditing?: () => void; makePreview?: (plan: PlannerPlan) => THREE.Group; disposePreview?: (root: THREE.Group) => void };
 
@@ -78,6 +79,14 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
   };
   const pick = (event: PointerEvent) => {
     setRay(event);
+    if (event.altKey || getEditor().selectionMode === "beds") {
+      for (const soil of plantingSurfaces(getEditor().plan)) {
+        const hit = raycaster.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0, 1, 0), -soil.height), new THREE.Vector3());
+        if (!hit || !surfaceContains(soil, { x: hit.x * 100 + 450, y: hit.z * 100 + 540 })) continue;
+        const root = content.children.find(node => node.userData.planKey === `${soil.kind}:${soil.id}`);
+        if (root) return { selection: { kind: soil.kind, id: soil.id } as PlanSelection, root };
+      }
+    }
     const candidates = content.children.filter((o) => {
       const bounds = (o.userData.pickBounds ??= new THREE.Box3().setFromObject(o)) as THREE.Box3;
       return raycaster.ray.intersectsBox(bounds);
@@ -162,15 +171,9 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
       if (plantingPointBlocked(editor.plan, point)) valid = false;
     }
     preview.userData.valid = valid;
-    let color = valid ? 0x66e0ac : 0xf27878;
+    const color = valid ? 0x66e0ac : 0xf27878;
     const source = plants.find((p) => p.name === editor.settings.crop) ?? plants[0];
     const crop = { ...source, spacingCm: editor.settings.spacingCm || source.spacingCm };
-    if (valid && editor.tool === "plant") {
-      const nearby = [...editor.plan.plantingAreas.flatMap((a) => areaPlants(editor.plan, a)), ...editor.plan.rows.flatMap(rowPlants)];
-      const distance = nearby.reduce((d, p) => Math.min(d, Math.hypot(p.x - point.x, p.y - point.y)), Infinity);
-      if (distance < crop.spacingCm * .3) color = 0xf27878;
-      else if (distance < crop.spacingCm) color = 0xffcd63;
-    }
     previewMaterial.color.setHex(color); (ring.material as THREE.MeshBasicMaterial).color.setHex(color);
     preview.visible = true; preview.position.set(point.x / 100 - 4.5, point.height + .015, point.y / 100 - 5.4);
 
@@ -220,7 +223,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
       editor.setPreviewText(`${positions.length} plants · ${crop.spacingCm} cm spacing · ${valid ? "release to place" : reason || "choose valid soil"}`);
       } catch (e) { valid = false; preview.userData.valid = false; reason = e instanceof Error ? e.message : "Choose valid soil."; }
     }
-    if (reason || !["row", "fill", "brush"].includes(editor.tool)) editor.setPreviewText(reason || (editor.tool === "bed" ? `${(footprint.scale.x).toFixed(1)} × ${(footprint.scale.z).toFixed(1)} m · release to place` : "Green: fits · tap to place"));
+    if (reason || !["row", "fill", "brush"].includes(editor.tool)) editor.setPreviewText(editor.tool === "plant" ? plantingPointFeedback(editor.plan, point, crop.spacingCm, editor.settings.targetSurfaceId) : reason || (editor.tool === "bed" ? `${(footprint.scale.x).toFixed(1)} × ${(footprint.scale.z).toFixed(1)} m · release to place` : "Green: fits · tap to place"));
     if (ghost) ghost.visible = editor.tool === "plant";
     footprint.visible = editor.tool !== "plant" && !(editor.tool === "path" && startPoint && candidate);
     if (!valid) { previewMaterial.color.setHex(0xf27878); (ring.material as THREE.MeshBasicMaterial).color.setHex(0xf27878); }
@@ -280,6 +283,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
   };
   const onMove = (event: PointerEvent) => {
     runtime.needsRender = true;
+    if (getEditor().interactionMode === "navigate") { canvas.style.cursor = event.buttons ? "grabbing" : "grab"; return; }
     if (getEditor().pendingDuplicate) { showCopy(event); return; }
     if (drag) {
       const point = groundPoint(event); if (!point) return;
@@ -367,7 +371,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     if (["row", "path", "trellis", "fence", "fill"].includes(editor.tool) && startPoint && point && !moved && Math.hypot(point.x - startPoint.x, point.y - startPoint.y) < 5) return;
     if (editor.tool === "bed" && !moved) startPoint = null;
     showPreview(event);
-    if (!point || (!preview.userData.valid && !(editor.tool === "brush" && strokePoints.length))) { editor.setError("Choose a valid garden location."); return; }
+    if (!point || (!preview.userData.valid && !(editor.tool === "brush" && strokePoints.length))) { editor.setError(point && editor.tool === "plant" ? plantingPointFeedback(editor.plan, point, editor.settings.spacingCm || plants.find(p => p.name === editor.settings.crop)!.spacingCm, editor.settings.targetSurfaceId) : "Choose a valid garden location."); return; }
     try {
       const next = editor.tool === "brush" && strokePoints.length
         ? addCropPoints(editor.plan, editor.settings.crop, editor.settings.variety, brushPlacementPoints(editor.plan, editor.settings.crop, strokePoints, editor.settings.targetSurfaceId, editor.settings.spacingCm), editor.settings.targetSurfaceId, editor.settings.spacingCm)

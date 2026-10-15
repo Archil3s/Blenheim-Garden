@@ -39,6 +39,20 @@ and contain catalogue IDs only, independently of named gardens and cloud data.
 
 ## Labels and orientation
 
+**Beds** opens a soil-only list with Previous/Next, Focus and Plant this bed.
+**Pick beds through crops** ignores foliage; Alt-click also picks soil directly.
+Planting starts with the bed's existing crop when present. **Planting bed**
+switches the target without changing the chosen crop. Single, paint, row and
+patch placement share soil, lock and mixed-crop spacing checks. Fill previews
+preserve existing crops; small planters can accept a centred plant.
+
+Detailed 3D's **Move view** offers Pan/Orbit, directional controls and zoom.
+In Navigate, WASD or arrows move across the ground, +/- zoom, Home fits the
+garden and F focuses the selection. Text fields retain their normal keys.
+Pan makes dragging move the view, including one-finger touch; Orbit rotates.
+Scroll zoom follows the pointer. Camera lock disables gestures and movement
+controls. Explicit Focus/Fit commands remain available.
+
 The selected/hovered soil shows its name and current crops. View → **Show bed
 labels** adds labels across the garden; crowded/offscreen labels are hidden.
 With labels enabled, click a label to select its soil. Label positions follow

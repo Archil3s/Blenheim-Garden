@@ -3,6 +3,8 @@ import type { PlanSelection } from "@/lib/garden/plan-editing";
 import { createGardenPlant3D } from "./garden-plant-3d";
 import { createPlantGrowthPreview, plantPhaseForScale } from "./garden-plant-growth";
 import { plantShapeIndex } from "./garden-plant-shape";
+import { isTomatoCrop, tomatoModelVersion } from "./garden-tomato-model";
+import { vegetableModelVersion } from "./garden-vegetable-model";
 
 type PlantPoint = { id: string; x: number; y: number; height?: number; containerId?: string };
 
@@ -26,8 +28,11 @@ export function addInstancedPlants(root: THREE.Group, points: PlantPoint[], crop
   const lod = new THREE.LOD(); lod.position.copy(origin);
   const build = (detail: boolean) => {
     const group = new THREE.Group();
-    for (let shape = 0; shape < 3; shape++) {
-      const indices = points.flatMap((point, index) => plantShapeIndex(seedFor(point.id)) === shape ? [index] : []);
+    const loaded = isTomatoCrop(crop) ? tomatoModelVersion(detail) || tomatoModelVersion(false) : vegetableModelVersion(crop, variety, detail);
+    // Basic loading/error plants share one batch; loaded meshes have real shape variants.
+    const shapes = loaded ? 3 : 1;
+    for (let shape = 0; shape < shapes; shape++) {
+      const indices = points.flatMap((point, index) => (loaded ? plantShapeIndex(seedFor(point.id)) : 0) === shape ? [index] : []);
       if (!indices.length) continue;
       const source = createGardenPlant3D(crop, variety, detail, shape);
       const template = stage === 1 ? source : createPlantGrowthPreview(source, crop, plantPhaseForScale(stage), detail);

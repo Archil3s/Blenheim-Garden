@@ -59,8 +59,9 @@ Select a bed for **Plant here**, **Focus bed** and **Fill with [crop]**. Plantin
 targets lock to that bed; 10 cm snapping follows rotated soil. Fill patches,
 rows, freehand plant strokes, paths, trellises and timber fences accept dragging;
 rows and paths also accept two endpoint taps. Preview dots and counts use the
-same placement solver as commit. Close planting is indicated separately from
-blocked soil, walls and overlapping building footprints. Open garden covers can
+same placement solver as commit. Single plants also respect mixed-crop spacing;
+blocked positions explain whether soil, locks, edges or spacing need attention.
+Reduce the explicit spacing setting for closer planting. Open garden covers can
 contain planted beds.
 
 **Resize** shows a corner or endpoint handle. **Build options** supports
@@ -144,3 +145,21 @@ Build options → Gentle plant breeze adds optional canopy movement in detailed
 3D. It pauses for reduced motion and hidden tabs; it is view state, not saved
 plan data. Stable plant IDs now choose one of three mesh shapes while retaining
 selection, movement, duplication and canonical planting positions.
+
+## Interaction verification (15 October 2026)
+
+The update adds Beds shortcuts, direct soil picking through foliage, scoped
+planting with shared spacing/lock/boundary checks, small planter centres, and
+Pan/Orbit plus Navigate-only ground movement. Browser checks cover numbered and
+rotated raised beds, fill preview/apply/cancel, retained crop ownership, undo,
+editing after navigation, camera locking, mobile menus and protected persistence.
+Production build, strict TypeScript and zero-warning ESLint pass. Existing test
+assertions are retained. Dart format finds no Dart files and Flutter analyze
+passes; Flutter tests are unavailable because this Next.js app has no Flutter
+`test` directory.
+The existing 172 editor/geometry/storage checks passed across 1920×1080,
+1440×900, 1024×768 and 390×844. On the final build, all eight new interaction
+checks and 12 detailed-model recovery/growth/shape-selection checks passed.
+Screenshots were inspected at all four sizes. The new touch test focuses visible
+soil before projecting a tap; its initial whole-garden projection landed on the
+phone toolbar. Existing test assertions and thresholds were not weakened.

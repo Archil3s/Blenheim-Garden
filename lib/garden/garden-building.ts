@@ -1,8 +1,9 @@
 import type { PlannerPlan, PlannerPlantingArea, PlannerRow } from "./planner-plan";
 import { reconcileOwnedPlants, rowBelongsTo, areaPlants, bedRectangle, movePlanSelection, rowPlants, selectionItem, transformContainerPlants, type PlanSelection, type PointCm } from "./plan-editing";
 import { gardenDimensions } from "./garden-dimensions";
-import { openGardenCovers, plantingPointBlocked, plantingSurfaces, surfaceAt, surfaceContains, surfaceLocal, surfaceWorld } from "./planting-surfaces";
+import { openGardenCovers, plantingSurfaces, surfaceAt, surfaceContains, surfaceLocal, surfaceWorld } from "./planting-surfaces";
 import { plants } from "./plant-catalog";
+import { plantingLocationIssue } from "./planting-feedback";
 
 export function snapPlantingPoint(plan: PlannerPlan, point: PointCm, snap: boolean, target?: string) {
   const surface = plantingSurfaces(plan).find((s) => `${s.kind}:${s.id}` === target) ?? surfaceAt(plan, point);
@@ -22,8 +23,8 @@ export function cropPlacementPoints(plan: PlannerPlan, cropName: string, point: 
   const crop = { ...source, spacingCm: spacingCm || source.spacingCm };
   const surface = target ? plantingSurfaces(plan).find((s) => `${s.kind}:${s.id}` === target) : surfaceAt(plan, start ?? point);
   const occupied = allPlantPoints(plan), result: PointCm[] = [];
-  const valid = (p: PointCm) => !plantingPointBlocked(plan, p) && (!surface || surfaceContains(surface, p, Math.min(6, crop.spacingCm * .15)))
-    && occupied.every((other) => Math.hypot(p.x - other.x, p.y - other.y) >= (mode === "plant" ? Math.min(5, crop.spacingCm * .2) : (other.spacing + crop.spacingCm) / 2) - .01)
+  const valid = (p: PointCm) => !plantingLocationIssue(plan, p, target) && (!surface || surfaceContains(surface, p, Math.min(6, crop.spacingCm * .15)))
+    && occupied.every((other) => Math.hypot(p.x - other.x, p.y - other.y) >= (other.spacing + crop.spacingCm) / 2 - .01)
     && result.every((other) => Math.hypot(p.x - other.x, p.y - other.y) >= crop.spacingCm - .01);
   if (target && !surface) throw new Error("Select a planting bed first.");
   if ((mode === "row" || mode === "brush") && start) {
@@ -33,7 +34,7 @@ export function cropPlacementPoints(plan: PlannerPlan, cropName: string, point: 
     if (!surface) throw new Error("Select a bed to fill.");
     const a = start ? surfaceLocal(surface, start) : { x: -surface.width / 2, y: -surface.depth / 2 };
     const b = start ? surfaceLocal(surface, point) : { x: surface.width / 2, y: surface.depth / 2 };
-    const cols = Math.floor(Math.abs(a.x - b.x) / crop.spacingCm), rows = Math.floor(Math.abs(a.y - b.y) / crop.spacingCm);
+    const cols = Math.max(1, Math.floor(Math.abs(a.x - b.x) / crop.spacingCm)), rows = Math.max(1, Math.floor(Math.abs(a.y - b.y) / crop.spacingCm));
     if (cols * rows > 10000) throw new Error("Fill a smaller patch (up to 10,000 plants).");
     for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
       const p = surfaceWorld(surface, { x: (a.x + b.x) / 2 + (x - (cols - 1) / 2) * crop.spacingCm,
@@ -50,6 +51,8 @@ export function addCropPoints(plan: PlannerPlan, cropName: string, variety: stri
   const crop = { ...source, spacingCm: spacingCm || source.spacingCm };
   const groups = new Map<string, PointCm[]>();
   for (const point of points) {
+    const issue = plantingLocationIssue(plan, point, target);
+    if (issue) throw new Error(issue);
     const surface = surfaceAt(plan, point);
     const owner = target ?? (surface ? `${surface.kind}:${surface.id}` : "ground");
     groups.set(owner, [...(groups.get(owner) ?? []), point]);

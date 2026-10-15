@@ -1,6 +1,6 @@
 # Blenheim Garden — Project Context
 
-_Last updated: 13 October 2026_
+_Last updated: 15 October 2026_
 
 **Repository:** `Archil3s/Blenheim-Garden`  
 **Production branch:** `main`
@@ -35,6 +35,13 @@ D1 has the 12 original beds saved. R2 photo/video upload, viewing and deletion a
 Never commit or expose `GARDEN_WRITE_TOKEN`. The browser stores an entered edit key only in `sessionStorage`.
 
 ## Drawing Interface V2
+
+The shared editor's Beds shortcuts use canonical planting surfaces for direct
+soil selection/focus and scoped planting. All manual planting modes enforce
+mixed-crop spacing, owner/soil boundaries and saved locks; fill retains existing
+plants and supports small planter centres. Detailed 3D has Pan/Orbit, ground
+movement and zoom controls, plus Navigate-only WASD/arrows/Home/F shortcuts.
+Navigation skips expensive plant mesh hover picking and never mutates the plan.
 
 The shared editor now has selection target filters, hover outlines, a searchable
 Objects dialog, touch Multi-select, per-garden object locks and interactive

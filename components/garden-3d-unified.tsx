@@ -24,6 +24,8 @@ import { updateGardenDesignOverlay } from "./garden-design-overlay";
 import { isTomatoCrop, loadGardenTomatoModel, tomatoModelVersion } from "./garden-tomato-model";
 import { loadGardenVegetableModel, vegetableModelVersion } from "./garden-vegetable-model";
 import { vegetableModelFor, vegetableModels } from "@/lib/garden/vegetable-model-catalog";
+import { GardenCameraTools } from "./garden-camera-tools";
+import { installGardenCameraNavigation } from "./garden-camera-navigation";
 import { GardenSceneGuide } from "./garden-scene-guide";
 import { updatePlantBreeze, releasePlantBreeze } from "./garden-plant-breeze";
 import { GardenPixelCanvas } from "./garden-pixel-canvas";
@@ -393,7 +395,9 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     controls.enableDamping = true;
     controls.dampingFactor = 0.06;
     controls.target.set(0, 0.3, 0);
-    controls.minDistance = 3.4;
+    controls.minDistance = .65;
+    controls.zoomToCursor = true;
+    controls.screenSpacePanning = false;
     controls.maxDistance = 27;
     controls.maxPolarAngle = Math.PI * 0.49;
 
@@ -408,6 +412,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     else buildGarden(content, planRef.current, mobile);
 
     fitGardenCamera(runtime);
+    const removeCameraNavigation = installGardenCameraNavigation(camera, controls, renderer.domElement, () => editorRef.current, () => { runtime.needsRender = true; });
     const removeEditInteractions = installGardenEditInteractions(runtime, () => editorRef.current, () => demoRef.current || !!editorRef.current.previewDraft || editorRef.current.timeline.enabled);
 
     const resize = () => {
@@ -448,6 +453,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     return () => {
       renderer.setAnimationLoop(null);
       observer.disconnect();
+      removeCameraNavigation();
       removeEditInteractions();
       controls.dispose();
       clearSelection(selectionRef);
@@ -561,6 +567,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
         <button type="button" className={cameraView === "top" ? "active" : ""} aria-pressed={cameraView === "top"} onClick={setTop}>Top</button>
         <button type="button" onClick={() => { if (runtimeRef.current) fitGardenCamera(runtimeRef.current); }}>{suppliedPlan ? "Fit" : "Fit garden"}</button>
         <button type="button" className={showDemo ? "active" : ""} aria-pressed={showDemo} onClick={() => setShowDemo((value) => !value)}>Demo bed</button>
+        <GardenCameraTools workspace={workspaceRef} editor={editor} />
         <span>{quality}</span>
       </div>}
       <div className="gv-3d-selection-card" aria-live="polite">

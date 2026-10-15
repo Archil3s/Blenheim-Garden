@@ -76,7 +76,7 @@
   .garden-edit-inspector > div { gap: 6px; }
   .gv-3d-workspace.gv-3d-editor:has(.garden-edit-inspector[open]):not([data-interaction-mode=navigate]) > .gv-3d-workspace-canvas { bottom: calc(var(--garden-sheet-height, 235px) + 72px); }
   .gv-3d-workspace.gv-3d-editor:has(.garden-edit-inspector, .garden-edit-palette, .garden-plant-tools) :is(.gv-3d-camera-controls, .garden-compass) { bottom: calc(var(--garden-sheet-height, 235px) + 80px); }
-  .gv-3d-workspace.gv-3d-editor .gv-3d-camera-controls { max-width: calc(100% - 76px); right: 6px; }
+  .gv-3d-workspace.gv-3d-editor .gv-3d-camera-controls { max-width: calc(100% - 76px); right: 6px; bottom: 115px; }
   .gv-3d-workspace.gv-3d-editor .garden-edit-palette, .gv-3d-workspace.gv-3d-editor .garden-plant-tools { top: auto; bottom: 65px; left: 6px; right: 6px; width: auto; max-height: 235px; border-radius: 15px 15px 8px 8px; }
   .gv-3d-workspace.gv-3d-editor:has(.garden-plant-tools, .garden-edit-palette) > .gv-3d-workspace-canvas { bottom: calc(var(--garden-sheet-height, 235px) + 72px); }
   .gv-3d-workspace.gv-3d-editor[data-canvas-gesture=true]:is(:has(.garden-edit-inspector[open]), :has(.garden-plant-tools), :has(.garden-edit-palette)) > .gv-3d-workspace-canvas { bottom: var(--garden-gesture-bottom); }
@@ -96,3 +96,21 @@
 }
 
 .garden-pixel-workspace .garden-plant-breeze-control { display: none; }
+.garden-pick-options { flex-wrap: wrap; max-width: calc(100% - 24px); }
+.garden-bed-access { position: relative; }
+.garden-bed-access > summary { cursor: pointer; font-weight: 600; padding: 7px; }
+.garden-bed-access[open] > div { position: absolute; top: 100%; left: 0; z-index: 45; width: 240px; display: grid; gap: 8px; padding: 12px; background: #f5f5e9; color: #234631; border: 1px solid #a4b99b; border-radius: 10px; box-shadow: 0 5px 18px #183d3033; }
+.garden-bed-access label { display: grid; gap: 5px; }
+.garden-bed-access select { width: 100%; min-height: 38px; }
+.garden-bed-access button { min-height: 38px; background: #e2ecd8; color: #294c33; border: 1px solid #a4b99b; border-radius: 6px; padding: 7px; }
+.garden-bed-access div > div { display: flex; gap: 5px; }
+.garden-bed-access div > div > button { flex: 1; }
+.garden-navigation-tools { position: relative; font-size: 11px; }
+.garden-navigation-tools > summary { padding: 8px; cursor: pointer; }
+.garden-navigation-tools[open] > div { position: absolute; bottom: calc(100% + 10px); right: 0; width: 240px; max-width: calc(100vw - 24px); display: grid; gap: 8px; background: #204c39; color: #f0f7e9; padding: 12px; border: 1px solid #8fb190; border-radius: 10px; box-shadow: 0 5px 18px #183d3033; }
+.garden-navigation-tools div > div { display: flex; gap: 6px; }
+.garden-navigation-tools button { flex: 1; min-height: 38px; }
+.garden-navigation-tools small { line-height: 1.5; }
+@media(max-width:840px) { .gv-3d-workspace.gv-3d-editor .garden-pick-options { max-width: calc(100% - 12px); } .garden-navigation-tools[open] > div { width: 215px; } .gv-3d-workspace.gv-3d-editor .gv-3d-camera-controls { flex-wrap: wrap; } }
+.gv-3d-realistic .garden-navigation-tools button[aria-pressed=true] { color: #23452e; background: #dcefd1; }
+@media(max-width:840px) { .garden-camera-options[open] > div { left: 0; right: auto; } }

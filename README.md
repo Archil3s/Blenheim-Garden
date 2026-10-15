@@ -8,6 +8,12 @@ _Last updated: 15 October 2026_
 
 ### Simpler garden controls
 
+**Beds** jumps between soil surfaces, focuses them and starts scoped planting.
+Pick beds through foliage, switch the planting target, and preview a counted
+fill without replacing existing crops. Single/paint/row/patch placement share
+soil, lock and crop-spacing checks. **Move view** adds Pan/Orbit, directional
+buttons and zoom; Navigate supports WASD/arrows, Home and F in detailed 3D.
+
 Select, Build, Plant and View group the shared 3D/pixel tools. Phone controls
 use a collapsible sheet below the garden. Navigate protects objects while
 looking around; + Add searches crops and structures with favourites/recent items.
