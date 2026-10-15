@@ -345,7 +345,7 @@
     grid-template-columns: minmax(0, 1fr) !important;
   }
 
-  .gv-3d-camera-controls button:first-child {
+  .gv-3d-camera-controls > button:first-child {
     display: none;
   }
 }

@@ -163,3 +163,5 @@ checks and 12 detailed-model recovery/growth/shape-selection checks passed.
 Screenshots were inspected at all four sizes. The new touch test focuses visible
 soil before projecting a tap; its initial whole-garden projection landed on the
 phone toolbar. Existing test assertions and thresholds were not weakened.
+Mobile camera preset hiding is limited to direct HUD children so all eight
+nested navigation controls remain available on phones.

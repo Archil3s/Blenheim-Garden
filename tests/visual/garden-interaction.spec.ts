@@ -57,6 +57,10 @@ test("bed shortcuts, scoped planting and navigation work without unintended edit
   await page.getByRole("button", { name: "Done planting", exact: true }).click();
   await page.getByRole("button", { name: "Undo", exact: true }).click(); expect(await read(page)).toEqual(fixture);
   await page.locator(".garden-navigation-tools > summary").click();
+  const navigation = page.getByRole("group", { name: "Move garden view" });
+  await expect(navigation.getByRole("button")).toHaveCount(8);
+  for (const button of await navigation.getByRole("button").all()) await expect(button).toBeVisible();
+  await page.screenshot({ path: info.outputPath("navigation-controls.png") });
   await page.getByRole("button", { name: "Pan", exact: true }).click();
   await expect(canvas).toHaveAttribute("data-camera-gesture", "pan");
   let camera = await canvas.getAttribute("data-camera"); await page.getByRole("button", { name: "Move view right", exact: true }).click();
