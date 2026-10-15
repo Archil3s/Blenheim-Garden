@@ -165,3 +165,25 @@ soil before projecting a tap; its initial whole-garden projection landed on the
 phone toolbar. Existing test assertions and thresholds were not weakened.
 Mobile camera preset hiding is limited to direct HUD children so all eight
 nested navigation controls remain available on phones.
+
+## Tomato rows in narrow beds
+
+Select a bed, open Plant and choose Add row. The bed becomes the planting target.
+Set the crop/variety and spacing, choose Along the bed or Across the bed, then
+Preview row. A centred row is generated from usable soil and existing spacing
+and lock checks. Apply preview adds it in one undo step; Cancel changes nothing.
+The preview reframes the selected bed after responsive sheets close.
+
+With Any soil selected, Add row still accepts a drag or two endpoint taps. The
+first tap now confirms the row start. Rows with no valid positions report soil
+edge/spacing guidance. Choosing a planting target also opens the centred preview
+controls and cancels an old unfinished row, rather than reusing its first point.
+
+Tomato-row verification (15 October 2026): all 12 new narrow/rotated-bed checks
+and 40 related planting, preview, pixel and persistence checks passed at the four
+standard viewports. After responsive focus was corrected, all 28 affected row,
+interaction, camera-lock and model-detail checks passed again. All screenshots
+were inspected, including whole-bed visibility on phone. Production build,
+strict TypeScript and zero-warning ESLint pass. Dart format finds no files and
+Flutter analyze passes; Flutter test is unavailable because this Next.js app has
+no Flutter test directory.

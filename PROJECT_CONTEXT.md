@@ -43,6 +43,12 @@ plants and supports small planter centres. Detailed 3D has Pan/Orbit, ground
 movement and zoom controls, plus Navigate-only WASD/arrows/Home/F shortcuts.
 Navigation skips expensive plant mesh hover picking and never mutates the plan.
 
+Selected soil now scopes Add row automatically. `bedRowPlacementPoints` generates
+a centred row along/across usable soil with the same spacing/lock/ownership
+checks; Preview/Apply/Cancel uses existing draft/history state. Changing the
+target or entering a preview clears unfinished WebGL row endpoints. Focus reads
+the current responsive canvas bounds so long rows fit after sheets close.
+
 The shared editor now has selection target filters, hover outlines, a searchable
 Objects dialog, touch Multi-select, per-garden object locks and interactive
 duplicate placement. Locks use optional objectLocks in editor_settings_json;

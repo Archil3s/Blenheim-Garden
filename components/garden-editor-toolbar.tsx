@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { editorTools, type EditorMode } from "@/lib/garden/editor-ui";
+import { plantingSurfaces } from "@/lib/garden/planting-surfaces";
 import type { Garden3DEditor } from "./use-garden-3d-editor";
 
 type MenuAction = { label: string; run: () => void; disabled?: boolean };
@@ -23,7 +24,7 @@ export function GardenEditorToolbar({ editor, disabled, viewOnly, onAdd, menu }:
       <div className="garden-session-controls"><button type="button" aria-label="Undo" title="Undo" disabled={locked || !editor.canUndo} onClick={editor.undo}>↶</button><button type="button" aria-label="Redo" title="Redo" disabled={locked || !editor.canRedo} onClick={editor.redo}>↷</button><div className="garden-interaction-switch" role="group" aria-label="Canvas interaction"><button type="button" disabled={locked} aria-pressed={editor.interactionMode === "navigate"} onClick={() => { editor.setUiMode("Select"); editor.setInteractionMode("navigate"); }}>Navigate</button><button type="button" disabled={locked} aria-pressed={editor.interactionMode === "edit"} onClick={() => editor.setInteractionMode("edit")}>Edit</button></div></div>
     </div>
     {!disabled && !viewOnly && active !== "View" && <div className="garden-mode-tools" role="toolbar" aria-label={`${active} tools`}>
-      {editorTools.filter((t) => t.mode === active).map((t) => <button type="button" key={t.id} aria-pressed={editor.tool === t.id} onClick={() => { editor.setTool(t.id); if (t.mode === "Build") editor.select(null); }}>{t.label}</button>)}
+      {editorTools.filter((t) => t.mode === active).map((t) => <button type="button" key={t.id} aria-pressed={editor.tool === t.id} onClick={() => { if (t.id === "row" && editor.selection && plantingSurfaces(editor.plan).some(s => s.kind === editor.selection!.kind && s.id === editor.selection!.id)) editor.plantBed(); editor.setTool(t.id); if (t.mode === "Build") editor.select(null); }}>{t.label}</button>)}
       {active === "Select" && <button type="button" onClick={menu.find((a) => a.label === "Objects")?.run}>Objects</button>}
       {active === "Plant" && <button type="button" onClick={menu.find((a) => a.label === "Plant a bed")?.run}>Plant a bed</button>}
     </div>}

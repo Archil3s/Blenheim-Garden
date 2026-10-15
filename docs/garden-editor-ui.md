@@ -71,3 +71,8 @@ API and retains planting history. Enter an edit key through the existing control
 
 The UI adds no dependencies, artwork, migrations or API fields. Geometry, plant
 IDs/counts, locks, named gardens, private R2 and archived history are unchanged.
+
+For a narrow bed, select it and choose Plant → Add row. Preview row centres one
+row along the bed (or across it) at the chosen spacing. Apply is undoable; Cancel
+preserves the saved plan. Any soil retains freehand/two-tap row placement with
+an explicit start-point prompt and clearer no-room feedback.

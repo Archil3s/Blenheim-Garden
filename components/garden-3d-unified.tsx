@@ -471,7 +471,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     };
   }, [gardenStyle]);
 
-  useEffect(() => { runtimeRef.current?.cancelEditing?.(); runtimeRef.current?.refreshEditing?.(); }, [editor.tool, editor.interactionMode, showDemo, effectivePlan]);
+  useEffect(() => { runtimeRef.current?.cancelEditing?.(); runtimeRef.current?.refreshEditing?.(); }, [editor.tool, editor.interactionMode, editor.settings.targetSurfaceId, editor.previewDraft, showDemo, effectivePlan]);
   useEffect(() => { runtimeRef.current?.refreshEditing?.(); }, [editor.selection, editor.groupSelections, editor.pendingDuplicate, editor.selectionMode, editor.previewDraft, editor.timeline.enabled, editor.interactionMode]);
   useEffect(() => { const runtime = runtimeRef.current; if (runtime) { runtime.controls.enabled = !editor.cameraLocked && (editor.interactionMode === "navigate" || ["select", "move", "box-select"].includes(editor.tool)) && !editor.pendingDuplicate; runtime.needsRender = true; } }, [editor.cameraLocked, editor.tool, editor.pendingDuplicate, editor.interactionMode, gardenStyle]);
   useEffect(() => { const runtime = runtimeRef.current; if (runtime && editor.fitRequest) fitGardenCamera(runtime); }, [editor.fitRequest]);
@@ -513,9 +513,14 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     const selected = editor.selection;
     runtime.content.traverse((o) => { const s = o.userData.planSelection as PlanSelection | undefined; if (s?.kind === selected.kind && s?.id === selected.id && s?.plantId === selected.plantId) target = o; });
     if (!target) return;
+    runtime.camera.aspect = Math.max(1, mountRef.current?.clientWidth ?? 1) / Math.max(1, mountRef.current?.clientHeight ?? 1);
+    runtime.camera.updateProjectionMatrix();
     const bounds = new THREE.Box3().setFromObject(target), center = bounds.getCenter(new THREE.Vector3()), radius = Math.max(1, bounds.getSize(new THREE.Vector3()).length() / 2);
     const vertical = THREE.MathUtils.degToRad(runtime.camera.fov), horizontal = 2 * Math.atan(Math.tan(vertical / 2) * runtime.camera.aspect);
     const distance = radius / Math.sin(Math.min(vertical, horizontal) / 2) * 1.3;
+    runtime.controls.maxDistance = Math.max(runtime.controls.maxDistance, distance * 1.1);
+    runtime.camera.far = Math.max(runtime.camera.far, distance * 3);
+    runtime.camera.updateProjectionMatrix();
     runtime.controls.target.copy(center); runtime.camera.position.copy(center).add(new THREE.Vector3(0, distance, cameraView === "top" ? .001 : distance * .25)); runtime.controls.update(); runtime.needsRender = true;
   }, [editor.focusRequest, editor.selection, cameraView]);
   useEffect(() => { const runtime = runtimeRef.current; if (runtime) fitGardenCamera(runtime); }, [effectivePlan.canvasWidthCm, effectivePlan.canvasHeightCm]);

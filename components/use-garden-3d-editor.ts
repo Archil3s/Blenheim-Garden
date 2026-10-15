@@ -27,6 +27,7 @@ export function placementPlan(plan: PlannerPlan, tool: EditorTool, point: PointC
   if (["plant", "row", "fill", "brush"].includes(tool)) {
     const points = cropPlacementPoints(plan, crop.name, point, start, tool as "plant" | "row" | "fill" | "brush", settings.targetSurfaceId, settings.spacingCm);
     if (tool === "plant" && !points.length) throw new Error(plantingPointFeedback(plan, point, settings.spacingCm || crop.spacingCm, settings.targetSurfaceId));
+    if (tool === "row" && !points.length) throw new Error("No room along this row. Draw farther inside the soil, choose a planting bed to preview a centred row, or adjust spacing.");
     return addCropPoints(plan, crop.name, settings.variety,
       points, settings.targetSurfaceId, settings.spacingCm);
   }

@@ -22,6 +22,10 @@ keep common tasks close. See [the interface guide](docs/garden-editor-ui.md).
 
 ### Garden studio and easier planting
 
+Select a bed and choose **Plant → Add row → Preview row** to generate one centred
+row at the chosen spacing, along or across the bed. Preview and Cancel preserve
+the plan; Apply is undoable. This also works on narrow and rotated raised beds.
+
 Select soil and choose **Plant here** for single/paint/row/patch planting and a
 counted fill preview. Plants follow their bed; optional rearrangement preserves
 IDs and counts during resizing. Connected paths, camera lock/focus, view-only

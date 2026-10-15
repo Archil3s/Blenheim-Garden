@@ -171,6 +171,7 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
       if (plantingPointBlocked(editor.plan, point)) valid = false;
     }
     preview.userData.valid = valid;
+    preview.userData.reason = reason;
     const color = valid ? 0x66e0ac : 0xf27878;
     const source = plants.find((p) => p.name === editor.settings.crop) ?? plants[0];
     const crop = { ...source, spacingCm: editor.settings.spacingCm || source.spacingCm };
@@ -368,10 +369,13 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     if (disabled() || (moved && (editor.tool === "select" || editor.tool === "move"))) return;
     if (editor.tool === "select" || editor.tool === "move") { editor.select(pick(event)?.selection ?? null, event.shiftKey || event.ctrlKey || event.metaKey || editor.multiSelect); return; }
     const point = groundPoint(event);
-    if (["row", "path", "trellis", "fence", "fill"].includes(editor.tool) && startPoint && point && !moved && Math.hypot(point.x - startPoint.x, point.y - startPoint.y) < 5) return;
+    if (["row", "path", "trellis", "fence", "fill"].includes(editor.tool) && startPoint && point && !moved && Math.hypot(point.x - startPoint.x, point.y - startPoint.y) < 5) {
+      if (editor.tool === "row") { editor.setError(null); editor.setPreviewText("Row start set · tap the end of the row on this bed's soil. Escape cancels."); }
+      return;
+    }
     if (editor.tool === "bed" && !moved) startPoint = null;
     showPreview(event);
-    if (!point || (!preview.userData.valid && !(editor.tool === "brush" && strokePoints.length))) { editor.setError(point && editor.tool === "plant" ? plantingPointFeedback(editor.plan, point, editor.settings.spacingCm || plants.find(p => p.name === editor.settings.crop)!.spacingCm, editor.settings.targetSurfaceId) : "Choose a valid garden location."); return; }
+    if (!point || (!preview.userData.valid && !(editor.tool === "brush" && strokePoints.length))) { editor.setError(preview.userData.reason || (point && editor.tool === "plant" ? plantingPointFeedback(editor.plan, point, editor.settings.spacingCm || plants.find(p => p.name === editor.settings.crop)!.spacingCm, editor.settings.targetSurfaceId) : "Choose a valid garden location.")); return; }
     try {
       const next = editor.tool === "brush" && strokePoints.length
         ? addCropPoints(editor.plan, editor.settings.crop, editor.settings.variety, brushPlacementPoints(editor.plan, editor.settings.crop, strokePoints, editor.settings.targetSurfaceId, editor.settings.spacingCm), editor.settings.targetSurfaceId, editor.settings.spacingCm)

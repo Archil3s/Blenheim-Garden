@@ -1,7 +1,7 @@
 import type { PlannerPlan, PlannerPlantingArea, PlannerRow } from "./planner-plan";
 import { reconcileOwnedPlants, rowBelongsTo, areaPlants, bedRectangle, movePlanSelection, rowPlants, selectionItem, transformContainerPlants, type PlanSelection, type PointCm } from "./plan-editing";
 import { gardenDimensions } from "./garden-dimensions";
-import { openGardenCovers, plantingSurfaces, surfaceAt, surfaceContains, surfaceLocal, surfaceWorld } from "./planting-surfaces";
+import { openGardenCovers, plantingSurfaces, surfaceAt, surfaceContains, surfaceLocal, surfaceWorld, type PlantingSurface } from "./planting-surfaces";
 import { plants } from "./plant-catalog";
 import { plantingLocationIssue } from "./planting-feedback";
 
@@ -72,6 +72,17 @@ export function addCropPoints(plan: PlannerPlan, cropName: string, variety: stri
     }
   }
   return { ...plan, plantingAreas: [...plan.plantingAreas, ...areas], rows: [...plan.rows, ...rows] };
+}
+
+export function bedRowPlacementPoints(plan: PlannerPlan, cropName: string, surface: PlantingSurface, spacingCm?: number, across = false) {
+  const spacing = spacingCm || plants.find(p => p.name === cropName)?.spacingCm || 25;
+  const horizontal = across ? surface.width < surface.depth : surface.width >= surface.depth;
+  const length = horizontal ? surface.width : surface.depth;
+  const count = Math.max(1, Math.floor((length - 2 * Math.min(6, spacing * .15)) / spacing) + 1);
+  const halfSpan = (count - 1) * spacing / 2;
+  const start = surfaceWorld(surface, { x: horizontal ? -halfSpan : 0, y: horizontal ? 0 : -halfSpan });
+  const end = surfaceWorld(surface, { x: horizontal ? halfSpan : 0, y: horizontal ? 0 : halfSpan });
+  return cropPlacementPoints(plan, cropName, end, start, "row", `${surface.kind}:${surface.id}`, spacing);
 }
 
 export function brushPlacementPoints(plan: PlannerPlan, crop: string, path: PointCm[], target?: string, spacingCm?: number) {
