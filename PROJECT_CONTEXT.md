@@ -301,3 +301,9 @@ alongside the existing vegetables and raspberry. The same GLBs are loaded by
 the gallery and garden through the existing shared template/instancing/LOD path.
 Model origins remain grounded in metre units; root planting offsets and all
 canonical plan data are unchanged. See docs/vegetable-model-library.md.
+
+Vegetable surface maps now live in `components/garden-vegetable-surfaces.ts`.
+Original deterministic pigment, normal and roughness maps use species-specific
+finishes and remain embedded in desktop/mobile GLBs. The library and thumbnail
+export use matching lighting with less washout. Shared material serialization
+is cached per consolidation pass; shared GPU resource ownership is unchanged.

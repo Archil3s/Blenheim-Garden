@@ -36,11 +36,12 @@ try {
     const { vegetableModels } = await import("/lib/garden/vegetable-model-catalog.js");
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, preserveDrawingBuffer: true });
     renderer.setSize(512, 512); renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1;
     renderer.setClearColor(0x000000, 0);
     const scene = new THREE.Scene();
-    scene.add(new THREE.HemisphereLight(0xfff4df, 0x416039, 2.2));
-    const sun = new THREE.DirectionalLight(0xfff1d6, 3); sun.position.set(-3, 5, 4); scene.add(sun);
-    const fill = new THREE.DirectionalLight(0xd3e9ff, .8); fill.position.set(3, 2, -3); scene.add(fill);
+    scene.add(new THREE.HemisphereLight(0xfff5e3, 0x344b37, 1.35));
+    const sun = new THREE.DirectionalLight(0xfff2e1, 2.6); sun.position.set(-3, 5, 4); scene.add(sun);
+    const fill = new THREE.DirectionalLight(0xd4e9ff, .65); fill.position.set(3, 2, -3); scene.add(fill);
     const exporter = new GLTFExporter();
     window.exportVegetable = async (model, mobile) => {
       const plant = model.kind === "tomato" ? (await new GLTFLoader().loadAsync(mobile ? model.mobile : model.desktop)).scene : createDetailedVegetable(model, mobile);

@@ -20,7 +20,7 @@ growth habit is similar. These are representative mature plants, not precise
 botanical reconstructions of every cultivar.
 
 Models contain the plant only, use metre units and include embedded surface
-textures and normal maps. Leaves use smooth centerline bends, gently rippled
+textures, normal maps and roughness maps. Leaves use smooth centerline bends, gently rippled
 margins, fine serrations, raised midribs, branching vein textures and vertex
 colour variation. Stems taper along curved paths. Head lettuce and cabbage
 leaves wrap around the head rather than intersecting as folded planes; butterhead
@@ -36,10 +36,26 @@ attributes use normalized bytes, keeping values valid and reducing buffer size.
 Reduced mobile leaf and bud counts are spread across the mature stem height,
 preserving the upper canopy and crop silhouette.
 Shared indexed geometry reduces download sizes; the largest file is about
-6.34 MiB. The total library is about 210 MiB, and the garden downloads only the
+7.52 MiB. The unique GLBs total about 293 MiB, and the garden downloads only the
 models needed for the current plan or selected placement crop.
 
 ## Recognisable crop forms
+
+### Surface colour and texture
+
+The material revision adds broad chlorophyll mottling, contrasting vein networks,
+subtle pores, warmer leaf edges and variation between individual leaves. Dedicated
+surface finishes distinguish waxy brassicas, silver flecks, striped squash and
+cucumber skins, melon netting, carrot growth marks, papery alliums and blueberry
+bloom. Embedded roughness maps give fruit a softer gloss and roots/bulbs a drier
+finish; normal maps supply relief without adding polygons. The original refined
+tomato assets are retained.
+
+Desktop and mobile GLBs embed the new maps, so the garden, library and downloaded
+models use the same materials. The library and thumbnail renderer use matching,
+less washed-out lighting. Texture channels share cached resources, and mesh
+batching serializes each shared material once instead of repeatedly encoding its
+images for every leaf. Neither plant positions nor model triangle counts change.
 
 The 15 October revision changes exported mesh geometry used in the garden,
 including mobile meshes. Leaves use distinct round, heart-shaped, palmate,

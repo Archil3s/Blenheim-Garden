@@ -92,12 +92,12 @@ test("every exported desktop and mobile model parses with finite textured geomet
     const { GLTFLoader } = await dynamicImport("/models/tomato/vendor/GLTFLoader.js");
     const manifest = await (await fetch("/models/vegetables/manifest.json")).json();
     const assets = new Map<string, { triangles: number; textured: number; dimensions: number[] }>();
-    const loader = new GLTFLoader(), results: { path: string; triangles: number; textured: number; normalMapped: number; validColors: boolean; finite: boolean; grounded: boolean }[] = [];
+    const loader = new GLTFLoader(), results: { path: string; triangles: number; textured: number; normalMapped: number; roughnessMapped: number; validColors: boolean; finite: boolean; grounded: boolean }[] = [];
     for (const model of manifest) for (const quality of ["desktop", "mobile"]) assets.set(model[quality], model.stats[quality]);
     for (const [path, stats] of assets) {
       const { scene } = await loader.loadAsync(path);
-      let triangles = 0, textured = 0, normalMapped = 0, finite = true, validColors = true;
-      scene.traverse((object: { isMesh?: boolean; geometry: { index?: { count: number }; getAttribute: (name: string) => { count: number; array: ArrayLike<number>; getX: (i: number) => number; getY: (i: number) => number; getZ: (i: number) => number }; dispose: () => void }; material: { map?: { dispose: () => void }; normalMap?: { dispose: () => void }; dispose: () => void } | { map?: { dispose: () => void }; normalMap?: { dispose: () => void }; dispose: () => void }[] }) => {
+      let triangles = 0, textured = 0, normalMapped = 0, roughnessMapped = 0, finite = true, validColors = true;
+      scene.traverse((object: { isMesh?: boolean; geometry: { index?: { count: number }; getAttribute: (name: string) => { count: number; array: ArrayLike<number>; getX: (i: number) => number; getY: (i: number) => number; getZ: (i: number) => number }; dispose: () => void }; material: { map?: { dispose: () => void }; normalMap?: { dispose: () => void }; roughnessMap?: { dispose: () => void }; dispose: () => void } | { map?: { dispose: () => void }; normalMap?: { dispose: () => void }; roughnessMap?: { dispose: () => void }; dispose: () => void }[] }) => {
         if (!object.isMesh) return;
         const vertices = object.geometry.getAttribute("position");
         finite &&= Array.from(vertices.array).every(Number.isFinite);
@@ -107,21 +107,22 @@ test("every exported desktop and mobile model parses with finite textured geomet
         const materials = Array.isArray(object.material) ? object.material : [object.material];
         if (materials.some(material => material.map)) textured++;
         if (materials.some(material => material.normalMap)) normalMapped++;
+        if (materials.some(material => material.roughnessMap)) roughnessMapped++;
       });
       const box = new THREE.Box3().setFromObject(scene);
       if (triangles !== stats.triangles || textured !== stats.textured) throw new Error("Model statistics mismatch: " + path);
-      results.push({ path, triangles, textured, normalMapped, validColors, finite, grounded: Math.abs(box.min.y) < .0001 });
-      scene.traverse((object: { isMesh?: boolean; geometry: { dispose: () => void }; material: { map?: { dispose: () => void }; normalMap?: { dispose: () => void }; dispose: () => void } | { map?: { dispose: () => void }; normalMap?: { dispose: () => void }; dispose: () => void }[] }) => {
+      results.push({ path, triangles, textured, normalMapped, roughnessMapped, validColors, finite, grounded: Math.abs(box.min.y) < .0001 });
+      scene.traverse((object: { isMesh?: boolean; geometry: { dispose: () => void }; material: { map?: { dispose: () => void }; normalMap?: { dispose: () => void }; roughnessMap?: { dispose: () => void }; dispose: () => void } | { map?: { dispose: () => void }; normalMap?: { dispose: () => void }; roughnessMap?: { dispose: () => void }; dispose: () => void }[] }) => {
         if (!object.isMesh) return;
         object.geometry.dispose();
-        for (const material of Array.isArray(object.material) ? object.material : [object.material]) { material.map?.dispose(); material.normalMap?.dispose(); material.dispose(); }
+        for (const material of Array.isArray(object.material) ? object.material : [object.material]) { material.map?.dispose(); material.normalMap?.dispose(); material.roughnessMap?.dispose(); material.dispose(); }
       });
     }
     return results;
   });
   expect(report.length).toBeGreaterThanOrEqual(vegetables.length * 2);
   expect(report.every((model) => model.finite && model.grounded && model.triangles > 0 && model.textured > 0)).toBeTruthy();
-  expect(report.filter((model) => model.path.includes("/vegetables/")).every((model) => model.normalMapped > 0 && model.validColors)).toBeTruthy();
+  expect(report.filter((model) => model.path.includes("/vegetables/")).every((model) => model.normalMapped > 0 && model.roughnessMapped > 0 && model.validColors)).toBeTruthy();
   await testInfo.attach("all-model-integrity", { body: JSON.stringify(report), contentType: "application/json" });
 });
 

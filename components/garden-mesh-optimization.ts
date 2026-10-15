@@ -5,12 +5,18 @@ import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 export function consolidateGardenMeshes(root: THREE.Group) {
   root.updateMatrixWorld(true);
   const groups = new Map<string, { material: THREE.Material; meshes: THREE.Mesh[] }>();
+  const appearances = new Map<THREE.Material, string>();
   root.traverse((object) => {
     if (!(object instanceof THREE.Mesh) || Array.isArray(object.material) || object.material.transparent) return;
     if (object.userData.sharedPlantResources || object.userData.sharedTomatoResources) return;
-    const appearance = object.material.toJSON();
-    delete appearance.uuid; delete appearance.metadata;
-    const key = JSON.stringify(appearance) + Object.keys(object.geometry.attributes).sort().join("|") + [object.castShadow, object.receiveShadow, object.visible, object.renderOrder].join(":");
+    let appearance = appearances.get(object.material);
+    if (appearance === undefined) {
+      const json = object.material.toJSON();
+      delete json.uuid; delete json.metadata;
+      appearance = JSON.stringify(json);
+      appearances.set(object.material, appearance);
+    }
+    const key = appearance + Object.keys(object.geometry.attributes).sort().join("|") + [object.castShadow, object.receiveShadow, object.visible, object.renderOrder].join(":");
     const group = groups.get(key) ?? { material: object.material, meshes: [] as THREE.Mesh[] };
     group.meshes.push(object); groups.set(key, group);
   });

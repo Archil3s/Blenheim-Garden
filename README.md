@@ -94,6 +94,9 @@ herb forms. Crop-specific leaf outlines, compound leaves, branching, fruit and
 growing habits distinguish plants in the actual garden. Carrots have finely
 divided fronds, leeks have flat fans, corn has broad ribbed blades, peppers have
 four-lobed fruit, and squash types have different foliage and growth habits.
+Richer leaf mottling, raised vein textures, crop-specific skin markings and
+roughness maps distinguish glossy fruit, waxy foliage and dry roots/bulbs.
+These materials are embedded in both desktop and mobile GLB downloads.
 See [the model library guide](docs/vegetable-model-library.md).
 
 ### Detailed tomato model test

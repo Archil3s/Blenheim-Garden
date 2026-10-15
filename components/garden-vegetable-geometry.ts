@@ -1,92 +1,13 @@
 import * as THREE from "three";
 import { consolidateGardenMeshes } from "./garden-mesh-optimization";
 import type { VegetableModel } from "@/lib/garden/vegetable-model-catalog";
+import { vegetableSurfaceMaps, type VegetableSurface } from "./garden-vegetable-surfaces";
 
-const textures = new Map<string, THREE.CanvasTexture>();
-const normals = new Map<string, THREE.CanvasTexture>();
 const golden = 2.399963;
 const v = (x = 0, y = 0, z = 0) => new THREE.Vector3(x, y, z);
-type Surface = "leaf" | "palmate" | "parallel" | "skin" | "net";
+type Surface = VegetableSurface;
 type LeafShape = "lance" | "round" | "heart" | "palmate" | "oak" | "strap";
 const leafSurface = (surface?: Surface) => surface === "leaf" || surface === "palmate" || surface === "parallel";
-
-function surfaceTexture(kind: Surface) {
-  const cached = textures.get(kind);
-  if (cached) return cached;
-  const canvas = document.createElement("canvas");
-  canvas.width = canvas.height = 512;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) throw new Error("Cannot create vegetable surface textures");
-  ctx.scale(2, 2);
-  ctx.fillStyle = "#eef1e3"; ctx.fillRect(0, 0, 256, 256);
-  for (let i = 0; i < 2400; i++) {
-    const x = (i * 73.13) % 256, y = (i * 131.71) % 256;
-    ctx.fillStyle = i % 2 ? "rgba(45,70,32,.045)" : "rgba(255,255,255,.16)";
-    ctx.fillRect(x, y, 1.5, 1.5);
-  }
-  if (kind === "palmate") {
-    ctx.strokeStyle = "rgba(245,250,213,.56)";
-    for (const [x, y] of [[18, 142], [44, 58], [128, 3], [212, 58], [238, 142]]) {
-      ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(128, 250); ctx.quadraticCurveTo((x + 128) / 2, 150, x, y); ctx.stroke();
-      for (let i = 2; i < 8; i++) { const t = i / 9, px = 128 + (x - 128) * t, py = 250 + (y - 250) * t; ctx.lineWidth = .6; ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(px + (x < 128 ? -19 : 19), py - 13); ctx.stroke(); }
-    }
-  } else if (kind === "parallel") {
-    for (let i = 0; i < 19; i++) { ctx.strokeStyle = i % 3 ? "rgba(245,250,210,.22)" : "rgba(67,99,48,.14)"; ctx.lineWidth = i === 9 ? 2 : .6; ctx.beginPath(); ctx.moveTo(5 + i * 13.5, 256); ctx.quadraticCurveTo(128 + (i - 9) * 10, 120, 128 + (i - 9) * 3, 0); ctx.stroke(); }
-  } else if (kind === "leaf") {
-    const gradient = ctx.createLinearGradient(0, 0, 256, 0);
-    gradient.addColorStop(0, "rgba(30,60,20,.18)"); gradient.addColorStop(.5, "rgba(245,255,203,.15)"); gradient.addColorStop(1, "rgba(30,60,20,.18)");
-    ctx.fillStyle = gradient; ctx.fillRect(0, 0, 256, 256);
-    ctx.strokeStyle = "rgba(241,247,196,.55)"; ctx.lineWidth = 1.8;
-    ctx.beginPath(); ctx.moveTo(128, 0); ctx.lineTo(128, 256); ctx.stroke();
-    for (let i = 1; i < 10; i++) for (const side of [-1, 1]) {
-      const y = i * 24;
-      ctx.lineWidth = .8; ctx.beginPath(); ctx.moveTo(128, y);
-      ctx.bezierCurveTo(128 + side * 38, y + 3, 128 + side * 83, y + 24, 128 + side * 125, y + 32); ctx.stroke();
-      for (let j = 1; j < 6; j++) {
-        const x = 128 + side * j * 20, start = y + j * 4;
-        ctx.lineWidth = .3; ctx.beginPath(); ctx.moveTo(x, start);
-        ctx.bezierCurveTo(x + side * 7, start - 2, x + side * 12, start - 8, x + side * 19, start - 10); ctx.stroke();
-      }
-    }
-  } else if (kind === "net") {
-    ctx.strokeStyle = "rgba(255,249,209,.85)"; ctx.lineWidth = 2;
-    for (let i = -256; i < 512; i += 23) {
-      ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i + 180, 256); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i - 180, 256); ctx.stroke();
-    }
-  } else {
-    for (let i = 0; i < 18; i++) {
-      ctx.strokeStyle = "rgba(255,250,209,.16)"; ctx.lineWidth = 2;
-      ctx.beginPath(); ctx.moveTo(i * 16, 0); ctx.bezierCurveTo(i * 16 + 4, 64, i * 16 - 4, 192, i * 16, 256); ctx.stroke();
-    }
-  }
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.colorSpace = THREE.SRGBColorSpace;
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-  textures.set(kind, texture);
-  return texture;
-}
-
-function surfaceNormal(kind: Surface) {
-  const cached = normals.get(kind);
-  if (cached) return cached;
-  const source = surfaceTexture(kind).image as HTMLCanvasElement;
-  const pixels = source.getContext("2d")!.getImageData(0, 0, 512, 512);
-  const canvas = document.createElement("canvas"); canvas.width = canvas.height = 512;
-  const ctx = canvas.getContext("2d")!;
-  const result = ctx.createImageData(512, 512);
-  const height = (x: number, y: number) => pixels.data[((y + 512) % 512 * 512 + (x + 512) % 512) * 4] / 255;
-  for (let y = 0; y < 512; y++) for (let x = 0; x < 512; x++) {
-    const n = v((height(x - 1, y) - height(x + 1, y)) * 2, (height(x, y + 1) - height(x, y - 1)) * 2, 1).normalize();
-    const offset = (y * 512 + x) * 4;
-    result.data.set([(n.x * .5 + .5) * 255, (n.y * .5 + .5) * 255, (n.z * .5 + .5) * 255, 255], offset);
-  }
-  ctx.putImageData(result, 0, 0);
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-  normals.set(kind, texture);
-  return texture;
-}
 
 export function createDetailedVegetable(model: VegetableModel, mobile: boolean) {
   const root = new THREE.Group();
@@ -97,7 +18,10 @@ export function createDetailedVegetable(model: VegetableModel, mobile: boolean) 
     const key = `${color}:${surface}:${roughness}`;
     let result = materialCache.get(key);
     if (!result) {
-      result = new THREE.MeshStandardMaterial({ color, roughness, vertexColors: leafSurface(surface), side: leafSurface(surface) ? THREE.DoubleSide : THREE.FrontSide, map: surface ? surfaceTexture(surface) : null, normalMap: surface ? surfaceNormal(surface) : null, normalScale: new THREE.Vector2(.24, .24) });
+      const pigment = new THREE.Color(color), hsl = { h: 0, s: 0, l: 0 };
+      pigment.getHSL(hsl);
+      if (surface) pigment.setHSL(hsl.h, Math.min(1, hsl.s * 1.14), Math.min(.88, hsl.l * 1.12));
+      result = new THREE.MeshStandardMaterial({ color: pigment, roughness: surface ? 1 : roughness, vertexColors: leafSurface(surface), side: leafSurface(surface) ? THREE.DoubleSide : THREE.FrontSide, ...(surface ? vegetableSurfaceMaps(surface, model.kind) : {}) });
       result.name = `${surface ?? "stem"}-${color.toString(16)}`;
       materialCache.set(key, result);
     }
@@ -170,8 +94,9 @@ export function createDetailedVegetable(model: VegetableModel, mobile: boolean) 
       const vein = Math.exp(-a * a * 90) * width * .018 * envelope;
       positions.push(x, y - bend * length * t ** 3, z + bend * length * t * t + envelope * width * .1 * (1 - a * a) + ripple + vein);
       uv.push(j / columns, t);
-      const tone = .88 + .1 * (1 - Math.abs(a)) + .035 * Math.sin(t * 15 + phase);
-      colors.push(Math.round(Math.min(1, tone) * 255), Math.round(Math.min(1, tone) * 255), Math.round(tone * .97 * 255));
+      const edgeTone = Math.abs(a) ** 2, young = t * .08, variation = Math.sin(yaw * 2.17 + base.y * 14) * .04;
+      const tone = .88 + .08 * (1 - edgeTone) + variation + young;
+      colors.push(...[tone - edgeTone * .03, tone + .02, tone - .08 - young - edgeTone * .05].map(channel => Math.round(THREE.MathUtils.clamp(channel, 0, 1) * 255)));
       if (i < rows && j < columns) {
         const k = i * (columns + 1) + j;
         indices.push(k, k + 1, k + columns + 1, k + 1, k + columns + 2, k + columns + 1);
