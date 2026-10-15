@@ -25,6 +25,7 @@ test("generates a seasonal plan for the selected month and shows it in 3D", asyn
   await expect(page.locator('[title^="Pumpkin ·"]')).not.toHaveCount(0);
 
   await page.getByRole("button", { name: "3D", exact: true }).click();
+  await page.getByRole("button", { name: "Detailed 3D", exact: true }).click();
   await expect(page.locator("[data-testid=inline-3d-root]")).toHaveAttribute(
     "data-planting-count",
     "12",

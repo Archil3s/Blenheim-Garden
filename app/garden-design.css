@@ -1,0 +1,79 @@
+.garden-design-dialog { width: min(640px, calc(100vw - 24px)); color: #254333; border: 1px solid #bdd0bc; }
+.garden-design-dialog::backdrop { background: #10251990; }
+.garden-design-tabs { display: flex; gap: 6px; padding: 0 18px 12px; }
+.garden-design-tabs button, .garden-design-body button, .garden-selection-tools button { min-height: 40px; padding: 8px 12px; border: 1px solid #9ebaab; border-radius: 7px; color: #254333; background: #edf5ed; font-size: 13px; cursor: pointer; }
+.garden-design-tabs button[aria-pressed=true] { color: #fff; background: #357456; border-color: #357456; }
+.garden-design-body { display: grid; gap: 14px; padding: 8px 18px 18px; overflow-y: auto; min-height: 0; }
+.garden-design-body p { margin: 0; font-size: 13px; line-height: 1.5; }
+.garden-design-body label { display: grid; gap: 6px; font-size: 13px; }
+.garden-design-body input, .garden-design-body select { width: 100%; min-height: 40px; padding: 7px; border: 1px solid #b3c4b4; border-radius: 6px; font: inherit; }
+.garden-design-body .garden-design-check { display: flex; align-items: center; gap: 10px; }
+.garden-design-check input { width: 20px; min-height: 20px; flex-shrink: 0; }
+.garden-design-buttons { display: flex; gap: 6px; flex-wrap: wrap; }
+.garden-design-body button:disabled { opacity: .45; cursor: default; }
+.garden-access-issues { margin: 0; padding-left: 20px; max-height: 180px; overflow-y: auto; font-size: 13px; line-height: 1.6; }
+.garden-layout-comparison { width: 100%; border-collapse: collapse; font-size: 13px; }
+.garden-layout-comparison :is(th,td) { text-align: left; padding: 8px; border-bottom: 1px solid #dbe5d9; }
+.garden-design-error { color: #94392e; }
+.garden-clearances { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 11px; }
+.garden-clearances strong { grid-column: 1 / -1; font-size: 12px; }
+.garden-clearances span { padding: 6px; border: 1px solid #78917d; border-radius: 5px; text-transform: capitalize; }
+.garden-selection-tools { position: absolute; z-index: 14; bottom: 165px; left: 12px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; max-width: calc(100% - 270px); padding: 8px; border: 1px solid #9bc4a7; border-radius: 9px; color: #edfff0; background: #17392ee8; font: 12px Arial,sans-serif; }
+.gv-3d-editor[data-multi-selection=true] .garden-edit-inspector { display: none; }
+@media (max-width: 840px) {
+  .garden-design-tabs { padding-inline: 12px; gap: 4px; }
+  .garden-design-tabs button { flex: 1; padding-inline: 5px; min-height: 44px; }
+  .garden-design-body { padding-inline: 14px; }
+  .garden-design-buttons button { min-height: 44px; }
+  .garden-selection-tools { left: 6px; right: 6px; max-width: none; bottom: 165px; }
+  .garden-selection-tools button { min-height: 44px; }
+}
+.garden-object-fields { border: 0; padding: 0; margin: 0; min-width: 0; display: grid; gap: 10px; }
+.garden-object-fields:disabled { opacity: .58; }
+.garden-pick-options { position: absolute; top: 116px; left: 12px; z-index: 21; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; max-width: calc(100% - 24px); padding: 8px 10px; color: #f1f7ee; background: #23473de8; border: 1px solid #729980; border-radius: 10px; font-size: 12px; }
+.garden-pick-options label { display: flex; align-items: center; gap: 6px; }
+.garden-pick-options select { max-width: 160px; min-height: 32px; color: #1c382f; background: #eff5e9; border-radius: 5px; }
+.garden-object-list { display: grid; gap: 6px; max-height: 48dvh; overflow-y: auto; padding: 8px 0; }
+.garden-object-list button { display: flex; text-align: left; align-items: center; justify-content: space-between; gap: 10px; padding: 10px; min-height: 48px; }
+.garden-object-list button[aria-pressed="true"] { outline: 2px solid #527d49; background: #dceacf; }
+.garden-object-list button span { display: grid; gap: 4px; }
+.garden-object-list small { color: #52634c; }
+.garden-object-picker footer { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.garden-object-picker { padding: 16px; gap: 12px; }
+.garden-object-picker header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.garden-object-picker h2 { font-size: 20px; margin: 0; }
+.garden-object-picker label { display: grid; gap: 6px; }
+.garden-object-picker input[type="search"] { width: 100%; box-sizing: border-box; min-height: 42px; padding: 8px; border: 1px solid #9fb395; border-radius: 6px; }
+.garden-object-picker .garden-edit-snap { display: flex; align-items: center; }
+.garden-pixel-workspace .garden-edit-inspector { max-height: calc(100% - 364px); }
+@media (max-width: 840px) { .garden-pixel-workspace .garden-edit-inspector { max-height: min(28%, calc(100% - 350px)); } .garden-pixel-workspace .garden-pick-options { top: 165px; } }
+@media (max-width: 600px) { .garden-pick-options { top: 111px; left: 6px; max-width: calc(100% - 12px); gap: 8px; padding: 5px 8px; } .garden-selection-tools { flex-wrap: wrap; } }
+@media (max-width: 600px) {
+  .gv-3d-realistic:has(.garden-pick-options) .garden-edit-inspector { top: 164px; }
+  .garden-pixel-workspace:has(.garden-pick-options) .garden-edit-inspector { top: 216px; max-height: min(28%, calc(100% - 374px)); }
+}
+.garden-workflow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.garden-assistant-crops { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; height: 160px; min-height: 160px; max-height: 170px; overflow: auto; border: 1px solid #abc09f; border-radius: 8px; padding: 10px; }
+.garden-assistant-crops label { display: flex; align-items: center; gap: 8px; }
+.garden-assistant-crops input[type=checkbox] { width: 18px; min-height: 18px; }
+.garden-planted-template-list { display: grid; gap: 10px; }
+.garden-planted-template-list article { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: #e9f0df; border: 1px solid #b0c4a5; border-radius: 8px; }
+.garden-planted-template-list article div { flex: 1 1 180px; display: grid; gap: 6px; }
+.garden-layout-proposal { padding: 12px; display: grid; gap: 8px; border: 1px solid #adc0a7; border-radius: 9px; }
+.garden-preview-actions { position: absolute; z-index: 24; left: 12px; bottom: 150px; max-width: min(480px, calc(100% - 24px)); box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: #f4f5e9; color: #28472f; border: 1px solid #7ca273; border-radius: 10px; }
+.garden-preview-actions strong, .garden-preview-actions span { flex-basis: 100%; }
+.garden-preview-actions button, .garden-plant-tools button, .garden-camera-options button { min-height: 40px; padding: 7px 10px; border-radius: 6px; border: 1px solid #87a17c; background: #e5efdd; color: #23442d; cursor: pointer; }
+.garden-plant-tools { position: absolute; top: 116px; left: 12px; z-index: 15; width: 240px; max-height: calc(100% - 230px); box-sizing: border-box; overflow-y: auto; padding: 12px; display: grid; gap: 9px; color: #edf6e9; background: #213e32ed; border: 1px solid #73987a; border-radius: 10px; font-size: 12px; }
+.garden-plant-tools header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.garden-plant-tools header strong { flex-basis: 100%; }
+.garden-plant-tools label { display: grid; gap: 5px; }
+.garden-plant-tools select, .garden-plant-tools input { width: 100%; min-height: 36px; box-sizing: border-box; border-radius: 5px; color: #24402e; background: #f3f5eb; }
+.garden-plant-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.garden-plant-modes button[aria-pressed=true] { color: #fff; background: #45734e; }
+.garden-more-settings summary { padding: 6px 0; }
+.garden-camera-options { position: relative; }
+.garden-camera-options summary { cursor: pointer; padding: 5px; }
+.garden-camera-options[open] > div { position: absolute; top: 100%; right: 0; width: 160px; padding: 10px; background: #23473d; border: 1px solid #729980; border-radius: 8px; z-index: 28; }
+.garden-camera-options button { display: block; margin-top: 6px; width: 100%; }
+@media (max-width: 840px) { .garden-preview-actions { left: 6px; bottom: 165px; max-width: calc(100% - 12px); } .garden-plant-tools { top: 112px; left: 6px; width: 230px; max-height: 45%; } }
+@media (max-width: 600px) { .garden-pick-options { font-size: 11px; } .garden-pick-options select { max-width: 135px; } .garden-pick-options { gap: 6px; } }

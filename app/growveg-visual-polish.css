@@ -367,3 +367,22 @@
     min-height: 54px !important;
   }
 }
+
+/* Detailed artwork replaces the earlier CSS crop silhouettes. */
+.gv-app .planting-area .planting-area-icons i:has([data-plant-art]) {
+  width: var(--area-icon-size, 24px) !important;
+  height: var(--area-icon-size, 24px) !important;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  clip-path: none;
+}
+.gv-app .planting-area .planting-area-icons i:has([data-plant-art])::before,
+.gv-app .planting-area .planting-area-icons i:has([data-plant-art])::after {
+  display: none;
+}
+.gv-app .planting-area .planting-area-icons i > [data-plant-art] {
+  width: 100% !important;
+  height: 100% !important;
+}

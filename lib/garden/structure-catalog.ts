@@ -49,9 +49,10 @@ export const STRUCTURE_PRESETS: readonly StructurePreset[] = [
 ];
 
 export function isPlannerStructureKind(value: unknown): value is PlannerStructureKind {
-  return typeof value === "string" && STRUCTURE_PRESETS.some((preset) => preset.kind === value);
+  return value === "fence" || value === "hoop-tunnel" || (typeof value === "string" && STRUCTURE_PRESETS.some((preset) => preset.kind === value));
 }
 
 export function structurePreset(kind: PlannerStructureKind) {
-  return STRUCTURE_PRESETS.find((preset) => preset.kind === kind) ?? STRUCTURE_PRESETS[0];
+  if (kind === "fence") return { kind, label: "Timber fence", icon: "═", widthCm: 200, depthCm: 30, heightCm: 100 };
+  return STRUCTURE_PRESETS.find((preset) => preset.kind === (kind === "hoop-tunnel" ? "low-hoop-frame" : kind)) ?? STRUCTURE_PRESETS[0];
 }

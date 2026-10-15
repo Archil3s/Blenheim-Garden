@@ -1,0 +1,111 @@
+.gv-app:not(.gv-view-3d) .gv-stage {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #e4ebe2;
+}
+.gv-app:not(.gv-view-3d) .gv-stage-scroll {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+  background: radial-gradient(ellipse at 50% 10%, #f5f7ef 0, #e4ebe2 75%);
+}
+.gv-app.gv-view-3d .gv-buildbar { display: none; }
+.gv-buildbar { flex-shrink: 0; padding: 8px 12px; border-bottom: 1px solid #cedbce; background: #fffef8; }
+.gv-build-actions, .gv-bulk-actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.gv-build-actions button, .gv-bulk-actions button {
+  min-height: 36px;
+  border: 1px solid #cad8cc;
+  border-radius: 8px;
+  padding: 0 10px;
+  background: #fff;
+  color: #375642;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+.gv-build-actions button:first-child, .gv-build-actions button.active, .gv-build-actions button[aria-pressed=true] { color: #fff; border-color: #357456; background: #357456; }
+.gv-build-actions button:hover:not(:disabled), .gv-bulk-actions button:hover { box-shadow: 0 0 0 2px #35745625; }
+.gv-build-actions button:disabled { opacity: .45; cursor: default; }
+.gv-bulk-actions { min-height: 32px; margin-top: 6px; }
+.gv-bulk-actions > span { flex: 1; min-width: 160px; font-size: 12px; color: #5d705e; }
+.gv-bulk-actions button.danger { border-color: #d8aaa1; color: #963e30; background: #fff4ef; }
+.gv-app:not(.gv-view-3d) .garden-canvas {
+  background-color: #f1f5e9;
+  background-image: linear-gradient(#8aab7720 1px, transparent 1px), linear-gradient(90deg, #8aab7720 1px, transparent 1px), linear-gradient(#76916538 1px, transparent 1px), linear-gradient(90deg, #76916538 1px, transparent 1px);
+  border-color: #9dae91;
+  border-radius: 6px;
+  box-shadow: 0 8px 28px #364e3020;
+}
+.gv-app:not(.gv-view-3d) .plan-bed {
+  border: 5px solid #b58858;
+  border-radius: 10px;
+  background: repeating-linear-gradient(0deg, #f0e4cd 0 14px, #e4d7bb 14px 15px);
+  box-shadow: inset 0 0 0 2px #f7edda, 0 3px 0 #79533425;
+}
+.gv-app:not(.gv-view-3d) .plan-bed.selected { overflow: visible !important; z-index: 60; border-color: #6b8c59; outline-color: #357456; }
+.gv-app .gv-v4-bed > .gv-bed-handle, .gv-app .structure-object > .gv-bed-handle {
+  position: absolute;
+  z-index: 70;
+  width: var(--handle-size);
+  height: var(--handle-size);
+  border: calc(2px / var(--canvas-scale)) solid #fff;
+  border-radius: calc(5px / var(--canvas-scale));
+  background: #357456;
+  box-shadow: 0 0 0 calc(1px / var(--canvas-scale)) #357456;
+  transform: translate(-50%, -50%);
+  touch-action: none;
+}
+.gv-app .gv-bed-handle.handle-nw { left: 0; top: 0; right: auto; bottom: auto; cursor: nwse-resize; }
+.gv-app .gv-bed-handle.handle-n { left: 50%; top: 0; right: auto; bottom: auto; cursor: ns-resize; }
+.gv-app .gv-bed-handle.handle-ne { left: 100%; top: 0; right: auto; bottom: auto; cursor: nesw-resize; }
+.gv-app .gv-bed-handle.handle-e { left: 100%; top: 50%; right: auto; bottom: auto; cursor: ew-resize; }
+.gv-app .gv-bed-handle.handle-se { left: 100%; top: 100%; right: auto; bottom: auto; cursor: nwse-resize; }
+.gv-app .gv-bed-handle.handle-s { left: 50%; top: 100%; right: auto; bottom: auto; cursor: ns-resize; }
+.gv-app .gv-bed-handle.handle-sw { left: 0; top: 100%; right: auto; bottom: auto; cursor: nesw-resize; }
+.gv-app .gv-bed-handle.handle-w { left: 0; top: 50%; right: auto; bottom: auto; cursor: ew-resize; }
+.gv-bed-dimensions {
+  position: absolute;
+  z-index: 65;
+  left: 50%;
+  bottom: calc(100% + 20px / var(--canvas-scale));
+  transform: translateX(-50%);
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: var(--canvas-label-size);
+  color: #fff;
+  background: #357456;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.gv-app .planting-area.bulk-selected { border: 3px solid #357456; background: #bce2b780; box-shadow: inset 0 0 0 2px #ffffffb0; }
+.gv-app .planting-row.bulk-selected { outline: 3px solid #357456; background: #bce2b7b0; }
+.gv-crop-check { position: absolute; z-index: 50; top: 0; right: 0; padding: 0 4px; border-radius: 0 0 0 6px; color: white; background: #357456; font-size: var(--canvas-label-size); pointer-events: none; }
+.gv-selection-box { position: absolute; z-index: 150; border: calc(2px / var(--canvas-scale)) dashed #357456; background: #35745625; pointer-events: none; }
+.garden-canvas.tool-marquee { cursor: crosshair; touch-action: none; }
+.garden-canvas.tool-marquee :is(.plan-bed, .planting-area, .planting-row, .layout-object) { cursor: crosshair; }
+.gv-app .draft-bed { border-color: #357456; border-radius: 10px; background: #cfdfac90; pointer-events: none; }
+.gv-app .draft-bed > span { font-size: var(--canvas-label-size); background: #357456; color: #fff; padding: 4px 8px; border-radius: 6px; white-space: nowrap; }
+.gv-app:not(.gv-view-3d) .gv-stage-status { flex-shrink: 0; }
+@media (max-width: 760px) {
+  .gv-app[data-panel-open=true] .gv-buildbar { display: none; }
+  .gv-app.gv-device-mobile:not(.gv-view-3d) .gv-cloud-state {
+    top: auto;
+    bottom: 16px;
+    left: 72px;
+    right: auto;
+    max-width: calc(100% - 170px);
+    min-height: 28px;
+    padding: 6px 8px;
+    border: 1px solid #cfdbcd;
+    border-radius: 8px;
+    background: #fffef8;
+    z-index: 40;
+    pointer-events: none;
+  }
+  .gv-buildbar { padding: 6px; }
+  .gv-build-actions { gap: 4px; }
+  .gv-build-actions button, .gv-bulk-actions button { min-height: 44px; padding-inline: 8px; font-size: 11px; }
+  .gv-bulk-actions { gap: 4px; }
+  .gv-bulk-actions > span { flex-basis: 100%; font-size: 11px; }
+}

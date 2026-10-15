@@ -68,7 +68,7 @@ test.beforeEach(async ({ context }) => {
 
 test("Live 3D renders a structure already present in the live plan", async ({ page }, testInfo) => {
   await page.addInitScript(({ key, plan }) => localStorage.setItem(key, JSON.stringify(plan)), { key: liveKey, plan: structurePlan });
-  await page.goto("/3d");
+  await page.goto("/3d?view=3d");
 
   const canvas = page.locator('[aria-label="Visual 3D garden canvas"] canvas');
   await expect(canvas).toBeVisible();
@@ -81,7 +81,7 @@ test("Live 3D renders a structure already present in the live plan", async ({ pa
 
 test("Live 3D receives a structure written from another tab", async ({ context, page }, testInfo) => {
   await page.addInitScript(({ key, plan }) => localStorage.setItem(key, JSON.stringify(plan)), { key: liveKey, plan: emptyPlan });
-  await page.goto("/3d");
+  await page.goto("/3d?view=3d");
 
   const canvas = page.locator('[aria-label="Visual 3D garden canvas"] canvas');
   await expect(canvas).toBeVisible();
@@ -90,7 +90,7 @@ test("Live 3D receives a structure written from another tab", async ({ context, 
   // Use a second 3D page as a passive same-origin writer. Unlike the planner,
   // it does not immediately overwrite the live-plan key with its own fixture.
   const writerTab = await context.newPage();
-  await writerTab.goto("/3d");
+  await writerTab.goto("/3d?view=3d");
   await expect(writerTab.locator('[aria-label="Visual 3D garden canvas"] canvas')).toBeVisible();
   await writerTab.evaluate(({ key, plan }) => localStorage.setItem(key, JSON.stringify(plan)), { key: liveKey, plan: structurePlan });
 
@@ -112,7 +112,7 @@ test("Live 3D renders every structure preset without browser errors", async ({ p
     ({ key, plan }) => localStorage.setItem(key, JSON.stringify(plan)),
     { key: liveKey, plan: catalogPlan },
   );
-  await page.goto("/3d");
+  await page.goto("/3d?view=3d");
 
   await expect(page.locator('[aria-label="Visual 3D garden canvas"] canvas')).toBeVisible();
   await expect(page.locator("body")).toContainText("36 structures");

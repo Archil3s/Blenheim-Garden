@@ -1,15 +1,23 @@
 # Blenheim Garden — Project Context
 
-_Last updated: 22 August 2026_
+_Last updated: 15 October 2026_
 
 **Repository:** `Archil3s/Blenheim-Garden`  
 **Production branch:** `main`
 
 ## Product
 
+The developer route `/3d-audit` is a static, isolated asset showroom. Its
+catalogue is generated at build time; its scene has no API/storage hooks.
+`PlannerBridges` excludes `/3d*`, including this route. Shared production beds,
+rows, paths, trellises, trees and decoration live in
+`components/garden-object-renderers.ts`. Structures must use the existing
+`@/components/garden-structure-3d` alias, which selects the V2 renderer and its
+legacy fallbacks. Audit-only modules are imported exclusively by the audit route.
+
 Blenheim Garden is a visual home-garden planner for Blenheim, Marlborough. The measured garden canvas is the application: keep it visually dominant, keep controls compact, and use a GrowVeg-like interaction model without copying proprietary code or artwork.
 
-The working canvas is **900 × 1080 cm-equivalent pixels**, treated as approximately **9 m × 10.8 m**. The base plan contains the existing 12 numbered beds plus the berry/cane area.
+The default working canvas is **900 × 1080 cm-equivalent pixels**, approximately **9 m × 10.8 m**. The 3D editor’s Garden size control supports dimensions from 2–50 m while preserving existing physical positions and sizes. Dimensions persist per named garden in the existing `gardens.canvas_width_cm` and `canvas_height_cm` columns; optional soil conditions and explicit row ownership persist in an idempotently added `editor_settings_json` column. The base plan contains the existing 12 numbered beds plus the berry/cane area.
 
 ## Stack and live Cloudflare storage
 
@@ -27,6 +35,51 @@ D1 has the 12 original beds saved. R2 photo/video upload, viewing and deletion a
 Never commit or expose `GARDEN_WRITE_TOKEN`. The browser stores an entered edit key only in `sessionStorage`.
 
 ## Drawing Interface V2
+
+The shared editor's Beds shortcuts use canonical planting surfaces for direct
+soil selection/focus and scoped planting. All manual planting modes enforce
+mixed-crop spacing, owner/soil boundaries and saved locks; fill retains existing
+plants and supports small planter centres. Detailed 3D has Pan/Orbit, ground
+movement and zoom controls, plus Navigate-only WASD/arrows/Home/F shortcuts.
+Navigation skips expensive plant mesh hover picking and never mutates the plan.
+
+Selected soil now scopes Add row automatically. `bedRowPlacementPoints` generates
+a centred row along/across usable soil with the same spacing/lock/ownership
+checks; Preview/Apply/Cancel uses existing draft/history state. Changing the
+target or entering a preview clears unfinished WebGL row endpoints. Focus reads
+the current responsive canvas bounds so long rows fit after sheets close.
+
+Planting failures keep soil/spacing/lock causes across brush/row/fill/single
+tools. Transient blocked-soil state drives an explicit Unlock bed for planting
+notice, including when a locked cover is selected. This undoable action removes
+only the soil owner's lock and scopes the existing crop/tool to it. Saved lock
+semantics are unchanged; a locked bed still protects its contents.
+
+The shared editor now has selection target filters, hover outlines, a searchable
+Objects dialog, touch Multi-select, per-garden object locks and interactive
+duplicate placement. Locks use optional objectLocks in editor_settings_json;
+no migration is needed. The main 2D planner honours them. Duplicate drafts never
+publish or save until placed; pure geometry and ownership logic lives in
+lib/garden/duplicate-placement.ts and lib/garden/object-locks.ts.
+
+Detailed 3D supports direct object dragging, eight resize handles and rotation
+rings, smart edge/centre/walkway alignment, collision checks during moves/resizes,
+access/spacing overlays, approximate NZ sunlight and named browser layout
+snapshots. Numbered beds retain their IDs and turn in 90° steps with canonical
+plant positions; raised structures allow other angles. Design north/walkway
+preferences use the existing editor_settings_json column without a migration.
+See [docs/3d-design.md](docs/3d-design.md). Shared geometry helpers live in
+`lib/garden/garden-design.ts`; per-garden snapshots in
+`lib/garden/garden-design-layouts.ts`; optional overlays in
+`components/garden-design-overlay.ts` and `components/garden-pixel-design.ts`.
+
+The main 2D planner's building bar supports drag-created beds, eight accessible
+bed resize handles, rotated raised-container corner resizing, crop multi-select,
+box selection and vegetable-only/all-crop selection. Bulk deletion is a single
+undoable plan edit; Save retains archived planting history through the existing
+API. Selection helpers and anchored resize geometry live in
+`lib/garden/planner-selection.ts`; appearance is scoped in
+`app/garden-2d-builder.css`. See [docs/2d-building.md](docs/2d-building.md).
 
 The planner uses a simplified two-row application chrome:
 
@@ -225,3 +278,70 @@ WebGL dense planting rendering is deliberately capped and live updates are throt
 
 
 The shared 3D garden editor and compatible placement persistence are described in [docs/3d-editor.md](docs/3d-editor.md).
+
+The upright hoop/cover fixes, crop-specific models and variety artwork are
+described in [docs/plant-structure-redesign.md](docs/plant-structure-redesign.md).
+
+Vegetable 2D artwork is generated from the production botanical geometry. See [docs/vegetable-theme.md](docs/vegetable-theme.md) for mappings and regeneration.
+
+## Garden studio workflows
+
+The shared 3D/pixel editor now holds view-only draft/timeline state independently
+of the canonical plan. Targeted planting and layout proposals use existing
+placement/collision/lock validators; Apply commits one history entry. Bed resize
+rearrangement retains every plant ID/count or rejects insufficient space.
+Legacy rows inferred to belong to a bed acquire explicit ownership when moved,
+rotated or copied, and selected children are not transformed twice. Connected
+paths snap to existing endpoints/centrelines and support chained elbow routes.
+Planted templates snapshot soil/crops/spacing/profiles in per-garden browser
+storage; placing uses the duplicate ghost flow with fresh IDs. Camera focus,
+fit and lock remain view state. No migrations/dependencies/artwork changes.
+See [Garden studio](docs/garden-studio.md) for usage and planning limitations.
+
+## Garden editor interface
+
+Four shared UI modes group existing tools. More tools retains studio/design/base
+and object actions; the new Add picker uses existing indexed metadata/artwork.
+Favourites/recent catalogue IDs are browser-only. Selection fields move under
+More; phones reserve the measured sheet height through a scoped CSS variable
+and ResizeObserver, preserving the canvas coordinate system and renderer.
+Navigate/Edit guards canvas mutations and keyboard Delete independently of cloud
+locks. Scene labels and the true-north compass follow the WebGL/pixel cameras
+without serializing view state. Canonical commits emit brief Undo notices and
+normal protected Save remains explicit. No packages/assets/schema changes.
+See [the interface guide](docs/garden-editor-ui.md).
+
+## Crop model identity
+
+The exported detailed models now use species-specific leaf outlines, veins,
+compound foliage, fruit attachment and growth habits. The catalogue includes
+Strawberry, Blueberry, Herbs (Basil/Chives/Thyme/Parsley) and standalone Basil,
+alongside the existing vegetables and raspberry. The same GLBs are loaded by
+the gallery and garden through the existing shared template/instancing/LOD path.
+Model origins remain grounded in metre units; root planting offsets and all
+canonical plan data are unchanged. See docs/vegetable-model-library.md.
+
+Vegetable surface maps now live in `components/garden-vegetable-surfaces.ts`.
+Original deterministic pigment, normal and roughness maps use species-specific
+finishes and remain embedded in desktop/mobile GLBs. The library and thumbnail
+export use matching lighting with less washout. Shared material serialization
+is cached per consolidation pass; shared GPU resource ownership is unchanged.
+
+The natural-form revision adds fuller pepper/berry branching, denser leaf
+tessellation, ripening vertex colours and softer ambient fill. Exported meshes
+retain plantPart metadata through consolidation. `garden-plant-growth.ts` uses
+that metadata for four illustrative growth previews in the model library and
+garden/timeline; seedlings have new geometry. Its generated browser module is
+written by the model exporter. Seedling cleanup releases generated buffers while
+preserving shared mature leaf materials. Stable-ID instance variation and the
+existing desktop/mobile LOD preserve root positions, canonical IDs and counts.
+
+The botanical-detail revision adds closed leaf shells, pale undersides, age
+colour, stem nodes, desktop hairs, sculpted fruit recesses/crowns and flower buds.
+Tomato source/GLBs are regenerated too. Shared shape helpers create continuous
+mesh variants cached by template; instanced shape groups map picks/moves back
+to their own stable IDs. The gallery exports the displayed shape. Optional
+breeze uses owned shader/shadow material clones, respects reduced motion and
+hidden tabs, and keeps canonical coordinates unchanged. The exporter generates
+growth/shape/breeze/shell browser modules. Library downloads total about 531 MiB
+(unique files), largest 18.6 MiB; only active crops are loaded by the garden.

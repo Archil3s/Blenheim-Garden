@@ -1,3 +1,4 @@
+import { editorAction, openInspectorMore } from "./helpers/editor-controls";
 import { expect, test, type Page } from "@playwright/test";
 import * as THREE from "three";
 import type { PlannerPlan } from "../../lib/garden/planner-plan";
@@ -20,15 +21,14 @@ test("dragging, resizing, rotation and bidirectional live edits", async ({ conte
   page.on("pageerror", (e) => errors.push(e.message));
   await context.route("**/api/**", (route) => route.fulfill({ json: { ok: true, plan: fixture, gardens: [{ id: "blenheim-garden", name: "Test garden", year: 2026 }], beds: [], items: [], notes: [], harvests: [] } }));
   await page.addInitScript(({ key, fixture }) => localStorage.setItem(key, JSON.stringify(fixture)), { key, fixture });
-  await page.goto("/3d");
+  await page.goto("/3d?view=3d");
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   await expect(canvas).toBeVisible();
   await expect(page.locator(".gv-3d-hud-left")).toContainText("1 beds · 1 structures");
   await page.getByRole("button", { name: "Top", exact: true }).click();
-  const bounds = (await canvas.boundingBox())!;
-  const camera = new THREE.PerspectiveCamera(testInfo.project.name === "phone" ? 42 : 34, bounds.width / bounds.height, .1, 60);
-  camera.position.set(0, 16.2, .001); camera.up.set(0, 1, 0); camera.lookAt(0, 0, 0); camera.updateMatrixWorld();
-  const screen = (x: number, y: number, height = .31) => {
+  const screen = async (x: number, y: number, height = .31) => {
+    const bounds = (await canvas.boundingBox())!, state = JSON.parse((await canvas.getAttribute("data-camera"))!);
+    const camera = new THREE.PerspectiveCamera(); camera.matrixWorld.fromArray(state.world); camera.matrixWorldInverse.copy(camera.matrixWorld).invert(); camera.projectionMatrix.fromArray(state.projection);
     const p = new THREE.Vector3(x / 100 - 4.5, height, y / 100 - 5.4).project(camera);
     return { x: bounds.x + (p.x + 1) * bounds.width / 2, y: bounds.y + (1 - p.y) * bounds.height / 2 };
   };
@@ -36,16 +36,18 @@ test("dragging, resizing, rotation and bidirectional live edits", async ({ conte
     if (testInfo.project.name === "phone") await page.touchscreen.tap(point.x, point.y);
     else await page.mouse.click(point.x, point.y);
   };
-  await tap(screen(490, 600));
+  await tap(await screen(490, 600));
   const inspector = page.locator(".garden-edit-inspector");
   await expect(inspector).toContainText("Editable bed");
+  await openInspectorMore(page);
   await inspector.getByLabel("Width (cm)", { exact: true }).fill("180");
+  await openInspectorMore(page);
   await inspector.getByLabel("Width (cm)", { exact: true }).press("Enter");
   await expect.poll(async () => (await readPlan(page)).beds[0].w * 9).toBeCloseTo(180);
   expect((await readPlan(page)).plantingAreas[0].count).toBe(2);
-  await page.getByRole("button", { name: "Move", exact: true }).click();
+  await editorAction(page, "Move");
   const beforeDrag = await readPlan(page);
-  const start = screen(480, 600), end = screen(530, 650);
+  const start = await screen(480, 600), end = await screen(530, 650);
   if (testInfo.project.name === "phone") {
     const session = await context.newCDPSession(page);
     await session.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ ...start, id: 1 }] });
@@ -64,10 +66,12 @@ test("dragging, resizing, rotation and bidirectional live edits", async ({ conte
   await page.getByRole("button", { name: "Redo", exact: true }).click();
   await expect.poll(async () => (await readPlan(page)).beds[0].x).toBe(afterDrag.beds[0].x);
   await page.getByRole("button", { name: "Select", exact: true }).click();
-  await tap(screen(650, 780, 2));
+  await tap(await screen(650, 780, 2));
   await expect(inspector).toContainText("Editable shed");
-  await page.getByRole("button", { name: "Rotate", exact: true }).click();
+  await editorAction(page, "Rotate");
+  await openInspectorMore(page);
   await expect(inspector.getByLabel("Rotation (degrees)")).toHaveValue("15");
+  await openInspectorMore(page);
   await inspector.getByLabel("Depth (cm)").fill("160"); await inspector.getByLabel("Depth (cm)").press("Enter");
   await expect.poll(async () => (await readPlan(page)).objects[0]).toMatchObject({ rotationDeg: 15, depthCm: 160 });
  const planner = await context.newPage(); await planner.goto("/");
@@ -79,7 +83,8 @@ test("dragging, resizing, rotation and bidirectional live edits", async ({ conte
   await expect.poll(async () => (await readPlan(page)).beds[0].w * 9).toBeCloseTo(160);
   await page.getByRole("button", { name: "Select", exact: true }).click();
   const bed = (await readPlan(page)).beds[0];
-  await tap(screen(bed.x * 9 + 100, bed.y * 10.8 + 180));
+  await tap(await screen(bed.x * 9 + 100, bed.y * 10.8 + 180));
+  await openInspectorMore(page);
   await expect(inspector.getByLabel("Width (cm)", { exact: true })).toHaveValue("160");
   await planner.evaluate(() => localStorage.setItem("blenheim-garden-live-plan:another-garden", JSON.stringify({ beds: [], plantingAreas: [], rows: [], objects: [] })));
   await expect(page.locator(".gv-3d-hud-left")).toContainText("1 beds");

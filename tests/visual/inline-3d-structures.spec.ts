@@ -52,6 +52,7 @@ test.beforeEach(async ({ context }) => {
 test("saved structures render and can be inspected in the planner 3D view", async ({ page }, testInfo) => {
   await page.goto("/");
   await page.getByRole("button", { name: "3D", exact: true }).click();
+  await page.getByRole("button", { name: "Detailed 3D", exact: true }).click();
   await expect(page.getByTestId("inline-3d-workspace")).toBeVisible();
   await expect(page.getByText("3D simulator needs WebGL2", { exact: false })).toHaveCount(0);
 

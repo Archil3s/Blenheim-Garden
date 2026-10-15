@@ -36,6 +36,7 @@ test("detailed plant art loads in inline and companion 3D", async ({ page, conte
   });
   await page.goto("/");
   await page.getByRole("button", { name: "3D", exact: true }).click();
+  await page.getByRole("button", { name: "Detailed 3D", exact: true }).click();
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   await expect(canvas).toBeVisible();
   await expect.poll(() => crops.every(([, , file]) => loaded.has(`${file}.png`))).toBe(true);
@@ -54,8 +55,9 @@ test("detailed plant art loads in inline and companion 3D", async ({ page, conte
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.getByRole("button", { name: "2D", exact: true }).click();
   await page.getByRole("button", { name: "3D", exact: true }).click();
+  await page.getByRole("button", { name: "Detailed 3D", exact: true }).click();
   await expect(canvas).toBeVisible();
-  await page.goto("/3d");
+  await page.goto("/3d?view=3d");
   await expect(page.locator("canvas").first()).toBeVisible({ timeout: 20_000 });
   await page.screenshot({ path: testInfo.outputPath("plant-art-companion.png") });
   expect(errors).toEqual([]);

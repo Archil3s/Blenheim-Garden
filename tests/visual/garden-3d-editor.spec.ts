@@ -1,3 +1,5 @@
+import { editorAction, openInspectorMore } from "./helpers/editor-controls";
+import * as THREE from "three";
 import { expect, test, type Page } from "@playwright/test";
 import type { PlannerPlan } from "../../lib/garden/planner-plan";
 import { areaPlants, deletePlanSelection, duplicatePlanSelection, movePlanSelection, rowPlants, validateEditorPlan } from "../../lib/garden/plan-editing";
@@ -61,20 +63,20 @@ test("3D design session saves, refreshes, and mirrors in 2D", async ({ context, 
     }
     return route.fulfill({ json: { ok: true, gardens: [{ id: "blenheim-garden", name: "Test garden", year: 2026 }], beds: [], items: [], notes: [], harvests: [] } });
   });
-  await page.goto("/3d");
+  await page.goto("/3d?view=3d");
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   await expect(canvas).toBeVisible();
   await page.getByRole("button", { name: "Top", exact: true }).click();
-  const box = (await canvas.boundingBox())!;
   const click = async (x = .5, y = .5) => {
+    const box = (await canvas.boundingBox())!;
     const target = { x: box.x + box.width * x, y: box.y + box.height * y };
     if (testInfo.project.name === "phone") await page.touchscreen.tap(target.x, target.y);
     else await page.mouse.click(target.x, target.y);
   };
-  await page.getByRole("button", { name: "Add bed", exact: true }).click();
+  await editorAction(page, "Add bed");
   await click();
   await expect.poll(async () => (await plan(page)).beds.length).toBe(1);
-  await page.getByRole("button", { name: "Add plant", exact: true }).click();
+  await editorAction(page, "Add plant");
   await click();
   await expect.poll(async () => (await plan(page)).plantingAreas.length).toBe(1);
   await page.getByRole("button", { name: "Select", exact: true }).click();
@@ -84,25 +86,33 @@ test("3D design session saves, refreshes, and mirrors in 2D", async ({ context, 
   const inspector = page.locator(".garden-edit-inspector");
   await expect(inspector).toContainText("Individual plant");
   {
+    await openInspectorMore(page);
     const x = inspector.getByLabel("X (cm)");
     const previous = Number(await x.inputValue());
     await x.fill(String(previous + 10)); await x.press("Enter");
-    await page.getByRole("button", { name: "Duplicate", exact: true }).click();
+    await editorAction(page, "Duplicate");
+    await expect(page.getByRole("button", { name: "Cancel copy", exact: true })).toBeVisible();
+    expect((await plan(page)).plantingAreas[0].count).toBe(1);
+    await click(.5, .515);
     await expect.poll(async () => (await plan(page)).plantingAreas[0].count).toBe(2);
-    await page.getByRole("button", { name: "Delete", exact: true }).click();
+    await editorAction(page, "Delete");
     await expect.poll(async () => (await plan(page)).plantingAreas[0].count).toBe(1);
     await page.getByRole("button", { name: "Undo", exact: true }).click();
     await expect.poll(async () => (await plan(page)).plantingAreas[0].count).toBe(2);
     await page.getByRole("button", { name: "Redo", exact: true }).click();
     await expect.poll(async () => (await plan(page)).plantingAreas[0].count).toBe(1);
   }
-  await page.getByRole("button", { name: "Add tree", exact: true }).click();
+  await editorAction(page, "Add tree");
   await click(.65, .6);
   await expect.poll(async () => (await plan(page)).objects.filter((o) => o.type === "tree").length).toBe(1);
-  await page.getByRole("button", { name: "Add path", exact: true }).click();
-  await click(.35, .58); await click(.35, .66);
+  await editorAction(page, "Add path");
+  await page.locator(".garden-edit-palette > summary").click();
+  const beforeFit = await canvas.getAttribute("data-camera"); await page.getByRole("button", { name: "Fit garden", exact: true }).click(); await expect.poll(() => canvas.getAttribute("data-camera")).not.toBe(beforeFit);
+  const pathView = JSON.parse((await canvas.getAttribute("data-camera"))!), pathCamera = new THREE.PerspectiveCamera();
+  pathCamera.matrixWorld.fromArray(pathView.world); pathCamera.matrixWorldInverse.copy(pathCamera.matrixWorld).invert(); pathCamera.projectionMatrix.fromArray(pathView.projection);
+  for (const y of [650, 850]) { const point = new THREE.Vector3(200 / 100 - 4.5, 0, y / 100 - 5.4).project(pathCamera); await click((point.x + 1) / 2, (1 - point.y) / 2); }
   await expect.poll(async () => (await plan(page)).objects.filter((o) => o.type === "path").length).toBe(1);
-  await page.getByRole("button", { name: "Add trellis", exact: true }).click();
+  await editorAction(page, "Add trellis");
   await click(.55, .6); await click(.65, .6);
   await expect.poll(async () => (await plan(page)).objects.filter((o) => o.type === "trellis").length).toBe(1);
   await page.getByRole("button", { name: "Edit key", exact: true }).click();
@@ -130,6 +140,7 @@ test("inline 3D keyboard history and save stay within the active editor", async 
   await page.addInitScript((plan) => localStorage.setItem("blenheim-garden-live-plan", JSON.stringify(plan)), fixture);
   await page.goto("/");
   await page.getByRole("button", { name: "3D", exact: true }).click();
+  await page.getByRole("button", { name: "Detailed 3D", exact: true }).click();
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   await expect(canvas).toBeVisible();
   await page.getByRole("button", { name: "Top", exact: true }).click();
@@ -137,10 +148,11 @@ test("inline 3D keyboard history and save stay within the active editor", async 
   await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
   const inspector = page.locator(".garden-edit-inspector");
   await expect(inspector).toContainText("Keyboard bed");
+  await openInspectorMore(page);
   await inspector.getByLabel("Name", { exact: true }).fill("Renamed in 3D");
   await inspector.getByLabel("Name", { exact: true }).press("Tab");
   await expect.poll(async () => (await plan(page)).beds[0].name).toBe("Renamed in 3D");
-  await inspector.locator("summary").click();
+  await inspector.locator(":scope > summary").click();
   await page.keyboard.press("Control+z");
   await expect.poll(async () => (await plan(page)).beds[0].name).toBe("Keyboard bed");
   await page.keyboard.press("Control+y");

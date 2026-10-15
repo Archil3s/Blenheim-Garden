@@ -145,7 +145,7 @@
     width: auto;
   }
 
-  .gv-3d-realistic .gv-3d-camera-controls button:first-child {
+  .gv-3d-realistic .gv-3d-camera-controls > button:first-child {
     display: none;
   }
 }

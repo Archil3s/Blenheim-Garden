@@ -2,9 +2,139 @@
 
 A visual home-garden planner for Blenheim, Marlborough.
 
-_Last updated: 22 August 2026_
+_Last updated: 15 October 2026_
 
 ## Current status
+
+### Simpler garden controls
+
+Blocked planting now identifies locked soil and offers **Unlock bed for planting**.
+It unlocks only that bed on request; net frames and other beds keep their locks.
+
+**Beds** jumps between soil surfaces, focuses them and starts scoped planting.
+Pick beds through foliage, switch the planting target, and preview a counted
+fill without replacing existing crops. Single/paint/row/patch placement share
+soil, lock and crop-spacing checks. **Move view** adds Pan/Orbit, directional
+buttons and zoom; Navigate supports WASD/arrows, Home and F in detailed 3D.
+
+Select, Build, Plant and View group the shared 3D/pixel tools. Phone controls
+use a collapsible sheet below the garden. Navigate protects objects while
+looking around; + Add searches crops and structures with favourites/recent items.
+Bed labels, a north compass, compact selection actions and save/Undo feedback
+keep common tasks close. See [the interface guide](docs/garden-editor-ui.md).
+
+### Garden studio and easier planting
+
+Select a bed and choose **Plant → Add row → Preview row** to generate one centred
+row at the chosen spacing, along or across the bed. Preview and Cancel preserve
+the plan; Apply is undoable. This also works on narrow and rotated raised beds.
+
+Select soil and choose **Plant here** for single/paint/row/patch planting and a
+counted fill preview. Plants follow their bed; optional rearrangement preserves
+IDs and counts during resizing. Connected paths, camera lock/focus, view-only
+growth timelines, planted-bed templates and a preview-first layout assistant
+are available in detailed 3D and pixel mode. Templates stay per garden in this
+browser; timeline timings are visual estimates. See [Garden studio](docs/garden-studio.md).
+
+### Object selection, locking and copy placement
+
+**Objects** searches and selects beds, plants and structures. Selection target
+can ignore foliage when picking beds; Multi-select supports touch. Lock objects
+to protect them and their contents. Duplicate creates a ghost you click/tap to
+place, with blocked-position feedback and Cancel copy/Escape. Copies keep their
+crops, select themselves and commit as one undo step. Locks persist with Save
+and are honoured by the mirrored 2D planner.
+
+### Direct 3D editing and design tools
+
+Select a bed or structure to reveal move arrows, eight resize handles and a
+rotation ring. Numbered beds turn in 90° steps while structures allow finer
+rotation. Smart alignment supports edges, centres and preferred walkway gaps;
+overlapping moves and resizes are rejected with a visible reason. **Design tools**
+adds access checks, mature spacing circles, Blenheim sunlight/shade previews,
+vegetable/all-crop selection and saved layout alternatives. Snapshots are kept
+per named garden in this browser; restoring is undoable and normal Save commits
+the active design to the cloud. North direction and preferred walkway width
+persist with the garden. See [the design guide](docs/3d-design.md).
+
+### Easier 2D building
+
+The main planner has a compact building bar, clearer selection, and visible bed
+resize handles. **Draw bed** drags a bed to size; select a bed to resize any edge
+or corner. **Select vegetables**, **Select all plants**, box selection and
+Multi-select support bulk crop removal with one Undo. Raised-bed corner handles
+carry their plant positions, and changes continue to mirror into 3D.
+See [the 2D building guide](docs/2d-building.md).
+
+### Garden building and adjustable dimensions
+
+In `/3d?view=3d`, **Garden size** edits the measured width and depth while
+preserving existing bed sizes, positions and plant spacing. Select a bed for
+contextual planting and focus, draw planting patches or brush strokes, drag
+paths/fences and resize handles, and use saved bed templates or group movement.
+Seasonal previews support salads, mixed strips and succession planting with
+sun, soil and crop-history inputs. Repeated crop meshes render all saved plants
+with instancing and distance-based detail. See [the editor guide](docs/3d-editor.md).
+
+### Raised-bed planting in detailed 3D
+
+Open `/3d?view=3d` and choose **Plant a bed**. Plant directly on raised-bed soil,
+or preview and apply a layout for Blenheim's current NZ season. Existing plants
+and other beds are preserved. Plants follow container movement, rotation and
+resizing. Use Undo to reverse a layout and Save to persist it. See the
+[3D editor guide](docs/3d-editor.md).
+
+### Pixel garden
+
+The live `/3d` garden and inline garden now open with 48 detailed original plant
+sprites, layered trees, a timber shed and greenhouse, tiled soil, wooden beds
+and fences. **Artwork spacing** separates representative crop illustrations;
+**All plants** displays saved planting positions. **Crop detail** frames a bed or
+selected plant for a closer look. Plant sprites use 192 × 240 cells and retain
+their source proportions. Drag to pan; scroll,
+pinch or use the zoom buttons to inspect plants. The same editor retains exact
+centimetre-based placements, 10 cm snap, undo/redo, named gardens and protected
+cloud Save. **Detailed 3D** switches to the existing textured models; use
+`/3d?view=3d` to open that view directly. See [the pixel garden guide](docs/pixel-garden.md).
+
+### Vegetable 3D model library
+
+Open `/3d-models`, or choose **Vegetable models** in the 3D garden toolbar.
+All indexed vegetables have textured plant-only GLB models, with desktop/mobile
+detail and garden integration. The library now covers 34 crop groups and 65
+entries, including all 30 indexed vegetable varieties, berries and four distinct
+herb forms. Crop-specific leaf outlines, compound leaves, branching, fruit and
+growing habits distinguish plants in the actual garden. Carrots have finely
+divided fronds, leeks have flat fans, corn has broad ribbed blades, peppers have
+four-lobed fruit, and squash types have different foliage and growth habits.
+Richer leaf mottling, raised vein textures, crop-specific skin markings and
+roughness maps distinguish glossy fruit, waxy foliage and dry roots/bulbs.
+These materials are embedded in both desktop and mobile GLB downloads.
+Smoother leaf folds, fuller pepper/berry branching, ripening colour and softer
+lighting improve close-ups. Growth stage previews and downloads are available
+in the library; Build options → Crop appearance previews them in the garden.
+Closed leaf edges, paler undersides, stem nodes, finer flowers and sculpted
+fruit details improve close-up inspection. The library offers three plant shapes
+and optional Breeze; the garden assigns shapes by plant ID and has a Gentle
+plant breeze option. Downloads include the selected static shape and growth stage.
+See [the model library guide](docs/vegetable-model-library.md).
+
+### Detailed tomato model test
+
+Open `/3d-models/tomato`, or choose **Tomato model** in the 3D garden toolbar,
+to rotate the revised vegetable-only mesh, adjust its growth/density/ripeness
+and download it as GLB. See [the model test guide](docs/tomato-model-test.md).
+The revised tomato also renders in live 3D garden beds, rows and editor placements,
+using shared desktop/mobile models to keep repeated plants manageable.
+
+### Isolated 3D asset showroom
+
+`/3d-audit` generates a deterministic catalogue from the planner, artwork
+registries, production geometry kinds, resolver aliases, structure presets and
+public artwork files. It never reads or saves a garden. Search IDs, inspect
+measured bounds and warnings, force desktop/mobile detail, compare existing
+render paths, and hide panels with Screenshot mode. See
+[the audit guide](docs/3d-audit.md).
 
 The measured garden canvas is the main application. The working plan is approximately **9 m × 10.8 m** and preserves the original 12 numbered beds plus the berry/cane area.
 
@@ -155,3 +285,8 @@ Read `PROJECT_CONTEXT.md` before making substantial changes. It is the detailed 
 
 
 The shared 3D garden editor and compatible placement persistence are described in [docs/3d-editor.md](docs/3d-editor.md).
+
+The upright hoop/cover fixes, crop-specific models and variety artwork are
+described in [docs/plant-structure-redesign.md](docs/plant-structure-redesign.md).
+
+The shared vegetable artwork and 3D botanical theme are described in [docs/vegetable-theme.md](docs/vegetable-theme.md).
