@@ -8,8 +8,10 @@ const output = path.join(root, "public/models/vegetables");
 const requestedCrop = process.argv.find(arg => arg.startsWith("--crop="))?.slice(7);
 const mobileOnly = process.argv.includes("--mobile");
 fs.mkdirSync(output, { recursive: true });
-const growthSource = fs.readFileSync(path.join(root, "components/garden-plant-growth.ts"), "utf8");
-fs.writeFileSync(path.join(output, "growth.js"), ts.transpileModule(growthSource, { compilerOptions: { target: ts.ScriptTarget.ES2020, module: ts.ModuleKind.ES2020 } }).outputText);
+for (const helper of ["growth", "shape", "breeze", "shell"]) {
+  const source = fs.readFileSync(path.join(root, helper === "shell" ? "components/garden-leaf-shell.ts" : `components/garden-plant-${helper}.ts`), "utf8");
+  fs.writeFileSync(path.join(output, helper + ".js"), ts.transpileModule(source, { compilerOptions: { target: ts.ScriptTarget.ES2020, module: ts.ModuleKind.ES2020 } }).outputText);
+}
 if (process.argv.includes("--helpers-only")) { console.log("Updated the shared model-growth module."); process.exit(0); }
 const browser = await chromium.launch({ channel: process.env.PLAYWRIGHT_CHANNEL });
 try {

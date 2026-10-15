@@ -94,3 +94,5 @@
   .gv-3d-workspace.gv-3d-editor .garden-pixel-camera { top: auto; bottom: calc(var(--garden-sheet-height, 0px) + 80px); }
   .gv-3d-workspace.gv-3d-editor .garden-pixel-presentation { top: auto; bottom: calc(var(--garden-sheet-height, 0px) + 130px); }
 }
+
+.garden-pixel-workspace .garden-plant-breeze-control { display: none; }

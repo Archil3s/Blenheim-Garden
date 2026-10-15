@@ -100,6 +100,10 @@ These materials are embedded in both desktop and mobile GLB downloads.
 Smoother leaf folds, fuller pepper/berry branching, ripening colour and softer
 lighting improve close-ups. Growth stage previews and downloads are available
 in the library; Build options → Crop appearance previews them in the garden.
+Closed leaf edges, paler undersides, stem nodes, finer flowers and sculpted
+fruit details improve close-up inspection. The library offers three plant shapes
+and optional Breeze; the garden assigns shapes by plant ID and has a Gentle
+plant breeze option. Downloads include the selected static shape and growth stage.
 See [the model library guide](docs/vegetable-model-library.md).
 
 ### Detailed tomato model test

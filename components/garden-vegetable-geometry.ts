@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { consolidateGardenMeshes } from "./garden-mesh-optimization";
 import type { VegetableModel } from "@/lib/garden/vegetable-model-catalog";
 import { vegetableSurfaceMaps, type VegetableSurface } from "./garden-vegetable-surfaces";
+import { addLeafShell } from "./garden-leaf-shell";
 
 const golden = 2.399963;
 const v = (x = 0, y = 0, z = 0) => new THREE.Vector3(x, y, z);
@@ -23,7 +24,7 @@ export function createDetailedVegetable(model: VegetableModel, mobile: boolean) 
       const pigment = new THREE.Color(color), hsl = { h: 0, s: 0, l: 0 };
       pigment.getHSL(hsl);
       if (surface) pigment.setHSL(hsl.h, Math.min(1, hsl.s * 1.14), Math.min(.88, hsl.l * 1.12));
-      result = new THREE.MeshStandardMaterial({ color: skin ? 0xffffff : pigment, roughness: surface ? 1 : roughness, vertexColors: !!surface, side: leafSurface(surface) ? THREE.DoubleSide : THREE.FrontSide, ...(surface ? vegetableSurfaceMaps(surface, model.kind) : {}) });
+      result = new THREE.MeshStandardMaterial({ color: skin ? 0xffffff : pigment, roughness: surface ? 1 : roughness, vertexColors: !!surface, side: leafSurface(surface) ? THREE.DoubleSide : THREE.FrontSide, emissive: leafSurface(surface) ? 0x25391c : 0x000000, emissiveIntensity: leafSurface(surface) ? .07 : 0, ...(surface ? vegetableSurfaceMaps(surface, model.kind) : {}) });
       result.name = `${surface ?? "stem"}-${color.toString(16)}`;
       materialCache.set(key, result);
     }
@@ -68,17 +69,25 @@ export function createDetailedVegetable(model: VegetableModel, mobile: boolean) 
       }
     }
     geometry.computeVertexNormals();
+    if (!part && radius >= .002 && points[0].y > .02) {
+      const joint = add(new THREE.SphereGeometry(radius * 1.18, mobile ? 6 : 10, 6), color, undefined, points[0], v(1, .7, 1));
+      joint.userData.stemJoint = true;
+    }
     return add(geometry, color);
   };
   const ball = (position: THREE.Vector3, radius: number, color: number, scale = v(1, 1, 1), ribs = 0, surface: "skin" | "net" = "skin") => {
     const fine = radius < .026;
     const granule = radius < .009;
-    const geometry = new THREE.SphereGeometry(radius, granule ? mobile ? 6 : 8 : fine ? mobile ? 8 : 12 : mobile ? 20 : 36, granule ? mobile ? 4 : 5 : fine ? mobile ? 5 : 8 : mobile ? 12 : 24);
+    const geometry = new THREE.SphereGeometry(radius, granule ? mobile ? 6 : 8 : fine ? mobile ? 10 : 18 : mobile ? 20 : 36, granule ? mobile ? 4 : 5 : fine ? mobile ? 8 : 12 : mobile ? 12 : 24);
     const positions = geometry.getAttribute("position");
     if (ribs) for (let i = 0; i < positions.count; i++) {
       const x = positions.getX(i), y = positions.getY(i), z = positions.getZ(i);
       const a = Math.atan2(z, x), amount = 1 + Math.cos(a * ribs) * .11 * Math.sin(Math.acos(Math.max(-1, Math.min(1, y / radius))));
       positions.setXYZ(i, x * amount, y, z * amount);
+    }
+    if (model.kind === "blueberry" && radius > .009) for (let i = 0; i < positions.count; i++) {
+      const x = positions.getX(i), y = positions.getY(i), z = positions.getZ(i);
+      if (y < -radius * .65) positions.setY(i, y + radius * .13 * Math.exp(-(x * x + z * z) / (radius * radius * .1)));
     }
     geometry.computeVertexNormals();
     return add(geometry, color, surface, position, scale);
@@ -88,8 +97,8 @@ export function createDetailedVegetable(model: VegetableModel, mobile: boolean) 
   const leaf = (base: THREE.Vector3, length: number, width: number, yaw: number, pitch = .9, color = green, lobes = 0, curl = .1, cup = 0, shape: LeafShape = defaultShape) => {
     const positions: number[] = [], uv: number[] = [], indices: number[] = [], colors: number[] = [];
     const small = length < .06;
-    const rows = mobile ? small ? 8 : 24 : small ? 12 : lobes > 6 ? 56 : 40;
-    const columns = mobile ? small ? 4 : 10 : small || width < .026 ? 4 : 18;
+    const rows = mobile ? small ? 8 : 22 : small ? 12 : 40;
+    const columns = mobile ? small ? 4 : 8 : small || width < .026 ? 4 : 14;
     const phase = Math.sin(yaw * 3.71 + base.y * 9), bend = pitch > .55 ? .2 + phase * .045 : .055;
     for (let i = 0; i <= rows; i++) for (let j = 0; j <= columns; j++) {
       const t = i / rows, a = j / columns * 2 - 1;
@@ -114,8 +123,10 @@ export function createDetailedVegetable(model: VegetableModel, mobile: boolean) 
       positions.push(x, y - bend * length * t ** 3, z + bend * length * t * t + envelope * width * .14 * (1 - a * a) + ripple + vein + fold);
       uv.push(j / columns, t);
       const edgeTone = Math.abs(a) ** 2, young = t * .08, variation = Math.sin(yaw * 2.17 + base.y * 14) * .04;
-      const tone = .88 + .08 * (1 - edgeTone) + variation + young;
-      colors.push(...[tone - edgeTone * .03, tone + .02, tone - .08 - young - edgeTone * .05].map(channel => Math.round(THREE.MathUtils.clamp(channel, 0, 1) * 255)));
+      const age = THREE.MathUtils.clamp(base.y / .65, 0, 1), outer = base.y < .09 && length > .12;
+      const weather = outer ? edgeTone * (.025 + .025 * Math.sin(t * 33 + yaw) ** 2) : 0;
+      const tone = .85 + .08 * (1 - edgeTone) + variation + young + age * .09;
+      colors.push(...[tone - edgeTone * .03 + weather, tone + .02 - weather, tone - .08 - young - edgeTone * .05 - weather].map(channel => Math.round(THREE.MathUtils.clamp(channel, 0, 1) * 255)));
       if (i < rows && j < columns) {
         const k = i * (columns + 1) + j;
         indices.push(k, k + 1, k + columns + 1, k + 1, k + columns + 2, k + columns + 1);
@@ -126,6 +137,7 @@ export function createDetailedVegetable(model: VegetableModel, mobile: boolean) 
     geometry.setAttribute("color", new THREE.Uint8BufferAttribute(colors, 3, true));
     geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uv, 2)); geometry.setIndex(indices); geometry.computeVertexNormals();
     const mesh = add(geometry, color, shape === "palmate" || shape === "heart" ? "palmate" : shape === "strap" ? "parallel" : "leaf", base);
+    mesh.userData.leafGrid = { rows, columns };
     mesh.rotation.set(pitch + phase * .055, Math.PI / 2 - yaw, Math.sin(yaw * 3) * .12, "YXZ");
     if (length > .16 && (kind === "chard" || kind === "corn" || kind === "kale" || /cos/.test(name))) {
       const midrib = [];
@@ -136,11 +148,20 @@ export function createDetailedVegetable(model: VegetableModel, mobile: boolean) 
   };
   const blossom = (p: THREE.Vector3, color = 0xf5d344, radius = .018, petals = 5) => {
     const previous = part; part = "flower";
-    for (let i = 0; i < petals; i++) {
+    const legume = ["bean", "broad-bean", "pea", "asparagus-pea"].includes(kind);
+    const count = legume ? 3 : petals;
+    for (let i = 0; i < count; i++) {
       const a = i * Math.PI * 2 / petals;
-      const mesh = ball(p.clone().add(v(Math.cos(a) * radius, 0, Math.sin(a) * radius)), radius * .7, color, v(1, .22, .6)); mesh.rotation.y = -a;
+      const mesh = ball(p.clone().add(v(Math.cos(a) * radius * .72, legume && i === 0 ? radius * .6 : 0, Math.sin(a) * radius * .72)), radius * .7, color, legume ? v(i ? .65 : 1.2, i ? .4 : 1, .3) : v(1, .16, .62)); mesh.rotation.y = -a;
     }
     ball(p.clone().add(v(0, .006, 0)), radius * .4, 0xe4b830, v(1, .5, 1));
+    if (!mobile) for (let i = 0; i < (kind === "strawberry" ? 12 : 5); i++) {
+      const a = i * golden, end = p.clone().add(v(Math.cos(a) * radius * .36, radius * .48, Math.sin(a) * radius * .36));
+      tube([p, end], radius * .025, 0xcba44d); ball(end, radius * .075, 0xe8be3b);
+    }
+    const bud = p.clone().add(v(radius * 1.7, radius * .65, 0));
+    tube([p.clone().add(v(0, -.008, 0)), bud], radius * .055, 0x789153);
+    ball(bud, radius * .32, 0x8ea15a, v(.8, 1.35, .8));
     part = previous;
   };
   const tendril = (p: THREE.Vector3, yaw: number, length = .12) => {
@@ -434,9 +455,27 @@ export function createDetailedVegetable(model: VegetableModel, mobile: boolean) 
       const a = i * golden, p = v(Math.cos(a) * .14, .07 + i % 2 * .035, Math.sin(a) * .14);
       tube([v(0, .025, 0), p.clone().add(v(0, .055, 0)), p], .0018, 0x87a354);
       if (i === 3) { blossom(p, 0xf5efdc, .011); continue; }
-      const profile = [[0, 0], [.012, .012], [.022, .029], [.021, .044], [.012, .05], [0, .051]].map(([x, y]) => new THREE.Vector2(x, y));
-      add(new THREE.LatheGeometry(profile, mobile ? 16 : 28), i === 2 ? 0xc99d74 : 0xc63b33, "skin", p.clone().add(v(0, -.049, 0)));
-      for (let ring = 1; ring <= 5; ring++) for (let j = 0; j < 7; j++) { const t = ring / 6, angle = j * Math.PI * 2 / 7 + ring * .5, r = .022 * Math.sin(t * Math.PI * .85); ball(p.clone().add(v(Math.cos(angle) * r, -.049 + t * .046, Math.sin(angle) * r)), .00095, 0xd6b76c, v(.65, 1.35, .65)); }
+      const curve = new THREE.CatmullRomCurve3([[0, 0], [.012, .012], [.022, .029], [.021, .044], [.012, .05], [0, .051]].map(([x, y]) => v(x, y, 0)));
+      const profile = curve.getPoints(mobile ? 30 : 48).map(q => new THREE.Vector2(Math.max(0, q.x), q.y));
+      const seeds: { y: number; angle: number; radius: number }[] = [];
+      for (let ring = 1; ring <= 6; ring++) for (let j = 0; j < 9; j++) {
+        const q = curve.getPoint(.12 + ring * .105), angle = j * Math.PI * 2 / 9 + ring * .4;
+        seeds.push({ y: q.y, angle, radius: q.x });
+        ball(p.clone().add(v(Math.sin(angle) * (q.x - .0008), -.049 + q.y, Math.cos(angle) * (q.x - .0008))), .00065, i === 2 ? 0xc1b382 : 0xd8b576, v(.65, 1.4, .65));
+      }
+      const geometry = new THREE.LatheGeometry(profile, mobile ? 40 : 72), vertices = geometry.getAttribute("position");
+      for (let j = 0; j < vertices.count; j++) {
+        const x = vertices.getX(j), y = vertices.getY(j), z = vertices.getZ(j), angle = Math.atan2(x, z), radius = Math.hypot(x, z);
+        let dimple = 0;
+        for (const seed of seeds) {
+          const d = Math.atan2(Math.sin(angle - seed.angle), Math.cos(angle - seed.angle)) * seed.radius;
+          dimple += .0014 * Math.exp(-(d * d + (y - seed.y) ** 2) / .0000021);
+        }
+        const shrink = Math.max(0, radius - dimple) / Math.max(radius, .000001);
+        vertices.setXYZ(j, x * shrink, y, z * shrink);
+      }
+      geometry.computeVertexNormals();
+      add(geometry, i === 2 ? 0xc99d74 : 0xc63b33, "skin", p.clone().add(v(0, -.049, 0)));
       for (let j = 0; j < 5; j++) leaf(p, .021, .009, j * golden, 1.3, dark, 0, .02, 0, "lance");
     }
     part = undefined;
@@ -456,7 +495,13 @@ export function createDetailedVegetable(model: VegetableModel, mobile: boolean) 
           part = "fruit";
           const b = berry * golden, point = tip.clone().add(v(Math.cos(b) * .021, -.025 - berry % 2 * .012, Math.sin(b) * .021));
           tube([tip, point], .0007, 0x73864b); ball(point, .012 + berry % 3 * .001, berry === 4 ? 0x926980 : berry % 2 ? 0x526b9c : 0x697dab, v(1, .92, 1));
-          for (let j = 0; j < 5; j++) { const a = j * Math.PI * 2 / 5; ball(point.clone().add(v(Math.cos(a) * .003, -.012, Math.sin(a) * .003)), .0018, 0x3b526f, v(1, .45, 1)); }
+          const crown = point.clone().add(v(0, -.0117, 0));
+          const rim = add(new THREE.TorusGeometry(.0032, .0007, 4, mobile ? 10 : 20), 0x637694, "skin", crown); rim.rotation.x = Math.PI / 2;
+          ball(crown.clone().add(v(0, .0003, 0)), .0026, 0x293a54, v(1, .15, 1));
+          for (let j = 0; j < 5; j++) {
+            const a = j * Math.PI * 2 / 5, calyx = add(new THREE.ConeGeometry(.0015, .0034, 4), 0x48566a, undefined, crown.clone().add(v(Math.cos(a) * .003, -.0003, Math.sin(a) * .003)));
+            calyx.quaternion.setFromUnitVectors(v(0, 1, 0), v(Math.cos(a), -.3, Math.sin(a)).normalize());
+          }
           part = undefined;
         }
         if (i % 3 === 1) {
@@ -564,7 +609,12 @@ export function createDetailedVegetable(model: VegetableModel, mobile: boolean) 
           const curve = new THREE.CatmullRomCurve3(profile.map(p => v(p.x, p.y, 0)));
           const smooth = curve.getPoints(mobile ? 18 : 32).map(p => new THREE.Vector2(Math.max(0, p.x), p.y));
           const geometry = new THREE.LatheGeometry(smooth, mobile ? 24 : 48), positions = geometry.getAttribute("position");
-          for (let j = 0; j < positions.count; j++) { const x = positions.getX(j), z = positions.getZ(j), bulge = 1 + Math.cos(Math.atan2(z, x) * 4) * .1; positions.setXYZ(j, x * bulge, positions.getY(j), z * bulge); }
+          for (let j = 0; j < positions.count; j++) {
+            const x = positions.getX(j), z = positions.getZ(j), y = positions.getY(j), a = Math.atan2(z, x), shoulder = Math.exp(-(((y - .099) / .023) ** 2));
+            const crease = Math.exp(-((1 - Math.cos(a * 4 + .2)) / .12)) * .055 * shoulder;
+            const bulge = 1 + Math.cos(a * 4) * .1 - crease;
+            positions.setXYZ(j, x * bulge, y - .004 * shoulder * Math.exp(-(x * x + z * z) / .0003), z * bulge);
+          }
           geometry.computeVertexNormals(); const fruit = add(geometry, branch === 1 ? 0x47773e : branch === 2 ? 0xe3ac35 : 0xc43d26, "skin", fp); fruit.rotation.z = branch === 1 ? .07 : -.05;
           const neck = fp.clone().add(v(0, .127, 0)); tube([end, end.clone().lerp(neck, .5).add(v(.014, .01, 0)), neck], .004);
           for (let j = 0; j < 5; j++) leaf(neck, .024, .012, j * golden, 1.35, dark);
@@ -585,6 +635,22 @@ export function createDetailedVegetable(model: VegetableModel, mobile: boolean) 
     for (let i = 0; i < 12; i++) leaf(v(0, .7 + i % 3 * .025, 0), .25, .15, i * golden, .7, wax, 1, .1);
   } else throw new Error(`No detailed vegetable geometry for ${model.crop}`);
 
+  root.traverse(node => {
+    if (node instanceof THREE.Mesh && node.userData.leafGrid) {
+      addLeafShell(node, node.userData.leafGrid.rows, node.userData.leafGrid.columns);
+      if (!mobile && ["strawberry", "raspberry", "cucumber", "zucchini", "bean"].includes(kind)) {
+        const positions = node.geometry.getAttribute("position"), normals = node.geometry.getAttribute("normal");
+        const previous = part; part = node.userData.plantPart;
+        for (let i = 1; i < 7; i++) {
+          const index = Math.floor((i / 8) * (node.userData.leafGrid.rows + 1)) * (node.userData.leafGrid.columns + 1) + Math.floor(node.userData.leafGrid.columns * (i % 2 ? .35 : .65));
+          const start = v().fromBufferAttribute(positions, index), end = start.clone().addScaledVector(v().fromBufferAttribute(normals, index), .0018);
+          tube([start.applyEuler(node.rotation).add(node.position), end.applyEuler(node.rotation).add(node.position)], .0001, 0xb6c99b);
+        }
+        part = previous;
+      }
+      delete node.userData.leafGrid;
+    }
+  });
   consolidateGardenMeshes(root);
   const bounds = new THREE.Box3().setFromObject(root);
   root.position.y -= bounds.min.y;

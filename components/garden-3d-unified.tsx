@@ -25,6 +25,7 @@ import { isTomatoCrop, loadGardenTomatoModel, tomatoModelVersion } from "./garde
 import { loadGardenVegetableModel, vegetableModelVersion } from "./garden-vegetable-model";
 import { vegetableModelFor, vegetableModels } from "@/lib/garden/vegetable-model-catalog";
 import { GardenSceneGuide } from "./garden-scene-guide";
+import { updatePlantBreeze, releasePlantBreeze } from "./garden-plant-breeze";
 import { GardenPixelCanvas } from "./garden-pixel-canvas";
 import { timelineGroups, timelineScale } from "@/lib/garden/garden-workflows";
 import type { Garden3DEditor } from "./use-garden-3d-editor";
@@ -81,6 +82,7 @@ function mat(color: number, roughness = 0.86, metalness = 0) {
 }
 
 function disposeObject(root: THREE.Object3D) {
+  releasePlantBreeze(root);
   const geometries = new Set<THREE.BufferGeometry>(), materials = new Set<THREE.Material>(), textures = new Set<THREE.Texture>();
   root.traverse((object) => {
     if (!(object instanceof THREE.Mesh || object instanceof THREE.Line)) return;
@@ -421,8 +423,13 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     resize();
     if (mobile) fitGardenCamera(runtime);
 
-    renderer.setAnimationLoop(() => {
-      if (controls.update() || runtime.needsRender) {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    renderer.setAnimationLoop(time => {
+      const breeze = editorRef.current.breeze && !reducedMotion.matches && !document.hidden;
+      const previousBreeze = renderer.domElement.dataset.breeze;
+      updatePlantBreeze(content, time / 1000, breeze);
+      renderer.domElement.dataset.breeze = breeze ? "on" : "off";
+      if (controls.update() || runtime.needsRender || breeze || previousBreeze !== renderer.domElement.dataset.breeze) {
         runtime.content.traverse((o) => { if (o instanceof THREE.LOD) o.update(camera); });
         const phases = new Set<string>(), detailLevels = new Set<string>();
         runtime.content.traverse(o => { if (o instanceof THREE.LOD && o.name === "crop-detail-lod") { phases.add(o.userData.growthPhase); detailLevels.add(mobile || o.getCurrentLevel() > 0 ? "mobile" : "desktop"); } });

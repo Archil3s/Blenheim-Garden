@@ -27,12 +27,18 @@ move, duplicate, delete and Save payloads are preserved.
 
 Garden and mobile GLBs are exported from the same procedural source with lower
 surface tessellation. They retain the foliage layout, fruit clusters and embedded
-textures: 69,728 triangles / 2.63 MB for desktop and 43,600 triangles / 1.86 MB
+textures: 334,432 triangles / 12.4 MiB for desktop and 122,184 triangles / 4.6 MiB
 for mobile. The full standalone asset remains available on the model test page.
 
-Two document-lifetime templates share geometry, materials and textures among
+Two document-lifetime templates and cached continuous shape variants share
+geometry, materials and textures among
 plant clones. Scene edits do not dispose shared template resources. Placement
 ghosts clone materials before changing transparency. Tomatoes temporarily use
 the existing model while the asset loads; successful loading updates tomato
 holders without resetting the camera. Load failures show a status message and
 leave the basic model usable.
+
+Closed leaf surfaces, paler undersides and a fruit blossom-end depression are
+shared with the broader model library. Run `node scripts/export-tomato-models.mjs`
+after generating shared browser helpers, then regenerate the vegetable manifest.
+The standalone baseline download is about 18.2 MiB, within the Worker asset limit.

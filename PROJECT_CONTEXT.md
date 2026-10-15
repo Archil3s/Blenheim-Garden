@@ -316,3 +316,13 @@ garden/timeline; seedlings have new geometry. Its generated browser module is
 written by the model exporter. Seedling cleanup releases generated buffers while
 preserving shared mature leaf materials. Stable-ID instance variation and the
 existing desktop/mobile LOD preserve root positions, canonical IDs and counts.
+
+The botanical-detail revision adds closed leaf shells, pale undersides, age
+colour, stem nodes, desktop hairs, sculpted fruit recesses/crowns and flower buds.
+Tomato source/GLBs are regenerated too. Shared shape helpers create continuous
+mesh variants cached by template; instanced shape groups map picks/moves back
+to their own stable IDs. The gallery exports the displayed shape. Optional
+breeze uses owned shader/shadow material clones, respects reduced motion and
+hidden tabs, and keeps canonical coordinates unchanged. The exporter generates
+growth/shape/breeze/shell browser modules. Library downloads total about 531 MiB
+(unique files), largest 18.6 MiB; only active crops are loaded by the garden.

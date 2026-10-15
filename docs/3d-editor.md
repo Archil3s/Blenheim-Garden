@@ -139,3 +139,8 @@ catalogue correction, all 20 affected workflows passed again across the four
 viewports, including protected fence round-tripping. Existing test assertions
 and thresholds were retained; one D1 fixture gained a missing type annotation
 so it compiles under the existing strict TypeScript configuration.
+
+Build options → Gentle plant breeze adds optional canopy movement in detailed
+3D. It pauses for reduced motion and hidden tabs; it is view state, not saved
+plan data. Stable plant IDs now choose one of three mesh shapes while retaining
+selection, movement, duplication and canonical planting positions.

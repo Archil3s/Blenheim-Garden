@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { vegetableModelFor, type VegetableModel } from "@/lib/garden/vegetable-model-catalog";
+import { sharedPlantShape } from "./garden-plant-shape";
 
 type Entry = { root?: THREE.Group; pending?: Promise<void> };
 const templates = new Map<string, Entry>();
@@ -46,7 +47,7 @@ export function createLoadedVegetableModel(crop: string, variety: string | null 
   const template = templateFor(model, mobile);
   if (!template) return null;
   const plant = new THREE.Group();
-  const visual = template.clone(true);
+  const visual = sharedPlantShape(template, seed).clone(true);
   visual.position.y -= model.plantingDepth;
   plant.add(visual);
   plant.userData.vegetableModel = model.id;

@@ -14,7 +14,7 @@ each of its four indexed variety entries, using the same representative cane for
 The library also includes indexed strawberries, blueberries, standalone basil,
 and separate basil, chive, thyme and parsley models for the Herbs varieties.
 There are 65 catalogue entries and 124 unique desktop/mobile GLB files. The four
-tomato entries retain the existing shared refined tomato model. Other indexed
+tomato entries share the refined tomato model, regenerated from its source. Other indexed
 varieties have separate export files, with common species geometry where their
 growth habit is similar. These are representative mature plants, not precise
 botanical reconstructions of every cultivar.
@@ -36,7 +36,7 @@ attributes use normalized bytes, keeping values valid and reducing buffer size.
 Reduced mobile leaf and bud counts are spread across the mature stem height,
 preserving the upper canopy and crop silhouette.
 Shared indexed geometry reduces download sizes; the largest file is about
-14.1 MiB. The unique GLBs total about 369 MiB, and the garden downloads only the
+18.6 MiB. The unique GLBs total about 531 MiB, and the garden downloads only the
 models needed for the current plan or selected placement crop.
 
 ## Recognisable crop forms
@@ -48,8 +48,8 @@ subtle pores, warmer leaf edges and variation between individual leaves. Dedicat
 surface finishes distinguish waxy brassicas, silver flecks, striped squash and
 cucumber skins, melon netting, carrot growth marks, papery alliums and blueberry
 bloom. Embedded roughness maps give fruit a softer gloss and roots/bulbs a drier
-finish; normal maps supply relief without adding polygons. The original refined
-tomato assets are retained.
+finish; normal maps supply relief without adding polygons. Tomato foliage now also has closed leaf surfaces and lighter undersides; its
+fruit includes a blossom-end depression.
 
 Desktop and mobile GLBs embed the new maps, so the garden, library and downloaded
 models use the same materials. The library and thumbnail renderer use matching,
@@ -72,7 +72,7 @@ offer seedlings, leafy growth, flowering/developing and harvest-ready previews.
 Seedlings use separate cotyledon/young-leaf geometry. Later stages share mature
 geometry but remove flowers or fruit and their attachments as appropriate, then
 scale the canopy. Models export leaf/stem/flower/fruit metadata, which remains
-intact through batching. The existing tomato is classified by its material
+intact through batching. The tomato is classified by its material
 finish. These are illustrative planning stages, not cultivar-specific biological
 growth or harvest predictions. Leaf crops need not flower in the developing view.
 
@@ -140,9 +140,12 @@ npm run models:export
 After a complete export exists, regenerate one crop without dropping other
 manifest entries using `npm run models:export -- --crop=Lettuce`.
 Use `npm run models:export -- --mobile` to regenerate only mobile files.
-Use `npm run models:export -- --helpers-only` after editing only the shared growth
-helper. The exporter transpiles `components/garden-plant-growth.ts` into the
-standalone library's `growth.js`; do not edit that generated module directly.
+Use `npm run models:export -- --helpers-only` after editing the shared growth,
+shape, breeze or leaf-shell helpers. Their generated browser modules are written
+by the exporter; do not edit them directly.
+Regenerate the three tomato GLBs with `node scripts/export-tomato-models.mjs`
+first when editing the tomato source, then run the vegetable exporter to refresh
+its manifest statistics and thumbnails.
 
 The generator uses original code-defined geometry and procedural textures.
 It exports binary GLBs and transparent 512-pixel library thumbnails into
@@ -166,3 +169,39 @@ capture asparagus/raspberry/lettuce/broccoli at both detail levels, exercise lib
 detail/download, render all indexed vegetables in beds and rows, load newly
 selected varieties, verify inline 3D, and simulate download failure/recovery.
 Garden API calls are mocked for safe persistence and editing tests.
+
+## Leaf volume, fruit detail and plant shapes
+
+The detail revision adds closed upper/lower leaf surfaces with a 0.45 mm rim,
+paler undersides, lighter new growth and slight weathering on low outer leaves.
+Leaf lighting uses a subtle emissive fill; it is an approximation of light
+through foliage, not a physical subsurface scattering simulation. Tomato leaves
+use the same shell helper in the source model's own units. Curved stems have
+small node collars. Desktop strawberry, raspberry, bean and cucurbit foliage
+includes fine hairs; mobile omits those extra filaments.
+
+Strawberry seeds sit inside sculpted depressions. Blueberries have recessed
+blossom ends, a small crown rim and five calyx points. Peppers have sculpted
+shoulder creases; tomato fruit has an additional blossom-end depression.
+Flowers include anthers, stamens and a nearby developing bud, with distinct
+legume petal arrangements. Existing skin/bloom/vein/roughness textures remain
+embedded in GLB files.
+
+**Plant shape** offers Original, Spreading and Upright in the library. These
+are three continuous mesh deformations of the representative mature plant,
+changing branch and fruit positions together; they do not add/remove branches
+or represent exact cultivars. Ground anchors and attachments stay connected.
+The displayed shape and growth phase export as actual geometry in Download GLB.
+Seedlings retain their dedicated young-plant form. The garden selects shapes
+by stable plant ID and instances each shape separately at both detail levels.
+Selection maps each instance back to its original ID, including moves/copies.
+Variant geometries are cached per loaded template, while materials/textures
+remain shared. Gallery variant buffers are released when previews change.
+
+The optional **Breeze** button and **Build options → Gentle plant breeze**
+apply a small, height-weighted GPU bend with moving shadows. Root positions stay
+fixed; neighbouring instances have different phases. It defaults off, pauses
+for reduced motion and hidden tabs, and does not serialize into a plan. Downloads
+contain the static selected mesh, not the browser-only wind animation. Without
+breeze or rotation the viewer keeps its render-on-demand behaviour. Shader
+materials and shadow materials are released independently of shared textures.

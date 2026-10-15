@@ -1,8 +1,10 @@
 import { expect, test } from "@playwright/test";
 import { plants } from "../../lib/garden/plant-catalog";
 import { vegetableModelFor, vegetableModels } from "../../lib/garden/vegetable-model-catalog";
-import { editorAction } from "./helpers/editor-controls";
+import { editorAction, openInspectorMore } from "./helpers/editor-controls";
+import * as THREE from "three";
 import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 
 const vegetables = plants.filter((plant) => plant.type === "Vegetable");
 const modelCrops = plants.filter((plant) => vegetableModelFor(plant.name, plant.varieties[0]));
@@ -233,5 +235,104 @@ test("garden growth appearances preserve the plan and camera focus reveals deskt
   await editorAction(page, "Focus bed");
   await expect(canvas).toHaveAttribute("data-detail-levels", testInfo.project.name === "phone" ? "mobile" : /desktop/);
   expect(await page.evaluate(() => localStorage.getItem("blenheim-garden-live-plan"))).toBe(before);
+  expect(errors).toEqual([]);
+});
+
+test("plant shapes export distinct geometry and the optional breeze respects reduced motion", async ({ page }, testInfo) => {
+  test.setTimeout(180_000);
+  const errors: string[] = [];
+  page.on("pageerror", error => errors.push(error.message));
+  page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
+  await page.goto("/models/vegetables/index.html?crop=Pepper");
+  const canvas = page.locator("canvas");
+  await expect(canvas).toHaveAttribute("data-model-ready", "true", { timeout: 30_000 });
+  const binaries: string[] = [];
+  for (const shape of ["0", "1", "2"]) {
+    await page.getByLabel("Plant shape", { exact: true }).selectOption(shape);
+    await expect(canvas).toHaveAttribute("data-plant-shape", shape);
+    await page.screenshot({ path: testInfo.outputPath(`pepper-shape-${shape}.png`) });
+    const downloading = page.waitForEvent("download"); await page.getByRole("link", { name: "Download GLB" }).click();
+    const download = await downloading, filename = testInfo.outputPath(`shape-${shape}.glb`); await download.saveAs(filename);
+    const bytes = await readFile(filename);
+    const length = bytes.readUInt32LE(12), json = JSON.parse(bytes.subarray(20, 20 + length).toString("utf8"));
+    const positionBuffers = json.meshes.flatMap((mesh: { primitives: { attributes: { POSITION: number } }[] }) => mesh.primitives.map(primitive => {
+      const accessor = json.accessors[primitive.attributes.POSITION], view = json.bufferViews[accessor.bufferView];
+      const offset = 28 + length + (view.byteOffset ?? 0) + (accessor.byteOffset ?? 0);
+      return bytes.subarray(offset, offset + accessor.count * 3 * 4);
+    }));
+    binaries.push(createHash("sha256").update(Buffer.concat(positionBuffers)).digest("hex"));
+    expect(json.asset.version).toBe("2.0");
+    expect(json.nodes.some((node: { extras?: { plantPart?: string } }) => node.extras?.plantPart === "fruit")).toBeTruthy();
+  }
+  expect(new Set(binaries).size).toBe(3);
+  await page.getByRole("button", { name: "Breeze", exact: true }).click();
+  await expect(canvas).toHaveAttribute("data-breeze", "off");
+  await expect(page.getByRole("status")).toContainText("reduced motion");
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await expect(canvas).toHaveAttribute("data-breeze", "on");
+  const before = await canvas.screenshot(), frame = Number(await canvas.getAttribute("data-render-frames"));
+  await expect.poll(async () => Number(await canvas.getAttribute("data-render-frames"))).toBeGreaterThan(frame + 5);
+  expect((await canvas.screenshot()).equals(before)).toBeFalsy();
+  await page.getByRole("button", { name: "Breeze", exact: true }).click();
+  await expect(canvas).toHaveAttribute("data-breeze", "off");
+  await page.getByRole("button", { name: "Mobile detail" }).click();
+  await expect(canvas).toHaveAttribute("data-model-ready", "true", { timeout: 30_000 });
+  for (const crop of ["Strawberry", "Blueberry", "Lettuce", "Tomato"]) {
+    await page.getByLabel("Vegetable", { exact: true }).selectOption(crop);
+    await expect(canvas).toHaveAttribute("data-model-id", vegetableModelFor(crop)!.id);
+    await expect(canvas).toHaveAttribute("data-model-ready", "true", { timeout: 30_000 });
+    await page.screenshot({ path: testInfo.outputPath(`${crop.toLowerCase()}-upright-mobile.png`) });
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
+  expect(errors).toEqual([]);
+});
+
+test("different plant shapes select and move their own saved positions", async ({ page, context }, testInfo) => {
+  test.setTimeout(90_000);
+  const errors: string[] = [];
+  page.on("pageerror", error => errors.push(error.message));
+  page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
+  const fixture = { ...plan, beds: [{ id: 88, name: "Shape test", x: 10, y: 20, w: 80, h: 60 }],
+    plantingAreas: [{ ...plan.plantingAreas[0], id: "shape-area", bedId: 88, crop: "Lettuce", variety: "Cos", count: 3,
+      placements: [20, 50, 80].map((x, i) => ({ id: `shape-${i}`, x, y: 50 })) }], rows: [] };
+  await context.route("**/api/**", route => route.fulfill({ json: { ok: true, plan: fixture, gardens: [], items: [] } }));
+  await page.goto("/3d?view=3d");
+  const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
+  await expect(canvas).toHaveAttribute("data-vegetable-models", /lettuce-cos/, { timeout: 60_000 });
+  const before = await page.evaluate(() => localStorage.getItem("blenheim-garden-live-plan"));
+  await page.locator(".garden-build-options > summary").press("Enter");
+  await page.getByLabel("Gentle plant breeze").check();
+  await expect(canvas).toHaveAttribute("data-breeze", "off");
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await expect(canvas).toHaveAttribute("data-breeze", "on");
+  await page.screenshot({ path: testInfo.outputPath("garden-breeze.png") });
+  await page.getByLabel("Gentle plant breeze").uncheck();
+  await expect(canvas).toHaveAttribute("data-breeze", "off");
+  expect(await page.evaluate(() => localStorage.getItem("blenheim-garden-live-plan"))).toBe(before);
+  await page.locator(".garden-build-options > summary").press("Enter");
+  const previousCamera = await canvas.getAttribute("data-camera");
+  await page.getByRole("button", { name: "Top", exact: true }).click();
+  await expect.poll(() => canvas.getAttribute("data-camera")).not.toBe(previousCamera);
+  for (let i = 0; i < 3; i++) {
+    await expect.poll(async () => {
+      const state = JSON.parse((await canvas.getAttribute("data-camera"))!), box = (await canvas.boundingBox())!;
+      return Math.abs(state.projection[5] / state.projection[0] - box.width / box.height);
+    }).toBeLessThan(.005);
+    const x = 90 + [20, 50, 80][i] * 7.2;
+    const state = JSON.parse((await canvas.getAttribute("data-camera"))!), camera = new THREE.PerspectiveCamera();
+    camera.matrixWorld.fromArray(state.world); camera.matrixWorldInverse.copy(camera.matrixWorld).invert(); camera.projectionMatrix.fromArray(state.projection);
+    const point = new THREE.Vector3(x / 100 - 4.5 + .07, .42, .04).project(camera), box = (await canvas.boundingBox())!;
+    const target = { x: box.x + (point.x + 1) * box.width / 2, y: box.y + (1 - point.y) * box.height / 2 };
+    if (testInfo.project.name === "phone") await page.touchscreen.tap(target.x, target.y); else await page.mouse.click(target.x, target.y);
+    await expect(page.locator(".garden-edit-inspector")).toContainText("Individual plant");
+    await openInspectorMore(page);
+    const input = page.locator(".garden-edit-inspector").getByLabel("X (cm)");
+    await expect(input).toHaveValue(String(x)); await input.fill(String(x + 10)); await input.press("Enter");
+    await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem("blenheim-garden-live-plan")!).plantingAreas[0].placements.sort((a: { id: string }, b: { id: string }) => a.id.localeCompare(b.id)))).toEqual(
+      fixture.plantingAreas[0].placements.map((p, index) => ({ ...p, x: expect.closeTo(p.x + (index <= i ? 10 / 7.2 : 0), 6) })));
+    await page.getByRole("button", { name: "Deselect", exact: true }).click();
+    await expect(page.locator(".garden-edit-inspector")).toHaveCount(0);
+  }
+  await expect(canvas).toHaveAttribute("data-plant-count", "3");
   expect(errors).toEqual([]);
 });

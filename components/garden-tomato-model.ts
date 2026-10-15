@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { sharedPlantShape } from "./garden-plant-shape";
 
 type ModelEntry = { root?: THREE.Group; pending?: Promise<void> };
 // Two document-lifetime templates share their GPU resources across plant clones.
@@ -39,7 +40,7 @@ export function loadGardenTomatoModel(mobile: boolean): Promise<void> {
 export function createLoadedTomatoModel(mobile: boolean, seed: number): THREE.Group | null {
   const template = models.get(mobile)?.root ?? models.get(false)?.root;
   if (!template) return null;
-  const plant = template.clone(true);
+  const plant = sharedPlantShape(template, seed).clone(true);
   plant.userData.tomatoModel = "refined";
   const variation = ((Math.floor(seed) * 16807) >>> 0) % 100 / 100;
   plant.rotation.y = variation * Math.PI * 2;
