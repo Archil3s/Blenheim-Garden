@@ -1,20 +1,20 @@
 import * as THREE from "three";
 
 export const LOWPOLY_COLORS = {
-  woodLight: 0xc98a52,
-  woodMid: 0xa96d3f,
-  woodDark: 0x74472d,
+  woodLight: 0xb99363,
+  woodMid: 0x94714f,
+  woodDark: 0x655039,
   soil: 0x65412d,
   soilDark: 0x4b3024,
-  grass: 0x79b85a,
-  grassDark: 0x4f8f42,
-  leaf: 0x4f9f50,
-  leafLight: 0x76bb59,
-  leafDark: 0x35783d,
-  leafBlue: 0x5c8c69,
-  leafSilver: 0x789680,
-  stem: 0x4f7b42,
-  stemDark: 0x3c6035,
+  grass: 0x83a36d,
+  grassDark: 0x647f56,
+  leaf: 0x477b4a,
+  leafLight: 0x6d9858,
+  leafDark: 0x315f3c,
+  leafBlue: 0x5d7e6b,
+  leafSilver: 0x829b86,
+  stem: 0x55764a,
+  stemDark: 0x405c3a,
   tomato: 0xe14d3f,
   tomatoYellow: 0xf1c64c,
   tomatoOrange: 0xee8a36,
@@ -124,37 +124,70 @@ export function makeCartoonStem(
   );
 }
 
+/**
+ * Low-cost sculpted leaf surface with a centre fold, gently curled outer margin
+ * and tinted midrib. Keeps the existing low-poly plant interface, but avoids
+ * flat triangle cut-outs. Geometry is new per leaf; material is shared.
+ */
+const botanicalLeafMaterial = new THREE.MeshStandardMaterial({
+  vertexColors: true,
+  roughness: 0.83,
+  metalness: 0,
+  side: THREE.DoubleSide,
+  flatShading: false,
+});
+
 export function makeCartoonLeaf(
   length: number = 0.24,
   width: number = 0.13,
   color: number = LOWPOLY_COLORS.leaf,
   lobes: number = 0,
 ) {
-  const shape = new THREE.Shape();
-  shape.moveTo(0, 0);
-  const samples = 8;
-  for (let i = 1; i <= samples; i += 1) {
-    const t = i / samples;
-    const taper = Math.sin(Math.PI * t);
-    const lobe = lobes > 0 ? 0.78 + Math.sin(t * Math.PI * lobes * 2) * 0.22 : 1;
-    shape.lineTo(width * 0.5 * taper * lobe, length * t);
-  }
-  shape.lineTo(0, length);
-  for (let i = samples; i >= 1; i -= 1) {
-    const t = i / samples;
-    const taper = Math.sin(Math.PI * t);
-    const lobe = lobes > 0 ? 0.78 + Math.sin(t * Math.PI * lobes * 2) * 0.22 : 1;
-    shape.lineTo(-width * 0.5 * taper * lobe, length * t);
-  }
-  shape.closePath();
+  const longitudinal = 10;
+  const transverse = 4;
+  const positions: number[] = [];
+  const colors: number[] = [];
+  const indices: number[] = [];
+  const baseColor = new THREE.Color(color);
 
-  const mesh = enableCartoonShadow(
-    new THREE.Mesh(
-      new THREE.ShapeGeometry(shape, 1),
-      lowPolyMaterial(color, { side: THREE.DoubleSide }),
-    ),
-  );
-  return mesh;
+  for (let row = 0; row <= longitudinal; row += 1) {
+    const t = row / longitudinal;
+    const envelope = Math.pow(Math.max(0, Math.sin(Math.PI * t)), 0.79);
+    const scallop = lobes > 0
+      ? 0.79 + 0.21 * Math.cos(t * Math.PI * (lobes * 2 + 1)) ** 2
+      : 1;
+
+    for (let column = 0; column <= transverse; column += 1) {
+      const side = (column / transverse) * 2 - 1;
+      const edge = Math.abs(side);
+      const across = side * width * 0.5 * envelope * scallop;
+      const curling = Math.sin(Math.PI * t) * (0.013 * (1 - edge) - 0.009 * edge);
+      const tipCurl = t * t * 0.018;
+      positions.push(across, length * t, curling + tipCurl);
+
+      // A muted midrib and subtler edges read as a folded living leaf,
+      // rather than a single flat green polygon.
+      const light = 0.055 * (1 - edge) - 0.043 * edge
+        + 0.015 * Math.sin(Math.PI * t);
+      const tint = baseColor.clone().offsetHSL(0, 0, light);
+      colors.push(tint.r, tint.g, tint.b);
+    }
+  }
+
+  for (let row = 0; row < longitudinal; row += 1) {
+    for (let col = 0; col < transverse; col += 1) {
+      const a = row * (transverse + 1) + col;
+      const b = a + transverse + 1;
+      indices.push(a, b, a + 1, b, b + 1, a + 1);
+    }
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+  geometry.setIndex(indices);
+  geometry.computeVertexNormals();
+  return enableCartoonShadow(new THREE.Mesh(geometry, botanicalLeafMaterial));
 }
 
 export function makeRoundedBlock(
