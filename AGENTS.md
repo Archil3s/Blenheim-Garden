@@ -137,7 +137,7 @@ The laptop view is especially important because it catches canvas/sidebar collis
 
 For changes that could affect them, verify:
 
-- `/` main 2D planner;
+- `/planner` main 2D planner;
 - title bar and quick bar;
 - left drawing rail;
 - inspector/tool panel;
@@ -659,3 +659,14 @@ The objective is a planner that:
 - remains visually stable across realistic screen sizes;
 - provides useful screenshot/diff evidence when it breaks;
 - can be diagnosed and continued by the next agent without guessing.
+
+
+---
+
+## 24. Design overhaul contract (1 November 2026)
+
+Before altering **any** visual surface, read `DESIGN.md` and `docs/DESIGN_PROGRESS.md`. These documents are the project-specific visual contract and the persistent feedback/verification log. Use vendored `.agents/skills/ui-design`, `.agents/skills/ui-art-direction`, `.agents/skills/design-taste-frontend` and `.agents/skills/redesign-existing-projects` as design guidance; the project's own correctness and data invariants remain higher priority than stylistic suggestions.
+
+The routes are now `/` (overview), `/seedlings` (Seedling Companion), `/planner` (measured planner) and `/3d` (WebGL). Planner-specific bridges must not run on the homepage or the seedling journal. The measured garden canvas remains the central **planner** surface; do not replace or fake saved garden data in the overview.
+
+Each design PR must update `docs/DESIGN_PROGRESS.md` with its workstream ID, visual decisions, before/after evidence and user feedback status. Never mark a task validated without browser evidence. Use original botanical artwork or licensed assets; do not copy third-party plant-model source without license/compatibility review. Avoid new postprocessing dependencies until there is evidence of mobile performance and context stability.
