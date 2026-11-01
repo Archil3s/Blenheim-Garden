@@ -34,7 +34,7 @@ export function GardenShowcase() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile ? 1.3 : 1.8));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.45;
+    renderer.toneMappingExposure = 1.2;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.domElement.setAttribute("aria-label", "Interactive raised bed model comparison");
@@ -46,14 +46,14 @@ export function GardenShowcase() {
     scene.fog = new THREE.Fog("#e8ede5", 10, 20);
 
     const camera = new THREE.PerspectiveCamera(45, 1, .08, 50);
-    const home = new THREE.Vector3(4.15, 3.1, 5.5);
+    const home = new THREE.Vector3(3.45, 2.8, 4.48);
     const target = new THREE.Vector3(0, .68, 0);
     camera.position.copy(home);
     camera.lookAt(target);
 
-    const hemi = new THREE.HemisphereLight("#e0ecff", "#b4a087", 2.35);
+    const hemi = new THREE.HemisphereLight("#e0ecff", "#b4a087", 1.8);
     scene.add(hemi);
-    const sun = new THREE.DirectionalLight("#fff0cc", 3.4);
+    const sun = new THREE.DirectionalLight("#fff0cc", 2.85);
     sun.position.set(-3.5, 8, 4.5);
     sun.castShadow = true;
     sun.shadow.mapSize.set(mobile ? 512 : 1024, mobile ? 512 : 1024);
