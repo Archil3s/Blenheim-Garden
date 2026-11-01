@@ -1,6 +1,10 @@
 # Blenheim Garden
 
-A visual home-garden planner for Blenheim, Marlborough.
+A visual home-garden planner and seedling journal for Blenheim, Marlborough.
+
+**Routes:** `/` garden overview, `/planner` measured garden planner, `/seedlings` Seedling Companion (currently local browser storage only), `/3d` WebGL view.
+
+**Design overhaul:** See [DESIGN.md](DESIGN.md) and [docs/DESIGN_PROGRESS.md](docs/DESIGN_PROGRESS.md) for the visual standards, roadmap, progress, feedback register and QA evidence. Developer skills live in `.agents/skills/` with upstream licence attribution. The in-progress design changes are prepared on a review branch, not automatically deployed.
 
 _Last updated: 22 August 2026_
 
