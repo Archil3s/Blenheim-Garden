@@ -36,7 +36,7 @@ function leafTexture(species: "tomato" | "pea" | "strawberry") {
     const t = i / 34;
     const envelope = Math.pow(Math.max(0, Math.sin(Math.PI * t)), species === "pea" ? 0.6 : 0.83);
     const tooth = species === "pea" ? 1 : 1 + 0.055 * Math.sin(t * (species === "strawberry" ? 38 : 26) * Math.PI);
-    const fullness = species === "pea" ? 0.39 : 0.3;
+    const fullness = species === "pea" ? 0.46 : 0.39;
     return envelope * tooth * fullness * 128;
   });
   ctx.beginPath();
@@ -227,20 +227,20 @@ function tomatoPlant(root: THREE.Object3D, seed: number, m: BotanicalMaterials, 
     new THREE.Vector3(.05, height * .76, -.02),
     new THREE.Vector3(.025, height, .01),
   ], .023, m.stem);
-  for (let level = 0; level < (mobile ? 5 : 8); level += 1) {
+  for (let level = 0; level < (mobile ? 6 : 9); level += 1) {
     const y = .24 + level * height * .093;
     const yaw = level * 2.38 + rand() * .35;
     const origin = new THREE.Vector3(0, y, 0);
-    const rachis = new THREE.Vector3(Math.cos(yaw) * .28, y + .12, Math.sin(yaw) * .28);
+    const rachis = new THREE.Vector3(Math.cos(yaw) * .33, y + .12, Math.sin(yaw) * .33);
     segment(root, origin, rachis, .007, m.stemLight);
-    leaf(root, m.leaf.tomato, rachis, .18, .15, yaw - Math.PI * .5, .92);
+    leaf(root, m.leaf.tomato, rachis, .23, .19, yaw - Math.PI * .5, .92);
     for (const side of [-1, 1]) {
       for (let j = 1; j <= (mobile ? 1 : 2); j += 1) {
         const joint = origin.clone().lerp(rachis, .3 + j * .19);
         const a = yaw + side * (1.15 + j * .12);
         const end = joint.clone().add(new THREE.Vector3(Math.cos(a) * .09, .025, Math.sin(a) * .09));
         segment(root, joint, end, .004, m.stem);
-        leaf(root, m.leaf.tomato, end, .15, .113, a - Math.PI / 2, 1.08);
+        leaf(root, m.leaf.tomato, end, .19, .15, a - Math.PI / 2, 1.08);
       }
     }
   }
@@ -295,7 +295,7 @@ function peaPlant(root: THREE.Object3D, seed: number, m: BotanicalMaterials, mob
       const a = yaw + handed * .72;
       const at = origin.clone().lerp(tip, .56)
         .add(new THREE.Vector3(Math.cos(a) * .055, 0, Math.sin(a) * .055));
-      leaf(root, m.leaf.pea, at, .13, .12, a - Math.PI / 2, 1.08);
+      leaf(root, m.leaf.pea, at, .17, .145, a - Math.PI / 2, 1.08);
     }
     if (level % 2 === 0) tendril(root, tip, yaw, m.stemLight);
     if (level > 2 && level % 3 === 0) {
@@ -322,7 +322,7 @@ function strawberryPlant(root: THREE.Object3D, seed: number, m: BotanicalMateria
       const at = tip.clone().add(new THREE.Vector3(
         -Math.sin(angle) * j * .04, .004, Math.cos(angle) * j * .04,
       ));
-      leaf(root, m.leaf.strawberry, at, .115, .1, angle - Math.PI / 2 + j * .5, 1.14);
+      leaf(root, m.leaf.strawberry, at, .155, .138, angle - Math.PI / 2 + j * .5, 1.14);
     }
   }
   for (let i = 0; i < (mobile ? 2 : 3); i += 1) {
