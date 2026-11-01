@@ -365,51 +365,104 @@ function createBrassica(root: THREE.Group, kind: "broccoli" | "cauliflower" | "c
 }
 
 function createCucurbit(root: THREE.Group, kind: "pumpkin" | "zucchini" | "cucumber" | "melon", mobile: boolean, rand: () => number) {
-  const vineLength = kind === "pumpkin" || kind === "melon" ? 0.5 : 0.34;
-  const vineEnd = new THREE.Vector3(vineLength, 0.035, 0.06);
-  branch(root, new THREE.Vector3(-vineLength * 0.45, 0.025, -0.02), vineEnd, 0.012, C.stemDark);
-  const leaves = mobile ? 4 : 7;
-  for (let i = 0; i < leaves; i += 1) {
-    const t = i / Math.max(1, leaves - 1);
-    const x = -vineLength * 0.4 + t * vineLength * 1.3;
-    const yaw = i % 2 ? 0.9 : -0.9;
-    leaf(root, 0.22, 0.18, i % 2 ? C.leaf : C.leafLight, new THREE.Vector3(x, 0.08 + rand() * 0.02, (i % 2 ? 1 : -1) * 0.07), yaw, 0.95, 5, 1.05);
+  const trailing = kind === "pumpkin" || kind === "melon";
+  const vineLength = trailing ? 0.6 : 0.4;
+  const vineStart = new THREE.Vector3(-vineLength * 0.47, 0.045, -0.04);
+  const vineEnd = new THREE.Vector3(vineLength * 0.55, 0.06, 0.06);
+  branch(root, vineStart, vineEnd, 0.013, C.stemDark);
+
+  for (let i = 0; i < (mobile ? 4 : 7); i += 1) {
+    const t = (i + 0.5) / (mobile ? 4 : 7);
+    const node = vineStart.clone().lerp(vineEnd, t);
+    const side = i % 2 ? 1 : -1;
+    const tip = node.clone().add(new THREE.Vector3(
+      (rand() - 0.5) * 0.05,
+      0.07 + rand() * 0.035,
+      side * (0.085 + rand() * 0.026),
+    ));
+    branch(root, node, tip, 0.0065, C.stem);
+    // Scalloped palmate leaves are a recognizable cucurbit silhouette.
+    leaf(root, trailing ? 0.25 : 0.22, trailing ? 0.23 : 0.19,
+      i % 3 ? C.leaf : C.leafLight, tip, side * 0.55, 1.15, 5,
+      0.92 + rand() * 0.12);
+    if (!mobile && i % 2 === 0) vineTendril(root, node, side * 1.3 + i * 0.2);
   }
+
   const count = mobile ? 1 : kind === "cucumber" ? 3 : 2;
   for (let i = 0; i < count; i += 1) {
-    const x = -0.05 + i * 0.16;
-    const z = i % 2 ? 0.08 : -0.07;
-    if (kind === "pumpkin") fruit(root, 0.115, C.pumpkin, new THREE.Vector3(x, 0.07, z), [1.25, 0.78, 1.25], 1);
-    else if (kind === "zucchini") {
-      const f = fruit(root, 0.055, C.courgette, new THREE.Vector3(x, 0.08, z), [0.75, 2.15, 0.75], 1);
-      f.rotation.z = Math.PI * 0.42;
+    const x = -0.08 + i * 0.17;
+    const z = i % 2 ? 0.105 : -0.095;
+    if (kind === "pumpkin") {
+      ribbedPumpkin(root, new THREE.Vector3(x, 0.086, z), mobile);
+    } else if (kind === "zucchini") {
+      const squash = fruit(root, 0.049, C.courgette, new THREE.Vector3(x, 0.09, z),
+        [0.75, 2.05, 0.75], 1);
+      squash.rotation.z = Math.PI * 0.34;
     } else if (kind === "cucumber") {
-      const f = fruit(root, 0.045, C.cucumber, new THREE.Vector3(x, 0.1, z), [0.72, 2.3, 0.72], 1);
-      f.rotation.z = Math.PI * 0.48;
-    } else fruit(root, 0.1, C.melon, new THREE.Vector3(x, 0.07, z), [1.12, 0.9, 1.12], 1);
+      const cucumber = fruit(root, 0.04, C.cucumber, new THREE.Vector3(x, 0.092, z),
+        [0.69, 2.52, 0.69], 1);
+      cucumber.rotation.z = Math.PI * 0.42;
+    } else {
+      fruit(root, 0.097, C.melon, new THREE.Vector3(x, 0.074, z),
+        [1.11, 0.9, 1.11], 1);
+    }
   }
 }
 
 function createBean(root: THREE.Group, kind: "bush-bean" | "climbing-bean" | "pea" | "broad-bean", mobile: boolean, rand: () => number) {
-  const climbing = kind === "climbing-bean" || kind === "pea";
-  const height = climbing ? 0.76 : kind === "broad-bean" ? 0.58 : 0.4;
+  const pea = kind === "pea";
+  const climbing = kind === "climbing-bean" || pea;
+  const height = climbing ? 0.77 : kind === "broad-bean" ? 0.59 : 0.43;
   if (climbing) {
-    const pole = enableCartoonShadow(new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.016, height + 0.22, 5), lowPolyMaterial(C.woodDark)));
-    pole.position.set(0.05, (height + 0.22) * 0.5, 0.02);
-    root.add(pole);
+    const stake = enableCartoonShadow(new THREE.Mesh(
+      new THREE.CylinderGeometry(0.012, 0.016, height + 0.2, 5),
+      lowPolyMaterial(C.woodDark),
+    ));
+    stake.position.set(0.05, (height + 0.2) * 0.5, 0.02);
+    root.add(stake);
   }
+
   const stems = mobile ? 2 : climbing ? 3 : 4;
-  for (let s = 0; s < stems; s += 1) {
-    const yaw = (s / stems) * Math.PI * 2;
-    const tip = new THREE.Vector3(Math.cos(yaw) * (climbing ? 0.06 : 0.13), height * (0.82 + rand() * 0.18), Math.sin(yaw) * (climbing ? 0.06 : 0.13));
+  for (let stem = 0; stem < stems; stem += 1) {
+    const yaw = stem / stems * Math.PI * 2 + rand() * 0.08;
+    const tip = new THREE.Vector3(
+      Math.cos(yaw) * (climbing ? 0.075 : 0.13),
+      height * (0.84 + rand() * 0.16),
+      Math.sin(yaw) * (climbing ? 0.075 : 0.13),
+    );
     branch(root, new THREE.Vector3(0, 0, 0), tip, 0.01, C.stemDark);
-    for (let i = 1; i <= (mobile ? 2 : 3); i += 1) {
-      const p = new THREE.Vector3().lerpVectors(new THREE.Vector3(0, 0, 0), tip, i / 4);
-      leaf(root, 0.13, 0.075, i % 2 ? C.leaf : C.leafLight, p, yaw + (i % 2 ? 1.1 : -1.1), Math.PI * 0.42, kind === "pea" ? 0 : 1);
+
+    for (let level = 1; level <= (mobile ? 2 : 3); level += 1) {
+      const joint = new THREE.Vector3().lerpVectors(new THREE.Vector3(0, 0, 0),
+        tip, level / 4);
+      const leafTip = joint.clone().add(new THREE.Vector3(
+        Math.cos(yaw + level * 1.13) * 0.065,
+        0.02,
+        Math.sin(yaw + level * 1.13) * 0.065,
+      ));
+      branch(root, joint, leafTip, 0.004, C.stem);
+      if (pea) {
+        // Opposite pairs of rounded pea leaflets, plus terminal tendrils.
+        for (const side of [-1, 1]) {
+          leaf(root, 0.095, 0.068, level % 2 ? C.leafLight : C.leaf, leafTip,
+            yaw + side * 0.75, 0.99);
+        }
+        if (level === 2 || (!mobile && level === 3)) vineTendril(root, leafTip, yaw + 1.1);
+      } else {
+        // Beans characteristically carry groups of three broad leaflets.
+        for (const side of [-1, 0, 1]) {
+          const p = leafTip.clone().add(new THREE.Vector3(
+            -Math.sin(yaw) * side * 0.034, 0, Math.cos(yaw) * side * 0.034));
+          leaf(root, 0.125, 0.078, side ? C.leaf : C.leafLight,
+            p, yaw + side * 0.42 - Math.PI / 2, 1.04, 1);
+        }
+      }
     }
-    if (s % 2 === 0) {
-      const podColor = kind === "pea" ? C.pea : C.bean;
-      const pod = fruit(root, 0.032, podColor, tip.clone().add(new THREE.Vector3(0.02, -0.12, 0)), [0.7, 2.5, 0.7], 1);
+
+    if (stem % 2 === 0) {
+      const pod = fruit(root, 0.026, pea ? C.pea : C.bean,
+        tip.clone().add(new THREE.Vector3(0.028, -0.117, 0)),
+        pea ? [0.7, 2.8, 0.66] : [0.68, 3.0, 0.7], 1);
       pod.rotation.z = 0.25;
     }
   }
