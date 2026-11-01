@@ -2,9 +2,9 @@
 
 **Started:** 1 November 2026  
 **Source of truth:** [DESIGN.md](../DESIGN.md)  
-**Branch:** `design/editorial-garden-overhaul-01`  
+**Phase 1 branch:** `design/editorial-garden-overhaul-01` (merged as PR #48)\n**3D comparison branch:** `feature/3d-showcase-comparison`  
 **Review:** [Pull Request #48](https://github.com/Archil3s/Blenheim-Garden/pull/48)  
-**Production:** `main` is unchanged until a reviewable PR passes checks and is merged.
+**Production:** Phase 1 was deployed from main. The separate 3D showcase is not deployed or connected to saved plans until its PR is reviewed and merged.
 
 ## Status board
 
@@ -15,12 +15,12 @@
 | D-003 | Editorial, task-led homepage | Implemented · visual QA pending | Render `/` at 4 viewport sizes |
 | D-004 | Seedling Companion visual overhaul | Implemented · visual QA pending | Test add/edit/delete, local-only state, task visibility |
 | D-005 | Planner chrome, toolbar and measured canvas polish | Queued | No changes to coordinates/persistence |
-| D-006 | 3D plant geometry and material study | Queued | Capture before/after, inspect performance |
+| D-006 | 3D plant geometry and material study | Prototype implemented · CI and review pending | Compare `/3d-showcase` current/botanical modes at four viewports |
 | D-007 | Three.js postprocessing pilot | Research only | Benchmark on iPhone-like/mobile and laptop before use |
 | D-008 | Mobile QA, accessibility, motion | In progress | Playwright, responsive screenshots and keyboard verification |
 | D-009 | Genuine user feedback rounds | Awaiting feedback | Log issue + expected change below |
 
-### Delivery gates
+### Current 3D showcase (prototype)\n\n- **Route:** `/3d-showcase`, isolated from the production garden editor.\n- **Current mode:** the original `createGardenPlant3D` models.\n- **Botanical mode:** separately authored plant silhouettes with procedural leaf textures, fruit/flower structures, and PBR materials.\n- **Shared:** 2 × 4 m bed, camera, trellis, soil/timber, lighting and fixed plant positions.\n- **Limits:** prototype geometry; not photorealistic GLBs, no PlantStudio-Blender or Procedural Plant Lab runtime integration.\n- **Acceptance and limitations:** [3d-showcase-acceptance.md](3d-showcase-acceptance.md).\n\n### Delivery gates
 - **Phase 1:** Design standards, homepage and Seedling Companion editorial foundation; visual + build evidence; PR.
 - **Phase 2:** Planner visual polish without changing the measured layout, controls or Cloudflare state.
 - **Phase 3:** Three.js crop silhouettes, vegetation materials and lighting; assess Procplants Lab as reference.
@@ -33,7 +33,7 @@
 | --- | --- | --- | --- | --- |
 | 2026-11-01 | D-001 | Establish field-notebook art direction, not a generic dashboard | Ground visual identity in garden tasks and real growing seasons | Awaiting PR |
 | 2026-11-01 | D-002 | Vendor scoped design agent skills with upstream licence and attribution | Give future Codex agents stable, inspectable design rules | Review GitHub diff |
-| 2026-11-01 | D-006 | Use Procplants Lab for conceptual morphology research before copying any code | Preserve current Three.js integration and performance | Not integrated |
+| 2026-11-01 | D-006 | Use Procplants Lab for conceptual morphology research before copying any code | Preserve current Three.js integration and performance | Not integrated |\n| 2026-11-01 | D-006 | Add standalone model comparison using the actual existing low-poly renderer and a separate botanical renderer | Compare like-for-like before altering production renderer | Implemented on feature/3d-showcase-comparison; screenshot CI pending |
 | 2026-11-01 | D-007 | Treat pmndrs/postprocessing as optional after geometry work | Extra GPU cost is not justified until measured | Not integrated |
 | 2026-11-01 | D-003 | Replaced abstract hero and three feature cards with season note and editorial workspace rows | Prioritise real jobs, locality and hierarchy | In PR #48; browser review pending |
 | 2026-11-01 | D-004 | Restructured seedling information styling and added generic seed-leaf/true-leaf stage sketches | More useful plant stages without pretending to have crop-specific photos | In PR #48; browser review pending |
@@ -57,7 +57,7 @@ Use one entry per round; never overwrite previous feedback.
 - **Before/after evidence and follow-up:**
 
 ### Feedback entries
-_None received yet. Add new entries here when the user reviews the browser or screenshots._
+### Feedback received — 1 November 2026\n- **Screen:** `/3d`; comparison with previously generated design concept image.\n- **Observation:** “It doesn’t look anything like the proposed photos.”\n- **Expected:** Recognizable, botanically convincing species in a credible garden scene, rather than flat leaves and geometric fruit.\n- **Priority:** High.\n- **Status:** Accepted; isolated `/3d-showcase` prototype implemented for comparison. Do not mark validated until the user has reviewed actual screenshots.\n- **Review:** tomato compound leaves, strawberry trifoliates, pea tendrils, materials and realistic scale.\n
 
 ## Internal screenshot review, 1 November 2026
 
@@ -80,5 +80,5 @@ _None received yet. Add new entries here when the user reviews the browser or sc
 | Original garden planner and /3d | Pending | No regression |
 | Cloudflare deployment | Not started | Draft PR; do not deploy without review and QA |
 
-## How to continue in a future chat
+## 3D showcase QA evidence\n\n| Check | Outcome | Notes |\n| --- | --- | --- |\n| New route build + lint | Pending | Build action on new PR |\n| Toggle current/botanical & reset camera | Pending | New Playwright test |\n| Desktop, laptop, tablet and phone screenshots | Pending | Both modes captured in Playwright |\n| Safe from garden API/storage | Code path reviewed | No garden API or localStorage access in showcase modules |\n| Detailed close-up fidelity | Pending actual rendered review | Procedural study; high-fidelity GLB library future work |\n\n## How to continue in a future chat
 Read `AGENTS.md`, `PROJECT_CONTEXT.md`, `DESIGN.md`, this log, and the current UI source. Keep existing garden state safe. Complete the oldest unverified in-progress item, log screenshots/test results, then collect feedback before the next phase. Do not merge prematurely.
