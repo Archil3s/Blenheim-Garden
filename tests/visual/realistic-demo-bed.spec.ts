@@ -64,7 +64,7 @@ test("real-scale demonstration bed renders in the planner 3D view", async ({
     if (message.type() === "error") errors.push(message.text());
   });
 
-  await page.goto("/");
+  await page.goto("/planner");
   await page.getByRole("button", { name: "3D", exact: true }).click();
   await page.getByRole("button", { name: "Demo bed", exact: true }).click();
 
