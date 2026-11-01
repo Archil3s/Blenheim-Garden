@@ -70,7 +70,7 @@ test("dragging, resizing, rotation and bidirectional live edits", async ({ conte
   await expect(inspector.getByLabel("Rotation (degrees)")).toHaveValue("15");
   await inspector.getByLabel("Depth (cm)").fill("160"); await inspector.getByLabel("Depth (cm)").press("Enter");
   await expect.poll(async () => (await readPlan(page)).objects[0]).toMatchObject({ rotationDeg: 15, depthCm: 160 });
- const planner = await context.newPage(); await planner.goto("/");
+ const planner = await context.newPage(); await planner.goto("/planner");
   await expect(planner.locator(".plan-bed")).toHaveCount(1);
   await expect(planner.locator(".has-explicit-placements .planting-area-icons i")).toHaveCount(2);
   await planner.locator(".plan-bed").press("Enter");
