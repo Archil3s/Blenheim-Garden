@@ -8,7 +8,7 @@ function newZealandDate(date: Date) {
     timeZone: "Pacific/Auckland", day: "numeric", month: "numeric", year: "numeric",
   }).formatToParts(date);
   const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-  return new Date(Number(values.year), Number(values.month) - 1, Number(values.day), 12);
+  return new Date(Date.UTC(Number(values.year), Number(values.month) - 1, Number(values.day), 12));
 }
 
 function MonthArtwork() {
@@ -32,11 +32,12 @@ function MonthArtwork() {
 }
 
 export default function Home() {
-  const localDate = newZealandDate(new Date());
+  const now = new Date();
+  const localDate = newZealandDate(now);
   const frost = blenheimFrostForMonth(localDate.getMonth());
   const actions = blenheimGardenActions(localDate, "today").slice(0, 4);
   const dateText = new Intl.DateTimeFormat("en-NZ", { timeZone: "Pacific/Auckland",
-    weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(localDate);
+    weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(now);
   const monthYear = new Intl.DateTimeFormat("en-NZ", {
     month: "long", year: "numeric" }).format(localDate);
   return (
