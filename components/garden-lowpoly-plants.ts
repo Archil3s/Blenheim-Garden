@@ -127,75 +127,178 @@ function pepperColor(name: string) {
   return C.pepperRed;
 }
 
-function createTomato(root: THREE.Group, name: string, mobile: boolean, rand: () => number) {
-  const height = 0.82 + rand() * 0.16;
-  branch(root, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, height, 0), 0.028);
+/** Petioled compound leaves: terminal leaflet plus paired lateral leaflets. */
+function compoundLeaves(
+  root: THREE.Group,
+  origin: THREE.Vector3,
+  tip: THREE.Vector3,
+  yaw: number,
+  color: number,
+  mobile: boolean,
+  rand: () => number,
+) {
+  branch(root, origin, tip, 0.0065, C.stem);
+  leaf(root, 0.15, 0.078, color, tip, yaw - Math.PI / 2, 0.86, 2, 0.95);
+  const side = new THREE.Vector3(-Math.sin(yaw), 0, Math.cos(yaw));
+  for (let pair = 0; pair < (mobile ? 1 : 2); pair += 1) {
+    const joint = origin.clone().lerp(tip, 0.36 + pair * 0.24);
+    for (const handed of [-1, 1]) {
+      const leafTip = joint.clone()
+        .addScaledVector(side, handed * (0.047 + pair * 0.012))
+        .add(new THREE.Vector3(0, 0.013 + rand() * 0.012, 0));
+      branch(root, joint, leafTip, 0.0038, C.stem);
+      leaf(root, 0.1 + pair * 0.015, 0.052, pair % 2 ? C.leafLight : color,
+        leafTip, yaw + handed * 0.55 - Math.PI / 2, 0.98, 2);
+    }
+  }
+}
 
-  const stake = enableCartoonShadow(
-    new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.016, height + 0.2, 5), lowPolyMaterial(C.woodDark)),
+function strawberryBerry(root: THREE.Group, point: THREE.Vector3, mobile: boolean) {
+  // The blunt shoulder and pointed tip distinguish strawberry fruit from a red ball.
+  const body = new THREE.Mesh(
+    new THREE.ConeGeometry(0.032, 0.072, mobile ? 7 : 10, 3),
+    lowPolyMaterial(C.strawberry, { roughness: 0.86 }),
   );
-  stake.position.set(-0.07, (height + 0.2) * 0.5, 0.02);
+  body.rotation.z = Math.PI;
+  body.position.copy(point);
+  body.castShadow = true;
+  root.add(body);
+  const shoulder = point.clone().add(new THREE.Vector3(0, 0.029, 0));
+  const count = mobile ? 3 : 5;
+  for (let i = 0; i < count; i += 1) {
+    const a = i / count * Math.PI * 2;
+    leaf(root, 0.024, 0.014, C.leafDark, shoulder, a, 1.15, 1);
+  }
+}
+
+function vineTendril(root: THREE.Group, start: THREE.Vector3, yaw: number) {
+  const points: THREE.Vector3[] = [];
+  for (let i = 0; i <= 12; i += 1) {
+    const t = i / 12;
+    const radius = 0.026 * t;
+    const angle = 2.9 * Math.PI * t + yaw;
+    points.push(start.clone().add(new THREE.Vector3(
+      Math.cos(yaw) * t * 0.085 + Math.cos(angle) * radius,
+      0.02 + Math.sin(angle) * radius,
+      Math.sin(yaw) * t * 0.085 + Math.sin(angle) * radius,
+    )));
+  }
+  const curve = new THREE.CatmullRomCurve3(points);
+  const spiral = new THREE.Mesh(
+    new THREE.TubeGeometry(curve, 12, 0.003, 3, false),
+    lowPolyMaterial(C.stem, { roughness: 0.94 }),
+  );
+  root.add(spiral);
+}
+
+function ribbedPumpkin(root: THREE.Group, point: THREE.Vector3, mobile: boolean) {
+  const geometry = new THREE.SphereGeometry(0.12, mobile ? 12 : 20, mobile ? 7 : 11);
+  const vertices = geometry.attributes.position;
+  for (let i = 0; i < vertices.count; i += 1) {
+    const x = vertices.getX(i), y = vertices.getY(i), z = vertices.getZ(i);
+    const angle = Math.atan2(z, x);
+    const ribs = 1 + 0.064 * Math.cos(angle * 8);
+    vertices.setXYZ(i, x * ribs * 1.16, y * 0.75, z * ribs * 1.16);
+  }
+  geometry.computeVertexNormals();
+  const pumpkin = new THREE.Mesh(geometry, lowPolyMaterial(C.pumpkin, { roughness: 0.89 }));
+  pumpkin.position.copy(point);
+  pumpkin.castShadow = true;
+  root.add(pumpkin);
+  branch(root, point.clone().add(new THREE.Vector3(0, 0.085, 0)),
+    point.clone().add(new THREE.Vector3(0.018, 0.13, 0)), 0.012, C.stemDark);
+}
+
+function createTomato(root: THREE.Group, name: string, mobile: boolean, rand: () => number) {
+  const height = 0.82 + rand() * 0.15;
+  const stemTip = new THREE.Vector3((rand() - 0.5) * 0.03, height, 0);
+  branch(root, new THREE.Vector3(0, 0, 0), stemTip, 0.025, C.stemDark);
+
+  const stake = enableCartoonShadow(new THREE.Mesh(
+    new THREE.CylinderGeometry(0.011, 0.016, height + 0.18, 5),
+    lowPolyMaterial(C.woodDark),
+  ));
+  stake.position.set(-0.07, (height + 0.18) * 0.5, 0.025);
   root.add(stake);
 
-  const leafLevels = mobile ? 3 : 5;
-  for (let level = 0; level < leafLevels; level += 1) {
-    const y = 0.2 + level * (height * 0.12);
-    const baseYaw = level * 2.25 + rand() * 0.35;
+  for (let level = 0; level < (mobile ? 3 : 5); level += 1) {
+    const y = 0.2 + level * height * 0.135;
+    const baseYaw = level * 2.38 + rand() * 0.28;
     for (const side of [0, Math.PI]) {
       const yaw = baseYaw + side;
-      const tip = new THREE.Vector3(Math.cos(yaw) * 0.22, y + 0.055, Math.sin(yaw) * 0.22);
-      branch(root, new THREE.Vector3(0, y, 0), tip, 0.008, C.stem);
-      leaf(root, 0.2, 0.105, level % 2 ? C.leaf : C.leafDark, tip, yaw - Math.PI / 2, Math.PI * 0.42, 2, 1.05);
-      if (!mobile) {
-        leaf(root, 0.12, 0.065, C.leafLight, tip.clone().multiply(new THREE.Vector3(0.72, 1, 0.72)), yaw + 0.65, Math.PI * 0.42, 1, 0.9);
-      }
+      const start = new THREE.Vector3(0, y, 0);
+      const tip = new THREE.Vector3(
+        Math.cos(yaw) * (0.15 + rand() * 0.035),
+        y + 0.042,
+        Math.sin(yaw) * (0.15 + rand() * 0.035),
+      );
+      compoundLeaves(root, start, tip, yaw, level % 2 ? C.leaf : C.leafDark, mobile, rand);
     }
   }
 
   const cherry = /cherry|grape/.test(name);
   const roma = /roma|plum|paste/.test(name);
   const color = tomatoColor(name);
-  const clusters = mobile ? 1 : 2;
-  for (let cluster = 0; cluster < clusters; cluster += 1) {
-    const y = 0.36 + cluster * 0.23;
-    const yaw = 0.7 + cluster * 2.15;
+  for (let cluster = 0; cluster < (mobile ? 1 : 2); cluster += 1) {
+    const y = 0.35 + cluster * 0.24;
+    const yaw = 0.82 + cluster * 2.18;
     const tip = new THREE.Vector3(Math.cos(yaw) * 0.14, y - 0.03, Math.sin(yaw) * 0.14);
     branch(root, new THREE.Vector3(0, y, 0), tip, 0.006, C.stem);
-    const count = cherry ? (mobile ? 4 : 6) : mobile ? 2 : 4;
+    const count = cherry ? (mobile ? 3 : 5) : mobile ? 2 : 3;
     for (let i = 0; i < count; i += 1) {
-      const a = yaw + (i - (count - 1) / 2) * 0.4;
-      const r = cherry ? 0.035 : 0.055;
-      fruit(
-        root,
-        r,
-        color,
-        new THREE.Vector3(tip.x + Math.cos(a) * 0.065, y - 0.07 - i * 0.01, tip.z + Math.sin(a) * 0.065),
-        roma ? [0.82, 1.28, 0.82] : [1, 1, 1],
+      const a = yaw + (i - (count - 1) / 2) * 0.48;
+      const radius = cherry ? 0.035 : 0.055;
+      const position = new THREE.Vector3(
+        tip.x + Math.cos(a) * 0.065,
+        y - 0.07 - i * 0.014,
+        tip.z + Math.sin(a) * 0.065,
       );
+      branch(root, tip, position.clone().add(new THREE.Vector3(0, radius, 0)), 0.0028, C.stem);
+      fruit(root, radius, color, position, roma ? [0.83, 1.25, 0.83] : [1, 1, 1], 1);
+      // Small calyx at fruit shoulders; fruit colour continues to communicate variety.
+      if (!mobile) {
+        for (let petal = 0; petal < 4; petal += 1) {
+          leaf(root, radius * 0.65, radius * 0.28, C.leafDark,
+            position.clone().add(new THREE.Vector3(0, radius * 0.84, 0)),
+            petal * Math.PI * 0.5, 1.13);
+        }
+      }
     }
   }
-  if (!mobile) flower(root, new THREE.Vector3(0.08, height * 0.8, 0.03), C.flowerYellow, 0.025);
+  if (!mobile) flower(root, new THREE.Vector3(0.085, height * 0.78, 0.025), C.flowerYellow, 0.022);
 }
 
 function createStrawberry(root: THREE.Group, mobile: boolean, rand: () => number) {
-  const crowns = mobile ? 2 : 3;
+  const crowns = mobile ? 1 : 2;
   for (let crown = 0; crown < crowns; crown += 1) {
-    const center = new THREE.Vector3((crown - 1) * 0.055, 0.025, (rand() - 0.5) * 0.05);
-    for (let i = 0; i < 4; i += 1) {
-      const yaw = (i / 4) * Math.PI * 2 + crown * 0.55;
-      const tip = center.clone().add(new THREE.Vector3(Math.cos(yaw) * 0.09, 0.11 + rand() * 0.025, Math.sin(yaw) * 0.09));
-      branch(root, center, tip, 0.006, C.stem);
-      leaf(root, 0.13, 0.085, i % 2 ? C.leaf : C.leafLight, tip, yaw - Math.PI / 2, Math.PI * 0.46, 2, 1.05);
+    const center = new THREE.Vector3((crown - (crowns - 1) * 0.5) * 0.06,
+      0.025, (rand() - 0.5) * 0.07);
+    const stalks = mobile ? 4 : 6;
+    for (let i = 0; i < stalks; i += 1) {
+      const yaw = i / stalks * Math.PI * 2 + crown * 0.6;
+      const end = center.clone().add(new THREE.Vector3(
+        Math.cos(yaw) * (0.085 + rand() * 0.03),
+        0.12 + rand() * 0.028,
+        Math.sin(yaw) * (0.085 + rand() * 0.03),
+      ));
+      branch(root, center, end, 0.0055, C.stem);
+      // Strawberry leaves are trifoliate, not isolated oval paddles.
+      const spread = new THREE.Vector3(-Math.sin(yaw), 0, Math.cos(yaw));
+      for (const index of [-1, 0, 1]) {
+        const base = end.clone().addScaledVector(spread, index * 0.034);
+        leaf(root, 0.09, 0.068, index ? C.leaf : C.leafLight, base,
+          yaw + index * 0.48 - Math.PI / 2, 1.07, 2);
+      }
     }
   }
-  const berries = mobile ? 2 : 5;
-  for (let i = 0; i < berries; i += 1) {
-    const yaw = i * 1.47 + rand() * 0.25;
-    const p = new THREE.Vector3(Math.cos(yaw) * (0.08 + rand() * 0.05), 0.055, Math.sin(yaw) * (0.08 + rand() * 0.05));
-    branch(root, new THREE.Vector3(0, 0.09, 0), p, 0.0045, C.stem);
-    fruit(root, 0.038, C.strawberry, p, [0.95, 1.25, 0.95]);
+  for (let i = 0; i < (mobile ? 2 : 4); i += 1) {
+    const yaw = i * 1.77 + rand() * 0.22;
+    const point = new THREE.Vector3(Math.cos(yaw) * (0.09 + rand() * 0.04),
+      0.057, Math.sin(yaw) * (0.09 + rand() * 0.04));
+    branch(root, new THREE.Vector3(0, 0.11, 0), point, 0.004, C.stem);
+    strawberryBerry(root, point, mobile);
   }
-  if (!mobile) flower(root, new THREE.Vector3(-0.05, 0.13, 0.08), C.flowerWhite, 0.022);
+  if (!mobile) flower(root, new THREE.Vector3(-0.06, 0.14, 0.09), C.flowerWhite, 0.025);
 }
 
 function createBerry(root: THREE.Group, kind: "blueberry" | "raspberry", mobile: boolean, rand: () => number) {
