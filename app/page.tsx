@@ -3,6 +3,9 @@ import { blenheimFrostForMonth, blenheimGardenActions } from "@/lib/garden/blenh
 import { SeedlingDashboardTeaser } from "@/components/seedling-dashboard-teaser";
 import "./home.css";
 
+// Seasonal context must update each NZ day; do not prerender it at build time.
+export const dynamic = "force-dynamic";
+
 function newZealandDate(date: Date) {
   const parts = new Intl.DateTimeFormat("en-NZ", {
     timeZone: "Pacific/Auckland", day: "numeric", month: "numeric", year: "numeric",
