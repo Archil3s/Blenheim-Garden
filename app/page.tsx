@@ -116,7 +116,7 @@ export default function Home() {
                 <div className="home-guidance-item" key={action.id}>
                   <span className="home-guidance-count">{String(i + 1).padStart(2, "0")}</span>
                   <div><strong>{action.title}</strong><p>{action.detail}</p></div>
-                  <span className={"home-action-status status-" + action.status}>{action.status === "protected" ? "Under cover" : action.status === "now" ? "Now" : action.status === "soon" ? "Soon" : "Wait"}</span>
+                  <span className={"home-action-status status-" + action.status}>{action.status === "protected" ? "Under cover" : action.status === "now" ? "Window" : action.status === "soon" ? "Soon" : "Wait"}</span>
                 </div>
               )) : <p>Nothing scheduled for today&apos;s seasonal guide. Check the planner for active planting history.</p>}
               <div className="home-guidance-foot">Planning guidance from historical Blenheim seasons, <strong>not</strong> a live frost forecast. Waihopai Valley can be colder than town.</div>
