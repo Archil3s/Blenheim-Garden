@@ -147,3 +147,6 @@
 @media (prefers-reduced-motion: reduce) {
  .home-primary,.home-workspace-item { transition: none; }
 }
+
+.home-showcase-entry { color: #6a7e6a; margin: 21px 0 0; font-size: 12px; line-height: 1.65; }
+.home-showcase-entry a { color: #305941; font-weight: 800; text-underline-offset: 4px; }

@@ -670,3 +670,8 @@ Before altering **any** visual surface, read `DESIGN.md` and `docs/DESIGN_PROGRE
 The routes are now `/` (overview), `/seedlings` (Seedling Companion), `/planner` (measured planner) and `/3d` (WebGL). Planner-specific bridges must not run on the homepage or the seedling journal. The measured garden canvas remains the central **planner** surface; do not replace or fake saved garden data in the overview.
 
 Each design PR must update `docs/DESIGN_PROGRESS.md` with its workstream ID, visual decisions, before/after evidence and user feedback status. Never mark a task validated without browser evidence. Use original botanical artwork or licensed assets; do not copy third-party plant-model source without license/compatibility review. Avoid new postprocessing dependencies until there is evidence of mobile performance and context stability.
+
+
+## Isolated 3D model showcase (2026-11-01)
+
+The route `/3d-showcase` is a separate, **read-only test scene**. It does not read/write garden plans, D1, R2 or localStorage. It must never replace the measured plan renderer without screenshot evidence and user feedback. The toggle uses the original `createGardenPlant3D` implementation for classic plants; its botanical mode is an isolated procedural prototype. See `docs/3d-showcase-acceptance.md` and the D-006 entries in `docs/DESIGN_PROGRESS.md`. Compare both with identical bed/lighting/camera before deciding on real Blender/GLB assets. Respect mobile WebGL performance and verify disposal of geometry and materials.

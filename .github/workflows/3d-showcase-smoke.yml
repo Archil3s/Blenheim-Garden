@@ -1,0 +1,31 @@
+name: 3D showcase screenshots
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  showcase:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.15
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+      - run: bunx playwright install --with-deps chromium
+      - name: Compare classic and botanical models in all viewport sizes
+        run: bunx playwright test tests/visual/3d-showcase-comparison.spec.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: 3d-showcase-screenshots
+          path: |
+            visual-artifacts/current/
+            playwright-report/
+          retention-days: 14
