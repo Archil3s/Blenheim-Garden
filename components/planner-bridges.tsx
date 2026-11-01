@@ -19,7 +19,7 @@ export function PlannerBridges() {
 
   // The standalone WebGL companion is its own application surface. Planner bridges
   // stay off /3d, while the main planner gets an inline simulator-style 2D/3D switch.
-  if (pathname?.startsWith("/3d")) return null;
+  if (pathname !== "/planner") return null;
 
   return (
     <>
