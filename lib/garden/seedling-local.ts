@@ -28,6 +28,7 @@ export function saveBatches(batches: SeedBatch[]) {
 export type SeedCropGuide = {
   crop: string;
   indoorMonths?: number[];
+  outdoorAction?: "direct" | "transplant"; // Outdoor window may mean planting seedlings, not sowing seed.
   outdoorMonths: number[];
   intervalDays?: number;
   emergenceDays: [number, number];
@@ -39,8 +40,8 @@ export type SeedCropGuide = {
 /** NZ calendar months: January=1. Editorial planning defaults, NOT variety-specific supplier data. */
 export const SEED_CROPS: SeedCropGuide[] = [
   {crop:"Peas",outdoorMonths:[3,4,5,6,7,8,9],intervalDays:18,emergenceDays:[7,14],harvestDays:[65,95],notes:"Direct sow into well-drained soil; succession sow about every 2–3 weeks in suitable cool conditions. Protect flowers during hard frosts.",overwinter:"Trial autumn sowing in a sheltered, well-drained site for an early spring crop. Results vary by variety and local winter exposure."},
-  {crop:"Tomato",indoorMonths:[7,8,9],outdoorMonths:[10,11,12],emergenceDays:[5,12],harvestDays:[95,150],notes:"Start indoors in warmth and light; harden off before planting into reliably frost-free conditions.",seedlingAdvice:"Pot on once true leaves and roots have developed. Seedlings benefit from strong light."},
-  {crop:"Capsicum / chilli",indoorMonths:[8,9],outdoorMonths:[11,12],emergenceDays:[10,28],harvestDays:[110,180],notes:"Warm germination is essential. Without bottom heat, germination may be slow or unreliable."},
+  {crop:"Tomato",indoorMonths:[7,8,9],outdoorMonths:[10,11,12],outdoorAction:"transplant",emergenceDays:[5,12],harvestDays:[95,150],notes:"Start indoors in warmth and light; harden off before planting into reliably frost-free conditions.",seedlingAdvice:"Pot on once true leaves and roots have developed. Seedlings benefit from strong light."},
+  {crop:"Capsicum / chilli",indoorMonths:[8,9],outdoorMonths:[11,12],outdoorAction:"transplant",emergenceDays:[10,28],harvestDays:[110,180],notes:"Warm germination is essential. Without bottom heat, germination may be slow or unreliable."},
   {crop:"Pumpkin",indoorMonths:[9,10],outdoorMonths:[10,11,12],emergenceDays:[5,12],harvestDays:[90,140],notes:"Start only a few weeks ahead in individual pots or direct sow into warm soil; avoid disturbing roots."},
   {crop:"Beans",outdoorMonths:[10,11,12,1,2],intervalDays:21,emergenceDays:[5,12],harvestDays:[50,85],notes:"Direct sow into warm soil after frost risk. Repeat bush bean sowings about every 3 weeks."},
   {crop:"Lettuce",indoorMonths:[3,4,5,6,7,8],outdoorMonths:[1,2,3,4,5,6,7,8,9,10,11,12],intervalDays:18,emergenceDays:[4,10],harvestDays:[45,75],notes:"Sow small batches every 2–3 weeks; provide shade in hot weather."},

@@ -114,7 +114,7 @@ test("3D design session saves, refreshes, and mirrors in 2D", async ({ context, 
   const beforeRefresh = await plan(page);
   await page.reload(); await expect(canvas).toBeVisible();
   expect(await plan(page)).toEqual(beforeRefresh);
-  const planner = await context.newPage(); await planner.goto("/");
+  const planner = await context.newPage(); await planner.goto("/planner");
   await expect(planner.locator(".gv-app")).toBeVisible();
   await expect(planner.locator(".plan-bed")).toHaveCount(1);
   await expect(planner.locator(".planting-area")).toHaveCount(1);
@@ -128,7 +128,7 @@ test("inline 3D keyboard history and save stay within the active editor", async 
   const fixture: PlannerPlan = { ...empty, beds: [{ id: 1, name: "Keyboard bed", x: 35, y: 35, w: 30, h: 30 }] };
   await context.route("**/api/**", (route) => route.fulfill({ json: { ok: true, plan: fixture, gardens: [{ id: "blenheim-garden", name: "Test garden", year: 2026 }], beds: [], items: [] } }));
   await page.addInitScript((plan) => localStorage.setItem("blenheim-garden-live-plan", JSON.stringify(plan)), fixture);
-  await page.goto("/");
+  await page.goto("/planner");
   await page.getByRole("button", { name: "3D", exact: true }).click();
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   await expect(canvas).toBeVisible();

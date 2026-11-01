@@ -225,3 +225,10 @@ WebGL dense planting rendering is deliberately capped and live updates are throt
 
 
 The shared 3D garden editor and compatible placement persistence are described in [docs/3d-editor.md](docs/3d-editor.md).
+
+
+## November 2026 — editorial design overhaul
+
+The new routes are `/` home overview, `/planner` measured Drawing V2 planner, `/seedlings` local-only Seedling Companion, and `/3d` companion. `PlannerBridges` now runs only at `/planner`. Keep this routing intact.
+
+See `DESIGN.md` for visual identity and `docs/DESIGN_PROGRESS.md` for staged implementation, test results and user feedback. The initial overhaul branch only redesigns the homepage and seedling journal; it does not change the 12-bed plan, D1/R2 or 3D geometry. Agent skills are vendored in `.agents/skills` with upstream MIT licences. Procplants Lab and `pmndrs/postprocessing` are references for future 3D work, not bundled runtime dependencies.

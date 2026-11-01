@@ -34,7 +34,7 @@ test("detailed plant art loads in inline and companion 3D", async ({ page, conte
     if (path === "/api/gardens") return route.fulfill({ json: { ok: true, gardens: [{ id: "blenheim-garden", name: "Blenheim Garden", year: 2026 }] } });
     return route.fulfill({ json: { ok: true, beds: [], items: [], notes: [], harvests: [] } });
   });
-  await page.goto("/");
+  await page.goto("/planner");
   await page.getByRole("button", { name: "3D", exact: true }).click();
   const canvas = page.locator('[aria-label="Interactive 3D garden workspace"] canvas');
   await expect(canvas).toBeVisible();

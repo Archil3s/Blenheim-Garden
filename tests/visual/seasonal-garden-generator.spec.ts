@@ -9,7 +9,7 @@ test.beforeEach(async ({ context }) => {
 test("generates a seasonal plan for the selected month and shows it in 3D", async ({
   page,
 }, testInfo) => {
-  await page.goto("/");
+  await page.goto("/planner");
   await page.getByLabel("Planning month").selectOption("Nov");
 
   const generate = page.getByRole("button", {

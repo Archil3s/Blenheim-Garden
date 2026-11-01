@@ -41,7 +41,7 @@ test.beforeEach(async ({ page }) => {
     return route.fulfill({ json: { ok: true, scope: "garden", beds: [], items: [], notes: [], harvests: [], usage: { fileCount: 0, totalBytes: 0 } } });
   });
   await page.clock.setFixedTime(new Date("2026-09-14T00:00:00Z"));
-  await page.goto("/");
+  await page.goto("/planner");
   await expect(page.locator(".gv-save")).toHaveText("Saved ✓");
 });
 
