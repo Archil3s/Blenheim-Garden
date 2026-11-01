@@ -15,7 +15,7 @@
 | D-003 | Editorial, task-led homepage | Implemented · visual QA pending | Render `/` at 4 viewport sizes |
 | D-004 | Seedling Companion visual overhaul | Implemented · visual QA pending | Test add/edit/delete, local-only state, task visibility |
 | D-005 | Planner chrome, toolbar and measured canvas polish | Queued | No changes to coordinates/persistence |
-| D-006 | 3D plant geometry and material study | Prototype implemented · CI and review pending | Compare `/3d-showcase` current/botanical modes at four viewports |
+| D-006 | 3D plant geometry and material study | Prototype CI passed; user review pending | Compare `/3d-showcase` current/botanical modes and assess realism against intended reference |
 | D-007 | Three.js postprocessing pilot | Research only | Benchmark on iPhone-like/mobile and laptop before use |
 | D-008 | Mobile QA, accessibility, motion | In progress | Playwright, responsive screenshots and keyboard verification |
 | D-009 | Genuine user feedback rounds | Awaiting feedback | Log issue + expected change below |
@@ -80,5 +80,12 @@ Use one entry per round; never overwrite previous feedback.
 | Original garden planner and /3d | Pending | No regression |
 | Cloudflare deployment | Not started | Draft PR; do not deploy without review and QA |
 
-## 3D showcase QA evidence\n\n| Check | Outcome | Notes |\n| --- | --- | --- |\n| New route build + lint | Pending | Build action on new PR |\n| Toggle current/botanical & reset camera | Pending | New Playwright test |\n| Desktop, laptop, tablet and phone screenshots | Pending | Both modes captured in Playwright |\n| Safe from garden API/storage | Code path reviewed | No garden API or localStorage access in showcase modules |\n| Detailed close-up fidelity | Pending actual rendered review | Procedural study; high-fidelity GLB library future work |\n\n## How to continue in a future chat
+## 3D showcase QA evidence\n\n| Check | Outcome | Notes |\n| --- | --- | --- |\n| New route build + lint | Passed | [Build run #41290231598](https://github.com/Archil3s/Blenheim-Garden/actions/runs/41290231598) |\n| Toggle current/botanical & reset camera | Passed in Chromium | [Showcase test #41290231475](https://github.com/Archil3s/Blenheim-Garden/actions/runs/41290231475) |\n| Desktop, laptop, tablet and phone screenshots | Captured for both modes | [Showcase artifact, 14-day retention](https://github.com/Archil3s/Blenheim-Garden/actions/runs/41290231475) |\n| Safe from garden API/storage | Code path reviewed | No garden API or localStorage access in showcase modules |\n| Detailed close-up fidelity | Below intended photographic reference | A separate Blender/glTF asset library is still required |\n\n## 3D comparison — screenshot feedback, 1 November 2026
+
+- **Tested:** `d677c1b3` (followed by documentation-only changes), 4 responsive viewports, both modes, no page errors or horizontal overflow.
+- **Visual conclusion:** botanical mode improves foliage and crop identification, especially tomatoes and strawberries, but the overall plant geometry is still visibly stylized. Does **not** match the earlier photorealistic concept render.
+- **Evidence:** [focused screenshot CI #41290231475](https://github.com/Archil3s/Blenheim-Garden/actions/runs/41290231475).
+- **Decision:** leave /3d unchanged; seek user feedback on the standalone /3d-showcase before any integration. Next quality milestone is authentic, optimized Blender/glTF assets rather than further generic procedural leaf tweaks.
+
+## How to continue in a future chat
 Read `AGENTS.md`, `PROJECT_CONTEXT.md`, `DESIGN.md`, this log, and the current UI source. Keep existing garden state safe. Complete the oldest unverified in-progress item, log screenshots/test results, then collect feedback before the next phase. Do not merge prematurely.
