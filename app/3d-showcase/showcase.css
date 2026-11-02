@@ -119,3 +119,8 @@
   .gs-stage-picker { gap:9px; }
   .gs-stage-picker select { flex:1; }
 }
+
+.gs-camera-actions { display:flex; align-items:center; justify-content:flex-end; flex-wrap:wrap; gap:10px; }
+.gs-camera-actions button { border: 1px solid #c6d4c5; padding:9px 10px; min-height:39px; background:#f7f8f3; }
+.gs-camera-actions button:hover { background:#e4ece2; text-decoration: none; }
+@media(max-width:620px) { .gs-camera-actions { justify-content:space-between; width:100%; } }
