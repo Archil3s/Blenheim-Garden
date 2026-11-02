@@ -126,9 +126,9 @@ function leafTexture() {
   ctx.bezierCurveTo(117, 67, 109, 150, 64, 186);
   ctx.closePath();
   const grad = ctx.createLinearGradient(14, 0, 114, 190);
-  grad.addColorStop(0, "#304f2c");
-  grad.addColorStop(.47, "#628547");
-  grad.addColorStop(1, "#a0ac6a");
+  grad.addColorStop(0, "#668e4a");
+  grad.addColorStop(.47, "#8eb16b");
+  grad.addColorStop(1, "#c3cf91");
   ctx.fillStyle = grad; ctx.fill();
   ctx.beginPath();
   ctx.moveTo(64, 184);
@@ -335,12 +335,13 @@ function gardenFence(group: THREE.Group, mobile: boolean) {
 }
 
 function borderVegetation(group: THREE.Group, mobile: boolean) {
+  // Thin triangular ribbons are more believable groundcover than leaf-textured
+  // rectangles, especially from the elevated garden camera.
   const grassMat = new THREE.MeshStandardMaterial({
-    color:"#7e9461", roughness:1, side:THREE.DoubleSide,
-    alphaTest:.45, map:leafTexture(),
+    color:"#e2ead0", roughness:1, side:THREE.DoubleSide,
   });
   const shrubMat = new THREE.MeshStandardMaterial({
-    color:"#d1dab1", roughness:.98, side:THREE.DoubleSide,
+    color:"#ffffff", roughness:.94, side:THREE.DoubleSide,
     alphaTest:.38, map:leafTexture(),
   });
   const branchMat = standard("#6e7352", 1);
@@ -348,9 +349,14 @@ function borderVegetation(group: THREE.Group, mobile: boolean) {
   const flowerPurple = standard("#a59cc1", .88);
   const rng = rand(998);
   const grasses = mobile ? 420 : 1250;
-  const grassGeometry = new THREE.PlaneGeometry(.09, .16, 1, 1);
-  grassGeometry.translate(0, .08, 0);
-  instances(group, grassGeometry, grassMat, grasses, obj => {
+  const grassGeometry = new THREE.BufferGeometry();
+  grassGeometry.setAttribute("position",new THREE.Float32BufferAttribute([
+    -.028,0,0, .028,0,0,
+    -.019,.083,.004, .019,.083,.004, 0,.19,.035,
+  ],3));
+  grassGeometry.setIndex([0,1,2,1,3,2,2,3,4]);
+  grassGeometry.computeVertexNormals();
+  const grassCards = instances(group, grassGeometry, grassMat, grasses, obj => {
     const side = Math.floor(rng() * 4);
     const x = side === 0 ? -2.56 - rng() * 3.0 :
       side === 1 ? 2.56 + rng() * 3 :
@@ -361,8 +367,17 @@ function borderVegetation(group: THREE.Group, mobile: boolean) {
     obj.position.set(x,-.039,z);
     obj.rotation.set((rng()-.5)*.3,rng()*Math.PI*2,(rng()-.5)*.35);
     const s = .42 + rng() * 1.2;
-    obj.scale.set(s*.6,s,s*.6);
+    obj.scale.set(s*.7,s,s*.7);
   });
+  const grassPalette = [
+    new THREE.Color("#b4c986"),new THREE.Color("#8fb66f"),
+    new THREE.Color("#bed19a"),new THREE.Color("#9cbf76"),
+  ];
+  for(let i=0;i<grasses;i++){
+    const r=rand(i*53+154);
+    grassCards.setColorAt(i,grassPalette[Math.floor(r()*grassPalette.length)]);
+  }
+  if(grassCards.instanceColor)grassCards.instanceColor.needsUpdate=true;
 
   // Eight distinct low hedge bushes. Foliage is placed on a volumetric
   // envelope with independent colors, not represented by solid spheres.
@@ -399,8 +414,8 @@ function borderVegetation(group: THREE.Group, mobile: boolean) {
     const size=.6+r()*.9;
     obj.scale.set(size*.9,size,size);
   });
-  const colors=[new THREE.Color("#9da95e"),new THREE.Color("#6f8c51"),
-    new THREE.Color("#bac38c"),new THREE.Color("#799a58")];
+  const colors=[new THREE.Color("#d5dfa9"),new THREE.Color("#accd92"),
+    new THREE.Color("#e1eac1"),new THREE.Color("#b9d99c")];
   for(let i=0;i<totalLeaves;i++){
     const r=rand(i*17+61);
     leaves.setColorAt(i,colors[Math.floor(r()*colors.length)]);
