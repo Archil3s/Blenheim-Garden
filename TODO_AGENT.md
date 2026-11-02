@@ -373,3 +373,10 @@ P-003 responds to the rejected visual match with a reference-led planner shell.
 Continue comparing actual screenshots, including object variants, the complete
 ribbon and detailed crop artwork. Do not treat functional test success as proof
 of pixel parity. Home/seedlings styling and measured saved plan remain intact.
+
+P-004 imports the original public reference artwork and factual plant/object
+metadata at the user's explicit request. Preserve existing bed positions, per
+user feedback. Read docs/REFERENCE_ASSETS.json and docs/PLANNER_REBUILD.md.
+The new object variants use reference-<code> identifiers; keep existing 36/71
+preset exports and protected storage compatible. Complete remaining ribbon,
+inventory/temporal workflows and original-art exports before claiming full parity.

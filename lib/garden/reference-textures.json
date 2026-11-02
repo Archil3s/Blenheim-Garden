@@ -1,0 +1,9785 @@
+{
+  "AO01": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 634,
+    "y": 1470,
+    "w": 344,
+    "h": 360
+  },
+  "AO05": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1976,
+    "y": 606,
+    "w": 56,
+    "h": 80
+  },
+  "CO02": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 980,
+    "y": 1396,
+    "w": 360,
+    "h": 360
+  },
+  "CO03": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1432,
+    "y": 340,
+    "w": 360,
+    "h": 360
+  },
+  "CO05": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1470,
+    "y": 702,
+    "w": 360,
+    "h": 360
+  },
+  "CT01": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 980,
+    "y": 1758,
+    "w": 360,
+    "h": 176
+  },
+  "CT05": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1470,
+    "y": 1064,
+    "w": 360,
+    "h": 184
+  },
+  "CT12": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1902,
+    "y": 1582,
+    "w": 66,
+    "h": 66
+  },
+  "CT13": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1144,
+    "y": 1936,
+    "w": 196,
+    "h": 102
+  },
+  "CT14": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1342,
+    "y": 1936,
+    "w": 196,
+    "h": 102
+  },
+  "CT16": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1976,
+    "y": 534,
+    "w": 70,
+    "h": 70
+  },
+  "CT19": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 460,
+    "y": 1832,
+    "w": 480,
+    "h": 200
+  },
+  "CT20": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1754,
+    "w": 456,
+    "h": 282
+  },
+  "CT21": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1612,
+    "y": 2,
+    "w": 400,
+    "h": 304
+  },
+  "CT25": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1470,
+    "w": 630,
+    "h": 282
+  },
+  "CT26": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 980,
+    "y": 2,
+    "w": 630,
+    "h": 336
+  },
+  "CT27": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1832,
+    "y": 700,
+    "w": 208,
+    "h": 208
+  },
+  "CT29": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1832,
+    "y": 1120,
+    "w": 200,
+    "h": 200
+  },
+  "CT30": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1832,
+    "y": 910,
+    "w": 208,
+    "h": 208
+  },
+  "CT33": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1644,
+    "y": 1392,
+    "w": 256,
+    "h": 256
+  },
+  "CT34": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1704,
+    "y": 1650,
+    "w": 256,
+    "h": 256
+  },
+  "CT39": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1540,
+    "y": 1936,
+    "w": 100,
+    "h": 100
+  },
+  "CT40": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1642,
+    "y": 1928,
+    "w": 116,
+    "h": 116
+  },
+  "CT43": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 942,
+    "y": 1936,
+    "w": 200,
+    "h": 104
+  },
+  "CT44": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1760,
+    "y": 1928,
+    "w": 100,
+    "h": 100
+  },
+  "CT45": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1862,
+    "y": 1928,
+    "w": 100,
+    "h": 100
+  },
+  "CT48": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 460,
+    "y": 1754,
+    "w": 120,
+    "h": 52
+  },
+  "CT51": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1342,
+    "y": 1698,
+    "w": 360,
+    "h": 216
+  },
+  "DR01_1": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1962,
+    "y": 1650,
+    "w": 6,
+    "h": 12
+  },
+  "DR01_3": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1962,
+    "y": 1664,
+    "w": 6,
+    "h": 12
+  },
+  "DR01_5": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1962,
+    "y": 1678,
+    "w": 6,
+    "h": 12
+  },
+  "DR01_6": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1962,
+    "y": 1692,
+    "w": 6,
+    "h": 12
+  },
+  "DR02_2": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR02_3": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 10,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR02_4": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 18,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR02_5": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 26,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR02_6": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 34,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR02_7": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 42,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR02_8": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 50,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR02_9": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 58,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR02_10": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 66,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR03_3": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1644,
+    "y": 1650,
+    "w": 6,
+    "h": 12
+  },
+  "DR03_6": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 942,
+    "y": 1832,
+    "w": 6,
+    "h": 12
+  },
+  "DR04_1": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 74,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR04_2": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 82,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR04_3": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 90,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR04_4": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 98,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR04_5": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 106,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR04_6": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 114,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR04_7": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 122,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR04_8": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 130,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR04_9": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 138,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR04_10": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 146,
+    "y": 2038,
+    "w": 6,
+    "h": 8
+  },
+  "DR11": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2026,
+    "y": 1322,
+    "w": 20,
+    "h": 48
+  },
+  "DR15": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1962,
+    "y": 1804,
+    "w": 46,
+    "h": 48
+  },
+  "DR26": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1432,
+    "y": 1114,
+    "w": 26,
+    "h": 14
+  },
+  "DR31": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1962,
+    "y": 1706,
+    "w": 84,
+    "h": 96
+  },
+  "DR32": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2014,
+    "y": 2,
+    "w": 18,
+    "h": 36
+  },
+  "DR33": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1432,
+    "y": 702,
+    "w": 36,
+    "h": 48
+  },
+  "DR34": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1612,
+    "y": 308,
+    "w": 24,
+    "h": 24
+  },
+  "FE01": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1342,
+    "y": 1916,
+    "w": 262,
+    "h": 18
+  },
+  "FE02": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1704,
+    "y": 1908,
+    "w": 262,
+    "h": 18
+  },
+  "FE03": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1432,
+    "y": 1372,
+    "w": 384,
+    "h": 18
+  },
+  "MB04": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1794,
+    "y": 308,
+    "w": 224,
+    "h": 224
+  },
+  "PD03": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 980,
+    "y": 340,
+    "w": 450,
+    "h": 450
+  },
+  "PD04": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 980,
+    "y": 1114,
+    "w": 450,
+    "h": 280
+  },
+  "RC02": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1902,
+    "y": 1322,
+    "w": 122,
+    "h": 128
+  },
+  "RC03": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1902,
+    "y": 1452,
+    "w": 122,
+    "h": 128
+  },
+  "SP04": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1794,
+    "y": 534,
+    "w": 180,
+    "h": 164
+  },
+  "SP08": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1432,
+    "y": 1250,
+    "w": 392,
+    "h": 120
+  },
+  "TR01": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 980,
+    "y": 792,
+    "w": 488,
+    "h": 320
+  },
+  "TR03": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 980,
+    "w": 976,
+    "h": 488
+  },
+  "TR04": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 976,
+    "h": 976
+  },
+  "TR06": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1970,
+    "y": 1582,
+    "w": 76,
+    "h": 122
+  },
+  "TR07": {
+    "src": "/planner-reference/garden-objects-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1342,
+    "y": 1396,
+    "w": 300,
+    "h": 300
+  },
+  "AO02": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 782,
+    "y": 254,
+    "w": 148,
+    "h": 180
+  },
+  "AO06": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1170,
+    "y": 854,
+    "w": 90,
+    "h": 90
+  },
+  "AO07": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1170,
+    "y": 946,
+    "w": 90,
+    "h": 90
+  },
+  "AO08": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 752,
+    "y": 946,
+    "w": 90,
+    "h": 54
+  },
+  "AO09": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1262,
+    "y": 1000,
+    "w": 90,
+    "h": 90
+  },
+  "AO10": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1354,
+    "y": 1000,
+    "w": 90,
+    "h": 90
+  },
+  "AO11": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1446,
+    "y": 1034,
+    "w": 90,
+    "h": 90
+  },
+  "AO12": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1538,
+    "y": 1034,
+    "w": 90,
+    "h": 90
+  },
+  "AO13": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1630,
+    "y": 1046,
+    "w": 90,
+    "h": 90
+  },
+  "CL01": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1722,
+    "y": 1046,
+    "w": 90,
+    "h": 90
+  },
+  "CL02": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1814,
+    "y": 1102,
+    "w": 90,
+    "h": 90
+  },
+  "CL03": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1906,
+    "y": 1102,
+    "w": 90,
+    "h": 90
+  },
+  "CO01": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 742,
+    "y": 436,
+    "w": 180,
+    "h": 192
+  },
+  "CO04": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 184,
+    "y": 676,
+    "w": 180,
+    "h": 136
+  },
+  "CO06": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1848,
+    "y": 726,
+    "w": 180,
+    "h": 192
+  },
+  "CO07": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 366,
+    "y": 712,
+    "w": 180,
+    "h": 136
+  },
+  "CO08": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 936,
+    "y": 62,
+    "w": 360,
+    "h": 360
+  },
+  "CR01": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1288,
+    "y": 648,
+    "w": 180,
+    "h": 184
+  },
+  "CR02": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1822,
+    "y": 920,
+    "w": 180,
+    "h": 180
+  },
+  "CR03": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1640,
+    "y": 860,
+    "w": 180,
+    "h": 184
+  },
+  "CT02": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 494,
+    "w": 180,
+    "h": 180
+  },
+  "CT03": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 184,
+    "y": 494,
+    "w": 180,
+    "h": 180
+  },
+  "CT04": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1458,
+    "y": 876,
+    "w": 180,
+    "h": 156
+  },
+  "CT06": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 366,
+    "y": 530,
+    "w": 180,
+    "h": 180
+  },
+  "CT07": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1078,
+    "y": 854,
+    "w": 90,
+    "h": 96
+  },
+  "CT08": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 548,
+    "y": 530,
+    "w": 180,
+    "h": 180
+  },
+  "CT09": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1298,
+    "y": 62,
+    "w": 360,
+    "h": 184
+  },
+  "CT10": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 676,
+    "w": 180,
+    "h": 156
+  },
+  "CT11": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 730,
+    "y": 630,
+    "w": 180,
+    "h": 180
+  },
+  "CT15": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1850,
+    "y": 458,
+    "w": 196,
+    "h": 102
+  },
+  "CT17": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 528,
+    "y": 914,
+    "w": 120,
+    "h": 120
+  },
+  "CT18": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 480,
+    "h": 248
+  },
+  "CT22": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 172,
+    "y": 936,
+    "w": 128,
+    "h": 128
+  },
+  "CT23": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 184,
+    "y": 814,
+    "w": 180,
+    "h": 120
+  },
+  "CT24": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1298,
+    "y": 248,
+    "w": 360,
+    "h": 180
+  },
+  "CT28": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 484,
+    "y": 254,
+    "w": 296,
+    "h": 136
+  },
+  "CT31": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 444,
+    "y": 392,
+    "w": 296,
+    "h": 136
+  },
+  "CT32": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1648,
+    "y": 458,
+    "w": 200,
+    "h": 200
+  },
+  "CT35": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1660,
+    "y": 304,
+    "w": 360,
+    "h": 152
+  },
+  "CT36": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 912,
+    "y": 642,
+    "w": 180,
+    "h": 180
+  },
+  "CT37": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 932,
+    "y": 424,
+    "w": 216,
+    "h": 216
+  },
+  "CT38": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1292,
+    "y": 430,
+    "w": 216,
+    "h": 216
+  },
+  "CT41": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 834,
+    "y": 824,
+    "w": 120,
+    "h": 120
+  },
+  "CT42": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1150,
+    "y": 424,
+    "w": 140,
+    "h": 140
+  },
+  "CT46": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 650,
+    "y": 936,
+    "w": 100,
+    "h": 52
+  },
+  "CT47": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 252,
+    "w": 390,
+    "h": 240
+  },
+  "CT49": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1648,
+    "y": 660,
+    "w": 198,
+    "h": 198
+  },
+  "CT50": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1850,
+    "y": 562,
+    "w": 190,
+    "h": 80
+  },
+  "CT52": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1850,
+    "y": 644,
+    "w": 190,
+    "h": 80
+  },
+  "DR01_2": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2010,
+    "y": 84,
+    "w": 6,
+    "h": 12
+  },
+  "DR01_4": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2018,
+    "y": 84,
+    "w": 6,
+    "h": 12
+  },
+  "DR01_7": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2026,
+    "y": 84,
+    "w": 6,
+    "h": 12
+  },
+  "DR01_8": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2034,
+    "y": 84,
+    "w": 6,
+    "h": 12
+  },
+  "DR01_9": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2010,
+    "y": 98,
+    "w": 6,
+    "h": 12
+  },
+  "DR01_10": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2018,
+    "y": 98,
+    "w": 6,
+    "h": 12
+  },
+  "DR02_1": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2018,
+    "y": 126,
+    "w": 6,
+    "h": 8
+  },
+  "DR03_1": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2026,
+    "y": 98,
+    "w": 6,
+    "h": 12
+  },
+  "DR03_2": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2034,
+    "y": 98,
+    "w": 6,
+    "h": 12
+  },
+  "DR03_4": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2010,
+    "y": 112,
+    "w": 6,
+    "h": 12
+  },
+  "DR03_5": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2018,
+    "y": 112,
+    "w": 6,
+    "h": 12
+  },
+  "DR03_7": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2026,
+    "y": 112,
+    "w": 6,
+    "h": 12
+  },
+  "DR03_8": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2034,
+    "y": 112,
+    "w": 6,
+    "h": 12
+  },
+  "DR03_9": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2010,
+    "y": 126,
+    "w": 6,
+    "h": 12
+  },
+  "DR12": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2010,
+    "y": 34,
+    "w": 18,
+    "h": 48
+  },
+  "DR13": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 394,
+    "y": 466,
+    "w": 48,
+    "h": 12
+  },
+  "DR14": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 394,
+    "y": 426,
+    "w": 48,
+    "h": 38
+  },
+  "DR16": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2030,
+    "y": 34,
+    "w": 14,
+    "h": 48
+  },
+  "DR27": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 472,
+    "y": 252,
+    "w": 10,
+    "h": 26
+  },
+  "DR41": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 394,
+    "y": 376,
+    "w": 48,
+    "h": 48
+  },
+  "FE04": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 936,
+    "y": 2,
+    "w": 384,
+    "h": 18
+  },
+  "FE05": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1322,
+    "y": 2,
+    "w": 384,
+    "h": 18
+  },
+  "FE06": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 936,
+    "y": 22,
+    "w": 384,
+    "h": 18
+  },
+  "FE07": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1322,
+    "y": 22,
+    "w": 384,
+    "h": 18
+  },
+  "FE08": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 936,
+    "y": 42,
+    "w": 384,
+    "h": 18
+  },
+  "FE09": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1322,
+    "y": 42,
+    "w": 384,
+    "h": 18
+  },
+  "PA02_1": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2010,
+    "y": 2,
+    "w": 30,
+    "h": 14
+  },
+  "PA02_2": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2010,
+    "y": 18,
+    "w": 30,
+    "h": 14
+  },
+  "PD02": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 484,
+    "y": 2,
+    "w": 450,
+    "h": 250
+  },
+  "RC01": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1036,
+    "w": 122,
+    "h": 128
+  },
+  "SP01": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1150,
+    "y": 566,
+    "w": 136,
+    "h": 120
+  },
+  "SP02": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1510,
+    "y": 430,
+    "w": 136,
+    "h": 120
+  },
+  "SP03": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1510,
+    "y": 552,
+    "w": 136,
+    "h": 120
+  },
+  "SP05": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1094,
+    "y": 688,
+    "w": 180,
+    "h": 164
+  },
+  "SP06": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1276,
+    "y": 834,
+    "w": 180,
+    "h": 164
+  },
+  "SP07": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 956,
+    "y": 824,
+    "w": 120,
+    "h": 120
+  },
+  "TR02": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1708,
+    "y": 2,
+    "w": 300,
+    "h": 300
+  },
+  "TR05": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 710,
+    "y": 812,
+    "w": 122,
+    "h": 122
+  },
+  "TR08": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 394,
+    "y": 252,
+    "w": 76,
+    "h": 122
+  },
+  "WB01": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1470,
+    "y": 674,
+    "w": 168,
+    "h": 200
+  },
+  "WB02": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 548,
+    "y": 712,
+    "w": 160,
+    "h": 200
+  },
+  "WB03": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 834,
+    "w": 168,
+    "h": 200
+  },
+  "WB04": {
+    "src": "/planner-reference/garden-objects-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 366,
+    "y": 850,
+    "w": 160,
+    "h": 200
+  },
+  "AO03": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 290,
+    "y": 1832,
+    "w": 122,
+    "h": 122
+  },
+  "AO03_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1234,
+    "y": 1724,
+    "w": 122,
+    "h": 54
+  },
+  "AO03_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 458,
+    "y": 414,
+    "w": 46,
+    "h": 54
+  },
+  "AO03_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 458,
+    "y": 470,
+    "w": 46,
+    "h": 54
+  },
+  "AO03_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 458,
+    "y": 166,
+    "w": 46,
+    "h": 122
+  },
+  "AO03_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 458,
+    "y": 290,
+    "w": 46,
+    "h": 122
+  },
+  "AO03_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1358,
+    "y": 1724,
+    "w": 122,
+    "h": 54
+  },
+  "AO03_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 458,
+    "y": 526,
+    "w": 46,
+    "h": 54
+  },
+  "AO03_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 458,
+    "y": 582,
+    "w": 46,
+    "h": 54
+  },
+  "AO04": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 414,
+    "y": 1832,
+    "w": 122,
+    "h": 122
+  },
+  "AO04_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1534,
+    "y": 1768,
+    "w": 122,
+    "h": 18
+  },
+  "AO04_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1266,
+    "y": 1804,
+    "w": 92,
+    "h": 18
+  },
+  "AO04_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1266,
+    "y": 1824,
+    "w": 92,
+    "h": 18
+  },
+  "AO04_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1782,
+    "y": 2,
+    "w": 92,
+    "h": 122
+  },
+  "AO04_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1906,
+    "y": 1650,
+    "w": 92,
+    "h": 122
+  },
+  "AO04_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1658,
+    "y": 1768,
+    "w": 122,
+    "h": 18
+  },
+  "AO04_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1266,
+    "y": 1844,
+    "w": 92,
+    "h": 18
+  },
+  "AO04_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1266,
+    "y": 1864,
+    "w": 92,
+    "h": 18
+  },
+  "AO14": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 742,
+    "y": 2,
+    "w": 244,
+    "h": 244
+  },
+  "AO14_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 398,
+    "y": 1798,
+    "w": 244,
+    "h": 10
+  },
+  "AO14_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 360,
+    "y": 1970,
+    "w": 10,
+    "h": 10
+  },
+  "AO14_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 360,
+    "y": 1982,
+    "w": 10,
+    "h": 10
+  },
+  "AO14_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 525,
+    "y": 248,
+    "w": 10,
+    "h": 244
+  },
+  "AO14_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 506,
+    "y": 166,
+    "w": 10,
+    "h": 244
+  },
+  "AO14_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 644,
+    "y": 1798,
+    "w": 244,
+    "h": 10
+  },
+  "AO14_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 444,
+    "y": 822,
+    "w": 10,
+    "h": 10
+  },
+  "AO14_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 444,
+    "y": 834,
+    "w": 10,
+    "h": 10
+  },
+  "CF01": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 662,
+    "y": 2,
+    "w": 74,
+    "h": 108
+  },
+  "CF01_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 662,
+    "y": 222,
+    "w": 74,
+    "h": 12
+  },
+  "CF01_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 364,
+    "y": 1956,
+    "w": 6,
+    "h": 12
+  },
+  "CF01_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 332,
+    "y": 1956,
+    "w": 6,
+    "h": 12
+  },
+  "CF01_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 734,
+    "y": 1866,
+    "w": 6,
+    "h": 108
+  },
+  "CF01_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 564,
+    "y": 982,
+    "w": 6,
+    "h": 108
+  },
+  "CF01_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 662,
+    "y": 236,
+    "w": 74,
+    "h": 12
+  },
+  "CF01_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 364,
+    "y": 1994,
+    "w": 6,
+    "h": 12
+  },
+  "CF01_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 364,
+    "y": 2008,
+    "w": 6,
+    "h": 12
+  },
+  "CF02": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 662,
+    "y": 112,
+    "w": 74,
+    "h": 108
+  },
+  "CF02_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 458,
+    "y": 2,
+    "w": 74,
+    "h": 12
+  },
+  "CF02_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 364,
+    "y": 2022,
+    "w": 6,
+    "h": 12
+  },
+  "CF02_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 525,
+    "y": 154,
+    "w": 6,
+    "h": 12
+  },
+  "CF02_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 572,
+    "y": 982,
+    "w": 6,
+    "h": 108
+  },
+  "CF02_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 580,
+    "y": 982,
+    "w": 6,
+    "h": 108
+  },
+  "CF02_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 458,
+    "y": 16,
+    "w": 74,
+    "h": 12
+  },
+  "CF02_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 525,
+    "y": 168,
+    "w": 6,
+    "h": 12
+  },
+  "CF02_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 525,
+    "y": 182,
+    "w": 6,
+    "h": 12
+  },
+  "FC01": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1234,
+    "y": 1478,
+    "w": 244,
+    "h": 244
+  },
+  "FC01_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 496,
+    "y": 2038,
+    "w": 244,
+    "h": 8
+  },
+  "FC01_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 1086,
+    "w": 8,
+    "h": 8
+  },
+  "FC01_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 512,
+    "y": 1086,
+    "w": 8,
+    "h": 8
+  },
+  "FC01_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2030,
+    "y": 1068,
+    "w": 8,
+    "h": 244
+  },
+  "FC01_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2030,
+    "y": 1314,
+    "w": 8,
+    "h": 244
+  },
+  "FC01_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 546,
+    "y": 1788,
+    "w": 244,
+    "h": 8
+  },
+  "FC01_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 732,
+    "y": 1976,
+    "w": 8,
+    "h": 8
+  },
+  "FC01_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 732,
+    "y": 1986,
+    "w": 8,
+    "h": 8
+  },
+  "FC02": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1480,
+    "y": 1478,
+    "w": 244,
+    "h": 244
+  },
+  "FC02_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 792,
+    "y": 1785,
+    "w": 244,
+    "h": 10
+  },
+  "FC02_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 444,
+    "y": 846,
+    "w": 10,
+    "h": 10
+  },
+  "FC02_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 402,
+    "y": 842,
+    "w": 10,
+    "h": 10
+  },
+  "FC02_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 446,
+    "y": 330,
+    "w": 10,
+    "h": 244
+  },
+  "FC02_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 446,
+    "y": 576,
+    "w": 10,
+    "h": 244
+  },
+  "FC02_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 890,
+    "y": 1797,
+    "w": 244,
+    "h": 10
+  },
+  "FC02_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 646,
+    "y": 1816,
+    "w": 10,
+    "h": 10
+  },
+  "FC02_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 658,
+    "y": 1816,
+    "w": 10,
+    "h": 10
+  },
+  "GH01": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1070,
+    "y": 1809,
+    "w": 122,
+    "h": 228
+  },
+  "GH01_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1038,
+    "y": 1784,
+    "w": 122,
+    "h": 8
+  },
+  "GH01_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 340,
+    "y": 1956,
+    "w": 22,
+    "h": 8
+  },
+  "GH01_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 398,
+    "y": 1738,
+    "w": 22,
+    "h": 8
+  },
+  "GH01_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 398,
+    "y": 1508,
+    "w": 22,
+    "h": 228
+  },
+  "GH01_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1194,
+    "y": 1804,
+    "w": 22,
+    "h": 228
+  },
+  "GH01_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1136,
+    "y": 1794,
+    "w": 122,
+    "h": 8
+  },
+  "GH01_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 398,
+    "y": 1748,
+    "w": 22,
+    "h": 8
+  },
+  "GH01_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 398,
+    "y": 1758,
+    "w": 22,
+    "h": 8
+  },
+  "GH02": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 422,
+    "y": 1484,
+    "w": 122,
+    "h": 304
+  },
+  "GH02_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1236,
+    "y": 2034,
+    "w": 122,
+    "h": 8
+  },
+  "GH02_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 398,
+    "y": 1768,
+    "w": 22,
+    "h": 8
+  },
+  "GH02_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 398,
+    "y": 1778,
+    "w": 22,
+    "h": 8
+  },
+  "GH02_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 1504,
+    "w": 22,
+    "h": 304
+  },
+  "GH02_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1042,
+    "y": 1478,
+    "w": 22,
+    "h": 304
+  },
+  "GH02_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1162,
+    "y": 1784,
+    "w": 122,
+    "h": 8
+  },
+  "GH02_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 398,
+    "y": 1788,
+    "w": 22,
+    "h": 8
+  },
+  "GH02_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 670,
+    "y": 1816,
+    "w": 22,
+    "h": 8
+  },
+  "GH03": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1268,
+    "y": 1112,
+    "w": 122,
+    "h": 350
+  },
+  "GH03_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1260,
+    "y": 1794,
+    "w": 122,
+    "h": 8
+  },
+  "GH03_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 694,
+    "y": 1816,
+    "w": 22,
+    "h": 8
+  },
+  "GH03_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 718,
+    "y": 1816,
+    "w": 22,
+    "h": 8
+  },
+  "GH03_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1876,
+    "y": 84,
+    "w": 22,
+    "h": 350
+  },
+  "GH03_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1844,
+    "y": 126,
+    "w": 22,
+    "h": 350
+  },
+  "GH03_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 478,
+    "w": 122,
+    "h": 8
+  },
+  "GH03_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 670,
+    "y": 1826,
+    "w": 22,
+    "h": 8
+  },
+  "GH03_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 694,
+    "y": 1826,
+    "w": 22,
+    "h": 8
+  },
+  "GH04": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1132,
+    "y": 2,
+    "w": 122,
+    "h": 472
+  },
+  "GH04_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1030,
+    "y": 964,
+    "w": 122,
+    "h": 8
+  },
+  "GH04_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 718,
+    "y": 1826,
+    "w": 22,
+    "h": 8
+  },
+  "GH04_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 670,
+    "y": 1836,
+    "w": 22,
+    "h": 8
+  },
+  "GH04_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 1030,
+    "w": 22,
+    "h": 472
+  },
+  "GH04_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 428,
+    "y": 1010,
+    "w": 22,
+    "h": 472
+  },
+  "GH04_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1074,
+    "y": 478,
+    "w": 122,
+    "h": 8
+  },
+  "GH04_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 694,
+    "y": 1836,
+    "w": 22,
+    "h": 8
+  },
+  "GH04_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 718,
+    "y": 1836,
+    "w": 22,
+    "h": 8
+  },
+  "GH05": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 122,
+    "h": 608
+  },
+  "GH05_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1198,
+    "y": 476,
+    "w": 122,
+    "h": 8
+  },
+  "GH05_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 670,
+    "y": 1846,
+    "w": 22,
+    "h": 8
+  },
+  "GH05_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 694,
+    "y": 1846,
+    "w": 22,
+    "h": 8
+  },
+  "GH05_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 126,
+    "y": 612,
+    "w": 22,
+    "h": 608
+  },
+  "GH05_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 126,
+    "y": 1222,
+    "w": 22,
+    "h": 608
+  },
+  "GH05_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1154,
+    "y": 962,
+    "w": 122,
+    "h": 8
+  },
+  "GH05_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 718,
+    "y": 1846,
+    "w": 22,
+    "h": 8
+  },
+  "GH05_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 670,
+    "y": 1856,
+    "w": 22,
+    "h": 8
+  },
+  "GH06": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 538,
+    "y": 1830,
+    "w": 122,
+    "h": 122
+  },
+  "GH06_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1286,
+    "y": 1780,
+    "w": 122,
+    "h": 8
+  },
+  "GH06_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 732,
+    "y": 1996,
+    "w": 8,
+    "h": 8
+  },
+  "GH06_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 732,
+    "y": 2006,
+    "w": 8,
+    "h": 8
+  },
+  "GH06_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 702,
+    "y": 1896,
+    "w": 8,
+    "h": 122
+  },
+  "GH06_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 712,
+    "y": 1896,
+    "w": 8,
+    "h": 122
+  },
+  "GH06_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1410,
+    "y": 1780,
+    "w": 122,
+    "h": 8
+  },
+  "GH06_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 612,
+    "y": 980,
+    "w": 8,
+    "h": 8
+  },
+  "GH06_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 612,
+    "y": 990,
+    "w": 8,
+    "h": 8
+  },
+  "GH21": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 826,
+    "y": 248,
+    "w": 122,
+    "h": 228
+  },
+  "GH21_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1360,
+    "y": 2036,
+    "w": 122,
+    "h": 8
+  },
+  "GH21_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 694,
+    "y": 1856,
+    "w": 22,
+    "h": 8
+  },
+  "GH21_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 718,
+    "y": 1856,
+    "w": 22,
+    "h": 8
+  },
+  "GH21_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1218,
+    "y": 1804,
+    "w": 22,
+    "h": 228
+  },
+  "GH21_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1242,
+    "y": 1804,
+    "w": 22,
+    "h": 228
+  },
+  "GH21_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1484,
+    "y": 2036,
+    "w": 122,
+    "h": 8
+  },
+  "GH21_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 686,
+    "y": 1866,
+    "w": 22,
+    "h": 8
+  },
+  "GH21_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 710,
+    "y": 1866,
+    "w": 22,
+    "h": 8
+  },
+  "GH22": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 546,
+    "y": 1482,
+    "w": 122,
+    "h": 304
+  },
+  "GH22_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1608,
+    "y": 2036,
+    "w": 122,
+    "h": 8
+  },
+  "GH22_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 686,
+    "y": 1876,
+    "w": 22,
+    "h": 8
+  },
+  "GH22_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 710,
+    "y": 1876,
+    "w": 22,
+    "h": 8
+  },
+  "GH22_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1066,
+    "y": 1478,
+    "w": 22,
+    "h": 304
+  },
+  "GH22_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1090,
+    "y": 1478,
+    "w": 22,
+    "h": 304
+  },
+  "GH22_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1732,
+    "y": 2034,
+    "w": 122,
+    "h": 8
+  },
+  "GH22_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 686,
+    "y": 1886,
+    "w": 22,
+    "h": 8
+  },
+  "GH22_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 710,
+    "y": 1886,
+    "w": 22,
+    "h": 8
+  },
+  "GH23": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1906,
+    "y": 84,
+    "w": 122,
+    "h": 350
+  },
+  "GH23_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1856,
+    "y": 2034,
+    "w": 122,
+    "h": 8
+  },
+  "GH23_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 662,
+    "y": 1990,
+    "w": 22,
+    "h": 8
+  },
+  "GH23_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 662,
+    "y": 2000,
+    "w": 22,
+    "h": 8
+  },
+  "GH23_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1868,
+    "y": 436,
+    "w": 22,
+    "h": 350
+  },
+  "GH23_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1844,
+    "y": 478,
+    "w": 22,
+    "h": 350
+  },
+  "GH23_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1720,
+    "y": 1752,
+    "w": 122,
+    "h": 8
+  },
+  "GH23_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 662,
+    "y": 2010,
+    "w": 22,
+    "h": 8
+  },
+  "GH23_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 662,
+    "y": 2020,
+    "w": 22,
+    "h": 8
+  },
+  "GH24": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1090,
+    "y": 488,
+    "w": 122,
+    "h": 472
+  },
+  "GH24_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1906,
+    "y": 1774,
+    "w": 122,
+    "h": 8
+  },
+  "GH24_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 686,
+    "y": 2020,
+    "w": 22,
+    "h": 8
+  },
+  "GH24_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 710,
+    "y": 2020,
+    "w": 22,
+    "h": 8
+  },
+  "GH24_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 398,
+    "y": 1034,
+    "w": 22,
+    "h": 472
+  },
+  "GH24_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1256,
+    "y": 2,
+    "w": 22,
+    "h": 472
+  },
+  "GH24_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1278,
+    "y": 962,
+    "w": 122,
+    "h": 8
+  },
+  "GH24_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 588,
+    "y": 980,
+    "w": 22,
+    "h": 8
+  },
+  "GH24_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 588,
+    "y": 990,
+    "w": 22,
+    "h": 8
+  },
+  "GH25": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 612,
+    "w": 122,
+    "h": 608
+  },
+  "GH25_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1338,
+    "y": 924,
+    "w": 122,
+    "h": 8
+  },
+  "GH25_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 588,
+    "y": 1000,
+    "w": 22,
+    "h": 8
+  },
+  "GH25_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 588,
+    "y": 1010,
+    "w": 22,
+    "h": 8
+  },
+  "GH25_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 150,
+    "y": 612,
+    "w": 22,
+    "h": 608
+  },
+  "GH25_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 150,
+    "y": 1222,
+    "w": 22,
+    "h": 608
+  },
+  "GH25_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1338,
+    "y": 934,
+    "w": 122,
+    "h": 8
+  },
+  "GH25_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 588,
+    "y": 1020,
+    "w": 22,
+    "h": 8
+  },
+  "GH25_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 588,
+    "y": 1030,
+    "w": 22,
+    "h": 8
+  },
+  "GH26": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 626,
+    "y": 980,
+    "w": 122,
+    "h": 122
+  },
+  "GH26_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1338,
+    "y": 944,
+    "w": 122,
+    "h": 8
+  },
+  "GH26_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 612,
+    "y": 1000,
+    "w": 8,
+    "h": 8
+  },
+  "GH26_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 612,
+    "y": 1010,
+    "w": 8,
+    "h": 8
+  },
+  "GH26_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 722,
+    "y": 1896,
+    "w": 8,
+    "h": 122
+  },
+  "GH26_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 338,
+    "w": 8,
+    "h": 122
+  },
+  "GH26_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1402,
+    "y": 962,
+    "w": 122,
+    "h": 8
+  },
+  "GH26_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 612,
+    "y": 1020,
+    "w": 8,
+    "h": 8
+  },
+  "GH26_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 612,
+    "y": 1030,
+    "w": 8,
+    "h": 8
+  },
+  "MB01_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 496,
+    "y": 1956,
+    "w": 164,
+    "h": 80
+  },
+  "MB01_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 2,
+    "w": 80,
+    "h": 80
+  },
+  "MB01_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 84,
+    "w": 80,
+    "h": 80
+  },
+  "MB01_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 126,
+    "y": 1832,
+    "w": 80,
+    "h": 164
+  },
+  "MB01_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 208,
+    "y": 1832,
+    "w": 80,
+    "h": 164
+  },
+  "MB01_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1876,
+    "y": 2,
+    "w": 164,
+    "h": 80
+  },
+  "MB01_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 166,
+    "w": 80,
+    "h": 80
+  },
+  "MB01_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 248,
+    "w": 80,
+    "h": 80
+  },
+  "MB06_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 126,
+    "y": 1998,
+    "w": 236,
+    "h": 42
+  },
+  "MB06_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 330,
+    "w": 42,
+    "h": 42
+  },
+  "MB06_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 374,
+    "w": 42,
+    "h": 42
+  },
+  "MB06_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 458,
+    "y": 638,
+    "w": 42,
+    "h": 236
+  },
+  "MB06_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 458,
+    "y": 876,
+    "w": 42,
+    "h": 236
+  },
+  "MB06_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1482,
+    "y": 1724,
+    "w": 236,
+    "h": 42
+  },
+  "MB06_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 418,
+    "w": 42,
+    "h": 42
+  },
+  "MB06_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 462,
+    "w": 42,
+    "h": 42
+  },
+  "PA01": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 750,
+    "y": 980,
+    "w": 122,
+    "h": 122
+  },
+  "PA03": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 458,
+    "y": 97,
+    "w": 61,
+    "h": 67
+  },
+  "PA04": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 458,
+    "y": 30,
+    "w": 65,
+    "h": 65
+  },
+  "PA05": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 874,
+    "y": 980,
+    "w": 122,
+    "h": 122
+  },
+  "PA06": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1832,
+    "w": 122,
+    "h": 182
+  },
+  "PA07": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 998,
+    "y": 980,
+    "w": 122,
+    "h": 122
+  },
+  "PA08": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1122,
+    "y": 980,
+    "w": 122,
+    "h": 122
+  },
+  "PA09": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1246,
+    "y": 980,
+    "w": 122,
+    "h": 122
+  },
+  "PA10": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1906,
+    "y": 682,
+    "w": 122,
+    "h": 122
+  },
+  "PA11": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1906,
+    "y": 806,
+    "w": 122,
+    "h": 122
+  },
+  "PA12": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1906,
+    "y": 930,
+    "w": 122,
+    "h": 122
+  },
+  "PA13": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1906,
+    "y": 1054,
+    "w": 122,
+    "h": 122
+  },
+  "PA14": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1906,
+    "y": 1178,
+    "w": 122,
+    "h": 122
+  },
+  "PA15": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1906,
+    "y": 1302,
+    "w": 122,
+    "h": 122
+  },
+  "PA16_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 522,
+    "y": 1816,
+    "w": 122,
+    "h": 12
+  },
+  "PA16_M": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1906,
+    "y": 1550,
+    "w": 122,
+    "h": 98
+  },
+  "PA16_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 826,
+    "y": 478,
+    "w": 122,
+    "h": 12
+  },
+  "PA17_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1214,
+    "y": 939,
+    "w": 122,
+    "h": 21
+  },
+  "PA17_M": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1214,
+    "y": 830,
+    "w": 122,
+    "h": 79
+  },
+  "PA17_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1338,
+    "y": 884,
+    "w": 122,
+    "h": 21
+  },
+  "PA18_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 1096,
+    "w": 122,
+    "h": 15
+  },
+  "PA18_M": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 372,
+    "y": 1956,
+    "w": 122,
+    "h": 90
+  },
+  "PA18_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1338,
+    "y": 907,
+    "w": 122,
+    "h": 15
+  },
+  "PD01": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 290,
+    "y": 1956,
+    "w": 40,
+    "h": 40
+  },
+  "PD01_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 506,
+    "w": 40,
+    "h": 40
+  },
+  "PD01_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 548,
+    "w": 40,
+    "h": 40
+  },
+  "PD01_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 590,
+    "w": 40,
+    "h": 40
+  },
+  "PD01_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 632,
+    "w": 40,
+    "h": 40
+  },
+  "PD01_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 674,
+    "w": 40,
+    "h": 40
+  },
+  "PD01_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 716,
+    "w": 40,
+    "h": 40
+  },
+  "PD01_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 758,
+    "w": 40,
+    "h": 40
+  },
+  "PD01_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 800,
+    "w": 40,
+    "h": 40
+  },
+  "PT01": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1876,
+    "y": 1788,
+    "w": 122,
+    "h": 244
+  },
+  "PT01_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 742,
+    "y": 974,
+    "w": 122,
+    "h": 4
+  },
+  "PT01_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 608,
+    "y": 1040,
+    "w": 16,
+    "h": 4
+  },
+  "PT01_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 608,
+    "y": 1046,
+    "w": 16,
+    "h": 4
+  },
+  "PT01_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2030,
+    "y": 84,
+    "w": 16,
+    "h": 244
+  },
+  "PT01_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2030,
+    "y": 330,
+    "w": 16,
+    "h": 244
+  },
+  "PT01_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 776,
+    "y": 1472,
+    "w": 122,
+    "h": 4
+  },
+  "PT01_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 608,
+    "y": 1052,
+    "w": 16,
+    "h": 4
+  },
+  "PT01_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 608,
+    "y": 1058,
+    "w": 16,
+    "h": 4
+  },
+  "PT02": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 452,
+    "y": 1114,
+    "w": 122,
+    "h": 366
+  },
+  "PT02_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 866,
+    "y": 974,
+    "w": 122,
+    "h": 4
+  },
+  "PT02_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 296,
+    "w": 18,
+    "h": 4
+  },
+  "PT02_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 302,
+    "w": 18,
+    "h": 4
+  },
+  "PT02_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 576,
+    "y": 1113,
+    "w": 18,
+    "h": 366
+  },
+  "PT02_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 596,
+    "y": 1113,
+    "w": 18,
+    "h": 366
+  },
+  "PT02_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 906,
+    "y": 968,
+    "w": 122,
+    "h": 4
+  },
+  "PT02_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 308,
+    "w": 18,
+    "h": 4
+  },
+  "PT02_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 314,
+    "w": 18,
+    "h": 4
+  },
+  "PT03": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 538,
+    "y": 2,
+    "w": 122,
+    "h": 488
+  },
+  "PT03_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 990,
+    "y": 974,
+    "w": 122,
+    "h": 4
+  },
+  "PT03_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 608,
+    "y": 1064,
+    "w": 16,
+    "h": 4
+  },
+  "PT03_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 608,
+    "y": 1070,
+    "w": 16,
+    "h": 4
+  },
+  "PT03_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 506,
+    "y": 412,
+    "w": 16,
+    "h": 488
+  },
+  "PT03_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 564,
+    "y": 492,
+    "w": 16,
+    "h": 488
+  },
+  "PT03_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 900,
+    "y": 1472,
+    "w": 122,
+    "h": 4
+  },
+  "PT03_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 608,
+    "y": 1076,
+    "w": 16,
+    "h": 4
+  },
+  "PT03_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 608,
+    "y": 1082,
+    "w": 16,
+    "h": 4
+  },
+  "PT04": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1222,
+    "w": 122,
+    "h": 608
+  },
+  "PT04_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 940,
+    "y": 1466,
+    "w": 122,
+    "h": 4
+  },
+  "PT04_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 608,
+    "y": 1088,
+    "w": 16,
+    "h": 4
+  },
+  "PT04_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 248,
+    "w": 16,
+    "h": 4
+  },
+  "PT04_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 174,
+    "y": 612,
+    "w": 16,
+    "h": 608
+  },
+  "PT04_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 174,
+    "y": 1222,
+    "w": 16,
+    "h": 608
+  },
+  "PT04_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1024,
+    "y": 1472,
+    "w": 122,
+    "h": 4
+  },
+  "PT04_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 254,
+    "w": 16,
+    "h": 4
+  },
+  "PT04_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 260,
+    "w": 16,
+    "h": 4
+  },
+  "PT05": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1384,
+    "y": 1790,
+    "w": 244,
+    "h": 244
+  },
+  "PT05_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 126,
+    "y": 2042,
+    "w": 244,
+    "h": 4
+  },
+  "PT05_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 364,
+    "y": 2036,
+    "w": 2,
+    "h": 4
+  },
+  "PT05_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 368,
+    "y": 2036,
+    "w": 2,
+    "h": 4
+  },
+  "PT05_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 738,
+    "y": 2,
+    "w": 2,
+    "h": 244
+  },
+  "PT05_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 534,
+    "y": 2,
+    "w": 2,
+    "h": 244
+  },
+  "PT05_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 1810,
+    "w": 244,
+    "h": 4
+  },
+  "PT05_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 525,
+    "y": 228,
+    "w": 2,
+    "h": 4
+  },
+  "PT05_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 529,
+    "y": 228,
+    "w": 2,
+    "h": 4
+  },
+  "PT21": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1906,
+    "y": 436,
+    "w": 122,
+    "h": 244
+  },
+  "PT21_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1064,
+    "y": 1466,
+    "w": 122,
+    "h": 4
+  },
+  "PT21_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 266,
+    "w": 16,
+    "h": 4
+  },
+  "PT21_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 272,
+    "w": 16,
+    "h": 4
+  },
+  "PT21_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2030,
+    "y": 576,
+    "w": 16,
+    "h": 244
+  },
+  "PT21_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2030,
+    "y": 822,
+    "w": 16,
+    "h": 244
+  },
+  "PT21_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1148,
+    "y": 1472,
+    "w": 122,
+    "h": 4
+  },
+  "PT21_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 278,
+    "w": 16,
+    "h": 4
+  },
+  "PT21_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 284,
+    "w": 16,
+    "h": 4
+  },
+  "PT22": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 616,
+    "y": 1113,
+    "w": 122,
+    "h": 364
+  },
+  "PT22_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1114,
+    "y": 974,
+    "w": 122,
+    "h": 4
+  },
+  "PT22_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 290,
+    "w": 16,
+    "h": 4
+  },
+  "PT22_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 296,
+    "w": 16,
+    "h": 4
+  },
+  "PT22_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 740,
+    "y": 1112,
+    "w": 16,
+    "h": 364
+  },
+  "PT22_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 758,
+    "y": 1112,
+    "w": 16,
+    "h": 364
+  },
+  "PT22_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1188,
+    "y": 1466,
+    "w": 122,
+    "h": 4
+  },
+  "PT22_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 302,
+    "w": 16,
+    "h": 4
+  },
+  "PT22_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 308,
+    "w": 16,
+    "h": 4
+  },
+  "PT23": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 582,
+    "y": 492,
+    "w": 122,
+    "h": 486
+  },
+  "PT23_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1272,
+    "y": 1472,
+    "w": 122,
+    "h": 4
+  },
+  "PT23_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 314,
+    "w": 16,
+    "h": 4
+  },
+  "PT23_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 320,
+    "w": 16,
+    "h": 4
+  },
+  "PT23_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 706,
+    "y": 492,
+    "w": 16,
+    "h": 486
+  },
+  "PT23_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 724,
+    "y": 492,
+    "w": 16,
+    "h": 486
+  },
+  "PT23_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1396,
+    "y": 1472,
+    "w": 122,
+    "h": 4
+  },
+  "PT23_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 326,
+    "w": 16,
+    "h": 4
+  },
+  "PT23_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 970,
+    "y": 332,
+    "w": 16,
+    "h": 4
+  },
+  "PT24": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 126,
+    "y": 2,
+    "w": 122,
+    "h": 608
+  },
+  "PT24_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1586,
+    "y": 18,
+    "w": 122,
+    "h": 4
+  },
+  "PT24_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 462,
+    "w": 16,
+    "h": 4
+  },
+  "PT24_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 968,
+    "y": 440,
+    "w": 16,
+    "h": 4
+  },
+  "PT24_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 192,
+    "y": 612,
+    "w": 16,
+    "h": 608
+  },
+  "PT24_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 192,
+    "y": 1222,
+    "w": 16,
+    "h": 608
+  },
+  "PT24_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1462,
+    "y": 18,
+    "w": 122,
+    "h": 4
+  },
+  "PT24_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 968,
+    "y": 446,
+    "w": 16,
+    "h": 4
+  },
+  "PT24_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 968,
+    "y": 452,
+    "w": 16,
+    "h": 4
+  },
+  "PT25": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1630,
+    "y": 1788,
+    "w": 244,
+    "h": 244
+  },
+  "PT25_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 620,
+    "y": 1810,
+    "w": 244,
+    "h": 4
+  },
+  "PT25_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 525,
+    "y": 234,
+    "w": 2,
+    "h": 4
+  },
+  "PT25_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 529,
+    "y": 234,
+    "w": 2,
+    "h": 4
+  },
+  "PT25_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 521,
+    "y": 97,
+    "w": 2,
+    "h": 244
+  },
+  "PT25_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 638,
+    "w": 2,
+    "h": 244
+  },
+  "PT25_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 866,
+    "y": 2042,
+    "w": 244,
+    "h": 4
+  },
+  "PT25_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 525,
+    "y": 240,
+    "w": 2,
+    "h": 4
+  },
+  "PT25_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 529,
+    "y": 240,
+    "w": 2,
+    "h": 4
+  },
+  "RB02_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1782,
+    "y": 1762,
+    "w": 122,
+    "h": 24
+  },
+  "RB02_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 926,
+    "w": 24,
+    "h": 24
+  },
+  "RB02_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 952,
+    "w": 24,
+    "h": 24
+  },
+  "RB02_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 430,
+    "y": 886,
+    "w": 24,
+    "h": 122
+  },
+  "RB02_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 402,
+    "y": 910,
+    "w": 24,
+    "h": 122
+  },
+  "RB02_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1726,
+    "y": 858,
+    "w": 122,
+    "h": 24
+  },
+  "RB02_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 978,
+    "w": 24,
+    "h": 24
+  },
+  "RB02_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 1004,
+    "w": 24,
+    "h": 24
+  },
+  "RB03_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2016,
+    "w": 122,
+    "h": 26
+  },
+  "RB03_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 332,
+    "y": 1970,
+    "w": 26,
+    "h": 26
+  },
+  "RB03_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 416,
+    "y": 826,
+    "w": 26,
+    "h": 26
+  },
+  "RB03_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 418,
+    "y": 330,
+    "w": 26,
+    "h": 122
+  },
+  "RB03_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 418,
+    "y": 454,
+    "w": 26,
+    "h": 122
+  },
+  "RB03_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1720,
+    "y": 1724,
+    "w": 122,
+    "h": 26
+  },
+  "RB03_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 842,
+    "w": 26,
+    "h": 26
+  },
+  "RB03_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 402,
+    "y": 854,
+    "w": 26,
+    "h": 26
+  },
+  "RB04_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1214,
+    "y": 911,
+    "w": 122,
+    "h": 26
+  },
+  "RB04_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 870,
+    "w": 26,
+    "h": 26
+  },
+  "RB04_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 430,
+    "y": 858,
+    "w": 26,
+    "h": 26
+  },
+  "RB04_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 416,
+    "y": 578,
+    "w": 26,
+    "h": 122
+  },
+  "RB04_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 416,
+    "y": 702,
+    "w": 26,
+    "h": 122
+  },
+  "RB04_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1726,
+    "y": 830,
+    "w": 122,
+    "h": 26
+  },
+  "RB04_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 402,
+    "y": 882,
+    "w": 26,
+    "h": 26
+  },
+  "RB04_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 374,
+    "y": 898,
+    "w": 26,
+    "h": 26
+  },
+  "RB05_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 210,
+    "y": 1816,
+    "w": 122,
+    "h": 14
+  },
+  "RB05_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 458,
+    "y": 1816,
+    "w": 14,
+    "h": 14
+  },
+  "RB05_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 474,
+    "y": 1816,
+    "w": 14,
+    "h": 14
+  },
+  "RB05_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 670,
+    "y": 1866,
+    "w": 14,
+    "h": 122
+  },
+  "RB05_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 686,
+    "y": 1896,
+    "w": 14,
+    "h": 122
+  },
+  "RB05_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 334,
+    "y": 1816,
+    "w": 122,
+    "h": 14
+  },
+  "RB05_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 490,
+    "y": 1816,
+    "w": 14,
+    "h": 14
+  },
+  "RB05_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 506,
+    "y": 1816,
+    "w": 14,
+    "h": 14
+  },
+  "SH01": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 662,
+    "y": 250,
+    "w": 122,
+    "h": 240
+  },
+  "SH01_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1338,
+    "y": 18,
+    "w": 122,
+    "h": 4
+  },
+  "SH01_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 320,
+    "w": 18,
+    "h": 4
+  },
+  "SH01_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 326,
+    "w": 18,
+    "h": 4
+  },
+  "SH01_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 786,
+    "y": 248,
+    "w": 18,
+    "h": 240
+  },
+  "SH01_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 806,
+    "y": 248,
+    "w": 18,
+    "h": 240
+  },
+  "SH01_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1586,
+    "y": 24,
+    "w": 122,
+    "h": 4
+  },
+  "SH01_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 332,
+    "w": 18,
+    "h": 4
+  },
+  "SH01_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 338,
+    "w": 18,
+    "h": 4
+  },
+  "SH02": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 670,
+    "y": 1479,
+    "w": 122,
+    "h": 304
+  },
+  "SH02_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1462,
+    "y": 24,
+    "w": 122,
+    "h": 4
+  },
+  "SH02_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 344,
+    "w": 18,
+    "h": 4
+  },
+  "SH02_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 350,
+    "w": 18,
+    "h": 4
+  },
+  "SH02_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1114,
+    "y": 1478,
+    "w": 18,
+    "h": 304
+  },
+  "SH02_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1134,
+    "y": 1478,
+    "w": 18,
+    "h": 304
+  },
+  "SH02_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1338,
+    "y": 24,
+    "w": 122,
+    "h": 4
+  },
+  "SH02_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 356,
+    "w": 18,
+    "h": 4
+  },
+  "SH02_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 362,
+    "w": 18,
+    "h": 4
+  },
+  "SH03": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 776,
+    "y": 1112,
+    "w": 122,
+    "h": 358
+  },
+  "SH03_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1586,
+    "y": 30,
+    "w": 122,
+    "h": 4
+  },
+  "SH03_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 368,
+    "w": 18,
+    "h": 4
+  },
+  "SH03_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 374,
+    "w": 18,
+    "h": 4
+  },
+  "SH03_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 900,
+    "y": 1112,
+    "w": 18,
+    "h": 358
+  },
+  "SH03_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 920,
+    "y": 1112,
+    "w": 18,
+    "h": 358
+  },
+  "SH03_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1462,
+    "y": 30,
+    "w": 122,
+    "h": 4
+  },
+  "SH03_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 380,
+    "w": 18,
+    "h": 4
+  },
+  "SH03_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 386,
+    "w": 18,
+    "h": 4
+  },
+  "SH04": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 742,
+    "y": 492,
+    "w": 122,
+    "h": 480
+  },
+  "SH04_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1338,
+    "y": 30,
+    "w": 122,
+    "h": 4
+  },
+  "SH04_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 392,
+    "w": 18,
+    "h": 4
+  },
+  "SH04_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 398,
+    "w": 18,
+    "h": 4
+  },
+  "SH04_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 866,
+    "y": 492,
+    "w": 18,
+    "h": 480
+  },
+  "SH04_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 886,
+    "y": 492,
+    "w": 18,
+    "h": 480
+  },
+  "SH04_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1586,
+    "y": 36,
+    "w": 122,
+    "h": 4
+  },
+  "SH04_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 404,
+    "w": 18,
+    "h": 4
+  },
+  "SH04_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 410,
+    "w": 18,
+    "h": 4
+  },
+  "SH05": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 210,
+    "y": 612,
+    "w": 122,
+    "h": 600
+  },
+  "SH05_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1462,
+    "y": 36,
+    "w": 122,
+    "h": 4
+  },
+  "SH05_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 416,
+    "w": 18,
+    "h": 4
+  },
+  "SH05_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 422,
+    "w": 18,
+    "h": 4
+  },
+  "SH05_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 334,
+    "y": 612,
+    "w": 18,
+    "h": 600
+  },
+  "SH05_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 334,
+    "y": 1214,
+    "w": 18,
+    "h": 600
+  },
+  "SH05_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1338,
+    "y": 36,
+    "w": 122,
+    "h": 4
+  },
+  "SH05_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 428,
+    "w": 18,
+    "h": 4
+  },
+  "SH05_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 960,
+    "y": 434,
+    "w": 18,
+    "h": 4
+  },
+  "SH21": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 742,
+    "y": 1816,
+    "w": 122,
+    "h": 230
+  },
+  "SH21_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 250,
+    "y": 604,
+    "w": 122,
+    "h": 6
+  },
+  "SH21_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 902,
+    "w": 18,
+    "h": 6
+  },
+  "SH21_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 910,
+    "w": 18,
+    "h": 6
+  },
+  "SH21_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 990,
+    "y": 1809,
+    "w": 18,
+    "h": 230
+  },
+  "SH21_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1010,
+    "y": 1809,
+    "w": 18,
+    "h": 230
+  },
+  "SH21_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 422,
+    "y": 1790,
+    "w": 122,
+    "h": 6
+  },
+  "SH21_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 918,
+    "w": 18,
+    "h": 6
+  },
+  "SH21_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 926,
+    "w": 18,
+    "h": 6
+  },
+  "SH22": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 794,
+    "y": 1478,
+    "w": 122,
+    "h": 304
+  },
+  "SH22_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1112,
+    "y": 2039,
+    "w": 122,
+    "h": 6
+  },
+  "SH22_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 934,
+    "w": 18,
+    "h": 6
+  },
+  "SH22_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 942,
+    "w": 18,
+    "h": 6
+  },
+  "SH22_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1154,
+    "y": 1478,
+    "w": 18,
+    "h": 304
+  },
+  "SH22_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1174,
+    "y": 1478,
+    "w": 18,
+    "h": 304
+  },
+  "SH22_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 626,
+    "y": 1104,
+    "w": 122,
+    "h": 6
+  },
+  "SH22_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 950,
+    "w": 18,
+    "h": 6
+  },
+  "SH22_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 958,
+    "w": 18,
+    "h": 6
+  },
+  "SH23": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 940,
+    "y": 1112,
+    "w": 122,
+    "h": 352
+  },
+  "SH23_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 750,
+    "y": 1104,
+    "w": 122,
+    "h": 6
+  },
+  "SH23_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 966,
+    "w": 18,
+    "h": 6
+  },
+  "SH23_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 974,
+    "w": 18,
+    "h": 6
+  },
+  "SH23_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1188,
+    "y": 1112,
+    "w": 18,
+    "h": 352
+  },
+  "SH23_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1208,
+    "y": 1112,
+    "w": 18,
+    "h": 352
+  },
+  "SH23_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 874,
+    "y": 1104,
+    "w": 122,
+    "h": 6
+  },
+  "SH23_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 982,
+    "w": 18,
+    "h": 6
+  },
+  "SH23_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 990,
+    "w": 18,
+    "h": 6
+  },
+  "SH24": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 906,
+    "y": 492,
+    "w": 122,
+    "h": 474
+  },
+  "SH24_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 998,
+    "y": 1104,
+    "w": 122,
+    "h": 6
+  },
+  "SH24_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 998,
+    "w": 18,
+    "h": 6
+  },
+  "SH24_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 1006,
+    "w": 18,
+    "h": 6
+  },
+  "SH24_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1030,
+    "y": 488,
+    "w": 18,
+    "h": 474
+  },
+  "SH24_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1050,
+    "y": 488,
+    "w": 18,
+    "h": 474
+  },
+  "SH24_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1238,
+    "y": 972,
+    "w": 122,
+    "h": 6
+  },
+  "SH24_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 1014,
+    "w": 18,
+    "h": 6
+  },
+  "SH24_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 1022,
+    "w": 18,
+    "h": 6
+  },
+  "SH25": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 250,
+    "y": 2,
+    "w": 122,
+    "h": 600
+  },
+  "SH25_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1122,
+    "y": 1104,
+    "w": 122,
+    "h": 6
+  },
+  "SH25_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 1030,
+    "w": 18,
+    "h": 6
+  },
+  "SH25_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 1038,
+    "w": 18,
+    "h": 6
+  },
+  "SH25_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 354,
+    "y": 612,
+    "w": 18,
+    "h": 600
+  },
+  "SH25_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 354,
+    "y": 1214,
+    "w": 18,
+    "h": 600
+  },
+  "SH25_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1246,
+    "y": 1104,
+    "w": 122,
+    "h": 6
+  },
+  "SH25_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 1046,
+    "w": 18,
+    "h": 6
+  },
+  "SH25_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 1054,
+    "w": 18,
+    "h": 6
+  },
+  "SH26": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1906,
+    "y": 1426,
+    "w": 122,
+    "h": 122
+  },
+  "SH26_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1312,
+    "y": 1464,
+    "w": 122,
+    "h": 6
+  },
+  "SH26_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 525,
+    "y": 196,
+    "w": 6,
+    "h": 6
+  },
+  "SH26_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 525,
+    "y": 204,
+    "w": 6,
+    "h": 6
+  },
+  "SH26_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 525,
+    "y": 30,
+    "w": 6,
+    "h": 122
+  },
+  "SH26_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 662,
+    "y": 1828,
+    "w": 6,
+    "h": 122
+  },
+  "SH26_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1362,
+    "y": 972,
+    "w": 122,
+    "h": 6
+  },
+  "SH26_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 525,
+    "y": 212,
+    "w": 6,
+    "h": 6
+  },
+  "SH26_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 525,
+    "y": 220,
+    "w": 6,
+    "h": 6
+  },
+  "SH31": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 866,
+    "y": 1810,
+    "w": 122,
+    "h": 230
+  },
+  "SH31_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1338,
+    "y": 954,
+    "w": 122,
+    "h": 6
+  },
+  "SH31_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 1062,
+    "w": 18,
+    "h": 6
+  },
+  "SH31_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 1070,
+    "w": 18,
+    "h": 6
+  },
+  "SH31_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1030,
+    "y": 1809,
+    "w": 18,
+    "h": 230
+  },
+  "SH31_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1050,
+    "y": 1809,
+    "w": 18,
+    "h": 230
+  },
+  "SH31_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1726,
+    "y": 884,
+    "w": 122,
+    "h": 6
+  },
+  "SH31_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 502,
+    "y": 1078,
+    "w": 18,
+    "h": 6
+  },
+  "SH31_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 662,
+    "y": 2030,
+    "w": 18,
+    "h": 6
+  },
+  "SH32": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 918,
+    "y": 1478,
+    "w": 122,
+    "h": 304
+  },
+  "SH32_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1726,
+    "y": 892,
+    "w": 122,
+    "h": 6
+  },
+  "SH32_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 682,
+    "y": 2030,
+    "w": 18,
+    "h": 6
+  },
+  "SH32_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 702,
+    "y": 2030,
+    "w": 18,
+    "h": 6
+  },
+  "SH32_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1194,
+    "y": 1478,
+    "w": 18,
+    "h": 304
+  },
+  "SH32_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1214,
+    "y": 1478,
+    "w": 18,
+    "h": 304
+  },
+  "SH32_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1462,
+    "y": 900,
+    "w": 122,
+    "h": 6
+  },
+  "SH32_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 722,
+    "y": 2030,
+    "w": 18,
+    "h": 6
+  },
+  "SH32_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 588,
+    "y": 1040,
+    "w": 18,
+    "h": 6
+  },
+  "SH33": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1064,
+    "y": 1112,
+    "w": 122,
+    "h": 352
+  },
+  "SH33_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1586,
+    "y": 2,
+    "w": 122,
+    "h": 6
+  },
+  "SH33_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 588,
+    "y": 1048,
+    "w": 18,
+    "h": 6
+  },
+  "SH33_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 588,
+    "y": 1056,
+    "w": 18,
+    "h": 6
+  },
+  "SH33_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1228,
+    "y": 1112,
+    "w": 18,
+    "h": 352
+  },
+  "SH33_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1248,
+    "y": 1112,
+    "w": 18,
+    "h": 352
+  },
+  "SH33_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1462,
+    "y": 2,
+    "w": 122,
+    "h": 6
+  },
+  "SH33_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 588,
+    "y": 1064,
+    "w": 18,
+    "h": 6
+  },
+  "SH33_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 588,
+    "y": 1072,
+    "w": 18,
+    "h": 6
+  },
+  "SH34": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 988,
+    "y": 2,
+    "w": 122,
+    "h": 474
+  },
+  "SH34_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1338,
+    "y": 2,
+    "w": 122,
+    "h": 6
+  },
+  "SH34_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 588,
+    "y": 1080,
+    "w": 18,
+    "h": 6
+  },
+  "SH34_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 588,
+    "y": 1088,
+    "w": 18,
+    "h": 6
+  },
+  "SH34_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1070,
+    "y": 488,
+    "w": 18,
+    "h": 474
+  },
+  "SH34_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1112,
+    "y": 2,
+    "w": 18,
+    "h": 474
+  },
+  "SH34_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1586,
+    "y": 10,
+    "w": 122,
+    "h": 6
+  },
+  "SH34_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 248,
+    "w": 18,
+    "h": 6
+  },
+  "SH34_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 256,
+    "w": 18,
+    "h": 6
+  },
+  "SH35": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 210,
+    "y": 1214,
+    "w": 122,
+    "h": 600
+  },
+  "SH35_B": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1462,
+    "y": 10,
+    "w": 122,
+    "h": 6
+  },
+  "SH35_BL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 264,
+    "w": 18,
+    "h": 6
+  },
+  "SH35_BR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 272,
+    "w": 18,
+    "h": 6
+  },
+  "SH35_L": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 524,
+    "y": 494,
+    "w": 18,
+    "h": 600
+  },
+  "SH35_R": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 544,
+    "y": 492,
+    "w": 18,
+    "h": 600
+  },
+  "SH35_T": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1338,
+    "y": 10,
+    "w": 122,
+    "h": 6
+  },
+  "SH35_TL": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 280,
+    "w": 18,
+    "h": 6
+  },
+  "SH35_TR": {
+    "src": "/planner-reference/nineslice-au.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 950,
+    "y": 288,
+    "w": 18,
+    "h": 6
+  },
+  "AGE": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1730,
+    "y": 818,
+    "w": 180,
+    "h": 180
+  },
+  "AMA2": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1004,
+    "y": 754,
+    "w": 240,
+    "h": 240
+  },
+  "ASP": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1246,
+    "y": 754,
+    "w": 240,
+    "h": 240
+  },
+  "AST4": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1488,
+    "y": 754,
+    "w": 240,
+    "h": 240
+  },
+  "BAR": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1912,
+    "y": 818,
+    "w": 120,
+    "h": 120
+  },
+  "BAY": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1806,
+    "y": 1000,
+    "w": 240,
+    "h": 240
+  },
+  "CAB1": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1756,
+    "y": 2,
+    "w": 270,
+    "h": 270
+  },
+  "CAB4": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1806,
+    "y": 1242,
+    "w": 240,
+    "h": 240
+  },
+  "CAB5": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1756,
+    "y": 274,
+    "w": 270,
+    "h": 270
+  },
+  "CAL": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1806,
+    "y": 1484,
+    "w": 240,
+    "h": 240
+  },
+  "CHE": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1004,
+    "y": 2,
+    "w": 750,
+    "h": 750
+  },
+  "COC": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 1000,
+    "h": 1000
+  },
+  "COL": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1806,
+    "y": 1726,
+    "w": 240,
+    "h": 240
+  },
+  "KAN": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1756,
+    "y": 546,
+    "w": 270,
+    "h": 270
+  },
+  "LET3": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1906,
+    "w": 138,
+    "h": 138
+  },
+  "LET4": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1226,
+    "y": 1906,
+    "w": 108,
+    "h": 108
+  },
+  "MUS2": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 142,
+    "y": 1906,
+    "w": 138,
+    "h": 138
+  },
+  "OAT": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1336,
+    "y": 1906,
+    "w": 108,
+    "h": 108
+  },
+  "ONI": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 282,
+    "y": 1906,
+    "w": 138,
+    "h": 138
+  },
+  "OTH1": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1446,
+    "y": 1906,
+    "w": 108,
+    "h": 108
+  },
+  "PEA2": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1556,
+    "y": 1906,
+    "w": 108,
+    "h": 108
+  },
+  "PEC": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1004,
+    "w": 900,
+    "h": 900
+  },
+  "POA": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1666,
+    "y": 1906,
+    "w": 108,
+    "h": 108
+  },
+  "RAD3": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 422,
+    "y": 1906,
+    "w": 138,
+    "h": 138
+  },
+  "RAN": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 562,
+    "y": 1906,
+    "w": 138,
+    "h": 138
+  },
+  "SHA2": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 702,
+    "y": 1906,
+    "w": 138,
+    "h": 138
+  },
+  "SHA3": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 842,
+    "y": 1906,
+    "w": 138,
+    "h": 138
+  },
+  "STO2": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 982,
+    "y": 1906,
+    "w": 120,
+    "h": 120
+  },
+  "VIO": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1104,
+    "y": 1906,
+    "w": 120,
+    "h": 120
+  },
+  "WAL": {
+    "src": "/planner-reference/plants-au-0.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 904,
+    "y": 1004,
+    "w": 900,
+    "h": 900
+  },
+  "ALS": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1834,
+    "y": 1072,
+    "w": 210,
+    "h": 210
+  },
+  "APP1": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1607,
+    "y": 1434,
+    "w": 431,
+    "h": 431
+  },
+  "APP2": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 733,
+    "h": 733
+  },
+  "APP3": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1472,
+    "y": 1072,
+    "w": 360,
+    "h": 360
+  },
+  "BEE": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1607,
+    "y": 1867,
+    "w": 150,
+    "h": 150
+  },
+  "BLU2": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1911,
+    "y": 1867,
+    "w": 120,
+    "h": 120
+  },
+  "BUL": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1759,
+    "y": 1867,
+    "w": 150,
+    "h": 150
+  },
+  "CHI3": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1834,
+    "y": 1284,
+    "w": 138,
+    "h": 138
+  },
+  "FOR": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1472,
+    "w": 533,
+    "h": 533
+  },
+  "GOJ": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 537,
+    "y": 1472,
+    "w": 533,
+    "h": 533
+  },
+  "GUA": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1072,
+    "y": 1472,
+    "w": 533,
+    "h": 533
+  },
+  "HAZ": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 737,
+    "w": 733,
+    "h": 733
+  },
+  "HLY": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1472,
+    "y": 2,
+    "w": 533,
+    "h": 533
+  },
+  "LEM4": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 737,
+    "y": 2,
+    "w": 733,
+    "h": 733
+  },
+  "LIM": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 737,
+    "y": 737,
+    "w": 733,
+    "h": 733
+  },
+  "MAP": {
+    "src": "/planner-reference/plants-au-1.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1472,
+    "y": 537,
+    "w": 533,
+    "h": 533
+  },
+  "COM": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 300,
+    "h": 300
+  },
+  "COU": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 304,
+    "w": 300,
+    "h": 300
+  },
+  "CRA": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 606,
+    "w": 300,
+    "h": 300
+  },
+  "CRD": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 908,
+    "w": 300,
+    "h": 300
+  },
+  "CUC": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1210,
+    "w": 300,
+    "h": 300
+  },
+  "DAH": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1512,
+    "w": 300,
+    "h": 300
+  },
+  "DAY": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 304,
+    "y": 2,
+    "w": 300,
+    "h": 300
+  },
+  "DEU": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 304,
+    "y": 304,
+    "w": 300,
+    "h": 300
+  },
+  "FCH": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 304,
+    "y": 606,
+    "w": 300,
+    "h": 300
+  },
+  "FEV": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1814,
+    "w": 210,
+    "h": 210
+  },
+  "FIG2": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 304,
+    "y": 908,
+    "w": 300,
+    "h": 300
+  },
+  "FOU": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 304,
+    "y": 1210,
+    "w": 300,
+    "h": 300
+  },
+  "FOX": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 214,
+    "y": 1814,
+    "w": 210,
+    "h": 210
+  },
+  "FRU1": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 304,
+    "y": 1512,
+    "w": 300,
+    "h": 300
+  },
+  "FRU3": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 606,
+    "y": 2,
+    "w": 300,
+    "h": 300
+  },
+  "GAI": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 426,
+    "y": 1814,
+    "w": 210,
+    "h": 210
+  },
+  "GAZ": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 638,
+    "y": 1814,
+    "w": 210,
+    "h": 210
+  },
+  "GER": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 850,
+    "y": 1814,
+    "w": 210,
+    "h": 210
+  },
+  "GEU": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1062,
+    "y": 1814,
+    "w": 210,
+    "h": 210
+  },
+  "GIN": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 606,
+    "y": 304,
+    "w": 300,
+    "h": 300
+  },
+  "GLA": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1274,
+    "y": 1814,
+    "w": 210,
+    "h": 210
+  },
+  "GOL": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1486,
+    "y": 1814,
+    "w": 210,
+    "h": 210
+  },
+  "GOO": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 606,
+    "y": 606,
+    "w": 300,
+    "h": 300
+  },
+  "GRA": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 606,
+    "y": 908,
+    "w": 300,
+    "h": 300
+  },
+  "GRD": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1698,
+    "y": 1814,
+    "w": 210,
+    "h": 210
+  },
+  "GRO": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 606,
+    "y": 1210,
+    "w": 300,
+    "h": 300
+  },
+  "HAK": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 606,
+    "y": 1512,
+    "w": 300,
+    "h": 300
+  },
+  "HER": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1814,
+    "y": 2,
+    "w": 210,
+    "h": 210
+  },
+  "HEU": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1814,
+    "y": 214,
+    "w": 210,
+    "h": 210
+  },
+  "HIB": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 908,
+    "y": 2,
+    "w": 300,
+    "h": 300
+  },
+  "HLN": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1814,
+    "y": 426,
+    "w": 210,
+    "h": 210
+  },
+  "HNW": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1814,
+    "y": 638,
+    "w": 210,
+    "h": 210
+  },
+  "HOL": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1814,
+    "y": 850,
+    "w": 210,
+    "h": 210
+  },
+  "HON": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 908,
+    "y": 304,
+    "w": 300,
+    "h": 300
+  },
+  "HOS": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1814,
+    "y": 1062,
+    "w": 210,
+    "h": 210
+  },
+  "IRI": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1814,
+    "y": 1274,
+    "w": 210,
+    "h": 210
+  },
+  "KAL": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 908,
+    "y": 606,
+    "w": 300,
+    "h": 300
+  },
+  "KOH": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1814,
+    "y": 1486,
+    "w": 210,
+    "h": 210
+  },
+  "LEM": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 908,
+    "y": 908,
+    "w": 300,
+    "h": 300
+  },
+  "LEM3": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 908,
+    "y": 1210,
+    "w": 300,
+    "h": 300
+  },
+  "LEM5": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 908,
+    "y": 1512,
+    "w": 300,
+    "h": 300
+  },
+  "LIM2": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1210,
+    "y": 2,
+    "w": 300,
+    "h": 300
+  },
+  "LOV": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1210,
+    "y": 304,
+    "w": 300,
+    "h": 300
+  },
+  "LUF": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1210,
+    "y": 606,
+    "w": 300,
+    "h": 300
+  },
+  "LUP": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1210,
+    "y": 908,
+    "w": 300,
+    "h": 300
+  },
+  "MAH": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1210,
+    "y": 1210,
+    "w": 300,
+    "h": 300
+  },
+  "MAR": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1210,
+    "y": 1512,
+    "w": 300,
+    "h": 300
+  },
+  "MEL": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1512,
+    "y": 2,
+    "w": 300,
+    "h": 300
+  },
+  "MIL": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1512,
+    "y": 304,
+    "w": 300,
+    "h": 300
+  },
+  "NZF": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1512,
+    "y": 606,
+    "w": 300,
+    "h": 300
+  },
+  "OKR": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1512,
+    "y": 908,
+    "w": 300,
+    "h": 300
+  },
+  "ORA2": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1512,
+    "y": 1210,
+    "w": 300,
+    "h": 300
+  },
+  "OTH3": {
+    "src": "/planner-reference/plants-au-10.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1512,
+    "y": 1512,
+    "w": 300,
+    "h": 300
+  },
+  "AUB": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1814,
+    "w": 210,
+    "h": 210
+  },
+  "BEE2": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 214,
+    "y": 1814,
+    "w": 210,
+    "h": 210
+  },
+  "BEG": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 426,
+    "y": 1814,
+    "w": 210,
+    "h": 210
+  },
+  "BEL": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 638,
+    "y": 1814,
+    "w": 210,
+    "h": 210
+  },
+  "BES": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 850,
+    "y": 1814,
+    "w": 210,
+    "h": 210
+  },
+  "BIS": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1452,
+    "y": 728,
+    "w": 210,
+    "h": 210
+  },
+  "BRA": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1452,
+    "y": 940,
+    "w": 210,
+    "h": 210
+  },
+  "CAT": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1452,
+    "y": 1152,
+    "w": 210,
+    "h": 210
+  },
+  "CCM": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1452,
+    "y": 1364,
+    "w": 210,
+    "h": 210
+  },
+  "CDY": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1502,
+    "y": 1576,
+    "w": 210,
+    "h": 210
+  },
+  "CHR": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1502,
+    "y": 1788,
+    "w": 210,
+    "h": 210
+  },
+  "CLB": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1664,
+    "y": 728,
+    "w": 210,
+    "h": 210
+  },
+  "CLP": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1664,
+    "y": 940,
+    "w": 210,
+    "h": 210
+  },
+  "CMP": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1664,
+    "y": 1152,
+    "w": 210,
+    "h": 210
+  },
+  "COL2": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1664,
+    "y": 1364,
+    "w": 210,
+    "h": 210
+  },
+  "COR5": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1714,
+    "y": 1576,
+    "w": 210,
+    "h": 210
+  },
+  "DEL": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1714,
+    "y": 1788,
+    "w": 210,
+    "h": 210
+  },
+  "DIA": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1694,
+    "y": 2,
+    "w": 210,
+    "h": 210
+  },
+  "EPR": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1694,
+    "y": 214,
+    "w": 210,
+    "h": 210
+  },
+  "FEN": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1694,
+    "y": 426,
+    "w": 210,
+    "h": 210
+  },
+  "ONI3": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1876,
+    "y": 638,
+    "w": 150,
+    "h": 150
+  },
+  "ONI5": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1876,
+    "y": 790,
+    "w": 150,
+    "h": 150
+  },
+  "OTH4": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 300,
+    "h": 300
+  },
+  "PAR": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1876,
+    "y": 942,
+    "w": 150,
+    "h": 150
+  },
+  "PAR2": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1876,
+    "y": 1094,
+    "w": 150,
+    "h": 150
+  },
+  "PAS": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 304,
+    "w": 300,
+    "h": 300
+  },
+  "PEA": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1876,
+    "y": 1246,
+    "w": 150,
+    "h": 150
+  },
+  "PEA1": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1876,
+    "y": 1398,
+    "w": 150,
+    "h": 150
+  },
+  "PIN": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 606,
+    "w": 300,
+    "h": 300
+  },
+  "PPC": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 908,
+    "w": 300,
+    "h": 300
+  },
+  "PRD": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1210,
+    "w": 300,
+    "h": 300
+  },
+  "PUM": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1512,
+    "w": 300,
+    "h": 300
+  },
+  "QUI": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 304,
+    "y": 2,
+    "w": 300,
+    "h": 300
+  },
+  "RED": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 304,
+    "y": 304,
+    "w": 300,
+    "h": 300
+  },
+  "RHU": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 304,
+    "y": 606,
+    "w": 300,
+    "h": 300
+  },
+  "ROS2": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 304,
+    "y": 908,
+    "w": 300,
+    "h": 300
+  },
+  "RYE1": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1062,
+    "y": 1814,
+    "w": 108,
+    "h": 108
+  },
+  "RYE2": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1062,
+    "y": 1924,
+    "w": 108,
+    "h": 108
+  },
+  "SAG": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1210,
+    "y": 2,
+    "w": 240,
+    "h": 240
+  },
+  "SCI": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1172,
+    "y": 1938,
+    "w": 108,
+    "h": 108
+  },
+  "SKI": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 304,
+    "y": 1210,
+    "w": 300,
+    "h": 300
+  },
+  "SNB": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 304,
+    "y": 1512,
+    "w": 300,
+    "h": 300
+  },
+  "SNO": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1282,
+    "y": 1938,
+    "w": 108,
+    "h": 108
+  },
+  "SPB": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 606,
+    "y": 2,
+    "w": 300,
+    "h": 300
+  },
+  "SPI2": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 606,
+    "y": 304,
+    "w": 300,
+    "h": 300
+  },
+  "SPI3": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1210,
+    "y": 244,
+    "w": 240,
+    "h": 240
+  },
+  "SQU": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 606,
+    "y": 606,
+    "w": 300,
+    "h": 300
+  },
+  "SQU2": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 606,
+    "y": 908,
+    "w": 300,
+    "h": 300
+  },
+  "STR": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1210,
+    "y": 486,
+    "w": 240,
+    "h": 240
+  },
+  "SWE1": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1210,
+    "y": 728,
+    "w": 240,
+    "h": 240
+  },
+  "SWE2": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 606,
+    "y": 1210,
+    "w": 300,
+    "h": 300
+  },
+  "SWI": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1210,
+    "y": 970,
+    "w": 240,
+    "h": 240
+  },
+  "TAN": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 606,
+    "y": 1512,
+    "w": 300,
+    "h": 300
+  },
+  "TAR": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1210,
+    "y": 1212,
+    "w": 240,
+    "h": 240
+  },
+  "THG": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 908,
+    "y": 2,
+    "w": 300,
+    "h": 300
+  },
+  "THY": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1210,
+    "y": 1454,
+    "w": 240,
+    "h": 240
+  },
+  "TOM1": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1210,
+    "y": 1696,
+    "w": 240,
+    "h": 240
+  },
+  "TOM2": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1452,
+    "y": 2,
+    "w": 240,
+    "h": 240
+  },
+  "TOM3": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 908,
+    "y": 304,
+    "w": 300,
+    "h": 300
+  },
+  "TUR2": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1452,
+    "y": 244,
+    "w": 240,
+    "h": 240
+  },
+  "VAL": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 908,
+    "y": 606,
+    "w": 300,
+    "h": 300
+  },
+  "VET": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1392,
+    "y": 1938,
+    "w": 108,
+    "h": 108
+  },
+  "WAT": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 908,
+    "y": 908,
+    "w": 300,
+    "h": 300
+  },
+  "WHE": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1906,
+    "y": 2,
+    "w": 108,
+    "h": 108
+  },
+  "WHI": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 908,
+    "y": 1210,
+    "w": 300,
+    "h": 300
+  },
+  "WLS": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1452,
+    "y": 486,
+    "w": 240,
+    "h": 240
+  },
+  "YUC": {
+    "src": "/planner-reference/plants-au-11.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 908,
+    "y": 1512,
+    "w": 300,
+    "h": 300
+  },
+  "LAN": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 210,
+    "h": 210
+  },
+  "LAR": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 214,
+    "w": 210,
+    "h": 210
+  },
+  "LAV": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 426,
+    "w": 210,
+    "h": 210
+  },
+  "LAV2": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 638,
+    "w": 210,
+    "h": 210
+  },
+  "LEE": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 850,
+    "w": 210,
+    "h": 210
+  },
+  "LEE2": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1062,
+    "w": 210,
+    "h": 210
+  },
+  "LEM2": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1274,
+    "w": 210,
+    "h": 210
+  },
+  "LIL": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1486,
+    "w": 210,
+    "h": 210
+  },
+  "MGD": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1698,
+    "w": 210,
+    "h": 210
+  },
+  "MIZ": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 214,
+    "y": 2,
+    "w": 210,
+    "h": 210
+  },
+  "MON": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 426,
+    "y": 2,
+    "w": 210,
+    "h": 210
+  },
+  "NET": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 638,
+    "y": 2,
+    "w": 210,
+    "h": 210
+  },
+  "NIC": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 850,
+    "y": 2,
+    "w": 210,
+    "h": 210
+  },
+  "NIG": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1062,
+    "y": 2,
+    "w": 210,
+    "h": 210
+  },
+  "ONI6": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1274,
+    "y": 2,
+    "w": 210,
+    "h": 210
+  },
+  "OST": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1486,
+    "y": 2,
+    "w": 210,
+    "h": 210
+  },
+  "OTH2": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1698,
+    "y": 2,
+    "w": 210,
+    "h": 210
+  },
+  "PEA3": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1062,
+    "y": 426,
+    "w": 150,
+    "h": 150
+  },
+  "PEN": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 214,
+    "y": 214,
+    "w": 210,
+    "h": 210
+  },
+  "PET2": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 214,
+    "y": 426,
+    "w": 210,
+    "h": 210
+  },
+  "POR": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1214,
+    "y": 426,
+    "w": 150,
+    "h": 150
+  },
+  "PRI": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 214,
+    "y": 638,
+    "w": 210,
+    "h": 210
+  },
+  "PUL": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 214,
+    "y": 850,
+    "w": 210,
+    "h": 210
+  },
+  "RAD2": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1366,
+    "y": 426,
+    "w": 150,
+    "h": 150
+  },
+  "ROS": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1518,
+    "y": 426,
+    "w": 150,
+    "h": 150
+  },
+  "ROS4": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 214,
+    "y": 1062,
+    "w": 210,
+    "h": 210
+  },
+  "SAG2": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 214,
+    "y": 1274,
+    "w": 210,
+    "h": 210
+  },
+  "SAL": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1670,
+    "y": 426,
+    "w": 150,
+    "h": 150
+  },
+  "SAL2": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 214,
+    "y": 1486,
+    "w": 210,
+    "h": 210
+  },
+  "SAL3": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 214,
+    "y": 1698,
+    "w": 210,
+    "h": 210
+  },
+  "SAV": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1822,
+    "y": 426,
+    "w": 150,
+    "h": 150
+  },
+  "SCO": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1062,
+    "y": 578,
+    "w": 150,
+    "h": 150
+  },
+  "SED1": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 638,
+    "y": 638,
+    "w": 150,
+    "h": 150
+  },
+  "SED2": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 790,
+    "y": 638,
+    "w": 150,
+    "h": 150
+  },
+  "SNA": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 426,
+    "y": 214,
+    "w": 210,
+    "h": 210
+  },
+  "SOR": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 638,
+    "y": 214,
+    "w": 210,
+    "h": 210
+  },
+  "SPE": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1214,
+    "y": 578,
+    "w": 150,
+    "h": 150
+  },
+  "SPI": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1366,
+    "y": 578,
+    "w": 150,
+    "h": 150
+  },
+  "SPI5": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1518,
+    "y": 578,
+    "w": 150,
+    "h": 150
+  },
+  "STA": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 850,
+    "y": 214,
+    "w": 210,
+    "h": 210
+  },
+  "STA2": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1062,
+    "y": 214,
+    "w": 210,
+    "h": 210
+  },
+  "STE": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1274,
+    "y": 214,
+    "w": 210,
+    "h": 210
+  },
+  "STO": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1486,
+    "y": 214,
+    "w": 210,
+    "h": 210
+  },
+  "STR2": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1698,
+    "y": 214,
+    "w": 210,
+    "h": 210
+  },
+  "SUN": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 426,
+    "y": 426,
+    "w": 210,
+    "h": 210
+  },
+  "SWE": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 426,
+    "y": 638,
+    "w": 210,
+    "h": 210
+  },
+  "SWW": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 426,
+    "y": 850,
+    "w": 210,
+    "h": 210
+  },
+  "TAT": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1670,
+    "y": 578,
+    "w": 150,
+    "h": 150
+  },
+  "TUL": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1822,
+    "y": 578,
+    "w": 150,
+    "h": 150
+  },
+  "TUR": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 426,
+    "y": 1062,
+    "w": 210,
+    "h": 210
+  },
+  "VER": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 942,
+    "y": 730,
+    "w": 150,
+    "h": 150
+  },
+  "VER2": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 426,
+    "y": 1274,
+    "w": 210,
+    "h": 210
+  },
+  "VER3": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 426,
+    "y": 1486,
+    "w": 210,
+    "h": 210
+  },
+  "VIN": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 426,
+    "y": 1698,
+    "w": 210,
+    "h": 210
+  },
+  "WLF": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 638,
+    "y": 426,
+    "w": 210,
+    "h": 210
+  },
+  "YAR": {
+    "src": "/planner-reference/plants-au-12.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 850,
+    "y": 426,
+    "w": 210,
+    "h": 210
+  },
+  "AST": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1834,
+    "y": 1072,
+    "w": 210,
+    "h": 210
+  },
+  "BOT": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1607,
+    "y": 1434,
+    "w": 431,
+    "h": 431
+  },
+  "BUC": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1911,
+    "y": 1867,
+    "w": 120,
+    "h": 120
+  },
+  "CAR": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1607,
+    "y": 1867,
+    "w": 150,
+    "h": 150
+  },
+  "CHI2": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1759,
+    "y": 1867,
+    "w": 150,
+    "h": 150
+  },
+  "COR2": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1834,
+    "y": 1284,
+    "w": 138,
+    "h": 138
+  },
+  "JOS": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1472,
+    "y": 1072,
+    "w": 360,
+    "h": 360
+  },
+  "MED": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 733,
+    "h": 733
+  },
+  "MIM": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 737,
+    "w": 733,
+    "h": 733
+  },
+  "MUL": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 737,
+    "y": 2,
+    "w": 733,
+    "h": 733
+  },
+  "NEC1": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1472,
+    "w": 533,
+    "h": 533
+  },
+  "OLI": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 737,
+    "y": 737,
+    "w": 733,
+    "h": 733
+  },
+  "PAP": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 537,
+    "y": 1472,
+    "w": 533,
+    "h": 533
+  },
+  "PLA": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1072,
+    "y": 1472,
+    "w": 533,
+    "h": 533
+  },
+  "PLU1": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1472,
+    "y": 2,
+    "w": 533,
+    "h": 533
+  },
+  "STJ": {
+    "src": "/planner-reference/plants-au-2.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1472,
+    "y": 537,
+    "w": 533,
+    "h": 533
+  },
+  "_CON": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1807,
+    "y": 1454,
+    "w": 210,
+    "h": 210
+  },
+  "AFR": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1807,
+    "y": 1666,
+    "w": 210,
+    "h": 210
+  },
+  "ALY": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 537,
+    "y": 1884,
+    "w": 150,
+    "h": 150
+  },
+  "ANE": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1807,
+    "y": 1878,
+    "w": 150,
+    "h": 150
+  },
+  "APP4": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 737,
+    "y": 737,
+    "w": 715,
+    "h": 715
+  },
+  "APR1": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 737,
+    "y": 1454,
+    "w": 533,
+    "h": 533
+  },
+  "BAN": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1472,
+    "w": 533,
+    "h": 533
+  },
+  "BBY": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1272,
+    "y": 1454,
+    "w": 533,
+    "h": 533
+  },
+  "BEA2": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1472,
+    "y": 537,
+    "w": 180,
+    "h": 180
+  },
+  "BEA3": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1654,
+    "y": 537,
+    "w": 180,
+    "h": 180
+  },
+  "BEA4": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1836,
+    "y": 537,
+    "w": 180,
+    "h": 180
+  },
+  "BLF": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1454,
+    "y": 1272,
+    "w": 180,
+    "h": 180
+  },
+  "BNK": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1454,
+    "y": 737,
+    "w": 533,
+    "h": 533
+  },
+  "BOK": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1636,
+    "y": 1272,
+    "w": 180,
+    "h": 180
+  },
+  "BOR": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1818,
+    "y": 1272,
+    "w": 180,
+    "h": 180
+  },
+  "BTB": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1472,
+    "y": 2,
+    "w": 533,
+    "h": 533
+  },
+  "ORA": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 733,
+    "h": 733
+  },
+  "PAN": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 537,
+    "y": 1684,
+    "w": 198,
+    "h": 198
+  },
+  "QUI2": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 737,
+    "w": 733,
+    "h": 733
+  },
+  "SCA2": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 537,
+    "y": 1472,
+    "w": 162,
+    "h": 210
+  },
+  "TRE2": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 737,
+    "y": 2,
+    "w": 733,
+    "h": 733
+  },
+  "ACA": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 719,
+    "y": 2,
+    "w": 708,
+    "h": 708
+  },
+  "ALM": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 719,
+    "y": 712,
+    "w": 708,
+    "h": 708
+  },
+  "CAL2": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 537,
+    "y": 1436,
+    "w": 180,
+    "h": 180
+  },
+  "CEL": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 537,
+    "y": 1618,
+    "w": 180,
+    "h": 180
+  },
+  "CEL3": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 537,
+    "y": 1800,
+    "w": 180,
+    "h": 180
+  },
+  "CHA": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1336,
+    "y": 1853,
+    "w": 180,
+    "h": 180
+  },
+  "CHI": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1518,
+    "y": 1853,
+    "w": 180,
+    "h": 180
+  },
+  "CHO": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1436,
+    "w": 533,
+    "h": 533
+  },
+  "CIN": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1700,
+    "y": 1853,
+    "w": 180,
+    "h": 180
+  },
+  "ELD": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1429,
+    "y": 2,
+    "w": 615,
+    "h": 615
+  },
+  "EUC": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1429,
+    "y": 619,
+    "w": 615,
+    "h": 615
+  },
+  "KUM": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1429,
+    "y": 1236,
+    "w": 615,
+    "h": 615
+  },
+  "LOG": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 719,
+    "y": 1422,
+    "w": 615,
+    "h": 615
+  },
+  "PEA7": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 715,
+    "h": 715
+  },
+  "PLU3": {
+    "src": "/planner-reference/plants-au-4.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 719,
+    "w": 715,
+    "h": 715
+  },
+  "APR2": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 708,
+    "h": 708
+  },
+  "AVO": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 712,
+    "w": 708,
+    "h": 708
+  },
+  "BUD": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1607,
+    "y": 1358,
+    "w": 431,
+    "h": 431
+  },
+  "CAC": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1919,
+    "y": 2,
+    "w": 120,
+    "h": 120
+  },
+  "CAM": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1784,
+    "y": 1238,
+    "w": 108,
+    "h": 108
+  },
+  "CHE2": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 712,
+    "y": 2,
+    "w": 708,
+    "h": 708
+  },
+  "CLO": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1894,
+    "y": 1238,
+    "w": 108,
+    "h": 108
+  },
+  "COL3": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1919,
+    "y": 124,
+    "w": 120,
+    "h": 120
+  },
+  "CRO": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1849,
+    "y": 1791,
+    "w": 180,
+    "h": 180
+  },
+  "FEN3": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1919,
+    "y": 246,
+    "w": 120,
+    "h": 120
+  },
+  "FLA": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1919,
+    "y": 368,
+    "w": 120,
+    "h": 120
+  },
+  "FMN": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1919,
+    "y": 490,
+    "w": 120,
+    "h": 120
+  },
+  "GAR": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1919,
+    "y": 612,
+    "w": 120,
+    "h": 120
+  },
+  "GRA2": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1919,
+    "y": 734,
+    "w": 120,
+    "h": 120
+  },
+  "GRP": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 712,
+    "y": 712,
+    "w": 708,
+    "h": 708
+  },
+  "HLB": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1784,
+    "y": 996,
+    "w": 240,
+    "h": 240
+  },
+  "HST": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1607,
+    "y": 1791,
+    "w": 240,
+    "h": 240
+  },
+  "HYA": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1919,
+    "y": 856,
+    "w": 120,
+    "h": 120
+  },
+  "MOC": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1422,
+    "y": 2,
+    "w": 495,
+    "h": 495
+  },
+  "NIN": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1422,
+    "y": 499,
+    "w": 495,
+    "h": 495
+  },
+  "PEA6": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1422,
+    "y": 996,
+    "w": 360,
+    "h": 360
+  },
+  "SUG": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1422,
+    "w": 533,
+    "h": 533
+  },
+  "TRE1": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 537,
+    "y": 1422,
+    "w": 533,
+    "h": 533
+  },
+  "VIB": {
+    "src": "/planner-reference/plants-au-5.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1072,
+    "y": 1422,
+    "w": 533,
+    "h": 533
+  },
+  "AMA": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1542,
+    "y": 1734,
+    "w": 300,
+    "h": 300
+  },
+  "CHE1": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 996,
+    "y": 1422,
+    "w": 431,
+    "h": 431
+  },
+  "CRE": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1429,
+    "y": 1734,
+    "w": 108,
+    "h": 108
+  },
+  "DIL": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 996,
+    "y": 1855,
+    "w": 180,
+    "h": 180
+  },
+  "DOG": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1422,
+    "y": 2,
+    "w": 431,
+    "h": 431
+  },
+  "ECH": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1178,
+    "y": 1855,
+    "w": 180,
+    "h": 180
+  },
+  "END": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1360,
+    "y": 1855,
+    "w": 180,
+    "h": 180
+  },
+  "FEN2": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1844,
+    "y": 1734,
+    "w": 180,
+    "h": 180
+  },
+  "FIE": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 2,
+    "w": 180,
+    "h": 180
+  },
+  "FRU2": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1422,
+    "y": 435,
+    "w": 431,
+    "h": 431
+  },
+  "GRA3": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1422,
+    "y": 868,
+    "w": 431,
+    "h": 431
+  },
+  "HOP": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1429,
+    "y": 1301,
+    "w": 431,
+    "h": 431
+  },
+  "HOR": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 184,
+    "w": 180,
+    "h": 180
+  },
+  "IMP": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 366,
+    "w": 180,
+    "h": 180
+  },
+  "JON": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1919,
+    "w": 120,
+    "h": 120
+  },
+  "LET2": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 548,
+    "w": 180,
+    "h": 180
+  },
+  "LEU": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 124,
+    "y": 1919,
+    "w": 120,
+    "h": 120
+  },
+  "LLV": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 246,
+    "y": 1919,
+    "w": 120,
+    "h": 120
+  },
+  "LOB": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 368,
+    "y": 1919,
+    "w": 120,
+    "h": 120
+  },
+  "MAJ": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 730,
+    "w": 180,
+    "h": 180
+  },
+  "MAO": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 708,
+    "h": 708
+  },
+  "MIN": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 912,
+    "w": 180,
+    "h": 180
+  },
+  "MNG": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 712,
+    "w": 708,
+    "h": 708
+  },
+  "NAS": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 1094,
+    "w": 180,
+    "h": 180
+  },
+  "NEC2": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 712,
+    "y": 2,
+    "w": 708,
+    "h": 708
+  },
+  "NEM": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 490,
+    "y": 1919,
+    "w": 120,
+    "h": 120
+  },
+  "ONI4": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 612,
+    "y": 1919,
+    "w": 120,
+    "h": 120
+  },
+  "ORE": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 734,
+    "y": 1919,
+    "w": 120,
+    "h": 120
+  },
+  "PEA5": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 712,
+    "y": 712,
+    "w": 708,
+    "h": 708
+  },
+  "PHA": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 856,
+    "y": 1919,
+    "w": 120,
+    "h": 120
+  },
+  "PHL": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1844,
+    "y": 1916,
+    "w": 120,
+    "h": 120
+  },
+  "POP2": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1862,
+    "y": 1276,
+    "w": 180,
+    "h": 180
+  },
+  "ROS3": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1422,
+    "w": 495,
+    "h": 495
+  },
+  "SMO": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 499,
+    "y": 1422,
+    "w": 495,
+    "h": 495
+  },
+  "SPI4": {
+    "src": "/planner-reference/plants-au-6.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1862,
+    "y": 1458,
+    "w": 180,
+    "h": 180
+  },
+  "ART": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1734,
+    "y": 1301,
+    "w": 300,
+    "h": 300
+  },
+  "ART2": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1734,
+    "y": 1603,
+    "w": 300,
+    "h": 300
+  },
+  "CLE": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 548,
+    "w": 150,
+    "h": 150
+  },
+  "COR3": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 700,
+    "w": 150,
+    "h": 150
+  },
+  "COR4": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 852,
+    "w": 150,
+    "h": 150
+  },
+  "COS": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 1004,
+    "w": 150,
+    "h": 150
+  },
+  "COT": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1855,
+    "w": 150,
+    "h": 150
+  },
+  "CRO2": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1422,
+    "y": 1301,
+    "w": 108,
+    "h": 108
+  },
+  "CUP": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 154,
+    "y": 1855,
+    "w": 150,
+    "h": 150
+  },
+  "DAF": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1532,
+    "y": 1301,
+    "w": 108,
+    "h": 108
+  },
+  "FLO": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 306,
+    "y": 1855,
+    "w": 150,
+    "h": 150
+  },
+  "FLO2": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 458,
+    "y": 1855,
+    "w": 150,
+    "h": 150
+  },
+  "FLO3": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 610,
+    "y": 1855,
+    "w": 150,
+    "h": 150
+  },
+  "FLO4": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 762,
+    "y": 1855,
+    "w": 150,
+    "h": 150
+  },
+  "GAR2": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 1156,
+    "w": 138,
+    "h": 138
+  },
+  "GOM": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 914,
+    "y": 1855,
+    "w": 150,
+    "h": 150
+  },
+  "GOU": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1066,
+    "y": 1855,
+    "w": 150,
+    "h": 150
+  },
+  "GRE": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1674,
+    "y": 1905,
+    "w": 138,
+    "h": 138
+  },
+  "GYP": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1218,
+    "y": 1855,
+    "w": 150,
+    "h": 150
+  },
+  "HEL": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1370,
+    "y": 1855,
+    "w": 150,
+    "h": 150
+  },
+  "HOU": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1814,
+    "y": 1905,
+    "w": 138,
+    "h": 138
+  },
+  "HSC": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1422,
+    "w": 431,
+    "h": 431
+  },
+  "HYD": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 435,
+    "y": 1422,
+    "w": 431,
+    "h": 431
+  },
+  "LIV": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1522,
+    "y": 1855,
+    "w": 150,
+    "h": 150
+  },
+  "LLC": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 868,
+    "y": 1422,
+    "w": 431,
+    "h": 431
+  },
+  "PEA4": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1301,
+    "y": 1422,
+    "w": 431,
+    "h": 431
+  },
+  "PEA9": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 708,
+    "h": 708
+  },
+  "PER": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 712,
+    "w": 708,
+    "h": 708
+  },
+  "PHO": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1422,
+    "y": 2,
+    "w": 431,
+    "h": 431
+  },
+  "PLU2": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 712,
+    "y": 2,
+    "w": 708,
+    "h": 708
+  },
+  "RHO": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1422,
+    "y": 435,
+    "w": 431,
+    "h": 431
+  },
+  "SAT": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 712,
+    "y": 712,
+    "w": 708,
+    "h": 708
+  },
+  "SHR": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1422,
+    "y": 868,
+    "w": 431,
+    "h": 431
+  },
+  "SPR2": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 2,
+    "w": 180,
+    "h": 180
+  },
+  "SWT": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 184,
+    "w": 180,
+    "h": 180
+  },
+  "ZIN": {
+    "src": "/planner-reference/plants-au-7.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1855,
+    "y": 366,
+    "w": 180,
+    "h": 180
+  },
+  "AGA": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1356,
+    "y": 1831,
+    "w": 210,
+    "h": 210
+  },
+  "AGP": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1568,
+    "y": 1831,
+    "w": 210,
+    "h": 210
+  },
+  "ALL": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1780,
+    "y": 1831,
+    "w": 210,
+    "h": 210
+  },
+  "BAS": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1891,
+    "y": 1296,
+    "w": 150,
+    "h": 150
+  },
+  "BEA1": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1891,
+    "y": 1448,
+    "w": 150,
+    "h": 150
+  },
+  "BEA6": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1891,
+    "y": 1600,
+    "w": 150,
+    "h": 150
+  },
+  "CHE3": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 675,
+    "h": 675
+  },
+  "DOG2": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 679,
+    "w": 675,
+    "h": 675
+  },
+  "DRA": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1356,
+    "y": 1296,
+    "w": 533,
+    "h": 533
+  },
+  "FIG": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1356,
+    "w": 675,
+    "h": 675
+  },
+  "KIW": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 679,
+    "y": 2,
+    "w": 675,
+    "h": 675
+  },
+  "MAG": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1356,
+    "y": 679,
+    "w": 615,
+    "h": 615
+  },
+  "PEA8": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1356,
+    "y": 2,
+    "w": 675,
+    "h": 675
+  },
+  "POM": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 679,
+    "y": 679,
+    "w": 675,
+    "h": 675
+  },
+  "WIT": {
+    "src": "/planner-reference/plants-au-8.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 679,
+    "y": 1356,
+    "w": 675,
+    "h": 675
+  },
+  "AST2": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1836,
+    "y": 606,
+    "w": 210,
+    "h": 210
+  },
+  "AST3": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1825,
+    "y": 1452,
+    "w": 210,
+    "h": 210
+  },
+  "AZA": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 435,
+    "y": 868,
+    "w": 300,
+    "h": 300
+  },
+  "BBS": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 737,
+    "y": 868,
+    "w": 300,
+    "h": 300
+  },
+  "BLA": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 868,
+    "y": 2,
+    "w": 300,
+    "h": 300
+  },
+  "BLA2": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 868,
+    "y": 304,
+    "w": 300,
+    "h": 300
+  },
+  "BLE": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1039,
+    "y": 848,
+    "w": 300,
+    "h": 300
+  },
+  "BLU": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1170,
+    "y": 2,
+    "w": 300,
+    "h": 300
+  },
+  "BOX": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1170,
+    "y": 304,
+    "w": 300,
+    "h": 300
+  },
+  "BOY": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1039,
+    "y": 1150,
+    "w": 300,
+    "h": 300
+  },
+  "BRO": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 435,
+    "y": 1170,
+    "w": 300,
+    "h": 300
+  },
+  "BRU": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 737,
+    "y": 1170,
+    "w": 300,
+    "h": 300
+  },
+  "BUT": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1039,
+    "y": 1452,
+    "w": 300,
+    "h": 300
+  },
+  "CAB2": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 435,
+    "y": 1472,
+    "w": 300,
+    "h": 300
+  },
+  "CAB3": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1734,
+    "w": 300,
+    "h": 300
+  },
+  "CAB6": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 737,
+    "y": 1472,
+    "w": 300,
+    "h": 300
+  },
+  "CAB7": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1341,
+    "y": 848,
+    "w": 300,
+    "h": 300
+  },
+  "CAN": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1341,
+    "y": 1150,
+    "w": 300,
+    "h": 300
+  },
+  "CAU": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1523,
+    "y": 1452,
+    "w": 300,
+    "h": 300
+  },
+  "CEA": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1472,
+    "y": 2,
+    "w": 300,
+    "h": 300
+  },
+  "CEL2": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1594,
+    "y": 304,
+    "w": 300,
+    "h": 300
+  },
+  "CLM": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1643,
+    "y": 848,
+    "w": 300,
+    "h": 300
+  },
+  "CML": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1643,
+    "y": 1150,
+    "w": 300,
+    "h": 300
+  },
+  "JPW": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 868,
+    "y": 606,
+    "w": 240,
+    "h": 240
+  },
+  "LET1": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1341,
+    "y": 1604,
+    "w": 138,
+    "h": 138
+  },
+  "MAN": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1341,
+    "y": 1452,
+    "w": 150,
+    "h": 150
+  },
+  "MAR2": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1896,
+    "y": 244,
+    "w": 150,
+    "h": 150
+  },
+  "MEX": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1110,
+    "y": 606,
+    "w": 240,
+    "h": 240
+  },
+  "MUS": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1896,
+    "y": 396,
+    "w": 150,
+    "h": 150
+  },
+  "PAK": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1039,
+    "y": 1754,
+    "w": 240,
+    "h": 240
+  },
+  "PEO": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 426,
+    "y": 1774,
+    "w": 240,
+    "h": 240
+  },
+  "PEP": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 668,
+    "y": 1774,
+    "w": 240,
+    "h": 240
+  },
+  "PEP1": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1281,
+    "y": 1754,
+    "w": 240,
+    "h": 240
+  },
+  "POP1": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 304,
+    "y": 1734,
+    "w": 120,
+    "h": 120
+  },
+  "POT1": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1523,
+    "y": 1754,
+    "w": 240,
+    "h": 240
+  },
+  "POT2": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1765,
+    "y": 1754,
+    "w": 240,
+    "h": 240
+  },
+  "QAL": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1352,
+    "y": 606,
+    "w": 240,
+    "h": 240
+  },
+  "RAD": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 304,
+    "y": 1856,
+    "w": 120,
+    "h": 120
+  },
+  "RAS": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1774,
+    "y": 2,
+    "w": 240,
+    "h": 240
+  },
+  "RHP": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1594,
+    "y": 606,
+    "w": 240,
+    "h": 240
+  },
+  "ROC": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 910,
+    "y": 1774,
+    "w": 120,
+    "h": 120
+  },
+  "SHA": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 910,
+    "y": 1896,
+    "w": 120,
+    "h": 120
+  },
+  "SOY": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1472,
+    "y": 304,
+    "w": 120,
+    "h": 120
+  },
+  "SPA": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 2,
+    "w": 431,
+    "h": 431
+  },
+  "SPR": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1472,
+    "y": 426,
+    "w": 120,
+    "h": 120
+  },
+  "SWS": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 435,
+    "w": 431,
+    "h": 431
+  },
+  "TRE3": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 868,
+    "w": 431,
+    "h": 431
+  },
+  "WEI": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 2,
+    "y": 1301,
+    "w": 431,
+    "h": 431
+  },
+  "WIN": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 435,
+    "y": 2,
+    "w": 431,
+    "h": 431
+  },
+  "WIS": {
+    "src": "/planner-reference/plants-au-9.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 435,
+    "y": 435,
+    "w": 431,
+    "h": 431
+  },
+  "CON": {
+    "src": "/planner-reference/plants-au-3.png",
+    "atlasWidth": 2048,
+    "atlasHeight": 2048,
+    "x": 1807,
+    "y": 1454,
+    "w": 210,
+    "h": 210
+  }
+}

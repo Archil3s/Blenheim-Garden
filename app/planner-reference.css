@@ -1,4 +1,6 @@
 /* Reference-led planner chrome. Garden coordinates and storage are unchanged. */
+@font-face { font-family: "Planner Nunito Sans"; src: url("/planner-reference/nunito-sans-regular.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: "Planner Nunito Sans"; src: url("/planner-reference/nunito-sans-semibold.woff2") format("woff2"); font-style: normal; font-weight: 600 900; font-display: swap; }
 .reference-planner {
   --gv-green: #10b98a;
   --gv-green-dark: #008c69;
@@ -7,7 +9,7 @@
   position: relative;
   padding-left: 64px;
   background: #f8f9f8;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Planner Nunito Sans", Arial, Helvetica, sans-serif;
 }
 .planner-app-nav { position: absolute; z-index: 90; inset: 0 auto 0 0; width: 64px; display: flex; flex-direction: column; background: #16bc8e; }
 .planner-app-nav > :is(a,button) { display: grid; place-items: center; width: 64px; min-height: 66px; border: 0; border-bottom: 1px solid #ffffff20; background: transparent; color: #008e71; text-decoration: none; }
@@ -112,3 +114,84 @@
 @media(max-width: 760px) { .reference-planner .planner-plan-actions { display: none; } }
 .reference-planner[data-zoom-tier] .planting-area-icons i { display: grid !important; }
 .reference-planner .planting-area.is-overview { background: #d8dbd750 !important; border-radius: 8px; }
+
+.reference-plant-art { position: relative; }
+.reference-high-art { display: none; }
+.garden-canvas .reference-plant-art { background-image: none !important; }
+.garden-canvas .reference-high-art { display: block; }
+.reference-planner .planting-area-icons i {
+  width: var(--area-icon-size) !important;
+  height: var(--area-icon-size) !important;
+  font-size: var(--area-icon-size) !important;
+  background: none !important;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.reference-planner .planting-area-icons i::before,
+.reference-planner .planting-area-icons i::after { content: none; }
+.reference-planner .planting-area,
+.reference-planner .planting-area.is-overview {
+  background: #d4d4d480 !important;
+  border: 0;
+  border-radius: 16px;
+  box-shadow: none !important;
+}
+.reference-planner .planting-area.selected { outline: 2px solid #00a879; }
+.reference-planner .plan-bed > .gv-v4-bed-title {
+  width: auto;
+  max-width: calc(100% - 8px);
+  background: none;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 0;
+  top: 4px;
+  left: 4px;
+}
+.reference-planner .planting-area-label {
+  inset: auto 2px 1px;
+  width: auto;
+  max-width: calc(100% - 4px);
+  font-size: 8px;
+  line-height: 1.1;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  color: #252525;
+  background: #ffffffb3;
+  font-weight: 400;
+}
+.reference-planner .path-object { background: #817d83 !important; border: 0 !important; border-radius: 0; box-shadow: none; }
+.reference-planner .path-object .layout-line-core { display: none; }
+.reference-planner .layout-label { border: 0; border-radius: 0; padding: 0; font-size: 7px; color: #333; background: #ffffffb3; }
+.reference-planner .north-zone { border: 1px solid #805b31 !important; background: transparent; }
+.reference-planner .berry-strip { border: 2px solid #805b31 !important; border-radius: 0; background: none !important; }
+.reference-planner .berry-strip > strong { font-size: 8px; font-weight: 600; color: #333 !important; }
+.reference-planner .berry-strip > div { height: calc(100% - 18px); padding: 2px 16px; }
+.reference-planner .berry-strip .reference-berry { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px; background: #d4d4d480; border-radius: 16px; font-size: 24px; }
+.reference-planner .berry-strip .reference-berry > span { display: block; min-height: 0 !important; border-radius: 0 !important; background: none !important; font-size: inherit; }
+.reference-planner .reference-berry small { font-size: 7px; color: #333; }
+.reference-planner .tree-object { background: #c6c6c680 !important; border: 0; box-shadow: none; filter: none; }
+.reference-planner .tree-object > span:first-child { font-size: 36px !important; width: 36px; height: 36px; background: none !important; box-shadow: none !important; }
+.reference-planner .tree-object::after { content: none; }
+.reference-planner .tree-object small { font-size: 8px; color: #333; background: #ffffffc0; border-radius: 0; padding: 0; }
+.reference-planner .row-dots { top: 0; align-items: center; height: 24px; }
+.reference-planner .row-dots i { width: 22px; height: 22px; font-size: 22px; border: 0; background: none; border-radius: 0; box-shadow: none; }
+.reference-planner .planting-row::before { background: #d4d4d480; height: 24px; top: 0; box-shadow: none; }
+.reference-planner .structure-object { background: none !important; border: 0 !important; box-shadow: none; }
+.reference-planner .structure-object::before, .reference-planner .structure-object::after { content: none; }
+.reference-planner .reference-structure-symbol { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.reference-planner .reference-structure-symbol > svg { display: block; }
+.reference-planner .gv-structure-preset-icon { display: grid; place-items: center; padding: 3px; background: #fff; }
+.reference-planner .structure-object > small { background: #ffffffb3; border-radius: 0; font-size: 8px; padding: 0; }
+.reference-object-group { border-bottom: 1px solid #eee; }
+.reference-object-group > summary { display: flex; flex-direction: column; justify-content: center; gap: 4px; min-height: 60px; padding: 9px 16px; cursor: pointer; list-style-position: inside; }
+.reference-object-group > summary strong { font-size: 13px; font-weight: 400; }
+.reference-object-group > summary small { font-size: 10px; color: #777; }
+.reference-object-group > summary::after { content: "⌄"; position: absolute; right: 16px; color: #68746e; }
+.reference-object-group > button { display: flex; width: 100%; align-items: center; gap: 12px; padding: 8px 16px; min-height: 60px; text-align: left; border: 0; border-top: 1px solid #f1f1f1; background: #fafafa; }
+.reference-object-group > button strong { display: block; font-size: 12px; font-weight: 400; color: #414844; }
+.reference-object-group > button small { display: block; font-size: 10px; color: #777; }
+.reference-object-group > button.active { background: #e5f3ec; }
+
+.reference-planner .plan-bed > .empty-bed-label { display: none; }

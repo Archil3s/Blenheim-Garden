@@ -1,4 +1,5 @@
 import type { PlannerStructureKind } from "@/lib/garden/planner-plan";
+import referenceObjects from "./reference-object-data.json";
 
 export type StructurePreset = {
   kind: PlannerStructureKind;
@@ -88,6 +89,14 @@ export const FULL_STRUCTURE_PRESETS: readonly StructurePreset[] = [...CORE_STRUC
   { kind: "trug", label: "Trug", icon: "▱", widthCm: 180, depthCm: 90, heightCm: 80 },
 ];
 
+export const REFERENCE_STRUCTURE_PRESETS: readonly StructurePreset[] = referenceObjects.objects.map((object) => ({
+  kind: `reference-${object.code}` as PlannerStructureKind,
+  label: `${object.name} · ${object.code}`, icon: "",
+  widthCm: Math.max(1, object.shape.initialWidth),
+  depthCm: Math.max(1, object.shape.initialHeight), heightCm: 100,
+}));
+export const ALL_STRUCTURE_PRESETS = [...FULL_STRUCTURE_PRESETS, ...REFERENCE_STRUCTURE_PRESETS];
+
 const renderKinds: Partial<Record<PlannerStructureKind, PlannerStructureKind>> = {
   "arbour": "pergola",
   "basket": "pot",
@@ -127,13 +136,24 @@ const renderKinds: Partial<Record<PlannerStructureKind, PlannerStructureKind>> =
 };
 
 export function structureRenderKind(kind: PlannerStructureKind): PlannerStructureKind {
+  if (kind.startsWith("reference-")) {
+    const object = referenceObjects.objects.find((item) => `reference-${item.code}` === kind);
+    const name = object?.name.toLowerCase() ?? "";
+    if (/greenhouse|plant house/.test(name)) return "greenhouse";
+    if (/tunnel|cover|cloche/.test(name)) return "polytunnel";
+    if (/shed|coop/.test(name)) return "shed";
+    if (/fence|arch|arbour|pergola|teepee|obelisk/.test(name)) return "pergola";
+    if (/bed|shelv|bench/.test(name)) return "raised-bed-timber";
+    if (/water|pond/.test(name)) return "rain-barrel";
+    return "pot";
+  }
   return renderKinds[kind] ?? kind;
 }
 
 export function isPlannerStructureKind(value: unknown): value is PlannerStructureKind {
-  return typeof value === "string" && FULL_STRUCTURE_PRESETS.some((preset) => preset.kind === value);
+  return typeof value === "string" && ALL_STRUCTURE_PRESETS.some((preset) => preset.kind === value);
 }
 
 export function structurePreset(kind: PlannerStructureKind) {
-  return FULL_STRUCTURE_PRESETS.find((preset) => preset.kind === kind) ?? STRUCTURE_PRESETS[0];
+  return ALL_STRUCTURE_PRESETS.find((preset) => preset.kind === kind) ?? STRUCTURE_PRESETS[0];
 }

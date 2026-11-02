@@ -1,0 +1,2147 @@
+{
+  "acacia": {
+    "code": "ACA",
+    "x": 0,
+    "y": 912
+  },
+  "african daisy": {
+    "code": "AFR",
+    "x": 836,
+    "y": 380
+  },
+  "agapanthus": {
+    "code": "AGP",
+    "x": 228,
+    "y": 912
+  },
+  "agastache": {
+    "code": "AGA",
+    "x": 760,
+    "y": 456
+  },
+  "ageratum": {
+    "code": "AGE",
+    "x": 570,
+    "y": 912
+  },
+  "allium (ornamental)": {
+    "code": "ALL",
+    "x": 798,
+    "y": 380
+  },
+  "almond": {
+    "code": "ALM",
+    "x": 532,
+    "y": 266
+  },
+  "alstroemeria": {
+    "code": "ALS",
+    "x": 76,
+    "y": 836
+  },
+  "alyssum": {
+    "code": "ALY",
+    "x": 532,
+    "y": 304
+  },
+  "amaranth (grain)": {
+    "code": "AMA",
+    "x": 266,
+    "y": 798
+  },
+  "amaranthus": {
+    "code": "AMA2",
+    "x": 760,
+    "y": 494
+  },
+  "anemone": {
+    "code": "ANE",
+    "x": 798,
+    "y": 418
+  },
+  "apple (cordon)": {
+    "code": "APP3",
+    "x": 532,
+    "y": 342
+  },
+  "apple (dwarf)": {
+    "code": "APP1",
+    "x": 532,
+    "y": 380
+  },
+  "apple (espalier)": {
+    "code": "APP4",
+    "x": 532,
+    "y": 418
+  },
+  "apple (large)": {
+    "code": "APP2",
+    "x": 532,
+    "y": 456
+  },
+  "apricot (dwarf)": {
+    "code": "APR1",
+    "x": 532,
+    "y": 494
+  },
+  "apricot (large)": {
+    "code": "APR2",
+    "x": 0,
+    "y": 532
+  },
+  "artichoke (globe)": {
+    "code": "ART",
+    "x": 38,
+    "y": 532
+  },
+  "artichoke (jerusalem)": {
+    "code": "ART2",
+    "x": 76,
+    "y": 532
+  },
+  "asparagus": {
+    "code": "ASP",
+    "x": 114,
+    "y": 532
+  },
+  "aster (china)": {
+    "code": "AST",
+    "x": 760,
+    "y": 532
+  },
+  "aster (new york)": {
+    "code": "AST2",
+    "x": 114,
+    "y": 836
+  },
+  "astilbe": {
+    "code": "AST3",
+    "x": 152,
+    "y": 836
+  },
+  "astrantia": {
+    "code": "AST4",
+    "x": 190,
+    "y": 836
+  },
+  "azalea": {
+    "code": "AZA",
+    "x": 190,
+    "y": 874
+  },
+  "banksia": {
+    "code": "BNK",
+    "x": 228,
+    "y": 874
+  },
+  "barley": {
+    "code": "BAR",
+    "x": 798,
+    "y": 912
+  },
+  "basil": {
+    "code": "BAS",
+    "x": 190,
+    "y": 532
+  },
+  "bay": {
+    "code": "BAY",
+    "x": 228,
+    "y": 532
+  },
+  "beans (borlotti)": {
+    "code": "BEA6",
+    "x": 266,
+    "y": 532
+  },
+  "beans (broad)": {
+    "code": "BEA1",
+    "x": 304,
+    "y": 532
+  },
+  "beans (climbing)": {
+    "code": "BEA3",
+    "x": 380,
+    "y": 532
+  },
+  "beans (dwarf)": {
+    "code": "BEA2",
+    "x": 342,
+    "y": 532
+  },
+  "beans (lima)": {
+    "code": "BEA4",
+    "x": 570,
+    "y": 722
+  },
+  "beautyberry": {
+    "code": "BBY",
+    "x": 266,
+    "y": 874
+  },
+  "beetroot": {
+    "code": "BEE",
+    "x": 418,
+    "y": 532
+  },
+  "beetroot (multi-sown)": {
+    "code": "BEE2",
+    "x": 950,
+    "y": 38
+  },
+  "begonia": {
+    "code": "BEG",
+    "x": 760,
+    "y": 570
+  },
+  "bells of ireland": {
+    "code": "BEL",
+    "x": 760,
+    "y": 608
+  },
+  "big bluestem": {
+    "code": "BBS",
+    "x": 912,
+    "y": 494
+  },
+  "black-eyed susan": {
+    "code": "BES",
+    "x": 228,
+    "y": 836
+  },
+  "blackberry": {
+    "code": "BLA",
+    "x": 456,
+    "y": 532
+  },
+  "blackcurrant": {
+    "code": "BLA2",
+    "x": 494,
+    "y": 532
+  },
+  "bleeding heart": {
+    "code": "BLE",
+    "x": 266,
+    "y": 836
+  },
+  "blue fescue": {
+    "code": "BLF",
+    "x": 912,
+    "y": 532
+  },
+  "bluebell": {
+    "code": "BLU2",
+    "x": 798,
+    "y": 456
+  },
+  "blueberry": {
+    "code": "BLU",
+    "x": 532,
+    "y": 532
+  },
+  "bok choi": {
+    "code": "BOK",
+    "x": 570,
+    "y": 0
+  },
+  "borage": {
+    "code": "BOR",
+    "x": 570,
+    "y": 38
+  },
+  "bottlebrush": {
+    "code": "BOT",
+    "x": 304,
+    "y": 874
+  },
+  "boysenberry": {
+    "code": "BOY",
+    "x": 456,
+    "y": 798
+  },
+  "brachyscome": {
+    "code": "BRA",
+    "x": 304,
+    "y": 836
+  },
+  "broccoli (green)": {
+    "code": "CAL",
+    "x": 570,
+    "y": 456
+  },
+  "broccoli (sprouting)": {
+    "code": "BRO",
+    "x": 570,
+    "y": 76
+  },
+  "brussels sprouts": {
+    "code": "BRU",
+    "x": 570,
+    "y": 114
+  },
+  "buckwheat": {
+    "code": "BUC",
+    "x": 570,
+    "y": 152
+  },
+  "buddleia": {
+    "code": "BUD",
+    "x": 380,
+    "y": 874
+  },
+  "bulb (general)": {
+    "code": "BUL",
+    "x": 190,
+    "y": 798
+  },
+  "butterfly weed": {
+    "code": "BUT",
+    "x": 342,
+    "y": 836
+  },
+  "buttonbush": {
+    "code": "BTB",
+    "x": 418,
+    "y": 874
+  },
+  "buxus": {
+    "code": "BOX",
+    "x": 342,
+    "y": 874
+  },
+  "cabbage (long maturity red)": {
+    "code": "CAB7",
+    "x": 570,
+    "y": 304
+  },
+  "cabbage (long maturity)": {
+    "code": "CAB3",
+    "x": 570,
+    "y": 342
+  },
+  "cabbage (medium maturity red)": {
+    "code": "CAB6",
+    "x": 570,
+    "y": 190
+  },
+  "cabbage (medium maturity)": {
+    "code": "CAB2",
+    "x": 570,
+    "y": 228
+  },
+  "cabbage (short maturity red)": {
+    "code": "CAB5",
+    "x": 570,
+    "y": 380
+  },
+  "cabbage (short maturity)": {
+    "code": "CAB1",
+    "x": 570,
+    "y": 418
+  },
+  "cactus": {
+    "code": "CAC",
+    "x": 266,
+    "y": 912
+  },
+  "calendula": {
+    "code": "CAL2",
+    "x": 570,
+    "y": 494
+  },
+  "camassia": {
+    "code": "CAM",
+    "x": 418,
+    "y": 836
+  },
+  "camellia": {
+    "code": "CML",
+    "x": 456,
+    "y": 874
+  },
+  "campanula": {
+    "code": "CMP",
+    "x": 456,
+    "y": 836
+  },
+  "candytuft": {
+    "code": "CDY",
+    "x": 494,
+    "y": 836
+  },
+  "capsicum": {
+    "code": "PEP",
+    "x": 684,
+    "y": 646
+  },
+  "carolina allspice": {
+    "code": "SWS",
+    "x": 912,
+    "y": 342
+  },
+  "carrot": {
+    "code": "CAR",
+    "x": 570,
+    "y": 532
+  },
+  "catnip": {
+    "code": "CAT",
+    "x": 0,
+    "y": 570
+  },
+  "cauliflower": {
+    "code": "CAU",
+    "x": 38,
+    "y": 570
+  },
+  "ceanothus": {
+    "code": "CEA",
+    "x": 494,
+    "y": 874
+  },
+  "celeriac": {
+    "code": "CEL2",
+    "x": 76,
+    "y": 570
+  },
+  "celery": {
+    "code": "CEL",
+    "x": 114,
+    "y": 570
+  },
+  "celosia": {
+    "code": "CEL3",
+    "x": 760,
+    "y": 646
+  },
+  "chamomile": {
+    "code": "CHA",
+    "x": 152,
+    "y": 570
+  },
+  "cherry (dwarf)": {
+    "code": "CHE1",
+    "x": 190,
+    "y": 570
+  },
+  "cherry (fan)": {
+    "code": "CHE3",
+    "x": 228,
+    "y": 570
+  },
+  "cherry (semi-dwarf)": {
+    "code": "CHE2",
+    "x": 266,
+    "y": 570
+  },
+  "chestnut (sweet)": {
+    "code": "CHE",
+    "x": 304,
+    "y": 570
+  },
+  "chicory": {
+    "code": "CHI",
+    "x": 342,
+    "y": 570
+  },
+  "chilli": {
+    "code": "PEP1",
+    "x": 760,
+    "y": 418
+  },
+  "chinese cabbage": {
+    "code": "CAB4",
+    "x": 570,
+    "y": 266
+  },
+  "chinese lantern plant": {
+    "code": "CLP",
+    "x": 532,
+    "y": 836
+  },
+  "chives": {
+    "code": "CHI2",
+    "x": 380,
+    "y": 570
+  },
+  "chives (garlic)": {
+    "code": "CHI3",
+    "x": 418,
+    "y": 570
+  },
+  "choisya": {
+    "code": "CHO",
+    "x": 532,
+    "y": 874
+  },
+  "chrysanthemum": {
+    "code": "CHR",
+    "x": 570,
+    "y": 836
+  },
+  "cineraria": {
+    "code": "CIN",
+    "x": 760,
+    "y": 684
+  },
+  "clematis": {
+    "code": "CLM",
+    "x": 912,
+    "y": 760
+  },
+  "cleome": {
+    "code": "CLE",
+    "x": 760,
+    "y": 722
+  },
+  "colchicum": {
+    "code": "COL3",
+    "x": 798,
+    "y": 494
+  },
+  "coleus": {
+    "code": "COL2",
+    "x": 0,
+    "y": 760
+  },
+  "collards": {
+    "code": "COL",
+    "x": 608,
+    "y": 722
+  },
+  "columbine": {
+    "code": "CLB",
+    "x": 608,
+    "y": 836
+  },
+  "comfrey": {
+    "code": "COM",
+    "x": 456,
+    "y": 570
+  },
+  "convolvulus": {
+    "code": "CON",
+    "x": 608,
+    "y": 912
+  },
+  "cordyline": {
+    "code": "CRD",
+    "x": 570,
+    "y": 874
+  },
+  "coreopsis": {
+    "code": "COR5",
+    "x": 38,
+    "y": 760
+  },
+  "coriander": {
+    "code": "COR3",
+    "x": 494,
+    "y": 570
+  },
+  "corn salad": {
+    "code": "COR2",
+    "x": 532,
+    "y": 570
+  },
+  "cornflower": {
+    "code": "COR4",
+    "x": 570,
+    "y": 570
+  },
+  "cosmos": {
+    "code": "COS",
+    "x": 608,
+    "y": 0
+  },
+  "cotton": {
+    "code": "COT",
+    "x": 646,
+    "y": 722
+  },
+  "cowpeas": {
+    "code": "CRO",
+    "x": 608,
+    "y": 190
+  },
+  "cranberry": {
+    "code": "CRA",
+    "x": 608,
+    "y": 76
+  },
+  "cress": {
+    "code": "CRE",
+    "x": 608,
+    "y": 114
+  },
+  "crimson clover": {
+    "code": "CLO",
+    "x": 608,
+    "y": 152
+  },
+  "crocus": {
+    "code": "CRO2",
+    "x": 798,
+    "y": 532
+  },
+  "cucamelon": {
+    "code": "CCM",
+    "x": 304,
+    "y": 798
+  },
+  "cucumber": {
+    "code": "CUC",
+    "x": 608,
+    "y": 228
+  },
+  "cuphea": {
+    "code": "CUP",
+    "x": 76,
+    "y": 760
+  },
+  "daffodil": {
+    "code": "DAF",
+    "x": 798,
+    "y": 570
+  },
+  "dahlia": {
+    "code": "DAH",
+    "x": 798,
+    "y": 608
+  },
+  "daylily": {
+    "code": "DAY",
+    "x": 798,
+    "y": 646
+  },
+  "delphinium": {
+    "code": "DEL",
+    "x": 646,
+    "y": 836
+  },
+  "deutzia": {
+    "code": "DEU",
+    "x": 608,
+    "y": 874
+  },
+  "dianthus": {
+    "code": "DIA",
+    "x": 114,
+    "y": 760
+  },
+  "dill": {
+    "code": "DIL",
+    "x": 608,
+    "y": 266
+  },
+  "dogwood (flowering)": {
+    "code": "DOG2",
+    "x": 836,
+    "y": 912
+  },
+  "dogwood (red-stemmed)": {
+    "code": "DOG",
+    "x": 38,
+    "y": 912
+  },
+  "echinacea": {
+    "code": "ECH",
+    "x": 608,
+    "y": 304
+  },
+  "eggplant": {
+    "code": "AUB",
+    "x": 152,
+    "y": 532
+  },
+  "elderberry": {
+    "code": "ELD",
+    "x": 494,
+    "y": 798
+  },
+  "endive": {
+    "code": "END",
+    "x": 608,
+    "y": 342
+  },
+  "eucalyptus": {
+    "code": "EUC",
+    "x": 76,
+    "y": 912
+  },
+  "evening primrose": {
+    "code": "EPR",
+    "x": 684,
+    "y": 836
+  },
+  "faba bean": {
+    "code": "FIE",
+    "x": 456,
+    "y": 722
+  },
+  "false bishop's weed": {
+    "code": "BIS",
+    "x": 836,
+    "y": 418
+  },
+  "fennel": {
+    "code": "FEN",
+    "x": 608,
+    "y": 380
+  },
+  "fennel (herb)": {
+    "code": "FEN2",
+    "x": 608,
+    "y": 418
+  },
+  "fenugreek": {
+    "code": "FEN3",
+    "x": 608,
+    "y": 456
+  },
+  "feverfew": {
+    "code": "FEV",
+    "x": 608,
+    "y": 494
+  },
+  "field peas": {
+    "code": "PEA2",
+    "x": 494,
+    "y": 722
+  },
+  "fig": {
+    "code": "FIG",
+    "x": 608,
+    "y": 532
+  },
+  "fig (container grown)": {
+    "code": "FIG2",
+    "x": 608,
+    "y": 570
+  },
+  "flax": {
+    "code": "FLA",
+    "x": 646,
+    "y": 912
+  },
+  "flower": {
+    "code": "FLO4",
+    "x": 114,
+    "y": 608
+  },
+  "forget-me-not": {
+    "code": "FMN",
+    "x": 836,
+    "y": 722
+  },
+  "forsythia": {
+    "code": "FOR",
+    "x": 646,
+    "y": 874
+  },
+  "fountain grass": {
+    "code": "FOU",
+    "x": 912,
+    "y": 570
+  },
+  "foxglove": {
+    "code": "FOX",
+    "x": 722,
+    "y": 836
+  },
+  "fruit (trellised)": {
+    "code": "FRU3",
+    "x": 684,
+    "y": 722
+  },
+  "fruit bush": {
+    "code": "FRU1",
+    "x": 152,
+    "y": 608
+  },
+  "fruit tree": {
+    "code": "FRU2",
+    "x": 190,
+    "y": 608
+  },
+  "fuchsia": {
+    "code": "FCH",
+    "x": 760,
+    "y": 836
+  },
+  "gaillardia": {
+    "code": "GAI",
+    "x": 152,
+    "y": 760
+  },
+  "garlic": {
+    "code": "GAR",
+    "x": 228,
+    "y": 608
+  },
+  "gazania": {
+    "code": "GAZ",
+    "x": 190,
+    "y": 760
+  },
+  "geranium": {
+    "code": "GER",
+    "x": 228,
+    "y": 760
+  },
+  "gerbera daisy": {
+    "code": "GRD",
+    "x": 798,
+    "y": 836
+  },
+  "geum": {
+    "code": "GEU",
+    "x": 836,
+    "y": 836
+  },
+  "ginger": {
+    "code": "GIN",
+    "x": 760,
+    "y": 0
+  },
+  "gladiolus": {
+    "code": "GLA",
+    "x": 798,
+    "y": 684
+  },
+  "goji berry": {
+    "code": "GOJ",
+    "x": 532,
+    "y": 798
+  },
+  "goldenrod": {
+    "code": "GOL",
+    "x": 874,
+    "y": 0
+  },
+  "gomphrena": {
+    "code": "GOM",
+    "x": 266,
+    "y": 760
+  },
+  "gooseberry": {
+    "code": "GOO",
+    "x": 266,
+    "y": 608
+  },
+  "gourd": {
+    "code": "GOU",
+    "x": 722,
+    "y": 722
+  },
+  "grain": {
+    "code": "GRA2",
+    "x": 874,
+    "y": 912
+  },
+  "grape vine": {
+    "code": "GRA",
+    "x": 304,
+    "y": 608
+  },
+  "grape vine (red)": {
+    "code": "GRA3",
+    "x": 570,
+    "y": 798
+  },
+  "grapefruit": {
+    "code": "GRP",
+    "x": 836,
+    "y": 0
+  },
+  "green manure": {
+    "code": "GRE",
+    "x": 342,
+    "y": 608
+  },
+  "ground cherry": {
+    "code": "GRO",
+    "x": 342,
+    "y": 798
+  },
+  "gypsophila": {
+    "code": "GYP",
+    "x": 304,
+    "y": 760
+  },
+  "hairy vetch": {
+    "code": "VET",
+    "x": 380,
+    "y": 608
+  },
+  "hakone grass": {
+    "code": "HAK",
+    "x": 912,
+    "y": 608
+  },
+  "hazelnut": {
+    "code": "HAZ",
+    "x": 418,
+    "y": 608
+  },
+  "helenium": {
+    "code": "HLN",
+    "x": 874,
+    "y": 76
+  },
+  "heliotrope": {
+    "code": "HEL",
+    "x": 684,
+    "y": 912
+  },
+  "hellebore": {
+    "code": "HLB",
+    "x": 874,
+    "y": 38
+  },
+  "herb": {
+    "code": "HER",
+    "x": 456,
+    "y": 608
+  },
+  "heuchera": {
+    "code": "HEU",
+    "x": 874,
+    "y": 114
+  },
+  "hibiscus": {
+    "code": "HIB",
+    "x": 684,
+    "y": 874
+  },
+  "holly": {
+    "code": "HLY",
+    "x": 304,
+    "y": 912
+  },
+  "hollyhock": {
+    "code": "HOL",
+    "x": 874,
+    "y": 152
+  },
+  "honesty": {
+    "code": "HST",
+    "x": 836,
+    "y": 760
+  },
+  "honeyberry": {
+    "code": "HON",
+    "x": 722,
+    "y": 912
+  },
+  "honeydew (melon)": {
+    "code": "MEL",
+    "x": 152,
+    "y": 646
+  },
+  "honeysuckle": {
+    "code": "HSC",
+    "x": 912,
+    "y": 798
+  },
+  "honeywort": {
+    "code": "HNW",
+    "x": 836,
+    "y": 456
+  },
+  "hops": {
+    "code": "HOP",
+    "x": 494,
+    "y": 608
+  },
+  "horseradish": {
+    "code": "HOR",
+    "x": 532,
+    "y": 608
+  },
+  "hosta": {
+    "code": "HOS",
+    "x": 874,
+    "y": 190
+  },
+  "houseleek": {
+    "code": "HOU",
+    "x": 874,
+    "y": 228
+  },
+  "hyacinth": {
+    "code": "HYA",
+    "x": 798,
+    "y": 722
+  },
+  "hydrangea": {
+    "code": "HYD",
+    "x": 722,
+    "y": 874
+  },
+  "impatiens": {
+    "code": "IMP",
+    "x": 342,
+    "y": 760
+  },
+  "iris": {
+    "code": "IRI",
+    "x": 798,
+    "y": 760
+  },
+  "joe pye weed": {
+    "code": "JPW",
+    "x": 874,
+    "y": 266
+  },
+  "jonquil": {
+    "code": "JON",
+    "x": 874,
+    "y": 304
+  },
+  "jostaberry": {
+    "code": "JOS",
+    "x": 570,
+    "y": 608
+  },
+  "kale": {
+    "code": "KAL",
+    "x": 608,
+    "y": 608
+  },
+  "kangaroo grass": {
+    "code": "KAN",
+    "x": 912,
+    "y": 646
+  },
+  "kiwi": {
+    "code": "KIW",
+    "x": 646,
+    "y": 0
+  },
+  "kohlrabi": {
+    "code": "KOH",
+    "x": 646,
+    "y": 38
+  },
+  "kumquat": {
+    "code": "KUM",
+    "x": 836,
+    "y": 38
+  },
+  "lantana": {
+    "code": "LAN",
+    "x": 760,
+    "y": 912
+  },
+  "larkspur": {
+    "code": "LAR",
+    "x": 380,
+    "y": 760
+  },
+  "lavatera": {
+    "code": "LAV2",
+    "x": 418,
+    "y": 760
+  },
+  "lavender": {
+    "code": "LAV",
+    "x": 646,
+    "y": 76
+  },
+  "leek": {
+    "code": "LEE",
+    "x": 646,
+    "y": 114
+  },
+  "leek (multi-sown)": {
+    "code": "LEE2",
+    "x": 950,
+    "y": 76
+  },
+  "lemon": {
+    "code": "LEM4",
+    "x": 646,
+    "y": 152
+  },
+  "lemon (container grown)": {
+    "code": "LEM5",
+    "x": 646,
+    "y": 190
+  },
+  "lemon balm": {
+    "code": "LEM",
+    "x": 646,
+    "y": 228
+  },
+  "lemon grass": {
+    "code": "LEM3",
+    "x": 760,
+    "y": 38
+  },
+  "lemon verbena": {
+    "code": "LEM2",
+    "x": 646,
+    "y": 266
+  },
+  "lettuce (headed)": {
+    "code": "LET2",
+    "x": 646,
+    "y": 304
+  },
+  "lettuce (lambs)": {
+    "code": "LET3",
+    "x": 646,
+    "y": 342
+  },
+  "lettuce (loose leaf)": {
+    "code": "LET1",
+    "x": 646,
+    "y": 380
+  },
+  "lettuce (miners)": {
+    "code": "LET4",
+    "x": 646,
+    "y": 418
+  },
+  "leucojum": {
+    "code": "LEU",
+    "x": 874,
+    "y": 342
+  },
+  "lilac": {
+    "code": "LLC",
+    "x": 760,
+    "y": 874
+  },
+  "lily": {
+    "code": "LIL",
+    "x": 0,
+    "y": 798
+  },
+  "lily of the valley": {
+    "code": "LLV",
+    "x": 874,
+    "y": 380
+  },
+  "lime": {
+    "code": "LIM",
+    "x": 646,
+    "y": 456
+  },
+  "lime (container grown)": {
+    "code": "LIM2",
+    "x": 646,
+    "y": 494
+  },
+  "livingstone daisy": {
+    "code": "LIV",
+    "x": 836,
+    "y": 494
+  },
+  "lobelia": {
+    "code": "LOB",
+    "x": 456,
+    "y": 760
+  },
+  "loganberry": {
+    "code": "LOG",
+    "x": 646,
+    "y": 532
+  },
+  "lovage": {
+    "code": "LOV",
+    "x": 646,
+    "y": 570
+  },
+  "luffa": {
+    "code": "LUF",
+    "x": 380,
+    "y": 798
+  },
+  "lupin": {
+    "code": "LUP",
+    "x": 874,
+    "y": 418
+  },
+  "magnolia": {
+    "code": "MAG",
+    "x": 342,
+    "y": 912
+  },
+  "mahonia": {
+    "code": "MAH",
+    "x": 798,
+    "y": 874
+  },
+  "mandarin": {
+    "code": "MAO",
+    "x": 836,
+    "y": 76
+  },
+  "maple (japanese)": {
+    "code": "MAP",
+    "x": 114,
+    "y": 912
+  },
+  "marguerite daisy": {
+    "code": "MGD",
+    "x": 874,
+    "y": 456
+  },
+  "marigold": {
+    "code": "MAR2",
+    "x": 0,
+    "y": 646
+  },
+  "marjoram": {
+    "code": "MAJ",
+    "x": 38,
+    "y": 646
+  },
+  "marrow": {
+    "code": "MAR",
+    "x": 76,
+    "y": 646
+  },
+  "medlar": {
+    "code": "MED",
+    "x": 114,
+    "y": 646
+  },
+  "mexican sunflower": {
+    "code": "MEX",
+    "x": 836,
+    "y": 532
+  },
+  "milkweed": {
+    "code": "MIL",
+    "x": 874,
+    "y": 494
+  },
+  "mimosa": {
+    "code": "MIM",
+    "x": 152,
+    "y": 912
+  },
+  "mint": {
+    "code": "MIN",
+    "x": 190,
+    "y": 646
+  },
+  "mizuna": {
+    "code": "MIZ",
+    "x": 228,
+    "y": 646
+  },
+  "mock orange": {
+    "code": "MOC",
+    "x": 836,
+    "y": 874
+  },
+  "monarda": {
+    "code": "MON",
+    "x": 266,
+    "y": 646
+  },
+  "mulberry": {
+    "code": "MUL",
+    "x": 836,
+    "y": 152
+  },
+  "muscari": {
+    "code": "MUS2",
+    "x": 38,
+    "y": 798
+  },
+  "mustard": {
+    "code": "MUS",
+    "x": 304,
+    "y": 646
+  },
+  "nasturtium": {
+    "code": "NAS",
+    "x": 342,
+    "y": 646
+  },
+  "nectarine (dwarf)": {
+    "code": "NEC1",
+    "x": 380,
+    "y": 646
+  },
+  "nectarine (large)": {
+    "code": "NEC2",
+    "x": 418,
+    "y": 646
+  },
+  "nemesia": {
+    "code": "NEM",
+    "x": 836,
+    "y": 570
+  },
+  "nettles": {
+    "code": "NET",
+    "x": 494,
+    "y": 912
+  },
+  "new zealand flax": {
+    "code": "NZF",
+    "x": 874,
+    "y": 532
+  },
+  "nicotiana": {
+    "code": "NIC",
+    "x": 494,
+    "y": 760
+  },
+  "nigella": {
+    "code": "NIG",
+    "x": 532,
+    "y": 760
+  },
+  "ninebark": {
+    "code": "NIN",
+    "x": 874,
+    "y": 874
+  },
+  "oats": {
+    "code": "OAT",
+    "x": 456,
+    "y": 646
+  },
+  "okra": {
+    "code": "OKR",
+    "x": 494,
+    "y": 646
+  },
+  "olive": {
+    "code": "OLI",
+    "x": 836,
+    "y": 190
+  },
+  "onion (autumn planted)": {
+    "code": "ONI5",
+    "x": 570,
+    "y": 646
+  },
+  "onion (multi-sown)": {
+    "code": "ONI6",
+    "x": 950,
+    "y": 114
+  },
+  "onion (spring planted)": {
+    "code": "ONI",
+    "x": 532,
+    "y": 646
+  },
+  "onions (autumn red)": {
+    "code": "ONI4",
+    "x": 646,
+    "y": 646
+  },
+  "onions (perennial)": {
+    "code": "ONI3",
+    "x": 608,
+    "y": 646
+  },
+  "orange": {
+    "code": "ORA",
+    "x": 684,
+    "y": 0
+  },
+  "orange (container grown)": {
+    "code": "ORA2",
+    "x": 684,
+    "y": 38
+  },
+  "oregano": {
+    "code": "ORE",
+    "x": 684,
+    "y": 76
+  },
+  "osteospermum": {
+    "code": "OST",
+    "x": 570,
+    "y": 760
+  },
+  "other (large)": {
+    "code": "OTH3",
+    "x": 684,
+    "y": 114
+  },
+  "other (medium)": {
+    "code": "OTH2",
+    "x": 684,
+    "y": 152
+  },
+  "other (perennial)": {
+    "code": "OTH4",
+    "x": 684,
+    "y": 190
+  },
+  "other (small)": {
+    "code": "OTH1",
+    "x": 684,
+    "y": 228
+  },
+  "pak choi": {
+    "code": "PAK",
+    "x": 684,
+    "y": 266
+  },
+  "pansy": {
+    "code": "PAN",
+    "x": 608,
+    "y": 760
+  },
+  "parsley": {
+    "code": "PAR2",
+    "x": 684,
+    "y": 304
+  },
+  "parsnip": {
+    "code": "PAR",
+    "x": 684,
+    "y": 342
+  },
+  "passionfruit": {
+    "code": "PAS",
+    "x": 608,
+    "y": 798
+  },
+  "peach (dwarf)": {
+    "code": "PEA8",
+    "x": 684,
+    "y": 380
+  },
+  "peach (large)": {
+    "code": "PEA9",
+    "x": 684,
+    "y": 418
+  },
+  "peanut": {
+    "code": "PEA3",
+    "x": 760,
+    "y": 76
+  },
+  "pear (cordon)": {
+    "code": "PEA6",
+    "x": 684,
+    "y": 456
+  },
+  "pear (dwarf)": {
+    "code": "PEA4",
+    "x": 684,
+    "y": 494
+  },
+  "pear (espalier)": {
+    "code": "PEA7",
+    "x": 684,
+    "y": 532
+  },
+  "pear (large)": {
+    "code": "PEA5",
+    "x": 684,
+    "y": 570
+  },
+  "peas (multi-sown)": {
+    "code": "PEA1",
+    "x": 950,
+    "y": 152
+  },
+  "peas (shelling)": {
+    "code": "PEA",
+    "x": 684,
+    "y": 608
+  },
+  "pecan": {
+    "code": "PEC",
+    "x": 760,
+    "y": 114
+  },
+  "penstemon": {
+    "code": "PEN",
+    "x": 874,
+    "y": 570
+  },
+  "peony": {
+    "code": "PEO",
+    "x": 874,
+    "y": 608
+  },
+  "persimmon": {
+    "code": "PER",
+    "x": 0,
+    "y": 684
+  },
+  "petunia": {
+    "code": "PET2",
+    "x": 646,
+    "y": 760
+  },
+  "phacelia": {
+    "code": "PHA",
+    "x": 38,
+    "y": 684
+  },
+  "phlox (annual)": {
+    "code": "PHL",
+    "x": 684,
+    "y": 760
+  },
+  "photinia": {
+    "code": "PHO",
+    "x": 912,
+    "y": 0
+  },
+  "plum (dwarf)": {
+    "code": "PLU1",
+    "x": 76,
+    "y": 684
+  },
+  "plum (fan)": {
+    "code": "PLU3",
+    "x": 114,
+    "y": 684
+  },
+  "plum (large)": {
+    "code": "PLU2",
+    "x": 152,
+    "y": 684
+  },
+  "poached egg plant": {
+    "code": "POA",
+    "x": 190,
+    "y": 684
+  },
+  "polyanthus": {
+    "code": "PRI",
+    "x": 874,
+    "y": 684
+  },
+  "pomegranate": {
+    "code": "POM",
+    "x": 228,
+    "y": 684
+  },
+  "poppy (annual)": {
+    "code": "POP1",
+    "x": 836,
+    "y": 608
+  },
+  "poppy (perennial)": {
+    "code": "POP2",
+    "x": 874,
+    "y": 646
+  },
+  "portulaca": {
+    "code": "POR",
+    "x": 722,
+    "y": 760
+  },
+  "potatoes (early)": {
+    "code": "POT1",
+    "x": 266,
+    "y": 684
+  },
+  "potatoes (maincrop)": {
+    "code": "POT2",
+    "x": 304,
+    "y": 684
+  },
+  "prairie dropseed": {
+    "code": "PRD",
+    "x": 912,
+    "y": 684
+  },
+  "prickly pear cactus": {
+    "code": "PPC",
+    "x": 380,
+    "y": 836
+  },
+  "pulmonaria": {
+    "code": "PUL",
+    "x": 874,
+    "y": 722
+  },
+  "pumpkin": {
+    "code": "SQU",
+    "x": 722,
+    "y": 418
+  },
+  "pumpkin (round)": {
+    "code": "PUM",
+    "x": 342,
+    "y": 684
+  },
+  "queen anne's lace": {
+    "code": "QAL",
+    "x": 836,
+    "y": 798
+  },
+  "quince": {
+    "code": "QUI2",
+    "x": 836,
+    "y": 228
+  },
+  "quinoa": {
+    "code": "QUI",
+    "x": 228,
+    "y": 798
+  },
+  "radicchio": {
+    "code": "RAD2",
+    "x": 760,
+    "y": 152
+  },
+  "radish": {
+    "code": "RAD",
+    "x": 380,
+    "y": 684
+  },
+  "radish (multi-sown)": {
+    "code": "RAD3",
+    "x": 950,
+    "y": 190
+  },
+  "ranunculus": {
+    "code": "RAN",
+    "x": 874,
+    "y": 760
+  },
+  "raspberry": {
+    "code": "RAS",
+    "x": 418,
+    "y": 684
+  },
+  "red hot poker": {
+    "code": "RHP",
+    "x": 874,
+    "y": 798
+  },
+  "redcurrant": {
+    "code": "RED",
+    "x": 456,
+    "y": 684
+  },
+  "rhododendron": {
+    "code": "RHO",
+    "x": 912,
+    "y": 38
+  },
+  "rhubarb": {
+    "code": "RHU",
+    "x": 494,
+    "y": 684
+  },
+  "rocket": {
+    "code": "ROC",
+    "x": 532,
+    "y": 684
+  },
+  "rockmelon": {
+    "code": "CAN",
+    "x": 760,
+    "y": 380
+  },
+  "rose": {
+    "code": "ROS2",
+    "x": 760,
+    "y": 760
+  },
+  "rose (climbing)": {
+    "code": "ROS3",
+    "x": 912,
+    "y": 76
+  },
+  "rose campion": {
+    "code": "ROS4",
+    "x": 380,
+    "y": 912
+  },
+  "rosemary": {
+    "code": "ROS",
+    "x": 570,
+    "y": 684
+  },
+  "rye (annual)": {
+    "code": "RYE1",
+    "x": 608,
+    "y": 684
+  },
+  "rye (cereal)": {
+    "code": "RYE2",
+    "x": 646,
+    "y": 684
+  },
+  "sage": {
+    "code": "SAG",
+    "x": 684,
+    "y": 684
+  },
+  "salpiglossis": {
+    "code": "SAL2",
+    "x": 798,
+    "y": 0
+  },
+  "salsify": {
+    "code": "SAL",
+    "x": 722,
+    "y": 0
+  },
+  "salvia": {
+    "code": "SAG2",
+    "x": 722,
+    "y": 38
+  },
+  "salvia (perennial)": {
+    "code": "SAL3",
+    "x": 798,
+    "y": 38
+  },
+  "satsuma mandarin": {
+    "code": "SAT",
+    "x": 836,
+    "y": 342
+  },
+  "scabiosa (sweet)": {
+    "code": "SCA2",
+    "x": 798,
+    "y": 76
+  },
+  "scilla": {
+    "code": "SCI",
+    "x": 76,
+    "y": 798
+  },
+  "scorzonera": {
+    "code": "SCO",
+    "x": 722,
+    "y": 76
+  },
+  "sedum (creeping)": {
+    "code": "SED1",
+    "x": 874,
+    "y": 836
+  },
+  "shallots": {
+    "code": "SHA",
+    "x": 722,
+    "y": 114
+  },
+  "shallots (multi-sown)": {
+    "code": "SHA3",
+    "x": 950,
+    "y": 228
+  },
+  "shrub": {
+    "code": "SHR",
+    "x": 912,
+    "y": 912
+  },
+  "silver beet": {
+    "code": "SWI",
+    "x": 722,
+    "y": 684
+  },
+  "skimmia": {
+    "code": "SKI",
+    "x": 912,
+    "y": 114
+  },
+  "smoke bush": {
+    "code": "SMO",
+    "x": 912,
+    "y": 152
+  },
+  "snapdragon": {
+    "code": "SNA",
+    "x": 798,
+    "y": 114
+  },
+  "snow pea": {
+    "code": "MAN",
+    "x": 646,
+    "y": 608
+  },
+  "snowberry": {
+    "code": "SNB",
+    "x": 912,
+    "y": 190
+  },
+  "snowdrop": {
+    "code": "SNO",
+    "x": 114,
+    "y": 798
+  },
+  "sorrel": {
+    "code": "SOR",
+    "x": 722,
+    "y": 152
+  },
+  "soya beans": {
+    "code": "SOY",
+    "x": 722,
+    "y": 190
+  },
+  "spinach": {
+    "code": "SPI",
+    "x": 722,
+    "y": 228
+  },
+  "spinach (climbing)": {
+    "code": "SPI4",
+    "x": 760,
+    "y": 190
+  },
+  "spinach (multi-sown)": {
+    "code": "SPI5",
+    "x": 950,
+    "y": 266
+  },
+  "spinach (new zealand)": {
+    "code": "SPI2",
+    "x": 722,
+    "y": 266
+  },
+  "spinach (perpetual)": {
+    "code": "SPI3",
+    "x": 722,
+    "y": 304
+  },
+  "spindleberry": {
+    "code": "SPB",
+    "x": 912,
+    "y": 228
+  },
+  "spirea": {
+    "code": "SPA",
+    "x": 912,
+    "y": 266
+  },
+  "spring onion": {
+    "code": "SPR",
+    "x": 722,
+    "y": 342
+  },
+  "spring onion (multi-sown)": {
+    "code": "SPR2",
+    "x": 950,
+    "y": 304
+  },
+  "squash": {
+    "code": "SQU2",
+    "x": 722,
+    "y": 380
+  },
+  "stachys": {
+    "code": "STA2",
+    "x": 532,
+    "y": 912
+  },
+  "star jasmine": {
+    "code": "STJ",
+    "x": 912,
+    "y": 836
+  },
+  "statice": {
+    "code": "STA",
+    "x": 836,
+    "y": 646
+  },
+  "stevia": {
+    "code": "STE",
+    "x": 722,
+    "y": 456
+  },
+  "stock": {
+    "code": "STO",
+    "x": 798,
+    "y": 152
+  },
+  "stock (night-scented)": {
+    "code": "STO2",
+    "x": 836,
+    "y": 684
+  },
+  "stonecrop": {
+    "code": "SED2",
+    "x": 0,
+    "y": 874
+  },
+  "strawberry": {
+    "code": "STR",
+    "x": 722,
+    "y": 494
+  },
+  "strawflower": {
+    "code": "STR2",
+    "x": 798,
+    "y": 190
+  },
+  "sugarbush protea": {
+    "code": "SUG",
+    "x": 912,
+    "y": 304
+  },
+  "summer savory": {
+    "code": "SAV",
+    "x": 418,
+    "y": 798
+  },
+  "sunflower": {
+    "code": "SUN",
+    "x": 722,
+    "y": 532
+  },
+  "swede": {
+    "code": "SWE",
+    "x": 722,
+    "y": 570
+  },
+  "sweet pea": {
+    "code": "SPE",
+    "x": 798,
+    "y": 228
+  },
+  "sweet potato": {
+    "code": "SWE2",
+    "x": 722,
+    "y": 608
+  },
+  "sweet william": {
+    "code": "SWT",
+    "x": 0,
+    "y": 836
+  },
+  "sweet woodruff": {
+    "code": "SWW",
+    "x": 38,
+    "y": 874
+  },
+  "sweetcorn": {
+    "code": "SWE1",
+    "x": 722,
+    "y": 646
+  },
+  "tansy": {
+    "code": "TAN",
+    "x": 760,
+    "y": 228
+  },
+  "tarragon": {
+    "code": "TAR",
+    "x": 0,
+    "y": 722
+  },
+  "tatsoi": {
+    "code": "TAT",
+    "x": 38,
+    "y": 722
+  },
+  "thyme": {
+    "code": "THY",
+    "x": 76,
+    "y": 722
+  },
+  "tomatillo": {
+    "code": "TOM3",
+    "x": 760,
+    "y": 266
+  },
+  "tomato (cherry)": {
+    "code": "TOM1",
+    "x": 114,
+    "y": 722
+  },
+  "tomato (regular)": {
+    "code": "TOM2",
+    "x": 152,
+    "y": 722
+  },
+  "tree (large)": {
+    "code": "TRE2",
+    "x": 190,
+    "y": 722
+  },
+  "tree (sapling)": {
+    "code": "TRE3",
+    "x": 950,
+    "y": 0
+  },
+  "tree (small)": {
+    "code": "TRE1",
+    "x": 228,
+    "y": 722
+  },
+  "tufted hair grass": {
+    "code": "THG",
+    "x": 912,
+    "y": 722
+  },
+  "tulip": {
+    "code": "TUL",
+    "x": 152,
+    "y": 798
+  },
+  "turnip": {
+    "code": "TUR",
+    "x": 266,
+    "y": 722
+  },
+  "turnip (multi-sown)": {
+    "code": "TUR2",
+    "x": 950,
+    "y": 342
+  },
+  "valerian": {
+    "code": "VAL",
+    "x": 304,
+    "y": 722
+  },
+  "verbascum": {
+    "code": "VER3",
+    "x": 76,
+    "y": 874
+  },
+  "verbena (annual)": {
+    "code": "VER",
+    "x": 798,
+    "y": 266
+  },
+  "verbena (perennial)": {
+    "code": "VER2",
+    "x": 114,
+    "y": 874
+  },
+  "viburnum": {
+    "code": "VIB",
+    "x": 912,
+    "y": 380
+  },
+  "vinca (annual)": {
+    "code": "VIN",
+    "x": 798,
+    "y": 304
+  },
+  "viola": {
+    "code": "VIO",
+    "x": 798,
+    "y": 342
+  },
+  "wallflower": {
+    "code": "WLF",
+    "x": 38,
+    "y": 836
+  },
+  "wallflower (perennial)": {
+    "code": "WLS",
+    "x": 418,
+    "y": 912
+  },
+  "walnut": {
+    "code": "WAL",
+    "x": 342,
+    "y": 722
+  },
+  "watermelon": {
+    "code": "WAT",
+    "x": 760,
+    "y": 304
+  },
+  "weigela": {
+    "code": "WEI",
+    "x": 912,
+    "y": 418
+  },
+  "wheat": {
+    "code": "WHE",
+    "x": 380,
+    "y": 722
+  },
+  "white currant": {
+    "code": "WHI",
+    "x": 418,
+    "y": 722
+  },
+  "winter jasmine": {
+    "code": "WIN",
+    "x": 912,
+    "y": 456
+  },
+  "wisteria": {
+    "code": "WIS",
+    "x": 912,
+    "y": 874
+  },
+  "witch hazel": {
+    "code": "WIT",
+    "x": 190,
+    "y": 912
+  },
+  "yarrow": {
+    "code": "YAR",
+    "x": 760,
+    "y": 342
+  },
+  "yucca": {
+    "code": "YUC",
+    "x": 152,
+    "y": 874
+  },
+  "zinnia": {
+    "code": "ZIN",
+    "x": 532,
+    "y": 722
+  },
+  "zucchini": {
+    "code": "COU",
+    "x": 608,
+    "y": 38
+  },
+  "pineapple": {
+    "code": "PIN",
+    "x": 646,
+    "y": 798
+  },
+  "avocado": {
+    "code": "AVO",
+    "x": 684,
+    "y": 798
+  },
+  "banana": {
+    "code": "BAN",
+    "x": 722,
+    "y": 798
+  },
+  "dragon fruit": {
+    "code": "DRA",
+    "x": 760,
+    "y": 798
+  },
+  "guava": {
+    "code": "GUA",
+    "x": 798,
+    "y": 798
+  },
+  "mango": {
+    "code": "MNG",
+    "x": 836,
+    "y": 114
+  },
+  "plantain": {
+    "code": "PLA",
+    "x": 836,
+    "y": 266
+  },
+  "paw paw": {
+    "code": "PAP",
+    "x": 836,
+    "y": 304
+  },
+  "coconut": {
+    "code": "COC",
+    "x": 456,
+    "y": 912
+  }
+}

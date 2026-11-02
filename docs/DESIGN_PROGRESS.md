@@ -152,3 +152,28 @@ still differ from GrowVeg and this is not described as exact visual parity.
 The first layout pass passed 52 interaction/regression checks at four sizes.
 The final crop-rendering/ribbon pass passed all 28 relevant browser checks at four sizes. Lint and production build pass. All four screenshots were inspected. Screenshots
 are retained in outputs/reference-layout/ and the Playwright artifacts.
+
+## Original artwork P-004 — 2 November 2026
+
+User explicitly requested exact images/style and then chose to keep the existing
+bed positions. Replaced placeholder plant drawings with the original regional
+catalogue sprite sheet and high-resolution atlas frames. Imported all 432 source
+plant records (including repeated generic names), 203 garden-object variants,
+1,086 original texture frames plus the Convolvulus alias, 33 standalone fill
+textures and the reference Nunito Sans fonts. Source URLs/hashes are recorded
+in REFERENCE_ASSETS.json. No credentials or private garden payloads are included.
+New factual plant spacing comes from the reference; existing crop defaults remain.
+
+Object variants are grouped rather than shown as duplicate top-level search
+results. Original single-image, path-tile and nine-slice art renders in 2D; local
+3D procedural models remain. Existing 36/71-preset exports remain compatible.
+Reference kinds are validated separately and stored in the existing structure
+path. All original non-null object sprite parts resolve to local atlas frames.
+
+The canvas uses original symbols, flat paths, grey planting zones and canopy,
+outlined beds, compact labels and the reference font. Existing bed coordinates
+were explicitly checked unchanged by the browser interaction test. Full product
+parity and original-art exports remain incomplete; see PLANNER_REBUILD.md.
+
+Validation: the 64-check planner/designer/report/persistence/artwork suite passed across all four sizes. Lint and production build pass. Final canopy and low-zoom corrections passed 12 focused checks across all four sizes; final screenshots were inspected.
+No production deployment or merge.

@@ -87,6 +87,7 @@ export type PlannerTree = {
 };
 
 export type PlannerStructureKind =
+  | `reference-${string}`
   | "greenhouse"
   | "polytunnel"
   | "shed"

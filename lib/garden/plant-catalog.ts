@@ -1,3 +1,4 @@
+import referencePlantData from "./reference-plant-data.json";
 import { referencePlantNames } from "./plant-reference-names";
 
 export type PlantType = "Vegetable" | "Fruit" | "Herb" | "Flower" | "Native";
@@ -52,10 +53,13 @@ function catalogueType(name: string): PlantType {
 }
 
 const knownNames = new Set(establishedPlants.map((plant) => plant.name));
-const additions: PlantOption[] = referencePlantNames.filter((name) => !knownNames.has(name)).map((name) => {
+const observedNames = [...new Set([...referencePlantNames, ...referencePlantData.map((plant) => plant.name.trim())])];
+const additions: PlantOption[] = observedNames.filter((name) => !knownNames.has(name)).map((name) => {
   const baseName = name.split(" (")[0];
   const existing = establishedPlants.find((plant) => plant.name === baseName);
   if (existing) return { ...existing, name, varieties: [...existing.varieties] };
+  const reference = referencePlantData.find((plant) => plant.name.trim() === name);
+  if (reference && reference.spacingCm > 0) return { name, type: catalogueType(name), icon: "🌱", spacingCm: reference.spacingCm, spacing: `${reference.spacingCm} cm`, varieties: [name] };
   unverifiedPlantNames.add(name);
   return { name, type: catalogueType(name), icon: "🌱", spacingCm: 30,
     spacing: "Set from seed packet", varieties: [name] };

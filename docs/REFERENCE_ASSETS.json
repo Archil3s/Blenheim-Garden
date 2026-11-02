@@ -1,0 +1,272 @@
+{
+  "retrieved": "2026-11-02",
+  "sources": [
+    "https://www.growveg.com.au/wgp-assets/textures/6/definitions/au-textures.json",
+    "https://www.growveg.com.au/wgp-assets/data/garden-objects/2/garden-objects-au.json",
+    "https://cdn.growinginteractive.com/configs/plants/1.0/plants-au.json"
+  ],
+  "plantRecords": 432,
+  "objectVariants": 203,
+  "files": [
+    {
+      "name": "catalogue-sprites.png",
+      "bytes": 3907687,
+      "sha256": "16788fdcbcb01e6c593edc8f0c0328b4843ec105964fa27dd6d06c9ccf4f5a35"
+    },
+    {
+      "name": "garden-objects-au-0.png",
+      "bytes": 721547,
+      "sha256": "8871aecb877868b101f0540fe1d69fd212b270c4083eccc738873a9e252a4fe6"
+    },
+    {
+      "name": "garden-objects-au-1.png",
+      "bytes": 733491,
+      "sha256": "8ae1a89f006e32878d6d34db47cf078d0f537f9b865381b92e2d6addd161f3b5"
+    },
+    {
+      "name": "nineslice-au.png",
+      "bytes": 1301815,
+      "sha256": "95f0e9080b9e1516f4f303e2775139d418426443b871f72bbeb159f7813d0ed8"
+    },
+    {
+      "name": "nunito-sans-regular.woff2",
+      "bytes": 16920,
+      "sha256": "6b6bdb341440c662d46a4fe200f47772ede3040d2ce52ecfcab8f017f4fa2738"
+    },
+    {
+      "name": "nunito-sans-semibold.woff2",
+      "bytes": 16900,
+      "sha256": "d18c05b903e42fe072a80fb16a7aae87c94e506237fce86f68ad8241fa70f759"
+    },
+    {
+      "name": "plants-au-0.png",
+      "bytes": 2293384,
+      "sha256": "a37cf032ae0a94aeee2fbf594507cbd552bdbd0f055cf77d0f59fd0067a82118"
+    },
+    {
+      "name": "plants-au-1.png",
+      "bytes": 1656267,
+      "sha256": "7dee4067048716eb1de2c3c06ceb5f848c484a6ffe11f4acc0838cc7a6f829ca"
+    },
+    {
+      "name": "plants-au-10.png",
+      "bytes": 2660585,
+      "sha256": "54907e7fb315d74cc18aeec572f38975ce7b34e7368e1b9243ebedf792fa7e7f"
+    },
+    {
+      "name": "plants-au-11.png",
+      "bytes": 2687409,
+      "sha256": "1f15df61e9124918790cc0ef506be03c260c6094976f7985f90736ccb29794bf"
+    },
+    {
+      "name": "plants-au-12.png",
+      "bytes": 1631719,
+      "sha256": "eb6ea4595034f2f9774374176be05f0d50e5b1c92a456d0f80b082cb04b9277a"
+    },
+    {
+      "name": "plants-au-2.png",
+      "bytes": 2182852,
+      "sha256": "9f5b0b7ecc0ee583a4fa95a22ac80cee5f168f72caca7bd2546359fb9f57a9d5"
+    },
+    {
+      "name": "plants-au-3.png",
+      "bytes": 1830235,
+      "sha256": "adac7960a8b888a9c1cbb851abdf5f4780ce0f3150eb1e7e9a42ea126302524c"
+    },
+    {
+      "name": "plants-au-4.png",
+      "bytes": 1806089,
+      "sha256": "8e7ae49c5b4d10b0b2e5a0d0925a7dc1b6fd04e2cfd71e4df04a55a2e3136ab2"
+    },
+    {
+      "name": "plants-au-5.png",
+      "bytes": 1716480,
+      "sha256": "7cbb5d5eed217ac0f30b7e4697a5379f0302882d862bc4cb49b0f01242a5c6e2"
+    },
+    {
+      "name": "plants-au-6.png",
+      "bytes": 2600604,
+      "sha256": "2c8a98a18e4286b81b623f953412cddce71760c4171ade231f5a4f3f5d7a7ca4"
+    },
+    {
+      "name": "plants-au-7.png",
+      "bytes": 2786532,
+      "sha256": "377a704159e9ad9d3290e0f25e7a53e6c9924793236046c9796eabe8e72215ec"
+    },
+    {
+      "name": "plants-au-8.png",
+      "bytes": 1961159,
+      "sha256": "ee9c2908deade652fd289fd30f29369454511353d55e39eff02d1d3aa4665b73"
+    },
+    {
+      "name": "plants-au-9.png",
+      "bytes": 2533733,
+      "sha256": "0653da65128281e337f211a419aea43a9bc7f68b5757b66652cf520c250cecd2"
+    },
+    {
+      "name": "TX01.png",
+      "bytes": 26881,
+      "sha256": "fdc5881c2d4729116380a8f1dc452c668154f1e26e162839bd426063b7fdb3b0"
+    },
+    {
+      "name": "TX02.png",
+      "bytes": 15970,
+      "sha256": "cab96d0601e07af69110584ffe4e0596bc13736bc5aec8f5c5d485f898a5fae4"
+    },
+    {
+      "name": "TX03.png",
+      "bytes": 16545,
+      "sha256": "38093c27163bd3b32a3bab2b7d4c2c258a03aa91b11bbbeed4f484caefd39e43"
+    },
+    {
+      "name": "TX04.png",
+      "bytes": 24900,
+      "sha256": "ff474b4394480a7b8ee01932d2a3a1d075c0d6222c5670bbc62b42cda0bc2645"
+    },
+    {
+      "name": "TX05.png",
+      "bytes": 14505,
+      "sha256": "90e72f86a0c6fa4affb48a5a5e2dce883ae44197469da42ca049e099fda464a4"
+    },
+    {
+      "name": "TX06.png",
+      "bytes": 17021,
+      "sha256": "9638751addeab73ef1fa039c04d94fecdd8a65fb4055dba387dc4d4a954b872e"
+    },
+    {
+      "name": "TX07.png",
+      "bytes": 28617,
+      "sha256": "ab01cc6dfa9e0fb3f9a8ce89b461a5ff41bd79a3c323a47457a614d98a6c21da"
+    },
+    {
+      "name": "TX08.png",
+      "bytes": 14034,
+      "sha256": "3369f0cfd2fe4b4724192dbaccf385b34eb75bdb7585fb11b6041c45563acdf5"
+    },
+    {
+      "name": "TX09.png",
+      "bytes": 15453,
+      "sha256": "075914fe7e1fd1cab37336ff8ac4e15d8ff1f906186be52359e11e160f2967ba"
+    },
+    {
+      "name": "TX11.png",
+      "bytes": 41550,
+      "sha256": "d3572ea226d83aacc7405c121b22e0d1c99265f59eb65029f4469fcfc25427e3"
+    },
+    {
+      "name": "TX12.png",
+      "bytes": 38271,
+      "sha256": "abd88ee1426b21e605c6d8b70e2b1682829574ac7471788df4151bc8c502afd5"
+    },
+    {
+      "name": "TX13.png",
+      "bytes": 39432,
+      "sha256": "e45544e0754b1540cae2e8b901649600516fa2e240bc53aa33ab915a05b2c26f"
+    },
+    {
+      "name": "TX20.png",
+      "bytes": 100621,
+      "sha256": "c8cb9f849277b07673f6ab628990c023fae588ede006e60078c2f20c1b12ee7e"
+    },
+    {
+      "name": "TX21.png",
+      "bytes": 98644,
+      "sha256": "75a1976c1057c73317e1de4dc777bca0ff97f49bf6a43c2b79edbc507679ebe1"
+    },
+    {
+      "name": "TX22.png",
+      "bytes": 96600,
+      "sha256": "96dac0ccfc75f2421e7b19c84dc96ac71a7ef301765a864dd78f311a20a733fa"
+    },
+    {
+      "name": "TX23.png",
+      "bytes": 165075,
+      "sha256": "6d4ee5a708026ce49b27c6b5d59a2f9abecbf267f279ca4c6cd775dc93ec798e"
+    },
+    {
+      "name": "TX24.png",
+      "bytes": 22727,
+      "sha256": "69ff5583276ecdb5a443f0b9e6dd081449196b5bf3ef79cdff1fae41e3ba6d7c"
+    },
+    {
+      "name": "TX30.png",
+      "bytes": 142664,
+      "sha256": "579f99240309ef3f575f62b065874bdbcf1f440b9b772ece2e5e531471774c7b"
+    },
+    {
+      "name": "TX31.png",
+      "bytes": 145700,
+      "sha256": "6c5b5ff73b7515e26eeacbe3bd7f8ccea90ea5cc75bc2db7f36b8e1dc75a08d4"
+    },
+    {
+      "name": "TX40.png",
+      "bytes": 30215,
+      "sha256": "e4c5bb5ad4f7f23cd88df4cb1c905a890024c561b42ac4df085287fc9d49ca37"
+    },
+    {
+      "name": "TX41.png",
+      "bytes": 33157,
+      "sha256": "4660c0a7cf54369d711ebf32b79773f6ba7bba14370ab5f6225429f3d15ae0e3"
+    },
+    {
+      "name": "TX42.png",
+      "bytes": 13006,
+      "sha256": "44b200e0a7cda1a3e1065ccf6b5d36cd009fa5bc8f96e7b7a7631a4f2ed9f694"
+    },
+    {
+      "name": "TX43.png",
+      "bytes": 25773,
+      "sha256": "eaabb0e14e33a23b4af5c68eeaf694fc495e44fda6aae3883be94f0025aa3b09"
+    },
+    {
+      "name": "TX50.png",
+      "bytes": 24484,
+      "sha256": "8882536de0580715afce8d809f83fad9567efc0bf7c0be7136553bfbce847532"
+    },
+    {
+      "name": "TX51.png",
+      "bytes": 102454,
+      "sha256": "0fa03c90ccba2f1d2bc68be5bd98d130cb232a3823d5acdf80f17963a0e9a7f0"
+    },
+    {
+      "name": "TX52.png",
+      "bytes": 26134,
+      "sha256": "c5aae2573b91f5e28f43331a93d40c308ef774e6d0d3f994a3ec9bbcee17654c"
+    },
+    {
+      "name": "TX60.png",
+      "bytes": 120990,
+      "sha256": "141f1d1dd4a31a29aba5be693111cb9664e078627179415beb7ac1fb5b657c6a"
+    },
+    {
+      "name": "TX61.png",
+      "bytes": 183603,
+      "sha256": "86cfd6e69bdd09b7a8fe11864c0e08061fcd56aeded023af2e80062c95b70732"
+    },
+    {
+      "name": "TX62.png",
+      "bytes": 112897,
+      "sha256": "3be8bb7a2e01c1cfe06079e7438dc33cfaf36b26be8b3f07bfd515608c603337"
+    },
+    {
+      "name": "TX63.png",
+      "bytes": 44950,
+      "sha256": "0431792c8e576404b509a630a46d96835450680959a972a48162f12ecda71b7a"
+    },
+    {
+      "name": "TX64.png",
+      "bytes": 177665,
+      "sha256": "61ca7a9cc48705ffe821421674d30c9295df046fbc0963961a96c674c8f6049c"
+    },
+    {
+      "name": "TX65.png",
+      "bytes": 83246,
+      "sha256": "54a2d51e1743624af2d6d165c744ffe0faa8b41a3f13acc862a6722f6136d9d2"
+    },
+    {
+      "name": "TX66.png",
+      "bytes": 46309,
+      "sha256": "7fe2ee1ca92ecc5ecca4da26fb41ab02fa9467771dae2aa3ad73f5ed6052084c"
+    }
+  ]
+}

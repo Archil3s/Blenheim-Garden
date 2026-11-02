@@ -154,8 +154,8 @@ function parseLayoutObject(raw: unknown, index: number): PlannerLayoutObject {
 
   if (type === "structure") {
     if (!isPlannerStructureKind(object.kind)) throw new Error(`Structure ${index + 1} has an invalid type.`);
-    if (!finite(object.widthCm) || object.widthCm < 30 || object.widthCm > CANVAS_WIDTH) throw new Error(`Structure ${index + 1} has an invalid width.`);
-    if (!finite(object.depthCm) || object.depthCm < 30 || object.depthCm > CANVAS_HEIGHT) throw new Error(`Structure ${index + 1} has an invalid depth.`);
+    if (!finite(object.widthCm) || object.widthCm < (object.kind.startsWith("reference-") ? 1 : 30) || object.widthCm > CANVAS_WIDTH) throw new Error(`Structure ${index + 1} has an invalid width.`);
+    if (!finite(object.depthCm) || object.depthCm < (object.kind.startsWith("reference-") ? 1 : 30) || object.depthCm > CANVAS_HEIGHT) throw new Error(`Structure ${index + 1} has an invalid depth.`);
     if (!finite(object.heightCm) || object.heightCm < 20 || object.heightCm > 600) throw new Error(`Structure ${index + 1} has an invalid height.`);
     const rotationDeg = finite(object.rotationDeg) ? normalizeRotation(object.rotationDeg) : 0;
     return {

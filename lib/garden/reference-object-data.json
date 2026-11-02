@@ -1,0 +1,7152 @@
+{
+  "objects": [
+    {
+      "code": "DR11",
+      "name": "Start",
+      "group": "irrigation-parts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 10,
+        "initialHeight": 24,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "DR11",
+          "width": 10,
+          "height": 24,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "DR31",
+      "name": "Hose Filter",
+      "group": "irrigation-parts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 42,
+        "initialHeight": 48,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "DR31",
+          "width": 42,
+          "height": 48,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "DR26",
+      "name": "Transfer Barb",
+      "group": "irrigation-parts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 13,
+        "initialHeight": 7,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "DR26",
+          "width": 13,
+          "height": 7,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "DR12",
+      "name": "End",
+      "group": "irrigation-parts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 9,
+        "initialHeight": 24,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "DR12",
+          "width": 9,
+          "height": 24,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "DR27",
+      "name": "Repair Plug",
+      "group": "irrigation-parts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 5,
+        "initialHeight": 13,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "DR27",
+          "width": 5,
+          "height": 13,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "DR01",
+      "name": "Supply Tubing (1/2\")",
+      "group": "irrigation-tubing",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 30,
+        "initialHeight": 6,
+        "sprite": {
+          "names": [
+            "DR01_1",
+            "DR01_2",
+            "DR01_3",
+            "DR01_4",
+            "DR01_5",
+            "DR01_6",
+            "DR01_7",
+            "DR01_8",
+            "DR01_9",
+            "DR01_10"
+          ],
+          "height": 6,
+          "width": 3,
+          "type": "PATH"
+        }
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "DR32",
+      "name": "PSI Regulator",
+      "group": "irrigation-parts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 9,
+        "initialHeight": 18,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "DR32",
+          "width": 9,
+          "height": 18,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "DR33",
+      "name": "Timer",
+      "group": "irrigation-parts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 18,
+        "initialHeight": 24,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "DR33",
+          "width": 18,
+          "height": 24,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "DR02",
+      "name": "Supply Tubing (1/4\")",
+      "group": "irrigation-tubing",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 30,
+        "initialHeight": 4,
+        "sprite": {
+          "names": [
+            "DR02_1",
+            "DR02_2",
+            "DR02_3",
+            "DR02_4",
+            "DR02_5",
+            "DR02_6",
+            "DR02_7",
+            "DR02_8",
+            "DR02_9",
+            "DR02_10"
+          ],
+          "height": 4,
+          "width": 3,
+          "type": "PATH"
+        }
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "DR03",
+      "name": "Emitter Tubing (1/2\")",
+      "group": "irrigation-tubing",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 27,
+        "initialHeight": 6,
+        "sprite": {
+          "names": [
+            "DR03_1",
+            "DR03_2",
+            "DR03_3",
+            "DR03_4",
+            "DR03_5",
+            "DR03_6",
+            "DR03_7",
+            "DR03_8",
+            "DR03_9"
+          ],
+          "height": 6,
+          "width": 3,
+          "type": "PATH"
+        }
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "DR04",
+      "name": "Dripline (1/4\")",
+      "group": "irrigation-tubing",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 30,
+        "initialHeight": 4,
+        "sprite": {
+          "names": [
+            "DR04_1",
+            "DR04_2",
+            "DR04_3",
+            "DR04_4",
+            "DR04_5",
+            "DR04_6",
+            "DR04_7",
+            "DR04_8",
+            "DR04_9",
+            "DR04_10"
+          ],
+          "height": 4,
+          "width": 3,
+          "type": "PATH"
+        }
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "DR13",
+      "name": "Coupler",
+      "group": "irrigation-parts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 24,
+        "initialHeight": 6,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "DR13",
+          "width": 24,
+          "height": 6,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "DR14",
+      "name": "T-Junction",
+      "group": "irrigation-parts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 24,
+        "initialHeight": 19,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "DR14",
+          "width": 24,
+          "height": 19,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "DR15",
+      "name": "Elbow",
+      "group": "irrigation-parts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 23,
+        "initialHeight": 24,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "DR15",
+          "width": 23,
+          "height": 24,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "DR16",
+      "name": "Connector Barb",
+      "group": "irrigation-parts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 7,
+        "initialHeight": 24,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "DR16",
+          "width": 7,
+          "height": 24,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "DR34",
+      "name": "Emitter",
+      "group": "irrigation-parts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 12,
+        "initialHeight": 12,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "DR34",
+          "width": 12,
+          "height": 12,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "DR41",
+      "name": "Tap",
+      "group": "irrigation-parts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 24,
+        "initialHeight": 24,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "DR41",
+          "width": 24,
+          "height": 24,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "PD01",
+      "name": "Pond",
+      "group": "ponds",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 50,
+        "initialHeight": 50,
+        "minWidth": 60,
+        "minHeight": 60,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 20,
+          "marginHeight": 20,
+          "spriteWidth": 20,
+          "spriteHeight": 20,
+          "names": {
+            "M": "PD01",
+            "B": "PD01_B",
+            "BL": "PD01_BL",
+            "BR": "PD01_BR",
+            "L": "PD01_L",
+            "R": "PD01_R",
+            "T": "PD01_T",
+            "TR": "PD01_TR",
+            "TL": "PD01_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CF01",
+      "name": "Cold Frame (Wood)",
+      "group": "cold-frames",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 44,
+        "initialHeight": 65,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 3,
+        "internalHeightMargin": 6,
+        "sprite": {
+          "marginWidth": 3,
+          "marginHeight": 6,
+          "spriteWidth": 37,
+          "spriteHeight": 54,
+          "names": {
+            "M": "CF01",
+            "B": "CF01_B",
+            "BL": "CF01_BL",
+            "BR": "CF01_BR",
+            "L": "CF01_L",
+            "R": "CF01_R",
+            "T": "CF01_T",
+            "TR": "CF01_TR",
+            "TL": "CF01_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CF02",
+      "name": "Cold Frame (Aluminium)",
+      "group": "cold-frames",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 44,
+        "initialHeight": 65,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 3,
+        "internalHeightMargin": 6,
+        "sprite": {
+          "marginWidth": 3,
+          "marginHeight": 6,
+          "spriteWidth": 37,
+          "spriteHeight": 54,
+          "names": {
+            "M": "CF02",
+            "B": "CF02_B",
+            "BL": "CF02_BL",
+            "BR": "CF02_BR",
+            "L": "CF02_L",
+            "R": "CF02_R",
+            "T": "CF02_T",
+            "TR": "CF02_TR",
+            "TL": "CF02_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "GH01",
+      "name": "Greenhouse ( 4' Wide)",
+      "group": "greenhouses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 82,
+        "initialHeight": 122,
+        "minWidth": 30,
+        "minHeight": 122,
+        "maxWidth": 0,
+        "maxHeight": 122,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 11,
+          "marginHeight": 4,
+          "spriteWidth": 61,
+          "spriteHeight": 114,
+          "names": {
+            "M": "GH01",
+            "B": "GH01_B",
+            "BL": "GH01_BL",
+            "BR": "GH01_BR",
+            "L": "GH01_L",
+            "R": "GH01_R",
+            "T": "GH01_T",
+            "TR": "GH01_TR",
+            "TL": "GH01_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "GH02",
+      "name": "Greenhouse ( 5' Wide)",
+      "group": "greenhouses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 82,
+        "initialHeight": 160,
+        "minWidth": 30,
+        "minHeight": 160,
+        "maxWidth": 0,
+        "maxHeight": 160,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 11,
+          "marginHeight": 4,
+          "spriteWidth": 61,
+          "spriteHeight": 152,
+          "names": {
+            "M": "GH02",
+            "B": "GH02_B",
+            "BL": "GH02_BL",
+            "BR": "GH02_BR",
+            "L": "GH02_L",
+            "R": "GH02_R",
+            "T": "GH02_T",
+            "TR": "GH02_TR",
+            "TL": "GH02_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "GH03",
+      "name": "Greenhouse ( 6' Wide)",
+      "group": "greenhouses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 82,
+        "initialHeight": 183,
+        "minWidth": 30,
+        "minHeight": 183,
+        "maxWidth": 0,
+        "maxHeight": 183,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 11,
+          "marginHeight": 4,
+          "spriteWidth": 61,
+          "spriteHeight": 175,
+          "names": {
+            "M": "GH03",
+            "B": "GH03_B",
+            "BL": "GH03_BL",
+            "BR": "GH03_BR",
+            "L": "GH03_L",
+            "R": "GH03_R",
+            "T": "GH03_T",
+            "TR": "GH03_TR",
+            "TL": "GH03_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "GH04",
+      "name": "Greenhouse ( 8' Wide)",
+      "group": "greenhouses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 82,
+        "initialHeight": 244,
+        "minWidth": 30,
+        "minHeight": 244,
+        "maxWidth": 0,
+        "maxHeight": 244,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 11,
+          "marginHeight": 4,
+          "spriteWidth": 61,
+          "spriteHeight": 236,
+          "names": {
+            "M": "GH04",
+            "B": "GH04_B",
+            "BL": "GH04_BL",
+            "BR": "GH04_BR",
+            "L": "GH04_L",
+            "R": "GH04_R",
+            "T": "GH04_T",
+            "TR": "GH04_TR",
+            "TL": "GH04_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "GH05",
+      "name": "Greenhouse (10' Wide)",
+      "group": "greenhouses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 82,
+        "initialHeight": 312,
+        "minWidth": 30,
+        "minHeight": 312,
+        "maxWidth": 0,
+        "maxHeight": 312,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 11,
+          "marginHeight": 4,
+          "spriteWidth": 61,
+          "spriteHeight": 304,
+          "names": {
+            "M": "GH05",
+            "B": "GH05_B",
+            "BL": "GH05_BL",
+            "BR": "GH05_BR",
+            "L": "GH05_L",
+            "R": "GH05_R",
+            "T": "GH05_T",
+            "TR": "GH05_TR",
+            "TL": "GH05_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "GH06",
+      "name": "Greenhouse (Scaleable)",
+      "group": "greenhouses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 69,
+        "initialHeight": 69,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 4,
+          "marginHeight": 4,
+          "spriteWidth": 61,
+          "spriteHeight": 61,
+          "names": {
+            "M": "GH06",
+            "B": "GH06_B",
+            "BL": "GH06_BL",
+            "BR": "GH06_BR",
+            "L": "GH06_L",
+            "R": "GH06_R",
+            "T": "GH06_T",
+            "TR": "GH06_TR",
+            "TL": "GH06_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "GH21",
+      "name": "Greenhouse (Heated, 4' Wide)",
+      "group": "heated-greenhouses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 82,
+        "initialHeight": 122,
+        "minWidth": 30,
+        "minHeight": 122,
+        "maxWidth": 0,
+        "maxHeight": 122,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 11,
+          "marginHeight": 4,
+          "spriteWidth": 61,
+          "spriteHeight": 114,
+          "names": {
+            "M": "GH21",
+            "B": "GH21_B",
+            "BL": "GH21_BL",
+            "BR": "GH21_BR",
+            "L": "GH21_L",
+            "R": "GH21_R",
+            "T": "GH21_T",
+            "TR": "GH21_TR",
+            "TL": "GH21_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "GH22",
+      "name": "Greenhouse (Heated, 5' Wide)",
+      "group": "heated-greenhouses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 82,
+        "initialHeight": 160,
+        "minWidth": 30,
+        "minHeight": 160,
+        "maxWidth": 0,
+        "maxHeight": 160,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 11,
+          "marginHeight": 4,
+          "spriteWidth": 61,
+          "spriteHeight": 152,
+          "names": {
+            "M": "GH22",
+            "B": "GH22_B",
+            "BL": "GH22_BL",
+            "BR": "GH22_BR",
+            "L": "GH22_L",
+            "R": "GH22_R",
+            "T": "GH22_T",
+            "TR": "GH22_TR",
+            "TL": "GH22_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "GH23",
+      "name": "Greenhouse (Heated, 6' Wide)",
+      "group": "heated-greenhouses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 82,
+        "initialHeight": 183,
+        "minWidth": 30,
+        "minHeight": 183,
+        "maxWidth": 0,
+        "maxHeight": 183,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 11,
+          "marginHeight": 4,
+          "spriteWidth": 61,
+          "spriteHeight": 175,
+          "names": {
+            "M": "GH23",
+            "B": "GH23_B",
+            "BL": "GH23_BL",
+            "BR": "GH23_BR",
+            "L": "GH23_L",
+            "R": "GH23_R",
+            "T": "GH23_T",
+            "TR": "GH23_TR",
+            "TL": "GH23_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "GH24",
+      "name": "Greenhouse (Heated, 8' Wide)",
+      "group": "heated-greenhouses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 82,
+        "initialHeight": 244,
+        "minWidth": 30,
+        "minHeight": 244,
+        "maxWidth": 0,
+        "maxHeight": 244,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 11,
+          "marginHeight": 4,
+          "spriteWidth": 61,
+          "spriteHeight": 236,
+          "names": {
+            "M": "GH24",
+            "B": "GH24_B",
+            "BL": "GH24_BL",
+            "BR": "GH24_BR",
+            "L": "GH24_L",
+            "R": "GH24_R",
+            "T": "GH24_T",
+            "TR": "GH24_TR",
+            "TL": "GH24_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "GH25",
+      "name": "Greenhouse (Heated,10' Wide)",
+      "group": "heated-greenhouses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 82,
+        "initialHeight": 312,
+        "minWidth": 30,
+        "minHeight": 312,
+        "maxWidth": 0,
+        "maxHeight": 312,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 11,
+          "marginHeight": 4,
+          "spriteWidth": 61,
+          "spriteHeight": 304,
+          "names": {
+            "M": "GH25",
+            "B": "GH25_B",
+            "BL": "GH25_BL",
+            "BR": "GH25_BR",
+            "L": "GH25_L",
+            "R": "GH25_R",
+            "T": "GH25_T",
+            "TR": "GH25_TR",
+            "TL": "GH25_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "GH26",
+      "name": "Greenhouse (Heated,Scaleable)",
+      "group": "heated-greenhouses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 69,
+        "initialHeight": 69,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 4,
+          "marginHeight": 4,
+          "spriteWidth": 61,
+          "spriteHeight": 61,
+          "names": {
+            "M": "GH26",
+            "B": "GH26_B",
+            "BL": "GH26_BL",
+            "BR": "GH26_BR",
+            "L": "GH26_L",
+            "R": "GH26_R",
+            "T": "GH26_T",
+            "TR": "GH26_TR",
+            "TL": "GH26_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH01",
+      "name": "Shed ( 4' Wide)",
+      "group": "sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 124,
+        "minWidth": 30,
+        "minHeight": 124,
+        "maxWidth": 0,
+        "maxHeight": 124,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 2,
+          "spriteWidth": 61,
+          "spriteHeight": 120,
+          "names": {
+            "M": "SH01",
+            "B": "SH01_B",
+            "BL": "SH01_BL",
+            "BR": "SH01_BR",
+            "L": "SH01_L",
+            "R": "SH01_R",
+            "T": "SH01_T",
+            "TR": "SH01_TR",
+            "TL": "SH01_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH02",
+      "name": "Shed ( 5' Wide)",
+      "group": "sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 156,
+        "minWidth": 30,
+        "minHeight": 156,
+        "maxWidth": 0,
+        "maxHeight": 156,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 2,
+          "spriteWidth": 61,
+          "spriteHeight": 152,
+          "names": {
+            "M": "SH02",
+            "B": "SH02_B",
+            "BL": "SH02_BL",
+            "BR": "SH02_BR",
+            "L": "SH02_L",
+            "R": "SH02_R",
+            "T": "SH02_T",
+            "TR": "SH02_TR",
+            "TL": "SH02_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH03",
+      "name": "Shed ( 6' Wide)",
+      "group": "sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 183,
+        "minWidth": 30,
+        "minHeight": 183,
+        "maxWidth": 0,
+        "maxHeight": 183,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 2,
+          "spriteWidth": 61,
+          "spriteHeight": 179,
+          "names": {
+            "M": "SH03",
+            "B": "SH03_B",
+            "BL": "SH03_BL",
+            "BR": "SH03_BR",
+            "L": "SH03_L",
+            "R": "SH03_R",
+            "T": "SH03_T",
+            "TR": "SH03_TR",
+            "TL": "SH03_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH04",
+      "name": "Shed ( 8' Wide)",
+      "group": "sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 244,
+        "minWidth": 30,
+        "minHeight": 244,
+        "maxWidth": 0,
+        "maxHeight": 244,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 2,
+          "spriteWidth": 61,
+          "spriteHeight": 240,
+          "names": {
+            "M": "SH04",
+            "B": "SH04_B",
+            "BL": "SH04_BL",
+            "BR": "SH04_BR",
+            "L": "SH04_L",
+            "R": "SH04_R",
+            "T": "SH04_T",
+            "TR": "SH04_TR",
+            "TL": "SH04_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH05",
+      "name": "Shed (10' Wide)",
+      "group": "sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 304,
+        "minWidth": 30,
+        "minHeight": 304,
+        "maxWidth": 0,
+        "maxHeight": 304,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 2,
+          "spriteWidth": 61,
+          "spriteHeight": 300,
+          "names": {
+            "M": "SH05",
+            "B": "SH05_B",
+            "BL": "SH05_BL",
+            "BR": "SH05_BR",
+            "L": "SH05_L",
+            "R": "SH05_R",
+            "T": "SH05_T",
+            "TR": "SH05_TR",
+            "TL": "SH05_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH21",
+      "name": "Shed (Pent  4' Wide)",
+      "group": "pent-roof-sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 122,
+        "minWidth": 30,
+        "minHeight": 122,
+        "maxWidth": 0,
+        "maxHeight": 122,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 3,
+          "spriteWidth": 61,
+          "spriteHeight": 115,
+          "names": {
+            "M": "SH21",
+            "B": "SH21_B",
+            "BL": "SH21_BL",
+            "BR": "SH21_BR",
+            "L": "SH21_L",
+            "R": "SH21_R",
+            "T": "SH21_T",
+            "TR": "SH21_TR",
+            "TL": "SH21_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH22",
+      "name": "Shed (Pent  5' Wide)",
+      "group": "pent-roof-sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 159,
+        "minWidth": 30,
+        "minHeight": 159,
+        "maxWidth": 0,
+        "maxHeight": 159,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 3,
+          "spriteWidth": 61,
+          "spriteHeight": 152,
+          "names": {
+            "M": "SH22",
+            "B": "SH22_B",
+            "BL": "SH22_BL",
+            "BR": "SH22_BR",
+            "L": "SH22_L",
+            "R": "SH22_R",
+            "T": "SH22_T",
+            "TR": "SH22_TR",
+            "TL": "SH22_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH23",
+      "name": "Shed (Pent  6' Wide)",
+      "group": "pent-roof-sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 183,
+        "minWidth": 30,
+        "minHeight": 183,
+        "maxWidth": 0,
+        "maxHeight": 183,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 3,
+          "spriteWidth": 61,
+          "spriteHeight": 176,
+          "names": {
+            "M": "SH23",
+            "B": "SH23_B",
+            "BL": "SH23_BL",
+            "BR": "SH23_BR",
+            "L": "SH23_L",
+            "R": "SH23_R",
+            "T": "SH23_T",
+            "TR": "SH23_TR",
+            "TL": "SH23_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH24",
+      "name": "Shed (Pent  8' Wide)",
+      "group": "pent-roof-sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 244,
+        "minWidth": 30,
+        "minHeight": 244,
+        "maxWidth": 0,
+        "maxHeight": 244,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 3,
+          "spriteWidth": 61,
+          "spriteHeight": 237,
+          "names": {
+            "M": "SH24",
+            "B": "SH24_B",
+            "BL": "SH24_BL",
+            "BR": "SH24_BR",
+            "L": "SH24_L",
+            "R": "SH24_R",
+            "T": "SH24_T",
+            "TR": "SH24_TR",
+            "TL": "SH24_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH25",
+      "name": "Shed (Pent 10' Wide)",
+      "group": "pent-roof-sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 307,
+        "minWidth": 30,
+        "minHeight": 307,
+        "maxWidth": 0,
+        "maxHeight": 307,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 3,
+          "spriteWidth": 61,
+          "spriteHeight": 300,
+          "names": {
+            "M": "SH25",
+            "B": "SH25_B",
+            "BL": "SH25_BL",
+            "BR": "SH25_BR",
+            "L": "SH25_L",
+            "R": "SH25_R",
+            "T": "SH25_T",
+            "TR": "SH25_TR",
+            "TL": "SH25_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH26",
+      "name": "Shed (Scalable)",
+      "group": "sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 68,
+        "initialHeight": 68,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 3,
+          "marginHeight": 3,
+          "spriteWidth": 61,
+          "spriteHeight": 61,
+          "names": {
+            "M": "SH26",
+            "B": "SH26_B",
+            "BL": "SH26_BL",
+            "BR": "SH26_BR",
+            "L": "SH26_L",
+            "R": "SH26_R",
+            "T": "SH26_T",
+            "TR": "SH26_TR",
+            "TL": "SH26_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH31",
+      "name": "Shed (Metal  4' Wide)",
+      "group": "metal-sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 122,
+        "minWidth": 30,
+        "minHeight": 122,
+        "maxWidth": 0,
+        "maxHeight": 122,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 3,
+          "spriteWidth": 61,
+          "spriteHeight": 115,
+          "names": {
+            "M": "SH31",
+            "B": "SH31_B",
+            "BL": "SH31_BL",
+            "BR": "SH31_BR",
+            "L": "SH31_L",
+            "R": "SH31_R",
+            "T": "SH31_T",
+            "TR": "SH31_TR",
+            "TL": "SH31_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH32",
+      "name": "Shed (Metal  5' Wide)",
+      "group": "metal-sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 159,
+        "minWidth": 30,
+        "minHeight": 159,
+        "maxWidth": 0,
+        "maxHeight": 159,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 3,
+          "spriteWidth": 61,
+          "spriteHeight": 152,
+          "names": {
+            "M": "SH32",
+            "B": "SH32_B",
+            "BL": "SH32_BL",
+            "BR": "SH32_BR",
+            "L": "SH32_L",
+            "R": "SH32_R",
+            "T": "SH32_T",
+            "TR": "SH32_TR",
+            "TL": "SH32_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH33",
+      "name": "Shed (Metal  6' Wide)",
+      "group": "metal-sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 183,
+        "minWidth": 30,
+        "minHeight": 183,
+        "maxWidth": 0,
+        "maxHeight": 183,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 3,
+          "spriteWidth": 61,
+          "spriteHeight": 176,
+          "names": {
+            "M": "SH33",
+            "B": "SH33_B",
+            "BL": "SH33_BL",
+            "BR": "SH33_BR",
+            "L": "SH33_L",
+            "R": "SH33_R",
+            "T": "SH33_T",
+            "TR": "SH33_TR",
+            "TL": "SH33_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH34",
+      "name": "Shed (Metal  8' Wide)",
+      "group": "metal-sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 244,
+        "minWidth": 30,
+        "minHeight": 244,
+        "maxWidth": 0,
+        "maxHeight": 244,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 3,
+          "spriteWidth": 61,
+          "spriteHeight": 237,
+          "names": {
+            "M": "SH34",
+            "B": "SH34_B",
+            "BL": "SH34_BL",
+            "BR": "SH34_BR",
+            "L": "SH34_L",
+            "R": "SH34_R",
+            "T": "SH34_T",
+            "TR": "SH34_TR",
+            "TL": "SH34_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SH35",
+      "name": "Shed (Metal 10' Wide)",
+      "group": "metal-sheds",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 307,
+        "minWidth": 30,
+        "minHeight": 307,
+        "maxWidth": 0,
+        "maxHeight": 307,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 3,
+          "spriteWidth": 61,
+          "spriteHeight": 300,
+          "names": {
+            "M": "SH35",
+            "B": "SH35_B",
+            "BL": "SH35_BL",
+            "BR": "SH35_BR",
+            "L": "SH35_L",
+            "R": "SH35_R",
+            "T": "SH35_T",
+            "TR": "SH35_TR",
+            "TL": "SH35_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CL01",
+      "name": "Cloche (Bell)",
+      "group": "cloches",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CL01",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CL02",
+      "name": "Forcing Pot",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CL02",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CL03",
+      "name": "Cloche (Rigid Plastic / Glass)",
+      "group": "cloches",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CL03",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "RC01",
+      "name": "Row Cover (Sheet Tunnel 2' Wide)",
+      "group": "cloche-tunnels",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 64,
+        "sprite": {
+          "names": [
+            "RC01"
+          ],
+          "height": 64,
+          "width": 61,
+          "type": "PATH"
+        }
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "RC02",
+      "name": "Row Cover (Tunnel 2' Wide)",
+      "group": "cloche-tunnels",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 64,
+        "sprite": {
+          "names": [
+            "RC02"
+          ],
+          "height": 64,
+          "width": 61,
+          "type": "PATH"
+        }
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "RC03",
+      "name": "Netting (Tunnel 2' Wide)",
+      "group": "cloche-tunnels",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 64,
+        "sprite": {
+          "names": [
+            "RC03"
+          ],
+          "height": 64,
+          "width": 61,
+          "type": "PATH"
+        }
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "CR01",
+      "name": "Compass",
+      "group": "compasses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 46,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CR01",
+          "width": 45,
+          "height": 46,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "NONE"
+    },
+    {
+      "code": "CR02",
+      "name": "Compass",
+      "group": "compasses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CR02",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "NONE"
+    },
+    {
+      "code": "CR03",
+      "name": "Compass",
+      "group": "compasses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 46,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CR03",
+          "width": 45,
+          "height": 46,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "NONE"
+    },
+    {
+      "code": "CO01",
+      "name": "Compost Bin",
+      "group": "composting",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 48,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CO01",
+          "width": 45,
+          "height": 48,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CO02",
+      "name": "Compost Bin (Wooden)",
+      "group": "composting",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CO02",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CO03",
+      "name": "Leaf Mould Bin",
+      "group": "leaf-mould-bins",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CO03",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CO04",
+      "name": "Compost Tumbler",
+      "group": "composting",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 34,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CO04",
+          "width": 45,
+          "height": 34,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CO05",
+      "name": "Compost Heap",
+      "group": "composting",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CO05",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CO06",
+      "name": "Compost Bin",
+      "group": "composting",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 48,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CO06",
+          "width": 45,
+          "height": 48,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CO07",
+      "name": "Compost Tumbler",
+      "group": "composting",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 34,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CO07",
+          "width": 45,
+          "height": 34,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CO08",
+      "name": "Leaf Mould Bin",
+      "group": "leaf-mould-bins",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CO08",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT01",
+      "name": "Container/Trough",
+      "group": "containers-troughs",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 22,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT01",
+          "width": 45,
+          "height": 22,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT02",
+      "name": "Container",
+      "group": "square-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT02",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT03",
+      "name": "Container",
+      "group": "square-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT03",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT04",
+      "name": "Container",
+      "group": "hexagonal-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 39,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT04",
+          "width": 45,
+          "height": 39,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT05",
+      "name": "Container/Trough",
+      "group": "containers-troughs",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 23,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT05",
+          "width": 45,
+          "height": 23,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT06",
+      "name": "Container",
+      "group": "circle-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT06",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT07",
+      "name": "Potato Sack",
+      "group": "potato-planters",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 48,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT07",
+          "width": 45,
+          "height": 48,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT08",
+      "name": "Container",
+      "group": "square-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT08",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT09",
+      "name": "Container/Trough",
+      "group": "containers-troughs",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 23,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT09",
+          "width": 45,
+          "height": 23,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT10",
+      "name": "Container",
+      "group": "hexagonal-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 39,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT10",
+          "width": 45,
+          "height": 39,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT11",
+      "name": "Container",
+      "group": "circle-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT11",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "FE01",
+      "name": "Fence (Picket, 4' White)",
+      "group": "fence",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 131,
+        "initialHeight": 9,
+        "sprite": {
+          "names": [
+            "FE01"
+          ],
+          "height": 9,
+          "width": 131,
+          "type": "PATH"
+        },
+        "minHeight": 8.9,
+        "maxHeight": 8.9
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "FE02",
+      "name": "Fence (Picket, 4' Wood)",
+      "group": "fence",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 131,
+        "initialHeight": 9,
+        "sprite": {
+          "names": [
+            "FE02"
+          ],
+          "height": 9,
+          "width": 131,
+          "type": "PATH"
+        },
+        "minHeight": 8.9,
+        "maxHeight": 8.9
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "FE03",
+      "name": "Fence (Picket, 6' White)",
+      "group": "fence",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 192,
+        "initialHeight": 9,
+        "sprite": {
+          "names": [
+            "FE03"
+          ],
+          "height": 9,
+          "width": 192,
+          "type": "PATH"
+        },
+        "minHeight": 8.95,
+        "maxHeight": 8.95
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "FE04",
+      "name": "Fence (Picket, 6' Wood)",
+      "group": "fence",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 192,
+        "initialHeight": 9,
+        "sprite": {
+          "names": [
+            "FE04"
+          ],
+          "height": 9,
+          "width": 192,
+          "type": "PATH"
+        },
+        "minHeight": 8.95,
+        "maxHeight": 8.95
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "FE05",
+      "name": "Fence (Wood Panels)",
+      "group": "fence",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 192,
+        "initialHeight": 9,
+        "sprite": {
+          "names": [
+            "FE05"
+          ],
+          "height": 9,
+          "width": 192,
+          "type": "PATH"
+        },
+        "minHeight": 8.95,
+        "maxHeight": 8.95
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "FE06",
+      "name": "Fence (Wood & Concrete)",
+      "group": "fence",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 192,
+        "initialHeight": 9,
+        "sprite": {
+          "names": [
+            "FE06"
+          ],
+          "height": 9,
+          "width": 192,
+          "type": "PATH"
+        },
+        "minHeight": 8.95,
+        "maxHeight": 8.95
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "FE07",
+      "name": "Fence (Wicker)",
+      "group": "fence",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 192,
+        "initialHeight": 9,
+        "sprite": {
+          "names": [
+            "FE07"
+          ],
+          "height": 9,
+          "width": 192,
+          "type": "PATH"
+        },
+        "minHeight": 8.9,
+        "maxHeight": 8.9
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "FE08",
+      "name": "Fence (Concrete)",
+      "group": "fence",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 192,
+        "initialHeight": 9,
+        "sprite": {
+          "names": [
+            "FE08"
+          ],
+          "height": 9,
+          "width": 192,
+          "type": "PATH"
+        },
+        "minHeight": 8.95,
+        "maxHeight": 8.95
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "FE09",
+      "name": "Fence (Wire)",
+      "group": "fence",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 192,
+        "initialHeight": 9,
+        "sprite": {
+          "names": [
+            "FE09"
+          ],
+          "height": 9,
+          "width": 192,
+          "type": "PATH"
+        },
+        "minHeight": 9.3,
+        "maxHeight": 9.3
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "FC01",
+      "name": "Fruit Cage (Metal)",
+      "group": "fruit-cage",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 130,
+        "initialHeight": 130,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 4,
+          "marginHeight": 4,
+          "spriteWidth": 122,
+          "spriteHeight": 122,
+          "names": {
+            "M": "FC01",
+            "B": "FC01_B",
+            "BL": "FC01_BL",
+            "BR": "FC01_BR",
+            "L": "FC01_L",
+            "R": "FC01_R",
+            "T": "FC01_T",
+            "TR": "FC01_TR",
+            "TL": "FC01_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "FC02",
+      "name": "Fruit Cage (Wood)",
+      "group": "fruit-cage",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 132,
+        "initialHeight": 132,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 5,
+          "marginHeight": 5,
+          "spriteWidth": 122,
+          "spriteHeight": 122,
+          "names": {
+            "M": "FC02",
+            "B": "FC02_B",
+            "BL": "FC02_BL",
+            "BR": "FC02_BR",
+            "L": "FC02_L",
+            "R": "FC02_R",
+            "T": "FC02_T",
+            "TR": "FC02_TR",
+            "TL": "FC02_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "PA01",
+      "name": "Path (Asphalt)",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "sprite": {
+          "width": 61,
+          "height": 61,
+          "topMargin": 0,
+          "bottomMargin": 0,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": null,
+            "M": "PA01",
+            "B": null
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA02",
+      "name": "Edging (Brick)",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 30,
+        "initialHeight": 7,
+        "sprite": {
+          "names": [
+            "PA02_1",
+            "PA02_2"
+          ],
+          "height": 7,
+          "width": 15,
+          "type": "PATH"
+        },
+        "minHeight": 7.1,
+        "maxHeight": 7.1
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA03",
+      "name": "Path (Brick)",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 30,
+        "initialHeight": 34,
+        "sprite": {
+          "width": 30.5,
+          "height": 33.8,
+          "topMargin": 0,
+          "bottomMargin": 0,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": null,
+            "M": "PA03",
+            "B": null
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA04",
+      "name": "Path (Brick)",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 16,
+        "initialHeight": 33,
+        "sprite": {
+          "width": 32.6,
+          "height": 32.6,
+          "topMargin": 0,
+          "bottomMargin": 0,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": null,
+            "M": "PA04",
+            "B": null
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA05",
+      "name": "Path",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "sprite": {
+          "width": 61,
+          "height": 61,
+          "topMargin": 0,
+          "bottomMargin": 0,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": null,
+            "M": "PA05",
+            "B": null
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA06",
+      "name": "Path",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 91,
+        "sprite": {
+          "width": 61,
+          "height": 91.4,
+          "topMargin": 0,
+          "bottomMargin": 0,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": null,
+            "M": "PA06",
+            "B": null
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA07",
+      "name": "Path",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "sprite": {
+          "width": 61,
+          "height": 61,
+          "topMargin": 0,
+          "bottomMargin": 0,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": null,
+            "M": "PA07",
+            "B": null
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA08",
+      "name": "Path",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "sprite": {
+          "width": 61,
+          "height": 61,
+          "topMargin": 0,
+          "bottomMargin": 0,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": null,
+            "M": "PA08",
+            "B": null
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA09",
+      "name": "Path",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "sprite": {
+          "width": 61,
+          "height": 61,
+          "topMargin": 0,
+          "bottomMargin": 0,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": null,
+            "M": "PA09",
+            "B": null
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA10",
+      "name": "Path",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "sprite": {
+          "width": 61,
+          "height": 61,
+          "topMargin": 0,
+          "bottomMargin": 0,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": null,
+            "M": "PA10",
+            "B": null
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA11",
+      "name": "Path",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "sprite": {
+          "width": 61,
+          "height": 61,
+          "topMargin": 0,
+          "bottomMargin": 0,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": null,
+            "M": "PA11",
+            "B": null
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA12",
+      "name": "Path",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "sprite": {
+          "width": 61,
+          "height": 61,
+          "topMargin": 0,
+          "bottomMargin": 0,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": null,
+            "M": "PA12",
+            "B": null
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA13",
+      "name": "Path (Crazy Paving)",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "sprite": {
+          "width": 61,
+          "height": 61,
+          "topMargin": 0,
+          "bottomMargin": 0,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": null,
+            "M": "PA13",
+            "B": null
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA14",
+      "name": "Path (Large Pebble)",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "sprite": {
+          "width": 61,
+          "height": 61,
+          "topMargin": 0,
+          "bottomMargin": 0,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": null,
+            "M": "PA14",
+            "B": null
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA15",
+      "name": "Path (Pebble)",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "sprite": {
+          "width": 61,
+          "height": 61,
+          "topMargin": 0,
+          "bottomMargin": 0,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": null,
+            "M": "PA15",
+            "B": null
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA16",
+      "name": "Path (Gravel)",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "sprite": {
+          "width": 61,
+          "height": 61,
+          "topMargin": 6,
+          "bottomMargin": 6,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": "PA16_T",
+            "M": "PA16_M",
+            "B": "PA16_B"
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA17",
+      "name": "Path (Brick)",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": true,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "sprite": {
+          "width": 61,
+          "height": 61,
+          "topMargin": 10.7,
+          "bottomMargin": 10.7,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": "PA17_T",
+            "M": "PA17_M",
+            "B": "PA17_B"
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PA18",
+      "name": "Path (Brick)",
+      "group": "paths",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": true,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "sprite": {
+          "width": 61,
+          "height": 61,
+          "topMargin": 7.9,
+          "bottomMargin": 7.9,
+          "type": "THREE_SLICE",
+          "names": {
+            "T": "PA18_T",
+            "M": "PA18_M",
+            "B": "PA18_B"
+          }
+        },
+        "minHeight": 30,
+        "maxHeight": 200
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "TR01",
+      "name": "Arbour",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 122,
+        "initialHeight": 80,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "TR01",
+          "width": 122,
+          "height": 80,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "TR02",
+      "name": "Teepee (Willow)",
+      "group": "teepees",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 75,
+        "initialHeight": 75,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "TR02",
+          "width": 75,
+          "height": 75,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "TR03",
+      "name": "Arch",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 122,
+        "initialHeight": 61,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "TR03",
+          "width": 122,
+          "height": 61,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "TR04",
+      "name": "Pergola",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 122,
+        "initialHeight": 122,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "TR04",
+          "width": 122,
+          "height": 122,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "TR05",
+      "name": "Obelisk",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 61,
+        "initialHeight": 61,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "TR05",
+          "width": 61,
+          "height": 61,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "TR06",
+      "name": "Bean Support (Wood 2')",
+      "group": "bean-supports",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 38,
+        "initialHeight": 61,
+        "sprite": {
+          "names": [
+            "TR06"
+          ],
+          "height": 61,
+          "width": 38,
+          "type": "PATH"
+        },
+        "minHeight": 61,
+        "maxHeight": 61
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "TR07",
+      "name": "Teepee (Bamboo)",
+      "group": "teepees",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 75,
+        "initialHeight": 75,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "TR07",
+          "width": 75,
+          "height": 75,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "TR08",
+      "name": "Bean Support (Bamboo 2')",
+      "group": "bean-supports",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "PATH",
+        "keepStraight": false,
+        "initialWidth": 38,
+        "initialHeight": 61,
+        "sprite": {
+          "names": [
+            "TR08"
+          ],
+          "height": 61,
+          "width": 38,
+          "type": "PATH"
+        },
+        "minHeight": 61,
+        "maxHeight": 61
+      },
+      "measureAs": "LENGTH"
+    },
+    {
+      "code": "PT01",
+      "name": "Polytunnel ( 4' Wide)",
+      "group": "polytunnels",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 76,
+        "initialHeight": 126,
+        "minWidth": 30,
+        "minHeight": 126,
+        "maxWidth": 0,
+        "maxHeight": 126,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 8,
+          "marginHeight": 2,
+          "spriteWidth": 61,
+          "spriteHeight": 122,
+          "names": {
+            "M": "PT01",
+            "B": "PT01_B",
+            "BL": "PT01_BL",
+            "BR": "PT01_BR",
+            "L": "PT01_L",
+            "R": "PT01_R",
+            "T": "PT01_T",
+            "TR": "PT01_TR",
+            "TL": "PT01_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "PT02",
+      "name": "Polytunnel ( 6' Wide)",
+      "group": "polytunnels",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 79,
+        "initialHeight": 187,
+        "minWidth": 30,
+        "minHeight": 187,
+        "maxWidth": 0,
+        "maxHeight": 187,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 9,
+          "marginHeight": 2,
+          "spriteWidth": 61,
+          "spriteHeight": 183,
+          "names": {
+            "M": "PT02",
+            "B": "PT02_B",
+            "BL": "PT02_BL",
+            "BR": "PT02_BR",
+            "L": "PT02_L",
+            "R": "PT02_R",
+            "T": "PT02_T",
+            "TR": "PT02_TR",
+            "TL": "PT02_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "PT03",
+      "name": "Polytunnel (8' Wide)",
+      "group": "polytunnels",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 76,
+        "initialHeight": 248,
+        "minWidth": 30,
+        "minHeight": 248,
+        "maxWidth": 0,
+        "maxHeight": 248,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 8,
+          "marginHeight": 2,
+          "spriteWidth": 61,
+          "spriteHeight": 244,
+          "names": {
+            "M": "PT03",
+            "B": "PT03_B",
+            "BL": "PT03_BL",
+            "BR": "PT03_BR",
+            "L": "PT03_L",
+            "R": "PT03_R",
+            "T": "PT03_T",
+            "TR": "PT03_TR",
+            "TL": "PT03_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "PT04",
+      "name": "Polytunnel (10' Wide)",
+      "group": "polytunnels",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 76,
+        "initialHeight": 308,
+        "minWidth": 30,
+        "minHeight": 308,
+        "maxWidth": 0,
+        "maxHeight": 308,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 8,
+          "marginHeight": 2,
+          "spriteWidth": 61,
+          "spriteHeight": 304,
+          "names": {
+            "M": "PT04",
+            "B": "PT04_B",
+            "BL": "PT04_BL",
+            "BR": "PT04_BR",
+            "L": "PT04_L",
+            "R": "PT04_R",
+            "T": "PT04_T",
+            "TR": "PT04_TR",
+            "TL": "PT04_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "PT05",
+      "name": "Polytunnel (Scalable)",
+      "group": "polytunnels",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 124,
+        "initialHeight": 126,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 1,
+          "marginHeight": 2,
+          "spriteWidth": 122,
+          "spriteHeight": 122,
+          "names": {
+            "M": "PT05",
+            "B": "PT05_B",
+            "BL": "PT05_BL",
+            "BR": "PT05_BR",
+            "L": "PT05_L",
+            "R": "PT05_R",
+            "T": "PT05_T",
+            "TR": "PT05_TR",
+            "TL": "PT05_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "PT21",
+      "name": "Polytunnel (Heated, 4' Wide)",
+      "group": "heated-polytunnels",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 76,
+        "initialHeight": 126,
+        "minWidth": 30,
+        "minHeight": 126,
+        "maxWidth": 0,
+        "maxHeight": 126,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 8,
+          "marginHeight": 2,
+          "spriteWidth": 61,
+          "spriteHeight": 122,
+          "names": {
+            "M": "PT21",
+            "B": "PT21_B",
+            "BL": "PT21_BL",
+            "BR": "PT21_BR",
+            "L": "PT21_L",
+            "R": "PT21_R",
+            "T": "PT21_T",
+            "TR": "PT21_TR",
+            "TL": "PT21_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "PT22",
+      "name": "Polytunnel (Heated, 6' Wide)",
+      "group": "heated-polytunnels",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 76,
+        "initialHeight": 186,
+        "minWidth": 30,
+        "minHeight": 186,
+        "maxWidth": 0,
+        "maxHeight": 186,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 8,
+          "marginHeight": 2,
+          "spriteWidth": 61,
+          "spriteHeight": 182,
+          "names": {
+            "M": "PT22",
+            "B": "PT22_B",
+            "BL": "PT22_BL",
+            "BR": "PT22_BR",
+            "L": "PT22_L",
+            "R": "PT22_R",
+            "T": "PT22_T",
+            "TR": "PT22_TR",
+            "TL": "PT22_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "PT23",
+      "name": "Polytunnel (Heated, 8' Wide)",
+      "group": "heated-polytunnels",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 76,
+        "initialHeight": 247,
+        "minWidth": 30,
+        "minHeight": 247,
+        "maxWidth": 0,
+        "maxHeight": 247,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 8,
+          "marginHeight": 2,
+          "spriteWidth": 61,
+          "spriteHeight": 243,
+          "names": {
+            "M": "PT23",
+            "B": "PT23_B",
+            "BL": "PT23_BL",
+            "BR": "PT23_BR",
+            "L": "PT23_L",
+            "R": "PT23_R",
+            "T": "PT23_T",
+            "TR": "PT23_TR",
+            "TL": "PT23_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "PT24",
+      "name": "Polytunnel (Heated,10' Wide)",
+      "group": "heated-polytunnels",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": true,
+        "constrainWidth": false,
+        "initialWidth": 76,
+        "initialHeight": 308,
+        "minWidth": 30,
+        "minHeight": 308,
+        "maxWidth": 0,
+        "maxHeight": 308,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 8,
+          "marginHeight": 2,
+          "spriteWidth": 61,
+          "spriteHeight": 304,
+          "names": {
+            "M": "PT24",
+            "B": "PT24_B",
+            "BL": "PT24_BL",
+            "BR": "PT24_BR",
+            "L": "PT24_L",
+            "R": "PT24_R",
+            "T": "PT24_T",
+            "TR": "PT24_TR",
+            "TL": "PT24_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "PT25",
+      "name": "Polytunnel (Heated,Scalable)",
+      "group": "heated-polytunnels",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 124,
+        "initialHeight": 126,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 1,
+          "marginHeight": 2,
+          "spriteWidth": 122,
+          "spriteHeight": 122,
+          "names": {
+            "M": "PT25",
+            "B": "PT25_B",
+            "BL": "PT25_BL",
+            "BR": "PT25_BR",
+            "L": "PT25_L",
+            "R": "PT25_R",
+            "T": "PT25_T",
+            "TR": "PT25_TR",
+            "TL": "PT25_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "RB02",
+      "name": "Raised Bed (Wicker)",
+      "group": "raised-beds",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 86,
+        "initialHeight": 86,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 11,
+        "internalHeightMargin": 11,
+        "sprite": {
+          "marginWidth": 12,
+          "marginHeight": 12,
+          "spriteWidth": 61,
+          "spriteHeight": 61,
+          "names": {
+            "M": null,
+            "B": "RB02_B",
+            "BL": "RB02_BL",
+            "BR": "RB02_BR",
+            "L": "RB02_L",
+            "R": "RB02_R",
+            "T": "RB02_T",
+            "TR": "RB02_TR",
+            "TL": "RB02_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "RB03",
+      "name": "Raised Bed (Plastic)",
+      "group": "raised-beds",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 87,
+        "initialHeight": 87,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 11,
+        "internalHeightMargin": 11,
+        "sprite": {
+          "marginWidth": 13,
+          "marginHeight": 13,
+          "spriteWidth": 61,
+          "spriteHeight": 61,
+          "names": {
+            "M": null,
+            "B": "RB03_B",
+            "BL": "RB03_BL",
+            "BR": "RB03_BR",
+            "L": "RB03_L",
+            "R": "RB03_R",
+            "T": "RB03_T",
+            "TR": "RB03_TR",
+            "TL": "RB03_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "RB04",
+      "name": "Raised Bed (Wood)",
+      "group": "raised-beds",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 87,
+        "initialHeight": 87,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 11,
+        "internalHeightMargin": 11,
+        "sprite": {
+          "marginWidth": 13,
+          "marginHeight": 13,
+          "spriteWidth": 61,
+          "spriteHeight": 61,
+          "names": {
+            "M": null,
+            "B": "RB04_B",
+            "BL": "RB04_BL",
+            "BR": "RB04_BR",
+            "L": "RB04_L",
+            "R": "RB04_R",
+            "T": "RB04_T",
+            "TR": "RB04_TR",
+            "TL": "RB04_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "RB05",
+      "name": "Raised Bed (Brick)",
+      "group": "raised-beds",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 75,
+        "initialHeight": 75,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 6,
+        "internalHeightMargin": 6,
+        "sprite": {
+          "marginWidth": 7,
+          "marginHeight": 7,
+          "spriteWidth": 61,
+          "spriteHeight": 61,
+          "names": {
+            "M": null,
+            "B": "RB05_B",
+            "BL": "RB05_BL",
+            "BR": "RB05_BR",
+            "L": "RB05_L",
+            "R": "RB05_R",
+            "T": "RB05_T",
+            "TR": "RB05_TR",
+            "TL": "RB05_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "WB01",
+      "name": "Rain Water Tank (Plastic)",
+      "group": "water-butts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 42,
+        "initialHeight": 50,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "WB01",
+          "width": 42,
+          "height": 50,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "WB02",
+      "name": "Rain Water Tank (Wood)",
+      "group": "water-butts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 40,
+        "initialHeight": 50,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "WB02",
+          "width": 40,
+          "height": 50,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "WB03",
+      "name": "Rain Water Tank (Wood)",
+      "group": "water-butts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 42,
+        "initialHeight": 50,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "WB03",
+          "width": 42,
+          "height": 50,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "WB04",
+      "name": "Rain Water Tank (Plastic)",
+      "group": "water-butts",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 40,
+        "initialHeight": 50,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "WB04",
+          "width": 40,
+          "height": 50,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT12",
+      "name": "Basket (Hanging)",
+      "group": "baskets-hanging",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 33,
+        "initialHeight": 33,
+        "minWidth": 20,
+        "minHeight": 20,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 1,
+        "internalHeightMargin": 1,
+        "sprite": {
+          "name": "CT12",
+          "width": 33,
+          "height": 33,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT13",
+      "name": "Raised Bed (Mini)",
+      "group": "raised-beds",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 98,
+        "initialHeight": 51,
+        "minWidth": 20,
+        "minHeight": 16,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 2,
+        "internalHeightMargin": 2,
+        "sprite": {
+          "name": "CT13",
+          "width": 98,
+          "height": 51,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT14",
+      "name": "Raised Bed (Mini + Supports)",
+      "group": "raised-beds",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 98,
+        "initialHeight": 51,
+        "minWidth": 20,
+        "minHeight": 16,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 2,
+        "internalHeightMargin": 2,
+        "sprite": {
+          "name": "CT14",
+          "width": 98,
+          "height": 51,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT15",
+      "name": "Raised Bed Cover (Mini)",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 98,
+        "initialHeight": 51,
+        "minWidth": 20,
+        "minHeight": 16,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT15",
+          "width": 98,
+          "height": 51,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT16",
+      "name": "Potato Sack",
+      "group": "potato-planters",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 35,
+        "initialHeight": 35,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT16",
+          "width": 35,
+          "height": 35,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT17",
+      "name": "Planter Bag (3 Cane)",
+      "group": "planter-bags",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 30,
+        "initialHeight": 30,
+        "minWidth": 20,
+        "minHeight": 20,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT17",
+          "width": 30,
+          "height": 30,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT18",
+      "name": "Plant House",
+      "group": "plant-houses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 120,
+        "initialHeight": 62,
+        "minWidth": 60,
+        "minHeight": 31,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 3,
+        "internalHeightMargin": 3,
+        "sprite": {
+          "name": "CT18",
+          "width": 120,
+          "height": 62,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT19",
+      "name": "Stepped Shelving",
+      "group": "stepped-shelving",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 60,
+        "initialHeight": 25,
+        "minWidth": 30,
+        "minHeight": 13,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT19",
+          "width": 60,
+          "height": 25,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT20",
+      "name": "Plant House",
+      "group": "plant-houses",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 76,
+        "initialHeight": 47,
+        "minWidth": 30,
+        "minHeight": 17,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 3,
+        "internalHeightMargin": 3,
+        "sprite": {
+          "name": "CT20",
+          "width": 76,
+          "height": 47,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT21",
+      "name": "Trug",
+      "group": "trugs",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 100,
+        "initialHeight": 76,
+        "minWidth": 30,
+        "minHeight": 17,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 3,
+        "internalHeightMargin": 3,
+        "sprite": {
+          "name": "CT21",
+          "width": 100,
+          "height": 76,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT22",
+      "name": "Potato Planter",
+      "group": "potato-planters",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 32,
+        "initialHeight": 32,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT22",
+          "width": 32,
+          "height": 32,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT23",
+      "name": "Planter Bag (Carrots)",
+      "group": "planter-bags",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 30,
+        "minWidth": 20,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 2,
+        "internalHeightMargin": 2,
+        "sprite": {
+          "name": "CT23",
+          "width": 45,
+          "height": 30,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT24",
+      "name": "Planter Bag (6 Cane)",
+      "group": "planter-bags",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 60,
+        "initialHeight": 30,
+        "minWidth": 30,
+        "minHeight": 20,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 5,
+        "internalHeightMargin": 5,
+        "sprite": {
+          "name": "CT24",
+          "width": 60,
+          "height": 30,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT25",
+      "name": "Stepped Planter",
+      "group": "stepped-planter",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 105,
+        "initialHeight": 47,
+        "minWidth": 30,
+        "minHeight": 13,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT25",
+          "width": 105,
+          "height": 47,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT26",
+      "name": "Stepped Planter with Shelf",
+      "group": "stepped-planter",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 105,
+        "initialHeight": 56,
+        "minWidth": 30,
+        "minHeight": 20,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT26",
+          "width": 105,
+          "height": 56,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT27",
+      "name": "Container",
+      "group": "square-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 26,
+        "initialHeight": 26,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 4,
+        "internalHeightMargin": 4,
+        "sprite": {
+          "name": "CT27",
+          "width": 26,
+          "height": 26,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT28",
+      "name": "Container/Trough",
+      "group": "containers-troughs",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 37,
+        "initialHeight": 17,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 4,
+        "internalHeightMargin": 4,
+        "sprite": {
+          "name": "CT28",
+          "width": 37,
+          "height": 17,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT29",
+      "name": "Container",
+      "group": "circle-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 25,
+        "initialHeight": 25,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT29",
+          "width": 25,
+          "height": 25,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT30",
+      "name": "Container",
+      "group": "square-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 26,
+        "initialHeight": 26,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 2,
+        "sprite": {
+          "name": "CT30",
+          "width": 26,
+          "height": 26,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT31",
+      "name": "Container/Trough",
+      "group": "containers-troughs",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 37,
+        "initialHeight": 17,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT31",
+          "width": 37,
+          "height": 17,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT32",
+      "name": "Container",
+      "group": "circle-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 25,
+        "initialHeight": 25,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT32",
+          "width": 25,
+          "height": 25,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT33",
+      "name": "Container",
+      "group": "circle-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 32,
+        "initialHeight": 32,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT33",
+          "width": 32,
+          "height": 32,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT34",
+      "name": "Container",
+      "group": "circle-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 32,
+        "initialHeight": 32,
+        "minWidth": 15,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT34",
+          "width": 32,
+          "height": 32,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT35",
+      "name": "Trug",
+      "group": "trugs",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 180,
+        "initialHeight": 76,
+        "minWidth": 60,
+        "minHeight": 25,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 6,
+        "internalHeightMargin": 6,
+        "sprite": {
+          "name": "CT35",
+          "width": 180,
+          "height": 76,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT36",
+      "name": "Container Reservoir",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 30,
+        "initialHeight": 30,
+        "minWidth": 20,
+        "minHeight": 20,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT36",
+          "width": 30,
+          "height": 30,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT37",
+      "name": "Container (Irrigated)",
+      "group": "irrigated-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 27,
+        "initialHeight": 27,
+        "minWidth": 20,
+        "minHeight": 20,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT37",
+          "width": 27,
+          "height": 27,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT38",
+      "name": "Container (Irrigated)",
+      "group": "irrigated-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 27,
+        "initialHeight": 27,
+        "minWidth": 20,
+        "minHeight": 20,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT38",
+          "width": 27,
+          "height": 27,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT39",
+      "name": "Tower Planter",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 25,
+        "initialHeight": 25,
+        "minWidth": 20,
+        "minHeight": 20,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT39",
+          "width": 25,
+          "height": 25,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT40",
+      "name": "Plant Halo",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 29,
+        "initialHeight": 29,
+        "minWidth": 20,
+        "minHeight": 20,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT40",
+          "width": 29,
+          "height": 29,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT41",
+      "name": "Basket (Hanging)",
+      "group": "baskets",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 30,
+        "initialHeight": 30,
+        "minWidth": 25,
+        "minHeight": 25,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT41",
+          "width": 30,
+          "height": 30,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT42",
+      "name": "Basket (Hanging)",
+      "group": "baskets",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 35,
+        "initialHeight": 35,
+        "minWidth": 25,
+        "minHeight": 25,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT42",
+          "width": 35,
+          "height": 35,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT43",
+      "name": "Basket (Wall Mounted)",
+      "group": "baskets",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 50,
+        "initialHeight": 26,
+        "minWidth": 25,
+        "minHeight": 15,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT43",
+          "width": 50,
+          "height": 26,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT44",
+      "name": "Basket (Hanging)",
+      "group": "baskets-hanging",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 25,
+        "initialHeight": 25,
+        "minWidth": 20,
+        "minHeight": 20,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT44",
+          "width": 25,
+          "height": 25,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT45",
+      "name": "Basket (Hanging)",
+      "group": "baskets-hanging",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": false,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 25,
+        "initialHeight": 25,
+        "minWidth": 20,
+        "minHeight": 20,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT45",
+          "width": 25,
+          "height": 25,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT46",
+      "name": "Tower Planter (Wall Mounted)",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 25,
+        "initialHeight": 13,
+        "minWidth": 20,
+        "minHeight": 10,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT46",
+          "width": 25,
+          "height": 13,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT47",
+      "name": "Trug",
+      "group": "trugs",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 65,
+        "initialHeight": 40,
+        "minWidth": 30,
+        "minHeight": 16,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 4,
+        "internalHeightMargin": 4,
+        "sprite": {
+          "name": "CT47",
+          "width": 65,
+          "height": 40,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT48",
+      "name": "Planter Pockets (Wall Mounted)",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 30,
+        "initialHeight": 13,
+        "minWidth": 30,
+        "minHeight": 13,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT48",
+          "width": 30,
+          "height": 13,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT49",
+      "name": "Container",
+      "group": "circle-containers",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 33,
+        "initialHeight": 33,
+        "minWidth": 25,
+        "minHeight": 25,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT49",
+          "width": 33,
+          "height": 33,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT50",
+      "name": "Grow Bag",
+      "group": "grow-bags",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 95,
+        "initialHeight": 40,
+        "minWidth": 62,
+        "minHeight": 4,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT50",
+          "width": 95,
+          "height": 40,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT51",
+      "name": "Stepped Shelving",
+      "group": "stepped-shelving",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 27,
+        "minWidth": 30,
+        "minHeight": 20,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT51",
+          "width": 45,
+          "height": 27,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "CT52",
+      "name": "Grow Bag",
+      "group": "grow-bags",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 95,
+        "initialHeight": 40,
+        "minWidth": 62,
+        "minHeight": 4,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "CT52",
+          "width": 95,
+          "height": 40,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "AO01",
+      "name": "Chicken Coop",
+      "group": "chicken-coops",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 43,
+        "initialHeight": 45,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "AO01",
+          "width": 43,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "AO02",
+      "name": "Chicken Coop",
+      "group": "chicken-coops",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 37,
+        "initialHeight": 45,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "AO02",
+          "width": 37,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "AO03",
+      "name": "Chicken Coop",
+      "group": "chicken-coops",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 107,
+        "initialHeight": 114,
+        "minWidth": 46,
+        "minHeight": 53,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 23,
+          "marginHeight": 27,
+          "spriteWidth": 61,
+          "spriteHeight": 61,
+          "names": {
+            "M": "AO03",
+            "B": "AO03_B",
+            "BL": "AO03_BL",
+            "BR": "AO03_BR",
+            "L": "AO03_L",
+            "R": "AO03_R",
+            "T": "AO03_T",
+            "TR": "AO03_TR",
+            "TL": "AO03_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "AO04",
+      "name": "Chicken Coop",
+      "group": "chicken-coops",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 154,
+        "initialHeight": 78,
+        "minWidth": 93,
+        "minHeight": 17,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 46,
+          "marginHeight": 9,
+          "spriteWidth": 61,
+          "spriteHeight": 61,
+          "names": {
+            "M": "AO04",
+            "B": "AO04_B",
+            "BL": "AO04_BL",
+            "BR": "AO04_BR",
+            "L": "AO04_L",
+            "R": "AO04_R",
+            "T": "AO04_T",
+            "TR": "AO04_TR",
+            "TL": "AO04_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "AO05",
+      "name": "Chicken Coop Ramp",
+      "group": "chicken-coops",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 14,
+        "initialHeight": 20,
+        "minWidth": 7,
+        "minHeight": 10,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "AO05",
+          "width": 14,
+          "height": 20,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "AO06",
+      "name": "Bee Hive",
+      "group": "bee-hives",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "AO06",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "AO07",
+      "name": "Bee Hive",
+      "group": "bee-hives",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "AO07",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "AO08",
+      "name": "Bee Hive",
+      "group": "bee-hives",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 27,
+        "minWidth": 30,
+        "minHeight": 20,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "AO08",
+          "width": 45,
+          "height": 27,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "AO09",
+      "name": "Bee Hive",
+      "group": "bee-hives",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "AO09",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "AO10",
+      "name": "Chicken Water",
+      "group": "chicken-waters",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "AO10",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "AO11",
+      "name": "Chicken Feeder",
+      "group": "chicken-feeders",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "AO11",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "AO12",
+      "name": "Chicken Water",
+      "group": "chicken-waters",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "AO12",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "AO13",
+      "name": "Chicken Feeder",
+      "group": "chicken-feeders",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": true,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "AO13",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "AO14",
+      "name": "Chicken Run",
+      "layer": "STRUCTURES",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 132,
+        "initialHeight": 132,
+        "minWidth": 20,
+        "minHeight": 20,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "marginWidth": 5,
+          "marginHeight": 5,
+          "spriteWidth": 122,
+          "spriteHeight": 122,
+          "names": {
+            "M": "AO14",
+            "B": "AO14_B",
+            "BL": "AO14_BL",
+            "BR": "AO14_BR",
+            "L": "AO14_L",
+            "R": "AO14_R",
+            "T": "AO14_T",
+            "TR": "AO14_TR",
+            "TL": "AO14_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "PD02",
+      "name": "Pond",
+      "group": "ponds",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 25,
+        "minWidth": 30,
+        "minHeight": 18,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "PD02",
+          "width": 45,
+          "height": 25,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "PD03",
+      "name": "Pond",
+      "group": "ponds",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 45,
+        "minWidth": 30,
+        "minHeight": 30,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "PD03",
+          "width": 45,
+          "height": 45,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "PD04",
+      "name": "Pond",
+      "group": "ponds",
+      "layer": "IRRIGATION",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 28,
+        "minWidth": 30,
+        "minHeight": 21,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "PD04",
+          "width": 45,
+          "height": 28,
+          "type": "SINGLE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "MB01",
+      "name": "Birdies Metal Raised Bed (Small)",
+      "group": "metal-raised-beds",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 137,
+        "initialHeight": 107,
+        "minWidth": 76,
+        "minHeight": 76,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 7.62,
+        "internalHeightMargin": 7.62,
+        "sprite": {
+          "marginWidth": 40,
+          "marginHeight": 40,
+          "spriteWidth": 82,
+          "spriteHeight": 82,
+          "names": {
+            "M": null,
+            "B": "MB01_B",
+            "BL": "MB01_BL",
+            "BR": "MB01_BR",
+            "L": "MB01_L",
+            "R": "MB01_R",
+            "T": "MB01_T",
+            "TR": "MB01_TR",
+            "TL": "MB01_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "PRESETS",
+        "presets": [
+          {
+            "width": 76.2,
+            "height": 76.2,
+            "displayName": "2' × 2'",
+            "transposable": false
+          },
+          {
+            "width": 106.68,
+            "height": 76.2,
+            "displayName": "3' × 2'",
+            "transposable": true
+          },
+          {
+            "width": 106.68,
+            "height": 106.68,
+            "displayName": "3' × 3'",
+            "transposable": false
+          },
+          {
+            "width": 137.16,
+            "height": 76.2,
+            "displayName": "4' × 2'",
+            "transposable": true
+          },
+          {
+            "width": 137.16,
+            "height": 106.68,
+            "displayName": "4' × 3'",
+            "transposable": true
+          },
+          {
+            "width": 167.64000000000001,
+            "height": 76.2,
+            "displayName": "5' × 2'",
+            "transposable": true
+          }
+        ]
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "MB02",
+      "name": "Birdies Metal Raised Bed (Medium)",
+      "group": "metal-raised-beds",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 198,
+        "initialHeight": 107,
+        "minWidth": 76,
+        "minHeight": 76,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 7.62,
+        "internalHeightMargin": 7.62,
+        "sprite": {
+          "marginWidth": 40,
+          "marginHeight": 40,
+          "spriteWidth": 82,
+          "spriteHeight": 82,
+          "names": {
+            "M": null,
+            "B": "MB01_B",
+            "BL": "MB01_BL",
+            "BR": "MB01_BR",
+            "L": "MB01_L",
+            "R": "MB01_R",
+            "T": "MB01_T",
+            "TR": "MB01_TR",
+            "TL": "MB01_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "PRESETS",
+        "presets": [
+          {
+            "width": 137.16,
+            "height": 106.68,
+            "displayName": "4' × 3'",
+            "transposable": true
+          },
+          {
+            "width": 137.16,
+            "height": 137.16,
+            "displayName": "4' × 4'",
+            "transposable": false
+          },
+          {
+            "width": 167.64000000000001,
+            "height": 137.16,
+            "displayName": "5' × 4'",
+            "transposable": true
+          },
+          {
+            "width": 198.12,
+            "height": 76.2,
+            "displayName": "6' × 2'",
+            "transposable": true
+          },
+          {
+            "width": 198.12,
+            "height": 106.68,
+            "displayName": "6' × 3'",
+            "transposable": true
+          },
+          {
+            "width": 228.6,
+            "height": 76.2,
+            "displayName": "7' × 2'",
+            "transposable": true
+          }
+        ]
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "MB03",
+      "name": "Birdies Metal Raised Bed (Large)",
+      "group": "metal-raised-beds",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 259,
+        "initialHeight": 137,
+        "minWidth": 76,
+        "minHeight": 76,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 7.62,
+        "internalHeightMargin": 7.62,
+        "sprite": {
+          "marginWidth": 40,
+          "marginHeight": 40,
+          "spriteWidth": 82,
+          "spriteHeight": 82,
+          "names": {
+            "M": null,
+            "B": "MB01_B",
+            "BL": "MB01_BL",
+            "BR": "MB01_BR",
+            "L": "MB01_L",
+            "R": "MB01_R",
+            "T": "MB01_T",
+            "TR": "MB01_TR",
+            "TL": "MB01_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "PRESETS",
+        "presets": [
+          {
+            "width": 198.12,
+            "height": 137.16,
+            "displayName": "6' × 4'",
+            "transposable": true
+          },
+          {
+            "width": 198.12,
+            "height": 198.12,
+            "displayName": "6' × 6'",
+            "transposable": false
+          },
+          {
+            "width": 259.08,
+            "height": 76.2,
+            "displayName": "8' × 2'",
+            "transposable": true
+          },
+          {
+            "width": 259.08,
+            "height": 137.16,
+            "displayName": "8' × 4'",
+            "transposable": true
+          },
+          {
+            "width": 320.04,
+            "height": 76.2,
+            "displayName": "10' × 2'",
+            "transposable": true
+          }
+        ]
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "MB04",
+      "name": "Birdies Metal Raised Bed (Round)",
+      "group": "metal-raised-beds",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 112,
+        "initialHeight": 112,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 7.62,
+        "internalHeightMargin": 7.62,
+        "sprite": {
+          "name": "MB04",
+          "width": 112,
+          "height": 112,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "MB05",
+      "name": "Metal Raised Bed (Scalable)",
+      "group": "metal-raised-beds",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 76,
+        "initialHeight": 76,
+        "minWidth": 76,
+        "minHeight": 76,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 7.62,
+        "internalHeightMargin": 7.62,
+        "sprite": {
+          "marginWidth": 40,
+          "marginHeight": 40,
+          "spriteWidth": 82,
+          "spriteHeight": 82,
+          "names": {
+            "M": null,
+            "B": "MB01_B",
+            "BL": "MB01_BL",
+            "BR": "MB01_BR",
+            "L": "MB01_L",
+            "R": "MB01_R",
+            "T": "MB01_T",
+            "TR": "MB01_TR",
+            "TL": "MB01_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "MB06",
+      "name": "Metal Raised Bed (Narrow Scalable)",
+      "group": "metal-raised-beds",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": true,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 76,
+        "initialHeight": 76,
+        "minWidth": 36,
+        "minHeight": 36,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 7.62,
+        "internalHeightMargin": 7.62,
+        "sprite": {
+          "marginWidth": 21,
+          "marginHeight": 21,
+          "spriteWidth": 118,
+          "spriteHeight": 118,
+          "names": {
+            "M": null,
+            "B": "MB06_B",
+            "BL": "MB06_BL",
+            "BR": "MB06_BR",
+            "L": "MB06_L",
+            "R": "MB06_R",
+            "T": "MB06_T",
+            "TR": "MB06_TR",
+            "TL": "MB06_TL"
+          },
+          "type": "NINE_SLICE"
+        },
+        "scalingMode": "SCALING"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SP01",
+      "name": "Fabric Grow Bag (5 Gallon Blue)",
+      "group": "smart-pots",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 34,
+        "initialHeight": 30,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "SP01",
+          "width": 34,
+          "height": 30,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SP02",
+      "name": "Fabric Grow Bag (5 Gallon Orange)",
+      "group": "smart-pots",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 34,
+        "initialHeight": 30,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "SP02",
+          "width": 34,
+          "height": 30,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SP03",
+      "name": "Fabric Grow Bag (5 Gallon Violet)",
+      "group": "smart-pots",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 34,
+        "initialHeight": 30,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "SP03",
+          "width": 34,
+          "height": 30,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SP04",
+      "name": "Fabric Grow Bag (10 Gallon Blue)",
+      "group": "smart-pots",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 41,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "SP04",
+          "width": 45,
+          "height": 41,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SP05",
+      "name": "Fabric Grow Bag (10 Gallon Orange)",
+      "group": "smart-pots",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 41,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "SP05",
+          "width": 45,
+          "height": 41,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SP06",
+      "name": "Fabric Grow Bag (10 Gallon Violet)",
+      "group": "smart-pots",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 45,
+        "initialHeight": 41,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "SP06",
+          "width": 45,
+          "height": 41,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SP07",
+      "name": "Fabric Grow Bag (5 Gallon Black)",
+      "group": "smart-pots",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": false,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 30,
+        "initialHeight": 30,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "SP07",
+          "width": 30,
+          "height": 30,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    },
+    {
+      "code": "SP08",
+      "name": "Fabric Raised Bed (Little Shorty)",
+      "group": "smart-pots",
+      "layer": "LAYOUT",
+      "shape": {
+        "type": "BLOCK",
+        "canScale": false,
+        "canRotate": true,
+        "constrainProportions": false,
+        "constrainHeight": false,
+        "constrainWidth": false,
+        "initialWidth": 98,
+        "initialHeight": 30,
+        "minWidth": 0,
+        "minHeight": 0,
+        "maxWidth": 0,
+        "maxHeight": 0,
+        "internalWidthMargin": 0,
+        "internalHeightMargin": 0,
+        "sprite": {
+          "name": "SP08",
+          "width": 98,
+          "height": 30,
+          "type": "SINGLE"
+        },
+        "scalingMode": "FIXED"
+      },
+      "measureAs": "COUNT"
+    }
+  ],
+  "groups": [
+    {
+      "displayName": "Baskets",
+      "id": "baskets",
+      "objectCodes": [
+        "CT41",
+        "CT42",
+        "CT43"
+      ]
+    },
+    {
+      "displayName": "Baskets (Hanging)",
+      "id": "baskets-hanging",
+      "objectCodes": [
+        "CT12",
+        "CT44",
+        "CT45"
+      ]
+    },
+    {
+      "displayName": "Bean Supports",
+      "id": "bean-supports",
+      "objectCodes": [
+        "TR06",
+        "TR08"
+      ]
+    },
+    {
+      "displayName": "Bee Hives",
+      "id": "bee-hives",
+      "objectCodes": [
+        "AO06",
+        "AO07",
+        "AO08",
+        "AO09"
+      ]
+    },
+    {
+      "displayName": "Chicken Coops",
+      "id": "chicken-coops",
+      "objectCodes": [
+        "AO01",
+        "AO02",
+        "AO03",
+        "AO04",
+        "AO05"
+      ]
+    },
+    {
+      "displayName": "Chicken Feeders",
+      "id": "chicken-feeders",
+      "objectCodes": [
+        "AO11",
+        "AO13"
+      ]
+    },
+    {
+      "displayName": "Chicken Waters",
+      "id": "chicken-waters",
+      "objectCodes": [
+        "AO10",
+        "AO12"
+      ]
+    },
+    {
+      "displayName": "Cloches",
+      "id": "cloches",
+      "objectCodes": [
+        "CL01",
+        "CL03"
+      ]
+    },
+    {
+      "displayName": "Row Covers",
+      "id": "cloche-tunnels",
+      "objectCodes": [
+        "RC01",
+        "RC02",
+        "RC03"
+      ]
+    },
+    {
+      "displayName": "Cold Frames",
+      "id": "cold-frames",
+      "objectCodes": [
+        "CF01",
+        "CF02"
+      ]
+    },
+    {
+      "displayName": "Compasses",
+      "id": "compasses",
+      "objectCodes": [
+        "CR01",
+        "CR02",
+        "CR03"
+      ]
+    },
+    {
+      "displayName": "Composting",
+      "id": "composting",
+      "objectCodes": [
+        "CO01",
+        "CO02",
+        "CO04",
+        "CO05",
+        "CO06",
+        "CO07"
+      ]
+    },
+    {
+      "displayName": "Containers (Circle)",
+      "id": "circle-containers",
+      "objectCodes": [
+        "CT06",
+        "CT11",
+        "CT29",
+        "CT32",
+        "CT33",
+        "CT34",
+        "CT49"
+      ]
+    },
+    {
+      "displayName": "Containers (Square)",
+      "id": "square-containers",
+      "objectCodes": [
+        "CT02",
+        "CT03",
+        "CT08",
+        "CT27",
+        "CT30"
+      ]
+    },
+    {
+      "displayName": "Containers (Hex)",
+      "id": "hexagonal-containers",
+      "objectCodes": [
+        "CT04",
+        "CT10"
+      ]
+    },
+    {
+      "displayName": "Containers (Irrigated)",
+      "id": "irrigated-containers",
+      "objectCodes": [
+        "CT37",
+        "CT38"
+      ]
+    },
+    {
+      "displayName": "Containers/Troughs",
+      "id": "containers-troughs",
+      "objectCodes": [
+        "CT01",
+        "CT05",
+        "CT09",
+        "CT28",
+        "CT31"
+      ]
+    },
+    {
+      "displayName": "Fence",
+      "id": "fence",
+      "objectCodes": [
+        "FE01",
+        "FE02",
+        "FE03",
+        "FE04",
+        "FE05",
+        "FE06",
+        "FE07",
+        "FE08",
+        "FE09"
+      ]
+    },
+    {
+      "displayName": "Fruit Cages",
+      "id": "fruit-cage",
+      "objectCodes": [
+        "FC01",
+        "FC02"
+      ]
+    },
+    {
+      "displayName": "Greenhouses",
+      "variantText": "sizes",
+      "id": "greenhouses",
+      "objectCodes": [
+        "GH01",
+        "GH02",
+        "GH03",
+        "GH04",
+        "GH05",
+        "GH06"
+      ]
+    },
+    {
+      "displayName": "Greenhouses (Heated)",
+      "variantText": "sizes",
+      "id": "heated-greenhouses",
+      "objectCodes": [
+        "GH21",
+        "GH22",
+        "GH23",
+        "GH24",
+        "GH25",
+        "GH26"
+      ]
+    },
+    {
+      "displayName": "Grow Bags",
+      "id": "grow-bags",
+      "objectCodes": [
+        "CT50",
+        "CT52"
+      ]
+    },
+    {
+      "displayName": "Irrigation Parts",
+      "variantText": "parts",
+      "id": "irrigation-parts",
+      "objectCodes": [
+        "DR11",
+        "DR31",
+        "DR26",
+        "DR12",
+        "DR27",
+        "DR32",
+        "DR33",
+        "DR13",
+        "DR14",
+        "DR15",
+        "DR16",
+        "DR34",
+        "DR41"
+      ]
+    },
+    {
+      "displayName": "Irrigation Tubing",
+      "variantText": "parts",
+      "id": "irrigation-tubing",
+      "objectCodes": [
+        "DR01",
+        "DR02",
+        "DR03",
+        "DR04"
+      ]
+    },
+    {
+      "displayName": "Leaf Mould Bins",
+      "id": "leaf-mould-bins",
+      "objectCodes": [
+        "CO03",
+        "CO08"
+      ]
+    },
+    {
+      "displayName": "Path",
+      "id": "paths",
+      "objectCodes": [
+        "PA01",
+        "PA03",
+        "PA04",
+        "PA05",
+        "PA06",
+        "PA07",
+        "PA08",
+        "PA09",
+        "PA10",
+        "PA11",
+        "PA12",
+        "PA13",
+        "PA14",
+        "PA15",
+        "PA16",
+        "PA17",
+        "PA18"
+      ]
+    },
+    {
+      "displayName": "Plant Houses",
+      "id": "plant-houses",
+      "objectCodes": [
+        "CT18",
+        "CT20"
+      ]
+    },
+    {
+      "displayName": "Planter Bags",
+      "id": "planter-bags",
+      "objectCodes": [
+        "CT17",
+        "CT23",
+        "CT24"
+      ]
+    },
+    {
+      "displayName": "Polytunnels",
+      "variantText": "sizes",
+      "id": "polytunnels",
+      "objectCodes": [
+        "PT01",
+        "PT02",
+        "PT03",
+        "PT04",
+        "PT05"
+      ]
+    },
+    {
+      "displayName": "Polytunnels (Heated)",
+      "variantText": "sizes",
+      "id": "heated-polytunnels",
+      "objectCodes": [
+        "PT21",
+        "PT22",
+        "PT23",
+        "PT24",
+        "PT25"
+      ]
+    },
+    {
+      "displayName": "Ponds",
+      "id": "ponds",
+      "objectCodes": [
+        "PD01",
+        "PD02",
+        "PD03",
+        "PD04"
+      ]
+    },
+    {
+      "displayName": "Potato Planters",
+      "id": "potato-planters",
+      "objectCodes": [
+        "CT07",
+        "CT16",
+        "CT22"
+      ]
+    },
+    {
+      "displayName": "Raised Beds",
+      "id": "raised-beds",
+      "objectCodes": [
+        "RB02",
+        "RB03",
+        "RB04",
+        "RB05",
+        "CT13",
+        "CT14"
+      ]
+    },
+    {
+      "displayName": "Raised Beds (Metal)",
+      "variantText": "sizes",
+      "id": "metal-raised-beds",
+      "objectCodes": [
+        "MB01",
+        "MB02",
+        "MB03",
+        "MB04",
+        "MB05",
+        "MB06"
+      ]
+    },
+    {
+      "displayName": "Sheds",
+      "variantText": "sizes",
+      "id": "sheds",
+      "objectCodes": [
+        "SH01",
+        "SH02",
+        "SH03",
+        "SH04",
+        "SH05",
+        "SH26"
+      ]
+    },
+    {
+      "displayName": "Sheds (Metal)",
+      "variantText": "sizes",
+      "id": "metal-sheds",
+      "objectCodes": [
+        "SH31",
+        "SH32",
+        "SH33",
+        "SH34",
+        "SH35"
+      ]
+    },
+    {
+      "displayName": "Sheds (Pent)",
+      "variantText": "sizes",
+      "id": "pent-roof-sheds",
+      "objectCodes": [
+        "SH21",
+        "SH22",
+        "SH23",
+        "SH24",
+        "SH25"
+      ]
+    },
+    {
+      "displayName": "Stepped Planters",
+      "id": "stepped-planter",
+      "objectCodes": [
+        "CT25",
+        "CT26"
+      ]
+    },
+    {
+      "displayName": "Stepped Shelving",
+      "id": "stepped-shelving",
+      "objectCodes": [
+        "CT19",
+        "CT51"
+      ]
+    },
+    {
+      "displayName": "Teepees",
+      "id": "teepees",
+      "objectCodes": [
+        "TR02",
+        "TR07"
+      ]
+    },
+    {
+      "displayName": "Trugs",
+      "id": "trugs",
+      "objectCodes": [
+        "CT21",
+        "CT35",
+        "CT47"
+      ]
+    },
+    {
+      "displayName": "Rain Water Tanks",
+      "id": "water-butts",
+      "objectCodes": [
+        "WB01",
+        "WB02",
+        "WB03",
+        "WB04"
+      ]
+    },
+    {
+      "displayName": "Smart Pots",
+      "id": "smart-pots",
+      "objectCodes": [
+        "SP01",
+        "SP02",
+        "SP03",
+        "SP04",
+        "SP05",
+        "SP06",
+        "SP07",
+        "SP08"
+      ]
+    },
+    {
+      "displayName": "Sprinklers",
+      "id": "sprinklers",
+      "objectCodes": []
+    }
+  ]
+}

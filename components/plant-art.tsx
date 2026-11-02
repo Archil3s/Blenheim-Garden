@@ -2,6 +2,8 @@ import type { CSSProperties } from "react";
 import { getPlantIconV2 } from "@/lib/garden/plant-icon-v2";
 import { plantIconBackground, plantIconSprite } from "@/lib/garden/plant-icons";
 import { catalogueArt } from "@/lib/garden/catalogue-art";
+import { referencePlantSprite, referenceSpriteStyle } from "@/lib/garden/reference-sprites";
+import { ReferenceArt } from "./reference-art";
 
 type PlantArtProps = {
   crop: string;
@@ -12,6 +14,13 @@ type PlantArtProps = {
 };
 
 export function PlantArt({ crop, variety, fallback, className, style }: PlantArtProps) {
+  const reference = referencePlantSprite(crop, variety);
+  if (reference) return <span className={`reference-plant-art ${className ?? ""}`} data-reference-sprite={reference.code}
+    aria-hidden="true" title={`${crop}${variety ? ` · ${variety}` : ""}`}
+    style={{ display: "inline-block", width: "1em", height: "1em",
+      flex: "0 0 auto", verticalAlign: "middle", ...referenceSpriteStyle(reference), ...style }}>
+      <ReferenceArt code={reference.code} className="reference-high-art" />
+    </span>;
   const vector = getPlantIconV2(crop, variety);
   if (vector) {
     return (
