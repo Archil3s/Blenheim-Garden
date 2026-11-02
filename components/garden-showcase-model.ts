@@ -1,7 +1,13 @@
 import * as THREE from "three";
 import { createGardenPlant3D } from "@/components/garden-plant-3d";
 
-export type ShowcaseMode = "botanical" | "classic";
+export type ShowcaseMode = "botanical" | "classic" | "asset";
+
+/** Shared positions; only model geometry changes across comparison modes. */
+export const SHOWCASE_TOMATO_PLACEMENTS = [
+  { x: -.43, z: -.35, seed: 122 },
+  { x: .48, z: .35, seed: 193 },
+] as const;
 
 type BotanicalMaterials = {
   stem: THREE.MeshStandardMaterial;
@@ -426,20 +432,21 @@ function makeBed(root: THREE.Group, mobile: boolean) {
 export function createShowcaseBed(mode: ShowcaseMode, mobile: boolean) {
   const root = new THREE.Group();
   makeBed(root, mobile);
-  const botanical = mode === "botanical";
+  const botanical = mode !== "classic";
   const m = botanical ? createMaterials() : null;
   const plants: Array<{ crop: "Tomato" | "Pea" | "Strawberry"; x: number; z: number; seed: number }> = [
     { crop: "Pea", x: -.49, z: -1.49, seed: 20 },
     { crop: "Pea", x: .04, z: -1.48, seed: 41 },
     { crop: "Pea", x: .51, z: -1.49, seed: 62 },
-    { crop: "Tomato", x: -.43, z: -.35, seed: 122 },
-    { crop: "Tomato", x: .48, z: .35, seed: 193 },
+    ...SHOWCASE_TOMATO_PLACEMENTS.map((point) => ({ crop: "Tomato" as const, ...point })),
     { crop: "Strawberry", x: -.56, z: 1.29, seed: 500 },
     { crop: "Strawberry", x: -.08, z: 1.34, seed: 534 },
     { crop: "Strawberry", x: .43, z: 1.3, seed: 569 },
     { crop: "Strawberry", x: .05, z: 1.72, seed: 602 },
   ];
   for (const plant of plants) {
+    // The GLB loader adds real tomato assets after these environment plants are ready.
+    if (mode === "asset" && plant.crop === "Tomato") continue;
     const holder = new THREE.Group();
     holder.position.set(plant.x, .31, plant.z);
     if (botanical && m) {
@@ -469,7 +476,7 @@ export function disposeShowcaseBed(group: THREE.Group, mode: ShowcaseMode) {
   group.traverse((object) => {
     if (!(object instanceof THREE.Mesh)) return;
     object.geometry.dispose();
-    if (mode !== "botanical") return;
+    if (mode === "classic") return;
     const mats = Array.isArray(object.material) ? object.material : [object.material];
     mats.forEach((mat) => {
       materials.add(mat);
