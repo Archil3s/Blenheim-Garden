@@ -6,6 +6,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { TOMATO_GROWTH_STAGES, tomatoAssetPath, tomatoLodForDevice, type TomatoStage } from "@/lib/3d/tomato-assets";
+import type { EnvironmentMode } from "@/components/garden-showcase-environment-v2";
 import {
   createShowcaseBed,
   disposeShowcaseBed,
@@ -15,6 +16,7 @@ import {
 
 export function GardenShowcase() {
   const [mode, setMode] = useState<ShowcaseMode>("asset");
+  const [environment, setEnvironment] = useState<EnvironmentMode>("v2");
   const [growthStage, setGrowthStage] = useState<TomatoStage>("fruiting");
   const [assetStatus, setAssetStatus] = useState<"loading" | "ready" | "error">("loading");
   const [sceneError, setSceneError] = useState<string | null>(null);
@@ -48,11 +50,12 @@ export function GardenShowcase() {
     parent.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color("#e8ede5");
-    scene.fog = new THREE.Fog("#e8ede5", 10, 20);
+    const sky = environment === "v2" ? "#dfe8dc" : "#e8ede5";
+    scene.background = new THREE.Color(sky);
+    scene.fog = new THREE.Fog(sky, environment === "v2" ? 13 : 10, environment === "v2" ? 28 : 20);
 
     const camera = new THREE.PerspectiveCamera(45, 1, .08, 50);
-    const home = new THREE.Vector3(3.45, 2.8, 4.48);
+    const home = new THREE.Vector3(4.35, 3.35, 6.12);
     const target = new THREE.Vector3(0, .68, 0);
     camera.position.copy(home);
     camera.lookAt(target);
@@ -73,7 +76,7 @@ export function GardenShowcase() {
     sun.shadow.normalBias = .022;
     scene.add(sun, sun.target);
 
-    const cropBed = createShowcaseBed(mode, mobile);
+    const cropBed = createShowcaseBed(mode, mobile, environment);
     scene.add(cropBed);
 
     let disposed = false;
@@ -168,6 +171,7 @@ export function GardenShowcase() {
       renderer.render(scene, camera);
       if (firstFrame) {
         parent.dataset.sceneReady = mode;
+        parent.dataset.environmentReady = environment;
         firstFrame = false;
       }
       raf = requestAnimationFrame(frame);
@@ -194,10 +198,11 @@ export function GardenShowcase() {
       renderer.dispose();
       if (canvas.parentElement === parent) parent.removeChild(canvas);
       delete parent.dataset.sceneReady;
+      delete parent.dataset.environmentReady;
       delete parent.dataset.modelReady;
       delete parent.dataset.modelLod;
     };
-  }, [mode, growthStage]);
+  }, [mode, growthStage, environment]);
 
   return (
     <main className="gs-page">
@@ -210,11 +215,11 @@ export function GardenShowcase() {
         </nav>
       </header>
       <div className="gs-wrap">
-        <div className="gs-eyebrow">3D MODEL STUDY · EDITION 01 / MARLBOROUGH</div>
+        <div className="gs-eyebrow">3D ENVIRONMENT STUDY · EDITION 02 / MARLBOROUGH</div>
         <div className="gs-heading">
           <div>
             <h1>One bed.<br/><em>Three ways to grow.</em></h1>
-            <p>Compare original low-poly plants, our procedural study, and a real glTF 2.0 tomato model—on the same 2 × 4 m garden bed.</p>
+            <p>Compare the same 2 × 4 m raised bed in two environments. The new scene adds textured terrain, garden paths, detailed timber and surrounding vegetation. Keep the existing crop-model modes for reference.</p>
           </div>
           <div className="gs-project-note"><span>EXPERIMENT</span><strong>Not connected to saved plans</strong><p>This prototype cannot edit or overwrite your garden.</p></div>
         </div>
@@ -229,6 +234,13 @@ export function GardenShowcase() {
                 <button type="button" aria-pressed={mode === "asset"} onClick={() => {setSceneError(null); setAssetStatus("loading"); setMode("asset");}}>Real GLB tomato</button>
               </div>
             </div>
+            <div className="gs-environment-switch" role="group" aria-label="Garden environment">
+              <div><strong>THE SURROUNDINGS</strong><span>Compare the same plants, bed dimensions and viewpoint.</span></div>
+              <div className="gs-environment-actions">
+                <button type="button" aria-pressed={environment === "current"} onClick={() => {setSceneError(null); setEnvironment("current"); setAssetStatus("loading");}}>Existing environment</button>
+                <button type="button" aria-pressed={environment === "v2"} onClick={() => {setSceneError(null); setEnvironment("v2"); setAssetStatus("loading");}}>Environment V2</button>
+              </div>
+            </div>
             {mode === "asset" && <div className="gs-stage-picker">
               <label htmlFor="gs-tomato-stage">Tomato growth stage</label>
               <select id="gs-tomato-stage" value={growthStage} onChange={(event) => {setSceneError(null); setAssetStatus("loading"); setGrowthStage(event.target.value as TomatoStage);}}>
@@ -236,12 +248,12 @@ export function GardenShowcase() {
               </select>
               <span role="status">{assetStatus === "loading" ? "Loading GLB…" : assetStatus === "ready" ? "3D asset loaded" : "Asset unavailable"}</span>
             </div>}
-            <div className="gs-stage" ref={stageRef} data-mode={mode}>
+            <div className="gs-stage" ref={stageRef} data-mode={mode} data-environment={environment}>
               {sceneError && <div className="gs-error" role="alert">{sceneError}</div>}
               <div className="gs-scene-caption" aria-hidden="true">2 × 4 M · TOMATO / PEA / STRAWBERRY</div>
             </div>
             <div className="gs-stage-footer">
-              <span>Drag to orbit · Scroll or pinch to zoom</span>
+              <span>Orbit the garden · Scroll or pinch to zoom</span>
               <div className="gs-camera-actions">
                 {mode === "asset" && <button type="button" onClick={() => inspectRef.current()}>Inspect tomato close-up <span aria-hidden="true">↗</span></button>}
                 <button type="button" onClick={() => resetRef.current()}>Reset camera <span aria-hidden="true">↺</span></button>
@@ -249,7 +261,13 @@ export function GardenShowcase() {
             </div>
           </section>
           <aside className="gs-notes" aria-label="About the comparison">
-            <div className="gs-notes-kicker">LOOK CLOSELY / 01–03</div>
+            <div className="gs-notes-kicker">ENVIRONMENT REVIEW / 01–04</div>
+            <div className="gs-environment-description">
+              <strong>{environment === "v2" ? "ENVIRONMENT V2 — ACTIVE" : "EXISTING ENVIRONMENT — BASELINE"}</strong>
+              <p>{environment === "v2"
+                ? "New procedural terrain, gravel paths, timber grain, soil and mulch, drip irrigation, planted borders, a timber fence and greenhouse context. Instanced ground cover and hedge foliage keep the scene manageable on mobile."
+                : "Original flat ground, simple stone paths and raised bed. Switch to Environment V2 above to compare the surroundings without changing plant-model type."}</p>
+            </div>
             <h2>{mode === "asset" ? "The first real asset." : mode === "botanical" ? "More plant, less polygon." : "Where we started."}</h2>
             <p>{mode === "asset"
               ? "The tomato plants are now loaded from actual generated .glb files with an embedded leaf atlas. Select seedling, vegetative or fruiting to load a different real 3D asset. This is an original starter model, not a photorealistic Blender asset yet."
@@ -268,12 +286,12 @@ export function GardenShowcase() {
           </aside>
         </div>
         <div className="gs-bottom">
-          <div><span>WHAT TO JUDGE</span><h2>Does it finally read as a real garden?</h2></div>
-          <p>Compare the leaf silhouettes, fruit placement, trellis growth, soil and timber. At normal garden distance these should feel more organic; close-up realism still needs dedicated textured assets and further refinement.</p>
+          <div><span>WHAT TO JUDGE</span><h2>Do the surroundings feel like a real garden?</h2></div>
+          <p>Compare surface detail, shadows, natural planting density, gravel edges, timber and background context. This uses original procedural textures and instanced vegetation—not photo-scanned materials or PlantGen-exported GLBs yet. Our target is still a convincing, editable landscape visualization.</p>
         </div>
         <footer className="gs-footer">
           <Link href="/3d">Return to live 3D garden ↗</Link>
-          <span>ISOLATED RENDERING PROTOTYPE · NO PERSISTENT DATA</span>
+          <span>ENVIRONMENT V2 STUDY · ISOLATED FROM SAVED GARDENS</span>
         </footer>
       </div>
     </main>
