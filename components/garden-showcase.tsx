@@ -4,14 +4,19 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { TOMATO_GROWTH_STAGES, tomatoAssetPath, tomatoLodForDevice, type TomatoStage } from "@/lib/3d/tomato-assets";
 import {
   createShowcaseBed,
   disposeShowcaseBed,
+  SHOWCASE_TOMATO_PLACEMENTS,
   type ShowcaseMode,
 } from "@/components/garden-showcase-model";
 
 export function GardenShowcase() {
-  const [mode, setMode] = useState<ShowcaseMode>("botanical");
+  const [mode, setMode] = useState<ShowcaseMode>("asset");
+  const [growthStage, setGrowthStage] = useState<TomatoStage>("fruiting");
+  const [assetStatus, setAssetStatus] = useState<"loading" | "ready" | "error">("loading");
   const [sceneError, setSceneError] = useState<string | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const resetRef = useRef<() => void>(() => {});
@@ -70,6 +75,53 @@ export function GardenShowcase() {
     const cropBed = createShowcaseBed(mode, mobile);
     scene.add(cropBed);
 
+    let disposed = false;
+    // Only GLB mode requests assets. This is a network-loaded glTF scene, never
+    // a disguised runtime plant generator. Keep the original modes unchanged.
+    if (mode === "asset") {
+      const lod = tomatoLodForDevice(mobile);
+      const url = tomatoAssetPath(growthStage, lod);
+      const loader = new GLTFLoader();
+      void loader.loadAsync(url).then(({ scene: tomato }) => {
+        if (disposed) {
+          tomato.traverse((object) => {
+            if (!(object instanceof THREE.Mesh)) return;
+            object.geometry.dispose();
+            const materials = Array.isArray(object.material) ? object.material : [object.material];
+            for (const material of materials) {
+              if (material instanceof THREE.MeshStandardMaterial) material.map?.dispose();
+              material.dispose();
+            }
+          });
+          return;
+        }
+        for (const point of SHOWCASE_TOMATO_PLACEMENTS) {
+          const instance = tomato.clone(true);
+          instance.position.set(point.x, .31, point.z);
+          instance.rotation.y = point.seed * .21;
+          instance.scale.setScalar(point.seed === 122 ? .93 : 1.03);
+          instance.traverse((child) => {
+            if (child instanceof THREE.Mesh) {
+              child.castShadow = true;
+              child.receiveShadow = true;
+            }
+          });
+          cropBed.add(instance);
+        }
+        parent.dataset.modelReady = growthStage;
+        parent.dataset.modelLod = String(lod);
+        queueMicrotask(() => setAssetStatus("ready"));
+      }).catch((error: unknown) => {
+        if (disposed) return;
+        console.error("Tomato GLB load failed", error);
+        queueMicrotask(() => {
+          setAssetStatus("error");
+          setSceneError("The tomato GLB could not be loaded. Check that the asset generator ran before the build.");
+        });
+      });
+    }
+
+
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = .07;
@@ -120,6 +172,7 @@ export function GardenShowcase() {
     canvas.addEventListener("webglcontextlost", onLost);
 
     return () => {
+      disposed = true;
       resetRef.current = () => {};
       cancelAnimationFrame(raf);
       observer.disconnect();
@@ -129,8 +182,10 @@ export function GardenShowcase() {
       renderer.dispose();
       if (canvas.parentElement === parent) parent.removeChild(canvas);
       delete parent.dataset.sceneReady;
+      delete parent.dataset.modelReady;
+      delete parent.dataset.modelLod;
     };
-  }, [mode]);
+  }, [mode, growthStage]);
 
   return (
     <main className="gs-page">
@@ -146,8 +201,8 @@ export function GardenShowcase() {
         <div className="gs-eyebrow">3D MODEL STUDY · EDITION 01 / MARLBOROUGH</div>
         <div className="gs-heading">
           <div>
-            <h1>One bed.<br/><em>Two ways to grow.</em></h1>
-            <p>Compare the existing simplified models with a botanical prototype—same 2 × 4 m bed, planting arrangement, camera and light.</p>
+            <h1>One bed.<br/><em>Three ways to grow.</em></h1>
+            <p>Compare original low-poly plants, our procedural study, and a real glTF 2.0 tomato model—on the same 2 × 4 m garden bed.</p>
           </div>
           <div className="gs-project-note"><span>EXPERIMENT</span><strong>Not connected to saved plans</strong><p>This prototype cannot edit or overwrite your garden.</p></div>
         </div>
@@ -158,9 +213,17 @@ export function GardenShowcase() {
               <span>BED STUDY / 01</span>
               <div className="gs-mode-switch" role="group" aria-label="Rendering style">
                 <button type="button" aria-pressed={mode === "classic"} onClick={() => {setSceneError(null); setMode("classic");}}>Current low-poly</button>
-                <button type="button" aria-pressed={mode === "botanical"} onClick={() => {setSceneError(null); setMode("botanical");}}>Botanical prototype</button>
+                <button type="button" aria-pressed={mode === "botanical"} onClick={() => {setSceneError(null); setMode("botanical");}}>Procedural study</button>
+                <button type="button" aria-pressed={mode === "asset"} onClick={() => {setSceneError(null); setAssetStatus("loading"); setMode("asset");}}>Real GLB tomato</button>
               </div>
             </div>
+            {mode === "asset" && <div className="gs-stage-picker">
+              <label htmlFor="gs-tomato-stage">Tomato growth stage</label>
+              <select id="gs-tomato-stage" value={growthStage} onChange={(event) => {setSceneError(null); setAssetStatus("loading"); setGrowthStage(event.target.value as TomatoStage);}}>
+                {TOMATO_GROWTH_STAGES.map((stage) => <option key={stage.value} value={stage.value}>{stage.label}</option>)}
+              </select>
+              <span role="status">{assetStatus === "loading" ? "Loading GLB…" : assetStatus === "ready" ? "3D asset loaded" : "Asset unavailable"}</span>
+            </div>}
             <div className="gs-stage" ref={stageRef} data-mode={mode}>
               {sceneError && <div className="gs-error" role="alert">{sceneError}</div>}
               <div className="gs-scene-caption" aria-hidden="true">2 × 4 M · TOMATO / PEA / STRAWBERRY</div>
@@ -172,10 +235,12 @@ export function GardenShowcase() {
           </section>
           <aside className="gs-notes" aria-label="About the comparison">
             <div className="gs-notes-kicker">LOOK CLOSELY / 01–03</div>
-            <h2>{mode === "botanical" ? "More plant, less polygon." : "Where we started."}</h2>
-            <p>{mode === "botanical"
-              ? "This is the first standalone procedural study of plant structure, leaf textures and natural materials—not the finished photorealistic GLB library."
-              : "These are the application's existing generated low-poly plant models, shown under the same lighting and in the same bed."}</p>
+            <h2>{mode === "asset" ? "The first real asset." : mode === "botanical" ? "More plant, less polygon." : "Where we started."}</h2>
+            <p>{mode === "asset"
+              ? "The tomato plants are now loaded from actual generated .glb files with an embedded leaf atlas. Select seedling, vegetative or fruiting to load a different real 3D asset. This is an original starter model, not a photorealistic Blender asset yet."
+              : mode === "botanical"
+                ? "This is the earlier procedural browser-generated study, kept intact as our baseline for improvement."
+                : "These are the application's original generated low-poly plants, shown under the same lighting and in the same bed."}</p>
             <div className="gs-species">
               <div><span>01</span><div><strong>Tomato · Sungold</strong><p>Compound foliage, trusses, fruit shoulders and individual calyxes</p></div></div>
               <div><span>02</span><div><strong>Climbing pea</strong><p>Paired leaflets, spiralling tendrils and hanging pods on wire support</p></div></div>
@@ -183,7 +248,7 @@ export function GardenShowcase() {
             </div>
             <div className="gs-material-note">
               <span>RENDERING NOTES</span>
-              <p>Procedural leaf textures, subtle surface curvature, rough timber grain, soil particles and warm directional shadows. No downloaded GLB assets or external postprocessing package yet.</p>
+              <p>{mode === "asset" ? "The starter tomato is a genuine glTF 2.0 GLB file, created at build time in three growth stages and three LODs. Phone view loads LOD1. Better scanned or Blender-authored textures and geometry are the next milestone." : "Procedural leaves, rough timber grain, soil particles and warm directional shadows; no external postprocessing package."}</p>
             </div>
           </aside>
         </div>
