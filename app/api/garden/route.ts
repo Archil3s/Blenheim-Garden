@@ -1,3 +1,5 @@
+import { ensureDesignerSchema } from "@/lib/garden/designer-schema";
+import { parseDesignerShape } from "@/lib/garden/designer-shapes";
 import { ensurePlantPlacementSchema, parsePlantPlacements } from "@/lib/garden/plant-placement-schema";
 import { rowPlants } from "@/lib/garden/plan-editing";
 import { getGardenDb, getGardenWriteToken } from "@/lib/garden/cloudflare-db";
@@ -66,6 +68,7 @@ type PlantingRowDb = {
 };
 
 type LayoutRow = {
+  sort_order: number;
   id: string;
   object_type: "path" | "trellis" | "tree" | "structure" | "text";
   x1_cm: number | null;
@@ -126,7 +129,7 @@ function parseLayoutObject(raw: unknown, index: number): PlannerLayoutObject {
   const object = raw as Record<string, unknown>;
   const id = optionalString(object.id);
   const type = object.type;
-  if (!id || id.length > 160 || !["path", "trellis", "tree", "structure", "text"].includes(String(type))) throw new Error(`Drawing object ${index + 1} is invalid.`);
+  if (!id || id.length > 160 || !["path", "trellis", "tree", "structure", "text", "shape"].includes(String(type))) throw new Error(`Drawing object ${index + 1} is invalid.`);
 
   if (type === "path" || type === "trellis") {
     const start = canvasPoint(object, "x1", "y1", `Drawing object ${index + 1}`);
@@ -140,6 +143,8 @@ function parseLayoutObject(raw: unknown, index: number): PlannerLayoutObject {
     if (!finite(object.postSpacingCm) || object.postSpacingCm <= 0 || object.postSpacingCm > 1000) throw new Error(`Trellis ${index + 1} has invalid post spacing.`);
     return { id, type, x1: start.x, y1: start.y, x2: end.x, y2: end.y, heightCm: object.heightCm, postSpacingCm: object.postSpacingCm, label: optionalString(object.label) };
   }
+
+  if (type === "shape") return parseDesignerShape(object);
 
   const point = canvasPoint(object, "x", "y", `Drawing object ${index + 1}`);
   if (type === "tree") {
@@ -324,6 +329,16 @@ function pointFromDb(value: string | null) {
   return { x: Number.isFinite(x) ? x : 0, y: Number.isFinite(y) ? y : 0 };
 }
 
+function storedLayoutId(gardenId: string, objectId: string) {
+  return gardenId === GARDEN_ID ? objectId : `${gardenId}:layout:${objectId}`;
+}
+
+function logicalLayoutId(gardenId: string, storedId: string) {
+  const prefix = `${gardenId}:layout:`;
+  return gardenId !== GARDEN_ID && storedId.startsWith(prefix)
+    ? storedId.slice(prefix.length) : storedId;
+}
+
 export async function GET(request: Request) {
   try {
     const gardenId = gardenIdFromRequest(request);
@@ -331,6 +346,7 @@ export async function GET(request: Request) {
     await ensureGardenLayoutSchema(db);
     await ensureGardenPlantingAreaSchema(db);
     await ensurePlantPlacementSchema(db);
+    await ensureDesignerSchema(db);
 
     const bedsResult = await db.prepare(`
       SELECT id, label, x_percent, y_percent, width_percent, height_percent
@@ -360,9 +376,12 @@ export async function GET(request: Request) {
     const layoutResult = await db.prepare(`
       SELECT id, object_type, x1_cm, y1_cm, x2_cm, y2_cm, width_cm, height_cm,
         diameter_cm, post_spacing_cm, text_value, label, point_xy, font_size,
-        structure_kind, depth_cm, rotation_deg
+        structure_kind, depth_cm, rotation_deg, sort_order
       FROM layout_objects WHERE garden_id = ? ORDER BY sort_order ASC, created_at ASC
     `).bind(gardenId).all<LayoutRow>();
+
+    const shapeResult = await db.prepare("SELECT payload_json, sort_order FROM designer_shapes WHERE garden_id = ? ORDER BY sort_order ASC")
+      .bind(gardenId).all<{ payload_json: string; sort_order: number }>();
 
     const beds: PlannerBed[] = (bedsResult.results ?? []).map((bed) => ({
       id: Number.parseInt(bed.id, 10), name: bed.label, x: Number(bed.x_percent), y: Number(bed.y_percent),
@@ -393,7 +412,8 @@ export async function GET(request: Request) {
       y2: Number(row.y2_cm), count: Number(row.estimated_count ?? 1),
     }));
 
-    const objects: PlannerLayoutObject[] = (layoutResult.results ?? []).map((item) => {
+    const layoutItems = (layoutResult.results ?? []).map((item) => ({ ...item, id: logicalLayoutId(gardenId, item.id) }));
+    const objects: PlannerLayoutObject[] = layoutItems.map((item) => {
       if (item.object_type === "path") return { id: item.id, type: "path", x1: Number(item.x1_cm), y1: Number(item.y1_cm), x2: Number(item.x2_cm), y2: Number(item.y2_cm), widthCm: Number(item.width_cm ?? 60), label: item.label ?? undefined };
       if (item.object_type === "trellis") return { id: item.id, type: "trellis", x1: Number(item.x1_cm), y1: Number(item.y1_cm), x2: Number(item.x2_cm), y2: Number(item.y2_cm), heightCm: Number(item.height_cm ?? 180), postSpacingCm: Number(item.post_spacing_cm ?? 150), label: item.label ?? undefined };
       const point = pointFromDb(item.point_xy);
@@ -412,7 +432,11 @@ export async function GET(request: Request) {
       return { id: item.id, type: "text", ...point, text: item.text_value ?? "Label", fontSize: Number(item.font_size ?? 13) };
     });
 
-    return Response.json({ ok: true, source: "d1", gardenId, plan: { beds, plantingAreas, rows, objects } });
+    const orderedObjects = [
+      ...objects.map((object, index) => ({ object, order: layoutResult.results?.[index]?.sort_order ?? index })),
+      ...(shapeResult.results ?? []).map((row) => ({ object: parseDesignerShape(JSON.parse(row.payload_json)), order: row.sort_order })),
+    ].sort((a, b) => a.order - b.order).map((entry) => entry.object);
+    return Response.json({ ok: true, source: "d1", gardenId, plan: { beds, plantingAreas, rows, objects: orderedObjects } });
   } catch (error) {
     return Response.json({ ok: false, error: error instanceof Error ? error.message : "Unable to load garden plan." }, { status: 503 });
   }
@@ -430,6 +454,7 @@ export async function PUT(request: Request) {
     await ensureGardenLayoutSchema(db);
     await ensureGardenPlantingAreaSchema(db);
     await ensurePlantPlacementSchema(db);
+    await ensureDesignerSchema(db);
 
     const currentResult = await db.prepare(`
       SELECT id, bed_id, row_id, area_id, crop_name, crop_icon, variety, spacing_cm, estimated_count
@@ -533,6 +558,12 @@ export async function PUT(request: Request) {
     for (const row of plan.rows) statements.push(db.prepare("UPDATE planting_rows SET placements_json = ? WHERE id = ? AND garden_id = ?").bind(row.placements ? JSON.stringify(row.placements) : null, row.id, gardenId));
 
     for (const [index, object] of plan.objects.entries()) {
+      if (object.type === "shape") {
+        statements.push(db.prepare(`INSERT INTO designer_shapes (garden_id, id, payload_json, sort_order) VALUES (?, ?, ?, ?)
+          ON CONFLICT(garden_id, id) DO UPDATE SET payload_json = excluded.payload_json, sort_order = excluded.sort_order`)
+          .bind(gardenId, object.id, JSON.stringify(object), index));
+        continue;
+      }
       const point = object.type === "tree" || object.type === "text" || object.type === "structure" ? `${object.x},${object.y}` : null;
       statements.push(db.prepare(`
         INSERT INTO layout_objects (
@@ -547,7 +578,7 @@ export async function PUT(request: Request) {
           structure_kind = excluded.structure_kind, depth_cm = excluded.depth_cm, rotation_deg = excluded.rotation_deg,
           sort_order = excluded.sort_order, updated_at = CURRENT_TIMESTAMP
       `).bind(
-        object.id, gardenId, object.type,
+        storedLayoutId(gardenId, object.id), gardenId, object.type,
         object.type === "path" || object.type === "trellis" ? object.x1 : null,
         object.type === "path" || object.type === "trellis" ? object.y1 : null,
         object.type === "path" || object.type === "trellis" ? object.x2 : null,
@@ -567,9 +598,13 @@ export async function PUT(request: Request) {
       ));
     }
 
-    const objectIds = plan.objects.map((object) => object.id);
+    const objectIds = plan.objects.filter((object) => object.type !== "shape").map((object) => storedLayoutId(gardenId, object.id));
     if (objectIds.length) statements.push(db.prepare(`DELETE FROM layout_objects WHERE garden_id = ? AND id NOT IN (${objectIds.map(() => "?").join(",")})`).bind(gardenId, ...objectIds));
     else statements.push(db.prepare("DELETE FROM layout_objects WHERE garden_id = ?").bind(gardenId));
+
+    const shapeIds = plan.objects.filter((object) => object.type === "shape").map((object) => object.id);
+    if (shapeIds.length) statements.push(db.prepare(`DELETE FROM designer_shapes WHERE garden_id = ? AND id NOT IN (${shapeIds.map(() => "?").join(",")})`).bind(gardenId, ...shapeIds));
+    else statements.push(db.prepare("DELETE FROM designer_shapes WHERE garden_id = ?").bind(gardenId));
 
     const currentTargets = new Set([
       ...plan.plantingAreas.map((area) => `area:${area.id}`),

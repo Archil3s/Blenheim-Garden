@@ -18,6 +18,7 @@ import "./device-layout-recovery.css";
 import "./garden-first.css";
 import "./structure-objects.css";
 import "./planner-reports.css";
+import "./garden-designer.css";
 import "./garden-3d-editor.css";
 
 export const metadata: Metadata = {

@@ -116,3 +116,21 @@ User feedback: requested a full copy. Exact parity is **not complete**. Missing
 atlas/database, independently verified growing data, and remaining editing,
 inventory and calendar workflows are tracked in PLANNER_REBUILD.md.
 Production deployment has not been performed.
+
+## Designer workstream P-002 — 2 November 2026
+
+Implemented drawing geometry, colours, resizing, rotation, per-shape locks,
+copy/paste, undo/redo, front/back placement and layer views. Shape objects render
+in both existing 3D views and exports. Protected saves use an idempotent separate
+shape table; named-garden layout IDs are namespaced to avoid cross-garden
+collisions. Existing layout storage and measured beds remain supported.
+
+Validation: lint and production build pass. The combined designer/planner,
+report and persistence regression run passed 52 checks. Final designer run
+passed all 12 checks across desktop, laptop, tablet and phone, including actual
+resize-handle dragging, lock protection, ordering, save/reload and 3D rendering.
+The phone inspector was reduced so it does not cover the resize handle.
+Screenshots: outputs/designer-preview/{viewport}-shape-tools.png,
+{viewport}-designer-shapes.png and {viewport}-designer-shapes-3d.png.
+The previously documented baseline phone texture-request test remains separate.
+No production deployment. Full third-party feature parity remains incomplete.

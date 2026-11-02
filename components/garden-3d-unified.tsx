@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
+import { addDesignerShape3D } from "./designer-shape-3d";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import type { GardenPlanApiResponse, PlannerBed, PlannerPlan, PlannerPlantingArea } from "@/lib/garden/planner-plan";
 import {
@@ -446,6 +447,7 @@ function buildGarden(root: THREE.Group, plan: PlannerPlan, mobile: boolean) {
   for (const area of plan.plantingAreas) reconcile("area:" + area.id, [area, plan.beds.find((b) => b.id === area.bedId)], (holder) => addPlantingArea(holder, plan, area, mobile));
   for (const row of plan.rows) reconcile("row:" + row.id, [row, plan.beds], (holder) => addRow(holder, row, mobile, plan));
   for (const object of plan.objects) reconcile("object:" + object.id, object, (holder) => {
+    if (object.type === "shape") addDesignerShape3D(holder, object);
     if (object.type === "path") addPath(holder, object, mobile);
     if (object.type === "trellis") addTrellis(holder, object, mobile);
     if (object.type === "tree") addTree(holder, object, mobile);

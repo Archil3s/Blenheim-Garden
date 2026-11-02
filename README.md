@@ -23,6 +23,7 @@ The planner currently supports:
 - **Path** — draw paths and edit width/label
 - **Trellis** — draw trellises and edit height/post spacing/label
 - **Tree** — place, move and resize tree canopies
+- **Shapes** — draw rectangles, triangles, ellipses and lines; edit colours, size and rotation; lock, copy and order shapes
 - **Text** — place and edit garden labels
 - 10 cm snapping by default
 - live X/Y coordinates and measurements

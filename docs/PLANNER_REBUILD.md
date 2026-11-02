@@ -26,7 +26,9 @@
 - 3D return links now go to `/planner`, retaining garden query parameters where
   used. Previously they opened the homepage after the route separation.
 
-No schema migration, dependency change or Cloudflare binding change is required.
+Designer tools add outline/filled rectangles, triangles, ellipses and lines, colour/width controls, drag resizing, rotation, per-shape locks, front/back ordering, clipboard duplication, undo/redo and layer views. Shapes persist per garden and render in 3D and exports.
+
+An idempotent designer_shapes table is created automatically. Named-garden layout IDs are namespaced on save to prevent collisions with another garden. No dependency or Cloudflare binding change is required.
 New structure kind values use the existing validated structure storage path.
 Protected writes, private media, named gardens and the measured base plan remain.
 
@@ -52,8 +54,8 @@ Still needed for feature parity:
 - independently verified spacing, traits, botanical information and calendars for
   every catalogue entry; new names do not automatically extend seasonal advice;
 - detailed artwork and individual variants for the full library;
-- general shapes, line/fill colors/textures and richer text formatting;
-- layer locking, visibility, ordering and clipboard workflows;
+- texture fills and richer text formatting;
+- broader layer locking, ordering and clipboard workflows for every item type;
 - square-foot density controls and dedicated container planting associations;
 - plant-specific temporal occupancy, succession planning and season-extender
   calendar adjustment;

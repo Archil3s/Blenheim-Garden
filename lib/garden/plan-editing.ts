@@ -85,6 +85,8 @@ function editPlant(plan: PlannerPlan, selection: PlanSelection, point?: PointCm,
 }
 
 export function movePlanSelection(plan: PlannerPlan, selection: PlanSelection, delta: PointCm): PlannerPlan {
+  const lockedItem = selectionItem(plan, selection);
+  if (lockedItem && "locked" in lockedItem && lockedItem.locked) return plan;
   if (selection.plantId) {
     const parent = selectionItem(plan, selection);
     if (!parent || !("crop" in parent)) return plan;
@@ -104,6 +106,8 @@ export function movePlanSelection(plan: PlannerPlan, selection: PlanSelection, d
 }
 
 export function deletePlanSelection(plan: PlannerPlan, selection: PlanSelection): PlannerPlan {
+  const lockedItem = selectionItem(plan, selection);
+  if (lockedItem && "locked" in lockedItem && lockedItem.locked) return plan;
   if (selection.plantId) return editPlant(plan, selection);
   if (selection.kind === "bed") {
     if (plan.plantingAreas.some((area) => String(area.bedId) === selection.id)) throw new Error("Remove the bed's plantings before deleting the bed.");

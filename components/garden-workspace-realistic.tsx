@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { addDesignerShape3D } from "./designer-shape-3d";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import type {
   PlannerBed,
@@ -632,6 +633,7 @@ function buildGarden(group: THREE.Group, plan: PlannerPlan, mobile: boolean) {
   }
 
   for (const object of plan.objects) {
+    if (object.type === "shape") addDesignerShape3D(group, object);
     if (object.type === "path") addPath(group, object);
     if (object.type === "trellis") addTrellis(group, object);
     if (object.type === "structure") addStructure3D(group, object, !mobile);

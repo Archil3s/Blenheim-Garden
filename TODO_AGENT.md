@@ -363,3 +363,8 @@ The user's full-copy objective remains incomplete. Next work is independent
 plant data/artwork, general shapes/layers, inventory and temporal planting
 workflows. Do not describe catalogue names as verified growing guidance or
 this implementation as an exact third-party copy.
+
+P-002 adds drawing shapes, per-shape editing/locking/order and layer views.
+Designer validation: 12/12 across four viewport sizes; combined regression
+52/52. Read docs/PLANNER_REBUILD.md for remaining textures, rich text, full-object
+layer operations, verified plant data, inventory and temporal workflows.

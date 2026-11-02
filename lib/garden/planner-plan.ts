@@ -181,7 +181,25 @@ export type PlannerText = {
   fontSize: number;
 };
 
-export type PlannerLayoutObject = PlannerPath | PlannerTrellis | PlannerTree | PlannerStructure | PlannerText;
+export type PlannerShapeKind = "rectangle" | "triangle" | "ellipse" | "line";
+
+export type PlannerShape = {
+  id: string;
+  type: "shape";
+  shape: PlannerShapeKind;
+  x: number;
+  y: number;
+  widthCm: number;
+  heightCm: number;
+  rotationDeg: number;
+  stroke: string;
+  fill: string;
+  lineWidth: number;
+  locked: boolean;
+  behind: boolean;
+};
+
+export type PlannerLayoutObject = PlannerPath | PlannerTrellis | PlannerTree | PlannerStructure | PlannerText | PlannerShape;
 
 export type PlannerPlan = {
   beds: PlannerBed[];
