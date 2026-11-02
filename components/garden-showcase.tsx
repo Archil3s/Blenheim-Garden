@@ -172,6 +172,16 @@ export function GardenShowcase() {
       if (firstFrame) {
         parent.dataset.sceneReady = mode;
         parent.dataset.environmentReady = environment;
+        const enhanced = cropBed.children.find((child) => child.userData.environmentV2 === true);
+        const stats = enhanced?.userData.environmentStats as {
+          grassBlades: number; gravelStones: number; foliageCards: number;
+        } | undefined;
+        if (stats) {
+          parent.dataset.grassInstances = String(stats.grassBlades);
+          parent.dataset.gravelInstances = String(stats.gravelStones);
+          parent.dataset.foliageInstances = String(stats.foliageCards);
+        }
+        parent.dataset.drawCalls = String(renderer.info.render.calls);
         firstFrame = false;
       }
       raf = requestAnimationFrame(frame);
@@ -199,6 +209,10 @@ export function GardenShowcase() {
       if (canvas.parentElement === parent) parent.removeChild(canvas);
       delete parent.dataset.sceneReady;
       delete parent.dataset.environmentReady;
+      delete parent.dataset.grassInstances;
+      delete parent.dataset.gravelInstances;
+      delete parent.dataset.foliageInstances;
+      delete parent.dataset.drawCalls;
       delete parent.dataset.modelReady;
       delete parent.dataset.modelLod;
     };
