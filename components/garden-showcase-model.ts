@@ -1,5 +1,10 @@
 import * as THREE from "three";
 import { createGardenPlant3D } from "@/components/garden-plant-3d";
+import {
+  createShowcaseEnvironmentV2,
+  disposeShowcaseEnvironmentV2,
+  type EnvironmentMode,
+} from "@/components/garden-showcase-environment-v2";
 
 export type ShowcaseMode = "botanical" | "classic" | "asset";
 
@@ -429,9 +434,10 @@ function makeBed(root: THREE.Group, mobile: boolean) {
   root.add(mulch);
 }
 
-export function createShowcaseBed(mode: ShowcaseMode, mobile: boolean) {
+export function createShowcaseBed(mode: ShowcaseMode, mobile: boolean, environment: EnvironmentMode = "current") {
   const root = new THREE.Group();
-  makeBed(root, mobile);
+  if (environment === "v2") root.add(createShowcaseEnvironmentV2(mobile));
+  else makeBed(root, mobile);
   const botanical = mode !== "classic";
   const m = botanical ? createMaterials() : null;
   const plants: Array<{ crop: "Tomato" | "Pea" | "Strawberry"; x: number; z: number; seed: number }> = [
@@ -465,16 +471,24 @@ export function createShowcaseBed(mode: ShowcaseMode, mobile: boolean) {
     root.add(holder);
   }
   root.userData.showcaseMode = mode;
+  root.userData.environmentMode = environment;
   root.userData.plantCount = plants.length;
   return root;
 }
 
 /** Never dispose the globally cached low-poly materials used elsewhere in the planner. */
 export function disposeShowcaseBed(group: THREE.Group, mode: ShowcaseMode) {
+  const environment = group.children.find((child) => child.userData.environmentV2 === true);
+  if (environment instanceof THREE.Group) disposeShowcaseEnvironmentV2(environment);
   const materials = new Set<THREE.Material>();
   const textures = new Set<THREE.Texture>();
   group.traverse((object) => {
     if (!(object instanceof THREE.Mesh)) return;
+    let ancestor: THREE.Object3D | null = object;
+    while (ancestor) {
+      if (ancestor.userData.environmentV2 === true) return; // already disposed above
+      ancestor = ancestor.parent;
+    }
     object.geometry.dispose();
     if (mode === "classic") return;
     const mats = Array.isArray(object.material) ? object.material : [object.material];
