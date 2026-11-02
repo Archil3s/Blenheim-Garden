@@ -173,7 +173,7 @@ function build(stage, lod) {
   const isVegetative = stage === "vegetative";
   const height = isSeedling ? .2 : isVegetative ? .77 : 1.35;
   const nodes = Math.max(2, (isSeedling ? 3 : isVegetative ? 9 : 14) - lod * (isSeedling ? 0 : 2));
-  const main: number[][] = [];
+  const main = [];
   for (let i = 0; i <= nodes; i++) {
     const t = i / nodes;
     main.push([.025 * Math.sin(t * 8), height * t, .018 * Math.cos(t * 7)]);
