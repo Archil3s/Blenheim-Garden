@@ -194,3 +194,29 @@ New browser checks measured all these dimensions at 1920/1440/1024/390 widths,
 rechecked them after zoom in/out, checked catalogue dimensions and confirmed bed
 geometry unchanged: 4/4 passed. Lint and production build pass. Existing planner/artwork regression checks: 32/32 passed. Screenshots: outputs/icon-size-fix/.
 No production save, merge or deployment.
+
+## Detailed parity audit P-006 — 2 November 2026
+
+The live source audit covers 44 comparison areas, including settings, drawing,
+layers, temporal controls, plant/parts reports, printing, notes and Seed Planner.
+Read GROWVEG_PARITY_AUDIT.md for observations, code gaps and verification limits.
+Exact whole-product parity fails. Main remains unchanged under the user's
+instruction to push after completion; PR #52 remains draft.
+
+The pre-correction full run reproduced CI: 124 passed, four detailed-art 3D
+failures. Three are new regressions; the earlier phone-only baseline failure
+does not excuse them. The shared plant factory now renders detailed species
+artwork where no specific mesh model exists, using crossed mesh planes and a
+top-view symbol. Texture arrival invalidates the renderer, and teardown removes
+the listener and disposes mesh textures. Other crops retain procedural models.
+Default outline and solid shape colours now match the observed #663300.
+
+Final validation: npm run lint and npm run build pass. The complete unchanged
+Playwright suite passes **128/128** across 1920×1080, 1440×900, 1024×768 and
+390×844. Perspective/top/companion captures were reviewed. Detailed artwork is
+visible on desktop/laptop/tablet; the phone perspective fixture is distant and
+washed out by fog after camera fit, a remaining visual limitation despite its
+functional pass. Do not treat the suite as proof of visual or product parity.
+Original icon-dimension, unchanged-bed, persistence and named-garden checks also
+pass in that full run. No dependencies, bindings or test assertions changed.
+Browser viewport override restored. No production save, merge or deployment.

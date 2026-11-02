@@ -205,7 +205,7 @@ export function GardenPlanner() {
   const [originalSymbolSizes, setOriginalSymbolSizes] = useState(true);
   const [treeDiameter, setTreeDiameter] = useState(150);
   const [newText, setNewText] = useState("Label");
-  const [shapeStyle, setShapeStyle] = useState<ShapeStyle>({ shape: "rectangle", stroke: "#74522d", fill: "none", lineWidth: 3 });
+  const [shapeStyle, setShapeStyle] = useState<ShapeStyle>({ shape: "rectangle", stroke: "#663300", fill: "none", lineWidth: 3 });
   const [designerLayer, setDesignerLayer] = useState("all");
   const drawingClipboard = useRef<PlannerLayoutObject | null>(null);
   const [clipboardReady, setClipboardReady] = useState(false);

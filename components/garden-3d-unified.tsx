@@ -14,7 +14,7 @@ import {
 } from "@/lib/garden/active-garden";
 import { addStructure3D } from "@/components/garden-structure-3d";
 import { addDemonstrationBed3D } from "@/components/garden-demo-bed-3d";
-import { createGardenPlant3D } from "@/components/garden-plant-3d";
+import { createGardenPlant3D, PLANT_ART_READY_EVENT } from "@/components/garden-plant-3d";
 import { areaPlants, rowPlants, type PlanSelection } from "@/lib/garden/plan-editing";
 import { useGarden3DEditor } from "./use-garden-3d-editor";
 import { Garden3DEditorControls } from "./garden-3d-editor-controls";
@@ -634,6 +634,8 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     scene.add(content);
     const runtime: Runtime = { scene, content, camera, controls, renderer, mobile };
     runtimeRef.current = runtime;
+    const artworkReady = () => { runtime.needsRender = true; };
+    window.addEventListener(PLANT_ART_READY_EVENT, artworkReady);
 
     if (demoRef.current) addDemonstrationBed3D(content, mobile);
     else buildGarden(content, planRef.current, mobile);
@@ -663,6 +665,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
 
     return () => {
       renderer.setAnimationLoop(null);
+      window.removeEventListener(PLANT_ART_READY_EVENT, artworkReady);
       observer.disconnect();
       removeEditInteractions();
       controls.dispose();

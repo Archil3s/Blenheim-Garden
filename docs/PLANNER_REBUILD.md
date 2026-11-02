@@ -34,8 +34,13 @@ style reference; its different garden arrangement is not imported, as requested.
 Exact whole-product parity remains incomplete. The ribbon does not expose every
 GrowVeg workflow; temporal planning, inventory, texture-selection UI, full-object
 locking, rich text and publication/import workflows need further work. 3D models
-remain procedural, and exports remain schematic rather than original-art exports.
+remain procedural with detailed artwork for species without specific models;
+exports remain schematic rather than original-art exports.
 Do not describe this as a fully verified 1:1 GrowVeg product clone.
 
 Final build/browser verification is recorded in DESIGN_PROGRESS.md.
 No production deployment has been performed.
+
+The detailed live comparison is in GROWVEG_PARITY_AUDIT.md. Whole-product parity
+fails. The user's request to push main after completion remains pending; keep
+PR #52 draft until the remaining workflows and final reference audit pass.

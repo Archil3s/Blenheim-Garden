@@ -224,6 +224,10 @@ export function plantIconSprite(crop: string, variety?: string | null): PlantIco
   };
 }
 
+export function isDetailedPlantIcon(sprite: PlantIconSprite): boolean {
+  return detailedFiles.some((file) => sprite.src === `/plant-icons/individual/${file}.png`);
+}
+
 export function plantIconBackground(sprite: PlantIconSprite) {
   const x = sprite.columns <= 1 ? 0 : (sprite.column / (sprite.columns - 1)) * 100;
   const y = sprite.rows <= 1 ? 0 : (sprite.row / (sprite.rows - 1)) * 100;

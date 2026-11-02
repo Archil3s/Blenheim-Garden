@@ -386,3 +386,13 @@ rows, berry strip, tree and fixed-size catalogue icons. Do not reintroduce the
 legacy tiny fixed icon sizes as the default. Reference-size mode is the default;
 legacy custom area sizes remain available in the planting inspector. Bed and
 plant count/spacing data are unchanged. See docs/DESIGN_PROGRESS.md for QA.
+
+P-006 completed a detailed live reference audit. Read
+docs/GROWVEG_PARITY_AUDIT.md before continuing. Whole-product parity fails;
+the user's requested main push is conditional on completing it. Do not merge
+PR #52 as an exact clone. In particular, reports/calendars, inventory, general
+selection/layers, settings/history, texture UI and rendered exports remain.
+The full pre-correction suite had 124 passes and four detailed-art 3D failures;
+three of those failures are new regressions, despite the earlier phone-only
+baseline issue. Detailed species artwork now renders in both unified 3D routes,
+and source default shape colours are corrected. Keep all existing tests intact.
