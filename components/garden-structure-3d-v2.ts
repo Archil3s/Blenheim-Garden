@@ -1,3 +1,4 @@
+import { structureRenderKind } from "@/lib/garden/structure-catalog";
 import * as THREE from "three";
 import type { PlannerStructure } from "@/lib/garden/planner-plan";
 import { structurePreset } from "@/lib/garden/structure-catalog";
@@ -806,6 +807,11 @@ const V2_KINDS = new Set([
 ]);
 
 export function addStructure3D(group: THREE.Group, object: PlannerStructure, detailed: boolean) {
+  const renderKind = structureRenderKind(object.kind);
+  if (renderKind !== object.kind) {
+    addStructure3D(group, { ...object, kind: renderKind }, detailed);
+    return;
+  }
   if (!V2_KINDS.has(object.kind)) {
     addStructure3DLegacy(group, object, detailed);
     return;

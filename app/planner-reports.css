@@ -1,0 +1,47 @@
+.planner-report {
+  width: min(880px, calc(100vw - 24px));
+  max-height: calc(100dvh - 32px);
+  padding: 24px;
+  border: 1px solid #a7b49f;
+  border-radius: 8px;
+  background: #f7f5ef;
+  color: #24372c;
+  box-sizing: border-box;
+}
+.planner-report::backdrop { background: #172d2266; }
+.planner-report header { display: flex; justify-content: space-between; align-items: start; gap: 16px; border-bottom: 1px solid #dadfd2; padding-bottom: 16px; }
+.planner-report h2 { font: 28px Georgia, serif; margin: 4px 0; }
+.planner-report button { min-height: 44px; padding: 8px 16px; background: #fff; border: 1px solid #b3bfac; border-radius: 5px; cursor: pointer; color: #294e39; font: inherit; }
+.planner-report button:hover { background: #eaf0e5; }
+.planner-report :focus-visible { outline: 3px solid #aa7e4d; outline-offset: 2px; }
+.report-controls { display: flex; gap: 16px; margin: 20px 0; }
+.report-controls label { flex: 1; min-width: 0; display: grid; gap: 6px; font-size: 13px; }
+.report-controls input, .report-controls select { min-height: 44px; padding: 8px; border: 1px solid #b3bfac; background: #fff; font: inherit; min-width: 0; width: 100%; box-sizing: border-box; }
+.report-scroll { overflow: auto; max-height: 55dvh; }
+.planner-report table { width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; }
+.planner-report th, .planner-report td { padding: 12px 8px; border-bottom: 1px solid #dadfd2; }
+.planner-report th { position: sticky; top: 0; background: #eef0e6; }
+.planner-report td small { display: block; color: #647b65; margin-top: 4px; }
+.report-plant-art { float: left; margin-right: 10px; font-size: 36px; }
+.planner-report footer { display: flex; gap: 12px; justify-content: end; padding-top: 20px; }
+.report-export-actions { display: grid; gap: 16px; padding-top: 16px; }
+.gv-catalogue-options { margin: 12px 14px; display: grid; gap: 10px; }
+.gv-catalogue-options label { display: flex; gap: 8px; align-items: center; font-size: 13px; }
+.gv-catalogue-options input[type=checkbox] { width: 18px; height: 18px; }
+.gv-catalogue-spacing { margin: 0 14px 12px; display: grid; gap: 6px; font-size: 12px; }
+.gv-catalogue-spacing input { min-height: 36px; width: 100%; box-sizing: border-box; }
+.gv-catalogue-spacing small { color: #69785e; line-height: 1.5; }
+.gv-structure-preset-icon { width: 42px; height: 42px; flex: 0 0 42px; }
+.gv-structure-preset-icon img { width: 100%; height: 100%; object-fit: contain; }
+@media(max-width: 600px) {
+  .planner-report { padding: 16px; }
+  .report-controls { flex-direction: column; gap: 12px; }
+  .planner-report th, .planner-report td { padding: 10px 5px; font-size: 12px; overflow-wrap: anywhere; }
+  .report-plant-art { float: none; display: block; }
+}
+@media print {
+  body:has(.planner-report[open]) > :not(.planner-report) { display: none !important; }
+  .planner-report[open] { position: static; margin: 0; width: 100%; max-height: none; border: 0; overflow: visible; }
+  .planner-report[open] button, .planner-report[open] .report-controls, .planner-report[open] footer { display: none; }
+  .planner-report[open] .report-scroll { max-height: none; overflow: visible; }
+}

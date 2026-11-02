@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import { getPlantIconV2 } from "@/lib/garden/plant-icon-v2";
 import { plantIconBackground, plantIconSprite } from "@/lib/garden/plant-icons";
+import { catalogueArt } from "@/lib/garden/catalogue-art";
 
 type PlantArtProps = {
   crop: string;
@@ -35,7 +36,14 @@ export function PlantArt({ crop, variety, fallback, className, style }: PlantArt
   }
 
   const sprite = plantIconSprite(crop, variety);
-  if (!sprite) return <span className={className} style={style} aria-hidden="true">{fallback}</span>;
+  if (!sprite) {
+    const src = catalogueArt[crop.toLowerCase()];
+    if (!src) return <span className={className} style={style} aria-hidden="true">{fallback}</span>;
+    return <span className={className} aria-hidden="true" style={{
+      display: "inline-block", width: "1em", height: "1em", flex: "0 0 auto",
+      background: `url(${src}) center / contain no-repeat`, ...style,
+    }} />;
+  }
   return (
     <span
       className={className}

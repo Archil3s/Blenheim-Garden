@@ -82,3 +82,37 @@ _None received yet. Add new entries here when the user reviews the browser or sc
 
 ## How to continue in a future chat
 Read `AGENTS.md`, `PROJECT_CONTEXT.md`, `DESIGN.md`, this log, and the current UI source. Keep existing garden state safe. Complete the oldest unverified in-progress item, log screenshots/test results, then collect feedback before the next phase. Do not merge prematurely.
+
+## Planner rebuild workstream P-001 — 2 November 2026
+
+Branch: `feature/planner-rebuild`. Scope and remaining work:
+[PLANNER_REBUILD.md](PLANNER_REBUILD.md).
+
+Added the expanded 411-name catalogue alongside existing crops, original local
+silhouettes, 71 structure presets, custom spacing/variety, plant/parts reports,
+CSV/JSON/SVG/PNG exports and printable lists. Retained the existing shortlists,
+protected storage, measured layout and procedural 3D behavior. Fixed companion
+3D return links that still pointed to the homepage. The original 36-preset
+`STRUCTURE_PRESETS` contract remains; the expanded list is a separate export.
+
+After evidence: `expanded-catalogue.png` and `plant-list.png` from the new
+`planner-catalogue-reports.spec.ts`, at desktop, laptop, tablet and phone sizes.
+Inspected all four viewports and the exported PNG schematic.
+
+Validation: `npm run lint` and `npm run build` pass. Full Chromium suite:
+**99 passed, 1 failed**. The failure is the existing phone variant of
+`plant-art-3d.spec.ts:41`, which expects individual PNG requests after entering
+the procedural 3D view. It fails identically on unmodified commit `8bbc746`
+in an isolated baseline checkout. The baseline used Webpack because Turbopack
+rejects shared dependencies outside its checkout root. No existing tests were
+changed, removed or weakened. The new catalogue/report tests pass at all four
+sizes, including download contents/dimensions and print visibility.
+
+Flutter checks do not apply: this Next.js repository has no `pubspec.yaml`.
+The requested Flutter/Dart commands were attempted but produced no result
+during SDK startup and were stopped; they are not reported as passing.
+
+User feedback: requested a full copy. Exact parity is **not complete**. Missing
+atlas/database, independently verified growing data, and remaining editing,
+inventory and calendar workflows are tracked in PLANNER_REBUILD.md.
+Production deployment has not been performed.

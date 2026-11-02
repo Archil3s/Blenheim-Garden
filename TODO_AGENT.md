@@ -350,3 +350,16 @@ If a task would require a destructive rewrite, stop and document why before proc
 ## Current priority
 
 **Complete the demonstration-bed benchmark.** Record desktop/mobile performance, improve soil surface variation, then extract the five benchmark crops into a shared plant registry before expanding the catalogue.
+
+## Planner rebuild continuation — 2 November 2026
+
+`feature/planner-rebuild` adds expanded catalogues, original schematic artwork,
+reports/exports and the 3D return-link fix. Read `docs/PLANNER_REBUILD.md` for the
+exact scope and remaining parity gaps, and `docs/DESIGN_PROGRESS.md` for QA.
+Full local Chromium run: 99 pass, 1 existing phone texture-request test failure,
+reproduced on baseline `8bbc746`. Lint and production build pass. No deployment.
+
+The user's full-copy objective remains incomplete. Next work is independent
+plant data/artwork, general shapes/layers, inventory and temporal planting
+workflows. Do not describe catalogue names as verified growing guidance or
+this implementation as an exact third-party copy.

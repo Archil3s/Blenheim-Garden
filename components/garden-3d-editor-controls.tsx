@@ -43,7 +43,7 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
       <button type="button" disabled={disabled || !editor.canUndo} onClick={editor.undo}>Undo</button>
       <button type="button" disabled={disabled || !editor.canRedo} onClick={editor.redo}>Redo</button>
       <button type="button" disabled={disabled || editor.status === "Saving…"} onClick={() => void editor.save()}>Save</button>
-      <Link href="/" aria-label="← 2D Plan" data-planner-view="2d">2D</Link>
+      <Link href="/planner" aria-label="← 2D Plan" data-planner-view="2d">2D</Link>
     </div>
     {!disabled && editor.tool !== "select" && editor.tool !== "move" && <details className="garden-edit-palette" open>
       <summary>Build · {tools.find((t) => t.id === editor.tool)?.label}</summary>

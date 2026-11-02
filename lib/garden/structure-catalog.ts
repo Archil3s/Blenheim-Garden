@@ -9,7 +9,7 @@ export type StructurePreset = {
   heightCm: number;
 };
 
-export const STRUCTURE_PRESETS: readonly StructurePreset[] = [
+export const CORE_STRUCTURE_PRESETS: readonly StructurePreset[] = [
   { kind: "greenhouse", label: "Greenhouse", icon: "▱", widthCm: 240, depthCm: 360, heightCm: 220 },
   { kind: "polytunnel", label: "Polytunnel", icon: "⌒", widthCm: 300, depthCm: 500, heightCm: 220 },
   { kind: "shed", label: "Garden shed", icon: "⌂", widthCm: 240, depthCm: 240, heightCm: 230 },
@@ -48,10 +48,92 @@ export const STRUCTURE_PRESETS: readonly StructurePreset[] = [
   { kind: "keyhole-bed", label: "Keyhole raised bed", icon: "◌", widthCm: 220, depthCm: 220, heightCm: 60 },
 ];
 
+export const STRUCTURE_PRESETS = CORE_STRUCTURE_PRESETS;
+
+export const FULL_STRUCTURE_PRESETS: readonly StructurePreset[] = [...CORE_STRUCTURE_PRESETS,
+  { kind: "arbour", label: "Arbour", icon: "▱", widthCm: 180, depthCm: 100, heightCm: 210 },
+  { kind: "basket", label: "Basket", icon: "▱", widthCm: 40, depthCm: 40, heightCm: 35 },
+  { kind: "hanging-basket", label: "Hanging basket", icon: "▱", widthCm: 35, depthCm: 35, heightCm: 30 },
+  { kind: "bean-support", label: "Bean support", icon: "▱", widthCm: 120, depthCm: 200, heightCm: 180 },
+  { kind: "chicken-feeder", label: "Chicken feeder", icon: "▱", widthCm: 40, depthCm: 40, heightCm: 45 },
+  { kind: "chicken-run", label: "Chicken run", icon: "▱", widthCm: 200, depthCm: 300, heightCm: 180 },
+  { kind: "chicken-waterer", label: "Chicken waterer", icon: "▱", widthCm: 35, depthCm: 35, heightCm: 40 },
+  { kind: "compass", label: "Compass", icon: "▱", widthCm: 50, depthCm: 50, heightCm: 20 },
+  { kind: "container-reservoir", label: "Container reservoir", icon: "▱", widthCm: 30, depthCm: 30, heightCm: 30 },
+  { kind: "hex-planter", label: "Hexagonal container", icon: "▱", widthCm: 80, depthCm: 80, heightCm: 50 },
+  { kind: "irrigated-container", label: "Irrigated container", icon: "▱", widthCm: 90, depthCm: 45, heightCm: 40 },
+  { kind: "brick-edging", label: "Brick edging", icon: "▱", widthCm: 200, depthCm: 30, heightCm: 30 },
+  { kind: "picket-fence", label: "Picket fence", icon: "▱", widthCm: 200, depthCm: 30, heightCm: 120 },
+  { kind: "forcing-pot", label: "Forcing pot", icon: "▱", widthCm: 45, depthCm: 45, heightCm: 60 },
+  { kind: "fruit-cage", label: "Fruit cage", icon: "▱", widthCm: 240, depthCm: 300, heightCm: 200 },
+  { kind: "heated-greenhouse", label: "Heated greenhouse", icon: "▱", widthCm: 240, depthCm: 360, heightCm: 220 },
+  { kind: "irrigation-parts", label: "Irrigation fitting", icon: "▱", widthCm: 30, depthCm: 30, heightCm: 20 },
+  { kind: "irrigation-tubing", label: "Irrigation tubing", icon: "▱", widthCm: 200, depthCm: 30, heightCm: 20 },
+  { kind: "leaf-mould-bin", label: "Leaf mould bin", icon: "▱", widthCm: 100, depthCm: 100, heightCm: 100 },
+  { kind: "obelisk", label: "Obelisk", icon: "▱", widthCm: 60, depthCm: 60, heightCm: 180 },
+  { kind: "plant-halo", label: "Plant halo", icon: "▱", widthCm: 40, depthCm: 40, heightCm: 30 },
+  { kind: "plant-house", label: "Plant house", icon: "▱", widthCm: 120, depthCm: 80, heightCm: 180 },
+  { kind: "planter-pocket", label: "Wall planter pocket", icon: "▱", widthCm: 60, depthCm: 30, heightCm: 50 },
+  { kind: "heated-polytunnel", label: "Heated polytunnel", icon: "▱", widthCm: 300, depthCm: 500, heightCm: 220 },
+  { kind: "pond", label: "Pond", icon: "▱", widthCm: 180, depthCm: 120, heightCm: 50 },
+  { kind: "potato-planter", label: "Potato planter", icon: "▱", widthCm: 55, depthCm: 55, heightCm: 65 },
+  { kind: "mini-bed-cover", label: "Mini raised-bed cover", icon: "▱", widthCm: 120, depthCm: 100, heightCm: 70 },
+  { kind: "metal-shed", label: "Metal shed", icon: "▱", widthCm: 240, depthCm: 240, heightCm: 230 },
+  { kind: "pent-shed", label: "Pent-roof shed", icon: "▱", widthCm: 240, depthCm: 180, heightCm: 220 },
+  { kind: "stepped-planter", label: "Stepped planter", icon: "▱", widthCm: 120, depthCm: 90, heightCm: 90 },
+  { kind: "stepped-shelving", label: "Stepped shelving", icon: "▱", widthCm: 120, depthCm: 60, heightCm: 120 },
+  { kind: "teepee", label: "Teepee", icon: "▱", widthCm: 100, depthCm: 100, heightCm: 180 },
+  { kind: "tower-planter", label: "Tower planter", icon: "▱", widthCm: 60, depthCm: 60, heightCm: 140 },
+  { kind: "wall-tower-planter", label: "Wall tower planter", icon: "▱", widthCm: 80, depthCm: 30, heightCm: 140 },
+  { kind: "trug", label: "Trug", icon: "▱", widthCm: 180, depthCm: 90, heightCm: 80 },
+];
+
+const renderKinds: Partial<Record<PlannerStructureKind, PlannerStructureKind>> = {
+  "arbour": "pergola",
+  "basket": "pot",
+  "hanging-basket": "pot",
+  "bean-support": "a-frame-trellis",
+  "chicken-feeder": "pot",
+  "chicken-run": "bird-net-frame",
+  "chicken-waterer": "rain-barrel",
+  "compass": "pot",
+  "container-reservoir": "pot",
+  "hex-planter": "half-barrel",
+  "irrigated-container": "wicking-bed",
+  "brick-edging": "raised-bed-timber",
+  "picket-fence": "bird-net-frame",
+  "forcing-pot": "pot",
+  "fruit-cage": "bird-net-frame",
+  "heated-greenhouse": "greenhouse",
+  "irrigation-parts": "pot",
+  "irrigation-tubing": "planter-box",
+  "leaf-mould-bin": "compost-bin",
+  "obelisk": "a-frame-trellis",
+  "plant-halo": "half-barrel",
+  "plant-house": "greenhouse",
+  "planter-pocket": "planter-box",
+  "heated-polytunnel": "polytunnel",
+  "pond": "water-tank",
+  "potato-planter": "grow-bag",
+  "mini-bed-cover": "cold-frame",
+  "metal-shed": "shed",
+  "pent-shed": "shed",
+  "stepped-planter": "planter-box",
+  "stepped-shelving": "potting-bench",
+  "teepee": "a-frame-trellis",
+  "tower-planter": "pot",
+  "wall-tower-planter": "planter-box",
+  "trug": "raised-bed-timber"
+};
+
+export function structureRenderKind(kind: PlannerStructureKind): PlannerStructureKind {
+  return renderKinds[kind] ?? kind;
+}
+
 export function isPlannerStructureKind(value: unknown): value is PlannerStructureKind {
-  return typeof value === "string" && STRUCTURE_PRESETS.some((preset) => preset.kind === value);
+  return typeof value === "string" && FULL_STRUCTURE_PRESETS.some((preset) => preset.kind === value);
 }
 
 export function structurePreset(kind: PlannerStructureKind) {
-  return STRUCTURE_PRESETS.find((preset) => preset.kind === kind) ?? STRUCTURE_PRESETS[0];
+  return FULL_STRUCTURE_PRESETS.find((preset) => preset.kind === kind) ?? STRUCTURE_PRESETS[0];
 }

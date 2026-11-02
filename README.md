@@ -155,6 +155,13 @@ Never commit or expose `GARDEN_WRITE_TOKEN`.
 
 ## Development handoff
 
+### Expanded planner catalogue and reports
+
+The planner's More menu includes Plant List, Parts List and Export plan.
+The plant and structure panels offer full-catalogue switches while retaining
+the familiar shortlists. See [planner rebuild progress](docs/PLANNER_REBUILD.md)
+for implemented behavior, original artwork provenance and remaining parity gaps.
+
 Read `PROJECT_CONTEXT.md` before making substantial changes. It is the detailed source of truth for current architecture, storage and implementation constraints.
 
 

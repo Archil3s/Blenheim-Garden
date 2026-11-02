@@ -445,7 +445,7 @@ export function GardenWebGLMobileV2() {
     <main className={styles.shell}>
       <header className={styles.header}>
         <div className={styles.brand}>
-          <a href={`/?gardenId=${encodeURIComponent(gardenId)}`} className={styles.back}>← 2D Plan</a>
+          <a href={`/planner?gardenId=${encodeURIComponent(gardenId)}`} className={styles.back}>← 2D Plan</a>
           <div>
             <strong>Blenheim Garden</strong>
             <span>Phone-optimised 3D</span>

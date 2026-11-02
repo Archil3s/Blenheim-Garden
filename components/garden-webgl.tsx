@@ -741,7 +741,7 @@ export function GardenWebGL() {
     <main className={styles.shell}>
       <header className={styles.header}>
         <div className={styles.brand}>
-          <a href={`/?gardenId=${encodeURIComponent(gardenId)}`} className={styles.back}>← 2D Plan</a>
+          <a href={`/planner?gardenId=${encodeURIComponent(gardenId)}`} className={styles.back}>← 2D Plan</a>
           <div>
             <strong>Blenheim Garden</strong>
             <span>Live WebGL garden twin</span>

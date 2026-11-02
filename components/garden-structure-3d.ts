@@ -1,3 +1,4 @@
+import { structureRenderKind } from "@/lib/garden/structure-catalog";
 import * as THREE from "three";
 import type { PlannerStructure } from "@/lib/garden/planner-plan";
 import { structurePreset } from "@/lib/garden/structure-catalog";
@@ -705,6 +706,11 @@ function shadows(root: THREE.Group, detailed: boolean) {
 }
 
 export function addStructure3D(group: THREE.Group, object: PlannerStructure, detailed: boolean) {
+  const renderKind = structureRenderKind(object.kind);
+  if (renderKind !== object.kind) {
+    addStructure3D(group, { ...object, kind: renderKind }, detailed);
+    return;
+  }
   const root = new THREE.Group();
   const width = Math.max(0.3, object.widthCm / 100);
   const depth = Math.max(0.3, object.depthCm / 100);

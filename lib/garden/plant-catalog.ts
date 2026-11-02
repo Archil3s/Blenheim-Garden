@@ -1,3 +1,5 @@
+import { referencePlantNames } from "./plant-reference-names";
+
 export type PlantType = "Vegetable" | "Fruit" | "Herb" | "Flower" | "Native";
 
 export type PlantOption = {
@@ -9,7 +11,7 @@ export type PlantOption = {
   varieties: string[];
 };
 
-export const plants: PlantOption[] = [
+export const establishedPlants: PlantOption[] = [
   { name: "Tomato", icon: "🍅", spacingCm: 50, spacing: "45–60 cm", type: "Vegetable", varieties: ["Roma", "Black Krim", "Moneymaker", "Beefsteak"] },
   { name: "Strawberry", icon: "🍓", spacingCm: 35, spacing: "30–40 cm", type: "Fruit", varieties: ["Camarosa", "Albion", "Monterey", "Unknown crown"] },
   { name: "Bean", icon: "🫘", spacingCm: 18, spacing: "15–20 cm", type: "Vegetable", varieties: ["King Purple", "Superstar", "Scarlet Runner", "Climbing bean"] },
@@ -38,3 +40,26 @@ export const plants: PlantOption[] = [
   { name: "Basil", icon: "🌿", spacingCm: 20, spacing: "15–25 cm", type: "Herb", varieties: ["Compact"] },
 ];
 
+
+export const unverifiedPlantNames = new Set<string>();
+
+function catalogueType(name: string): PlantType {
+  if (/bean|beetroot|bok choi|broccoli|brussels|cabbage|capsicum|carrot|cauliflower|celeriac|celery|chilli|collards|corn salad|cowpea|cress|cucamelon|cucumber|eggplant|endive|fennel$|gourd|kale|kohlrabi|leek|lettuce|luffa|marrow|mizuna|mustard|okra|onion|pak choi|parsnip|pea[s ]|potato|pumpkin|radicchio|radish|rhubarb|rocket|salsify|scorzonera|shallot|silver beet|spinach|squash|swede|sweetcorn|tatsoi|tomatillo|tomato|turnip|zucchini|artichoke|asparagus/i.test(name)) return "Vegetable";
+  if (/almond|apple|apricot|berry|currant|cherry|chestnut|fig|fruit|grape|hazelnut|honeydew|kiwi|kumquat|lemon|lime|mandarin|medlar|mulberry|nectarine|olive|orange|passionfruit|peach|pear|pecan|persimmon|plum|pomegranate|quince|rockmelon|satsuma|walnut|watermelon/i.test(name)) return "Fruit";
+  if (/basil|bay$|borage|catnip|chamomile|chives|comfrey|coriander|dill|fennel|fenugreek|feverfew|garlic|ginger|herb|horseradish|lavender|lovage|marjoram|mint|nettle|oregano|parsley|rosemary|sage$|savory|stevia|tansy|tarragon|thyme|valerian|verbena/i.test(name)) return "Herb";
+  if (/banksia|bottlebrush|kangaroo grass|new zealand flax|sugarbush protea/i.test(name)) return "Native";
+  return "Flower";
+}
+
+const knownNames = new Set(establishedPlants.map((plant) => plant.name));
+const additions: PlantOption[] = referencePlantNames.filter((name) => !knownNames.has(name)).map((name) => {
+  const baseName = name.split(" (")[0];
+  const existing = establishedPlants.find((plant) => plant.name === baseName);
+  if (existing) return { ...existing, name, varieties: [...existing.varieties] };
+  unverifiedPlantNames.add(name);
+  return { name, type: catalogueType(name), icon: "🌱", spacingCm: 30,
+    spacing: "Set from seed packet", varieties: [name] };
+});
+
+// Keep established crops first so saved defaults and seasonal actions remain stable.
+export const plants: PlantOption[] = [...establishedPlants, ...additions];

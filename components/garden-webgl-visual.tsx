@@ -775,7 +775,7 @@ export function GardenWebGLVisual() {
     <main className={styles.shell}>
       <header className={styles.header}>
         <div className={styles.brand}>
-          <a href={`/?gardenId=${encodeURIComponent(gardenId)}`} className={styles.back}>← 2D Plan</a>
+          <a href={`/planner?gardenId=${encodeURIComponent(gardenId)}`} className={styles.back}>← 2D Plan</a>
           <div><strong>Blenheim Garden</strong><span>Visual 3D garden</span></div>
         </div>
         <div className={styles.headerActions}><span className={styles.source}>{source} · {structureCount} {structureCount === 1 ? "structure" : "structures"}</span><button type="button" onClick={resetCamera}>Fit garden</button></div>
