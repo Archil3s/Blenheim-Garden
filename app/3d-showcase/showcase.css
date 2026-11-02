@@ -124,3 +124,29 @@
 .gs-camera-actions button { border: 1px solid #c6d4c5; padding:9px 10px; min-height:39px; background:#f7f8f3; }
 .gs-camera-actions button:hover { background:#e4ece2; text-decoration: none; }
 @media(max-width:620px) { .gs-camera-actions { justify-content:space-between; width:100%; } }
+
+/* Environment study: compare measured bed in two distinct surroundings. */
+.gs-environment-switch {
+  display:flex; justify-content:space-between; gap:15px; align-items:center;
+  padding:14px 18px; background:#e5ece3; border-bottom:1px solid #c4d3c4;
+}
+.gs-environment-switch > div:first-child { display:grid; gap:6px; }
+.gs-environment-switch strong { font-size:11px; font-weight:900; letter-spacing:.12em; color:#375d43; }
+.gs-environment-switch span { font-size:11px; line-height:1.55; color:#637e68; }
+.gs-environment-actions { display:flex; gap:3px; border:1px solid #aabfac; padding:3px; flex-shrink:0; }
+.gs-environment-actions button { border:0; background:none; padding:11px 14px; min-height:43px; font-size:12px; font-weight:800; color:#42674b; }
+.gs-environment-actions button[aria-pressed="true"] { background:#294e39; color:#fff; }
+.gs-environment-actions button:not([aria-pressed="true"]):hover { background:#d2e0d0; }
+.gs-environment-description { background:#edf0e8; border-left:3px solid #6a886d; padding:15px 17px; margin:17px 0 22px; }
+.gs-environment-description strong { display:block; letter-spacing:.1em; font-weight:900; color:#375b40; font-size:10px; }
+.gs-environment-description p { margin:9px 0 0; line-height:1.68; color:#607361; font-size:12px; }
+@media(max-width:780px) {
+  .gs-environment-switch { flex-wrap:wrap; align-items:stretch; }
+  .gs-environment-actions { width:100%; }
+  .gs-environment-actions button { flex:1; }
+}
+@media(max-width:620px) {
+  .gs-environment-switch { padding:13px 12px; }
+  .gs-environment-actions button { padding:11px 6px; font-size:11px; }
+  .gs-environment-description { margin-top:8px; }
+}
