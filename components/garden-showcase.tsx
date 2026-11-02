@@ -20,6 +20,7 @@ export function GardenShowcase() {
   const [sceneError, setSceneError] = useState<string | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const resetRef = useRef<() => void>(() => {});
+  const inspectRef = useRef<() => void>(() => {});
 
   useEffect(() => {
     const parent = stageRef.current;
@@ -126,7 +127,7 @@ export function GardenShowcase() {
     controls.enableDamping = true;
     controls.dampingFactor = .07;
     controls.enablePan = false;
-    controls.minDistance = 2.8;
+    controls.minDistance = .55;
     controls.maxDistance = 11.5;
     controls.minPolarAngle = .16;
     controls.maxPolarAngle = 1.49;
@@ -135,6 +136,16 @@ export function GardenShowcase() {
     resetRef.current = () => {
       camera.position.copy(home);
       controls.target.copy(target);
+      controls.update();
+    };
+    inspectRef.current = () => {
+      const height = growthStage === "seedling" ? .2 : growthStage === "vegetative" ? .77 : 1.35;
+      const centre = new THREE.Vector3(-.43, .31 + height * .57, -.35);
+      const offset = growthStage === "seedling"
+        ? new THREE.Vector3(.42, .34, .63)
+        : new THREE.Vector3(.91, .62, 1.05);
+      camera.position.copy(centre).add(offset);
+      controls.target.copy(centre);
       controls.update();
     };
 
@@ -174,6 +185,7 @@ export function GardenShowcase() {
     return () => {
       disposed = true;
       resetRef.current = () => {};
+      inspectRef.current = () => {};
       cancelAnimationFrame(raf);
       observer.disconnect();
       controls.dispose();
@@ -230,7 +242,10 @@ export function GardenShowcase() {
             </div>
             <div className="gs-stage-footer">
               <span>Drag to orbit · Scroll or pinch to zoom</span>
-              <button type="button" onClick={() => resetRef.current()}>Reset camera <span aria-hidden="true">↺</span></button>
+              <div className="gs-camera-actions">
+                {mode === "asset" && <button type="button" onClick={() => inspectRef.current()}>Inspect tomato close-up <span aria-hidden="true">↗</span></button>}
+                <button type="button" onClick={() => resetRef.current()}>Reset camera <span aria-hidden="true">↺</span></button>
+              </div>
             </div>
           </section>
           <aside className="gs-notes" aria-label="About the comparison">
