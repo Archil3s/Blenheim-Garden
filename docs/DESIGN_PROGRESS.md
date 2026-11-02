@@ -20,6 +20,7 @@
 | D-007 | Three.js postprocessing pilot | Research only | Benchmark on iPhone-like/mobile and laptop before use |
 | D-008 | Mobile QA, accessibility, motion | In progress | Playwright, responsive screenshots and keyboard verification |
 | D-009 | Genuine user feedback rounds | Awaiting feedback | Log issue + expected change below |
+| D-010 | Garden Environment V2 realism | Implemented prototype · screenshot QA pending | Compare same bed and crop positions with existing versus textured/landscaped surroundings |
 
 ### Current 3D showcase (prototype)
 
@@ -68,6 +69,7 @@ Use one entry per round; never overwrite previous feedback.
 - **Before/after evidence and follow-up:**
 
 ### Feedback entries
+
 ### Feedback received — 1 November 2026
 - **Screen:** `/3d`; comparison with previously generated design concept image.
 - **Observation:** “It doesn’t look anything like the proposed photos.”
@@ -127,6 +129,16 @@ Use one entry per round; never overwrite previous feedback.
 - **Next acceptance target:** high-fidelity Blender-authored fruiting tomato, proper alpha-cutout albedo/normal/roughness leaf maps, source/license documentation, and stage/LOD exports. Replace starter asset source, use glTF-Transform where warranted, measure mobile loading/FPS.
 - **Documentation:** [3d-tomato-asset-pipeline.md](3d-tomato-asset-pipeline.md). Never claim a generated starter is a scanned or photorealistic model.
 - **Safety:** No change to existing measured garden, D1/R2, protected writes or live `/3d` content. No merge/deploy of this unfinished visual milestone without user review.
+
+## Environment V2 — 2 November 2026
+
+- **User direction:** “PlantGen im not married to the tomato model rather just making the enviroment for the garden 3d model.” The garden *surroundings*, overall landscape realism and editable environment now take priority over a perfect single tomato plant.
+- **Review:** [PR #51](https://github.com/Archil3s/Blenheim-Garden/pull/51) and [Environment V2 spec](3d-environment-v2.md). This is stacked on PR #50 and PR #49; all remain review-only drafts, not production.
+- **Implemented:** A second environment renderer with deterministic textured terrain, irregular ground geometry, gravel paths, instanced stones and grass, wood plank grain/seams, soil/mulch, irrigation, layered hedge, fence, small desktop greenhouse and daylit sky/fog. Same 2 × 4 m bed, 1.8 m trellis and crop positions in both comparison modes.
+- **Interaction:** independent “Existing environment / Environment V2” comparison control in `/3d-showcase`, preserving all three previous plant model choices.
+- **Performance model:** >1,000 grass card instances and 1,000 gravel pebbles on desktop, reduced counts on phone; static determinism and teardown of owned GPU assets.
+- **Honest limitation:** Procedural textures and cutout foliage **are not PlantGen-exported vegetation**. No photorealism claim. PlantGen can be evaluated as an *offline* producer of GLBs for environmental trees/hedges; the user should judge rendered, non-generated screenshots before asset adoption.
+- **QA evidence:** pending dedicated Playwright screenshots and Build/Design CI on PR #51. Track results here before merging.
 
 ## How to continue in a future chat
 Read `AGENTS.md`, `PROJECT_CONTEXT.md`, `DESIGN.md`, this log, and the current UI source. Keep existing garden state safe. Complete the oldest unverified in-progress item, log screenshots/test results, then collect feedback before the next phase. Do not merge prematurely.
