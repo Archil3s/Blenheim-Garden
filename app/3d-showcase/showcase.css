@@ -90,3 +90,32 @@
   .gs-footer > span { line-height: 1.5; }
 }
 @media(prefers-reduced-motion:reduce) { .gs-page * { scroll-behavior: auto !important; } }
+
+/* Real-asset prototype: responsive third comparison mode and growth stages. */
+.gs-stage-picker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 12px 15px;
+  border-bottom: 1px solid #d2dbd0;
+  color: #4d6754;
+  background: #ecefe8;
+}
+.gs-stage-picker label { font-size: 12px; font-weight: 800; }
+.gs-stage-picker select {
+  min-height: 41px;
+  min-width: 145px;
+  padding: 7px 11px;
+  background: #fff;
+  color: #294a35;
+  border: 1px solid #a9bda8;
+  border-radius: 2px;
+}
+.gs-stage-picker span { font-size: 11px; color: #687f6d; }
+@media(max-width:620px) {
+  .gs-mode-switch { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); width:100%; }
+  .gs-mode-switch button { min-width:0; font-size:10px; padding:10px 5px; line-height:1.4; }
+  .gs-stage-picker { gap:9px; }
+  .gs-stage-picker select { flex:1; }
+}
