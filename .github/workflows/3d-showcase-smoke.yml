@@ -19,8 +19,8 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun run build
       - run: bunx playwright install --with-deps chromium
-      - name: Compare three showcase modes and tomato growth stages at four viewports
-        run: bunx playwright test tests/visual/3d-showcase-comparison.spec.ts
+      - name: Compare garden Environment V2 and 3D asset modes at four viewports
+        run: bunx playwright test tests/visual/3d-showcase-comparison.spec.ts tests/visual/3d-environment-v2.spec.ts
       - uses: actions/upload-artifact@v4
         if: always()
         with:
