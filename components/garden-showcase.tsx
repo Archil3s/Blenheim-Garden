@@ -23,6 +23,8 @@ export function GardenShowcase() {
   const stageRef = useRef<HTMLDivElement | null>(null);
   const resetRef = useRef<() => void>(() => {});
   const inspectRef = useRef<() => void>(() => {});
+  const eyeLevelRef = useRef<() => void>(() => {});
+  const cameraPoseRef = useRef<{ position: THREE.Vector3; target: THREE.Vector3 } | null>(null);
 
   useEffect(() => {
     const parent = stageRef.current;
@@ -57,8 +59,8 @@ export function GardenShowcase() {
     const camera = new THREE.PerspectiveCamera(45, 1, .08, 50);
     const home = new THREE.Vector3(4.35, 3.35, 6.12);
     const target = new THREE.Vector3(0, .68, 0);
-    camera.position.copy(home);
-    camera.lookAt(target);
+    camera.position.copy(cameraPoseRef.current?.position ?? home);
+    camera.lookAt(cameraPoseRef.current?.target ?? target);
 
     const hemi = new THREE.HemisphereLight("#e0ecff", "#b4a087", 1.8);
     scene.add(hemi);
@@ -134,8 +136,13 @@ export function GardenShowcase() {
     controls.maxDistance = 11.5;
     controls.minPolarAngle = .16;
     controls.maxPolarAngle = 1.49;
-    controls.target.copy(target);
+    controls.target.copy(cameraPoseRef.current?.target ?? target);
     controls.update();
+    eyeLevelRef.current = () => {
+      camera.position.set(2.85, 1.72, 3.65);
+      controls.target.set(0, .83, -1.15);
+      controls.update();
+    };
     resetRef.current = () => {
       camera.position.copy(home);
       controls.target.copy(target);
@@ -169,6 +176,10 @@ export function GardenShowcase() {
     const frame = () => {
       controls.update();
       renderer.render(scene, camera);
+      parent.dataset.cameraPose = [
+        ...camera.position.toArray(),
+        ...controls.target.toArray(),
+      ].map((v) => v.toFixed(3)).join(",");
       if (firstFrame) {
         parent.dataset.sceneReady = mode;
         parent.dataset.environmentReady = environment;
@@ -198,7 +209,9 @@ export function GardenShowcase() {
 
     return () => {
       disposed = true;
+      cameraPoseRef.current = { position: camera.position.clone(), target: controls.target.clone() };
       resetRef.current = () => {};
+      eyeLevelRef.current = () => {};
       inspectRef.current = () => {};
       cancelAnimationFrame(raf);
       observer.disconnect();
@@ -213,6 +226,7 @@ export function GardenShowcase() {
       delete parent.dataset.gravelInstances;
       delete parent.dataset.foliageInstances;
       delete parent.dataset.drawCalls;
+      delete parent.dataset.cameraPose;
       delete parent.dataset.modelReady;
       delete parent.dataset.modelLod;
     };
@@ -269,6 +283,7 @@ export function GardenShowcase() {
             <div className="gs-stage-footer">
               <span>Orbit the garden · Scroll or pinch to zoom</span>
               <div className="gs-camera-actions">
+                <button type="button" onClick={() => eyeLevelRef.current()}>Eye-level view <span aria-hidden="true">↗</span></button>
                 {mode === "asset" && <button type="button" onClick={() => inspectRef.current()}>Inspect tomato close-up <span aria-hidden="true">↗</span></button>}
                 <button type="button" onClick={() => resetRef.current()}>Reset camera <span aria-hidden="true">↺</span></button>
               </div>
