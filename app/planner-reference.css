@@ -1,0 +1,114 @@
+/* Reference-led planner chrome. Garden coordinates and storage are unchanged. */
+.reference-planner {
+  --gv-green: #10b98a;
+  --gv-green-dark: #008c69;
+  --gv-text: #454b49;
+  --gv-stage: #ddd;
+  position: relative;
+  padding-left: 64px;
+  background: #f8f9f8;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.planner-app-nav { position: absolute; z-index: 90; inset: 0 auto 0 0; width: 64px; display: flex; flex-direction: column; background: #16bc8e; }
+.planner-app-nav > :is(a,button) { display: grid; place-items: center; width: 64px; min-height: 66px; border: 0; border-bottom: 1px solid #ffffff20; background: transparent; color: #008e71; text-decoration: none; }
+.planner-app-nav > button:first-child { height: 112px; margin-bottom: 26px; background: #516487; color: white; }
+.planner-app-nav > [aria-current=page] { color: white; background: #ffffff15; }
+.planner-app-nav > :is(a,button):hover { color: white; background: #009f7c; }
+.planner-app-nav .planner-app-3d { margin-top: auto; }
+.reference-planner .gv-titlebar { height: 42px; padding: 0 7px; justify-content: flex-start; background: #fafafa; border-bottom: 1px solid #eee; }
+.reference-planner .gv-title-left { flex: 0 1 300px; }
+.reference-planner .gv-plan-name { margin: 5px 0; width: 100%; border: 1px solid #e0e0e0; padding: 0 10px; font-size: 14px; font-weight: 400; letter-spacing: 0; box-shadow: 0 1px 3px #00000009; }
+.reference-planner .gv-primary-nav { gap: 0; }
+.reference-planner .gv-primary-nav > button, .reference-planner .gv-more > summary { min-height: 38px; border-radius: 0; padding: 0 20px; background: transparent; color: #333; font-size: 14px; font-weight: 400; }
+.reference-planner .gv-primary-nav > .active { border-bottom: 2px solid #10b98a; }
+.reference-planner .gv-primary-nav > .gv-save { order: -1; min-width: 80px; min-height: 32px; margin: 4px 16px 4px 6px; border: 1px solid #e1e1e1; background: #fff; padding: 0 12px; box-shadow: 0 1px 3px #00000009; }
+.reference-planner .gv-quickbar { width: 55%; height: 70px; padding: 24px 8px 6px; justify-content: flex-start; gap: 20px; background: #fafafa; box-shadow: none; border-bottom-color: #ddd; }
+.reference-planner .gv-quick-actions, .reference-planner .gv-quick-center { position: relative; gap: 2px; }
+.planner-ribbon-caption { position: absolute; top: -21px; left: 0; color: #777; font-size: 12px; white-space: nowrap; font-weight: 400; }
+.reference-planner .gv-quickbar :is(button,select), .reference-planner .designer-toolbar :is(button,select) { height: 32px; min-height: 32px; border: 1px solid #e6e6e6; border-radius: 0; background: #fff; color: #4c5350; font-size: 12px; padding: 0 8px; }
+.reference-planner .gv-quick-actions > button { min-width: 32px; padding-inline: 6px; }
+.reference-planner .gv-quick-actions > button > span { display: none; }
+.reference-planner .gv-quick-center { justify-content: flex-start; }
+.reference-planner .gv-quick-center strong { min-width: 34px; font-weight: 400; }
+.reference-planner .gv-quick-center select { min-width: 62px; margin-left: 2px; }
+.reference-planner .gv-cloud-state { position: fixed; z-index: 45; bottom: 0; top: auto; left: 76px; right: auto; height: 23px; color: #6c7470; background: #fafafa; font-size: 11px; }
+.reference-planner .designer-toolbar { position: absolute; top: 42px; left: calc(64px + (100% - 64px) * .55); right: 0; height: 70px; padding: 24px 8px 6px; gap: 3px; border-bottom: 1px solid #ddd; background: #fafafa; }
+.reference-planner .designer-toolbar > .planner-ribbon-caption { top: 6px; left: 8px; }
+.reference-planner .designer-toolbar label { gap: 5px; font-size: 12px; }
+.reference-planner .designer-toolbar button { font-size: 11px; padding-inline: 6px; }
+.gv-app.reference-planner:not(.gv-view-3d) .gv-body,
+.gv-app.reference-planner.gv-device-desktop:not(.gv-view-3d) .gv-body { height: calc(100dvh - 136px); min-height: 0; grid-template-columns: 50px 280px minmax(0,1fr); }
+.gv-app.reference-planner:not(.gv-view-3d) .gv-body.panel-closed { grid-template-columns: 50px minmax(0,1fr); }
+.reference-planner .gv-rail { background: #e9ecea; border-right: 1px solid #d9dedb; }
+.reference-planner .gv-rail button { flex: 0 0 48px; min-height: 48px; color: #7e8983; gap: 2px; }
+.reference-planner .gv-rail button small { font-size: 8px; font-weight: 400; }
+.reference-planner .gv-rail button.active { background: white; color: #009f77; box-shadow: none; }
+.reference-planner .gv-rail .gv-menu { flex-basis: 32px; min-height: 32px; background: #f9faf9; color: #00a883; }
+.reference-planner .gv-context { box-shadow: none; border-right-color: #ddd; }
+.reference-planner .gv-context-header { min-height: 32px; flex-basis: 32px; padding: 0 7px 0 12px; background: #fff; }
+.reference-planner .gv-context-header strong { font-weight: 400; font-size: 13px; }
+.reference-planner .gv-context-header button { min-width: 28px; min-height: 28px; color: #00a27d; font-size: 20px; }
+.reference-planner .gv-panel-section-title { display: flex; min-height: 50px; padding: 12px; background: #f9faf9; border-bottom: 1px solid #eee; }
+.reference-planner .gv-panel-section-title strong { font-size: 16px; color: #202724; font-weight: 600; }
+.reference-planner .gv-panel-leaf { display: none; }
+.reference-planner .gv-catalogue-options { padding: 10px 12px; background: #fafafa; }
+.reference-planner .gv-filters { padding: 10px 12px; background: #fafafa; }
+.reference-planner .gv-filters :is(input,select), .reference-planner .gv-catalogue-options input { border: 1px solid #ccc; border-radius: 0; min-height: 30px; }
+.reference-planner .gv-ready-strip { border-radius: 0; margin: 0; padding: 8px 12px; background: #f5f8f6; border: 0; border-bottom: 1px solid #e5e8e6; }
+.reference-planner .gv-plant-list { padding: 0; gap: 0; background: #fff; }
+.reference-planner .gv-plant-list > button { min-height: 62px; border: 0; border-bottom: 1px solid #f0f0f0; border-radius: 0; padding: 7px 16px; background: #fff; box-shadow: none; }
+.reference-planner .gv-plant-list > button.active { background: #f0f7f3; outline: 0; }
+.reference-planner .gv-plant-list > button strong { color: #414844; font-size: 13px; font-weight: 400; }
+.reference-planner .gv-plant-list > button small { color: #777; font-size: 10px; font-weight: 400; }
+.reference-planner .gv-plant-icon, .reference-planner .gv-structure-preset-icon { border: 2px solid #ddd; border-radius: 50%; background-color: #fff; width: 44px; height: 44px; }
+.reference-planner .gv-stage { background: #ddd; }
+.reference-planner .gv-stage-status { height: 23px; background: #e9ecea; border-bottom-color: #d0d2d1; }
+.reference-planner .gv-stage-status strong, .reference-planner .gv-stage-status span { font-size: 10px; color: #6b726f; }
+.reference-planner .gv-stage-scroll { height: calc(100% - 23px); background: #ddd; padding: 12px 12px 36px; }
+.reference-planner .gv-ruler-top, .reference-planner .gv-ruler-left, .reference-planner .gv-ruler-corner { background-color: #eee; border-color: #909792; }
+.reference-planner .garden-canvas { background-color: #fff; background-image: linear-gradient(#f3f3f3 1px,transparent 1px),linear-gradient(90deg,#f3f3f3 1px,transparent 1px),linear-gradient(#e4e4e4 1px,transparent 1px),linear-gradient(90deg,#e4e4e4 1px,transparent 1px); background-size: 10px 10px,10px 10px,100px 100px,100px 100px; border-color: #e2e2e2; box-shadow: 0 0 3px #00000015; }
+.reference-planner .plan-bed { background: transparent; border: 2px solid #805b31; border-radius: 0; box-shadow: none; }
+.reference-planner .plan-bed > .gv-v4-bed-title { background: #ffffffc9; color: #333; border-radius: 0; }
+.reference-planner .berry-strip { background: transparent; border-color: #805b31; border-radius: 0; }
+.reference-planner .north-zone { border: 1px solid #a68e6c; }
+.reference-planner .designer-shape-buttons button { border-radius: 0; }
+.reference-planner .gv-panel-reopen { border-radius: 0; }
+@media(max-width: 1100px) and (min-width: 761px) {
+  .reference-planner .gv-title-left { flex-basis: 230px; }
+  .reference-planner .gv-primary-nav > button, .reference-planner .gv-more > summary { padding-inline: 10px; font-size: 13px; }
+  .reference-planner .gv-quickbar { width: 61%; gap: 8px; }
+  .reference-planner .designer-toolbar { left: calc(64px + (100% - 64px) * .61); }
+}
+@media(max-width: 760px) {
+  .reference-planner { padding-left: 0; }
+  .planner-app-nav { display: none; }
+  .reference-planner .planner-report-tab { display: none; }
+  .reference-planner .gv-titlebar { height: 52px; }
+  .reference-planner .gv-title-left { flex: 1; }
+  .reference-planner .gv-primary-nav > .gv-save { order: initial; min-width: 58px; margin: 4px; }
+  .reference-planner .gv-quickbar { height: 56px; width: 100%; gap: 8px; padding: 4px 6px; justify-content: space-between; }
+  .reference-planner .planner-ribbon-caption { display: none; }
+  .reference-planner .gv-quickbar :is(button,select) { min-height: 44px; }
+  .reference-planner .designer-toolbar { position: static; padding: 4px 6px; height: 54px; }
+  .reference-planner .designer-toolbar :is(button,select) { min-height: 44px; }
+  .gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-body { height: calc(100dvh - 162px); grid-template-columns: 54px minmax(0,1fr); }
+  .reference-planner .gv-cloud-state { top: auto !important; bottom: 2px; left: auto; right: 8px; height: 20px; max-width: 85%; font-size: 10px; }
+  .reference-planner .gv-stage-scroll { padding: 6px 4px 30px; }
+}
+.reference-planner.gv-view-3d .planner-app-nav { display: none; }
+.reference-planner.gv-view-3d { padding-left: 0; }
+
+.reference-planner .gv-plan-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.reference-planner .gv-plan-name span { margin-left: 10px; }
+.reference-planner .gv-catalogue-options > label:has(input:not([type=checkbox])) { display: grid; grid-template-columns: 52px minmax(0,1fr); align-items: center; gap: 8px; }
+.reference-planner .gv-catalogue-options > label input:not([type=checkbox]) { width: 100%; min-width: 0; }
+
+@media(min-width: 761px) {
+.reference-planner .gv-quickbar { width: 650px; gap: 14px; }
+.reference-planner .designer-toolbar { left: 714px; }
+.reference-planner .planner-plan-actions { position: relative; display: flex; gap: 2px; }
+.reference-planner .planner-plan-actions button { width: 32px; }
+}
+@media(max-width: 760px) { .reference-planner .planner-plan-actions { display: none; } }
+.reference-planner[data-zoom-tier] .planting-area-icons i { display: grid !important; }
+.reference-planner .planting-area.is-overview { background: #d8dbd750 !important; border-radius: 8px; }

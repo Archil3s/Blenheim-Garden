@@ -42,6 +42,19 @@ export function PlannerReports({ plan }: { plan: PlannerPlan }) {
     setActive(true);
   }
 
+  useEffect(() => {
+    const receive = (event: Event) => {
+      const next = (event as CustomEvent<unknown>).detail;
+      if (next === "plants" || next === "parts" || next === "export") {
+        setReport(next);
+        setError("");
+        setActive(true);
+      }
+    };
+    window.addEventListener("garden-report-open", receive);
+    return () => window.removeEventListener("garden-report-open", receive);
+  }, []);
+
   function exportCsv() {
     const rows = report === "parts"
       ? [["Part", "Quantity", "Unit"], ...parts.map((row) => [row.part, row.quantity.toFixed(2), row.unit])]

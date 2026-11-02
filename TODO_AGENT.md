@@ -368,3 +368,8 @@ P-002 adds drawing shapes, per-shape editing/locking/order and layer views.
 Designer validation: 12/12 across four viewport sizes; combined regression
 52/52. Read docs/PLANNER_REBUILD.md for remaining textures, rich text, full-object
 layer operations, verified plant data, inventory and temporal workflows.
+
+P-003 responds to the rejected visual match with a reference-led planner shell.
+Continue comparing actual screenshots, including object variants, the complete
+ribbon and detailed crop artwork. Do not treat functional test success as proof
+of pixel parity. Home/seedlings styling and measured saved plan remain intact.

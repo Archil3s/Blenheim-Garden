@@ -111,7 +111,7 @@
 }
 
 /* Physical garden materials: beds, paths, structures and boundaries should not look interchangeable. */
-.garden-canvas {
+.gv-app:not(.reference-planner) .garden-canvas {
   border-color: #aebbb6 !important;
   background-color: #f8faf8 !important;
   background-image:
@@ -121,7 +121,7 @@
     linear-gradient(90deg, rgba(152,169,161,.32) 1px, transparent 1px) !important;
 }
 
-.plan-bed {
+.gv-app:not(.reference-planner) .plan-bed {
   border: 3px solid #9b6b42 !important;
   border-radius: 4px !important;
   background:
@@ -140,7 +140,7 @@
   border-color: #7f5332 !important;
 }
 
-.plan-bed.selected {
+.gv-app:not(.reference-planner) .plan-bed.selected {
   border-color: var(--gv-green) !important;
   box-shadow: 0 0 0 4px rgba(22,155,112,.18), inset 0 0 0 2px rgba(255,255,255,.45) !important;
 }

@@ -134,3 +134,21 @@ Screenshots: outputs/designer-preview/{viewport}-shape-tools.png,
 {viewport}-designer-shapes.png and {viewport}-designer-shapes-3d.png.
 The previously documented baseline phone texture-request test remains separate.
 No production deployment. Full third-party feature parity remains incomplete.
+
+## Reference layout P-003 — 2 November 2026
+
+User feedback: the feature expansion did not look like a 1:1 GrowVeg planner.
+The reference screenshot is now the visual authority for planner chrome, ahead
+of the earlier editorial planner styling. Home and seedlings retain their design.
+
+Replaced the planner shell with a green application strip, compact document/edit
+ribbon, direct report tabs, narrow SVG drawing rail, white catalogue rows and a
+grey workspace around the white grid. Scoped the old forced soil/grid styling
+away from this planner. Individual crop symbols render at readable zoom levels
+with bounded sampling; saved counts, centimetre spacing and coordinates do not
+change. The full library artwork, object variants and complete ribbon behavior
+still differ from GrowVeg and this is not described as exact visual parity.
+
+The first layout pass passed 52 interaction/regression checks at four sizes.
+The final crop-rendering/ribbon pass passed all 28 relevant browser checks at four sizes. Lint and production build pass. All four screenshots were inspected. Screenshots
+are retained in outputs/reference-layout/ and the Playwright artifacts.

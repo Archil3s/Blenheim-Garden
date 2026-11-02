@@ -32,6 +32,10 @@ An idempotent designer_shapes table is created automatically. Named-garden layou
 New structure kind values use the existing validated structure storage path.
 Protected writes, private media, named gardens and the measured base plan remain.
 
+## Reference layout
+
+The planner now follows the reference screen composition: green application navigation, compact ribbon, direct report tabs, narrow drawing rail, white catalogue rows, grey workspace and white grid with outlined beds. Individual crop symbols appear at readable zoom levels. Detailed artwork, object variants and the complete reference ribbon still differ; this is not an exact visual copy.
+
 ## Verification
 
 The added test file checks catalogue coverage, structure rendering mappings,
