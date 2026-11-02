@@ -1,4 +1,5 @@
 import mappings from "./reference-plant-sprites.json";
+import plantData from "./reference-plant-data.json";
 
 export const referenceSpriteSource = "/planner-reference/catalogue-sprites.png";
 export const referenceSpriteSize = { width: 988, height: 952, cell: 36 };
@@ -18,6 +19,11 @@ export function referencePlantSprite(crop: string, variety?: string | null) {
   if (key === "bean" && /dwarf|bush/i.test(variety ?? "")) key = "beans (dwarf)";
   if (key === "bean" && /broad|fava/i.test(variety ?? "")) key = "beans (broad)";
   return referencePlantSprites[key] ?? referencePlantSprites[aliases[key]];
+}
+
+export function referencePlantDimensions(crop: string, variety?: string | null) {
+  const sprite = referencePlantSprite(crop, variety);
+  return plantData.find((plant) => plant.code === sprite?.code)?.sprite ?? null;
 }
 
 export function referenceSpriteStyle(sprite: { x: number; y: number }) {

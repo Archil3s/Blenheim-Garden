@@ -177,3 +177,20 @@ parity and original-art exports remain incomplete; see PLANNER_REBUILD.md.
 
 Validation: the 64-check planner/designer/report/persistence/artwork suite passed across all four sizes. Lint and production build pass. Final canopy and low-zoom corrections passed 12 focused checks across all four sizes; final screenshots were inspected.
 No production deployment or merge.
+
+## Source symbol sizing P-005 — 2 November 2026
+
+User feedback: original images still rendered at the wrong sizes. The renderer
+was using legacy 14–18 px area sizes and fixed 22/24/36 px row/berry/tree symbols.
+It now reads each plant's original sprite width/height as centimetre dimensions
+in the measured canvas, then applies the existing garden zoom. Strawberry and
+raspberry are 40 cm, blackberry 50 cm, climbing bean 30 cm and generic fruit tree
+75 cm. Non-square aspect ratios retain their separate source width/height.
+Catalogue symbols use the reference's fixed 36 px size. Row symbols are anchored
+to positions without flex shrinking. Legacy custom area sizing remains available
+by switching off Original symbol sizes in the planting inspector.
+
+New browser checks measured all these dimensions at 1920/1440/1024/390 widths,
+rechecked them after zoom in/out, checked catalogue dimensions and confirmed bed
+geometry unchanged: 4/4 passed. Lint and production build pass. Existing planner/artwork regression checks: 32/32 passed. Screenshots: outputs/icon-size-fix/.
+No production save, merge or deployment.

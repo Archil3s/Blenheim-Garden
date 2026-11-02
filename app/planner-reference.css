@@ -121,7 +121,7 @@
 .garden-canvas .reference-high-art { display: block; }
 .reference-planner .planting-area-icons i {
   width: var(--area-icon-size) !important;
-  height: var(--area-icon-size) !important;
+  height: var(--area-icon-height, var(--area-icon-size)) !important;
   font-size: var(--area-icon-size) !important;
   background: none !important;
   border: 0;
@@ -168,15 +168,15 @@
 .reference-planner .berry-strip { border: 2px solid #805b31 !important; border-radius: 0; background: none !important; }
 .reference-planner .berry-strip > strong { font-size: 8px; font-weight: 600; color: #333 !important; }
 .reference-planner .berry-strip > div { height: calc(100% - 18px); padding: 2px 16px; }
-.reference-planner .berry-strip .reference-berry { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px; background: #d4d4d480; border-radius: 16px; font-size: 24px; }
+.reference-planner .berry-strip .reference-berry { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px; background: #d4d4d480; border-radius: 16px; font-size: var(--berry-symbol-width); }
 .reference-planner .berry-strip .reference-berry > span { display: block; min-height: 0 !important; border-radius: 0 !important; background: none !important; font-size: inherit; }
 .reference-planner .reference-berry small { font-size: 7px; color: #333; }
 .reference-planner .tree-object { background: #c6c6c680 !important; border: 0; box-shadow: none; filter: none; }
-.reference-planner .tree-object > span:first-child { font-size: 36px !important; width: 36px; height: 36px; background: none !important; box-shadow: none !important; }
+.reference-planner .tree-object > span:first-child { font-size: var(--tree-symbol-width) !important; width: var(--tree-symbol-width); height: var(--tree-symbol-height); background: none !important; box-shadow: none !important; }
 .reference-planner .tree-object::after { content: none; }
 .reference-planner .tree-object small { font-size: 8px; color: #333; background: #ffffffc0; border-radius: 0; padding: 0; }
 .reference-planner .row-dots { top: 0; align-items: center; height: 24px; }
-.reference-planner .row-dots i { width: 22px; height: 22px; font-size: 22px; border: 0; background: none; border-radius: 0; box-shadow: none; }
+.reference-planner .row-dots i { width: var(--row-symbol-width); height: var(--row-symbol-height); font-size: var(--row-symbol-width); flex: 0 0 var(--row-symbol-width); border: 0; background: none; border-radius: 0; box-shadow: none; }
 .reference-planner .planting-row::before { background: #d4d4d480; height: 24px; top: 0; box-shadow: none; }
 .reference-planner .structure-object { background: none !important; border: 0 !important; box-shadow: none; }
 .reference-planner .structure-object::before, .reference-planner .structure-object::after { content: none; }
@@ -195,3 +195,9 @@
 .reference-object-group > button.active { background: #e5f3ec; }
 
 .reference-planner .plan-bed > .empty-bed-label { display: none; }
+.reference-planner .planting-area-icons i > .reference-plant-art,
+.reference-planner .row-dots i > .reference-plant-art { width: 100% !important; height: 100% !important; }
+.reference-planner .berry-strip .reference-berry > .reference-plant-art { width: var(--berry-symbol-width); height: var(--berry-symbol-height); flex-shrink: 0; }
+.reference-planner .gv-plant-icon { width: 44px !important; height: 44px !important; font-size: 36px !important; }
+.reference-planner .reference-sizing-choice { display: flex; align-items: center; gap: 8px; }
+.reference-planner .reference-sizing-choice input[type=checkbox] { width: 18px; height: 18px; min-height: 18px; flex: 0 0 18px; }

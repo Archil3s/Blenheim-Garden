@@ -380,3 +380,9 @@ user feedback. Read docs/REFERENCE_ASSETS.json and docs/PLANNER_REBUILD.md.
 The new object variants use reference-<code> identifiers; keep existing 36/71
 preset exports and protected storage compatible. Complete remaining ribbon,
 inventory/temporal workflows and original-art exports before claiming full parity.
+
+P-005 fixes symbol scale from source sprite centimetre dimensions, including
+rows, berry strip, tree and fixed-size catalogue icons. Do not reintroduce the
+legacy tiny fixed icon sizes as the default. Reference-size mode is the default;
+legacy custom area sizes remain available in the planting inspector. Bed and
+plant count/spacing data are unchanged. See docs/DESIGN_PROGRESS.md for QA.

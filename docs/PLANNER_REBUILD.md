@@ -18,6 +18,7 @@ Implemented:
   2D footprints, nine-slice borders, tiled path textures and original imagery.
   Existing 36/71-preset exports remain compatible. Reference variants use their
   own validated kind identifiers and existing protected persistence.
+- Source-defined plant symbol dimensions are now used on the centimetre canvas, including rows, berries and trees; catalogue symbols are 36 px. Legacy custom area sizing remains optional.
 - Green navigation, compact ribbon, report tabs, drawing rail, white catalogue,
   grey workspace, white grid, outlined beds, flat grey paths and planting zones.
   Removed synthetic marker overlays that obscured the original plant art.
