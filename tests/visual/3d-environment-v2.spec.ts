@@ -47,6 +47,32 @@ test("garden Environment V2 changes surroundings without disturbing crop models"
   await v2.click();
   await expect(frame).toHaveAttribute("data-environment-ready", "v2", {timeout:30000});
   await expect(frame).toHaveAttribute("data-model-ready", "fruiting", {timeout:30000});
+
+  // The immersive eye-level view must survive swapping environments.
+  await page.getByRole("button", {name: /Eye-level view/}).click();
+  await page.waitForTimeout(250); // OrbitControls damping is intentionally enabled.
+  const eyePose = (await frame.getAttribute("data-camera-pose"))!.split(",").map(Number);
+  if (testInfo.project.name === "desktop" || testInfo.project.name === "phone") {
+    await frame.screenshot({
+      path: testInfo.outputPath("environment-v2-eye-level.png"),
+      animations: "disabled",
+    });
+  }
+  await original.click();
+  await expect(frame).toHaveAttribute("data-environment-ready", "current", {timeout:30000});
+  const afterSwap = (await frame.getAttribute("data-camera-pose"))!.split(",").map(Number);
+  expect(afterSwap).toHaveLength(eyePose.length);
+  for (let i = 0; i < eyePose.length; i++) {
+    expect(Math.abs(afterSwap[i] - eyePose[i])).toBeLessThan(.07);
+  }
+  if (testInfo.project.name === "desktop" || testInfo.project.name === "phone") {
+    await frame.screenshot({
+      path: testInfo.outputPath("existing-environment-eye-level.png"),
+      animations: "disabled",
+    });
+  }
+  await v2.click();
+  await expect(frame).toHaveAttribute("data-environment-ready", "v2", {timeout:30000});
   await page.getByRole("button", {name:/Reset camera/}).click();
 
   // The comparison doesn't require D1 garden writes or saved planner state.
