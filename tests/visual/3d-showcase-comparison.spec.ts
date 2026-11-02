@@ -31,12 +31,18 @@ test("showcase loads genuine tomato GLB assets and retains both baseline compari
   expect(manifest.files).toHaveLength(9);
 
   await page.screenshot({path: testInfo.outputPath("glb-tomato-fruiting.png"), fullPage: true, animations: "disabled"});
+  await page.getByRole("button", {name: /Inspect tomato close-up/}).click();
+  await stage.screenshot({path: testInfo.outputPath("glb-tomato-fruiting-close-up.png"), animations: "disabled"});
+  await page.getByRole("button", {name: /Reset camera/}).click();
   await page.getByLabel("Tomato growth stage").selectOption("vegetative");
   await expect(stage).toHaveAttribute("data-model-ready", "vegetative", {timeout: 25000});
   await page.screenshot({path: testInfo.outputPath("glb-tomato-vegetative.png"), fullPage: true, animations: "disabled"});
   await page.getByLabel("Tomato growth stage").selectOption("seedling");
   await expect(stage).toHaveAttribute("data-model-ready", "seedling", {timeout: 25000});
   await page.screenshot({path: testInfo.outputPath("glb-tomato-seedling.png"), fullPage: true, animations: "disabled"});
+  await page.getByRole("button", {name: /Inspect tomato close-up/}).click();
+  await stage.screenshot({path: testInfo.outputPath("glb-tomato-seedling-close-up.png"), animations: "disabled"});
+  await page.getByRole("button", {name: /Reset camera/}).click();
 
   await botanical.click();
   await expect(botanical).toHaveAttribute("aria-pressed", "true");
