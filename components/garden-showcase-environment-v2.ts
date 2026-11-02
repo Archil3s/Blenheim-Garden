@@ -27,9 +27,12 @@ const lerp = THREE.MathUtils.lerp;
 
 function noise(x: number, y: number, seed: number) {
   const xi = Math.floor(x), yi = Math.floor(y);
+  // Fast 32-bit spatial hash. Replaces millions of trig calls when a
+  // viewport toggle rebuilds material textures; remains deterministic.
   const hash = (a: number, b: number) => {
-    const n = Math.sin((a * 127.1 + b * 311.7 + seed * 23.53) * 1.37) * 43758.545;
-    return n - Math.floor(n);
+    let h = Math.imul(a | 0, 374761393) + Math.imul(b | 0, 668265263) + Math.imul(seed | 0, 1442695041);
+    h = Math.imul(h ^ (h >>> 13), 1274126177);
+    return ((h ^ (h >>> 16)) >>> 0) / 4294967295;
   };
   const fx = x - xi, fy = y - yi;
   const u = fx * fx * (3 - 2 * fx), v = fy * fy * (3 - 2 * fy);
