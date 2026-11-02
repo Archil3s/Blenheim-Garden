@@ -38,9 +38,7 @@ test("garden Environment V2 changes surroundings without disturbing crop models"
   await original.click();
   await expect(frame).toHaveAttribute("data-environment-ready", "current", {timeout:30000});
   await expect(frame).toHaveAttribute("data-model-ready", "fruiting", {timeout:30000});
-  await expect(frame).toHaveAttribute("data-grass-instances", "", {timeout:30000}).catch(async () => {
-    expect(await frame.getAttribute("data-grass-instances")).toBeNull();
-  });
+  expect(await frame.getAttribute("data-grass-instances")).toBeNull();
   await frame.screenshot({
     path: testInfo.outputPath("existing-environment-garden-scene.png"),
     animations: "disabled",
