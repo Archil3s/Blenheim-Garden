@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "build:cloudflare": "opennextjs-cloudflare build",
+    "dev": "node scripts/3d/generate-tomato-assets.mjs && next dev",
+    "build": "node scripts/3d/generate-tomato-assets.mjs && node scripts/3d/check-tomato-assets.mjs && next build",
+    "build:cloudflare": "node scripts/3d/generate-tomato-assets.mjs && node scripts/3d/check-tomato-assets.mjs && opennextjs-cloudflare build",
     "start": "next start",
     "lint": "eslint .",
     "preview": "opennextjs-cloudflare preview",
@@ -14,7 +14,9 @@
     "db:migrate:remote": "wrangler d1 migrations apply blenheim-garden --remote",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "visual:test": "playwright test",
-    "visual:report": "playwright show-report"
+    "visual:report": "playwright show-report",
+    "assets:tomato": "node scripts/3d/generate-tomato-assets.mjs",
+    "assets:test": "node scripts/3d/check-tomato-assets.mjs"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "1.20.2",

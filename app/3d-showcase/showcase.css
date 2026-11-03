@@ -1,0 +1,126 @@
+.gs-page {
+  --gs-ink: #24372c;
+  --gs-paper: #f7f5ef;
+  --gs-muted: #697b6a;
+  --gs-rule: #d8ded1;
+  min-height: 100dvh;
+  color: var(--gs-ink);
+  background: var(--gs-paper);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.gs-page * { box-sizing: border-box; }
+.gs-page a { color: inherit; }
+.gs-page :focus-visible { outline: 3px solid #aa7e4d; outline-offset: 3px; }
+.gs-header {
+  max-width: 1320px; margin: auto; padding: 21px 38px;
+  display: flex; align-items: center; justify-content: space-between; gap: 22px;
+  border-bottom: 1px solid var(--gs-rule);
+}
+.gs-brand { display: inline-flex; align-items: center; gap: 13px; text-decoration: none; font-weight: 800; font-size: 12px; letter-spacing: .14em; }
+.gs-brand > span { display: grid; place-items: center; height: 40px; width: 45px; background: #294e39; color: #fff; letter-spacing: -.09em; font: 24px Georgia,serif; }
+.gs-header nav { display: flex; align-items: center; flex-wrap: wrap; gap: 25px; }
+.gs-header nav a { text-decoration: none; font-weight: 700; font-size: 12px; }
+.gs-header nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
+.gs-wrap { max-width: 1220px; margin: auto; padding: 44px 24px 64px; }
+.gs-eyebrow,.gs-notes-kicker { font-size: 10px; letter-spacing: .18em; color: #718270; font-weight: 900; }
+.gs-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin: 20px 0 40px; }
+.gs-heading h1 { font: normal clamp(43px, 5.4vw, 73px)/1.07 Georgia,'Times New Roman',serif; letter-spacing: -.055em; margin: 0 0 17px; }
+.gs-heading h1 em { font-weight: 400; color: #698369; }
+.gs-heading > div > p { color: #617363; font-size: 14px; line-height: 1.7; max-width: 580px; margin: 0; }
+.gs-project-note { border-left: 1px solid #c6d1c3; padding: 2px 0 2px 20px; min-width: 210px; }
+.gs-project-note > span,.gs-material-note > span,.gs-bottom > div > span { font-size: 10px; letter-spacing: .16em; font-weight: 900; color: #829282; }
+.gs-project-note strong { display: block; font-size: 13px; margin-top: 8px; }
+.gs-project-note p { color: #748473; font-size: 12px; line-height: 1.5; }
+.gs-workspace { display: grid; grid-template-columns: minmax(0,1.7fr) minmax(270px,.8fr); gap: 32px; align-items: start; }
+.gs-viewer { min-width: 0; background: #f1f2ec; border: 1px solid #cfd8cc; }
+.gs-viewer-bar { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 12px 14px; background: #f5f5ef; border-bottom: 1px solid #d2dbd0; }
+.gs-viewer-bar > span { font-size: 10px; color: #748473; letter-spacing: .13em; font-weight: 900; }
+.gs-mode-switch { display: flex; padding: 2px; border: 1px solid #c9d4c5; }
+.gs-mode-switch button { min-height: 41px; border: 0; border-radius: 0; padding: 10px 14px; background: transparent; color: #4e6655; font-size: 12px; font-weight: 800; }
+.gs-mode-switch button[aria-pressed="true"] { background: #294e39; color: #fff; }
+.gs-mode-switch button:not([aria-pressed="true"]):hover { background: #e3ebe1; }
+.gs-stage { position: relative; min-height: 360px; height: clamp(380px, 55vw, 615px); overflow: hidden; background: #e8ede5; }
+.gs-stage canvas { width: 100%; height: 100%; display: block; touch-action: none; }
+.gs-scene-caption { position: absolute; bottom: 18px; left: 19px; pointer-events: none; padding: 8px 11px; color: #445f4d; font-size: 10px; font-weight: 800; letter-spacing: .12em; background: rgba(247,248,239,.86); }
+.gs-error { position: absolute; z-index: 2; inset: 0; display: grid; place-items: center; padding: 30px; text-align: center; background: #e7ede4; color: #733b32; font-size: 14px; line-height: 1.65; }
+.gs-stage-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding: 14px 17px; border-top: 1px solid #d2dbd0; color: #738474; font-size: 12px; }
+.gs-stage-footer button { min-height: 38px; border: 0; background: none; color: #355b40; font-weight: 800; padding: 7px; }
+.gs-stage-footer button:hover { text-decoration: underline; }
+.gs-notes { padding: 17px 0 0; }
+.gs-notes h2 { margin: 17px 0 12px; font: normal 32px/1.19 Georgia,serif; letter-spacing: -.035em; }
+.gs-notes > p { color: #687c6b; font-size: 13px; line-height: 1.77; }
+.gs-species { margin-top: 30px; border-top: 1px solid #b8c5b6; }
+.gs-species > div { display: grid; grid-template-columns: 30px minmax(0,1fr); gap: 12px; border-bottom: 1px solid #d5ded2; padding: 19px 0; }
+.gs-species > div > span { font: italic 18px Georgia,serif; color: #829982; }
+.gs-species strong { font: normal 17px Georgia,serif; }
+.gs-species p { color: #697d6c; font-size: 12px; line-height: 1.6; margin: 7px 0 0; }
+.gs-material-note { padding: 22px 20px; margin-top: 28px; background: #e9eee5; }
+.gs-material-note p { margin: 12px 0 0; font-size: 12px; color: #617462; line-height: 1.7; }
+.gs-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; border-top: 1px solid #bfcbbd; margin-top: 54px; padding: 30px 0; }
+.gs-bottom h2 { font: normal 28px/1.25 Georgia,serif; margin: 13px 0 0; }
+.gs-bottom p { color: #667b68; line-height: 1.72; font-size: 13px; margin: 0; }
+.gs-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; padding-top: 20px; border-top: 1px solid #d6dfd3; }
+.gs-footer a { color: #31563d; font-size: 13px; font-weight: 800; }
+.gs-footer > span { font-size: 10px; letter-spacing: .12em; font-weight: 800; color: #829182; }
+.gs-loading { display: grid; place-items: center; min-height: 60vh; font: 18px Georgia,serif; }
+@media(max-width:900px) {
+  .gs-header { padding: 18px 23px; }
+  .gs-workspace { grid-template-columns: 1fr; gap: 25px; }
+  .gs-notes { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
+  .gs-notes-kicker,.gs-notes h2,.gs-notes > p { grid-column: 1; }
+  .gs-species,.gs-material-note { grid-column: 2; margin-top: 0; }
+  .gs-material-note { margin-top: 22px; }
+}
+@media(max-width:620px) {
+  .gs-header { align-items: start; flex-direction: column; gap: 15px; padding: 17px; }
+  .gs-header nav { gap: 18px; }
+  .gs-wrap { padding: 33px 14px 44px; }
+  .gs-heading { align-items: start; flex-direction: column; margin: 16px 0 26px; gap: 22px; }
+  .gs-heading h1 { font-size: clamp(43px, 10vw, 56px); }
+  .gs-project-note { min-width: 0; padding-left: 14px; }
+  .gs-viewer-bar { flex-direction: column; align-items: stretch; }
+  .gs-mode-switch button { flex: 1; padding-left: 9px; padding-right: 9px; font-size: 11px; }
+  .gs-stage { height: 430px; min-height: 340px; }
+  .gs-scene-caption { bottom: 10px; left: 10px; font-size: 9px; }
+  .gs-stage-footer { font-size: 11px; }
+  .gs-notes { display: block; }
+  .gs-species { margin-top: 25px; }
+  .gs-material-note { margin-top: 24px; }
+  .gs-bottom { grid-template-columns: 1fr; gap: 17px; margin-top: 38px; }
+  .gs-footer > span { line-height: 1.5; }
+}
+@media(prefers-reduced-motion:reduce) { .gs-page * { scroll-behavior: auto !important; } }
+
+/* Real-asset prototype: responsive third comparison mode and growth stages. */
+.gs-stage-picker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 12px 15px;
+  border-bottom: 1px solid #d2dbd0;
+  color: #4d6754;
+  background: #ecefe8;
+}
+.gs-stage-picker label { font-size: 12px; font-weight: 800; }
+.gs-stage-picker select {
+  min-height: 41px;
+  min-width: 145px;
+  padding: 7px 11px;
+  background: #fff;
+  color: #294a35;
+  border: 1px solid #a9bda8;
+  border-radius: 2px;
+}
+.gs-stage-picker span { font-size: 11px; color: #687f6d; }
+@media(max-width:620px) {
+  .gs-mode-switch { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); width:100%; }
+  .gs-mode-switch button { min-width:0; font-size:10px; padding:10px 5px; line-height:1.4; }
+  .gs-stage-picker { gap:9px; }
+  .gs-stage-picker select { flex:1; }
+}
+
+.gs-camera-actions { display:flex; align-items:center; justify-content:flex-end; flex-wrap:wrap; gap:10px; }
+.gs-camera-actions button { border: 1px solid #c6d4c5; padding:9px 10px; min-height:39px; background:#f7f8f3; }
+.gs-camera-actions button:hover { background:#e4ece2; text-decoration: none; }
+@media(max-width:620px) { .gs-camera-actions { justify-content:space-between; width:100%; } }

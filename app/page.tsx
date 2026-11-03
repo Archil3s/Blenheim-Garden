@@ -104,6 +104,7 @@ export default function Home() {
               <span className="home-item-meta">GARDEN VISUALISATION</span><span className="home-link-arrow" aria-hidden="true">↗</span>
             </Link>
           </div>
+          <p className="home-showcase-entry">Reviewing the new plant models? <Link href="/3d-showcase">Compare classic and botanical 3D ↗</Link></p>
         </section>
 
         <div className="home-lower">

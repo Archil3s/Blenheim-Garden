@@ -30,3 +30,6 @@ pnpm-debug.log*
 /playwright-report/
 /visual-artifacts/
 /test-results/
+
+# Deterministically generated GLB build assets (source is scripts/3d)
+/public/assets/plants/tomato/
