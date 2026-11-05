@@ -396,3 +396,16 @@ The full pre-correction suite had 124 passes and four detailed-art 3D failures;
 three of those failures are new regressions, despite the earlier phone-only
 baseline issue. Detailed species artwork now renders in both unified 3D routes,
 and source default shape colours are corrected. Keep all existing tests intact.
+
+P-007 improves the user experience with workspace reports and direct tab
+switching, plan-wide notes using protected named-garden D1 persistence and local
+draft recovery, original fontello toolbar glyphs, visible Settings/year/New/Open,
+general single-selection clipboard actions/shortcuts, plant facts and working
+favourites/companion/advanced filters. Preserve the existing measured beds and
+extra tools. Favourites currently persist in this browser only. See the audit's
+Subsequent UX work section for the remaining differences.
+
+The user overrode the earlier main gate and explicitly requested the fa66ff5
+main push. Cloudflare deployment then failed on a stale build token. The user
+declined saving its replacement; the unsaved UI change was discarded. Do not
+retry that credential/configuration change without new authorization.

@@ -26,8 +26,9 @@ export function PlannerReports({ plan }: { plan: PlannerPlan }) {
   const [busy, setBusy] = useState(false);
   const [active, setActive] = useState(false);
   useEffect(() => {
-    if (active) dialog.current?.showModal();
-  }, [active]);
+    if (active && report === "export") dialog.current?.showModal();
+    window.dispatchEvent(new CustomEvent("garden-report-view", { detail: active ? report : null }));
+  }, [active, report]);
   const plants = useMemo(() => {
     const rows = grouping === "variety" ? groupedPlantList(plan) : plantListRows(plan);
     const needle = query.toLowerCase();
@@ -52,7 +53,12 @@ export function PlannerReports({ plan }: { plan: PlannerPlan }) {
       }
     };
     window.addEventListener("garden-report-open", receive);
-    return () => window.removeEventListener("garden-report-open", receive);
+    const close = () => setActive(false);
+    window.addEventListener("garden-report-close", close);
+    return () => {
+      window.removeEventListener("garden-report-open", receive);
+      window.removeEventListener("garden-report-close", close);
+    };
   }, []);
 
   function exportCsv() {
@@ -86,12 +92,8 @@ export function PlannerReports({ plan }: { plan: PlannerPlan }) {
     }
   }
 
-  return <>
-    <button type="button" onClick={() => open("plants")}>Plant List</button>
-    <button type="button" onClick={() => open("parts")}>Parts List</button>
-    <button type="button" onClick={() => open("export")}>Export plan</button>
-    {active && createPortal(<dialog ref={dialog} className="planner-report" aria-labelledby="planner-report-title" onClose={() => setActive(false)}>
-      <header><div><small>Blenheim Garden</small><h2 id="planner-report-title">{report === "plants" ? "Plant List" : report === "parts" ? "Parts List" : "Export plan"}</h2></div><button type="button" onClick={() => dialog.current?.close()}>Close</button></header>
+  const content = <>
+      <header><div><h2 id="planner-report-title">{report === "plants" ? "Plant List" : report === "parts" ? "Parts List" : "Export plan"}</h2></div><button type="button" onClick={() => setActive(false)}>Close</button></header>
       {report === "plants" && <>
         <div className="report-controls"><label>Search plantings<input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Plant, variety or bed" /></label><label>Group by<select value={grouping} onChange={(event) => setGrouping(event.target.value)}><option value="variety">Variety</option><option value="individual">Individual plantings</option><option value="bed">Beds and rows</option></select></label></div>
         <p>{plants.reduce((sum, row) => sum + row.quantity, 0)} plants · {plants.length} {grouping === "variety" ? "varieties" : "plantings"}</p>
@@ -108,6 +110,13 @@ export function PlannerReports({ plan }: { plan: PlannerPlan }) {
         <button type="button" disabled={busy} onClick={() => void exportPng()}>{busy ? "Generating image…" : "Download PNG plan"}</button>
         {error && <p role="alert">{error}</p>}
       </div>}
-    </dialog>, document.body)}
+    </>;
+  return <>
+    <button type="button" onClick={() => open("plants")}>Plant List</button>
+    <button type="button" onClick={() => open("parts")}>Parts List</button>
+    <button type="button" onClick={() => open("export")}>Export plan</button>
+    {active && createPortal(report === "export"
+      ? <dialog ref={dialog} className="planner-report" aria-labelledby="planner-report-title" onClose={() => setActive(false)}>{content}</dialog>
+      : <section className="planner-report planner-report-workspace" role="dialog" aria-modal="false" aria-labelledby="planner-report-title" onKeyDown={(event) => { if (event.key === "Escape") setActive(false); }}>{content}</section>, document.body)}
   </>;
 }

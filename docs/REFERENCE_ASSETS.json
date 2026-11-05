@@ -268,5 +268,13 @@
       "bytes": 46309,
       "sha256": "7fe2ee1ca92ecc5ecca4da26fb41ab02fa9467771dae2aa3ad73f5ed6052084c"
     }
-  ]
+  ],
+  "interfaceIconFont": {
+    "source": "https://www.growveg.com.au/app/assets/fonts/6fba2fbb9ac8fee01880.woff2?87292027",
+    "file": "public/planner-reference/interface-icons.woff2",
+    "bytes": 25564,
+    "sha256": "2fa41a60e463c295032bc63fdd0c91378acebbc189ce14ce506014a4175b3663",
+    "retrieved": "2026-11-02",
+    "mapping": "Glyphs observed in the rendered toolbar and drawing palette."
+  }
 }

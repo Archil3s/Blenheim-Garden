@@ -220,3 +220,43 @@ functional pass. Do not treat the suite as proof of visual or product parity.
 Original icon-dimension, unchanged-bed, persistence and named-garden checks also
 pass in that full run. No dependencies, bindings or test assertions changed.
 Browser viewport override restored. No production save, merge or deployment.
+
+## Planner UX P-007 — 5 November 2026
+
+Plant List and Parts List now occupy the workspace with working header tab
+switching. Plan Notes provides a single textarea saved with the main Save
+button; named-garden note records use an idempotent dedicated table, the existing
+write-token protection, validation and recoverable browser drafts. Notes do not
+replace existing per-bed records or harvests.
+
+The header exposes Settings and plan year, with New/Open ribbon entry points.
+Single-selection cut/copy/paste/delete now covers beds and their plantings,
+planting areas, rows and objects; keyboard shortcuts preserve normal text editing.
+Copied plants receive independent identities. Copied bed IDs avoid reusing
+archived history identities.
+
+The palette adds persistent browser favourites, perennial and companion filters,
+source Easy/Frost/Shade/Autumn/Tropical/family filters and factual plant dialogs.
+Name/Type precede companion/favourite controls; planting details appear after
+choosing a plant. Original fontello glyphs replace toolbar/drawing approximations;
+observed toolbar and Settings glyph sizes are 14 px and laptop header text 16 px.
+Legacy CSS collisions in catalogue padding and hidden Type controls are corrected.
+Final visual review also caught blank CSS-sheet catalogue symbols. Palette,
+information and report symbols now show the original atlas frames directly,
+matching the working canvas renderer while retaining the measured symbol sizes.
+Reference ribbon glyphs remain visible at intermediate responsive widths.
+
+Full-product parity remains incomplete; see GROWVEG_PARITY_AUDIT.md. No account
+sync for favourites, complete temporal/inventory/PDF/settings/texture workflow,
+or multiselection equivalence is claimed. No dependencies or bindings changed.
+The user's instruction to leave Cloudflare build-token settings unchanged remains
+in effect. The existing GitHub deployment workflow remains the release path.
+
+Release validation: lint and production build pass. All 144 tests pass across
+1920×1080, 1440×900, 1024×768 and 390×844, including real SQLite-backed note
+protection/isolation, draft/save flow, tab switching, filters and unchanged garden
+geometry. All 128 pre-existing tests remain intact. Final responsive glyph CSS
+was followed by another successful production build and 4/4 interface checks.
+An earlier preview process stopped and caused connection failures; the complete
+rerun used a Playwright-managed npm server and passed. The CI configuration and
+dependencies are unchanged. Screenshots were reviewed at all required sizes.

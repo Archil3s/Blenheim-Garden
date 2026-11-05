@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import type { DragEvent as ReactDragEvent, PointerEvent as ReactPointerEvent } from "react";
 import type {
   GardenPlanApiResponse,
@@ -27,6 +27,10 @@ import { PlannerReports } from "@/components/planner-reports";
 import { DesignerShapeArt } from "@/components/designer-shape";
 import { DesignerShapeControls, DesignerShapeInspector, type ShapeStyle } from "@/components/designer-shape-controls";
 import { shapeFromDrag } from "@/lib/garden/designer-shapes";
+import { defaultPlantFilters, matchesPlantFilters, plantFacts, type PlantFilters } from "@/lib/garden/plant-catalogue-filters";
+import { PlantCatalogueFilters, PlantInformation } from "./plant-catalogue-filters";
+import { PlannerPlanNotes, type PlanNotesHandle } from "./planner-plan-notes";
+import { pastePlanSelection, type PlanClipboard } from "@/lib/garden/selection-clipboard";
 
 type Tool = "shape" | "select" | "plant" | "row" | "bed" | "path" | "trellis" | "structure" | "tree" | "note";
 type SaveState = "idle" | "saving" | "cloud" | "local" | "error";
@@ -188,6 +192,7 @@ export function GardenPlanner() {
   const [draft, setDraft] = useState<Draft>(null);
   const [cursorPoint, setCursorPoint] = useState<Point | null>(null);
   const [selectedPlant, setSelectedPlant] = useState(plants[0]);
+  const [plantPicked, setPlantPicked] = useState(false);
   const [selectedVariety, setSelectedVariety] = useState(plants[0].varieties[0]);
   const [placementMode, setPlacementMode] = useState<PlannerPlantingPattern>("grid");
   const [dragPlant, setDragPlant] = useState<PlantOption | null>(null);
@@ -198,6 +203,14 @@ export function GardenPlanner() {
   const [structureSearch, setStructureSearch] = useState("");
   const [plantSpacing, setPlantSpacing] = useState<Record<string, number>>({});
   const [plantType, setPlantType] = useState("All Plants");
+  const [plantFilters, setPlantFilters] = useState<PlantFilters>(defaultPlantFilters);
+  const [favouritePlants, setFavouritePlants] = useState<string[]>([]);
+  const [informationPlant, setInformationPlant] = useState<string | null>(null);
+  const [catalogueMessage, setCatalogueMessage] = useState("");
+  const [reportView, setReportView] = useState<string | null>(null);
+  const [notesOpen, setNotesOpen] = useState(false);
+  const [notesDirty, setNotesDirty] = useState(false);
+  const planNotesRef = useRef<PlanNotesHandle>(null);
   const [pathWidth, setPathWidth] = useState(75);
   const [trellisHeight, setTrellisHeight] = useState(180);
   const [postSpacing, setPostSpacing] = useState(150);
@@ -207,10 +220,33 @@ export function GardenPlanner() {
   const [newText, setNewText] = useState("Label");
   const [shapeStyle, setShapeStyle] = useState<ShapeStyle>({ shape: "rectangle", stroke: "#663300", fill: "none", lineWidth: 3 });
   const [designerLayer, setDesignerLayer] = useState("all");
-  const drawingClipboard = useRef<PlannerLayoutObject | null>(null);
+  const drawingClipboard = useRef<PlanClipboard | null>(null);
   const [clipboardReady, setClipboardReady] = useState(false);
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [loadSource, setLoadSource] = useState<LoadSource>("starting");
+
+  useEffect(() => {
+    const receive = (event: Event) => {
+      const next = (event as CustomEvent<string | null>).detail;
+      setReportView(next);
+      if (next) setNotesOpen(false);
+    };
+    window.addEventListener("garden-report-view", receive);
+    queueMicrotask(() => {
+      try {
+        const stored: unknown = JSON.parse(localStorage.getItem("garden-favourite-plants") ?? "[]");
+        if (Array.isArray(stored)) setFavouritePlants(stored.filter((item): item is string => typeof item === "string"));
+      } catch { setCatalogueMessage("Favorites could not be restored from this browser."); }
+    });
+    return () => window.removeEventListener("garden-report-view", receive);
+  }, []);
+
+  function toggleFavourite(name: string) {
+    const next = favouritePlants.includes(name) ? favouritePlants.filter((item) => item !== name) : [...favouritePlants, name];
+    setFavouritePlants(next);
+    try { localStorage.setItem("garden-favourite-plants", JSON.stringify(next)); }
+    catch { setCatalogueMessage("Favorites are available for this visit, but this browser could not save them."); }
+  }
 
   useEffect(() => {
     let cancelled = false;
@@ -311,8 +347,9 @@ export function GardenPlanner() {
   const filteredPlants = useMemo(() => {
     const needle = search.trim().toLowerCase();
     return (fullCatalogue ? plants : establishedPlants).filter((plant) => (plantType === "All Plants" || plant.type === plantType)
-      && (!needle || plant.name.toLowerCase().includes(needle) || plant.varieties.some((variety) => variety.toLowerCase().includes(needle))));
-  }, [search, plantType, fullCatalogue]);
+      && (!needle || plant.name.toLowerCase().includes(needle) || plant.varieties.some((variety) => variety.toLowerCase().includes(needle)))
+      && matchesPlantFilters(plant.name, plantFilters, favouritePlants, selectedPlant.name));
+  }, [search, plantType, fullCatalogue, plantFilters, favouritePlants, selectedPlant.name]);
 
   function snap(value: number) { return snapEnabled ? Math.round(value / SNAP_CM) * SNAP_CM : Math.round(value); }
   function snapPoint(point: Point) { return { x: clamp(snap(point.x), 0, CANVAS_WIDTH), y: clamp(snap(point.y), 0, CANVAS_HEIGHT) }; }
@@ -328,7 +365,7 @@ export function GardenPlanner() {
   function edit(mutator: (current: PlanState) => PlanState) { remember(); setPlan((current) => mutator(current)); setSaveState("idle"); }
 
   function chooseTool(next: Tool) { setDesignerLayer("all"); if (next !== "select" && selection?.kind !== "bed") setSelection(selectedPlanting ? { kind: "bed", id: String(selectedPlanting.bedId) } : null); setTool(next); setPanelOpen(true); setDraft(null); setInteraction(null); }
-  function choosePlant(plant: PlantOption) { setSelectedPlant({ ...plant, spacingCm: plantSpacing[plant.name] ?? plant.spacingCm }); setSelectedVariety(plant.varieties[0]); }
+  function choosePlant(plant: PlantOption) { setPlantPicked(true); setSelectedPlant({ ...plant, spacingCm: plantSpacing[plant.name] ?? plant.spacingCm }); setSelectedVariety(plant.varieties[0]); }
 
   function undo() {
     if (!past.length) return;
@@ -686,8 +723,9 @@ export function GardenPlanner() {
     const snapshot = JSON.stringify(plan);
     setSaveState("saving");
     try {
+      const notesResult = await planNotesRef.current?.save();
       const result = await persistGardenPlan(gardenId, plan);
-      if (result === "local") { setSaveState("local"); return; }
+      if (result === "local" || notesResult === "local") { setSaveState("local"); return; }
       setSavedSnapshot(snapshot);
       setLoadSource("cloud");
       setSaveState("cloud");
@@ -710,12 +748,15 @@ export function GardenPlanner() {
   function pasteDrawingObject() {
     const stored = drawingClipboard.current;
     if (!stored) return;
-    const copy = structuredClone(stored);
-    copy.id = uuid(copy.type);
-    if ("x1" in copy) { copy.x1 = clamp(copy.x1 + 20, 0, CANVAS_WIDTH); copy.y1 = clamp(copy.y1 + 20, 0, CANVAS_HEIGHT); copy.x2 = clamp(copy.x2 + 20, 0, CANVAS_WIDTH); copy.y2 = clamp(copy.y2 + 20, 0, CANVAS_HEIGHT); }
-    else { copy.x = clamp(copy.x + 20, 0, CANVAS_WIDTH); copy.y = clamp(copy.y + 20, 0, CANVAS_HEIGHT); }
-    if (copy.type === "shape") copy.locked = false;
-    commit({ ...plan, objects: [...plan.objects, copy] }); setSelection({ kind: "object", id: copy.id }); setDesignerLayer("all"); setTool("select"); setPanelOpen(true);
+    const result = pastePlanSelection(plan, stored);
+    if (!result) return;
+    commit(result.plan); setSelection(result.selection); setDesignerLayer("all"); setTool("select"); setPanelOpen(true);
+  }
+
+  function copyDrawingSelection() {
+    if (!selection) return;
+    drawingClipboard.current = { selection: { ...selection }, plan: clonePlan(plan) };
+    setClipboardReady(true);
   }
 
   function selectionInspector() {
@@ -774,7 +815,7 @@ export function GardenPlanner() {
 
   function plantCatalog() {
     const modeLabel = (mode: PlannerPlantingPattern) => mode === "grid" ? "Block" : mode === "staggered" ? "Stagger" : mode === "rows" ? "Rows" : mode === "natural" ? "Natural" : "Single";
-    return <><div className="gv-panel-section-title"><div><span className="gv-panel-leaf">🌱</span><strong>{tool === "row" ? "Planting rows" : "Plants"}</strong></div></div><div className="gv-catalogue-options"><label><input type="checkbox" checked={fullCatalogue} onChange={(event) => setFullCatalogue(event.target.checked)} />Full plant catalogue ({plants.length})</label></div><div className="gv-filters"><label>Search<input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Plant or variety" /></label><label>Type<select value={plantType} onChange={(event) => setPlantType(event.target.value)}><option>All Plants</option><option>Vegetable</option><option>Fruit</option><option>Herb</option><option>Flower</option><option>Native</option></select></label><label>Variety<select value={selectedVariety} onChange={(event) => setSelectedVariety(event.target.value)}>{selectedPlant.varieties.map((variety) => <option key={variety}>{variety}</option>)}</select></label><label>Custom variety<input aria-label="Custom variety" value={selectedVariety} onChange={(event) => setSelectedVariety(event.target.value)} /></label></div><label className="gv-catalogue-spacing">Plant spacing (cm)<input type="number" min={2} max={1000} value={selectedPlant.spacingCm} onChange={(event) => { const spacing = Math.max(2, Math.min(1000, Number(event.target.value) || 2)); setPlantSpacing((current) => ({ ...current, [selectedPlant.name]: spacing })); setSelectedPlant((current) => ({ ...current, spacingCm: spacing })); }} />{unverifiedPlantNames.has(selectedPlant.name) && <small>30 cm is a layout starting point. Enter the spacing on your seed packet before planting.</small>}</label>{tool === "plant" && <div className="gv-v4-modebar"><span>Placement</span>{(["grid", "staggered", "rows", "natural", "single"] as PlannerPlantingPattern[]).map((mode) => <button key={mode} type="button" className={placementMode === mode ? "active" : ""} onClick={() => setPlacementMode(mode)}>{modeLabel(mode)}</button>)}</div>}<div className="gv-ready-strip" data-crop={selectedPlant.name}><span><PlantArt crop={selectedPlant.name} variety={selectedVariety} fallback={selectedPlant.icon} /></span><div><small>{tool === "plant" ? "DRAG INTO A BED" : "READY TO DRAW"}</small><strong>{selectedVariety}</strong><em>{selectedPlant.spacingCm} cm canvas spacing · {selectedPlant.spacing}</em></div></div><div className="gv-plant-list">{filteredPlants.map((plant) => <button draggable={tool === "plant"} type="button" key={plant.name} data-crop={plant.name} className={selectedPlant.name === plant.name ? "active" : ""} onClick={() => choosePlant(plant)} onDragStart={(event) => { choosePlant(plant); setDragPlant(plant); event.dataTransfer.effectAllowed = "copy"; event.dataTransfer.setData("text/plain", plant.name); }} onDragEnd={() => { setDragPlant(null); setDropBedId(null); }}><span className="gv-plant-icon"><PlantArt crop={plant.name} variety={selectedPlant.name === plant.name ? selectedVariety : plant.varieties[0]} fallback={plant.icon} /></span><span><strong>{plant.name}</strong><small>{plantSpacing[plant.name] ?? plant.spacingCm} cm layout · {plant.spacing}</small></span>{tool === "plant" && <b className="gv-v4-drag-grip">⋮⋮</b>}</button>)}</div></>;
+    return <><div className="gv-panel-section-title"><div><span className="gv-panel-leaf">🌱</span><strong>{tool === "row" ? "Planting rows" : "Plants"}</strong></div></div><div className="gv-catalogue-options"><label><input type="checkbox" checked={fullCatalogue} onChange={(event) => setFullCatalogue(event.target.checked)} />Full plant catalogue ({plants.length})</label></div><PlantCatalogueFilters value={plantFilters} onChange={setPlantFilters} selected={plantPicked ? selectedPlant.name : ""} onReset={() => { setSearch(""); setPlantType("All Plants"); }}>{catalogueMessage && <p role="status">{catalogueMessage}</p>}<div className="gv-filters"><label>Name<input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Plant or variety" /></label><label>Type<select value={plantType} onChange={(event) => setPlantType(event.target.value)}><option>All Plants</option><option>Vegetable</option><option>Fruit</option><option>Herb</option><option>Flower</option><option>Native</option></select></label><label>Variety<select value={selectedVariety} onChange={(event) => setSelectedVariety(event.target.value)}>{selectedPlant.varieties.map((variety) => <option key={variety}>{variety}</option>)}</select></label><label>Custom variety<input aria-label="Custom variety" value={selectedVariety} onChange={(event) => setSelectedVariety(event.target.value)} /></label></div></PlantCatalogueFilters><label className="gv-catalogue-spacing">Plant spacing (cm)<input type="number" min={2} max={1000} value={selectedPlant.spacingCm} onChange={(event) => { const spacing = Math.max(2, Math.min(1000, Number(event.target.value) || 2)); setPlantSpacing((current) => ({ ...current, [selectedPlant.name]: spacing })); setSelectedPlant((current) => ({ ...current, spacingCm: spacing })); }} />{unverifiedPlantNames.has(selectedPlant.name) && <small>30 cm is a layout starting point. Enter the spacing on your seed packet before planting.</small>}</label>{tool === "plant" && <div className="gv-v4-modebar"><span>Placement</span>{(["grid", "staggered", "rows", "natural", "single"] as PlannerPlantingPattern[]).map((mode) => <button key={mode} type="button" className={placementMode === mode ? "active" : ""} onClick={() => setPlacementMode(mode)}>{modeLabel(mode)}</button>)}</div>}<div className="gv-ready-strip" data-crop={selectedPlant.name}><span><PlantArt crop={selectedPlant.name} variety={selectedVariety} fallback={selectedPlant.icon} /></span><div><small>{tool === "plant" ? "DRAG INTO A BED" : "READY TO DRAW"}</small><strong>{selectedVariety}</strong><em>{selectedPlant.spacingCm} cm canvas spacing · {selectedPlant.spacing}</em></div></div><div className="gv-plant-list">{filteredPlants.map((plant, index) => <Fragment key={plant.name}><button draggable={tool === "plant"} type="button" key={plant.name} data-crop={plant.name} className={selectedPlant.name === plant.name ? "active" : ""} onClick={() => choosePlant(plant)} onDragStart={(event) => { choosePlant(plant); setDragPlant(plant); event.dataTransfer.effectAllowed = "copy"; event.dataTransfer.setData("text/plain", plant.name); }} onDragEnd={() => { setDragPlant(null); setDropBedId(null); }}><span className="gv-plant-icon"><PlantArt crop={plant.name} variety={selectedPlant.name === plant.name ? selectedVariety : plant.varieties[0]} fallback={plant.icon} /></span><span><strong>{plant.name}</strong><small>{plantFacts(plant.name)?.perennial ? "Perennial" : ""}</small></span>{tool === "plant" && <b className="gv-v4-drag-grip">⋮⋮</b>}</button><div className="plant-entry-actions" style={{ top: index * 62 + 7 }}><button type="button" aria-label={`Favorite ${plant.name}`} aria-pressed={favouritePlants.includes(plant.name)} onClick={() => toggleFavourite(plant.name)}>{favouritePlants.includes(plant.name) ? "★" : "☆"}</button><button type="button" aria-label={`Information about ${plant.name}`} onClick={() => setInformationPlant(plant.name)}>ⓘ</button></div></Fragment>)}</div>{!filteredPlants.length && <p className="plant-filter-empty">No plants match these filters.</p>}</>;
   }
 
   function structureCatalog() {
@@ -818,14 +859,14 @@ export function GardenPlanner() {
     </div>;
   }
 
-  const isSaved = savedSnapshot === JSON.stringify(plan);
+  const isSaved = savedSnapshot === JSON.stringify(plan) && !notesDirty;
   const saveLabel = saveState === "saving" ? "Saving…" : saveState === "error" ? "Save failed" : saveState === "local" ? "Local only" : isSaved ? "Saved ✓" : "Save";
   const sourceLabel = saveState === "saving" ? "Saving…" : saveState === "error" ? "Save failed · retry" : saveState === "local" ? "Local only · set edit key in Settings" : loadSource === "starting" ? "Loading…" : isSaved ? "Saved" : "Unsaved changes";
   const scaledWidth = CANVAS_WIDTH * zoom / 100, scaledHeight = CANVAS_HEIGHT * zoom / 100;
   const draftRect = draft?.kind === "bed" ? { x: Math.min(draft.start.x, draft.end.x), y: Math.min(draft.start.y, draft.end.y), w: Math.abs(draft.end.x - draft.start.x), h: Math.abs(draft.end.y - draft.start.y) } : null;
   const draftLine = draft && draft.kind !== "bed" && draft.kind !== "shape" ? { x1: draft.start.x, y1: draft.start.y, x2: draft.end.x, y2: draft.end.y } : null;
 
-  return <main className="gv-app reference-planner" data-designer-layer={designerLayer}>
+  return <main className="gv-app reference-planner" data-designer-layer={designerLayer} data-plant-picked={plantPicked} data-report-view={notesOpen ? "notes" : reportView ?? "plan"}><PlannerPlanNotes ref={planNotesRef} open={notesOpen} onDirty={setNotesDirty} />{informationPlant && <PlantInformation name={informationPlant} onClose={() => setInformationPlant(null)} />}
     <nav className="planner-app-nav" aria-label="Applications">
       <button type="button" aria-label="Toggle drawing panel" onClick={() => setPanelOpen((value) => !value)}><PlannerIcon name="menu" /></button>
       <Link href="/" title="Overview" aria-label="Overview"><PlannerIcon name="home" /></Link>
@@ -836,14 +877,14 @@ export function GardenPlanner() {
     </nav>
     <header className="gv-titlebar">
       <div className="gv-title-left"><button type="button" className="gv-plan-name">BLENHEIM GARDEN <span>Garden ▾</span></button></div>
-      <nav className="gv-primary-nav" aria-label="Garden navigation">
-        <button type="button" className="gv-plan-tab active" data-planner-view="2d" onClick={() => { setTool("select"); setPanelOpen(false); }}>Plan</button>
-        <button type="button" className="planner-report-tab" aria-label="Open plant list" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "plants" }))}>Plant List</button>
-        <button type="button" className="planner-report-tab" aria-label="Open parts list" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "parts" }))}>Parts List</button>
-        <button type="button" data-season-view="today">Today</button>
+      <nav className="gv-primary-nav" aria-label="Garden navigation"><button type="button" className="gv-settings planner-visible-settings" aria-label="Plan settings"><PlannerIcon name="settings" /> Settings</button>
+        <button type="button" className={`gv-plan-tab ${!reportView && !notesOpen ? "active" : ""}`} data-planner-view="2d" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(false); setTool("select"); }}>Plan</button>
+        <button type="button" className={`planner-report-tab ${reportView === "plants" ? "active" : ""}`} aria-label="Open plant list" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "plants" }))}>Plant List</button>
+        <button type="button" className={`planner-report-tab ${reportView === "parts" ? "active" : ""}`} aria-label="Open parts list" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "parts" }))}>Parts List</button>
+        <button type="button" className={`planner-report-tab ${notesOpen ? "active" : ""}`} aria-label="Plan notes" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(true); }}>Notes</button><button type="button" data-season-view="today">Today</button>
         <details ref={moreRef} className="gv-more" onKeyDown={(event) => { if (event.key === "Escape") { event.stopPropagation(); event.currentTarget.open = false; event.currentTarget.querySelector("summary")?.focus(); } }}><summary>More <span aria-hidden="true">⌄</span></summary><div className="gv-more-panel">
           <nav className="gv-tabs" aria-label="Garden records"><button type="button">Photos</button><button type="button">Notes</button></nav>
-          <PlannerReports plan={plan} /><button type="button" data-season-view="week">This Week</button>
+          <button type="button" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(true); }}>Plan notes</button><PlannerReports plan={plan} /><button type="button" data-season-view="week">This Week</button>
           <a href="/3d" target="_blank" rel="noopener">Live 3D ↗</a>
           <button type="button" className="gv-settings">Settings</button>
           <div className="gv-layout-options" />
@@ -851,14 +892,14 @@ export function GardenPlanner() {
         <button type="button" className="gv-save" onClick={() => void savePlan()} disabled={saveState === "saving"}> {saveLabel}</button>
       </nav>
     </header>
-    <div className="gv-quickbar"><div className="planner-plan-actions"><span className="planner-ribbon-caption">Plan</span><button type="button" aria-label="Save plan" title="Save plan" onClick={() => void savePlan()} disabled={saveState === "saving"}>▣</button><button type="button" aria-label="Export design" title="Export design" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "export" }))}>↥</button></div><div className="gv-quick-actions"><span className="planner-ribbon-caption">Edit</span><button type="button" onClick={undo} disabled={!past.length} title="Undo">↶ <span>Undo</span></button><button type="button" onClick={redo} disabled={!future.length} title="Redo">↷ <span>Redo</span></button><button type="button" className={snapEnabled ? "active" : ""} onClick={() => setSnapEnabled((value) => !value)}>⌗ <span>Snap {snapEnabled ? "10 cm" : "Off"}</span></button></div><div className="gv-quick-center"><span className="planner-ribbon-caption">Timeline & view</span><button type="button" aria-label="Zoom out" onClick={() => { setAutoFit(false); setZoom((value) => Math.max(25, value - 10)); }}>−</button><strong>{zoom}%</strong><button type="button" className="gv-fit-width" onClick={() => setAutoFit(true)}>Fit</button><button type="button" aria-label="Zoom in" onClick={() => { setAutoFit(false); setZoom((value) => Math.min(150, value + 10)); }}>+</button><select aria-label="Planning month" value={month} onChange={(event) => { setMonth(event.target.value); setGeneratedMonth(null); }}>{months.map((item) => <option key={item}>{item}</option>)}</select><div className="gv-seasonal-generator"><button type="button" aria-label="Generate seasonal garden" data-generated={generatedMonth === month} title={`Generate a Blenheim seasonal garden for ${month}`} disabled={!plan.beds.length} onClick={generateSeasonalGarden}>{generatedMonth === month ? `✓ ${month}` : "✦ Generate"}</button></div></div><div className="gv-cloud-state" role="status" aria-live="polite" data-save-state={saveState}><span className={isSaved ? "online" : ""} />{sourceLabel}</div></div>
+    <div className="gv-quickbar"><div className="planner-plan-actions"><span className="planner-ribbon-caption">Plan</span><button type="button" aria-label="New plan" title="New plan" onClick={() => window.dispatchEvent(new CustomEvent("garden-manager-open", { detail: "new" }))}><PlannerIcon name="new" /></button><button type="button" aria-label="Open plan" title="Open plan" onClick={() => window.dispatchEvent(new CustomEvent("garden-manager-open"))}><PlannerIcon name="open" /></button><button type="button" aria-label="Save plan" title="Save plan" onClick={() => void savePlan()} disabled={saveState === "saving"}><PlannerIcon name="save" /></button><button type="button" aria-label="Export design" title="Export design" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "export" }))}>↥</button></div><div className="gv-quick-actions"><span className="planner-ribbon-caption">Edit</span><button type="button" aria-label="Select and edit" title="Select and edit" onClick={() => chooseTool("select")}><PlannerIcon name="select" /></button><button type="button" aria-label="Cut selection" title="Cut" data-planner-action="cut" disabled={!selection || (selectedObject?.type === "shape" && selectedObject.locked)} onClick={() => { copyDrawingSelection(); deleteSelection(); }}><PlannerIcon name="cut" /></button><button type="button" aria-label="Copy selection" title="Copy" data-planner-action="copy" disabled={!selection} onClick={copyDrawingSelection}><PlannerIcon name="copy" /></button><button type="button" aria-label="Paste selection" title="Paste" data-planner-action="paste" disabled={!clipboardReady} onClick={pasteDrawingObject}><PlannerIcon name="paste" /></button><button type="button" aria-label="Delete selection" title="Delete" data-planner-action="delete" disabled={!selection || (selectedObject?.type === "shape" && selectedObject.locked)} onClick={deleteSelection}><PlannerIcon name="delete" /></button><button type="button" onClick={undo} disabled={!past.length} title="Undo"><PlannerIcon name="undo" /> <span>Undo</span></button><button type="button" onClick={redo} disabled={!future.length} title="Redo"><PlannerIcon name="redo" /> <span>Redo</span></button><button type="button" className={snapEnabled ? "active" : ""} onClick={() => setSnapEnabled((value) => !value)}>⌗ <span>Snap {snapEnabled ? "10 cm" : "Off"}</span></button></div><div className="gv-quick-center"><span className="planner-ribbon-caption">Timeline & view</span><button type="button" aria-label="Zoom out" onClick={() => { setAutoFit(false); setZoom((value) => Math.max(25, value - 10)); }}>−</button><strong>{zoom}%</strong><button type="button" className="gv-fit-width" onClick={() => setAutoFit(true)}>Fit</button><button type="button" aria-label="Zoom in" onClick={() => { setAutoFit(false); setZoom((value) => Math.min(150, value + 10)); }}>+</button><select aria-label="Planning month" value={month} onChange={(event) => { setMonth(event.target.value); setGeneratedMonth(null); }}>{months.map((item) => <option key={item}>{item}</option>)}</select><div className="gv-seasonal-generator"><button type="button" aria-label="Generate seasonal garden" data-generated={generatedMonth === month} title={`Generate a Blenheim seasonal garden for ${month}`} disabled={!plan.beds.length} onClick={generateSeasonalGarden}>{generatedMonth === month ? `✓ ${month}` : "✦ Generate"}</button></div></div><div className="gv-cloud-state" role="status" aria-live="polite" data-save-state={saveState}><span className={isSaved ? "online" : ""} />{sourceLabel}</div>
     <div className="designer-toolbar" aria-label="Garden drawing controls"><span className="planner-ribbon-caption">Layout & layers</span>
       <label>Layers<select aria-label="Drawing layers" value={designerLayer} onChange={(event) => { setDesignerLayer(event.target.value); setSelection(null); }}><option value="all">Edit All</option><option value="view">View All</option><option value="plants">Plants</option><option value="structures">Structures</option><option value="layout">Layout</option><option value="text">Text</option></select></label>
-      <button type="button" disabled={!selectedObject} onClick={() => { if (selectedObject) { drawingClipboard.current = structuredClone(selectedObject); setClipboardReady(true); } }}>Copy drawing</button>
+      <button type="button" disabled={!selection} onClick={copyDrawingSelection}>Copy drawing</button>
       <button type="button" disabled={!clipboardReady} onClick={pasteDrawingObject}>Paste drawing</button>
       <button type="button" disabled={selectedObject?.type !== "shape" || selectedObject.locked} onClick={() => { if (selectedObject?.type === "shape") updateShape({ ...selectedObject, behind: true }); }}>Send to back</button>
       <button type="button" disabled={selectedObject?.type !== "shape" || selectedObject.locked} onClick={() => { if (selectedObject?.type === "shape") updateShape({ ...selectedObject, behind: false }); }}>Bring to front</button>
-    </div>
+    </div></div>
     <section className={`gv-body ${panelOpen ? "" : "panel-closed"}`}><aside className="gv-rail"><button type="button" className="gv-menu" aria-label="Toggle inspector" onClick={() => setPanelOpen((value) => !value)}>☰</button>{tools.map((item) => <button type="button" key={item.id} className={tool === item.id ? "active" : ""} onClick={() => chooseTool(item.id)} aria-pressed={tool === item.id} title={item.hint}><span><PlannerIcon name={item.id} /></span><small>{item.label}</small></button>)}</aside>{panelOpen && <aside className="gv-context"><div className="gv-context-header"><strong>Drawing Tools</strong><button type="button" aria-label="Close inspector" onClick={() => setPanelOpen(false)}>×</button></div>{contextPanel()}</aside>}{!panelOpen && <button type="button" className="gv-panel-reopen" aria-label="Open inspector" onClick={() => setPanelOpen(true)}>Details</button>}
       <section className="gv-stage"><div className="gv-stage-status"><div><strong>{dragPlant ? `Drop ${dragPlant.name} into a bed` : tool === "select" ? "Tap a bed to see what’s growing" : tools.find((item) => item.id === tool)?.hint}</strong><span>{month} 2026</span></div>{cursorPoint && <code>X {Math.round(cursorPoint.x)} · Y {Math.round(cursorPoint.y)} cm</code>}</div><div ref={stageScrollRef} className="gv-stage-scroll"><div className="gv-ruler-grid" style={{ width: scaledWidth + 30, gridTemplateColumns: `30px ${scaledWidth}px`, gridTemplateRows: `28px ${scaledHeight}px` }}><div className="gv-ruler-corner" /><div className="gv-ruler-top">{[0,2,4,6,8,9].map((mark) => <span key={mark} style={{ left: `${mark / 9 * 100}%` }}>{mark}m</span>)}</div><div className="gv-ruler-left">{[0,2,4,6,8,10].map((mark) => <span key={mark} style={{ top: `${mark / 10.8 * 100}%` }}>{mark}m</span>)}</div><div className="canvas-scale" style={{ width: scaledWidth, height: scaledHeight }}><div ref={canvasRef} inert={designerLayer === "view"} className={`garden-canvas tool-${tool} ${snapEnabled ? "snap-on" : ""}`} style={{ transform: `scale(${zoom / 100})`, ["--canvas-label-size" as string]: `${Math.min(44, 11 / (zoom / 100))}px` }} onPointerDown={canvasDown} onPointerMove={canvasMove} onPointerUp={canvasUp} onPointerLeave={() => { if (!draft) setCursorPoint(null); }}>
         <div className="berry-strip"><strong>First-year fruiting canes · over winter</strong><div>{["Raspberry", "Raspberry", "Raspberry", "Blackberry"].map((crop, index) => <div className="reference-berry" key={index} style={{ ["--berry-symbol-width" as string]: `${referencePlantDimensions(crop)?.width ?? 24}px`, ["--berry-symbol-height" as string]: `${referencePlantDimensions(crop)?.height ?? 24}px` }}><PlantArt crop={crop} fallback="" /><small>{crop}</small></div>)}</div></div><div className="north-zone" />

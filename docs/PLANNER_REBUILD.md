@@ -39,8 +39,13 @@ exports remain schematic rather than original-art exports.
 Do not describe this as a fully verified 1:1 GrowVeg product clone.
 
 Final build/browser verification is recorded in DESIGN_PROGRESS.md.
-No production deployment has been performed.
+The user subsequently requested a main push; fa66ff5 was pushed and its existing
+GitHub Actions deployment succeeded. The separate Workers Builds token was left
+unchanged at the user's request.
 
-The detailed live comparison is in GROWVEG_PARITY_AUDIT.md. Whole-product parity
-fails. The user's request to push main after completion remains pending; keep
-PR #52 draft until the remaining workflows and final reference audit pass.
+The detailed comparison is in GROWVEG_PARITY_AUDIT.md. Whole-product parity
+remains incomplete. The UX follow-up adds workspace report navigation, plan-wide
+notes with protected named-garden storage and local drafts, original interface
+glyphs, measured toolbar sizing, visible Settings/year/New/Open, single-selection
+clipboard actions and shortcuts, factual plant information, favourites and
+companion/advanced plant filters. It preserves the measured bed positions.

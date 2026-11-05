@@ -1,5 +1,38 @@
 # GrowVeg planner/designer parity audit
 
+## Subsequent UX work
+
+Release baseline: `fa66ff5` is on main and its deployment succeeded. The historical
+matrix below records the earlier audit state; the following changes supersede
+its findings for the workflows listed here.
+
+The next UX pass adds workspace Plant List/Parts List views with live header-tab
+switching, a plan-wide Notes textarea saved through the main Save action, a
+visible Settings action, plan year, New/Open ribbon entry points, general
+single-selection cut/copy/paste/delete and keyboard shortcuts. Bed clipboard
+copies retain child planting geometry and generate independent identifiers.
+Named-garden notes use a separate idempotent D1 table and existing write-token
+protection; local drafts survive reload and failed writes.
+
+Plant palettes now expose Favorites, Include Perennials, companion filtering,
+Easy/Frost/Shade/Autumn/Tropical filters, crop-rotation-family filtering and plant
+information with original factual metadata. Favorites persist in this browser;
+account-wide synchronization is not implemented. Variety/spacing controls appear
+after choosing a plant. The original fontello icon font replaces approximations
+for observed toolbar and drawing-tool glyphs, with provenance recorded.
+
+These changes improve the Header, Edit ribbon, Basic/Advanced plant controls,
+Plant information, Plant List navigation and Plan Notes rows below. They do not
+establish whole-product parity. Legacy extra tools/catalogue modes remain; full
+settings, inventory, temporal planning, print/PDF, rich-text/texture workflows,
+multiselection and other documented gaps remain.
+
+Cloudflare's separate Workers Builds connection reports a stale build token.
+The user chose "Leave Cloudflare unchanged"; the unsaved selection was discarded.
+No build credentials or settings were changed. The existing GitHub Actions
+deployment workflow for `fa66ff5` independently succeeded (run 41408565902), so
+that separate dashboard error does not establish a production deployment failure.
+
 Audit date: 2 November 2026. Reference: the signed-in Australian GrowVeg garden
 planner, inspected through the user's open browser. Candidate: branch
 `feature/planner-rebuild`, PR #52, based on `0a19faa` plus the audit corrections.

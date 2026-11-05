@@ -1,4 +1,53 @@
 /* Reference-led planner chrome. Garden coordinates and storage are unchanged. */
+.reference-planner .gv-primary-nav > .planner-visible-settings { order: -2; border: 1px solid #ddd; background: white; margin: 4px 0 4px 6px; min-height: 32px; padding: 0 12px; }
+.reference-planner:not([data-report-view=plan]):not([data-report-view=export]) .gv-body { visibility: hidden; }
+.planner-report.planner-report-workspace { position: fixed; z-index: 80; inset: 112px 0 24px 64px; width: auto; height: auto; max-width: none; max-height: none; margin: 0; border: 0; border-radius: 0; padding: 20px 32px; background: white; box-shadow: none; color: #414844; font-family: "Planner Nunito Sans", Arial, sans-serif; overflow: auto; }
+.planner-report-workspace h2 { font: 600 20px "Planner Nunito Sans", Arial, sans-serif; }
+.planner-report-workspace .report-scroll { max-height: calc(100dvh - 340px); }
+.planner-report-workspace th { background: #f7f8f7; }
+.planner-report-workspace button { border-radius: 0; min-height: 32px; padding: 5px 12px; }
+.planner-plan-notes { position: absolute; z-index: 75; inset: 112px 0 24px 64px; padding: 18px 24px; background: white; }
+.planner-plan-notes[hidden] { display: none; }
+.planner-plan-notes textarea { display: block; width: 100%; height: calc(100% - 32px); padding: 12px; resize: none; border: 1px solid #ccc; border-radius: 0; background: white; color: #333; font: 16px/1.6 "Planner Nunito Sans", Arial, sans-serif; }
+.planner-plan-notes p { margin: 5px 0; font-size: 12px; color: #666; }
+.plant-source-filters { padding: 8px 12px; border-bottom: 1px solid #eee; background: #fafafa; font-size: 13px; }
+.plant-source-filters header { display: flex; align-items: center; gap: 5px; position: relative; }
+.plant-source-filters header strong { margin-right: auto; font-weight: 600; }
+.plant-source-filters :is(button,summary) { border: 1px solid #00a580; background: white; color: #009b79; padding: 3px 5px; font: inherit; cursor: pointer; }
+.plant-source-filters summary { list-style: none; }
+.plant-advanced-filters { position: absolute; z-index: 85; right: -6px; top: 32px; width: 250px; display: grid; gap: 12px; padding: 18px; background: white; border: 1px solid #ccc; box-shadow: 0 4px 14px #0002; }
+.plant-advanced-filters label, .plant-source-checkboxes label { display: flex; align-items: center; gap: 5px; }
+.plant-advanced-filters label:last-child { display: grid; }
+.plant-source-checkboxes { display: flex; gap: 10px; padding: 9px 0 0; font-size: 12px; }
+.plant-source-filters .plant-companion-filter { width: 100%; margin-top: 9px; color: #777; border-color: #ddd; min-height: 30px; }
+.plant-source-filters .plant-companion-filter[aria-pressed=true] { border-color: #00a580; color: #009b79; background: #ebf8f2; }
+.reference-planner .gv-plant-list { position: relative; }
+.reference-planner .gv-plant-list > button { padding-left: 38px; height: 62px; flex-shrink: 0; }
+.plant-entry-actions { position: absolute; left: 5px; display: grid; gap: 2px; width: 26px; }
+.plant-entry-actions button { width: 25px; height: 23px; min-height: 23px; padding: 0; border: 0; background: transparent; color: #a9afac; font: 18px Arial,sans-serif; cursor: pointer; }
+.plant-entry-actions button[aria-pressed=true] { color: #00a580; }
+.plant-entry-actions button:hover { color: #009b79; }
+.plant-filter-empty { padding: 15px; font-size: 13px; color: #666; }
+.plant-information { width: min(550px,calc(100vw - 24px)); max-height: calc(100dvh - 24px); border: 0; padding: 0; border-radius: 3px; font-family: "Planner Nunito Sans",Arial,sans-serif; color: #414844; }
+.plant-information::backdrop { background: #0005; }
+.plant-information header, .plant-information footer { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; border-bottom: 1px solid #ddd; }
+.plant-information h2 { margin: 0; font-size: 20px; }
+.plant-information button { border: 1px solid #00a580; padding: 5px 12px; color: #009b79; background: white; cursor: pointer; }
+.plant-information-body { padding: 20px; }
+.plant-information-art { display: block; float: right; width: 100px; height: 100px; font-size: 100px; }
+.plant-information-body dl { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 14px; }
+.plant-information-body dd { margin: 0; }
+@media(max-width:760px) {
+  .reference-planner .planner-visible-settings { display: none; }
+  .planner-report.planner-report-workspace { inset: 162px 0 24px; padding: 12px; }
+  .planner-plan-notes { inset: 162px 0 24px; padding: 12px; }
+}
+@media print {
+  body:has(.planner-report-workspace) > :not(.planner-report-workspace) { display: none !important; }
+  .planner-report.planner-report-workspace { position: static; padding: 0; overflow: visible; }
+  .planner-report-workspace :is(button,.report-controls,footer) { display: none; }
+  .planner-report-workspace .report-scroll { max-height: none; overflow: visible; }
+}
 @font-face { font-family: "Planner Nunito Sans"; src: url("/planner-reference/nunito-sans-regular.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
 @font-face { font-family: "Planner Nunito Sans"; src: url("/planner-reference/nunito-sans-semibold.woff2") format("woff2"); font-style: normal; font-weight: 600 900; font-display: swap; }
 .reference-planner {
@@ -115,8 +164,8 @@
 .reference-planner[data-zoom-tier] .planting-area-icons i { display: grid !important; }
 .reference-planner .planting-area.is-overview { background: #d8dbd750 !important; border-radius: 8px; }
 
-.reference-plant-art { position: relative; }
-.reference-high-art { display: none; }
+.reference-plant-art { position: relative; background-image: none !important; }
+.reference-high-art { display: block; }
 .garden-canvas .reference-plant-art { background-image: none !important; }
 .garden-canvas .reference-high-art { display: block; }
 .reference-planner .planting-area-icons i {
@@ -201,3 +250,37 @@
 .reference-planner .gv-plant-icon { width: 44px !important; height: 44px !important; font-size: 36px !important; }
 .reference-planner .reference-sizing-choice { display: flex; align-items: center; gap: 8px; }
 .reference-planner .reference-sizing-choice input[type=checkbox] { width: 18px; height: 18px; min-height: 18px; flex: 0 0 18px; }
+.reference-planner .gv-quickbar { width: 100%; overflow-x: auto; overflow-y: hidden; gap: 18px; }
+.reference-planner .gv-quickbar > :not(.gv-cloud-state) { flex-shrink: 0; }
+.reference-planner .gv-quickbar .designer-toolbar { position: relative; top: auto; left: auto; right: auto; width: auto; height: auto; min-height: 32px; padding: 0; border: 0; }
+.reference-planner .gv-quickbar .designer-toolbar > .planner-ribbon-caption { top: -21px; left: 0; }
+.reference-planner .gv-quickbar svg { width: 17px; height: 17px; }
+@media(max-width:760px) {
+  .reference-planner .gv-quickbar { height: 110px; flex-wrap: wrap; gap: 2px; align-content: start; overflow-x: auto; }
+  .reference-planner .gv-quickbar .gv-quick-actions { max-width: 48%; overflow-x: auto; }
+  .reference-planner .gv-quickbar .designer-toolbar { width: 100%; height: 54px; overflow-x: auto; }
+}
+.reference-planner .gv-titlebar { z-index: 100; }
+.reference-planner .gv-context .gv-plant-list > button { padding: 7px 12px 7px 42px !important; height: 62px; min-height: 62px; }
+.reference-planner .gv-context .gv-plant-list > button small { display: block !important; color: #008e71; text-align: right; }
+.reference-planner .gv-context .gv-filters label:nth-child(2) { display: grid; }
+.reference-planner .gv-context .gv-catalogue-options { padding: 4px 12px; min-height: 30px; }
+.reference-planner .gv-context .gv-catalogue-options label { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.reference-planner .gv-context .gv-catalogue-options input[type=checkbox] { min-height: 0; width: 13px; height: 13px; }
+.reference-planner[data-plant-picked=false] .gv-filters label:nth-child(n+3),
+.reference-planner[data-plant-picked=false] :is(.gv-catalogue-spacing,.gv-advanced-layout-toggle,.gv-v4-modebar,.gv-ready-strip) { display: none; }
+.reference-planner .gv-context .gv-filters { display: grid; grid-template-columns: 1fr; }
+.reference-planner .gv-context .gv-filters > label { display: grid; grid-template-columns: 46px minmax(0,1fr); align-items: center; }
+.reference-planner .gv-context .gv-filters > label input,
+.reference-planner .gv-context .gv-filters > label select { min-width: 0; }
+@font-face { font-family: "Planner Reference Icons"; src: url("/planner-reference/interface-icons.woff2") format("woff2"); font-weight: normal; font-style: normal; font-display: block; }
+.planner-reference-icon { display: inline-block; width: 22px; height: 22px; font: normal normal 22px/22px "Planner Reference Icons" !important; text-align: center; }
+.reference-planner .gv-quickbar .planner-reference-icon { width: 17px; height: 17px; font-size: 17px !important; line-height: 17px !important; }
+.reference-planner .gv-quick-actions > button > span.planner-reference-icon { display: inline-block; }
+.reference-planner .gv-quickbar .planner-reference-icon { display: inline-block; width: 14px; height: 14px; font-size: 14px !important; line-height: 14px !important; }
+.reference-planner .gv-primary-nav .planner-reference-icon { width: 14px; height: 14px; font-size: 14px !important; line-height: 14px !important; }
+@media(min-width:1101px) {
+  .reference-planner .gv-primary-nav > button,
+  .reference-planner .gv-more > summary,
+  .reference-planner .gv-plan-name { font-size: 16px; }
+}

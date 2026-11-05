@@ -39,11 +39,15 @@ export function GardenManagerBridge() {
     const refreshButton = () => {
       const button = document.querySelector<HTMLButtonElement>(".gv-plan-name");
       if (!button) return;
-      const desiredHtml = `${activeName().toUpperCase()} <span>Garden ▾</span>`;
-      // This bridge observes document child-list changes. Rewriting innerHTML on every
-      // observer callback creates another child-list mutation and can lock the main
-      // thread in a self-triggering MutationObserver loop. Only mutate when needed.
-      if (button.innerHTML !== desiredHtml) button.innerHTML = desiredHtml;
+      const year = gardens.find((garden) => garden.id === readActiveGardenId())?.year ?? new Date().getFullYear();
+      const desiredText = `${activeName().toUpperCase()} ${year} ▾`;
+      // Replacing children unconditionally would retrigger this bridge's observer.
+      if (button.textContent !== desiredText) {
+        button.replaceChildren(document.createTextNode(`${activeName().toUpperCase()} `));
+        const label = document.createElement("span");
+        label.textContent = `${year} ▾`;
+        button.append(label);
+      }
       button.title = "Switch, load or create a garden";
     };
 
@@ -155,6 +159,11 @@ export function GardenManagerBridge() {
       button.addEventListener("click", openDialog);
       refreshButton();
     };
+    const openFromRibbon = (event: Event) => {
+      openDialog();
+      if ((event as CustomEvent<string>).detail === "new") document.querySelector<HTMLInputElement>("[data-new-name]")?.focus();
+    };
+    window.addEventListener("garden-manager-open", openFromRibbon);
 
     void fetchGardens();
     install();
@@ -164,6 +173,7 @@ export function GardenManagerBridge() {
     return () => {
       disposed = true;
       observer.disconnect();
+      window.removeEventListener("garden-manager-open", openFromRibbon);
       closeDialog();
       // Keep the active garden id persistent across reloads.
       void ACTIVE_GARDEN_KEY;

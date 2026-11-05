@@ -11,3 +11,5 @@ spacing, classification, companion codes and sprite geometry. It does not
 include copied growing-guide prose, account credentials or private garden data.
 The 2D footprints are from reference object metadata; 3D heights and procedural
 3D models remain local representations.
+
+The original fontello interface icon font was added on 2 November 2026. Source URL, SHA-256 and observed-glyph mapping provenance are recorded in docs/REFERENCE_ASSETS.json.
