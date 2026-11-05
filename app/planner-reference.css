@@ -284,3 +284,28 @@
   .reference-planner .gv-more > summary,
   .reference-planner .gv-plan-name { font-size: 16px; }
 }
+@media(max-width:760px) {
+  .reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-quickbar {
+    display: grid;
+    height: 110px;
+    min-height: 110px;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: 44px 44px;
+    align-content: start;
+    align-items: center;
+    gap: 4px 8px;
+    padding: 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-quickbar .gv-quick-actions {
+    max-width: none;
+    overflow: visible;
+  }
+  .reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-quickbar .designer-toolbar {
+    grid-column: 1 / -1;
+    width: auto;
+    height: 44px;
+    overflow: visible;
+  }
+}

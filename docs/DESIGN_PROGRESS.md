@@ -260,3 +260,9 @@ was followed by another successful production build and 4/4 interface checks.
 An earlier preview process stopped and caused connection failures; the complete
 rerun used a Playwright-managed npm server and passed. The CI configuration and
 dependencies are unchanged. Screenshots were reviewed at all required sizes.
+
+Phone release follow-up: a legacy device-mode rule forced the enlarged ribbon
+back to 56 px and clipped its lower controls. The reference mobile ribbon now
+uses two contained horizontal control rows at 110 px. A regression assertion
+checks each control group's vertical bounds. Build/lint and all 10 focused phone
+editing/save/report/3D/UX checks pass; the final phone screenshot was inspected.

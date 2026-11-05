@@ -51,6 +51,14 @@ test("workspace tabs remain switchable and plan-wide notes save through protecte
   await page.goto("/planner");
   await expect(page.locator(".gv-save")).toHaveText("Saved ✓");
   const mobile = info.project.name === "phone";
+  if (mobile) {
+    const ribbon = (await page.locator(".gv-quickbar").boundingBox())!;
+    for (const selector of [".gv-quick-actions", ".gv-quick-center", ".designer-toolbar"]) {
+      const control = (await page.locator(selector).boundingBox())!;
+      expect(control.y).toBeGreaterThanOrEqual(ribbon.y);
+      expect(control.y + control.height).toBeLessThanOrEqual(ribbon.y + ribbon.height);
+    }
+  }
   await openTab(page, "Plant List", mobile);
   await expect(page.getByRole("dialog", { name: "Plant List", exact: true })).toBeVisible();
   await openTab(page, "Parts List", mobile);
