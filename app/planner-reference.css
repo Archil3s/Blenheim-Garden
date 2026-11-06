@@ -318,3 +318,17 @@
 .reference-planner .gv-group-selection { align-content: start; gap: 12px; }
 .reference-planner .gv-group-selection h2, .reference-planner .gv-group-selection p { margin: 0; }
 .reference-planner .gv-group-selection button { min-height: 44px; }
+
+/* Explicit touch layout must use both columns even on a wide desktop. */
+.gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-body,
+.gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-body.panel-closed {
+  grid-template-columns: 50px minmax(0, 1fr);
+  height: calc(100dvh - 136px);
+}
+.gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-context { left: 50px !important; }
+@media(max-width:760px) {
+  .gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-body,
+  .gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-body.panel-closed { height: calc(100dvh - 186px); }
+}
+
+.reference-planner .row-dots i { pointer-events: auto; cursor: move; }

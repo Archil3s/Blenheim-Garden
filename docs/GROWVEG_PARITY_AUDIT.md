@@ -2,7 +2,7 @@
 
 ## Subsequent UX work
 
-Release baseline: `2285e6a` is on main and its GitHub deployment succeeded. The historical
+Release baseline: `80473e6` is on main and its GitHub deployment succeeded. The historical
 matrix below records the earlier audit state; the following changes supersede
 its findings for the workflows listed here.
 
@@ -50,6 +50,19 @@ reference gestures. This is an implementation milestone, not a certification of
 exact source selection semantics. Persistent grouping, all-item locking/order,
 complete layer semantics, exact text hit bounds and source end-to-end comparison
 remain unverified or incomplete. The historical matrix below predates this work.
+
+## Stable scale correction and planting observations — 6 November 2026
+
+P-009 corrects the reported wide-screen Mobile-layout column conflict, removes
+selection-driven automatic zoom and gives coincident-endpoint single plants a
+nonzero hit target. Selection preserves zoom; explicit Fit still recalculates.
+Existing measured positions and saved data are unchanged.
+
+A reference plan is now open. Temporary, fully undone tests confirm click for a
+single plant, drag for a row and corner resize from single to block. Tomato uses
+50cm single spacing, 45cm in-row and 60cm row gap; SFG uses one-foot cells and
+cannot drag rows. Implementation of those full source gestures remains pending.
+No private plan data or notes were copied; no reference plan was saved.
 
 ## Historical audit — 2 November 2026
 

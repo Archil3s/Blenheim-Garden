@@ -415,3 +415,9 @@ Select All, group drag/clipboard/delete/duplicate and undo, preserving child
 geometry/history identities. See multi-selection.ts, planner-multi-selection.spec.ts
 and DESIGN_PROGRESS.md. Exact reference gesture equivalence remains unverified
 because GrowVeg has no plan open. Full layer/lock/order semantics still remain.
+
+P-009 addresses the user's selection-scale bug: explicit Mobile mode on desktop
+had a three-column reference grid with the stage trapped in its 280px middle
+column. Matching two-column rules and selection-independent Fit fix it. Zero-length
+single-plant rows now have a centred hit target. Read DESIGN_PROGRESS.md for
+reference planting observations; the full planting-gesture port remains pending.

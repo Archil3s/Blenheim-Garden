@@ -294,3 +294,42 @@ fixture routes and never save a production garden. Local Bun is unavailable;
 the established npm runner config outside the repo starts the test server.
 The first restricted build hit sandbox subprocess/network permissions; the
 permitted rerun and final build passed. Cloudflare credentials/settings unchanged.
+
+## Stable selection scale P-009 — 6 November 2026
+
+User screenshot showed the garden collapsing to a narrow strip at 25% when
+selecting pumpkins. Read-only production geometry confirmed a wide viewport in
+explicit Mobile mode: the body had three columns (50px / 280px / remaining),
+but the stage was forced into column two. Specific mobile reference rules now
+use 50px / remaining regardless of desktop viewport width and align the overlay
+inspector with the rail. Responsive height accounts for both ribbon layouts.
+
+Automatic Fit previously observed the stage and depended on inspector state,
+so opening/closing it changed zoom and could change coordinates during a drag.
+Fit now runs at initial layout, explicit Fit and viewport/layout resize, preserving
+manual zoom and selection scale through inspector/catalogue changes. Explicit
+Fit always recalculates, including when already in automatic-fit mode.
+
+The new pumpkin regression also exposed a zero-width hit target for single-plant
+rows whose endpoints coincide. Their box now uses the original symbol width,
+centred at the saved location. Explicit zero-length placements use centimetre
+offsets, matching the existing storage/3D convention. No saved coordinates change.
+
+Validation: lint and production build pass. Full suite: 164/164 (8 minutes).
+After the final symbol hit-area/explicit-placement alignment correction, a fresh
+build/lint and all 24 relevant scale/group-selection/symbol-dimension checks pass
+across four sizes. Final screenshots for Desktop and Mobile modes were reviewed.
+The new fixture exercises both implicit and explicit single-plant placements and
+clicks a symbol corner. Its position oracle includes the canvas content border;
+an initial assertion incorrectly measured from the outer border and was corrected.
+The original 156 tests remain unchanged. Evidence: outputs/stable-scale/.
+No production plan was saved or reloaded. Cloudflare settings remain unchanged.
+
+Planting reference observations for the next port: the user had a reference plan
+open this time. Click places one tomato; drag creates a row; dragging a corner
+of the single plant expands it into a rectangular block. Tomato reference facts
+show single spacing 50cm, in-row 45cm, row gap 60cm, SFG one per square. SFG help
+states square cells are one foot and cannot be dragged into rows; Ctrl repeats.
+The temporary row and single/block edits were fully undone; the saved-state
+indicator returned, no source plan was saved, and no private payload or notes
+were copied. These observations do not establish implemented gesture parity.
