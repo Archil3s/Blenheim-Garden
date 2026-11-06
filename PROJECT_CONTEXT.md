@@ -244,3 +244,13 @@ is retained. Existing explicit placements override generated positions.
 The optional descriptor is stored in planting_rows.block_json, added idempotently
 by ensurePlantPlacementSchema. No replacement table or destructive migration is
 needed. Protected writes and planting identities/history are retained.
+
+## November 2026 — planned planting ranges
+
+Rows and areas optionally store schedule.from/until (inclusive YYYY-MM-DD),
+separate from recorded planting history. Nullable schedule_json columns are added
+by ensurePlantPlacementSchema. planInPeriod filters presentation only; Save and
+3D editing retain the complete plan. The month/year view is stored separately
+under garden-planning-period:<gardenId> and mirrored through a view event.
+Succession creates a fresh planting ID at the same geometry on the next day,
+retaining the earlier planting and its history.

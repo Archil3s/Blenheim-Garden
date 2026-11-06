@@ -439,3 +439,9 @@ P-012: Planting blocks/SFG and frozen preview coordinates implemented. User appr
 compatible optional saved block settings. Final lint/build and 216/216
 regression checks pass; screenshots reviewed at all four required sizes. Preserve all
 existing beds, histories, named gardens, protected writes and 3D mirroring.
+
+P-013: inclusive planting dates, same-space succession, month/year canvas + 3D
+visibility and dated plant reports implemented. Compatible optional schedule
+metadata persists through protected D1. Final lint/build, all 216 existing checks
+and all 20 new scheduling checks pass. Four-size screenshots reviewed.
+Do not remove hidden plantings from saved state or overwrite actual history.

@@ -11,23 +11,25 @@ export type PlantListRow = {
   location: string;
   quantity: number;
   spacingCm: number;
+  from?: string;
+  until?: string;
 };
 
 export function plantListRows(plan: PlannerPlan): PlantListRow[] {
   return [
     ...plan.plantingAreas.map((area) => ({ id: area.id, crop: area.crop,
       variety: area.variety, location: plan.beds.find((bed) => bed.id === area.bedId)?.name ?? "Unassigned",
-      quantity: area.placements?.length ?? area.count, spacingCm: area.spacingCm })),
+      quantity: area.placements?.length ?? area.count, spacingCm: area.spacingCm, from: area.schedule?.from, until: area.schedule?.until })),
     ...plan.rows.map((row, index) => ({ id: row.id, crop: row.crop,
       variety: row.variety, location: `Row ${index + 1}`,
-      quantity: row.placements?.length ?? row.count, spacingCm: row.spacingCm })),
+      quantity: row.placements?.length ?? row.count, spacingCm: row.spacingCm, from: row.schedule?.from, until: row.schedule?.until })),
   ];
 }
 
 export function groupedPlantList(plan: PlannerPlan): PlantListRow[] {
   const groups = new Map<string, PlantListRow>();
   for (const row of plantListRows(plan)) {
-    const key = JSON.stringify([row.crop, row.variety, row.spacingCm]);
+    const key = JSON.stringify([row.crop, row.variety, row.spacingCm, row.from, row.until]);
     const existing = groups.get(key);
     if (existing) {
       existing.quantity += row.quantity;

@@ -370,3 +370,13 @@
 .reference-planner .gv-planting-mode { display: grid; gap: 4px; margin: 8px 0; }
 
 .reference-planner .planting-block .row-caption { top: -12px; bottom: auto; }
+
+.reference-planner .planning-year { width: 68px; min-width: 68px; height: 32px; border: 1px solid #d8e1dd; background: white; color: inherit; padding: 4px; }
+.reference-planner .planting-schedule-controls { border: 1px solid #d8e1dd; margin: 8px 0; padding: 8px; min-width: 0; display: grid; gap: 8px; }
+.reference-planner .planting-schedule-controls legend { font-size: 12px; }
+.reference-planner .planting-schedule-controls input { min-width: 0; width: 100%; }
+.reference-planner .planting-schedule-controls small { font-size: 11px; }
+
+.reference-planner .planting-schedule-controls > label { display: grid; gap: 4px; }
+
+.reference-planner .planting-schedule-controls .gv-field-grid { grid-template-columns: 1fr; }

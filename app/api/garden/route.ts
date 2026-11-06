@@ -1,3 +1,4 @@
+import { parsePlantingSchedule } from "@/lib/garden/planting-schedule";
 import { parsePlantingBlock, blockCorners, blockGrid, isSquareFootSize } from "@/lib/garden/planting-block";
 import { ensureDesignerSchema } from "@/lib/garden/designer-schema";
 import { parseDesignerShape } from "@/lib/garden/designer-shapes";
@@ -36,6 +37,7 @@ type BedRow = {
 };
 
 type PlantingAreaDb = {
+  schedule_json: string | null;
   placements_json: string | null;
   id: string;
   bed_id: string;
@@ -55,6 +57,7 @@ type PlantingAreaDb = {
 };
 
 type PlantingRowDb = {
+  schedule_json: string | null;
   block_json: string | null;
   placements_json: string | null;
   id: string;
@@ -274,6 +277,7 @@ function parsePlan(value: unknown): PlannerPlan {
       iconSize: finite(area.iconSize) ? clamp(area.iconSize, 8, 64) : 16,
       visualSpacing,
     };
+    parsed.schedule = parsePlantingSchedule(area.schedule);
     parsed.placements = parsePlantPlacements(area.placements, true);
     parsed.count = parsed.placements?.length ?? areaCapacity(parsed, bedById.get(bedId)!);
     return parsed;
@@ -291,7 +295,7 @@ function parsePlan(value: unknown): PlannerPlan {
     const start = canvasPoint(row, "x1", "y1", `Row ${index + 1}`);
     const end = canvasPoint(row, "x2", "y2", `Row ${index + 1}`);
     if ((row.spacingCm as number) <= 0 || (row.count as number) < 1) throw new Error(`Row ${index + 1} has invalid spacing or plant count.`);
-    return { block: parsePlantingBlock(row.block), id, crop, cropIcon, variety, spacingCm: row.spacingCm as number, x1: start.x, y1: start.y, x2: end.x, y2: end.y, count: parsePlantPlacements(row.placements, false)?.length ?? Math.round(row.count as number), placements: parsePlantPlacements(row.placements, false) };
+    return { schedule: parsePlantingSchedule(row.schedule), block: parsePlantingBlock(row.block), id, crop, cropIcon, variety, spacingCm: row.spacingCm as number, x1: start.x, y1: start.y, x2: end.x, y2: end.y, count: parsePlantPlacements(row.placements, false)?.length ?? Math.round(row.count as number), placements: parsePlantPlacements(row.placements, false) };
   });
 
   for (const row of rows) {
@@ -361,7 +365,7 @@ export async function GET(request: Request) {
 
     const areasResult = await db.prepare(`
       SELECT a.id, a.bed_id, a.x_percent, a.y_percent, a.width_percent, a.height_percent,
-        a.pattern, a.icon_size_px, a.visual_spacing, a.placements_json,
+        a.pattern, a.icon_size_px, a.visual_spacing, a.placements_json, a.schedule_json,
         p.id AS planting_id, p.crop_name, p.crop_icon, p.variety, p.spacing_cm, p.estimated_count
       FROM planting_areas a
       INNER JOIN plantings p ON p.area_id = a.id AND p.status = 'active'
@@ -370,7 +374,7 @@ export async function GET(request: Request) {
     `).bind(gardenId).all<PlantingAreaDb>();
 
     const rowsResult = await db.prepare(`
-      SELECT r.id, r.x1_cm, r.y1_cm, r.x2_cm, r.y2_cm, r.placements_json, r.block_json,
+      SELECT r.id, r.x1_cm, r.y1_cm, r.x2_cm, r.y2_cm, r.placements_json, r.block_json, r.schedule_json,
         p.crop_name, p.crop_icon, p.variety, p.spacing_cm, p.estimated_count
       FROM planting_rows r
       INNER JOIN plantings p ON p.row_id = r.id AND p.status = 'active'
@@ -397,6 +401,7 @@ export async function GET(request: Request) {
     const plantingAreas: PlannerPlantingArea[] = (areasResult.results ?? []).map((area) => ({
       id: area.id,
       plantingId: area.planting_id,
+      schedule: area.schedule_json ? parsePlantingSchedule(JSON.parse(area.schedule_json)) : undefined,
       placements: area.placements_json ? parsePlantPlacements(JSON.parse(area.placements_json), true) : undefined,
       bedId: Number.parseInt(area.bed_id, 10),
       crop: area.crop_name,
@@ -411,6 +416,7 @@ export async function GET(request: Request) {
     })).filter((area) => Number.isInteger(area.bedId) && bedIds.has(area.bedId));
 
     const rows: PlannerRow[] = (rowsResult.results ?? []).map((row) => ({
+      schedule: row.schedule_json ? parsePlantingSchedule(JSON.parse(row.schedule_json)) : undefined,
       block: row.block_json ? parsePlantingBlock(JSON.parse(row.block_json)) : undefined,
       placements: row.placements_json ? parsePlantPlacements(JSON.parse(row.placements_json), false) : undefined,
       id: row.id, crop: row.crop_name, cropIcon: row.crop_icon ?? "🌱", variety: row.variety ?? row.crop_name,
@@ -530,7 +536,7 @@ export async function PUT(request: Request) {
       }
     }
 
-    for (const area of plan.plantingAreas) statements.push(db.prepare("UPDATE planting_areas SET placements_json = ? WHERE id = ? AND garden_id = ?").bind(area.placements ? JSON.stringify(area.placements) : null, area.id, gardenId));
+    for (const area of plan.plantingAreas) statements.push(db.prepare("UPDATE planting_areas SET placements_json = ?, schedule_json = ? WHERE id = ? AND garden_id = ?").bind(area.placements ? JSON.stringify(area.placements) : null, area.schedule ? JSON.stringify(area.schedule) : null, area.id, gardenId));
 
     const areaIds = plan.plantingAreas.map((area) => area.id);
     if (areaIds.length) statements.push(db.prepare(`UPDATE planting_areas SET archived_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE garden_id = ? AND archived_at IS NULL AND id NOT IN (${areaIds.map(() => "?").join(",")})`).bind(gardenId, ...areaIds));
@@ -561,7 +567,7 @@ export async function PUT(request: Request) {
       }
     }
 
-    for (const row of plan.rows) statements.push(db.prepare("UPDATE planting_rows SET placements_json = ?, block_json = ? WHERE id = ? AND garden_id = ?").bind(row.placements ? JSON.stringify(row.placements) : null, row.block ? JSON.stringify(row.block) : null, row.id, gardenId));
+    for (const row of plan.rows) statements.push(db.prepare("UPDATE planting_rows SET placements_json = ?, block_json = ?, schedule_json = ? WHERE id = ? AND garden_id = ?").bind(row.placements ? JSON.stringify(row.placements) : null, row.block ? JSON.stringify(row.block) : null, row.schedule ? JSON.stringify(row.schedule) : null, row.id, gardenId));
 
     for (const [index, object] of plan.objects.entries()) {
       if (object.type === "shape") {

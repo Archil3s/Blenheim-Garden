@@ -1,3 +1,4 @@
+import type { PlantingSchedule } from "./planting-schedule";
 export type PlannerBed = {
   id: number;
   name: string;
@@ -22,6 +23,7 @@ export type PlannerVisualSpacing = "tight" | "normal" | "wide";
 export type PlannerPlantPlacement = { id: string; x: number; y: number };
 
 export type PlannerPlantingArea = {
+  schedule?: PlantingSchedule;
   id: string;
   plantingId?: string;
   bedId: number;
@@ -48,6 +50,7 @@ export type PlannerPlantingBlock = {
 };
 
 export type PlannerRow = {
+  schedule?: PlantingSchedule;
   block?: PlannerPlantingBlock;
   id: string;
   crop: string;

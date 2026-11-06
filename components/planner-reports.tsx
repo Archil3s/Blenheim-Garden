@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { PlannerPlan } from "@/lib/garden/planner-plan";
+import { planInPeriod, type PlanningPeriod } from "@/lib/garden/planting-schedule";
 import { groupedPlantList, plantListRows, partsListRows, csvText, planSvg } from "@/lib/garden/plan-reports";
 import { PlantArt } from "./plant-art";
 
@@ -17,9 +18,10 @@ function download(blob: Blob, name: string) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-export function PlannerReports({ plan }: { plan: PlannerPlan }) {
+export function PlannerReports({ plan, period }: { plan: PlannerPlan; period?: PlanningPeriod }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [report, setReport] = useState<Report>("plants");
+  const [scope, setScope] = useState("all");
   const [query, setQuery] = useState("");
   const [grouping, setGrouping] = useState("variety");
   const [error, setError] = useState("");
@@ -30,11 +32,12 @@ export function PlannerReports({ plan }: { plan: PlannerPlan }) {
     window.dispatchEvent(new CustomEvent("garden-report-view", { detail: active ? report : null }));
   }, [active, report]);
   const plants = useMemo(() => {
-    const rows = grouping === "variety" ? groupedPlantList(plan) : plantListRows(plan);
+    const source = scope === "month" ? planInPeriod(plan, period) : plan;
+    const rows = grouping === "variety" ? groupedPlantList(source) : plantListRows(source);
     const needle = query.toLowerCase();
     return rows.filter((row) => `${row.crop} ${row.variety} ${row.location}`.toLowerCase().includes(needle))
       .sort((a, b) => grouping === "bed" ? a.location.localeCompare(b.location) : a.crop.localeCompare(b.crop));
-  }, [plan, grouping, query]);
+  }, [plan, period, scope, grouping, query]);
   const parts = useMemo(() => partsListRows(plan), [plan]);
 
   function open(next: Report) {
@@ -64,7 +67,7 @@ export function PlannerReports({ plan }: { plan: PlannerPlan }) {
   function exportCsv() {
     const rows = report === "parts"
       ? [["Part", "Quantity", "Unit"], ...parts.map((row) => [row.part, row.quantity.toFixed(2), row.unit])]
-      : [["Plant", "Variety", "Location", "Quantity", "Spacing (cm)"], ...plants.map((row) => [row.crop, row.variety, row.location, row.quantity, row.spacingCm])];
+      : [["Plant", "Variety", "Location", "Quantity", "Spacing (cm)", "From", "Until"], ...plants.map((row) => [row.crop, row.variety, row.location, row.quantity, row.spacingCm, row.from ?? "", row.until ?? ""])];
     download(new Blob([csvText(rows)], { type: "text/csv;charset=utf-8" }), `garden-${report}.csv`);
   }
 
@@ -95,9 +98,9 @@ export function PlannerReports({ plan }: { plan: PlannerPlan }) {
   const content = <>
       <header><div><h2 id="planner-report-title">{report === "plants" ? "Plant List" : report === "parts" ? "Parts List" : "Export plan"}</h2></div><button type="button" onClick={() => setActive(false)}>Close</button></header>
       {report === "plants" && <>
-        <div className="report-controls"><label>Search plantings<input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Plant, variety or bed" /></label><label>Group by<select value={grouping} onChange={(event) => setGrouping(event.target.value)}><option value="variety">Variety</option><option value="individual">Individual plantings</option><option value="bed">Beds and rows</option></select></label></div>
+        <div className="report-controls"><label>Search plantings<input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Plant, variety or bed" /></label><label>Show plantings<select aria-label="Show plantings" value={scope} onChange={event => setScope(event.target.value)}><option value="all">All dates</option><option value="month">Selected month</option></select></label><label>Group by<select value={grouping} onChange={(event) => setGrouping(event.target.value)}><option value="variety">Variety</option><option value="individual">Individual plantings</option><option value="bed">Beds and rows</option></select></label></div>
         <p>{plants.reduce((sum, row) => sum + row.quantity, 0)} plants · {plants.length} {grouping === "variety" ? "varieties" : "plantings"}</p>
-        <div className="report-scroll"><table><thead><tr><th>Plant / variety</th><th>Location</th><th>Quantity</th><th>Spacing</th></tr></thead><tbody>{plants.map((row) => <tr key={row.id}><td><span className="report-plant-art"><PlantArt crop={row.crop} variety={row.variety} fallback="🌱" /></span><strong>{row.crop}</strong><small>{row.variety}</small></td><td>{row.location}</td><td>{row.quantity}</td><td>{row.spacingCm} cm</td></tr>)}</tbody></table>{!plants.length && <p>No plantings match. Add plants to the plan or change your search.</p>}</div>
+        <div className="report-scroll"><table><thead><tr><th>Plant / variety</th><th>Location</th><th>Quantity</th><th>Spacing</th><th>From</th><th>Until</th></tr></thead><tbody>{plants.map((row) => <tr key={row.id}><td><span className="report-plant-art"><PlantArt crop={row.crop} variety={row.variety} fallback="🌱" /></span><strong>{row.crop}</strong><small>{row.variety}</small></td><td>{row.location}</td><td>{row.quantity}</td><td>{row.spacingCm} cm</td><td>{row.from ?? "Any time"}</td><td>{row.until ?? "Ongoing"}</td></tr>)}</tbody></table>{!plants.length && <p>No plantings match. Add plants to the plan or change your search.</p>}</div>
       </>}
       {report === "parts" && <>
         <p>Measurements come from the current plan. Allow for cuts, joins and waste when ordering materials.</p>

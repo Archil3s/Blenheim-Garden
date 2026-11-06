@@ -433,3 +433,35 @@ whole-footprint boundary translation as clipboard duplication. Invalid fractiona
 or zero-sized square-foot cells return a validation error. Existing tests remain
 unchanged; 24 new checks added.
 No live garden has been saved or reloaded.
+
+## Planting dates, succession and monthly visibility P-013 — 7 November 2026
+
+User authorized building and pushing the next date/succession features. Rows,
+blocks/SFG and bed areas now carry optional inclusive ISO from/until dates.
+Undated legacy plantings remain visible every month. Month/year controls filter
+the 2D canvas and rendered 3D content without removing hidden data from the
+editable/live/saved plan. View period is stored separately and scoped by garden.
+
+Compact date controls are directly accessible from planting inspectors. Succession
+creates a separate next crop in the same geometry, starting the day after the
+previous end date, recalculating spacing/counts and preserving the earlier crop.
+Undo/Redo uses normal plan history. Bed inspectors retain access to all dated
+plantings while their visible plant total reflects the selected month. Reports
+show From/Until, keep separate date ranges distinct when grouping and can filter
+to the selected month. CSV/JSON retain the dates.
+
+Nullable schedule_json columns are bootstrapped idempotently for rows and areas.
+Protected writes validate real calendar dates and order. These planning ranges
+do not overwrite actual sowing/transplanting/occupancy history. Legacy rows and
+private media, bed identities and DB/R2 bindings are preserved. No live plan has
+been saved or reloaded.
+
+Validation: final lint/build pass. All 216 existing checks passed unchanged in the
+full 236-case run. Three new cross-year cases initially omitted the Enter/blur
+commit for the year field; corrected the test interaction, verified all four
+sizes, then ran the complete new schedule file: final 20/20 pass (27.5 seconds).
+No app code changed between the full run and final targeted verification.
+Screenshots reviewed at 1920×1080, 1440×900, 1024×768 and 390×844. Date fields
+stack inside the existing compact inspector; report dates wrap on narrow screens.
+3D month filtering is verified without changing its camera, lighting or models;
+full source visual/calendar parity remains unclaimed. Evidence: outputs/planting-dates/.

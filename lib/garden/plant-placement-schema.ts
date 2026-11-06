@@ -1,7 +1,7 @@
 import type { D1DatabaseLike } from "./cloudflare-db";
 
 export async function ensurePlantPlacementSchema(db: D1DatabaseLike) {
-  for (const [table, field] of [["planting_areas", "placements_json"], ["planting_rows", "placements_json"], ["planting_rows", "block_json"]]) {
+  for (const [table, field] of [["planting_areas", "placements_json"], ["planting_rows", "placements_json"], ["planting_rows", "block_json"], ["planting_rows", "schedule_json"], ["planting_areas", "schedule_json"]]) {
     const columns = await db.prepare(`PRAGMA table_info(${table})`).all<{ name: string }>();
     if (columns.results?.some((column) => column.name === field)) continue;
     try {

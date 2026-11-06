@@ -68,7 +68,7 @@ function editPlant(plan: PlannerPlan, selection: PlanSelection, point?: PointCm,
         const copy = { ...area, id: crypto.randomUUID(), plantingId: undefined, bedId: bed.id, x: 0, y: 0, w: 100, h: 100, count: 1, pattern: "single" as const, placements: [{ id: target.id, x: (point.x - r.x) * 100 / r.w, y: (point.y - r.y) * 100 / r.h }] };
         return { ...removed, plantingAreas: [...removed.plantingAreas, copy] };
       }
-      const row: PlannerRow = { id: crypto.randomUUID(), crop: area.crop, cropIcon: area.cropIcon, variety: area.variety, spacingCm: area.spacingCm, x1: point.x, y1: point.y, x2: point.x, y2: point.y, count: 1, placements: [{ id: target.id, x: 0, y: 0 }] };
+      const row: PlannerRow = { schedule: area.schedule, id: crypto.randomUUID(), crop: area.crop, cropIcon: area.cropIcon, variety: area.variety, spacingCm: area.spacingCm, x1: point.x, y1: point.y, x2: point.x, y2: point.y, count: 1, placements: [{ id: target.id, x: 0, y: 0 }] };
       return { ...removed, rows: [...removed.rows, row] };
     }
     const placements = next.map((p) => ({ id: p.id, x: (p.x - rect.x) * 100 / rect.w, y: (p.y - rect.y) * 100 / rect.h }));

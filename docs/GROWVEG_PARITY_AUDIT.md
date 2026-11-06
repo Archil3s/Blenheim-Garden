@@ -217,3 +217,12 @@ and exports; optional settings survive protected D1 save/load. Draft coordinates
 are frozen across panel shifts to prevent count flashing. This is a functional
 port; whole-product pixel/interaction parity and the complete source gesture set
 remain unverified. Advanced temporal/container behavior remains outstanding.
+
+## Planned date ranges and succession — 7 November 2026
+
+P-013 adds inclusive date ranges for rows/blocks/areas, same-space succession on
+the next day, month/year visibility in 2D and 3D, dated plant-list grouping and
+CSV output, and compatible protected persistence. Undated plans remain visible
+year-round. Actual recorded history is retained independently. This implements
+the core dated planning workflow; complete source calendar dialogs, automatic
+sowing/harvest calendars and whole-product interaction parity remain unverified.

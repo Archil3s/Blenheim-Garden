@@ -1,5 +1,7 @@
 "use client";
 
+import { usePlanningPeriod } from "./use-planning-period";
+import { planInPeriod } from "@/lib/garden/planting-schedule";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { addDesignerShape3D } from "./designer-shape-3d";
@@ -493,7 +495,9 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   const [quality] = useState(() => typeof window !== "undefined" && !window.matchMedia("(min-width: 841px)").matches ? "MOBILE" : "HIGH");
   const [renderError, setRenderError] = useState<string | null>(null);
   const effectivePlan = suppliedPlan ?? loadedPlan ?? EMPTY_PLAN;
-  const planRef = useRef<PlannerPlan>(effectivePlan);
+  const planningPeriod = usePlanningPeriod(gardenId);
+  const displayedPlan = useMemo(() => planInPeriod(effectivePlan, planningPeriod), [effectivePlan, planningPeriod]);
+  const planRef = useRef<PlannerPlan>(displayedPlan);
   const demoRef = useRef(showDemo);
   const editor = useGarden3DEditor(effectivePlan, gardenId, setLoadedPlan);
   const item = editor.item;
@@ -512,9 +516,9 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   }, []);
 
   useEffect(() => {
-    planRef.current = effectivePlan;
+    planRef.current = displayedPlan;
     rebuild();
-  }, [effectivePlan, rebuild]);
+  }, [displayedPlan, rebuild]);
 
   useEffect(() => {
     demoRef.current = showDemo;
@@ -725,7 +729,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   };
 
   return (
-    <div className="gv-3d-workspace gv-3d-realistic gv-3d-editor" data-demo={showDemo} aria-label="Visual 3D garden canvas" data-testid="inline-3d-workspace" style={{ position: "relative", width: "100%", height: "100%", minHeight: suppliedPlan ? 520 : "100dvh", overflow: "hidden" }}>
+    <div className="gv-3d-workspace gv-3d-realistic gv-3d-editor" data-demo={showDemo} data-visible-plantings={displayedPlan.rows.length + displayedPlan.plantingAreas.length} aria-label="Visual 3D garden canvas" data-testid="inline-3d-workspace" style={{ position: "relative", width: "100%", height: "100%", minHeight: suppliedPlan ? 520 : "100dvh", overflow: "hidden" }}>
       <div className="gv-3d-workspace-canvas" ref={mountRef} aria-label="Interactive 3D garden workspace" style={{ position: "absolute", inset: 0 }} />
       <Garden3DEditorControls editor={editor} disabled={showDemo || !!renderError || (!suppliedPlan && !loadedPlan)} />
       {renderError && <div className="gv-3d-workspace-error">{renderError}</div>}
