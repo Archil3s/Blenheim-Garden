@@ -266,3 +266,31 @@ back to 56 px and clipped its lower controls. The reference mobile ribbon now
 uses two contained horizontal control rows at 110 px. A regression assertion
 checks each control group's vertical bounds. Build/lint and all 10 focused phone
 editing/save/report/3D/UX checks pass; the final phone screenshot was inspected.
+
+## Selection and movement P-008 — 6 November 2026
+
+User requested the next port toward exact GrowVeg functionality. Added dedicated
+box selection and mixed-item group editing within the existing measured canvas.
+Shift/Ctrl/Cmd toggles selection; Ctrl/Cmd+A selects the editable visible layer;
+Escape and blank-canvas clicks clear selection. Group movement uses a common
+snapped translation, preserves distances and line lengths at boundaries, carries
+bed children without double transforms, and constrains standalone planted areas
+to their bed. Group clipboard copies generate independent persistent identities.
+Cut/delete/duplicate and undo/redo operate on the whole group. Pointer cancel
+restores the group snapshot. Locked shapes stay out of box/Select All actions.
+
+Observed source ribbon has distinct box-selection and edit glyphs. Reference
+currently has no plan open; no private reference plan or notes were opened or
+changed. Source group semantics therefore remain unverified. Do not claim exact
+whole-product parity; see GROWVEG_PARITY_AUDIT.md. Existing bed positions, protected
+storage, Cloudflare settings and dependencies remain untouched.
+
+Validation: npm run lint and production build pass. All 156 browser checks pass
+(7.5 minutes), including 12 new group-geometry and interaction checks at
+1920x1080, 1440x900, 1024x768 and 390x844. All 144 existing checks remain intact.
+Final screenshots at all four sizes were inspected; group controls have 44px
+minimum touch height. Evidence: outputs/selection-port/. Tests use isolated
+fixture routes and never save a production garden. Local Bun is unavailable;
+the established npm runner config outside the repo starts the test server.
+The first restricted build hit sandbox subprocess/network permissions; the
+permitted rerun and final build passed. Cloudflare credentials/settings unchanged.

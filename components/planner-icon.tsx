@@ -24,7 +24,7 @@ const paths: Record<string, string> = {
 
 const referenceGlyphs: Record<string, string> = {
   new: "\ue813", open: "\uf115", save: "\ue80a", print: "\ue817",
-  select: "\ue879", undo: "\ue810", redo: "\ue812", cut: "\ue816",
+  edit: "\ue825", select: "\ue879", undo: "\ue810", redo: "\ue812", cut: "\ue816",
   copy: "\uf0c5", paste: "\uf0ea", delete: "\ue840", plant: "\ue878",
   structure: "\ue877", shape: "\ue876", note: "\ue875", settings: "\ue867",
   back: "\ue886", front: "\ue887", lock: "\ue827",

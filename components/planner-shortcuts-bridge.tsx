@@ -61,7 +61,7 @@ export function PlannerShortcutsBridge() {
       if (isEditableTarget(event.target)) return;
       if (document.querySelector('dialog[open]') || document.querySelector('.gv-app[data-report-view]:not([data-report-view="plan"])')) return;
 
-      const clipboardAction = modifier ? ({ c: "copy", x: "cut", v: "paste" } as Record<string, string>)[key] : key === "delete" || key === "backspace" ? "delete" : null;
+      const clipboardAction = modifier ? ({ a: "select-all", c: "copy", x: "cut", v: "paste" } as Record<string, string>)[key] : key === "delete" || key === "backspace" ? "delete" : null;
       if (clipboardAction && clickButton(`[data-planner-action="${clipboardAction}"]`)) {
         event.preventDefault();
         return;

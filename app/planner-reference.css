@@ -309,3 +309,12 @@
     overflow: visible;
   }
 }
+
+/* Selection feedback follows the plan zoom. */
+.reference-planner .planner-selection-box { position: absolute; pointer-events: none; z-index: 80; border: 1px dashed #3576b6; background: rgb(53 118 182 / 12%); }
+.reference-planner .garden-canvas.box-select { cursor: crosshair; }
+.reference-planner .planner-select-all { display: none; }
+
+.reference-planner .gv-group-selection { align-content: start; gap: 12px; }
+.reference-planner .gv-group-selection h2, .reference-planner .gv-group-selection p { margin: 0; }
+.reference-planner .gv-group-selection button { min-height: 44px; }

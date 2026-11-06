@@ -2,7 +2,7 @@
 
 ## Subsequent UX work
 
-Release baseline: `fa66ff5` is on main and its deployment succeeded. The historical
+Release baseline: `2285e6a` is on main and its GitHub deployment succeeded. The historical
 matrix below records the earlier audit state; the following changes supersede
 its findings for the workflows listed here.
 
@@ -25,7 +25,7 @@ These changes improve the Header, Edit ribbon, Basic/Advanced plant controls,
 Plant information, Plant List navigation and Plan Notes rows below. They do not
 establish whole-product parity. Legacy extra tools/catalogue modes remain; full
 settings, inventory, temporal planning, print/PDF, rich-text/texture workflows,
-multiselection and other documented gaps remain.
+full layout/layer operations and other documented gaps remain.
 
 Cloudflare's separate Workers Builds connection reports a stale build token.
 The user chose "Leave Cloudflare unchanged"; the unsaved selection was discarded.
@@ -33,13 +33,35 @@ No build credentials or settings were changed. The existing GitHub Actions
 deployment workflow for `fa66ff5` independently succeeded (run 41408565902), so
 that separate dashboard error does not establish a production deployment failure.
 
+## Selection and movement follow-up — 6 November 2026
+
+P-008 adds box selection, additive Shift/Ctrl/Cmd selection, visible-layer
+Select All, mixed-item group dragging, group clipboard/delete/duplicate and
+one-step undo/redo. Bed children move with their parent and copy once with fresh
+identities. One common boundary-limited translation preserves group spacing and
+row lengths; standalone planting areas remain constrained to their own beds.
+Locked shapes are omitted from box selection and Select All. Pointer cancellation
+restores the pre-drag group snapshot. The two selection/edit ribbon controls use
+the observed source glyphs.
+
+The live reference currently has no plan open. Its dedicated selection-box and
+edit controls were observed, but no private plan was opened or changed to test
+reference gestures. This is an implementation milestone, not a certification of
+exact source selection semantics. Persistent grouping, all-item locking/order,
+complete layer semantics, exact text hit bounds and source end-to-end comparison
+remain unverified or incomplete. The historical matrix below predates this work.
+
+## Historical audit — 2 November 2026
+
 Audit date: 2 November 2026. Reference: the signed-in Australian GrowVeg garden
 planner, inspected through the user's open browser. Candidate: branch
 `feature/planner-rebuild`, PR #52, based on `0a19faa` plus the audit corrections.
 
 **Result: FAIL for exact whole-product parity. Do not merge this as a verified
 1:1 rebuild.** Passing regression tests establishes existing behaviour, not
-equivalence to GrowVeg. Main remains unchanged pending completion of the gaps.
+equivalence to GrowVeg. This was the historical merge recommendation; the user
+later explicitly requested the main push. The current release remains an
+incremental implementation, not a verified 1:1 rebuild.
 
 The user's existing bed positions are intentionally retained. Account billing,
 GrowVeg identity, private saved gardens and unrelated subscription services are

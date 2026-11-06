@@ -409,3 +409,9 @@ The user overrode the earlier main gate and explicitly requested the fa66ff5
 main push. Cloudflare deployment then failed on a stale build token. The user
 declined saving its replacement; the unsaved UI change was discarded. Do not
 retry that credential/configuration change without new authorization.
+
+P-008: selection/movement milestone adds box and modifier multiselect, layer-aware
+Select All, group drag/clipboard/delete/duplicate and undo, preserving child
+geometry/history identities. See multi-selection.ts, planner-multi-selection.spec.ts
+and DESIGN_PROGRESS.md. Exact reference gesture equivalence remains unverified
+because GrowVeg has no plan open. Full layer/lock/order semantics still remain.
