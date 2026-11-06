@@ -421,3 +421,10 @@ had a three-column reference grid with the stage trapped in its 280px middle
 column. Matching two-column rules and selection-independent Fit fix it. Zero-length
 single-plant rows now have a centred hit target. Read DESIGN_PROGRESS.md for
 reference planting observations; the full planting-gesture port remains pending.
+
+P-010: shared row-symbol renderer previews every plant/count/length while drawing
+and retains them after release. Plants/Rows click for single, drag for row, with
+source in-row spacing/custom overrides. 24-symbol cap removed; implicit single
+3D offset corrected. Drawing Tools are compact with scroll/expand in touch mode,
+and hide during a drawing gesture without refitting. Full block/SFG/container
+port remains unfinished. See DESIGN_PROGRESS.md and planner-row-preview.spec.ts.

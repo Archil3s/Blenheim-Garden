@@ -333,3 +333,37 @@ states square cells are one foot and cannot be dragged into rows; Ctrl repeats.
 The temporary row and single/block edits were fully undone; the saved-state
 indicator returned, no source plan was saved, and no private payload or notes
 were copied. These observations do not establish implemented gesture parity.
+
+## Live planting rows and compact tools P-010 — 6 November 2026
+
+User requested repeated plant icons/counts while dragging and a less invasive
+Drawing Tools panel. The same row-symbol renderer now drives both a live draft
+and saved rows; drawing shows each plant plus the current count and length.
+Saved rows no longer stop at 24 rendered symbols. All supported explicit plant
+positions are retained; implicit rows use their stored count. The shared geometry
+also corrects the old 50cm offset for an implicit coincident-endpoint plant in 3D.
+
+Plants and Rows both support click-to-place a single plant and drag-to-draw a row
+directly on the canvas, including across beds/objects. New rows use reference
+in-row spacing unless custom spacing was entered. Existing planted beds, catalogue
+HTML drag/drop, saved geometry and counts remain compatible. Pointer cancel
+removes the unsaved draft; drawing does not persist until Save. Block-corner
+expansion, SFG, temporal/container semantics and complete source parity remain
+incomplete and are not claimed by this milestone.
+
+Desktop inspector width is reduced to 256px. Explicit touch layout on wide
+screens uses a 280px floating side panel rather than a full-width bottom sheet.
+Phone tools default to at most 34dvh/300px, with an explicit expand/compact control;
+contents scroll so fields/catalogues stay reachable. Tools temporarily hide during
+a drawing gesture, preserving the stage geometry/zoom, then return on release.
+Desktop uses its existing close/reopen controls; expand applies to touch mode.
+
+Validation: full 180/180 browser checks pass (7.1 minutes), including all 164
+pre-existing checks unchanged. Final review removed an unnecessary shared-row
+count cap so large legacy row counts also remain compatible with 3D; the new
+pure check explicitly covers 10,001 plants. A fresh production build/lint and
+24/24 final row-preview/stable-scale checks pass after that correction. Live
+5-pumpkin row and compact-panel screenshots were reviewed at all four sizes.
+Evidence: outputs/live-planting/.
+Existing 164 tests are unchanged; no dependencies, schema, bindings or Cloudflare
+credentials/settings changed. No live garden was saved or reloaded.

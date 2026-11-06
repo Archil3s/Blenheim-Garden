@@ -2,7 +2,7 @@
 
 ## Subsequent UX work
 
-Release baseline: `80473e6` is on main and its GitHub deployment succeeded. The historical
+Release baseline: `e505c8c` is on main and its GitHub deployment succeeded. The historical
 matrix below records the earlier audit state; the following changes supersede
 its findings for the workflows listed here.
 
@@ -61,7 +61,12 @@ Existing measured positions and saved data are unchanged.
 A reference plan is now open. Temporary, fully undone tests confirm click for a
 single plant, drag for a row and corner resize from single to block. Tomato uses
 50cm single spacing, 45cm in-row and 60cm row gap; SFG uses one-foot cells and
-cannot drag rows. Implementation of those full source gestures remains pending.
+cannot drag rows. The complete gesture set remains pending. P-010 now implements direct click for
+a single plant and drag for a row through both Plants and Rows, using source
+in-row spacing or a custom override. Live drafts show every plant symbol, count
+and length; saved rows share the renderer and no longer have a 24-symbol cap.
+Block expansion, SFG and full container/calendar behaviour remain incomplete.
+Tools are compact/expandable in touch mode and hide during drawing.
 No private plan data or notes were copied; no reference plan was saved.
 
 ## Historical audit — 2 November 2026

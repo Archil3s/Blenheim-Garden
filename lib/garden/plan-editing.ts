@@ -1,4 +1,5 @@
 import type { PlannerBed, PlannerPlan, PlannerPlantingArea, PlannerRow } from "./planner-plan";
+import { rowSymbolPositions } from "./row-layout";
 import { plantPositionsForArea } from "./plant-spacing-layout";
 
 export type PointCm = { x: number; y: number };
@@ -26,8 +27,11 @@ export function areaPlants(plan: PlannerPlan, area: PlannerPlantingArea) {
 export function rowPlants(row: PlannerRow) {
   const dx = row.x2 - row.x1, dy = row.y2 - row.y1;
   const length = Math.hypot(dx, dy) || 1;
-  const placements = row.placements ?? Array.from({ length: row.count }, (_, index) => ({ id: `${row.id}:generated-${index}`, x: row.count === 1 ? 50 : index * 100 / (row.count - 1), y: 0 }));
-  return placements.map((p) => dx === 0 && dy === 0 ? { id: p.id, x: row.x1 + p.x, y: row.y1 + p.y } : { id: p.id, x: row.x1 + dx * p.x / 100 - dy / length * p.y, y: row.y1 + dy * p.x / 100 + dx / length * p.y });
+  return rowSymbolPositions(row).map((p) => ({ id: p.id,
+    x: row.x1 + dx / length * p.x - dy / length * p.y,
+    y: row.y1 + dy / length * p.x + dx / length * p.y,
+    ...(dx === 0 && dy === 0 ? { x: row.x1 + p.x, y: row.y1 + p.y } : {}),
+  }));
 }
 
 export function selectionItem(plan: PlannerPlan, selection: PlanSelection) {

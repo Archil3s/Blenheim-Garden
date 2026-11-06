@@ -332,3 +332,27 @@
 }
 
 .reference-planner .row-dots i { pointer-events: auto; cursor: move; }
+
+/* A compact, scrollable tool surface leaves the garden available. */
+.reference-planner .gv-context-content { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: auto; }
+.reference-planner .gv-context-content > .gv-plant-list { flex: 0 0 auto; min-height: 186px; max-height: 360px; }
+.reference-planner .gv-context-header .gv-tools-expand { margin-left: auto; font-size: 16px; }
+.reference-planner[data-drawing=true] .gv-context { visibility: hidden; pointer-events: none; }
+.reference-planner .draft-planting-row { pointer-events: none; z-index: 85; }
+.reference-planner .draft-planting-row .row-dots i { pointer-events: none; }
+.reference-planner .draft-planting-row .row-caption { font-size: var(--canvas-label-size); overflow: visible; max-width: none; }
+.garden-canvas.tool-plant { cursor: crosshair; touch-action: none; }
+@media(min-width:761px) {
+  .gv-app.reference-planner.gv-device-desktop:not(.gv-view-3d) .gv-body:not(.panel-closed) { grid-template-columns: 50px 256px minmax(0, 1fr); }
+  .gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-context {
+    top: 8px !important; bottom: auto !important; right: auto !important;
+    width: 280px !important; max-height: min(56dvh, 520px) !important;
+    border: 1px solid #ccd6d1; border-radius: 3px; box-shadow: 0 3px 12px #0002;
+  }
+  .gv-app.reference-planner.gv-device-mobile[data-tools-expanded=true]:not(.gv-view-3d) .gv-context { max-height: calc(100dvh - 165px) !important; }
+}
+@media(max-width:760px) {
+  .gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-context { max-height: min(34dvh, 300px) !important; }
+  .gv-app.reference-planner.gv-device-mobile[data-tools-expanded=true]:not(.gv-view-3d) .gv-context { max-height: min(72dvh, 620px) !important; }
+}
+.reference-planner.gv-device-desktop .gv-tools-expand { display: none; }
