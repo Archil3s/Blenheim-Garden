@@ -1,4 +1,5 @@
 import type { PlannerBed, PlannerPlan, PlannerPlantingArea, PlannerRow } from "./planner-plan";
+import { blockCorners, isSquareFootSize } from "./planting-block";
 import { rowSymbolPositions } from "./row-layout";
 import { plantPositionsForArea } from "./plant-spacing-layout";
 
@@ -147,7 +148,7 @@ export function validateEditorPlan(plan: PlannerPlan) {
     if (area.x < 0 || area.y < 0 || area.w <= 0 || area.h <= 0 || area.x + area.w > 100.01 || area.y + area.h > 100.01) throw new Error("The planting must fit inside its bed.");
     if (area.placements && area.placements.some((p) => !Number.isFinite(p.x) || !Number.isFinite(p.y) || p.x < 0 || p.y < 0 || p.x > 100 || p.y > 100)) throw new Error("Plant placement is outside its bed.");
   }
-  for (const row of plan.rows) if (!inGarden({ x: row.x1, y: row.y1 }) || !inGarden({ x: row.x2, y: row.y2 }) || rowPlants(row).some((p) => !inGarden(p))) throw new Error("The row must fit inside the garden.");
+  for (const row of plan.rows) if ((row.block?.mode === "square-foot" && (!isSquareFootSize(Math.hypot(row.x2 - row.x1, row.y2 - row.y1)) || !isSquareFootSize(row.block.depthCm))) || (row.block && blockCorners(row).some(p => !inGarden(p))) || !inGarden({ x: row.x1, y: row.y1 }) || !inGarden({ x: row.x2, y: row.y2 }) || rowPlants(row).some((p) => !inGarden(p))) throw new Error("The row must fit inside the garden.");
   for (const object of plan.objects) {
     if (object.type === "structure") {
       const angle = object.rotationDeg * Math.PI / 180;

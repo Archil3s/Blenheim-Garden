@@ -434,3 +434,8 @@ edits; whole-row moves preserve explicit positions/counts. Frozen pointer frame,
 capture, scroll stability and cancellation snapshots address drag feedback.
 See planner-existing-row-drag.spec.ts and DESIGN_PROGRESS.md. Full block/SFG
 port remains separate and incomplete; do not claim whole-product equivalence.
+
+P-012: Planting blocks/SFG and frozen preview coordinates implemented. User approved
+compatible optional saved block settings. Final lint/build and 216/216
+regression checks pass; screenshots reviewed at all four required sizes. Preserve all
+existing beds, histories, named gardens, protected writes and 3D mirroring.

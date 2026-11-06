@@ -65,7 +65,8 @@ cannot drag rows. The complete gesture set remains pending. P-010 now implements
 a single plant and drag for a row through both Plants and Rows, using source
 in-row spacing or a custom override. Live drafts show every plant symbol, count
 and length; saved rows share the renderer and no longer have a 24-symbol cap.
-Block expansion, SFG and full container/calendar behaviour remain incomplete.
+P-012 adds corner expansion, independent row gaps and square-foot cells with
+catalogued density. Full container/calendar behaviour remains incomplete.
 Tools are compact/expandable in touch mode and hide during drawing.
 No private plan data or notes were copied; no reference plan was saved.
 
@@ -76,7 +77,7 @@ saved-position count no longer pins a stretched one-plant row to one icon.
 Existing IDs are reused where possible, new IDs stay stable within the gesture,
 and translation retains custom positions/counts. Frozen pointer coordinates,
 capture and stable scroll layout remove moving-origin drag feedback; cancellation
-restores the starting plan. This does not implement full block/SFG parity.
+restores the starting plan. P-012 subsequently adds the block/SFG planting workflow described below.
 
 ## Historical audit — 2 November 2026
 
@@ -206,3 +207,13 @@ not covered by the passing functional assertions.
 This report is an actionable gap inventory, not a claim that every hidden or
 backend GrowVeg behaviour has been collected. Exact equivalence in every possible
 state cannot be established from a single saved reference plan.
+
+## Planting blocks and square-foot workflow — 6 November 2026
+
+P-012 adds corner expansion of single plants/rows into rectangular blocks, reverse
+block drawing, separate row gaps, width/depth controls and exact one-foot cells
+with catalogued plant density. Shared positions feed 2D/3D, selection, duplication
+and exports; optional settings survive protected D1 save/load. Draft coordinates
+are frozen across panel shifts to prevent count flashing. This is a functional
+port; whole-product pixel/interaction parity and the complete source gesture set
+remain unverified. Advanced temporal/container behavior remains outstanding.

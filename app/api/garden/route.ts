@@ -1,3 +1,4 @@
+import { parsePlantingBlock, blockCorners, blockGrid, isSquareFootSize } from "@/lib/garden/planting-block";
 import { ensureDesignerSchema } from "@/lib/garden/designer-schema";
 import { parseDesignerShape } from "@/lib/garden/designer-shapes";
 import { ensurePlantPlacementSchema, parsePlantPlacements } from "@/lib/garden/plant-placement-schema";
@@ -54,6 +55,7 @@ type PlantingAreaDb = {
 };
 
 type PlantingRowDb = {
+  block_json: string | null;
   placements_json: string | null;
   id: string;
   x1_cm: number;
@@ -289,10 +291,13 @@ function parsePlan(value: unknown): PlannerPlan {
     const start = canvasPoint(row, "x1", "y1", `Row ${index + 1}`);
     const end = canvasPoint(row, "x2", "y2", `Row ${index + 1}`);
     if ((row.spacingCm as number) <= 0 || (row.count as number) < 1) throw new Error(`Row ${index + 1} has invalid spacing or plant count.`);
-    return { id, crop, cropIcon, variety, spacingCm: row.spacingCm as number, x1: start.x, y1: start.y, x2: end.x, y2: end.y, count: parsePlantPlacements(row.placements, false)?.length ?? Math.round(row.count as number), placements: parsePlantPlacements(row.placements, false) };
+    return { block: parsePlantingBlock(row.block), id, crop, cropIcon, variety, spacingCm: row.spacingCm as number, x1: start.x, y1: start.y, x2: end.x, y2: end.y, count: parsePlantPlacements(row.placements, false)?.length ?? Math.round(row.count as number), placements: parsePlantPlacements(row.placements, false) };
   });
 
   for (const row of rows) {
+    if (row.block?.mode === "square-foot" && !isSquareFootSize(Math.hypot(row.x2 - row.x1, row.y2 - row.y1))) throw new Error("Invalid square-foot dimensions: use whole cells.");
+    if (row.block && !row.placements) row.count = blockGrid(row).count;
+    if (row.block && blockCorners(row).some(p => p.x < -1e-7 || p.x > CANVAS_WIDTH + 1e-7 || p.y < -1e-7 || p.y > CANVAS_HEIGHT + 1e-7)) throw new Error("Planting block is outside the garden canvas.");
     if (row.placements && rowPlants(row).some((p) => p.x < 0 || p.x > CANVAS_WIDTH || p.y < 0 || p.y > CANVAS_HEIGHT)) throw new Error("Plant placement is outside the garden canvas.");
   }
   return { beds, plantingAreas, rows, objects: objectInput.map(parseLayoutObject) };
@@ -365,7 +370,7 @@ export async function GET(request: Request) {
     `).bind(gardenId).all<PlantingAreaDb>();
 
     const rowsResult = await db.prepare(`
-      SELECT r.id, r.x1_cm, r.y1_cm, r.x2_cm, r.y2_cm, r.placements_json,
+      SELECT r.id, r.x1_cm, r.y1_cm, r.x2_cm, r.y2_cm, r.placements_json, r.block_json,
         p.crop_name, p.crop_icon, p.variety, p.spacing_cm, p.estimated_count
       FROM planting_rows r
       INNER JOIN plantings p ON p.row_id = r.id AND p.status = 'active'
@@ -406,6 +411,7 @@ export async function GET(request: Request) {
     })).filter((area) => Number.isInteger(area.bedId) && bedIds.has(area.bedId));
 
     const rows: PlannerRow[] = (rowsResult.results ?? []).map((row) => ({
+      block: row.block_json ? parsePlantingBlock(JSON.parse(row.block_json)) : undefined,
       placements: row.placements_json ? parsePlantPlacements(JSON.parse(row.placements_json), false) : undefined,
       id: row.id, crop: row.crop_name, cropIcon: row.crop_icon ?? "🌱", variety: row.variety ?? row.crop_name,
       spacingCm: Number(row.spacing_cm ?? 30), x1: Number(row.x1_cm), y1: Number(row.y1_cm), x2: Number(row.x2_cm),
@@ -555,7 +561,7 @@ export async function PUT(request: Request) {
       }
     }
 
-    for (const row of plan.rows) statements.push(db.prepare("UPDATE planting_rows SET placements_json = ? WHERE id = ? AND garden_id = ?").bind(row.placements ? JSON.stringify(row.placements) : null, row.id, gardenId));
+    for (const row of plan.rows) statements.push(db.prepare("UPDATE planting_rows SET placements_json = ?, block_json = ? WHERE id = ? AND garden_id = ?").bind(row.placements ? JSON.stringify(row.placements) : null, row.block ? JSON.stringify(row.block) : null, row.id, gardenId));
 
     for (const [index, object] of plan.objects.entries()) {
       if (object.type === "shape") {

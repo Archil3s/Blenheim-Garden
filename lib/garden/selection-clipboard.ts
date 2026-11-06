@@ -1,3 +1,4 @@
+import { blockCorners } from "./planting-block";
 import type { PlannerPlan } from "./planner-plan";
 
 export type ClipboardSelection = { kind: "bed" | "planting" | "row" | "object"; id: string };
@@ -29,8 +30,9 @@ export function pastePlanSelection(current: PlannerPlan, stored: PlanClipboard) 
   const copy = { ...structuredClone(item), id };
   if ("placements" in copy) copy.placements = copy.placements?.map((point) => ({ ...point, id: crypto.randomUUID() }));
   if ("x1" in copy) {
-    const dx = Math.min(20, 900 - Math.max(copy.x1, copy.x2));
-    const dy = Math.min(20, 1080 - Math.max(copy.y1, copy.y2));
+    const corners = !("type" in copy) ? blockCorners(copy) : [{ x: copy.x1, y: copy.y1 }, { x: copy.x2, y: copy.y2 }];
+    const dx = Math.min(20, 900 - Math.max(...corners.map(p => p.x)));
+    const dy = Math.min(20, 1080 - Math.max(...corners.map(p => p.y)));
     copy.x1 += dx; copy.x2 += dx; copy.y1 += dy; copy.y2 += dy;
   } else {
     copy.x = bound(copy.x + 20, 900); copy.y = bound(copy.y + 20, 1080);

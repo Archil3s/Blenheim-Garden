@@ -360,3 +360,13 @@
 /* Native smooth scrolling and scroll anchoring must not move the drag origin. */
 .reference-planner .gv-stage-scroll { scroll-behavior: auto; overflow-anchor: none; scrollbar-gutter: stable; }
 .reference-planner[data-interacting=true] .garden-canvas { user-select: none; }
+
+.reference-planner .planting-block::before { display: none; }
+.reference-planner .planting-block-outline { position: absolute; inset: 12px 0 auto; height: var(--block-depth); background: #d4d4d450; border: 1px solid #b9c4be; pointer-events: none; }
+.reference-planner .planting-block[data-planting-mode="square-foot"] .planting-block-outline { background-image: linear-gradient(to right, #b9c4be 1px, transparent 1px), linear-gradient(to bottom, #b9c4be 1px, transparent 1px); background-size: var(--square-foot) var(--square-foot); }
+.reference-planner .planting-block.selected .planting-block-outline { border-color: var(--gv-green); }
+.reference-planner .block-resize-handle { position: absolute; z-index: 110; width: 16px; height: 16px; border: 2px solid white; background: var(--gv-green); transform: translate(-50%, -50%); cursor: nwse-resize; touch-action: none; box-shadow: 0 1px 3px #0003; }
+.reference-planner .planting-block .row-dots { height: 24px; }
+.reference-planner .gv-planting-mode { display: grid; gap: 4px; margin: 8px 0; }
+
+.reference-planner .planting-block .row-caption { top: -12px; bottom: auto; }

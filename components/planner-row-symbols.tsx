@@ -3,12 +3,12 @@ import { rowSymbolPositions } from "@/lib/garden/row-layout";
 import { PlantArt } from "./plant-art";
 
 export function PlannerRowSymbols({ row }: { row: PlannerRow }) {
-  const single = Math.hypot(row.x2 - row.x1, row.y2 - row.y1) < 1;
+  const single = Math.hypot(row.x2 - row.x1, row.y2 - row.y1) < 1 && !row.block;
   return <span className="row-dots">{rowSymbolPositions(row).map((point, index) =>
     <i key={point.id} data-plant-index={index + 1}
       aria-label={`${row.crop} ${index + 1}`}
       style={{ position: "absolute", left: single ? `calc(50% + ${point.x}px)` : point.x,
-        top: `calc(50% + ${point.y}px)`, transform: "translate(-50%, -50%)" }}>
+        top: 12 + point.y, transform: "translate(-50%, -50%)" }}>
       <PlantArt crop={row.crop} variety={row.variety} fallback={row.cropIcon} />
     </i>)}</span>;
 }

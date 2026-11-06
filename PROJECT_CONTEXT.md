@@ -232,3 +232,15 @@ The shared 3D garden editor and compatible placement persistence are described i
 The new routes are `/` home overview, `/planner` measured Drawing V2 planner, `/seedlings` local-only Seedling Companion, and `/3d` companion. `PlannerBridges` now runs only at `/planner`. Keep this routing intact.
 
 See `DESIGN.md` for visual identity and `docs/DESIGN_PROGRESS.md` for staged implementation, test results and user feedback. The initial overhaul branch only redesigns the homepage and seedling journal; it does not change the 12-bed plan, D1/R2 or 3D geometry. Agent skills are vendored in `.agents/skills` with upstream MIT licences. Procplants Lab and `pmndrs/postprocessing` are references for future 3D work, not bundled runtime dependencies.
+
+## November 2026 — planting blocks and square-foot cells
+
+Rows optionally carry a compatible block descriptor (depthCm, rowSpacingCm, mode,
+plantsPerSquareFoot). The normal x1/y1 → x2/y2 line supplies the width/angle; depth
+is perpendicular. Exact shared positions come from rowSymbolPositions/rowPlants.
+Square-foot dimensions are multiples of 30.48 cm and supported catalogue density
+is retained. Existing explicit placements override generated positions.
+
+The optional descriptor is stored in planting_rows.block_json, added idempotently
+by ensurePlantPlacementSchema. No replacement table or destructive migration is
+needed. Protected writes and planting identities/history are retained.

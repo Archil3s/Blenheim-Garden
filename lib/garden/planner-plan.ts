@@ -40,7 +40,15 @@ export type PlannerPlantingArea = {
   placements?: PlannerPlantPlacement[];
 };
 
+export type PlannerPlantingBlock = {
+  depthCm: number;
+  rowSpacingCm: number;
+  mode: "block" | "square-foot";
+  plantsPerSquareFoot?: number;
+};
+
 export type PlannerRow = {
+  block?: PlannerPlantingBlock;
   id: string;
   crop: string;
   cropIcon: string;

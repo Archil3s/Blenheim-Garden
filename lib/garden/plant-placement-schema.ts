@@ -1,11 +1,11 @@
 import type { D1DatabaseLike } from "./cloudflare-db";
 
 export async function ensurePlantPlacementSchema(db: D1DatabaseLike) {
-  for (const table of ["planting_areas", "planting_rows"]) {
+  for (const [table, field] of [["planting_areas", "placements_json"], ["planting_rows", "placements_json"], ["planting_rows", "block_json"]]) {
     const columns = await db.prepare(`PRAGMA table_info(${table})`).all<{ name: string }>();
-    if (columns.results?.some((column) => column.name === "placements_json")) continue;
+    if (columns.results?.some((column) => column.name === field)) continue;
     try {
-      await db.prepare(`ALTER TABLE ${table} ADD COLUMN placements_json TEXT`).run();
+      await db.prepare(`ALTER TABLE ${table} ADD COLUMN ${field} TEXT`).run();
     } catch (error) {
       if (!(error instanceof Error) || !/duplicate column|already exists/i.test(error.message)) throw error;
     }

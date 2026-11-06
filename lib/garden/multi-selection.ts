@@ -1,3 +1,4 @@
+import { blockCorners } from "./planting-block";
 import type { PlannerPlan } from "./planner-plan";
 import { pastePlanSelection, type ClipboardSelection } from "./selection-clipboard";
 
@@ -18,6 +19,11 @@ export function selectionBounds(plan: PlannerPlan, selected: PlanSelection): Sel
   }
   const item = selected.kind === "row" ? plan.rows.find((row) => row.id === selected.id) : plan.objects.find((object) => object.id === selected.id);
   if (!item) return null;
+  if (selected.kind === "row" && "block" in item && item.block) {
+    const corners = blockCorners(item);
+    const x = Math.min(...corners.map(p => p.x)), y = Math.min(...corners.map(p => p.y));
+    return { x, y, w: Math.max(...corners.map(p => p.x)) - x, h: Math.max(...corners.map(p => p.y)) - y };
+  }
   if ("x1" in item) return { x: Math.min(item.x1, item.x2), y: Math.min(item.y1, item.y2), w: Math.abs(item.x2 - item.x1), h: Math.abs(item.y2 - item.y1) };
   if (item.type === "text") return { x: item.x, y: item.y, w: Math.max(item.fontSize, item.text.length * item.fontSize * 0.6), h: item.fontSize * 1.4 };
   if (item.type === "tree") return { x: item.x - item.diameterCm / 2, y: item.y - item.diameterCm / 2, w: item.diameterCm, h: item.diameterCm };

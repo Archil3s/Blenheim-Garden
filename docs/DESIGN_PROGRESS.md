@@ -398,3 +398,38 @@ synthetic planting selections cannot start phantom drags. Window blur cancels
 existing-item moves and unfinished new-row previews.
 No existing tests changed; no dependencies, public plan schema, bindings, private
 media or Cloudflare credential/settings changes. No live garden saved/reloaded.
+
+## Planting blocks, square-foot cells and preview stability P-012 — 7 November 2026
+
+User requested the next planting-block/SFG port and reported flashing plant counts
+while dragging. New drafts now retain the pointer-down canvas origin, zoom and
+scroll frame even when panels hide. Endpoint handles move by the grabbed delta;
+count boundaries tolerate floating-point rounding. External mirror updates cannot
+replace an active local gesture. Existing positions and original 12-bed layout
+remain unchanged.
+
+Single plants and rows have a square corner handle for width/depth expansion.
+Plants/Rows offer single/row, block or square-foot drawing; reverse drags work.
+Blocks use in-row and between-row crop spacing, live repeated symbols/counts,
+compact dimensions/spacing controls, Undo/Redo, group bounds, duplication and
+shared 3D positions. Square-foot cells use exact 30.48 cm dimensions and catalogued
+1/2/4/8/9/16-plant densities. Cell symbols fit within their slots; ordinary plant
+artwork dimensions are unchanged. The selected crop must have a supplied SFG
+density to enable square-foot creation.
+
+User explicitly approved optional compatible saved settings. PlannerRow.block
+stores depth, row spacing, mode and optional cell density. A nullable block_json
+column is bootstrapped idempotently alongside existing placement columns; legacy
+rows remain readable. Protected D1 round trips verify metadata/counts, reject
+out-of-canvas blocks and retain planting history. No credential/binding changes.
+
+Validation: final lint and production build pass; full 216/216 regression checks
+pass across 1920×1080, 1440×900, 1024×768 and 390×844. Final block/SFG screenshots
+reviewed at all four sizes. Coverage includes real protected SQLite/D1 round trips,
+legacy rows, exact cells, reverse drawing, stable previews under canvas shifts,
+external mirror-event suppression during drag, row-gap edits, Undo/Redo, border
+duplication and existing 3D workflows. An inspector duplicate now uses the same
+whole-footprint boundary translation as clipboard duplication. Invalid fractional
+or zero-sized square-foot cells return a validation error. Existing tests remain
+unchanged; 24 new checks added.
+No live garden has been saved or reloaded.

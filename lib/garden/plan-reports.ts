@@ -1,3 +1,5 @@
+import { rowPlants } from "./plan-editing";
+import { blockCorners } from "./planting-block";
 import type { PlannerPlan } from "./planner-plan";
 import { structurePreset } from "./structure-catalog";
 import { shapeGeometry } from "./designer-shapes";
@@ -102,6 +104,13 @@ export function planSvg(plan: PlannerPlan, title: string) {
       shapes.push(`<rect x="${ax}" y="${ay}" width="${w * area.w / 100}" height="${h * area.h / 100}" fill="#b9cca0" fill-opacity=".45" stroke="#789762" stroke-width="1"/><text x="${ax + 7}" y="${ay + 36}">${xmlText(area.variety || area.crop)} ×${area.placements?.length ?? area.count}</text>`);
     }
   }
-  for (const row of plan.rows) shapes.push(`<line x1="${row.x1}" y1="${row.y1}" x2="${row.x2}" y2="${row.y2}" stroke="#759363" stroke-width="8" stroke-linecap="round" stroke-dasharray="1 ${Math.max(2, row.spacingCm)}"/><text x="${row.x1}" y="${row.y1 - 8}">${xmlText(row.variety || row.crop)} ×${row.placements?.length ?? row.count}</text>`);
+  for (const row of plan.rows) {
+    if (row.block) {
+      const corners = blockCorners(row);
+      shapes.push(`<polygon points="${[corners[0], corners[1], corners[3], corners[2]].map(p => p.x + "," + p.y).join(" ")}" fill="#d5dfd250" stroke="#759363"/>`);
+    }
+    for (const plant of rowPlants(row)) shapes.push(`<circle cx="${plant.x}" cy="${plant.y}" r="4" fill="#759363"/>`);
+    shapes.push(`<text x="${row.x1}" y="${row.y1 - 8}">${xmlText(row.variety || row.crop)} ×${row.placements?.length ?? row.count}</text>`);
+  }
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="${pageHeight}" viewBox="-50 -70 1000 ${pageHeight}"><title>${xmlText(title)}</title><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="#fff"/><path d="M100 0H0V100" fill="none" stroke="#e3e7db"/></pattern></defs><rect x="-50" y="-70" width="1000" height="${pageHeight}" fill="#fff"/><text x="0" y="-33" font-family="Georgia,serif" font-size="24">${xmlText(title)}</text><rect width="900" height="1080" fill="url(#grid)" stroke="#a6af9a"/><g font-family="sans-serif" font-size="12" fill="#294535">${[...shapes, ...frontShapes].join("")}</g><text x="0" y="${drawingHeight + 40}" font-family="sans-serif" font-size="13">Blenheim Garden · 9 × 10.8 m · schematic plan</text></svg>`;
 }

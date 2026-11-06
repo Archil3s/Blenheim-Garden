@@ -19,6 +19,8 @@ The planner currently supports:
 - **Select** — move/edit objects; resize beds and trees; reshape rows, paths and trellises
 - **Plants** — choose crop/variety and fill a bed
 - **Rows** — drag planting rows with live length and plant count
+- **Blocks** — expand plantings in width/depth with separate row spacing
+- **Square foot** — draw 30.48 cm cells using each supported crop’s planting density
 - **Bed** — click-drag new beds with live dimensions
 - **Path** — draw paths and edit width/label
 - **Trellis** — draw trellises and edit height/post spacing/label
