@@ -356,3 +356,7 @@
   .gv-app.reference-planner.gv-device-mobile[data-tools-expanded=true]:not(.gv-view-3d) .gv-context { max-height: min(72dvh, 620px) !important; }
 }
 .reference-planner.gv-device-desktop .gv-tools-expand { display: none; }
+
+/* Native smooth scrolling and scroll anchoring must not move the drag origin. */
+.reference-planner .gv-stage-scroll { scroll-behavior: auto; overflow-anchor: none; scrollbar-gutter: stable; }
+.reference-planner[data-interacting=true] .garden-canvas { user-select: none; }

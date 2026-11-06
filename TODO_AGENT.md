@@ -428,3 +428,9 @@ source in-row spacing/custom overrides. 24-symbol cap removed; implicit single
 3D offset corrected. Drawing Tools are compact with scroll/expand in touch mode,
 and hide during a drawing gesture without refitting. Full block/SFG/container
 port remains unfinished. See DESIGN_PROGRESS.md and planner-row-preview.spec.ts.
+
+P-011: pre-existing explicit rows now repopulate on endpoint resize or spacing
+edits; whole-row moves preserve explicit positions/counts. Frozen pointer frame,
+capture, scroll stability and cancellation snapshots address drag feedback.
+See planner-existing-row-drag.spec.ts and DESIGN_PROGRESS.md. Full block/SFG
+port remains separate and incomplete; do not claim whole-product equivalence.

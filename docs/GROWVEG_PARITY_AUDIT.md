@@ -2,7 +2,7 @@
 
 ## Subsequent UX work
 
-Release baseline: `e505c8c` is on main and its GitHub deployment succeeded. The historical
+Release baseline: `119ded5` is on main and its GitHub deployment succeeded. The historical
 matrix below records the earlier audit state; the following changes supersede
 its findings for the workflows listed here.
 
@@ -68,6 +68,15 @@ and length; saved rows share the renderer and no longer have a 24-symbol cap.
 Block expansion, SFG and full container/calendar behaviour remain incomplete.
 Tools are compact/expandable in touch mode and hide during drawing.
 No private plan data or notes were copied; no reference plan was saved.
+
+## Existing-row resize and drag correction — 6 November 2026
+
+P-011 reflows explicit rows when their endpoints or spacing change. The previous
+saved-position count no longer pins a stretched one-plant row to one icon.
+Existing IDs are reused where possible, new IDs stay stable within the gesture,
+and translation retains custom positions/counts. Frozen pointer coordinates,
+capture and stable scroll layout remove moving-origin drag feedback; cancellation
+restores the starting plan. This does not implement full block/SFG parity.
 
 ## Historical audit — 2 November 2026
 

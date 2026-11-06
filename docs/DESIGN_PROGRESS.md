@@ -367,3 +367,34 @@ pure check explicitly covers 10,001 plants. A fresh production build/lint and
 Evidence: outputs/live-planting/.
 Existing 164 tests are unchanged; no dependencies, schema, bindings or Cloudflare
 credentials/settings changed. No live garden was saved or reloaded.
+
+## Existing-row resizing and stable dragging P-011 — 6 November 2026
+
+User reported that stretching a pre-existing pumpkin row left one symbol/count,
+and that moving an item could shake. Explicit placements previously pinned row
+counts during endpoint resize. Endpoint edits now reflow from the gesture-start
+snapshot using actual spacing, retain existing point IDs where possible and cache
+new IDs for stable symbols throughout the gesture. Resizing or changing spacing
+repopulates; translating preserves exact count and individually edited offsets.
+Undo restores the original explicit placement data. Save/reload retains the result.
+
+Movement now uses a pointer-down coordinate frame (origin, scale and scroll),
+canvas pointer capture, suppression of native dragging/text selection, a small
+movement threshold and one snap conversion. Object inspectors open at release
+instead of shifting layout at drag start. Smooth scrolling and scroll anchoring
+are disabled for the planner scroll surface; the scrollbar gutter remains stable.
+Pointer cancellation restores the full starting plan and history. Whole-row moves
+use a common constrained translation so lengths and offsets do not distort.
+
+Focused 12/12 checks pass across desktop/laptop/tablet/phone: old explicit single
+row grows to 3 then 5 during drag; count/IDs survive undo/redo and protected Save
+then a cloud-backed reload; translation preserves custom placements; fixed-pointer
+moves remain stable under simulated origin shifts; cancellation restores data.
+Full 192/192 regression checks passed, followed by 64/64 integration checks after
+focus and trusted-pointer guards, and 36/36 final drag/preview/scale checks after
+adding unfinished-draft cancellation. Final production build and lint pass.
+Screenshots reviewed at all four sizes. Canvas focus supports keyboard Undo;
+synthetic planting selections cannot start phantom drags. Window blur cancels
+existing-item moves and unfinished new-row previews.
+No existing tests changed; no dependencies, public plan schema, bindings, private
+media or Cloudflare credential/settings changes. No live garden saved/reloaded.
