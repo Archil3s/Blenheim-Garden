@@ -3,6 +3,7 @@ import { preservesPlanLocks } from "@/lib/garden/plan-item-locks";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { PlannerPlan, PlannerPlantingArea, PlannerRow, PlannerStructureKind } from "@/lib/garden/planner-plan";
+import { removeBedKeepingPlants } from "@/lib/garden/detach-bed-plants";
 import { areaPlants, areaRectangle, bedRectangle, deletePlanSelection, duplicatePlanSelection, movePlanSelection, rowPlants, selectionItem, validateEditorPlan, type PlanSelection, type PointCm } from "@/lib/garden/plan-editing";
 import { editKeySession, persistGardenPlan, publishGardenPlan } from "@/lib/garden/plan-persistence";
 import { plantCountForArea } from "@/lib/garden/plant-spacing-layout";
@@ -94,7 +95,12 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
   const action = (fn: (plan: PlannerPlan) => PlannerPlan) => { try { return commit(fn(current.current)); } catch (e) { setError(e instanceof Error ? e.message : "Unable to edit the plan."); return false; } };
   const undo = () => { const previous = past.at(-1); if (!previous) return; setPast(past.slice(0, -1)); setFuture([...future, structuredClone(current.current)]); publish(previous); setError(null); };
   const redo = () => { const next = future.at(-1); if (!next) return; setFuture(future.slice(0, -1)); setPast([...past, structuredClone(current.current)]); publish(next); setError(null); };
-  const remove = () => { if (selection && action((p) => deletePlanSelection(p, selection))) setSelection(null); };
+  const remove = () => {
+    if (!selection) return;
+    if (action((p) => selection.kind === "bed"
+      ? removeBedKeepingPlants(p, Number(selection.id))
+      : deletePlanSelection(p, selection))) setSelection(null);
+  };
   const duplicate = () => { if (selection) action((p) => duplicatePlanSelection(p, selection)); };
   const update = (field: string, value: string | number) => {
     if (!selection) return;

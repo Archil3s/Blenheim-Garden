@@ -286,4 +286,10 @@ test("nested beds can be drawn, locked and removed without deleting their plants
   await page.getByRole("button", { name: "Remove bed, keep plants" }).click();
   await expect(page.locator(".plan-bed")).toHaveCount(23);
   await expect(page.locator(".planting-row[data-crop=Raspberry]")).toHaveCount(3);
+
+  await page.locator('.gv-quickbar button[title^="Undo"]').click();
+  await pickBed("Bed 2 · raspberries");
+  await page.keyboard.press("Delete");
+  await expect(page.locator(".plan-bed")).toHaveCount(23);
+  await expect(page.locator(".planting-row[data-crop=Raspberry]")).toHaveCount(3);
 });
