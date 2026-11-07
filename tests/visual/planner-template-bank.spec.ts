@@ -66,6 +66,7 @@ test("PDF template and custom dimensions round-trip through protected D1 storage
     const result = await loaded.json() as { plan: PlannerPlan };
     expect(result).toMatchObject({ ok: true });
     expect(result.plan.canvas).toEqual(template.canvas);
+    expect(result.plan.bedMaterial).toBe("metal");
     const bed = template.beds[1];
     const detached = removeBedKeepingPlants(template, bed.id);
     detached.lockedItems = [`bed:${template.beds[0].id}`];

@@ -55,7 +55,7 @@ export function createLargePlotTemplate(idBase = Date.now() * 1000 + Math.floor(
       x: (x - bx) / bw * 100, y: (y - by) / bh * 100, w: w / bw * 100, h: h / bh * 100, count: cropRow.count, pattern: "rows", iconSize: 16, visualSpacing: "normal",
       placements: points.map(p => ({ id: crypto.randomUUID(), x: (p.x - x) / w * 100, y: (p.y - y) / h * 100 })) });
   }
-  return { canvas: { widthCm: 3500, heightCm: 3500 }, beds, plantingAreas, rows: looseRows,
+  return { bedMaterial: "metal", canvas: { widthCm: 3500, heightCm: 3500 }, beds, plantingAreas, rows: looseRows,
     objects: [
       { id: `pdf-path-${crypto.randomUUID()}`, type: "path", x1: 640, y1: 170, x2: 640, y2: 1600, widthCm: 30, label: "Main path" },
       { id: `pdf-path-${crypto.randomUUID()}`, type: "path", x1: 330, y1: 80, x2: 330, y2: 830, widthCm: 30, label: "West path" },

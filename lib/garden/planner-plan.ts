@@ -214,6 +214,7 @@ export type PlannerShape = {
 export type PlannerLayoutObject = PlannerPath | PlannerTrellis | PlannerTree | PlannerStructure | PlannerText | PlannerShape;
 
 export type PlannerPlan = {
+  bedMaterial?: "metal";
   lockedItems?: string[];
   canvas?: { widthCm: number; heightCm: number };
   beds: PlannerBed[];

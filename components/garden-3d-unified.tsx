@@ -139,6 +139,7 @@ function readPlanFromStorage(key: string): PlannerPlan | null {
     if (!parsed || !Array.isArray(parsed.beds) || !Array.isArray(parsed.rows)) return null;
     return {
       ...(parsed.canvas ? { canvas: parseGardenDimensions(parsed.canvas) } : {}),
+      ...(parsed.bedMaterial === "metal" ? { bedMaterial: parsed.bedMaterial } : {}),
       ...(parsed.lockedItems ? { lockedItems: parsePlanLocks(parsed.lockedItems) } : {}),
       beds: parsed.beds,
       plantingAreas: Array.isArray(parsed.plantingAreas) ? parsed.plantingAreas : [],
@@ -167,7 +168,7 @@ function skyTexture() {
   return texture;
 }
 
-function addRaisedBed(root: THREE.Group, bed: PlannerBed, active?: PlannerPlantingArea, mobile = false) {
+function addRaisedBed(root: THREE.Group, bed: PlannerBed, active?: PlannerPlantingArea, mobile = false, metal = false) {
   const rect = bedRectCm(bed);
   const width = Math.max(0.3, rect.w / 100);
   const depth = Math.max(0.3, rect.h / 100);
@@ -180,26 +181,38 @@ function addRaisedBed(root: THREE.Group, bed: PlannerBed, active?: PlannerPlanti
 
   box(group, Math.max(0.08, width - 0.22), 0.21, Math.max(0.08, depth - 0.22), palette.soil, x, 0.205, z, 1);
 
-  box(group, width + rail, wallHeight, rail, palette.timber, x, wallHeight / 2, z - depth / 2, 0.86);
-  box(group, width + rail, wallHeight, rail, palette.timberDark, x, wallHeight / 2, z + depth / 2, 0.92);
-  box(group, rail, wallHeight, depth, palette.timber, x - width / 2, wallHeight / 2, z, 0.86);
-  box(group, rail, wallHeight, depth, palette.timberDark, x + width / 2, wallHeight / 2, z, 0.92);
-
-  for (const px of [x - width / 2, x + width / 2]) {
-    for (const pz of [z - depth / 2, z + depth / 2]) {
-      box(group, post, wallHeight + 0.055, post, palette.timberDark, px, (wallHeight + 0.055) / 2, pz, 0.94);
-      box(group, post + 0.025, 0.028, post + 0.025, palette.timberCap, px, wallHeight + 0.067, pz, 0.82);
+  if (metal) {
+    const sheet = 0.055;
+    for (const side of [-1, 1]) {
+      box(group, width + sheet, wallHeight, sheet, 0x899799, x, wallHeight / 2, z + side * depth / 2, 0.5);
+      box(group, sheet, wallHeight, depth, 0x899799, x + side * width / 2, wallHeight / 2, z, 0.5);
+      for (const y of [0.08, 0.16, 0.24, 0.32]) {
+        box(group, width + 0.08, 0.024, 0.08, 0xbac5c6, x, y, z + side * depth / 2, 0.45);
+        box(group, 0.08, 0.024, depth, 0xbac5c6, x + side * width / 2, y, z, 0.45);
+      }
     }
+  } else {
+    box(group, width + rail, wallHeight, rail, palette.timber, x, wallHeight / 2, z - depth / 2, 0.86);
+    box(group, width + rail, wallHeight, rail, palette.timberDark, x, wallHeight / 2, z + depth / 2, 0.92);
+    box(group, rail, wallHeight, depth, palette.timber, x - width / 2, wallHeight / 2, z, 0.86);
+    box(group, rail, wallHeight, depth, palette.timberDark, x + width / 2, wallHeight / 2, z, 0.92);
+
+    for (const px of [x - width / 2, x + width / 2]) {
+      for (const pz of [z - depth / 2, z + depth / 2]) {
+        box(group, post, wallHeight + 0.055, post, palette.timberDark, px, (wallHeight + 0.055) / 2, pz, 0.94);
+        box(group, post + 0.025, 0.028, post + 0.025, palette.timberCap, px, wallHeight + 0.067, pz, 0.82);
+      }
+    }
+
+    box(group, width + 0.18, 0.055, 0.075, palette.timberCap, x, wallHeight + 0.028, z - depth / 2, 0.78);
+    box(group, width + 0.18, 0.055, 0.075, palette.timberCap, x, wallHeight + 0.028, z + depth / 2, 0.78);
+    box(group, 0.075, 0.055, depth, palette.timberCap, x - width / 2, wallHeight + 0.028, z, 0.78);
+    box(group, 0.075, 0.055, depth, palette.timberCap, x + width / 2, wallHeight + 0.028, z, 0.78);
+
+    // Thin highlight boards give the chunky timber a toy-like, hand-built edge.
+    box(group, width - 0.08, 0.028, 0.018, palette.timberLight, x, wallHeight * 0.72, z - depth / 2 - rail * 0.46, 0.78);
+    box(group, width - 0.08, 0.028, 0.018, palette.timberLight, x, wallHeight * 0.72, z + depth / 2 + rail * 0.46, 0.78);
   }
-
-  box(group, width + 0.18, 0.055, 0.075, palette.timberCap, x, wallHeight + 0.028, z - depth / 2, 0.78);
-  box(group, width + 0.18, 0.055, 0.075, palette.timberCap, x, wallHeight + 0.028, z + depth / 2, 0.78);
-  box(group, 0.075, 0.055, depth, palette.timberCap, x - width / 2, wallHeight + 0.028, z, 0.78);
-  box(group, 0.075, 0.055, depth, palette.timberCap, x + width / 2, wallHeight + 0.028, z, 0.78);
-
-  // Thin highlight boards give the chunky timber a toy-like, hand-built edge.
-  box(group, width - 0.08, 0.028, 0.018, palette.timberLight, x, wallHeight * 0.72, z - depth / 2 - rail * 0.46, 0.78);
-  box(group, width - 0.08, 0.028, 0.018, palette.timberLight, x, wallHeight * 0.72, z + depth / 2 + rail * 0.46, 0.78);
 
   if (!mobile && depth > 1.2) {
     const furrows = Math.min(6, Math.max(2, Math.floor(width / 0.38)));
@@ -455,7 +468,7 @@ function buildGarden(root: THREE.Group, plan: PlannerPlan, mobile: boolean) {
     const soil = new THREE.Mesh(new THREE.PlaneGeometry(dimensions.widthCm / 100, dimensions.heightCm / 100), mat(palette.grass, 1));
     soil.rotation.x = -Math.PI / 2; soil.position.y = -.01; soil.receiveShadow = true; holder.add(soil);
   });
-  for (const bed of plan.beds) reconcile("bed:" + bed.id, bed, (holder) => addRaisedBed(holder, bed, plan.plantingAreas.find((a) => a.bedId === bed.id), mobile));
+  for (const bed of plan.beds) reconcile("bed:" + bed.id, { bed, material: plan.bedMaterial }, (holder) => addRaisedBed(holder, bed, plan.plantingAreas.find((a) => a.bedId === bed.id), mobile, plan.bedMaterial === "metal"));
   for (const area of plan.plantingAreas) reconcile("area:" + area.id, [area, plan.beds.find((b) => b.id === area.bedId)], (holder) => addPlantingArea(holder, plan, area, mobile));
   for (const row of plan.rows) reconcile("row:" + row.id, [row, plan.beds], (holder) => addRow(holder, row, mobile, plan));
   for (const object of plan.objects) reconcile("object:" + object.id, object, (holder) => {

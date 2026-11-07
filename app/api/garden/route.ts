@@ -311,7 +311,9 @@ function parsePlan(value: unknown): PlannerPlan {
     if (row.placements && rowPlants(row).some((p) => p.x < 0 || p.x > CANVAS_WIDTH || p.y < 0 || p.y > CANVAS_HEIGHT)) throw new Error("Plant placement is outside the garden canvas.");
   }
   const lockedItems = parsePlanLocks((value as { lockedItems?: unknown }).lockedItems);
-  return { ...(lockedItems?.length ? { lockedItems } : {}), ...(candidate.canvas ? { canvas: dimensions } : {}), beds, plantingAreas, rows, objects: objectInput.map((object, index) => parseLayoutObject(object, index, dimensions)) };
+  const bedMaterial = (value as { bedMaterial?: unknown }).bedMaterial;
+  if (bedMaterial !== undefined && bedMaterial !== "metal") throw new Error("Invalid bed material.");
+  return { ...(bedMaterial ? { bedMaterial } : {}), ...(lockedItems?.length ? { lockedItems } : {}), ...(candidate.canvas ? { canvas: dimensions } : {}), beds, plantingAreas, rows, objects: objectInput.map((object, index) => parseLayoutObject(object, index, dimensions)) };
 }
 
 function plantingTarget(planting: Pick<ActivePlanting, "bed_id" | "row_id" | "area_id">) {
@@ -455,12 +457,14 @@ export async function GET(request: Request) {
     const canvas = metadata ? { widthCm: Number(metadata.canvas_width_cm), heightCm: Number(metadata.canvas_height_cm) } : defaultGardenDimensions;
     const locks = await db.prepare("SELECT payload_json FROM garden_item_locks WHERE garden_id = ?").bind(gardenId).first<{ payload_json: string }>();
     const lockedItems = locks ? parsePlanLocks(JSON.parse(locks.payload_json)) : undefined;
+    const material = await db.prepare("SELECT material FROM garden_bed_material WHERE garden_id = ?").bind(gardenId).first<{ material: string }>();
+    const bedMaterial = material?.material === "metal" ? "metal" : undefined;
     const orderedObjects = [
       ...objects.map((object, index) => ({ object, order: layoutResult.results?.[index]?.sort_order ?? index })),
       ...(shapeResult.results ?? []).map((row) => ({ object: parseDesignerShape(JSON.parse(row.payload_json), canvas), order: row.sort_order })),
     ].sort((a, b) => a.order - b.order).map((entry) => entry.object);
 
-    return Response.json({ ok: true, source: "d1", gardenId, plan: { ...(lockedItems?.length ? { lockedItems } : {}), ...(canvas.widthCm !== 900 || canvas.heightCm !== 1080 ? { canvas } : {}), beds, plantingAreas, rows, objects: orderedObjects } });
+    return Response.json({ ok: true, source: "d1", gardenId, plan: { ...(bedMaterial ? { bedMaterial } : {}), ...(lockedItems?.length ? { lockedItems } : {}), ...(canvas.widthCm !== 900 || canvas.heightCm !== 1080 ? { canvas } : {}), beds, plantingAreas, rows, objects: orderedObjects } });
   } catch (error) {
     return Response.json({ ok: false, error: error instanceof Error ? error.message : "Unable to load garden plan." }, { status: 503 });
   }
@@ -643,6 +647,11 @@ export async function PUT(request: Request) {
 
     statements.push(db.prepare("DELETE FROM garden_item_locks WHERE garden_id = ?").bind(gardenId));
     if (plan.lockedItems?.length) statements.push(db.prepare("INSERT INTO garden_item_locks (garden_id, payload_json) VALUES (?, ?)").bind(gardenId, JSON.stringify(plan.lockedItems)));
+    if (plan.bedMaterial === "metal") {
+      statements.push(db.prepare("INSERT OR IGNORE INTO garden_bed_material (garden_id, material) VALUES (?, 'metal')").bind(gardenId));
+    } else {
+      statements.push(db.prepare("DELETE FROM garden_bed_material WHERE garden_id = ?").bind(gardenId));
+    }
     const dimensions = gardenDimensions(plan);
     statements.push(db.prepare("UPDATE gardens SET canvas_width_cm = ?, canvas_height_cm = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind(dimensions.widthCm, dimensions.heightCm, gardenId));
     if (statements.length) await db.batch(statements);
