@@ -1,4 +1,5 @@
 "use client";
+import { parseGardenDimensions } from "@/lib/garden/garden-dimensions";
 
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
@@ -23,6 +24,7 @@ function readLivePlan() {
     const parsed = JSON.parse(localStorage.getItem(gardenLivePlanKey(gardenId)) ?? "null") as Partial<PlannerPlan> | null;
     if (!parsed || !Array.isArray(parsed.beds) || !Array.isArray(parsed.rows)) return EMPTY_PLAN;
     return {
+      ...(parsed.canvas ? { canvas: parseGardenDimensions(parsed.canvas) } : {}),
       beds: parsed.beds,
       plantingAreas: Array.isArray(parsed.plantingAreas) ? parsed.plantingAreas : [],
       rows: parsed.rows,

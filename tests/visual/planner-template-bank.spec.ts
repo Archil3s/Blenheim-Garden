@@ -167,10 +167,24 @@ test("large PDF template renders in 3D and camera views fit its boundary", async
   await page.route("**/api/**", route => route.fulfill({ json: data(template) }));
   await page.goto("/3d");
   await expect(page.locator('[aria-label="Visual 3D garden canvas"] canvas')).toBeVisible();
+  const workspace = page.getByTestId("inline-3d-workspace");
+  await expect(workspace).toHaveAttribute("data-canvas-width", "3500");
+  await expect(workspace).toHaveAttribute("data-canvas-length", "3500");
+  await page.evaluate(() => {
+    const key = "blenheim-garden-live-plan";
+    const plan = JSON.parse(localStorage.getItem(key)!);
+    plan.canvas = { widthCm: 4000, heightCm: 3000 };
+    window.dispatchEvent(new StorageEvent("storage", { key, newValue: JSON.stringify(plan) }));
+  });
+  await expect(workspace).toHaveAttribute("data-canvas-width", "4000");
+  await expect(workspace).toHaveAttribute("data-canvas-length", "3000");
   await expect(page.getByText("23 beds · 1 structures", { exact: true })).toHaveCount(1);
   await page.getByRole("button", { name: "Fit garden", exact: true }).click();
   await page.screenshot({ path: info.outputPath("large-template-3d.png") });
   await page.getByRole("button", { name: "Top", exact: true }).click();
   await page.screenshot({ path: info.outputPath("large-template-top.png") });
+  await page.goto("/planner");
+  await page.getByRole("button", { name: "3D", exact: true }).click();
+  await expect(page.getByTestId("inline-3d-workspace")).toHaveAttribute("data-canvas-width", "3500");
   expect(errors).toEqual([]);
 });

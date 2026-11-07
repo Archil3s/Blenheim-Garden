@@ -1,4 +1,5 @@
 "use client";
+import { parseGardenDimensions } from "@/lib/garden/garden-dimensions";
 
 import dynamic from "next/dynamic";
 import { useEffect } from "react";
@@ -38,6 +39,7 @@ function parsePlan(value: string | null): PlannerPlan | null {
     const plan = JSON.parse(value) as Partial<PlannerPlan>;
     if (!Array.isArray(plan.beds) || !Array.isArray(plan.rows)) return null;
     return {
+      ...(plan.canvas ? { canvas: parseGardenDimensions(plan.canvas) } : {}),
       beds: plan.beds,
       plantingAreas: Array.isArray(plan.plantingAreas) ? plan.plantingAreas : [],
       rows: plan.rows,

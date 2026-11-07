@@ -1,5 +1,5 @@
 "use client";
-import { gardenDimensions, defaultGardenDimensions, type GardenDimensions } from "@/lib/garden/garden-dimensions";
+import { gardenDimensions, parseGardenDimensions, defaultGardenDimensions, type GardenDimensions } from "@/lib/garden/garden-dimensions";
 
 import { usePlanningPeriod } from "./use-planning-period";
 import { planInPeriod } from "@/lib/garden/planting-schedule";
@@ -137,6 +137,7 @@ function readPlanFromStorage(key: string): PlannerPlan | null {
     const parsed = JSON.parse(localStorage.getItem(key) ?? "null") as Partial<PlannerPlan> | null;
     if (!parsed || !Array.isArray(parsed.beds) || !Array.isArray(parsed.rows)) return null;
     return {
+      ...(parsed.canvas ? { canvas: parseGardenDimensions(parsed.canvas) } : {}),
       beds: parsed.beds,
       plantingAreas: Array.isArray(parsed.plantingAreas) ? parsed.plantingAreas : [],
       rows: parsed.rows,
@@ -525,6 +526,10 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
       runtime.content.userData.canvas = stamp;
       if (changedSize && planRef.current.canvas) fitGardenCamera(runtime);
     }
+    const useLegacyScenery = demoRef.current || !planRef.current.canvas;
+    const scenery = runtime.scene.getObjectByName("legacy-ground");
+    if (scenery) scenery.visible = useLegacyScenery;
+    runtime.scene.fog = useLegacyScenery ? new THREE.Fog(0xd6e7d5, 23, 40) : null;
     runtime.renderer.render(runtime.scene, runtime.camera);
   }, []);
 
@@ -598,7 +603,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     const scene = new THREE.Scene();
     const sky = skyTexture();
     scene.background = sky ?? new THREE.Color(0xcbeaf0);
-    scene.fog = new THREE.Fog(0xd6e7d5, 23, 40);
+    scene.fog = planRef.current.canvas ? null : new THREE.Fog(0xd6e7d5, 23, 40);
     scene.add(new THREE.HemisphereLight(0xfffdf1, 0x6d7347, 1.72));
 
     const sun = new THREE.DirectionalLight(0xffdda2, mobile ? 1.75 : 2.55);
@@ -618,13 +623,17 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     outer.rotation.x = -Math.PI / 2;
     outer.position.y = -0.04;
     outer.receiveShadow = true;
-    scene.add(outer);
+    const legacyGround = new THREE.Group();
+    legacyGround.name = "legacy-ground";
+    legacyGround.visible = demoRef.current || !planRef.current.canvas;
+    legacyGround.add(outer);
+    scene.add(legacyGround);
 
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(9.35, 11.15), mat(palette.grass, 1));
     ground.rotation.x = -Math.PI / 2;
     ground.position.y = -0.015;
     ground.receiveShadow = true;
-    scene.add(ground);
+    legacyGround.add(ground);
 
     if (!mobile) {
       for (let index = 0; index < 150; index += 1) {
@@ -742,7 +751,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
   };
 
   return (
-    <div className="gv-3d-workspace gv-3d-realistic gv-3d-editor" data-demo={showDemo} data-visible-plantings={displayedPlan.rows.length + displayedPlan.plantingAreas.length} aria-label="Visual 3D garden canvas" data-testid="inline-3d-workspace" style={{ position: "relative", width: "100%", height: "100%", minHeight: suppliedPlan ? 520 : "100dvh", overflow: "hidden" }}>
+    <div className="gv-3d-workspace gv-3d-realistic gv-3d-editor" data-demo={showDemo} data-canvas-width={gardenDimensions(displayedPlan).widthCm} data-canvas-length={gardenDimensions(displayedPlan).heightCm} data-visible-plantings={displayedPlan.rows.length + displayedPlan.plantingAreas.length} aria-label="Visual 3D garden canvas" data-testid="inline-3d-workspace" style={{ position: "relative", width: "100%", height: "100%", minHeight: suppliedPlan ? 520 : "100dvh", overflow: "hidden" }}>
       <div className="gv-3d-workspace-canvas" ref={mountRef} aria-label="Interactive 3D garden workspace" style={{ position: "absolute", inset: 0 }} />
       <Garden3DEditorControls editor={editor} disabled={showDemo || !!renderError || (!suppliedPlan && !loadedPlan)} />
       {renderError && <div className="gv-3d-workspace-error">{renderError}</div>}
