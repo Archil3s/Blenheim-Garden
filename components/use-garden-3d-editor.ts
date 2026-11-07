@@ -1,4 +1,5 @@
 "use client";
+import { preservesPlanLocks } from "@/lib/garden/plan-item-locks";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { PlannerPlan, PlannerPlantingArea, PlannerRow, PlannerStructureKind } from "@/lib/garden/planner-plan";
@@ -76,6 +77,7 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
   }, [gardenId, onChange]);
   const commit = useCallback((next: PlannerPlan) => {
     try {
+      if (!preservesPlanLocks(current.current, next)) throw new Error("Unlock the item in the 2D planner before editing it.");
       validateEditorPlan(next);
       if (JSON.stringify(current.current) === JSON.stringify(next)) return false;
       const before = structuredClone(current.current);
@@ -118,7 +120,7 @@ export function useGarden3DEditor(plan: PlannerPlan, gardenId: string, onChange:
       return next;
     });
   };
-  const move = (base: PlannerPlan, selected: PlanSelection, delta: PointCm) => { try { const next = movePlanSelection(base, selected, delta); validateEditorPlan(next); return next; } catch { return null; } };
+  const move = (base: PlannerPlan, selected: PlanSelection, delta: PointCm) => { try { const next = movePlanSelection(base, selected, delta); validateEditorPlan(next); return preservesPlanLocks(base, next) ? next : null; } catch { return null; } };
   const save = async () => {
     if (saving.current) return;
     saving.current = true; setStatus("Saving…"); setError(null);

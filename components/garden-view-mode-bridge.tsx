@@ -1,4 +1,5 @@
 "use client";
+import { parsePlanLocks } from "@/lib/garden/plan-item-locks";
 import { parseGardenDimensions } from "@/lib/garden/garden-dimensions";
 
 import dynamic from "next/dynamic";
@@ -25,6 +26,7 @@ function readLivePlan() {
     if (!parsed || !Array.isArray(parsed.beds) || !Array.isArray(parsed.rows)) return EMPTY_PLAN;
     return {
       ...(parsed.canvas ? { canvas: parseGardenDimensions(parsed.canvas) } : {}),
+      ...(parsed.lockedItems ? { lockedItems: parsePlanLocks(parsed.lockedItems) } : {}),
       beds: parsed.beds,
       plantingAreas: Array.isArray(parsed.plantingAreas) ? parsed.plantingAreas : [],
       rows: parsed.rows,

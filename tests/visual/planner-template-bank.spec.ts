@@ -1,3 +1,5 @@
+import { removeBedKeepingPlants } from "../../lib/garden/detach-bed-plants";
+import { rowPlants } from "../../lib/garden/plan-editing";
 import { expect, test } from "@playwright/test";
 import { DatabaseSync, type SQLInputValue } from "node:sqlite";
 import { readFileSync } from "node:fs";
@@ -64,6 +66,18 @@ test("PDF template and custom dimensions round-trip through protected D1 storage
     const result = await loaded.json() as { plan: PlannerPlan };
     expect(result).toMatchObject({ ok: true });
     expect(result.plan.canvas).toEqual(template.canvas);
+    const bed = template.beds[1];
+    const detached = removeBedKeepingPlants(template, bed.id);
+    detached.lockedItems = [`bed:${template.beds[0].id}`];
+    const detachedSave = await PUT(request(detached));
+    expect(await detachedSave.json()).toMatchObject({ ok: true });
+    const detachedLoad = await GET(new Request("https://test.local/api/garden"));
+    const savedPlan = (await detachedLoad.json()).plan as PlannerPlan;
+    expect(savedPlan.lockedItems).toEqual(detached.lockedItems);
+    const actual = savedPlan.rows.filter(row => row.crop === "Raspberry").flatMap(rowPlants);
+    const expected = template.plantingAreas.filter(area => area.bedId === bed.id).flatMap(area => areaPlants(template, area));
+    expect(actual.map(({ x, y }) => [x, y])).toEqual(expected.map(({ x, y }) => [x, y]));
+    expect(savedPlan.beds.some(item => item.id === bed.id)).toBe(false);
     expect(result.plan.objects).toHaveLength(template.objects.length);
     expect(result.plan.beds).toEqual(template.beds);
     expect(result.plan.plantingAreas.map(area => [area.bedId, area.count, area.placements])).toEqual(template.plantingAreas.map(area => [area.bedId, area.count, area.placements]));
@@ -196,6 +210,18 @@ test("PDF template items can be selected through the item list and edited", asyn
   await gardenMenu(page);
   await page.getByRole("button", { name: "2023 PDF base template" }).click();
 
+  const line = page.locator('.shape-object[data-shape="line"]').first();
+  const hit = await line.evaluate(el => {
+    const rect = el.getBoundingClientRect();
+    const rotation = new DOMMatrix(getComputedStyle(el).transform);
+    return { x: rect.x + rect.width / 2 + rotation.c * 4, y: rect.y + rect.height / 2 + rotation.d * 4 };
+  });
+  await page.mouse.click(hit.x, hit.y);
+  await expect(page.locator(".shape-object.selected")).toHaveCount(1);
+  const berry = page.locator('.planting-area[data-crop="Raspberry"] .planting-area-icons i').first();
+  await berry.click();
+  await expect(page.locator(".planting-area.selected")).toHaveCount(1);
+
   const pick = async (name: string, item: RegExp) => {
     await gardenMenu(page);
     await page.getByRole("button", { name: "Edit plan items…" }).click();
@@ -222,4 +248,42 @@ test("PDF template items can be selected through the item list and edited", asyn
   await expect(page.locator(".layout-object.selected")).toHaveText("Main entrance");
   await page.reload();
   await expect(page.locator(".layout-object").filter({ hasText: /^Main entrance$/ })).toHaveCount(1);
+});
+
+test("nested beds can be drawn, locked and removed without deleting their plants", async ({ page }) => {
+  await page.route("**/api/**", route => route.fulfill({ json: data(fixture) }));
+  await page.goto("/planner");
+  await expect(page.locator(".gv-save")).toHaveText("Saved ✓");
+  await gardenMenu(page);
+  await page.getByRole("button", { name: "2023 PDF base template" }).click();
+  const outer = page.locator(".plan-bed").filter({ has: page.locator(".gv-v4-bed-title", { hasText: /^Bed 1$/ }) });
+  const box = (await outer.boundingBox())!;
+  await page.locator(".gv-rail").getByRole("button", { name: "Bed", exact: true }).click();
+  const current = (await outer.boundingBox())!;
+  await page.mouse.move(current.x + box.width * .2, current.y + box.height * .25);
+  await page.mouse.down();
+  await page.mouse.move(current.x + box.width * .7, current.y + box.height * .75, { steps: 5 });
+  await page.mouse.up();
+  await expect(page.locator(".plan-bed")).toHaveCount(24);
+
+  const pickBed = async (name: string) => {
+    await gardenMenu(page);
+    await page.getByRole("button", { name: "Edit plan items…" }).click();
+    const dialog = page.getByRole("dialog", { name: "Edit plan items" });
+    await dialog.getByRole("searchbox").fill(name);
+    await dialog.getByRole("button", { name: name + " Bed", exact: true }).click();
+  };
+  await pickBed("Bed 1");
+  await page.getByRole("button", { name: "Lock item", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Unlock item" })).toBeVisible();
+  await page.keyboard.press("Delete");
+  await expect(page.locator(".plan-bed")).toHaveCount(24);
+  await page.reload();
+  await pickBed("Bed 1");
+  await page.getByRole("button", { name: "Unlock item" }).click();
+
+  await pickBed("Bed 2 · raspberries");
+  await page.getByRole("button", { name: "Remove bed, keep plants" }).click();
+  await expect(page.locator(".plan-bed")).toHaveCount(23);
+  await expect(page.locator(".planting-row[data-crop=Raspberry]")).toHaveCount(3);
 });

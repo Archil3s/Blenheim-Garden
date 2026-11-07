@@ -1,4 +1,5 @@
 "use client";
+import { parsePlanLocks } from "@/lib/garden/plan-item-locks";
 import { parseGardenDimensions } from "@/lib/garden/garden-dimensions";
 
 import dynamic from "next/dynamic";
@@ -40,6 +41,7 @@ function parsePlan(value: string | null): PlannerPlan | null {
     if (!Array.isArray(plan.beds) || !Array.isArray(plan.rows)) return null;
     return {
       ...(plan.canvas ? { canvas: parseGardenDimensions(plan.canvas) } : {}),
+      ...(plan.lockedItems ? { lockedItems: parsePlanLocks(plan.lockedItems) } : {}),
       beds: plan.beds,
       plantingAreas: Array.isArray(plan.plantingAreas) ? plan.plantingAreas : [],
       rows: plan.rows,

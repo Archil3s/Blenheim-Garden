@@ -1,4 +1,5 @@
 "use client";
+import { parsePlanLocks } from "@/lib/garden/plan-item-locks";
 import { gardenDimensions, parseGardenDimensions, defaultGardenDimensions, type GardenDimensions } from "@/lib/garden/garden-dimensions";
 
 import { usePlanningPeriod } from "./use-planning-period";
@@ -138,6 +139,7 @@ function readPlanFromStorage(key: string): PlannerPlan | null {
     if (!parsed || !Array.isArray(parsed.beds) || !Array.isArray(parsed.rows)) return null;
     return {
       ...(parsed.canvas ? { canvas: parseGardenDimensions(parsed.canvas) } : {}),
+      ...(parsed.lockedItems ? { lockedItems: parsePlanLocks(parsed.lockedItems) } : {}),
       beds: parsed.beds,
       plantingAreas: Array.isArray(parsed.plantingAreas) ? parsed.plantingAreas : [],
       rows: parsed.rows,

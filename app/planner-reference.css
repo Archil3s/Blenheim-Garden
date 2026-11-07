@@ -473,3 +473,14 @@
 .plan-items-dialog li + li { margin-top:5px; }
 .plan-items-dialog li button { display:flex; width:100%; min-height:44px; align-items:center; justify-content:space-between; gap:12px; text-align:left; }
 .plan-items-dialog li small { flex-shrink:0; text-transform:capitalize; }
+
+/* Keep narrow drawing targets usable at overview scale. */
+.reference-planner .garden-canvas.tool-select :is(.layout-line,.shape-object[data-shape=line],.planting-row:not(.draft-planting-row),.text-object)::after {
+  content:"";
+  position:absolute;
+  inset-inline:0;
+  top:50%;
+  height:max(100%, var(--minimum-line-hit));
+  transform:translateY(-50%);
+}
+.reference-planner .garden-canvas.tool-select .has-explicit-placements .planting-area-icons i { pointer-events:auto; }
