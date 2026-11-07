@@ -84,7 +84,7 @@ export function Garden3DPreviewBridge() {
           />
         </div>
         <footer className="gv-3d-preview-footer">
-          <span>Drag to rotate · pinch/wheel to zoom · tap a crop or bed to inspect</span>
+          <span>Drag to pan · right-drag to orbit · pinch or wheel to zoom · tap to inspect</span>
           <button type="button" onClick={() => setOpen(false)}>Back to 2D</button>
         </footer>
       </section>

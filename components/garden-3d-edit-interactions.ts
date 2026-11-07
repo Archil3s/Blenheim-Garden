@@ -126,8 +126,9 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     footprint.visible = editor.tool !== "plant";
   };
 
+  let spaceHeld = false;
   const onDown = (event: PointerEvent) => {
-    if (!event.isPrimary || event.button !== 0 || disabled()) return;
+    if (!event.isPrimary || event.button !== 0 || disabled() || spaceHeld) return;
     const editor = getEditor();
     pointerStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
     if (editor.tool !== "select" && editor.tool !== "move") { controls.enabled = false; canvas.setPointerCapture(event.pointerId); showPreview(event); return; }
@@ -193,9 +194,16 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
   };
   const cancel = () => { pointerStart = null; restoreDrag(); resetPreview(); };
   runtime.cancelEditing = cancel;
+  const releaseSpace = (event: KeyboardEvent) => { if (event.code === "Space") spaceHeld = false; };
+  const onBlur = () => { spaceHeld = false; cancel(); };
   const onKey = (event: KeyboardEvent) => {
     if (!disabled() && (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "s") { event.preventDefault(); void getEditor().save(); return; }
-    if ((event.target as HTMLElement)?.closest("input, select, textarea")) return;
+    if ((event.target as HTMLElement)?.closest("input, select, textarea, [contenteditable]")) return;
+    if (event.code === "Space" && !(event.target as HTMLElement)?.closest("button") && canvas.matches(":hover")) {
+      event.preventDefault();
+      spaceHeld = true;
+      return;
+    }
     const editor = getEditor();
     if (event.key === "Escape") { cancel(); editor.setTool("select"); }
     if (disabled()) return;
@@ -203,16 +211,17 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "y") { event.preventDefault(); editor.redo(); }
     if (event.key === "Delete" || event.key === "Backspace") { event.preventDefault(); editor.remove(); }
   };
-  // Capture runs before OrbitControls so object drags never also orbit the camera.
+  // Capture runs before OrbitControls so object drags never also move the camera.
   canvas.addEventListener("pointerdown", onDown, true);
   canvas.addEventListener("pointermove", onMove);
   canvas.addEventListener("pointerup", onUp);
   canvas.addEventListener("pointercancel", cancel);
-  window.addEventListener("blur", cancel);
+  window.addEventListener("blur", onBlur);
+  window.addEventListener("keyup", releaseSpace);
   window.addEventListener("keydown", onKey);
   return () => {
     runtime.cancelEditing = undefined;
-    cancel(); canvas.removeEventListener("pointerdown", onDown, true); canvas.removeEventListener("pointermove", onMove); canvas.removeEventListener("pointerup", onUp); canvas.removeEventListener("pointercancel", cancel); window.removeEventListener("blur", cancel); window.removeEventListener("keydown", onKey);
+    cancel(); canvas.removeEventListener("pointerdown", onDown, true); canvas.removeEventListener("pointermove", onMove); canvas.removeEventListener("pointerup", onUp); canvas.removeEventListener("pointercancel", cancel); window.removeEventListener("blur", onBlur); window.removeEventListener("keyup", releaseSpace); window.removeEventListener("keydown", onKey);
     disposeGhost(); preview.removeFromParent(); footprint.geometry.dispose(); previewMaterial.dispose(); ring.geometry.dispose(); (ring.material as THREE.Material).dispose();
   };
 }

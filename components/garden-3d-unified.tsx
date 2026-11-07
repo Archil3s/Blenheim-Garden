@@ -651,6 +651,9 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     const camera = new THREE.PerspectiveCamera(mobile ? 42 : 34, 1, 0.1, 60);
     camera.position.set(mobile ? 7.5 : 8.4, mobile ? 9.2 : 10.4, mobile ? 12.2 : 13.6);
     const controls = new OrbitControls(camera, renderer.domElement);
+    controls.mouseButtons = { LEFT: THREE.MOUSE.PAN, MIDDLE: THREE.MOUSE.PAN, RIGHT: THREE.MOUSE.ROTATE };
+    controls.touches = { ONE: THREE.TOUCH.PAN, TWO: THREE.TOUCH.DOLLY_PAN };
+    controls.zoomToCursor = true;
     controls.enableDamping = true;
     controls.dampingFactor = 0.06;
     controls.target.set(0, 0.3, 0);
@@ -775,7 +778,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
         {inspector.subtitle && <small>{inspector.subtitle}</small>}
         {inspector.lines.slice(0, 3).map((line) => <div key={`${line.label}-${line.value}`}><b>{line.label}</b><em>{line.value}</em></div>)}
       </div>
-      <div className="gv-3d-help">Drag empty ground to orbit · Move to drag objects · tap to place/select</div>
+      <div className="gv-3d-help">Drag empty ground to pan · Space + drag to pan · Wheel or pinch to zoom · Right-drag to orbit</div>
     </div>
   );
 }
