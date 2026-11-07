@@ -5,9 +5,12 @@ import { createPortal } from "react-dom";
 import type { PlannerPlan } from "@/lib/garden/planner-plan";
 import { planInPeriod, type PlanningPeriod } from "@/lib/garden/planting-schedule";
 import { groupedPlantList, plantListRows, partsListRows, csvText, planSvg } from "@/lib/garden/plan-reports";
+import { PlantingCalendar } from "./planting-calendar";
+import type { CalendarPlanting } from "@/lib/garden/planting-calendar";
+import type { PlantingSchedule } from "@/lib/garden/planting-schedule";
 import { PlantArt } from "./plant-art";
 
-type Report = "plants" | "parts" | "export";
+type Report = "plants" | "parts" | "calendar" | "export";
 
 function download(blob: Blob, name: string) {
   const url = URL.createObjectURL(blob);
@@ -18,7 +21,7 @@ function download(blob: Blob, name: string) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-export function PlannerReports({ plan, period }: { plan: PlannerPlan; period?: PlanningPeriod }) {
+export function PlannerReports({ plan, period, onPeriodChange, onDatesChange, onShowPlanting }: { plan: PlannerPlan; period?: PlanningPeriod; onPeriodChange?: (period: PlanningPeriod) => void; onDatesChange?: (kind: "row" | "planting", id: string, dates?: PlantingSchedule) => void; onShowPlanting?: (planting: CalendarPlanting) => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [report, setReport] = useState<Report>("plants");
   const [scope, setScope] = useState("all");
@@ -49,7 +52,7 @@ export function PlannerReports({ plan, period }: { plan: PlannerPlan; period?: P
   useEffect(() => {
     const receive = (event: Event) => {
       const next = (event as CustomEvent<unknown>).detail;
-      if (next === "plants" || next === "parts" || next === "export") {
+      if (next === "plants" || next === "parts" || next === "calendar" || next === "export") {
         setReport(next);
         setError("");
         setActive(true);
@@ -96,7 +99,7 @@ export function PlannerReports({ plan, period }: { plan: PlannerPlan; period?: P
   }
 
   const content = <>
-      <header><div><h2 id="planner-report-title">{report === "plants" ? "Plant List" : report === "parts" ? "Parts List" : "Export plan"}</h2></div><button type="button" onClick={() => setActive(false)}>Close</button></header>
+      <header><div><h2 id="planner-report-title">{report === "plants" ? "Plant List" : report === "parts" ? "Parts List" : report === "calendar" ? "Planting Calendar" : "Export plan"}</h2></div><button type="button" onClick={() => setActive(false)}>Close</button></header>
       {report === "plants" && <>
         <div className="report-controls"><label>Search plantings<input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Plant, variety or bed" /></label><label>Show plantings<select aria-label="Show plantings" value={scope} onChange={event => setScope(event.target.value)}><option value="all">All dates</option><option value="month">Selected month</option></select></label><label>Group by<select value={grouping} onChange={(event) => setGrouping(event.target.value)}><option value="variety">Variety</option><option value="individual">Individual plantings</option><option value="bed">Beds and rows</option></select></label></div>
         <p>{plants.reduce((sum, row) => sum + row.quantity, 0)} plants · {plants.length} {grouping === "variety" ? "varieties" : "plantings"}</p>
@@ -106,17 +109,19 @@ export function PlannerReports({ plan, period }: { plan: PlannerPlan; period?: P
         <p>Measurements come from the current plan. Allow for cuts, joins and waste when ordering materials.</p>
         <div className="report-scroll"><table><thead><tr><th>Part</th><th>Quantity</th><th>Unit</th></tr></thead><tbody>{parts.map((row) => <tr key={row.part}><td>{row.part}</td><td>{row.unit === "each" ? row.quantity : row.quantity.toFixed(2)}</td><td>{row.unit}</td></tr>)}</tbody></table>{!parts.length && <p>Add beds, paths, trellises or structures to generate a parts list.</p>}</div>
       </>}
-      {report !== "export" ? <footer><button type="button" onClick={exportCsv}>Export CSV</button><button type="button" onClick={() => window.print()}>Print list</button></footer> : <div className="report-export-actions">
+      {report === "calendar" && <PlantingCalendar plan={plan} period={period} onPeriodChange={onPeriodChange} onDatesChange={onDatesChange} onShowPlanting={onShowPlanting} />}
+      {report === "plants" || report === "parts" ? <footer><button type="button" onClick={exportCsv}>Export CSV</button><button type="button" onClick={() => window.print()}>Print list</button></footer> : report === "export" ? <div className="report-export-actions">
         <p>Export the current design, including unsaved edits. The image is a measured schematic with planting labels and counts.</p>
         <button type="button" onClick={() => download(new Blob([JSON.stringify({ format: "blenheim-garden", version: 1, plan }, null, 2)], { type: "application/json" }), "garden-plan.json")}>Download JSON backup</button>
         <button type="button" onClick={() => download(new Blob([planSvg(plan, "Blenheim Garden")], { type: "image/svg+xml" }), "garden-plan.svg")}>Download SVG plan</button>
         <button type="button" disabled={busy} onClick={() => void exportPng()}>{busy ? "Generating image…" : "Download PNG plan"}</button>
         {error && <p role="alert">{error}</p>}
-      </div>}
+      </div> : null}
     </>;
   return <>
     <button type="button" onClick={() => open("plants")}>Plant List</button>
     <button type="button" onClick={() => open("parts")}>Parts List</button>
+    <button type="button" onClick={() => open("calendar")}>Calendar</button>
     <button type="button" onClick={() => open("export")}>Export plan</button>
     {active && createPortal(report === "export"
       ? <dialog ref={dialog} className="planner-report" aria-labelledby="planner-report-title" onClose={() => setActive(false)}>{content}</dialog>

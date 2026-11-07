@@ -445,3 +445,8 @@ visibility and dated plant reports implemented. Compatible optional schedule
 metadata persists through protected D1. Final lint/build, all 216 existing checks
 and all 20 new scheduling checks pass. Four-size screenshots reviewed.
 Do not remove hidden plantings from saved state or overwrite actual history.
+
+P-014: linked planting calendar, manual planned milestones, sourced maturity
+estimates and CSV implemented. Full 252/252 regression checks and final 16/16
+calendar checks pass; final lint/build pass. Four-size screenshots reviewed.
+Unsupported crops retain manual dates, not guessed guidance.

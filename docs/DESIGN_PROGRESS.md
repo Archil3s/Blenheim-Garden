@@ -465,3 +465,31 @@ Screenshots reviewed at 1920×1080, 1440×900, 1024×768 and 390×844. Date fiel
 stack inside the existing compact inspector; report dates wrap on narrow screens.
 3D month filtering is verified without changing its camera, lighting or models;
 full source visual/calendar parity remains unclaimed. Evidence: outputs/planting-dates/.
+
+## Linked planting calendar P-014 — 7 November 2026
+
+User authorized the next planting-calendar port and main push. Calendar is a
+report workspace with a horizontally scrollable year grid, mobile month agenda,
+month/year navigation, crop/variety/location search and CSV export. Each planned
+row/block/area appears, including crops without a verified regional profile.
+Source-backed guide windows, occupancy, planned milestones and harvest estimates
+are labelled separately, with a historical Blenheim frost summary and sources.
+
+An explicit date dialog edits planned sowing/transplanting/harvest milestones.
+Apply makes one undoable local plan change; normal protected Save persists it.
+The existing schedule_json storage retains the optional fields, without another
+migration or changes to recorded sowing/transplanting/history. Manual harvest
+dates take precedence, and estimates require a verified cultivar/basis date.
+Unsupported guidance is labelled; no maturity dates are invented from occupancy.
+Sources and limits: docs/PLANTING_CALENDAR_SOURCES.md.
+
+Validation: full 252/252 regression checks pass (9.5 minutes), including all 236
+existing checks unchanged. Final wording distinguishes first maturity from the
+full picking season; a fresh lint/production build and final 16/16 calendar checks
+pass after that copy correction. Screenshots reviewed at 1920×1080, 1440×900,
+1024×768 and 390×844; the mobile agenda/date dialog and scrollable grid remain
+usable without document overflow. Coverage includes sources/basis rules, cross-year
+harvests, manual overrides, validation, Undo/Redo, protected SQLite/D1 round trips,
+Save/reload, CSV, guide/search/empty states, Escape and plan links.
+Evidence: outputs/planting-calendar/. No live plan saved or reloaded. No assets,
+dependencies, migrations, bindings or authentication settings changed.

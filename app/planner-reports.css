@@ -45,3 +45,42 @@
   .planner-report[open] button, .planner-report[open] .report-controls, .planner-report[open] footer { display: none; }
   .planner-report[open] .report-scroll { max-height: none; overflow: visible; }
 }
+
+/* Planting calendar stays inside the existing report workspace. */
+.calendar-guide-toggle { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.calendar-months { display: flex; gap: 4px; overflow: auto; margin: 16px 0; }
+.calendar-months button { flex: 1 0 52px; padding: 6px; }
+.calendar-months button[aria-pressed=true] { background: #168c72; color: white; }
+.calendar-frost, .calendar-legend { font-size: 13px; line-height: 1.5; }
+.calendar-grid-scroll { max-height: 58dvh; overflow: auto; border: 1px solid #d8e1dd; }
+.planner-report .calendar-grid { min-width: 1140px; table-layout: fixed; }
+.calendar-grid th:first-child { width: 190px; position: sticky; left: 0; z-index: 2; background: #f7faf9; }
+.calendar-grid thead th { z-index: 3; }
+.calendar-grid thead th:first-child { z-index: 4; }
+.planner-report .calendar-grid td, .planner-report .calendar-grid th { padding: 8px 5px; vertical-align: top; border-right: 1px solid #d8e1dd; }
+.calendar-grid tbody th { font-weight: 400; }
+.calendar-grid tbody th button { margin-top: 6px; min-height: 30px; padding: 4px 8px; font-size: 12px; }
+.calendar-plant-art { float: left; width: 32px; height: 32px; font-size: 28px; margin-right: 8px; }
+.calendar-grid strong, .calendar-agenda strong { display: block; font-size: 14px; }
+.calendar-grid small, .calendar-agenda small { display: block; font-size: 12px; }
+.calendar-event { display: inline-block; margin: 2px; padding: 3px 4px; border-radius: 3px; font-size: 12px; background: #eee9d7; }
+.calendar-event.garden { background: #dcefe3; }
+.calendar-event.planned { background: #d8eaf1; }
+.calendar-event.harvest { background: #f4dfac; }
+.calendar-agenda-row { padding: 16px 0; border-bottom: 1px solid #dadfd2; }
+.calendar-agenda-row p, .calendar-agenda-row li { font-size: 13px; line-height: 1.5; }
+.calendar-row-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.calendar-sources { margin-top: 16px; font-size: 13px; }
+.calendar-dates-dialog { width: min(560px, calc(100vw - 24px)); max-height: calc(100dvh - 32px); overflow: auto; border: 1px solid #b3bfac; padding: 20px; color: #24372c; background: #fff; }
+.calendar-dates-dialog::backdrop { background: #172d2266; }
+.calendar-dates-dialog header, .calendar-dates-dialog footer { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+.calendar-dates-dialog h2 { font-size: 20px; }
+.calendar-dates-dialog button { min-height: 40px; padding: 8px 12px; border: 1px solid #b3bfac; background: #f7faf9; color: #294e39; cursor: pointer; }
+.calendar-date-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin: 16px 0; }
+.calendar-date-fields label { display: grid; gap: 5px; font-size: 13px; }
+.calendar-date-fields input { width: 100%; min-width: 0; min-height: 40px; padding: 6px; box-sizing: border-box; border: 1px solid #b3bfac; background: #fff; font: inherit; }
+.calendar-dates-dialog p { font-size: 13px; line-height: 1.5; }
+.calendar-dates-dialog [role=alert] { color: #a33927; }
+@media(max-width:600px) { .calendar-date-fields { grid-template-columns: 1fr; } .calendar-grid th:first-child { width: 150px; } }
+
+.calendar-grid tbody th { top: auto; }

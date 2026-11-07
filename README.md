@@ -22,6 +22,7 @@ The planner currently supports:
 - **Blocks** — expand plantings in width/depth with separate row spacing
 - **Square foot** — draw 30.48 cm cells using each supported crop’s planting density
 - **Planting dates** — inclusive date ranges, month/year visibility in 2D/3D, and same-space succession planting
+- **Calendar** — linked planting timelines, sowing/transplanting milestones, supported harvest estimates, and CSV export
 - **Bed** — click-drag new beds with live dimensions
 - **Path** — draw paths and edit width/label
 - **Trellis** — draw trellises and edit height/post spacing/label

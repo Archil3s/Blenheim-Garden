@@ -34,6 +34,7 @@ import { pastePlanSelection, type PlanClipboard } from "@/lib/garden/selection-c
 
 import { canonicalSelection, deleteSelections, moveSelection, pasteGroup, sameSelection, selectInBox, selectableItems, type GroupClipboard, type PlanSelection } from "@/lib/garden/multi-selection";
 
+import type { CalendarPlanting } from "@/lib/garden/planting-calendar";
 import { PlantingScheduleControls } from "./planting-schedule-controls";
 import { addSuccession } from "@/lib/garden/succession-planting";
 import { planInPeriod, planningPeriodEvent, planningPeriodKey, readPlanningPeriod, type PlantingSchedule } from "@/lib/garden/planting-schedule";
@@ -393,6 +394,14 @@ export function GardenPlanner() {
     try { localStorage.setItem(planningPeriodKey(gardenId), JSON.stringify(period)); } catch { /* View state is optional. */ }
     window.dispatchEvent(new CustomEvent(planningPeriodEvent, { detail: { gardenId, period } }));
   }, [month, planningYear]);
+
+  function showCalendarPlanting(planting: CalendarPlanting) {
+    if (planting.kind === "guide") return;
+    const date = planting.schedule?.from;
+    if (date) { setPlanningYear(Number(date.slice(0, 4))); setMonth(months[Number(date.slice(5, 7)) - 1]); }
+    window.dispatchEvent(new Event("garden-report-close"));
+    setSelection({ kind: planting.kind, id: planting.id }); setTool("select"); setPanelOpen(true);
+  }
 
   function changeSchedule(kind: "row" | "planting", id: string, schedule?: PlantingSchedule) {
     edit(current => kind === "row" ? { ...current, rows: current.rows.map(row => row.id === id ? { ...row, schedule } : row) }
@@ -1044,10 +1053,11 @@ export function GardenPlanner() {
         <button type="button" className={`gv-plan-tab ${!reportView && !notesOpen ? "active" : ""}`} data-planner-view="2d" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(false); setTool("select"); }}>Plan</button>
         <button type="button" className={`planner-report-tab ${reportView === "plants" ? "active" : ""}`} aria-label="Open plant list" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "plants" }))}>Plant List</button>
         <button type="button" className={`planner-report-tab ${reportView === "parts" ? "active" : ""}`} aria-label="Open parts list" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "parts" }))}>Parts List</button>
+        <button type="button" className={`planner-report-tab ${reportView === "calendar" ? "active" : ""}`} aria-label="Open planting calendar" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "calendar" }))}>Calendar</button>
         <button type="button" className={`planner-report-tab ${notesOpen ? "active" : ""}`} aria-label="Plan notes" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(true); }}>Notes</button><button type="button" data-season-view="today">Today</button>
         <details ref={moreRef} className="gv-more" onKeyDown={(event) => { if (event.key === "Escape") { event.stopPropagation(); event.currentTarget.open = false; event.currentTarget.querySelector("summary")?.focus(); } }}><summary>More <span aria-hidden="true">⌄</span></summary><div className="gv-more-panel">
           <nav className="gv-tabs" aria-label="Garden records"><button type="button">Photos</button><button type="button">Notes</button></nav>
-          <button type="button" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(true); }}>Plan notes</button><PlannerReports plan={plan} period={{ year: planningYear, month: months.indexOf(month) }} /><button type="button" data-season-view="week">This Week</button>
+          <button type="button" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(true); }}>Plan notes</button><PlannerReports plan={plan} period={{ year: planningYear, month: months.indexOf(month) }} onPeriodChange={period => { setPlanningYear(period.year); setMonth(months[period.month]); setSelection(null); }} onDatesChange={changeSchedule} onShowPlanting={showCalendarPlanting} /><button type="button" data-season-view="week">This Week</button>
           <a href="/3d" target="_blank" rel="noopener">Live 3D ↗</a>
           <button type="button" className="gv-settings">Settings</button>
           <div className="gv-layout-options" />

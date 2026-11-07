@@ -254,3 +254,12 @@ by ensurePlantPlacementSchema. planInPeriod filters presentation only; Save and
 under garden-planning-period:<gardenId> and mirrored through a view event.
 Succession creates a fresh planting ID at the same geometry on the next day,
 retaining the earlier planting and its history.
+
+## Linked planting calendar
+
+Calendar is available as a report tab/menu. It presents plan rows/areas alongside
+Blenheim guidance and optional planned sow/transplant/harvestFrom/harvestUntil
+fields in schedule_json. Calendar edits use normal plan Undo and protected Save.
+Manual harvest dates override estimates; estimates need an explicit sourced
+sowing/transplanting baseline. The source registry and exclusions are documented
+in docs/PLANTING_CALENDAR_SOURCES.md. Recorded history remains separate.

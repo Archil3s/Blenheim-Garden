@@ -226,3 +226,11 @@ CSV output, and compatible protected persistence. Undated plans remain visible
 year-round. Actual recorded history is retained independently. This implements
 the core dated planning workflow; complete source calendar dialogs, automatic
 sowing/harvest calendars and whole-product interaction parity remain unverified.
+
+## Linked planting calendar — 7 November 2026
+
+P-014 adds year-grid/month-agenda views for every planned planting, source-backed
+Blenheim guidance for supported crops, optional planned sowing/transplanting and
+harvest dates, explicitly based maturity estimates, plan links and CSV. Unsupported
+profiles use manual dates. This does not claim the full source climate database
+or cultivar calendar, and does not copy reference code or artwork.

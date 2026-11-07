@@ -1,6 +1,6 @@
 import type { PlannerPlan } from "./planner-plan";
 
-export type PlantingSchedule = { from?: string; until?: string };
+export type PlantingSchedule = { from?: string; until?: string; sow?: string; transplant?: string; harvestFrom?: string; harvestUntil?: string };
 export type PlanningPeriod = { year: number; month: number };
 export const planningPeriodEvent = "garden-planning-period";
 export const planningPeriodKey = (gardenId: string) => `garden-planning-period:${gardenId}`;
@@ -16,10 +16,17 @@ export function parsePlantingSchedule(value: unknown): PlantingSchedule | undefi
   if (value === undefined || value === null) return undefined;
   if (typeof value !== "object") throw new Error("Invalid planting dates.");
   const schedule = value as Record<string, unknown>;
-  const from = schedule.from || undefined, until = schedule.until || undefined;
-  if ((from !== undefined && !validDate(from)) || (until !== undefined && !validDate(until))) throw new Error("Invalid planting date.");
-  if (from && until && from > until) throw new Error("Invalid planting dates: the end precedes the start.");
-  return from || until ? { ...(from ? { from: from as string } : {}), ...(until ? { until: until as string } : {}) } : undefined;
+  const parsed: PlantingSchedule = {};
+  for (const field of ["from", "until", "sow", "transplant", "harvestFrom", "harvestUntil"] as const) {
+    const date = schedule[field];
+    if (date === undefined || date === null || date === "") continue;
+    if (!validDate(date)) throw new Error("Invalid planting date.");
+    parsed[field] = date;
+  }
+  if (parsed.from && parsed.until && parsed.from > parsed.until) throw new Error("Invalid planting dates: the end precedes the start.");
+  if (parsed.sow && parsed.transplant && parsed.sow > parsed.transplant) throw new Error("Invalid planting dates: sow before transplanting.");
+  if (parsed.harvestFrom && parsed.harvestUntil && parsed.harvestFrom > parsed.harvestUntil) throw new Error("Invalid harvest dates: the end precedes the start.");
+  return Object.keys(parsed).length ? parsed : undefined;
 }
 
 export function visibleInPeriod(schedule: PlantingSchedule | undefined, period: PlanningPeriod) {

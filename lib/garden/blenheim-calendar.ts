@@ -19,7 +19,7 @@ export type BlenheimGardenAction = {
   detail: string;
 };
 
-type CropWindow = {
+export type CropWindow = {
   crop: string;
   icon: string;
   directSow?: number[];
@@ -73,7 +73,7 @@ export const BLENHEIM_CALENDAR_SOURCES = [
   },
 ] as const;
 
-const CROP_WINDOWS: CropWindow[] = [
+export const CROP_WINDOWS: readonly CropWindow[] = [
   {
     crop: "Tomato",
     icon: "🍅",
