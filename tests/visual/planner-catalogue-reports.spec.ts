@@ -102,3 +102,29 @@ test("full catalogue, custom spacing, reports and exports work", async ({ page }
   expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
   expect(errors).toEqual([]);
 });
+
+test("structures can be placed on a planted bed, rotated and resized", async ({ page }, info) => {
+  test.skip(info.project.name !== "desktop", "Uses a mouse corner drag.");
+  await page.goto("/planner");
+  await expect(page.locator(".gv-save")).toHaveText("Saved ✓");
+  await page.locator('.gv-rail button').filter({ has: page.locator("small", { hasText: /^Structures$/ }) }).click();
+  const bed = page.locator(".plan-bed").first();
+  await bed.scrollIntoViewIfNeeded();
+  const bounds = (await bed.boundingBox())!;
+  await page.mouse.click(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2);
+  const structure = page.locator(".structure-object.selected");
+  await expect(structure).toHaveCount(1);
+  await page.getByRole("button", { name: "Rotate right 90°" }).click();
+  await expect(structure).toHaveAttribute("style", /rotate\(90deg\)/);
+  const width = page.getByLabel("Width (cm)", { exact: true });
+  const originalWidth = Number(await width.inputValue());
+  const handle = structure.locator(".structure-resize-handle");
+  await handle.scrollIntoViewIfNeeded();
+  const corner = (await handle.boundingBox())!;
+  const x = corner.x + corner.width / 2, y = corner.y + corner.height / 2;
+  await page.mouse.move(x, y);
+  await page.mouse.down();
+  await page.mouse.move(x, y + 20, { steps: 5 });
+  await page.mouse.up();
+  await expect.poll(async () => Number(await width.inputValue())).toBeGreaterThan(originalWidth);
+});
