@@ -380,3 +380,19 @@
 .reference-planner .planting-schedule-controls > label { display: grid; gap: 4px; }
 
 .reference-planner .planting-schedule-controls .gv-field-grid { grid-template-columns: 1fr; }
+
+/* Navigation stays outside the measured drawing surface. */
+.reference-planner .planner-fit-garden { flex-shrink:0; padding:2px 7px; border:1px solid #bbcfca; border-radius:4px; background:#fff; color:#167b69; font-size:10px; cursor:pointer; }
+.reference-planner .gv-stage-status { gap:8px; }
+.reference-planner .gv-stage-status > div { min-width:0; overflow:hidden; white-space:nowrap; }
+.gv-stage-scroll { touch-action:none; }
+.gv-stage-scroll[data-pan-ready=true], .gv-stage-scroll[data-pan-ready=true] * { cursor:grab !important; }
+.gv-stage-scroll[data-panning=true], .gv-stage-scroll[data-panning=true] * { cursor:grabbing !important; }
+.planner-start-panel { position:relative; padding:18px; background:#fff; border:1px solid #d4e1dc; border-radius:10px; box-shadow:0 5px 18px #213b3214; color:#354b42; }
+.gv-stage > .planner-start-panel { position:absolute; z-index:5; top:64px; left:50%; transform:translateX(-50%); width:min(340px,calc(100% - 24px)); }
+.planner-start-panel h2 { font-size:16px; margin:0 20px 8px 0; }
+.planner-start-panel p { font-size:12px; line-height:1.5; }
+.planner-start-panel > div { display:grid; gap:8px; margin:12px 0; }
+.planner-start-panel > div button { padding:9px; border:1px solid #bdd9cc; border-radius:5px; color:#126c54; background:#f2faf6; text-align:left; cursor:pointer; }
+.planner-start-panel small { display:block; font-size:11px; line-height:1.5; color:#61766c; }
+.planner-start-dismiss { position:absolute; top:8px; right:8px; border:0; background:none; cursor:pointer; }

@@ -34,7 +34,7 @@ export function GardenManagerBridge() {
     let gardens: GardenSummary[] = [];
     let disposed = false;
 
-    const activeName = () => gardens.find((garden) => garden.id === readActiveGardenId())?.name ?? "Blenheim Garden";
+    const activeName = () => gardens.find((garden) => garden.id === readActiveGardenId())?.name ?? (readActiveGardenId() === DEFAULT_GARDEN_ID ? "Blenheim Garden" : "Garden");
 
     const refreshButton = () => {
       const button = document.querySelector<HTMLButtonElement>(".gv-plan-name");
@@ -57,9 +57,6 @@ export function GardenManagerBridge() {
         const data = await response.json() as GardensResponse;
         if (!disposed && response.ok && data.ok && Array.isArray(data.gardens)) {
           gardens = data.gardens;
-          if (!gardens.some((garden) => garden.id === readActiveGardenId())) {
-            writeActiveGardenId(gardens[0]?.id ?? DEFAULT_GARDEN_ID);
-          }
           refreshButton();
         }
       } catch {
@@ -77,6 +74,10 @@ export function GardenManagerBridge() {
 
       const dialog = document.createElement("section");
       dialog.className = "garden-manager-dialog";
+      dialog.setAttribute("role", "dialog");
+      dialog.setAttribute("aria-modal", "true");
+      dialog.setAttribute("aria-label", "Choose a garden");
+      dialog.addEventListener("keydown", event => { if (event.key === "Escape") closeDialog(); });
       dialog.innerHTML = `
         <div class="garden-manager-head">
           <div><small>MY GARDENS</small><h2>Choose a garden</h2></div>
@@ -85,8 +86,9 @@ export function GardenManagerBridge() {
         <div class="garden-manager-list" data-garden-list></div>
         <div class="garden-manager-new">
           <label>New garden<input type="text" maxlength="80" placeholder="e.g. Front garden" data-new-name /></label>
+          <label>Edit key<input type="password" autocomplete="off" data-edit-key placeholder="Your garden edit key" /></label>
           <button type="button" data-create>＋ Create blank garden</button>
-          <p data-status>Each garden saves as its own D1 layout. Your original Blenheim Garden is kept separately.</p>
+          <p data-status role="status">Start with an empty 9 × 10.8 m garden. Your current garden stays separate.</p>
         </div>
       `;
       overlay.append(dialog);
@@ -98,9 +100,11 @@ export function GardenManagerBridge() {
         const item = document.createElement("button");
         item.type = "button";
         item.className = `garden-manager-item ${garden.id === activeId ? "active" : ""}`;
-        item.innerHTML = `<span><strong>${garden.name}</strong><small>${garden.year}${garden.id === activeId ? " · Open now" : ""}</small></span><b>${garden.id === activeId ? "✓" : "Open"}</b>`;
+        item.innerHTML = `<span><strong></strong><small>${garden.year}${garden.id === activeId ? " · Open now" : ""}</small></span><b>${garden.id === activeId ? "✓" : "Open"}</b>`;
+        item.querySelector("strong")!.textContent = garden.name;
         item.addEventListener("click", () => {
           if (garden.id === activeId) { closeDialog(); return; }
+          if (document.querySelector<HTMLElement>(".gv-app")?.dataset.notesDirty === "true") { dialog.querySelector<HTMLElement>("[data-status]")!.textContent = "Save your notes before switching gardens."; return; }
           writeActiveGardenId(garden.id);
           window.location.reload();
         });
@@ -120,11 +124,18 @@ export function GardenManagerBridge() {
       const nameInput = dialog.querySelector<HTMLInputElement>("[data-new-name]")!;
       const createButton = dialog.querySelector<HTMLButtonElement>("[data-create]")!;
       const status = dialog.querySelector<HTMLElement>("[data-status]")!;
+      const keyInput = dialog.querySelector<HTMLInputElement>("[data-edit-key]")!;
+      keyInput.value = sessionStorage.getItem(EDIT_KEY_SESSION) ?? "";
+      let creating = false;
       const create = async () => {
+        if (creating) return;
+        if (document.querySelector<HTMLElement>(".gv-app")?.dataset.notesDirty === "true") { status.textContent = "Save your notes before creating another garden."; return; }
         const name = nameInput.value.trim();
         if (!name) { status.textContent = "Enter a name for the new garden."; nameInput.focus(); return; }
-        const editKey = sessionStorage.getItem(EDIT_KEY_SESSION)?.trim() ?? "";
-        if (!editKey) { status.textContent = "Set your edit key in Settings first, then create the garden."; return; }
+        const editKey = keyInput.value.trim();
+        if (!editKey) { status.textContent = "Enter your edit key to create a garden."; keyInput.focus(); return; }
+        sessionStorage.setItem(EDIT_KEY_SESSION, editKey);
+        creating = true;
         createButton.disabled = true;
         status.textContent = "Creating garden…";
         try {
@@ -138,6 +149,7 @@ export function GardenManagerBridge() {
             if (response.status === 401) sessionStorage.removeItem(EDIT_KEY_SESSION);
             status.textContent = data.error ?? "Unable to create garden.";
             createButton.disabled = false;
+            creating = false;
             return;
           }
           writeActiveGardenId(data.garden.id);
@@ -145,6 +157,7 @@ export function GardenManagerBridge() {
         } catch {
           status.textContent = "Unable to reach the garden service.";
           createButton.disabled = false;
+            creating = false;
         }
       };
       createButton.addEventListener("click", () => void create());

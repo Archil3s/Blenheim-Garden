@@ -493,3 +493,32 @@ harvests, manual overrides, validation, Undo/Redo, protected SQLite/D1 round tri
 Save/reload, CSV, guide/search/empty states, Escape and plan links.
 Evidence: outputs/planting-calendar/. No live plan saved or reloaded. No assets,
 dependencies, migrations, bindings or authentication settings changed.
+
+## Canvas navigation and easier blank gardens P-015 — 7 November 2026
+
+User requested wheel zoom and easier drawing controls alongside full catalogue
+browsing and blank-garden creation. Wheel zoom is anchored to the pointer;
+trackpad/two-finger pinch, Space-left-drag and middle-button pan, +/- zoom and
+0/Fit recovery are available without changing centimetre-based plan geometry.
+A Fit garden control remains beside the canvas on narrow screens. Navigation
+ignores wheel zoom during an active drawing or object gesture; a second touch
+cancels the initial drawing gesture before pinch navigation.
+
+Plant search covers the full catalogue without an extra toggle; familiar crops
+appear first. The complete reference object bank is available initially, with searchable
+reference object categories. Blank named gardens no longer show the original
+Blenheim berry/north decorations. A dismissible starter card offers an explicit
+1.2 × 2.4 m starter bed or catalogue browsing. Select offers drawing actions instead of an empty inspector. Stale Hide layout controls
+are removed when their planting mode toolbar is absent.
+
+Garden creation accepts the existing protected edit key inline. Empty/stale
+cloud garden lists no longer reset the active garden ID. Dirty notes prevent
+switching away, and garden names are rendered as text rather than HTML.
+
+Validation: lint and production build pass. Full 268-case regression run passed
+264 checks and found four instances of the same Select-panel regression. After
+restoring the actionable Select panel and rebuilding, all 48 affected navigation,
+tool, persistence and scale checks pass unchanged at 1920×1080, 1440×900,
+1024×768 and 390×844. Screenshots reviewed at all four sizes. Real CDP touch
+input verifies pinch cancels a bed draft. Evidence: outputs/easier-garden/.
+No production plan or authentication settings changed.

@@ -2,15 +2,15 @@ import { referenceObjects, referenceObjectGroups } from "@/lib/garden/reference-
 import type { PlannerStructureKind } from "@/lib/garden/planner-plan";
 import { ReferenceObjectArt } from "./reference-object-art";
 
-export function ReferenceObjectCatalogue({ search, selected, onSelect }: {
-  search: string; selected: PlannerStructureKind; onSelect: (kind: PlannerStructureKind) => void;
+export function ReferenceObjectCatalogue({ search, selected, onSelect, category = "all" }: {
+  category?: string; search: string; selected: PlannerStructureKind; onSelect: (kind: PlannerStructureKind) => void;
 }) {
   const groups = [...referenceObjectGroups, { id: "ungrouped", displayName: "Other objects", objectCodes: referenceObjects.filter((object) => !object.group).map((object) => object.code) }];
-  return <>{groups.map((group) => {
+  return <>{groups.filter(group => category === "all" || category === group.id).map((group) => {
     const objects = referenceObjects.filter((object) => group.objectCodes.includes(object.code)
       && `${object.name} ${object.code} ${group.displayName}`.toLowerCase().includes(search.toLowerCase()));
     if (!objects.length) return null;
-    return <details className="reference-object-group" key={group.id} open={Boolean(search)}>
+    return <details className="reference-object-group" key={group.id} open={Boolean(search) || category !== "all"}>
       <summary><strong>{group.displayName}</strong><small>{objects.length} variants</small></summary>
       {objects.map((object) => {
         const kind: PlannerStructureKind = `reference-${object.code}`;

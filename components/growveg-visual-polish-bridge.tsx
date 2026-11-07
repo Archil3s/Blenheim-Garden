@@ -64,7 +64,9 @@ function decorateZoom() {
 function ensureAdvancedLayoutToggle() {
   const context = document.querySelector<HTMLElement>(".gv-context");
   const modebar = context?.querySelector<HTMLElement>(".gv-v4-modebar");
-  if (!context || !modebar || context.querySelector(".gv-advanced-layout-toggle")) return;
+  if (!context) return;
+  if (!modebar) { context.querySelector(".gv-advanced-layout-toggle")?.remove(); context.classList.remove("gv-layout-expanded"); return; }
+  if (context.querySelector(".gv-advanced-layout-toggle")) return;
 
   const toggle = document.createElement("button");
   toggle.type = "button";

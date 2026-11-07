@@ -263,3 +263,13 @@ fields in schedule_json. Calendar edits use normal plan Undo and protected Save.
 Manual harvest dates override estimates; estimates need an explicit sourced
 sowing/transplanting baseline. The source registry and exclusions are documented
 in docs/PLANTING_CALENDAR_SOURCES.md. Recorded history remains separate.
+
+## Planner navigation and blank gardens
+
+Wheel/trackpad zoom stays anchored to the cursor. Space-drag or middle-drag pans;
++/- zoom and 0/Fit reset the view. Zoom is blocked while drawing/moving objects.
+A second touch cancels the active single-pointer gesture before pinch zoom.
+Canvas navigation changes the view only, never stored centimetre coordinates.
+Plant search covers the full catalogue; familiar crops appear first. The reference object bank is grouped by category.
+Named blank gardens offer starter actions and exclude original garden decorations.
+The active garden key remains authoritative when a cloud list is empty or stale.

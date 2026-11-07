@@ -171,3 +171,14 @@ Read `PROJECT_CONTEXT.md` before making substantial changes. It is the detailed 
 
 
 The shared 3D garden editor and compatible placement persistence are described in [docs/3d-editor.md](docs/3d-editor.md).
+
+### Canvas navigation and starting from scratch
+
+Scroll the wheel or pinch to zoom around your pointer. Hold Space and drag (or
+use the middle mouse button) to pan. Use +/- to zoom and 0 or **Fit garden** to
+bring the whole garden back. Drawing gestures keep their original scale.
+
+Plant search covers the full catalogue without an extra toggle; familiar crops appear first. The complete reference object bank is grouped by category. Structure categories and
+search narrow the list. **New plan** creates a separate blank 9 × 10.8 m garden,
+with starter-bed and catalogue actions. Enter your existing edit key directly
+in the creation dialog; your original garden remains separate.
