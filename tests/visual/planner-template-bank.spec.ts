@@ -188,3 +188,38 @@ test("large PDF template renders in 3D and camera views fit its boundary", async
   await expect(page.getByTestId("inline-3d-workspace")).toHaveAttribute("data-canvas-width", "3500");
   expect(errors).toEqual([]);
 });
+
+test("PDF template items can be selected through the item list and edited", async ({ page }) => {
+  await page.route("**/api/**", route => route.fulfill({ json: data(fixture) }));
+  await page.goto("/planner");
+  await expect(page.locator(".gv-save")).toHaveText("Saved ✓");
+  await gardenMenu(page);
+  await page.getByRole("button", { name: "2023 PDF base template" }).click();
+
+  const pick = async (name: string, item: RegExp) => {
+    await gardenMenu(page);
+    await page.getByRole("button", { name: "Edit plan items…" }).click();
+    const dialog = page.getByRole("dialog", { name: "Edit plan items" });
+    await dialog.getByRole("searchbox").fill(name);
+    await dialog.getByRole("button", { name: item }).first().click();
+    await expect(dialog).toHaveCount(0);
+  };
+  for (const [query, name, selector] of [
+    ["West strawberry plot", /^West strawberry plot Bed$/, ".plan-bed.selected"],
+    ["Planting area Raspberry", /Raspberry.*Planting area/i, ".planting-area.selected"],
+    ["Blackberry", /Blackberry.*Planting row/i, ".planting-row.selected"],
+    ["Main path", /Main path.*path/i, ".layout-object.selected"],
+    ["Fruit tree", /^Fruit tree tree$/i, ".layout-object.selected"],
+    ["Blueberry arch", /Blueberry arch.*structure/i, ".layout-object.selected"],
+    ["shape line", /line.*shape/i, ".layout-object.selected"],
+    ["Entrance", /^Entrance text$/i, ".layout-object.selected"],
+  ] as const) {
+    await pick(query, name);
+    await expect(page.locator(selector)).toHaveCount(1);
+  }
+  const inspector = page.locator(".gv-context");
+  await inspector.getByLabel("Text", { exact: true }).fill("Main entrance");
+  await expect(page.locator(".layout-object.selected")).toHaveText("Main entrance");
+  await page.reload();
+  await expect(page.locator(".layout-object").filter({ hasText: /^Main entrance$/ })).toHaveCount(1);
+});

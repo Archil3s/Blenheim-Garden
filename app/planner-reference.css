@@ -468,3 +468,8 @@
 
 .garden-bed-coordinate-layer { position:absolute; left:0; top:0; width:900px; height:1080px; pointer-events:none; overflow:visible; }
 .garden-bed-coordinate-layer > .plan-bed { pointer-events:auto; }
+
+.plan-items-dialog ul { list-style:none; padding:0; margin:0; max-height:50dvh; overflow:auto; }
+.plan-items-dialog li + li { margin-top:5px; }
+.plan-items-dialog li button { display:flex; width:100%; min-height:44px; align-items:center; justify-content:space-between; gap:12px; text-align:left; }
+.plan-items-dialog li small { flex-shrink:0; text-transform:capitalize; }
