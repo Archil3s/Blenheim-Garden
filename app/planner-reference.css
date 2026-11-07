@@ -471,7 +471,11 @@
 
 .plan-items-dialog ul { list-style:none; padding:0; margin:0; max-height:50dvh; overflow:auto; }
 .plan-items-dialog li + li { margin-top:5px; }
-.plan-items-dialog li button { display:flex; width:100%; min-height:44px; align-items:center; justify-content:space-between; gap:12px; text-align:left; }
+.plan-items-dialog li { display:grid; grid-template-columns:minmax(0, 1fr) 44px; gap:5px; }
+.plan-items-dialog .plan-item-select { display:flex; min-width:0; min-height:44px; align-items:center; justify-content:space-between; gap:12px; text-align:left; }
+.plan-items-dialog .plan-item-select strong { overflow-wrap:anywhere; }
+.plan-items-dialog .plan-item-lock { min-height:44px; padding:0; }
+.plan-items-dialog .plan-item-lock[data-locked=true] { background:#d4eee3; border-color:#448872; }
 .plan-items-dialog li small { flex-shrink:0; text-transform:capitalize; }
 
 /* Keep narrow drawing targets usable at overview scale. */

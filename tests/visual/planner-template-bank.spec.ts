@@ -273,8 +273,12 @@ test("nested beds can be drawn, locked and removed without deleting their plants
     await dialog.getByRole("searchbox").fill(name);
     await dialog.getByRole("button", { name: name + " Bed", exact: true }).click();
   };
-  await pickBed("Bed 1");
-  await page.getByRole("button", { name: "Lock item", exact: true }).click();
+  await gardenMenu(page);
+  await page.getByRole("button", { name: "Edit plan items…" }).click();
+  const itemList = page.getByRole("dialog", { name: "Edit plan items" });
+  await itemList.getByRole("button", { name: "Lock Bed 1", exact: true }).click();
+  await expect(itemList.getByRole("button", { name: "Unlock Bed 1", exact: true })).toBeVisible();
+  await itemList.getByRole("button", { name: "Bed 1 Bed", exact: true }).click();
   await expect(page.getByRole("button", { name: "Unlock item" })).toBeVisible();
   await page.keyboard.press("Delete");
   await expect(page.locator(".plan-bed")).toHaveCount(24);

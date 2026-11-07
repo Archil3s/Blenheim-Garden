@@ -3,11 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { PlanSelection } from "@/lib/garden/multi-selection";
+import { planLockKey } from "@/lib/garden/plan-item-locks";
 import type { PlannerPlan } from "@/lib/garden/planner-plan";
 
-export function PlanItemsDialog({ plan, onSelect, onClose }: {
+export function PlanItemsDialog({ plan, onSelect, onToggleLock, onClose }: {
   plan: PlannerPlan;
   onSelect: (item: PlanSelection) => void;
+  onToggleLock: (item: PlanSelection) => void;
   onClose: () => void;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -33,9 +35,17 @@ export function PlanItemsDialog({ plan, onSelect, onClose }: {
   return createPortal(<dialog ref={dialog} className="garden-size-dialog plan-items-dialog" aria-labelledby="plan-items-title" onClose={onClose}>
     <header><h2 id="plan-items-title">Edit plan items</h2><button type="button" aria-label="Close plan items" onClick={onClose}>×</button></header>
     <label>Find an item<input autoFocus type="search" value={search} onChange={event => setSearch(event.target.value)} /></label>
-    <ul>{matches.map(item => <li key={item.kind + ":" + item.id}>
-      <button type="button" onClick={() => onSelect(item)}><strong>{item.label}</strong><small>{item.category}</small></button>
-    </li>)}</ul>
+    <ul>{matches.map(item => {
+      const key = planLockKey(item);
+      const locked = plan.lockedItems?.includes(key) ?? false;
+      const action = (locked ? "Unlock " : "Lock ") + item.label;
+      return <li key={key}>
+        <button type="button" className="plan-item-select" onClick={() => onSelect(item)}><strong>{item.label}</strong><small>{item.category}</small></button>
+        <button type="button" className="plan-item-lock" aria-label={action} title={action} data-locked={locked} onClick={() => onToggleLock(item)}>
+          <span aria-hidden="true">{locked ? "🔒" : "🔓"}</span>
+        </button>
+      </li>;
+    })}</ul>
     {!matches.length && <p>No matching plan items.</p>}
   </dialog>, document.body);
 }
