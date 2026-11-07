@@ -1,4 +1,5 @@
 "use client";
+import { gardenDimensions, defaultGardenDimensions, type GardenDimensions } from "@/lib/garden/garden-dimensions";
 
 import { usePlanningPeriod } from "./use-planning-period";
 import { planInPeriod } from "@/lib/garden/planting-schedule";
@@ -359,9 +360,9 @@ function addTree(root: THREE.Group, object: Extract<PlannerPlan["objects"][numbe
   root.add(group);
 }
 
-function addBoundary(root: THREE.Group, mobile: boolean) {
-  const width = GARDEN_WIDTH_CM / 100;
-  const depth = GARDEN_HEIGHT_CM / 100;
+function addBoundary(root: THREE.Group, mobile: boolean, dimensions: GardenDimensions = defaultGardenDimensions) {
+  const width = dimensions.widthCm / 100;
+  const depth = dimensions.heightCm / 100;
   const sidePosts = mobile ? 10 : 16;
   const endPosts = mobile ? 8 : 13;
   const fence = 0x9b653a;
@@ -393,9 +394,9 @@ function addBoundary(root: THREE.Group, mobile: boolean) {
   }
 }
 
-function addGardenDecor(root: THREE.Group, mobile: boolean) {
-  const width = GARDEN_WIDTH_CM / 100;
-  const depth = GARDEN_HEIGHT_CM / 100;
+function addGardenDecor(root: THREE.Group, mobile: boolean, dimensions: GardenDimensions = defaultGardenDimensions) {
+  const width = dimensions.widthCm / 100;
+  const depth = dimensions.heightCm / 100;
   const tufts = mobile ? 18 : 48;
   for (let index = 0; index < tufts; index += 1) {
     const alongSide = index % 2 === 0;
@@ -444,7 +445,13 @@ function buildGarden(root: THREE.Group, plan: PlannerPlan, mobile: boolean) {
     const holder = new THREE.Group(); holder.userData.planKey = key; holder.userData.planStamp = stamp;
     build(holder); root.add(holder);
   };
-  reconcile("decor", mobile, (holder) => { addBoundary(holder, mobile); addGardenDecor(holder, mobile); });
+  reconcile("decor", [mobile, plan.canvas], (holder) => {
+    const dimensions = gardenDimensions(plan);
+    holder.position.set((dimensions.widthCm - 900) / 200, 0, (dimensions.heightCm - 1080) / 200);
+    addBoundary(holder, mobile, dimensions); addGardenDecor(holder, mobile, dimensions);
+    const soil = new THREE.Mesh(new THREE.PlaneGeometry(dimensions.widthCm / 100, dimensions.heightCm / 100), mat(palette.grass, 1));
+    soil.rotation.x = -Math.PI / 2; soil.position.y = -.01; soil.receiveShadow = true; holder.add(soil);
+  });
   for (const bed of plan.beds) reconcile("bed:" + bed.id, bed, (holder) => addRaisedBed(holder, bed, plan.plantingAreas.find((a) => a.bedId === bed.id), mobile));
   for (const area of plan.plantingAreas) reconcile("area:" + area.id, [area, plan.beds.find((b) => b.id === area.bedId)], (holder) => addPlantingArea(holder, plan, area, mobile));
   for (const row of plan.rows) reconcile("row:" + row.id, [row, plan.beds], (holder) => addRow(holder, row, mobile, plan));
@@ -511,7 +518,13 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     if (!runtime) return;
     clearSelection(selectionRef);
     if (demoRef.current) { disposeObject(runtime.content); runtime.content.clear(); addDemonstrationBed3D(runtime.content, runtime.mobile); }
-    else buildGarden(runtime.content, planRef.current, runtime.mobile);
+    else {
+      const stamp = JSON.stringify(planRef.current.canvas);
+      const changedSize = runtime.content.userData.canvas !== stamp;
+      buildGarden(runtime.content, planRef.current, runtime.mobile);
+      runtime.content.userData.canvas = stamp;
+      if (changedSize && planRef.current.canvas) fitGardenCamera(runtime);
+    }
     runtime.renderer.render(runtime.scene, runtime.camera);
   }, []);
 
@@ -657,7 +670,7 @@ export function Garden3DUnified({ plan: suppliedPlan }: { plan?: PlannerPlan }) 
     const observer = new ResizeObserver(resize);
     observer.observe(mount);
     resize();
-    if (mobile) fitGardenCamera(runtime);
+    if (mobile || planRef.current.canvas) fitGardenCamera(runtime);
 
     renderer.setAnimationLoop(() => {
       if (controls.update() || runtime.needsRender) {

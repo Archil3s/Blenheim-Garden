@@ -2,11 +2,15 @@
 
 import { useCallback, useEffect, useEffectEvent, useLayoutEffect, useRef, type RefObject } from "react";
 
-export function useCanvasNavigation({ stageRef, canvasRef, zoom, blocked, onZoom, onFit }: {
+export function useCanvasNavigation({ stageRef, canvasRef, zoom, canvasWidth, blocked, panBackground, panMode, onBackgroundClick, onZoom, onFit }: {
   stageRef: RefObject<HTMLDivElement | null>;
   canvasRef: RefObject<HTMLDivElement | null>;
   zoom: number;
+  canvasWidth: number;
   blocked: boolean;
+  panBackground: boolean;
+  panMode: boolean;
+  onBackgroundClick: () => void;
   onZoom: (zoom: number) => void;
   onFit: () => void;
 }) {
@@ -20,7 +24,7 @@ export function useCanvasNavigation({ stageRef, canvasRef, zoom, blocked, onZoom
   const anchor = () => {
     const target = pending.current, canvas = canvasRef.current;
     if (!target || !canvas) return;
-    const rect = canvas.getBoundingClientRect(), scale = rect.width / 900;
+    const rect = canvas.getBoundingClientRect(), scale = rect.width / canvasWidth;
     position.current.x += target.x - (rect.left + target.worldX * scale);
     position.current.y += target.y - (rect.top + target.worldY * scale);
     applyPosition();
@@ -37,8 +41,8 @@ export function useCanvasNavigation({ stageRef, canvasRef, zoom, blocked, onZoom
     const rect = canvas.getBoundingClientRect(), viewport = stage.getBoundingClientRect();
     const px = x ?? viewport.left + viewport.width / 2;
     const py = y ?? viewport.top + viewport.height / 2;
-    pending.current = { x: px, y: py, worldX: (px - rect.left) / (rect.width / 900), worldY: (py - rect.top) / (rect.width / 900) };
-    const next = Math.max(25, Math.min(200, Math.round(value)));
+    pending.current = { x: px, y: py, worldX: (px - rect.left) / (rect.width / canvasWidth), worldY: (py - rect.top) / (rect.width / canvasWidth) };
+    const next = Math.max(1, Math.min(200, Math.round(value)));
     currentZoom.current = next;
     if (next === zoom) anchor();
     else onZoom(next);
@@ -54,6 +58,9 @@ export function useCanvasNavigation({ stageRef, canvasRef, zoom, blocked, onZoom
   };
   const fitEvent = useEffectEvent(fit);
   const isBlocked = useEffectEvent(() => blocked);
+  const backgroundClick = useEffectEvent(onBackgroundClick);
+  const explicitPan = useEffectEvent(() => panMode);
+  const canPan = useEffectEvent((event: PointerEvent) => panMode || (panBackground && !event.shiftKey && !event.ctrlKey && !event.metaKey && (event.target === canvasRef.current || event.target === stageRef.current || (event.target as HTMLElement).classList.contains("gv-ruler-grid"))));
   useEffect(() => {
     const stage = stageRef.current;
     if (!stage) return;
@@ -66,8 +73,9 @@ export function useCanvasNavigation({ stageRef, canvasRef, zoom, blocked, onZoom
     const wheel = (event: WheelEvent) => {
       event.preventDefault();
       if (isBlocked()) return;
-      if (event.shiftKey) {
-        position.current.x -= event.deltaY || event.deltaX;
+      if (event.shiftKey || event.altKey) {
+        if (event.altKey) position.current.y -= event.deltaY;
+        else position.current.x -= event.deltaY || event.deltaX;
         applyPosition();
         return;
       }
@@ -78,6 +86,7 @@ export function useCanvasNavigation({ stageRef, canvasRef, zoom, blocked, onZoom
       if (event.pointerType === "touch") {
         touches.set(event.pointerId, { x: event.clientX, y: event.clientY });
         if (touches.size === 2) {
+          pan = null; delete stage.dataset.panning;
           internalCancel = true;
           canvasRef.current?.dispatchEvent(new PointerEvent("pointercancel", { bubbles: true, pointerId: [...touches.keys()][0] }));
           internalCancel = false;
@@ -86,7 +95,8 @@ export function useCanvasNavigation({ stageRef, canvasRef, zoom, blocked, onZoom
           suppressTouch = true;
         }
         if (suppressTouch) { event.preventDefault(); event.stopPropagation(); stage.setPointerCapture(event.pointerId); }
-      } else if ((event.button === 1 || (event.button === 0 && space)) && !isBlocked()) {
+      }
+      if (!suppressTouch && (event.button === 1 || (event.button === 0 && (space || canPan(event)))) && !isBlocked()) {
         event.preventDefault(); event.stopPropagation();
         pan = { id: event.pointerId, x: event.clientX, y: event.clientY, startX: position.current.x, startY: position.current.y };
         stage.setPointerCapture(event.pointerId);
@@ -114,6 +124,7 @@ export function useCanvasNavigation({ stageRef, canvasRef, zoom, blocked, onZoom
       if (suppressTouch) { event.preventDefault(); event.stopPropagation(); }
       if (!touches.size) { suppressTouch = false; pinch = null; }
       if (pan?.id === event.pointerId) {
+        if (event.type === "pointerup" && !explicitPan() && !space && event.button === 0 && Math.hypot(event.clientX - pan.x, event.clientY - pan.y) < 3) backgroundClick();
         event.preventDefault(); event.stopPropagation(); pan = null; delete stage.dataset.panning;
       }
     };

@@ -1,3 +1,4 @@
+import { gardenDimensions } from "./garden-dimensions";
 import { blockCorners } from "./planting-block";
 import type { PlannerPlan } from "./planner-plan";
 import { pastePlanSelection, type ClipboardSelection } from "./selection-clipboard";
@@ -62,7 +63,8 @@ export function moveSelection(plan: PlannerPlan, selections: PlanSelection[], dx
   let minX = -Infinity, maxX = Infinity, minY = -Infinity, maxY = Infinity;
   for (const item of items) {
     const rect = selectionBounds(plan, item)!;
-    let frame = { x: 0, y: 0, w: 900, h: 1080 };
+    const dimensions = gardenDimensions(plan);
+    let frame = { x: 0, y: 0, w: dimensions.widthCm, h: dimensions.heightCm };
     if (item.kind === "planting") {
       const area = plan.plantingAreas.find((area) => area.id === item.id)!;
       frame = selectionBounds(plan, { kind: "bed", id: String(area.bedId) })!;

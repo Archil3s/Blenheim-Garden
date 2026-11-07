@@ -1,3 +1,4 @@
+import { gardenDimensions } from "@/lib/garden/garden-dimensions";
 import * as THREE from "three";
 import type { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { areaPlants, bedRectangle, rowPlants, validateEditorPlan, type PlanSelection, type PointCm } from "@/lib/garden/plan-editing";
@@ -70,7 +71,8 @@ export function installGardenEditInteractions(runtime: Runtime, getEditor: () =>
     if (previousTool !== editor.tool) { resetPreview(); previousTool = editor.tool; }
     if (disabled() || editor.tool === "select" || editor.tool === "move") { preview.visible = false; return; }
     const point = groundPoint(event); if (!point) return;
-    let valid = point.x >= 0 && point.x <= 900 && point.y >= 0 && point.y <= 1080;
+    const dimensions = gardenDimensions(editor.plan);
+    let valid = point.x >= 0 && point.x <= dimensions.widthCm && point.y >= 0 && point.y <= dimensions.heightCm;
     try { validateEditorPlan(placementPlan(editor.plan, editor.tool, point, startPoint, editor.settings)); } catch { valid = false; }
     if (editor.tool === "plant") {
       for (const object of editor.plan.objects) {

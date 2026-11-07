@@ -522,3 +522,51 @@ tool, persistence and scale checks pass unchanged at 1920×1080, 1440×900,
 1024×768 and 390×844. Screenshots reviewed at all four sizes. Real CDP touch
 input verifies pinch cancels a bed draft. Evidence: outputs/easier-garden/.
 No production plan or authentication settings changed.
+
+## PDF base template, garden dimensions and catalogue recovery P-016 — 7 November 2026
+
+User requested a blank canvas, then supplied UPDATED LARGE PLOT berries - 2023.pdf
+as the base template, alongside easier catalogue scrolling, map movement and
+editable garden dimensions. Garden menu now offers the editable PDF layout,
+Blank template, Garden size and Restore previous draft. Template changes are
+undoable working-plan edits; normal protected Save publishes them. A garden-scoped
+local backup remains available after refresh. Stored gardens are never reset
+merely by deploying or opening the planner.
+
+The one-page raster PDF was rendered and reviewed at full resolution. Its ruler
+covers 35 × 35 m. Editable beds/partitions, 97 visible crop symbols, paths, fruit
+tree, blueberry arch and curved west divider are reconstructed with the existing
+artwork. Positions/dimensions are traced to roughly 10 cm from the printed grid,
+not survey data. Crops inside beds are attached explicit placements, so moving
+a bed carries its planting layout. Crop names/counts follow visible symbols, including 16 asparagus,
+Boysenberry and Passionfruit; no historical planting dates or cultivars are invented.
+No copy of the original PDF/artwork is served as a flattened canvas background.
+
+Optional plan.canvas dimensions persist atomically in the existing gardens
+canvas_width_cm/canvas_height_cm fields during protected Save; no new migration.
+Older plans retain 900 × 1080 cm defaults. Legacy bed percentages retain their
+original 9 × 10.8 m coordinate basis, while the visible boundary/rulers, editor
+limits, clipboard/group movement, export and 3D fence/ground/camera use the new
+boundary. A fixed 900 × 1080 coordinate layer retains legacy percentage-based
+bed rendering and grouped-selection compatibility inside that boundary. Resizing
+preserves physical geometry and rejects a boundary that clips
+the current plan. Dimensions are 1–100 m, at centimetre precision.
+
+An old flex-shrink:0 rule on context children caused the catalogue content to grow
+to its full list height behind a clipped outer panel. Excluding the scroll surface
+fixes the root cause. One scroll area now has pinned search/category tabs, compact
+controls, collapsed extra type filters, full images in their rows and extra bottom
+scroll clearance. Crop images no longer clip at planting-area/bed borders. Map
+movement supports dragging empty ground, an explicit Move map mode, Space/middle
+pan, Shift-wheel horizontal and Alt-wheel vertical movement; wheel/pinch zoom stays.
+Modified background drags still permit box selection; clicks deselect normally.
+
+Lint, production build and all 292 regression checks passed across desktop, laptop, tablet and phone.
+No production plan saved or live user tab reloaded; no assets, packages, secrets,
+Cloudflare authentication settings or DB/R2 bindings changed.
+
+Legacy compatibility: the original reference berry/north overlay is retained only
+for default-garden plans containing original numeric bed identities 1–12 and no
+custom boundary. Empty, new and PDF template plans never gain this overlay; adding
+a starter bed after clearing cannot resurrect it. This preserves the original
+reference view without adding uneditable items to new templates.

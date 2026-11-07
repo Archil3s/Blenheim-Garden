@@ -12,7 +12,7 @@ export async function ensurePlantPlacementSchema(db: D1DatabaseLike) {
   }
 }
 
-export function parsePlantPlacements(value: unknown, area: boolean) {
+export function parsePlantPlacements(value: unknown, area: boolean, maxOffset = 1080) {
   if (value === undefined || value === null) return undefined;
   if (!Array.isArray(value) || value.length < 1 || value.length > 10000) throw new Error("Plant placements are invalid or larger than the supported limits.");
   const ids = new Set<string>();
@@ -21,7 +21,7 @@ export function parsePlantPlacements(value: unknown, area: boolean) {
     const p = item as Record<string, unknown>;
     if (typeof p.id !== "string" || !p.id || p.id.length > 180 || ids.has(p.id) || typeof p.x !== "number" || typeof p.y !== "number" || !Number.isFinite(p.x) || !Number.isFinite(p.y)) throw new Error("Plant placement has invalid coordinates or id.");
     if (area && (p.x < 0 || p.x > 100 || p.y < 0 || p.y > 100)) throw new Error("Plant placement is outside its area.");
-    if (!area && (Math.abs(p.x) > 10000 || Math.abs(p.y) > 1080)) throw new Error("Plant placement is outside the garden.");
+    if (!area && (Math.abs(p.x) > 10000 || Math.abs(p.y) > maxOffset)) throw new Error("Plant placement is outside the garden.");
     ids.add(p.id);
     return { id: p.id, x: p.x, y: p.y };
   });

@@ -1,3 +1,4 @@
+import { gardenDimensions } from "./garden-dimensions";
 import type { PlannerBed, PlannerPlan, PlannerPlantingArea, PlannerRow } from "./planner-plan";
 import { blockCorners, isSquareFootSize } from "./planting-block";
 import { rowSymbolPositions } from "./row-layout";
@@ -139,10 +140,12 @@ export function duplicatePlanSelection(plan: PlannerPlan, selection: PlanSelecti
 }
 
 export function validateEditorPlan(plan: PlannerPlan) {
+  const { widthCm: gardenWidthCm, heightCm: gardenHeightCm } = gardenDimensions(plan);
+  const bedTolerance = gardenWidthCm === 900 && gardenHeightCm === 1080 ? 1.0501 : 1.000001;
   const inGarden = (p: PointCm) => Number.isFinite(p.x) && Number.isFinite(p.y) && p.x >= 0 && p.y >= 0 && p.x <= gardenWidthCm && p.y <= gardenHeightCm;
   for (const bed of plan.beds) {
     const rect = bedRectangle(bed);
-    if (![rect.x, rect.y, rect.w, rect.h].every(Number.isFinite) || rect.w < 10 || rect.h < 10 || rect.x < 0 || rect.y < 0 || rect.x + rect.w > gardenWidthCm * 1.0501 || rect.y + rect.h > gardenHeightCm * 1.0501) throw new Error("The bed must fit inside the garden.");
+    if (![rect.x, rect.y, rect.w, rect.h].every(Number.isFinite) || rect.w < 10 || rect.h < 10 || rect.x < 0 || rect.y < 0 || rect.x + rect.w > gardenWidthCm * bedTolerance || rect.y + rect.h > gardenHeightCm * bedTolerance) throw new Error("The bed must fit inside the garden.");
   }
   for (const area of plan.plantingAreas) {
     if (area.x < 0 || area.y < 0 || area.w <= 0 || area.h <= 0 || area.x + area.w > 100.01 || area.y + area.h > 100.01) throw new Error("The planting must fit inside its bed.");

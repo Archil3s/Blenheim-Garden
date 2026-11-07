@@ -273,3 +273,31 @@ Canvas navigation changes the view only, never stored centimetre coordinates.
 Plant search covers the full catalogue; familiar crops appear first. The reference object bank is grouped by category.
 Named blank gardens offer starter actions and exclude original garden decorations.
 The active garden key remains authoritative when a cloud list is empty or stale.
+
+## Editable outer garden boundary and supplied PDF template
+
+PlannerPlan.canvas optionally stores widthCm/heightCm (100–10000, whole cm).
+The protected garden API reads/writes the existing gardens dimension columns,
+atomically with a plan save. Omit canvas for the historical 900 × 1080 defaults.
+Bed percentages remain canonical units of 9 cm horizontally and 10.8 cm vertically,
+independent of the current outer boundary. Never multiply those values by a custom
+canvas size: that would stretch existing beds and all contained plant positions.
+2D beds use percentage styles inside a fixed 900 × 1080 coordinate layer; never
+make that layer track the outer boundary size. Coordinate tools, validators, clipboard/group
+movement, reports and 3D outer geometry use gardenDimensions(plan).
+
+createLargePlotTemplate reconstructs the supplied 2023 raster PDF's 35 × 35 m grid
+with editable objects and fresh identities. Geometry is a nearest-10-cm trace,
+not surveyed measurements. Existing saved plans win over default templates.
+Template application backs up the working plan per garden, supports normal Undo
+and exposes Restore previous draft after refresh. Cloud writes remain explicit.
+
+Catalogue scrolling depends on .gv-context-content shrinking inside its max-height
+parent. Do not restore the old garden-first.css flex-shrink:0 rule for this child.
+Plant/object banks use one scroll surface with pinned controls and unclipped art.
+
+Legacy compatibility: the original reference berry/north overlay is retained only
+for default-garden plans containing original numeric bed identities 1–12 and no
+custom boundary. Empty, new and PDF template plans never gain this overlay; adding
+a starter bed after clearing cannot resurrect it. This preserves the original
+reference view without adding uneditable items to new templates.

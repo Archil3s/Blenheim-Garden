@@ -396,3 +396,75 @@
 .planner-start-panel > div button { padding:9px; border:1px solid #bdd9cc; border-radius:5px; color:#126c54; background:#f2faf6; text-align:left; cursor:pointer; }
 .planner-start-panel small { display:block; font-size:11px; line-height:1.5; color:#61766c; }
 .planner-start-dismiss { position:absolute; top:8px; right:8px; border:0; background:none; cursor:pointer; }
+
+/* One scroll surface for the bank; search remains in reach. */
+.reference-planner .gv-context[data-catalogue=true] .gv-context-content { display:block; overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:#8eb7a8 #f2f6f4; scroll-padding-top:90px; }
+.reference-planner .gv-context[data-catalogue=true] .gv-plant-list { overflow:visible; max-height:none; min-height:0; }
+.reference-planner .gv-context[data-catalogue=true] .plant-source-filters { display:contents; }
+.reference-planner .gv-context[data-catalogue=true] .gv-filters { position:sticky; top:0; z-index:4; padding:8px 10px; gap:5px; box-shadow:0 1px 0 #dce7e1; }
+.reference-planner .gv-context[data-catalogue=true] .gv-filters :is(input,select) { min-height:32px !important; height:32px; border-radius:5px; padding:4px 7px; font-size:12px; }
+.reference-planner .gv-context[data-catalogue=true] .plant-source-filters > header { display:flex; align-items:center; gap:6px; padding:7px 10px; position:relative; background:#f8faf9; font-size:11px; }
+.reference-planner .gv-context[data-catalogue=true] .plant-source-checkboxes { padding:5px 10px; gap:8px; font-size:11px; }
+.reference-planner .gv-context[data-catalogue=true] .plant-companion-filter { margin:5px 10px; width:calc(100% - 20px); min-height:26px; font-size:11px; }
+.reference-planner .gv-context[data-catalogue=true] .plant-companion-filter[hidden] { display:none; }
+.reference-planner .gv-context[data-catalogue=true] .gv-panel-section-title { display:none; }
+.reference-planner .gv-context[data-catalogue=true] .gv-catalogue-options { margin:0; padding:5px 10px; font-size:11px; }
+.reference-planner .gv-context[data-catalogue=true] .gv-catalogue-options label { font-size:11px; }
+.reference-planner .gv-context[data-catalogue=true] .gv-planting-mode { display:flex; align-items:center; gap:6px; padding:5px 10px; margin:0; font-size:11px; }
+.reference-planner .gv-context[data-catalogue=true] .gv-planting-mode select { flex:1; min-width:0; min-height:30px; font-size:11px; }
+.reference-planner .gv-context[data-catalogue=true] .gv-plant-list > button { height:56px; min-height:56px; }
+.catalogue-switcher { display:flex; gap:4px; padding:7px 10px; border-bottom:1px solid #dce7e1; background:white; }
+.catalogue-switcher button { flex:1; border:0; padding:8px 5px; border-radius:5px; background:#f1f5f3; color:#50665c; font-size:11px; cursor:pointer; }
+.catalogue-switcher button[aria-pressed=true] { background:#e1f3e9; color:#126c50; font-weight:600; }
+.reference-planner .gv-context-header .gv-tools-expand { font-size:11px; }
+.reference-planner .planner-fit-garden[aria-pressed=true] { background:#d9f2e5; border-color:#43a17c; }
+@media(max-width:550px) { .reference-planner .gv-stage-status > div { display:none; } .reference-planner .gv-stage-status { justify-content:flex-start; padding:0 5px; gap:4px; } }
+
+.planner-garden-menu { position:relative; flex-shrink:0; font-size:11px; }
+.planner-garden-menu > summary { padding:3px 7px; background:white; border:1px solid #bbcfca; border-radius:4px; cursor:pointer; list-style:none; color:#167b69; }
+.planner-garden-menu > div { position:absolute; top:28px; right:0; width:230px; padding:8px; display:grid; gap:5px; z-index:210; border:1px solid #cadbd2; border-radius:8px; background:white; box-shadow:0 6px 24px #18382a26; }
+.planner-garden-menu button { padding:10px; border:0; border-radius:4px; text-align:left; background:#f2f7f4; color:#245b43; cursor:pointer; }
+.planner-garden-menu small { font-size:10px; line-height:1.5; padding:5px; }
+.garden-size-dialog { width:min(420px,calc(100% - 24px)); padding:22px; border:1px solid #cbded4; border-radius:12px; color:#304c3d; }
+.garden-size-dialog::backdrop { background:#183b2c66; }
+.garden-size-dialog header,.garden-size-dialog footer { display:flex; justify-content:space-between; gap:10px; align-items:center; }
+.garden-size-dialog h2 { margin:0; font-size:20px; }
+.garden-size-dialog p,.garden-size-dialog small { font-size:12px; line-height:1.5; }
+.garden-size-dialog label { display:grid; gap:6px; margin:16px 0; font-size:13px; }
+.garden-size-dialog input { width:100%; min-height:42px; padding:8px; border:1px solid #b6cdc0; border-radius:6px; }
+.garden-size-dialog button { min-height:36px; padding:8px 12px; border:1px solid #b6cdc0; border-radius:6px; background:#eff7f2; cursor:pointer; }
+.garden-size-dialog footer { margin-top:20px; justify-content:flex-end; }
+.garden-size-dialog [role=alert] { color:#a13525; }
+.reference-planner .gv-stage-status { overflow:visible; }
+@media(max-width:550px) { .planner-garden-menu > div { right:auto; left:0; } }
+
+.reference-planner .gv-stage-status { justify-content:flex-start; }
+.reference-planner .gv-stage-status > div { margin-left:auto; }
+@media(min-width:761px) { .gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-body:not(.panel-closed) .gv-stage-status { padding-left:300px; } }
+
+.reference-planner .gv-context[data-catalogue=true] .catalogue-switcher { position:sticky; top:0; z-index:6; }
+.reference-planner .gv-context[data-catalogue=true] .gv-filters { top:48px; }
+.reference-planner .gv-context[data-catalogue=true] .gv-context-content { scroll-padding-top:140px; }
+
+.garden-canvas.tool-select:not(.box-select) { cursor:grab; }
+.gv-app[data-pan-mode=true] .gv-stage-scroll * { cursor:grab; }
+
+.reference-planner .gv-context[data-catalogue=true] .gv-plant-list > button { height:60px; min-height:60px; padding-top:6px !important; padding-bottom:6px !important; overflow:visible; }
+.reference-planner .gv-context[data-catalogue=true] .gv-plant-icon { padding:2px; box-sizing:border-box; overflow:visible; flex-shrink:0; }
+.reference-planner .gv-context[data-catalogue=true] .gv-structure-preset-icon { width:44px; height:44px; min-width:44px; flex:0 0 44px; overflow:visible; }
+.reference-planner .gv-context[data-catalogue=true] .gv-plant-list { padding-bottom:20px; }
+.reference-planner .gv-context[data-catalogue=true] .reference-object-group > button { min-height:64px; }
+.reference-planner .gv-context[data-catalogue=true] .gv-context-content { padding-bottom:16px; }
+
+.reference-planner .gv-v4-bed { overflow:visible !important; }
+.reference-planner .planting-area, .reference-planner .planting-area-icons { overflow:visible; }
+
+.reference-planner[data-plant-picked=false] .gv-context[data-catalogue=true] .gv-planting-mode { display:none; }
+.reference-planner .gv-context[data-catalogue=true] .gv-catalogue-options { min-height:24px; }
+
+.reference-planner[data-plant-picked=false] .gv-context[data-catalogue=true] :is(.catalogue-variety,.catalogue-custom-variety) { display:none; }
+
+.reference-planner .gv-context[data-catalogue=true] .gv-catalogue-options:has(input[placeholder="Object name"]) { position:sticky; top:48px; z-index:4; background:#f8faf9; box-shadow:0 1px 0 #dce7e1; }
+
+.garden-bed-coordinate-layer { position:absolute; left:0; top:0; width:900px; height:1080px; pointer-events:none; overflow:visible; }
+.garden-bed-coordinate-layer > .plan-bed { pointer-events:auto; }

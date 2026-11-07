@@ -1,4 +1,5 @@
 "use client";
+import { gardenDimensions } from "@/lib/garden/garden-dimensions";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -21,6 +22,7 @@ function NumberField({ label, value, min, max, onCommit }: { label: string; valu
 }
 
 export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DEditor; disabled: boolean }) {
+  const { widthCm: maxWidthCm, heightCm: maxHeightCm } = gardenDimensions(editor.plan);
   const [keyOpen, setKeyOpen] = useState(false);
   const [editKey, setEditKey] = useState("");
   const [search, setSearch] = useState("");
@@ -57,7 +59,7 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
           <p>Recommended spacing: {crop.spacingCm} cm. Close planting is allowed.</p>
         </>}
         {editor.tool === "structure" && <label>Structure<select value={settings.structureKind} onChange={(e) => editor.setSettings({ ...settings, structureKind: e.target.value as PlannerStructureKind })}>{STRUCTURE_PRESETS.map((p) => <option key={p.kind} value={p.kind}>{p.label}</option>)}</select></label>}
-        {editor.tool === "bed" && <>{setting("Width (cm)", "width", 40, 900)}{setting("Depth (cm)", "depth", 40, 1080)}</>}
+        {editor.tool === "bed" && <>{setting("Width (cm)", "width", 40, maxWidthCm)}{setting("Depth (cm)", "depth", 40, maxHeightCm)}</>}
         {editor.tool === "path" && setting("Width (cm)", "pathWidth", 20, 400)}
         {editor.tool === "trellis" && <>{setting("Height (cm)", "height", 20, 500)}{setting("Post spacing (cm)", "postSpacing", 30, 1000)}</>}
         {editor.tool === "tree" && setting("Canopy diameter (cm)", "diameter", 20, 1000)}
@@ -72,22 +74,22 @@ export function Garden3DEditorControls({ editor, disabled }: { editor: Garden3DE
         {editor.plantPoint ? <>
           <p>Individual plant · {"spacingCm" in item ? item.spacingCm : 0} cm recommended spacing</p>
           {"bedId" in item && <p>{editor.plan.beds.find((b) => b.id === item.bedId)?.name}</p>}
-          <NumberField label="X (cm)" value={editor.plantPoint.x} min={0} max={900} onCommit={(x) => editor.action((p) => movePlanSelection(p, selection, { x: x - editor.plantPoint!.x, y: 0 }))} />
-          <NumberField label="Y (cm)" value={editor.plantPoint.y} min={0} max={1080} onCommit={(y) => editor.action((p) => movePlanSelection(p, selection, { x: 0, y: y - editor.plantPoint!.y }))} />
+          <NumberField label="X (cm)" value={editor.plantPoint.x} min={0} max={maxWidthCm} onCommit={(x) => editor.action((p) => movePlanSelection(p, selection, { x: x - editor.plantPoint!.x, y: 0 }))} />
+          <NumberField label="Y (cm)" value={editor.plantPoint.y} min={0} max={maxHeightCm} onCommit={(y) => editor.action((p) => movePlanSelection(p, selection, { x: 0, y: y - editor.plantPoint!.y }))} />
         </> : <>
           {"name" in item && <>
             <label>Name<input key={item.name} defaultValue={item.name} onBlur={(e) => { if (e.target.value.trim()) editor.update("name", e.target.value.trim()); }} /></label>
             <NumberField label="X (cm)" value={bedRectangle(item).x} onCommit={(x) => editor.update("x", x / 9)} />
             <NumberField label="Y (cm)" value={bedRectangle(item).y} onCommit={(y) => editor.update("y", y / 10.8)} />
-            <NumberField label="Width (cm)" value={bedRectangle(item).w} min={40} max={900} onCommit={(w) => editor.update("w", w / 9)} />
-            <NumberField label="Depth (cm)" value={bedRectangle(item).h} min={40} max={1080} onCommit={(h) => editor.update("h", h / 10.8)} />
+            <NumberField label="Width (cm)" value={bedRectangle(item).w} min={40} max={maxWidthCm} onCommit={(w) => editor.update("w", w / 9)} />
+            <NumberField label="Depth (cm)" value={bedRectangle(item).h} min={40} max={maxHeightCm} onCommit={(h) => editor.update("h", h / 10.8)} />
             <p>Resizing retains all plants and scales their positions within the bed.</p>
           </>}
           {"label" in item && <label>Label / type<input key={item.label} defaultValue={item.label} onBlur={(e) => editor.update("label", e.target.value)} /></label>}
-          {"type" in item && "x" in item && <>{field("X (cm)", "x", item.x, 0, 900)}{field("Y (cm)", "y", item.y, 0, 1080)}</>}
-          {"x1" in item && <>{field("Start X (cm)", "x1", item.x1, 0, 900)}{field("Start Y (cm)", "y1", item.y1, 0, 1080)}{field("End X (cm)", "x2", item.x2, 0, 900)}{field("End Y (cm)", "y2", item.y2, 0, 1080)}</>}
-          {"widthCm" in item && field("Width (cm)", "widthCm", item.widthCm, 30, item.type === "path" ? 400 : 900)}
-          {"depthCm" in item && field("Depth (cm)", "depthCm", item.depthCm, 30, 1080)}
+          {"type" in item && "x" in item && <>{field("X (cm)", "x", item.x, 0, maxWidthCm)}{field("Y (cm)", "y", item.y, 0, maxHeightCm)}</>}
+          {"x1" in item && <>{field("Start X (cm)", "x1", item.x1, 0, maxWidthCm)}{field("Start Y (cm)", "y1", item.y1, 0, maxHeightCm)}{field("End X (cm)", "x2", item.x2, 0, maxWidthCm)}{field("End Y (cm)", "y2", item.y2, 0, maxHeightCm)}</>}
+          {"widthCm" in item && field("Width (cm)", "widthCm", item.widthCm, 30, item.type === "path" ? 400 : maxWidthCm)}
+          {"depthCm" in item && field("Depth (cm)", "depthCm", item.depthCm, 30, maxHeightCm)}
           {"heightCm" in item && field("Height (cm)", "heightCm", item.heightCm, 20, item.type === "trellis" ? 500 : 600)}
           {"postSpacingCm" in item && field("Post spacing (cm)", "postSpacingCm", item.postSpacingCm, 30, 1000)}
           {"diameterCm" in item && field("Canopy diameter (cm)", "diameterCm", item.diameterCm, 20, 1000)}

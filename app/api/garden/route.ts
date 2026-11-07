@@ -1,3 +1,4 @@
+import { defaultGardenDimensions, gardenDimensions, parseGardenDimensions, type GardenDimensions } from "@/lib/garden/garden-dimensions";
 import { parsePlantingSchedule } from "@/lib/garden/planting-schedule";
 import { parsePlantingBlock, blockCorners, blockGrid, isSquareFootSize } from "@/lib/garden/planting-block";
 import { ensureDesignerSchema } from "@/lib/garden/designer-schema";
@@ -121,7 +122,8 @@ function normalizeRotation(value: number) {
   return ((value % 360) + 360) % 360;
 }
 
-function canvasPoint(value: Record<string, unknown>, xField: string, yField: string, label: string) {
+function canvasPoint(value: Record<string, unknown>, xField: string, yField: string, label: string, dimensions: GardenDimensions = defaultGardenDimensions) {
+  const CANVAS_WIDTH = dimensions.widthCm, CANVAS_HEIGHT = dimensions.heightCm;
   if (!finite(value[xField]) || !finite(value[yField])) throw new Error(`${label} has invalid coordinates.`);
   const x = value[xField] as number;
   const y = value[yField] as number;
@@ -129,7 +131,8 @@ function canvasPoint(value: Record<string, unknown>, xField: string, yField: str
   return { x, y };
 }
 
-function parseLayoutObject(raw: unknown, index: number): PlannerLayoutObject {
+function parseLayoutObject(raw: unknown, index: number, dimensions: GardenDimensions): PlannerLayoutObject {
+  const CANVAS_WIDTH = dimensions.widthCm, CANVAS_HEIGHT = dimensions.heightCm;
   if (!raw || typeof raw !== "object") throw new Error(`Drawing object ${index + 1} is invalid.`);
   const object = raw as Record<string, unknown>;
   const id = optionalString(object.id);
@@ -137,8 +140,8 @@ function parseLayoutObject(raw: unknown, index: number): PlannerLayoutObject {
   if (!id || id.length > 160 || !["path", "trellis", "tree", "structure", "text", "shape"].includes(String(type))) throw new Error(`Drawing object ${index + 1} is invalid.`);
 
   if (type === "path" || type === "trellis") {
-    const start = canvasPoint(object, "x1", "y1", `Drawing object ${index + 1}`);
-    const end = canvasPoint(object, "x2", "y2", `Drawing object ${index + 1}`);
+    const start = canvasPoint(object, "x1", "y1", `Drawing object ${index + 1}`, dimensions);
+    const end = canvasPoint(object, "x2", "y2", `Drawing object ${index + 1}`, dimensions);
     if (Math.hypot(end.x - start.x, end.y - start.y) < 5) throw new Error(`Drawing object ${index + 1} is too short.`);
     if (type === "path") {
       if (!finite(object.widthCm) || object.widthCm <= 0 || object.widthCm > 400) throw new Error(`Path ${index + 1} has an invalid width.`);
@@ -149,9 +152,9 @@ function parseLayoutObject(raw: unknown, index: number): PlannerLayoutObject {
     return { id, type, x1: start.x, y1: start.y, x2: end.x, y2: end.y, heightCm: object.heightCm, postSpacingCm: object.postSpacingCm, label: optionalString(object.label) };
   }
 
-  if (type === "shape") return parseDesignerShape(object);
+  if (type === "shape") return parseDesignerShape(object, dimensions);
 
-  const point = canvasPoint(object, "x", "y", `Drawing object ${index + 1}`);
+  const point = canvasPoint(object, "x", "y", `Drawing object ${index + 1}`, dimensions);
   if (type === "tree") {
     if (!finite(object.diameterCm) || object.diameterCm < 20 || object.diameterCm > 1000) throw new Error(`Tree ${index + 1} has an invalid canopy diameter.`);
     return { id, type, x: point.x, y: point.y, diameterCm: object.diameterCm, label: optionalString(object.label) };
@@ -193,7 +196,9 @@ function areaCapacity(area: Pick<PlannerPlantingArea, "spacingCm" | "x" | "y" | 
 
 function parsePlan(value: unknown): PlannerPlan {
   if (!value || typeof value !== "object") throw new Error("Plan payload is required.");
-  const candidate = value as { beds?: unknown; plantingAreas?: unknown; rows?: unknown; objects?: unknown };
+  const candidate = value as { beds?: unknown; plantingAreas?: unknown; rows?: unknown; objects?: unknown; canvas?: unknown };
+  const dimensions = parseGardenDimensions(candidate.canvas);
+  const CANVAS_WIDTH = dimensions.widthCm, CANVAS_HEIGHT = dimensions.heightCm;
   if (!Array.isArray(candidate.beds) || !Array.isArray(candidate.rows)) throw new Error("Plan must contain beds and rows arrays.");
   const objectInput = candidate.objects === undefined ? [] : candidate.objects;
   if (!Array.isArray(objectInput)) throw new Error("Plan drawing objects must be an array.");
@@ -209,7 +214,7 @@ function parsePlan(value: unknown): PlannerPlan {
     const y = bed.y as number;
     const w = bed.w as number;
     const h = bed.h as number;
-    if (x < 0 || y < 0 || w <= 0 || h <= 0 || x + w > MAX_BED_EDGE_PERCENT || y + h > MAX_BED_EDGE_PERCENT) throw new Error(`Bed ${index + 1} is outside the garden canvas.`);
+    if (x < 0 || y < 0 || w <= 0 || h <= 0 || x + w > CANVAS_WIDTH / 9 * (dimensions.widthCm === 900 && dimensions.heightCm === 1080 ? MAX_BED_EDGE_PERCENT / 100 : 1) + .01 || y + h > CANVAS_HEIGHT / 10.8 * (dimensions.widthCm === 900 && dimensions.heightCm === 1080 ? MAX_BED_EDGE_PERCENT / 100 : 1) + .01) throw new Error(`Bed ${index + 1} is outside the garden canvas.`);
     return {
       id: bed.id as number,
       name: bed.name.trim(),
@@ -292,10 +297,10 @@ function parsePlan(value: unknown): PlannerPlan {
     const variety = optionalString(row.variety);
     if (!id || id.length > 160 || !crop || !cropIcon || !variety) throw new Error(`Row ${index + 1} is missing planting details.`);
     for (const field of ["spacingCm", "x1", "y1", "x2", "y2", "count"] as const) if (!finite(row[field])) throw new Error(`Row ${index + 1} has invalid geometry or spacing.`);
-    const start = canvasPoint(row, "x1", "y1", `Row ${index + 1}`);
-    const end = canvasPoint(row, "x2", "y2", `Row ${index + 1}`);
+    const start = canvasPoint(row, "x1", "y1", `Row ${index + 1}`, dimensions);
+    const end = canvasPoint(row, "x2", "y2", `Row ${index + 1}`, dimensions);
     if ((row.spacingCm as number) <= 0 || (row.count as number) < 1) throw new Error(`Row ${index + 1} has invalid spacing or plant count.`);
-    return { schedule: parsePlantingSchedule(row.schedule), block: parsePlantingBlock(row.block), id, crop, cropIcon, variety, spacingCm: row.spacingCm as number, x1: start.x, y1: start.y, x2: end.x, y2: end.y, count: parsePlantPlacements(row.placements, false)?.length ?? Math.round(row.count as number), placements: parsePlantPlacements(row.placements, false) };
+    return { schedule: parsePlantingSchedule(row.schedule), block: parsePlantingBlock(row.block), id, crop, cropIcon, variety, spacingCm: row.spacingCm as number, x1: start.x, y1: start.y, x2: end.x, y2: end.y, count: parsePlantPlacements(row.placements, false, Math.hypot(CANVAS_WIDTH, CANVAS_HEIGHT))?.length ?? Math.round(row.count as number), placements: parsePlantPlacements(row.placements, false, Math.hypot(CANVAS_WIDTH, CANVAS_HEIGHT)) };
   });
 
   for (const row of rows) {
@@ -304,7 +309,7 @@ function parsePlan(value: unknown): PlannerPlan {
     if (row.block && blockCorners(row).some(p => p.x < -1e-7 || p.x > CANVAS_WIDTH + 1e-7 || p.y < -1e-7 || p.y > CANVAS_HEIGHT + 1e-7)) throw new Error("Planting block is outside the garden canvas.");
     if (row.placements && rowPlants(row).some((p) => p.x < 0 || p.x > CANVAS_WIDTH || p.y < 0 || p.y > CANVAS_HEIGHT)) throw new Error("Plant placement is outside the garden canvas.");
   }
-  return { beds, plantingAreas, rows, objects: objectInput.map(parseLayoutObject) };
+  return { ...(candidate.canvas ? { canvas: dimensions } : {}), beds, plantingAreas, rows, objects: objectInput.map((object, index) => parseLayoutObject(object, index, dimensions)) };
 }
 
 function plantingTarget(planting: Pick<ActivePlanting, "bed_id" | "row_id" | "area_id">) {
@@ -418,7 +423,7 @@ export async function GET(request: Request) {
     const rows: PlannerRow[] = (rowsResult.results ?? []).map((row) => ({
       schedule: row.schedule_json ? parsePlantingSchedule(JSON.parse(row.schedule_json)) : undefined,
       block: row.block_json ? parsePlantingBlock(JSON.parse(row.block_json)) : undefined,
-      placements: row.placements_json ? parsePlantPlacements(JSON.parse(row.placements_json), false) : undefined,
+      placements: row.placements_json ? parsePlantPlacements(JSON.parse(row.placements_json), false, 15000) : undefined,
       id: row.id, crop: row.crop_name, cropIcon: row.crop_icon ?? "🌱", variety: row.variety ?? row.crop_name,
       spacingCm: Number(row.spacing_cm ?? 30), x1: Number(row.x1_cm), y1: Number(row.y1_cm), x2: Number(row.x2_cm),
       y2: Number(row.y2_cm), count: Number(row.estimated_count ?? 1),
@@ -444,11 +449,14 @@ export async function GET(request: Request) {
       return { id: item.id, type: "text", ...point, text: item.text_value ?? "Label", fontSize: Number(item.font_size ?? 13) };
     });
 
+    const metadata = await db.prepare("SELECT canvas_width_cm, canvas_height_cm FROM gardens WHERE id = ?").bind(gardenId).first<{ canvas_width_cm: number; canvas_height_cm: number }>();
+    const canvas = metadata ? { widthCm: Number(metadata.canvas_width_cm), heightCm: Number(metadata.canvas_height_cm) } : defaultGardenDimensions;
     const orderedObjects = [
       ...objects.map((object, index) => ({ object, order: layoutResult.results?.[index]?.sort_order ?? index })),
-      ...(shapeResult.results ?? []).map((row) => ({ object: parseDesignerShape(JSON.parse(row.payload_json)), order: row.sort_order })),
+      ...(shapeResult.results ?? []).map((row) => ({ object: parseDesignerShape(JSON.parse(row.payload_json), canvas), order: row.sort_order })),
     ].sort((a, b) => a.order - b.order).map((entry) => entry.object);
-    return Response.json({ ok: true, source: "d1", gardenId, plan: { beds, plantingAreas, rows, objects: orderedObjects } });
+
+    return Response.json({ ok: true, source: "d1", gardenId, plan: { ...(canvas.widthCm !== 900 || canvas.heightCm !== 1080 ? { canvas } : {}), beds, plantingAreas, rows, objects: orderedObjects } });
   } catch (error) {
     return Response.json({ ok: false, error: error instanceof Error ? error.message : "Unable to load garden plan." }, { status: 503 });
   }
@@ -629,7 +637,8 @@ export async function PUT(request: Request) {
       }
     }
 
-    statements.push(db.prepare("UPDATE gardens SET updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind(gardenId));
+    const dimensions = gardenDimensions(plan);
+    statements.push(db.prepare("UPDATE gardens SET canvas_width_cm = ?, canvas_height_cm = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?").bind(dimensions.widthCm, dimensions.heightCm, gardenId));
     if (statements.length) await db.batch(statements);
     return Response.json({ ok: true, gardenId, savedAt: new Date().toISOString() });
   } catch (error) {

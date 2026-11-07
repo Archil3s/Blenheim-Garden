@@ -102,7 +102,7 @@
 .gv-app .gv-filters { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .gv-app .gv-filters label { min-width: 0; font-size: 12px; }
 .gv-app .gv-filters input, .gv-app .gv-filters select { width: 100%; min-width: 0; }
-.gv-app .gv-context > :not(.gv-plant-list, .gv-selection-panel, .gv-tool-panel) { flex-shrink: 0; }
+.gv-app .gv-context > :not(.gv-plant-list, .gv-selection-panel, .gv-tool-panel, .gv-context-content) { flex-shrink: 0; }
 .gv-app .gv-plant-list { min-height: 80px; }
 .gv-season-drawer p, .gv-season-drawer button, .gv-season-drawer summary { font-size: 13px; line-height: 1.5; }
 .gv-season-drawer :is(.gv-season-action-title, .gv-frost-title) strong { font-size: 14px; }

@@ -10,7 +10,7 @@ _Last updated: 22 August 2026_
 
 ## Current status
 
-The measured garden canvas is the main application. The working plan is approximately **9 m × 10.8 m** and preserves the original 12 numbered beds plus the berry/cane area.
+The measured garden canvas is the main application. The original saved garden is approximately **9 m × 10.8 m**, with its 12 numbered beds. The supplied 2023 PDF base template uses a separate **35 × 35 m** drawing boundary and is available from the Garden menu.
 
 ### Drawing Interface V2
 
@@ -182,3 +182,20 @@ Plant search covers the full catalogue without an extra toggle; familiar crops a
 search narrow the list. **New plan** creates a separate blank 9 × 10.8 m garden,
 with starter-bed and catalogue actions. Enter your existing edit key directly
 in the creation dialog; your original garden remains separate.
+
+### Templates and garden size
+
+Open **Garden** beside Move map/Fit:
+
+- **2023 PDF base template** loads the supplied large plot as editable beds,
+  berries, asparagus, paths, fruit tree, arch and curved divider on a 35 × 35 m grid.
+- **Blank template** clears the working layout while retaining its boundary.
+- **Garden size** changes width and length in metres without scaling plants/beds.
+- **Restore previous draft** recovers the layout from before the last template
+  change, including after a refresh. Undo is also available during the session.
+
+Template geometry is traced from the raster PDF's grid to roughly 10 cm, not
+surveyed. Save publishes the current draft through the normal edit-key protection.
+The catalogue has one scroll area, pinned search/tabs and an Expand control.
+Drag empty canvas space or enable Move map to pan; Shift-wheel moves sideways,
+Alt-wheel moves vertically, and ordinary wheel/pinch still zooms.

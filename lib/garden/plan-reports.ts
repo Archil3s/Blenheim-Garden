@@ -1,3 +1,4 @@
+import { gardenDimensions } from "./garden-dimensions";
 import { rowPlants } from "./plan-editing";
 import { blockCorners } from "./planting-block";
 import type { PlannerPlan } from "./planner-plan";
@@ -81,7 +82,9 @@ export function xmlText(text: string) {
 }
 
 export function planSvg(plan: PlannerPlan, title: string) {
-  const drawingHeight = Math.max(1080, ...plan.beds.map((bed) => (bed.y + bed.h) * 10.8));
+  const dimensions = gardenDimensions(plan);
+  const drawingWidth = Math.max(dimensions.widthCm, ...plan.beds.map(bed => (bed.x + bed.w) * 9));
+  const drawingHeight = Math.max(dimensions.heightCm, ...plan.beds.map((bed) => (bed.y + bed.h) * 10.8));
   const pageHeight = Math.ceil(drawingHeight + 140);
   const shapes: string[] = [];
   const frontShapes: string[] = [];
@@ -114,5 +117,5 @@ export function planSvg(plan: PlannerPlan, title: string) {
     for (const plant of rowPlants(row)) shapes.push(`<circle cx="${plant.x}" cy="${plant.y}" r="4" fill="#759363"/>`);
     shapes.push(`<text x="${row.x1}" y="${row.y1 - 8}">${xmlText(row.variety || row.crop)} ×${row.placements?.length ?? row.count}</text>`);
   }
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="${pageHeight}" viewBox="-50 -70 1000 ${pageHeight}"><title>${xmlText(title)}</title><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="#fff"/><path d="M100 0H0V100" fill="none" stroke="#e3e7db"/></pattern></defs><rect x="-50" y="-70" width="1000" height="${pageHeight}" fill="#fff"/><text x="0" y="-33" font-family="Georgia,serif" font-size="24">${xmlText(title)}</text><rect width="900" height="1080" fill="url(#grid)" stroke="#a6af9a"/><g font-family="sans-serif" font-size="12" fill="#294535">${[...shapes, ...frontShapes].join("")}</g><text x="0" y="${drawingHeight + 40}" font-family="sans-serif" font-size="13">Blenheim Garden · 9 × 10.8 m · schematic plan</text></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${drawingWidth + 100}" height="${pageHeight}" viewBox="-50 -70 ${drawingWidth + 100} ${pageHeight}"><title>${xmlText(title)}</title><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="#fff"/><path d="M100 0H0V100" fill="none" stroke="#e3e7db"/></pattern></defs><rect x="-50" y="-70" width="${drawingWidth + 100}" height="${pageHeight}" fill="#fff"/><text x="0" y="-33" font-family="Georgia,serif" font-size="24">${xmlText(title)}</text><rect width="${dimensions.widthCm}" height="${dimensions.heightCm}" fill="url(#grid)" stroke="#a6af9a"/><g font-family="sans-serif" font-size="12" fill="#294535">${[...shapes, ...frontShapes].join("")}</g><text x="0" y="${drawingHeight + 40}" font-family="sans-serif" font-size="13">Blenheim Garden · ${dimensions.widthCm / 100} × ${dimensions.heightCm / 100} m · schematic plan</text></svg>`;
 }

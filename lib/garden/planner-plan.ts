@@ -214,6 +214,7 @@ export type PlannerShape = {
 export type PlannerLayoutObject = PlannerPath | PlannerTrellis | PlannerTree | PlannerStructure | PlannerText | PlannerShape;
 
 export type PlannerPlan = {
+  canvas?: { widthCm: number; heightCm: number };
   beds: PlannerBed[];
   plantingAreas: PlannerPlantingArea[];
   rows: PlannerRow[];

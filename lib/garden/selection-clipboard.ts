@@ -1,3 +1,4 @@
+import { gardenDimensions } from "./garden-dimensions";
 import { blockCorners } from "./planting-block";
 import type { PlannerPlan } from "./planner-plan";
 
@@ -7,6 +8,7 @@ const bound = (value: number, max: number) => Math.max(0, Math.min(max, value));
 
 export function pastePlanSelection(current: PlannerPlan, stored: PlanClipboard) {
   const plan = structuredClone(current);
+  const { widthCm, heightCm } = gardenDimensions(plan);
   const selection = stored.selection;
   const id = crypto.randomUUID();
   if (selection.kind === "bed") {
@@ -15,7 +17,7 @@ export function pastePlanSelection(current: PlannerPlan, stored: PlanClipboard) 
     // Sequential IDs could reuse an archived bed's persistent history identity.
     let nextId = Date.now() * 1000 + Math.floor(Math.random() * 1000);
     while (plan.beds.some((item) => item.id === nextId)) nextId++;
-    plan.beds.push({ ...bed, id: nextId, name: `${bed.name} copy`, x: bound(bed.x + 20 / 9, 100 - bed.w), y: bound(bed.y + 20 / 10.8, 100 - bed.h) });
+    plan.beds.push({ ...bed, id: nextId, name: `${bed.name} copy`, x: bound(bed.x + 20 / 9, widthCm / 9 - bed.w), y: bound(bed.y + 20 / 10.8, heightCm / 10.8 - bed.h) });
     plan.plantingAreas.push(...stored.plan.plantingAreas.filter((area) => area.bedId === bed.id).map((area) => ({ ...structuredClone(area), id: crypto.randomUUID(), plantingId: undefined, bedId: nextId, placements: area.placements?.map((point) => ({ ...point, id: crypto.randomUUID() })) })));
     return { plan, selection: { kind: "bed" as const, id: String(nextId) } };
   }
@@ -31,11 +33,11 @@ export function pastePlanSelection(current: PlannerPlan, stored: PlanClipboard) 
   if ("placements" in copy) copy.placements = copy.placements?.map((point) => ({ ...point, id: crypto.randomUUID() }));
   if ("x1" in copy) {
     const corners = !("type" in copy) ? blockCorners(copy) : [{ x: copy.x1, y: copy.y1 }, { x: copy.x2, y: copy.y2 }];
-    const dx = Math.min(20, 900 - Math.max(...corners.map(p => p.x)));
-    const dy = Math.min(20, 1080 - Math.max(...corners.map(p => p.y)));
+    const dx = Math.min(20, widthCm - Math.max(...corners.map(p => p.x)));
+    const dy = Math.min(20, heightCm - Math.max(...corners.map(p => p.y)));
     copy.x1 += dx; copy.x2 += dx; copy.y1 += dy; copy.y2 += dy;
   } else {
-    copy.x = bound(copy.x + 20, 900); copy.y = bound(copy.y + 20, 1080);
+    copy.x = bound(copy.x + 20, widthCm); copy.y = bound(copy.y + 20, heightCm);
   }
   if ("type" in copy) {
     if (copy.type === "shape") copy.locked = false;

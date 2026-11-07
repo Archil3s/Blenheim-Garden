@@ -5,17 +5,17 @@ import { createPortal } from "react-dom";
 import { defaultPlantFilters, plantFacts, rotationFamilies, type PlantFilters } from "@/lib/garden/plant-catalogue-filters";
 import { PlantArt } from "./plant-art";
 
-export function PlantCatalogueFilters({ value, onChange, onReset, selected, children }: {
+export function PlantCatalogueFilters({ value, onChange, onReset, selected, children, extra }: {
   value: PlantFilters; onChange: (value: PlantFilters) => void;
-  onReset: () => void; selected: string; children?: ReactNode;
+  onReset: () => void; selected: string; children?: ReactNode; extra?: ReactNode;
 }) {
   return <section className="plant-source-filters" aria-label="Plant filters">
-    <header><strong>Filters</strong><button type="button" onClick={() => { onChange(defaultPlantFilters); onReset(); }}>Reset</button><details><summary>Show More »</summary><div className="plant-advanced-filters">
+    {children}
+    <header><strong>Filters</strong><button type="button" onClick={() => { onChange(defaultPlantFilters); onReset(); }}>Reset</button><details><summary>Show More »</summary><div className="plant-advanced-filters">{extra}
       {([["easy", "Easy to Grow"], ["frost", "Frost Tolerant"], ["shade", "Partial Shade Tolerant"], ["autumn", "Autumn Planting"], ["tropical", "Include Tropicals"]] as const).map(([key, label]) => <label key={key}><input type="checkbox" checked={value[key]} onChange={(event) => onChange({ ...value, [key]: event.target.checked })} />{label}</label>)}
       <label>Crop Rotation Family<select aria-label="Crop Rotation Family" value={value.family} onChange={(event) => onChange({ ...value, family: event.target.value })}><option value="all">All Families</option>{rotationFamilies.map((family, index) => <option key={family} value={index}>{family}</option>)}</select></label>
     </div></details></header>
-    {children}
-    <button type="button" className="plant-companion-filter" disabled={!selected} aria-pressed={value.companions} title={`Show companion plants for ${selected}`} onClick={() => onChange({ ...value, companions: !value.companions })}>Show Companions ♥</button>
+    <button type="button" className="plant-companion-filter" hidden={!selected} disabled={!selected} aria-pressed={value.companions} title={`Show companion plants for ${selected}`} onClick={() => onChange({ ...value, companions: !value.companions })}>Show Companions ♥</button>
     <div className="plant-source-checkboxes"><label><input type="checkbox" checked={value.favouritesOnly} onChange={(event) => onChange({ ...value, favouritesOnly: event.target.checked })} />Favorites</label><label><input type="checkbox" checked={value.perennials} onChange={(event) => onChange({ ...value, perennials: event.target.checked })} />Include Perennials</label></div>
   </section>;
 }

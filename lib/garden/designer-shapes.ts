@@ -1,8 +1,9 @@
+import { defaultGardenDimensions, type GardenDimensions } from "./garden-dimensions";
 import type { PlannerShape, PlannerShapeKind } from "./planner-plan";
 
 export const shapeKinds: readonly PlannerShapeKind[] = ["rectangle", "triangle", "ellipse", "line"];
 
-export function parseDesignerShape(value: unknown): PlannerShape {
+export function parseDesignerShape(value: unknown, dimensions: GardenDimensions = defaultGardenDimensions): PlannerShape {
   if (!value || typeof value !== "object") throw new Error("Invalid drawing shape.");
   const input = value as Record<string, unknown>;
   const finite = (key: string, min: number, max: number) => {
@@ -15,8 +16,8 @@ export function parseDesignerShape(value: unknown): PlannerShape {
   if (typeof input.stroke !== "string" || !/^#[0-9a-f]{6}$/i.test(input.stroke)) throw new Error("Invalid outline colour.");
   if (typeof input.fill !== "string" || !/^(none|#[0-9a-f]{6})$/i.test(input.fill)) throw new Error("Invalid fill colour.");
   return { id: input.id, type: "shape", shape: input.shape as PlannerShapeKind,
-    x: finite("x", 0, 900), y: finite("y", 0, 1080),
-    widthCm: finite("widthCm", 5, input.shape === "line" ? 1500 : 900), heightCm: finite("heightCm", 1, 1080),
+    x: finite("x", 0, dimensions.widthCm), y: finite("y", 0, dimensions.heightCm),
+    widthCm: finite("widthCm", 5, input.shape === "line" ? Math.max(1500, Math.hypot(dimensions.widthCm, dimensions.heightCm)) : dimensions.widthCm), heightCm: finite("heightCm", 1, dimensions.heightCm),
     rotationDeg: ((finite("rotationDeg", -3600, 3600) % 360) + 360) % 360,
     stroke: input.stroke, fill: input.fill, lineWidth: finite("lineWidth", 1, 20),
     locked: input.locked === true, behind: input.behind === true };
