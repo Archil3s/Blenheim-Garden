@@ -507,3 +507,13 @@
 .garden-canvas.tool-select .plan-bed[data-skip-locked="true"] > .planting-area:not([data-skip-locked="true"]) .planting-area-label {
   pointer-events: auto;
 }
+
+
+.reference-planner .garden-canvas.tool-select .planting-area-icons i[data-plant-id] { pointer-events: auto; }
+
+.garden-canvas [data-selected-plant="true"] {
+  outline: 2px solid var(--gv-green);
+  outline-offset: 2px;
+  border-radius: 50%;
+  z-index: 1;
+}

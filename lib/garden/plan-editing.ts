@@ -164,3 +164,34 @@ export function validateEditorPlan(plan: PlannerPlan) {
     } else if (!inGarden(object)) throw new Error("Place the object inside the garden.");
   }
 }
+
+export function changeIndividualPlant(
+  plan: PlannerPlan,
+  selection: PlanSelection,
+  crop: Pick<PlannerRow, "crop" | "cropIcon" | "variety" | "spacingCm">,
+): { plan: PlannerPlan; selection: PlanSelection } | undefined {
+  if (!selection.plantId || (selection.kind !== "row" && selection.kind !== "area")) return;
+  const source = selectionItem(plan, selection) as PlannerRow | PlannerPlantingArea | undefined;
+  if (!source || (source.crop === crop.crop && source.variety === crop.variety)) return;
+  if (!source.placements && source.count > 10000) throw new Error("Split this planting before editing individual plants.");
+  const point = ("bedId" in source ? areaPlants(plan, source) : rowPlants(source)).find(item => item.id === selection.plantId);
+  if (!point) return;
+  const remaining = editPlant(plan, selection);
+  const id = crypto.randomUUID();
+  if ("bedId" in source) {
+    if (remaining.plantingAreas.length >= 2000) throw new Error("This garden has reached its planting area limit.");
+    const rect = areaRectangle(plan, source);
+    const area: PlannerPlantingArea = {
+      ...source, ...crop, id, plantingId: undefined, count: 1, pattern: "single",
+      placements: [{ id: point.id, x: (point.x - rect.x) * 100 / rect.w, y: (point.y - rect.y) * 100 / rect.h }],
+    };
+    return { plan: { ...remaining, plantingAreas: [...remaining.plantingAreas, area] }, selection: { kind: "area", id, plantId: point.id } };
+  }
+  if (remaining.rows.length >= 1000) throw new Error("This garden has reached its planting row limit.");
+  const row: PlannerRow = {
+    ...crop, id, schedule: source.schedule, count: 1,
+    x1: point.x, y1: point.y, x2: point.x, y2: point.y,
+    placements: [{ id: point.id, x: 0, y: 0 }],
+  };
+  return { plan: { ...remaining, rows: [...remaining.rows, row] }, selection: { kind: "row", id, plantId: point.id } };
+}

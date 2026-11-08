@@ -344,3 +344,25 @@ test("locked beds pass canvas clicks through to their unlocked plantings", async
   await toggle.click();
   await expect(bed).not.toHaveClass(/selected/);
 });
+
+test("a single row icon can change crop without moving its neighbours", async ({ page }, info) => {
+  test.skip(info.project.name !== "desktop", "Checks a mouse click on an individual icon.");
+  const row = {
+    id: "tomato-row", crop: "Tomato", cropIcon: "🍅", variety: "Roma", spacingCm: 50,
+    count: 3, x1: 400, y1: 160, x2: 600, y2: 160,
+  };
+  await page.route("**/api/**", route => route.fulfill({ json: data({ ...empty, rows: [row] }) }));
+  await page.goto("/planner");
+  await expect(page.locator(".gv-save")).toHaveText("Saved ✓");
+  await page.locator(".planting-row[data-crop=Tomato] [data-plant-index='2']").click();
+  await page.getByLabel("Crop species").selectOption("Taro");
+  await page.getByRole("button", { name: "Change this plant" }).click();
+  await expect(page.locator(".planting-row[data-crop=Tomato]")).toHaveAttribute("data-count", "2");
+  await expect(page.locator(".planting-row[data-crop=Taro]")).toHaveAttribute("data-count", "1");
+  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem("blenheim-garden-live-plan")!)) as PlannerPlan;
+  expect(rowPlants(saved.rows.find(item => item.crop === "Tomato")!).map(item => item.x)).toEqual([400, 600]);
+  expect(rowPlants(saved.rows.find(item => item.crop === "Taro")!)[0]).toMatchObject({ x: 500, y: 160 });
+  await page.locator('.gv-quickbar button[title^="Undo"]').click();
+  await expect(page.locator(".planting-row[data-crop=Tomato]")).toHaveAttribute("data-count", "3");
+  await expect(page.locator(".planting-row[data-crop=Taro]")).toHaveCount(0);
+});

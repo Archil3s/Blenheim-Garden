@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { parsePlanLocks, planLockKey, preservesPlanLocks } from "@/lib/garden/plan-item-locks";
+import { changeIndividualPlant } from "@/lib/garden/plan-editing";
+import { IndividualPlantControls } from "./individual-plant-controls";
 import { removeBedKeepingPlants } from "@/lib/garden/detach-bed-plants";
 import { PlanItemsDialog } from "./plan-items-dialog";
 import { GardenSizeDialog } from "./garden-size-dialog";
@@ -57,7 +59,7 @@ type Tool = "shape" | "select" | "plant" | "row" | "bed" | "path" | "trellis" | 
 type SaveState = "idle" | "saving" | "cloud" | "local" | "error";
 type LoadSource = "starting" | "cloud" | "local" | "default";
 type Point = { x: number; y: number };
-type Selection = { kind: "bed" | "planting" | "row" | "object"; id: string } | null;
+type Selection = { kind: "bed" | "planting" | "row" | "object"; id: string; plantId?: string } | null;
 type Draft = { kind: "plant" | "select" | "bed" | "row" | "path" | "trellis" | "shape"; start: Point; end: Point } | null;
 type Interaction =
   | { kind: "group-drag"; start: Point; plan: PlanState; selections: PlanSelection[] }
@@ -646,13 +648,18 @@ export function GardenPlanner() {
     setInteraction({ kind: resize ? "bed-resize" : "bed-drag", id: bed.id, start: point, bed: structuredClone(bed) });
   }
 
+  function clickedPlantId(event: ReactPointerEvent<HTMLElement>) {
+    return (event.target as HTMLElement).closest<HTMLElement>("[data-plant-id]")?.dataset.plantId;
+  }
+
   function startPlantingInteraction(event: ReactPointerEvent<HTMLElement>, area: PlannerPlantingArea, resize = false) {
     event.stopPropagation();
     if (beginGroupInteraction(event, { kind: "planting", id: area.id }, resize)) return;
     if (tool !== "select" && tool !== "plant") return;
     const point = interactionPoint(event);
     if (!point) return;
-    setSelection({ kind: "planting", id: area.id });
+    const plantId = !resize && tool === "select" ? clickedPlantId(event) : undefined;
+    setSelection({ kind: "planting", id: area.id, plantId });
     remember();
     setInteraction({ kind: resize ? "planting-resize" : "planting-drag", id: area.id, start: point, area: structuredClone(area) });
   }
@@ -663,7 +670,8 @@ export function GardenPlanner() {
     if (tool !== "select" && tool !== "row") return;
     const point = interactionPoint(event);
     if (!point) return;
-    setSelection({ kind: "row", id: row.id }); remember();
+    const plantId = mode === "row-drag" && tool === "select" ? clickedPlantId(event) : undefined;
+    setSelection({ kind: "row", id: row.id, plantId }); remember();
     setInteraction({ kind: mode, id: row.id, start: point, row: { ...row } });
   }
 
@@ -1067,6 +1075,24 @@ export function GardenPlanner() {
     setClipboardReady(true);
   }
 
+  function individualPlantEditor(source: PlantingRow | PlannerPlantingArea) {
+    if (!selection?.plantId || selectionLocked) return null;
+    const { id, plantId } = selection;
+    const kind = "bedId" in source ? "area" : "row";
+    return <IndividualPlantControls key={id + ":" + plantId} crop={source.crop} variety={source.variety} onChange={crop => {
+      setItemEditError("");
+      try {
+        const next = changeIndividualPlant(plan, { kind, id, plantId }, crop);
+        if (!next) return;
+        if (!preservesPlanLocks(plan, next.plan)) throw new Error("Unlock this planting before changing it.");
+        commit(next.plan);
+        setSelection({ kind: kind === "area" ? "planting" : "row", id: next.selection.id, plantId });
+      } catch (error) {
+        setItemEditError(error instanceof Error ? error.message : "Could not change this plant.");
+      }
+    }} />;
+  }
+
   function selectionInspector() {
     if (groupSelection.length > 1) return <div className="gv-selection-panel gv-group-selection"><h2>{groupSelection.length} items selected</h2>{itemEditError && <p role="alert">{itemEditError}</p>}<p>Drag a selected item to move the selection.</p><div className="gv-edit-actions"><button type="button" onClick={copyDrawingSelection}>Copy selection</button><button type="button" onClick={duplicateSelection}>Duplicate selection</button><button type="button" onClick={deleteSelection}>Delete selection</button></div><button type="button" className="gv-secondary-action" onClick={() => setSelection(null)}>Deselect all</button></div>;
     if (selectedObject?.type === "shape") return <DesignerShapeInspector shape={selectedObject} onChange={updateShape} onDuplicate={duplicateSelection} onDelete={deleteSelection} />;
@@ -1075,6 +1101,8 @@ export function GardenPlanner() {
       const widthM = bedSize.w * selectedPlanting.w / 100 / 100;
       const heightM = bedSize.h * selectedPlanting.h / 100 / 100;
       return <div className="gv-selection-panel gv-planting-inspector" data-bed-id={selectedPlanting.bedId} data-planting-id={selectedPlanting.plantingId ?? ""}>
+        {individualPlantEditor(selectedPlanting)}
+        {selection?.plantId && itemEditError && <p role="alert">{itemEditError}</p>}
         <div className="gv-selection-hero"><span><PlantArt crop={selectedPlanting.crop} variety={selectedPlanting.variety} fallback={selectedPlanting.cropIcon} /></span><div><small>PLANTING AREA</small><h2>{selectedPlanting.variety}</h2><p>{selectedPlantingBed.name} · {widthM.toFixed(1)} × {heightM.toFixed(1)} m</p></div></div>
         <dl><div><dt>Crop</dt><dd>{selectedPlanting.crop}</dd></div><div><dt>Plants</dt><dd>≈ {selectedPlanting.count}</dd></div><div><dt>Spacing</dt><dd>{selectedPlanting.spacingCm} cm centres</dd></div></dl>
         <PlantingScheduleControls key={selectedPlanting.id} schedule={selectedPlanting.schedule} onChange={schedule => changeSchedule("planting", selectedPlanting.id, schedule)} onSuccession={crop => succession("planting", selectedPlanting.id, crop)} />
@@ -1113,7 +1141,7 @@ export function GardenPlanner() {
         <details className="gv-inspector-section gv-danger-zone"><summary>Danger zone</summary><p>Removing a bed keeps its plants in place and preserves its saved history.</p>{areas.length > 0 && <button type="button" className="gv-secondary-action danger" onClick={clearBed}>Clear all plantings</button>}<button type="button" className="gv-secondary-action danger" onClick={deleteSelection}>Remove bed</button></details>
       </div>;
     }
-    if (selectedRow) return <div className="gv-selection-panel"><div className="gv-selection-hero"><span><PlantArt crop={selectedRow.crop} variety={selectedRow.variety} fallback={selectedRow.cropIcon} /></span><div><small>{selectedRow.block?.mode === "square-foot" ? "SQUARE FOOT" : selectedRow.block ? "PLANTING BLOCK" : "PLANTING ROW"}</small><h2>{selectedRow.variety}</h2><p>{(lineLength(selectedRow) / 100).toFixed(1)} m · ≈ {selectedRow.count} plants</p></div></div><label>Spacing (cm)<input type="number" value={selectedRow.spacingCm} min={2} onChange={(event) => { const spacing = Math.max(2, Number(event.target.value) || 2); setPlan((current) => ({ ...current, rows: current.rows.map((row) => row.id === selectedRow.id ? resizePlantingRow(row, { spacingCm: spacing }) : row) })); }} /></label><PlantingScheduleControls key={selectedRow.id} schedule={selectedRow.schedule} onChange={schedule => changeSchedule("row", selectedRow.id, schedule)} onSuccession={crop => succession("row", selectedRow.id, crop)} /><PlantingBlockControls row={selectedRow} onChange={next => edit(current => ({ ...current, rows: current.rows.map(row => row.id === next.id ? next : row) }))} /><p className="gv-help">Drag to move. Use the square corner to grow a block; round endpoints change a row.</p><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
+    if (selectedRow) return <div className="gv-selection-panel">{individualPlantEditor(selectedRow)}{selection?.plantId && itemEditError && <p role="alert">{itemEditError}</p>}<div className="gv-selection-hero"><span><PlantArt crop={selectedRow.crop} variety={selectedRow.variety} fallback={selectedRow.cropIcon} /></span><div><small>{selectedRow.block?.mode === "square-foot" ? "SQUARE FOOT" : selectedRow.block ? "PLANTING BLOCK" : "PLANTING ROW"}</small><h2>{selectedRow.variety}</h2><p>{(lineLength(selectedRow) / 100).toFixed(1)} m · ≈ {selectedRow.count} plants</p></div></div><label>Spacing (cm)<input type="number" value={selectedRow.spacingCm} min={2} onChange={(event) => { const spacing = Math.max(2, Number(event.target.value) || 2); setPlan((current) => ({ ...current, rows: current.rows.map((row) => row.id === selectedRow.id ? resizePlantingRow(row, { spacingCm: spacing }) : row) })); }} /></label><PlantingScheduleControls key={selectedRow.id} schedule={selectedRow.schedule} onChange={schedule => changeSchedule("row", selectedRow.id, schedule)} onSuccession={crop => succession("row", selectedRow.id, crop)} /><PlantingBlockControls row={selectedRow} onChange={next => edit(current => ({ ...current, rows: current.rows.map(row => row.id === next.id ? next : row) }))} /><p className="gv-help">Drag to move. Use the square corner to grow a block; round endpoints change a row.</p><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
     if (!selectedObject) return null;
     if (selectedObject.type === "path") return <div className="gv-selection-panel"><div className="gv-selection-hero"><span>═</span><div><small>PATH</small><h2>{selectedObject.label ?? "Path"}</h2><p>{(lineLength(selectedObject) / 100).toFixed(1)} m long</p></div></div><label>Label<input value={selectedObject.label ?? ""} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "path" ? { ...object, label: event.target.value } : object) }))} /></label><label>Width (cm)<input type="number" min={20} max={400} value={selectedObject.widthCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "path" ? { ...object, widthCm: clamp(Number(event.target.value) || 20, 20, 400) } : object) }))} /></label><p className="gv-help">Drag the path to move it. Drag either endpoint to reshape it.</p><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
     if (selectedObject.type === "trellis") return <div className="gv-selection-panel"><div className="gv-selection-hero"><span>⋮</span><div><small>TRELLIS</small><h2>{selectedObject.label ?? "Trellis"}</h2><p>{(lineLength(selectedObject) / 100).toFixed(1)} m long</p></div></div><label>Label<input value={selectedObject.label ?? ""} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "trellis" ? { ...object, label: event.target.value } : object) }))} /></label><div className="gv-field-grid"><label>Height (cm)<input type="number" value={selectedObject.heightCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "trellis" ? { ...object, heightCm: clamp(Number(event.target.value) || 50, 50, 500) } : object) }))} /></label><label>Posts (cm)<input type="number" value={selectedObject.postSpacingCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "trellis" ? { ...object, postSpacingCm: clamp(Number(event.target.value) || 50, 30, 1000) } : object) }))} /></label></div><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
@@ -1162,9 +1190,11 @@ export function GardenPlanner() {
     const areaSize = bed ? areaSizeCm(area, bed) : { width: 1, height: 1 };
     const overview = zoom < 110;
     const symbol = originalSymbolSizes ? referencePlantDimensions(area.crop, area.variety) : null;
-    const positions = bed ? plantPositionsForArea(area, areaSize.width, areaSize.height, overview ? 400 : 1600) : [];
-    return <div key={area.id} data-skip-locked={skipLockedItem({ kind: "planting", id: area.id })} className={`planting-area ${area.placements ? "has-explicit-placements" : ""} ${overview ? "is-overview" : ""} ${selected ? "selected" : ""}`} data-crop={area.crop} data-pattern={area.pattern} style={{ left: `${area.x}%`, top: `${area.y}%`, width: `${area.w}%`, height: `${area.h}%`, ["--area-icon-size" as string]: `${symbol?.width ?? area.iconSize}px`, ["--area-icon-height" as string]: `${symbol?.height ?? area.iconSize}px` }} onPointerDown={(event) => overview && bed && tool === "select" && !area.placements && !lockedKeys.has("bed:" + bed.id) ? startBedInteraction(event, bed) : startPlantingInteraction(event, area)}>
-      <span className="planting-area-icons">{overview && !positions.length && zoom >= 45 && <i className="gv-overview-art" style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)", ["--area-icon-size" as string]: `${30 / (zoom / 100)}px` }}><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></i>}{positions.map((position, index) => <i key={index} style={{ left: position.x, top: position.y, transform: `translate(-50%, -50%) rotate(${position.rotation}deg)` }}><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></i>)}</span>
+    const renderLimit = overview ? 400 : 1600;
+    const positions = bed ? plantPositionsForArea(area, areaSize.width, areaSize.height, renderLimit) : [];
+    const sampleStep = Math.max(1, Math.ceil(Math.round(area.count) / renderLimit));
+    return <div key={area.id} data-skip-locked={skipLockedItem({ kind: "planting", id: area.id })} className={`planting-area ${area.placements ? "has-explicit-placements" : ""} ${overview ? "is-overview" : ""} ${selected ? "selected" : ""}`} data-crop={area.crop} data-pattern={area.pattern} style={{ left: `${area.x}%`, top: `${area.y}%`, width: `${area.w}%`, height: `${area.h}%`, ["--area-icon-size" as string]: `${symbol?.width ?? area.iconSize}px`, ["--area-icon-height" as string]: `${symbol?.height ?? area.iconSize}px` }} onPointerDown={(event) => overview && bed && tool === "select" && !area.placements && !clickedPlantId(event) && !lockedKeys.has("bed:" + bed.id) ? startBedInteraction(event, bed) : startPlantingInteraction(event, area)}>
+      <span className="planting-area-icons">{overview && !positions.length && zoom >= 45 && <i className="gv-overview-art" style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)", ["--area-icon-size" as string]: `${30 / (zoom / 100)}px` }}><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></i>}{positions.map((position, index) => { const plantId = area.placements?.[index]?.id ?? `${area.id}:generated-${index * sampleStep}`; return <i key={plantId} data-plant-id={plantId} data-selected-plant={selected && selection?.plantId === plantId} style={{ left: position.x, top: position.y, transform: `translate(-50%, -50%) rotate(${position.rotation}deg)` }}><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></i>; })}</span>
       <span className="planting-area-label" title={`${area.crop} · ${area.variety} · ${area.count} plants · ${area.spacingCm} cm spacing`}><span className="gv-crop-symbol" aria-hidden="true"><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></span><span className="gv-crop-name">{area.variety}</span><b>×{area.count}</b></span>
       {selected && !groupSelection.length && !overview && <span className="planting-spacing-badge">↔ {area.spacingCm} cm</span>}
       {selected && !groupSelection.length && !selectionLocked && <span className="planting-area-resize" onPointerDown={(event) => startPlantingInteraction(event, area, true)} />}
@@ -1227,7 +1257,7 @@ export function GardenPlanner() {
           if (object.type === "structure") { const preset = structurePreset(object.kind); return <div key={object.id} data-kind={object.kind} data-skip-locked={skipLockedObject(object)} className={`layout-object structure-object ${selected ? "selected" : ""}`} style={{ left: object.x - object.widthCm / 2, top: object.y - object.depthCm / 2, width: object.widthCm, height: object.depthCm, transform: `rotate(${object.rotationDeg}deg)` }} onPointerDown={(event) => startObjectInteraction(event, object)}><span className="structure-symbol reference-structure-symbol" aria-hidden="true"><ReferenceObjectArt kind={object.kind} widthCm={object.widthCm} depthCm={object.depthCm} /></span><small>{object.label ?? preset.label}</small>{selected && !groupSelection.length && !selectionLocked && <span className="resize-handle structure-resize-handle" title="Resize structure" onPointerDown={(event) => startObjectInteraction(event, object, "structure-resize")} />}</div>; }
           return <div key={object.id} data-skip-locked={skipLockedObject(object)} className={`layout-object text-object ${selected ? "selected" : ""}`} style={{ left: object.x, top: object.y, fontSize: object.fontSize }} onPointerDown={(event) => startObjectInteraction(event, object)}>{object.text}</div>;
         })}
-        {visiblePlan.rows.map(row => <PlannerPlantingRow key={row.id} row={row} skipLocked={skipLockedItem({ kind: "row", id: row.id })} selected={isSelected("row", row.id)} handles={isSelected("row", row.id) && !groupSelection.length && !selectionLocked} onDrag={startRowInteraction} />)}
+        {visiblePlan.rows.map(row => <PlannerPlantingRow key={row.id} row={row} selectedPlantId={selection?.kind === "row" && selection.id === row.id ? selection.plantId : undefined} skipLocked={skipLockedItem({ kind: "row", id: row.id })} selected={isSelected("row", row.id)} handles={isSelected("row", row.id) && !groupSelection.length && !selectionLocked} onDrag={startRowInteraction} />)}
         {plan.beds.length > 0 && <div className="garden-bed-coordinate-layer">{plan.beds.map((bed) => {
           const selected = isSelected("bed", bed.id);
           const areas = visiblePlan.plantingAreas.filter((area) => area.bedId === bed.id);

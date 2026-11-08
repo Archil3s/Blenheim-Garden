@@ -7,8 +7,8 @@ import { PlantArt } from "./plant-art";
 
 export type RowDragMode = "row-drag" | "row-start" | "row-end" | "row-block";
 
-export function PlannerPlantingRow({ row, selected = false, handles = false, preview = false, skipLocked = false, onDrag }: {
-  row: PlannerRow; selected?: boolean; handles?: boolean; preview?: boolean; skipLocked?: boolean;
+export function PlannerPlantingRow({ row, selected = false, handles = false, preview = false, skipLocked = false, selectedPlantId, onDrag }: {
+  row: PlannerRow; selected?: boolean; handles?: boolean; preview?: boolean; skipLocked?: boolean; selectedPlantId?: string;
   onDrag?: (event: PointerEvent<HTMLElement>, row: PlannerRow, mode?: RowDragMode) => void;
 }) {
   const length = Math.hypot(row.x2 - row.x1, row.y2 - row.y1);
@@ -28,7 +28,7 @@ export function PlannerPlantingRow({ row, selected = false, handles = false, pre
       ["--block-depth" as string]: `${row.block?.depthCm ?? 0}px`, ["--square-foot" as string]: `${squareFootCm}px` }}
     onPointerDown={event => onDrag?.(event, row)}>
     {row.block && <span className="planting-block-outline" />}
-    <PlannerRowSymbols row={row} />
+    <PlannerRowSymbols row={row} selectedPlantId={selectedPlantId} />
     <span className="row-caption" role={preview ? "status" : undefined}>
       {!preview && <PlantArt crop={row.crop} variety={row.variety} fallback={row.cropIcon} />}
       {preview ? row.crop : row.variety} · {row.count}{preview ? ` ${row.count === 1 ? "plant" : "plants"} · ${(length / 100).toFixed(2)} m` : ""}
