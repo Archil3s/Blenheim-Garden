@@ -1,0 +1,99 @@
+{
+  "batch": "09",
+  "gallery_range": "081-090",
+  "source": "User-supplied Rasmussen Chilli 137 Icon Gallery (2).html",
+  "note": "Ten PNG concept files are in the conversation ZIP but have not been verified in GitHub. Do not treat artwork as approved. Existing repo variety SVGs are references, not the newly generated PNGs.",
+  "png_upload_status": "not_uploaded_or_not_verified",
+  "items": [
+    {
+      "gallery_index": 81,
+      "original_catalogue_sequence": "128",
+      "name": "Hungarian Yellow Wax",
+      "expected_local_png": "081_hungarian-yellow-wax.png",
+      "existing_svg": "public/plant-icons/rasmussen/hungarian-yellow-wax-chilli-seeds-10-seeds.svg",
+      "png_binary_uploaded": false,
+      "artwork_status": "unreviewed adapted concept"
+    },
+    {
+      "gallery_index": 82,
+      "original_catalogue_sequence": "130",
+      "name": "Inca Red Hot",
+      "expected_local_png": "082_inca-red-hot.png",
+      "existing_svg": "public/plant-icons/rasmussen/inca-red-hot-chilli-seeds-10-seeds.svg",
+      "png_binary_uploaded": false,
+      "artwork_status": "unreviewed adapted concept"
+    },
+    {
+      "gallery_index": 83,
+      "original_catalogue_sequence": "136",
+      "name": "Jalapeño - El Jefe",
+      "expected_local_png": "083_jalapeno-el-jefe.png",
+      "existing_svg": "public/plant-icons/rasmussen/jalapeno-el-jefe-chilli-seeds-10-seeds.svg",
+      "png_binary_uploaded": false,
+      "artwork_status": "unreviewed adapted concept"
+    },
+    {
+      "gallery_index": 84,
+      "original_catalogue_sequence": "137",
+      "name": "Jalapeño - Farmers Market",
+      "expected_local_png": "084_jalapeno-farmers-market.png",
+      "existing_svg": "public/plant-icons/rasmussen/jalapeno-farmers-market-chilli-seeds-10-seeds.svg",
+      "png_binary_uploaded": false,
+      "artwork_status": "unreviewed adapted concept"
+    },
+    {
+      "gallery_index": 85,
+      "original_catalogue_sequence": "138",
+      "name": "Jalapeño - Mega Jefe",
+      "expected_local_png": "085_jalapeno-mega-jefe.png",
+      "existing_svg": "public/plant-icons/rasmussen/jalapeno-mega-jefe-chilli-seeds-10-seeds.svg",
+      "png_binary_uploaded": false,
+      "artwork_status": "unreviewed adapted concept"
+    },
+    {
+      "gallery_index": 86,
+      "original_catalogue_sequence": "139",
+      "name": "Jalapeño - Purple",
+      "expected_local_png": "086_jalapeno-purple.png",
+      "existing_svg": "public/plant-icons/rasmussen/jalapeno-purple-chilli-seeds-10-seeds.svg",
+      "png_binary_uploaded": false,
+      "artwork_status": "unreviewed adapted concept"
+    },
+    {
+      "gallery_index": 87,
+      "original_catalogue_sequence": "140",
+      "name": "Jamaican Mushroom Red",
+      "expected_local_png": "087_jamaican-mushroom-red.png",
+      "existing_svg": "public/plant-icons/rasmussen/jamaican-mushroom-red-chilli-seeds-10-seeds.svg",
+      "png_binary_uploaded": false,
+      "artwork_status": "unreviewed adapted concept"
+    },
+    {
+      "gallery_index": 88,
+      "original_catalogue_sequence": "141",
+      "name": "Jamaican Mushroom Yellow",
+      "expected_local_png": "088_jamaican-mushroom-yellow.png",
+      "existing_svg": "public/plant-icons/rasmussen/jamaican-mushroom-yellow-chilli-seeds-10-seeds.svg",
+      "png_binary_uploaded": false,
+      "artwork_status": "unreviewed adapted concept"
+    },
+    {
+      "gallery_index": 89,
+      "original_catalogue_sequence": "145",
+      "name": "Jimmy Nardello",
+      "expected_local_png": "089_jimmy-nardello.png",
+      "existing_svg": "public/plant-icons/rasmussen/jimmy-nardello-chilli-seeds-10-seeds.svg",
+      "png_binary_uploaded": false,
+      "artwork_status": "unreviewed adapted concept"
+    },
+    {
+      "gallery_index": 90,
+      "original_catalogue_sequence": "146",
+      "name": "Jwala",
+      "expected_local_png": "090_jwala.png",
+      "existing_svg": "public/plant-icons/rasmussen/jwala-chilli-seeds-10-seeds.svg",
+      "png_binary_uploaded": false,
+      "artwork_status": "unreviewed adapted concept"
+    }
+  ]
+}
