@@ -488,3 +488,10 @@
   transform:translateY(-50%);
 }
 .reference-planner .garden-canvas.tool-select .has-explicit-placements .planting-area-icons i { pointer-events:auto; }
+
+
+.garden-canvas[data-hide-labels="true"] :is(
+  .planting-area-label, .planting-spacing-badge, .row-caption:not([role="status"]),
+  .gv-v4-bed-title, .empty-bed-label, .layout-label, .text-object,
+  .tree-object > small, .structure-object > small
+) { display: none; }
