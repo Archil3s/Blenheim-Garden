@@ -30,10 +30,14 @@ test("seedling journal tracks a real batch and persists observed stages", async 
   await form.getByLabel("Crop").selectOption({ label: "Peas" });
   await form.getByLabel("Variety").fill("Trial autumn peas");
   await form.getByLabel("Seeds sown").fill("12");
+  await form.getByRole("radio", { name: /12-cell tray/ }).check();
+  await expect(form.getByLabel("Container name or custom setup")).toHaveValue("12-cell tray");
   await form.getByRole("button", { name: "Save batch" }).click();
 
   const batch = page.locator(".seed-batch-card").first();
   await expect(batch).toContainText("Trial autumn peas");
+  await expect(batch).toContainText("12-cell tray");
+  await expect(batch.locator(".seed-container-art")).toBeVisible();
   await expect(batch).toContainText("Expected emergence");
   await expect(batch).toContainText("Next succession sowing");
   await batch.getByLabel("Growth stage").selectOption("true-leaves");
@@ -45,6 +49,7 @@ test("seedling journal tracks a real batch and persists observed stages", async 
   await page.reload();
   await expect(page.locator(".seed-batch-card").first()).toContainText("Trial autumn peas");
   await expect(page.locator(".seed-batch-card").first()).toContainText("True leaves");
+  await expect(page.locator(".seed-batch-card").first()).toContainText("12-cell tray");
   page.once("dialog", dialog => dialog.accept());
   await page.getByRole("button", { name: /Delete Peas batch/ }).click();
   await expect(page.locator(".seed-batch-card")).toHaveCount(0);
