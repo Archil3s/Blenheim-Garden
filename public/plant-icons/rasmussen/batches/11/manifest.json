@@ -1,173 +1,98 @@
 {
   "batch": 11,
-  "index_range": "101-110",
-  "variety_count": 10,
+  "range": "101-110",
   "repository": "Archil3s/Blenheim-Garden",
-  "repository_directory": "public/plant-icons/rasmussen/batches/11",
-  "images_generated": "2026-11-09",
-  "source_catalogue": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
-  "status": "source artwork generated and committed; cultivar realism requires review",
-  "not_app_wired": true,
   "items": [
     {
-      "number": 101,
-      "rasmussen_sequence": 179,
+      "gallery_index": 101,
+      "catalogue_number": 179,
       "name": "Naga Yellow",
-      "file": "individual_png/101_naga-yellow.png",
-      "blob_sha": "47766ae72ffd666bbbc1c40282a8b9001ddf12f3",
-      "source_url": "https://rasmussengardens.co.nz/products/naga-yellow-chilli-seeds-10-seeds",
-      "dimensions": {
-        "width": 512,
-        "height": 512
-      },
-      "format": "png",
-      "transparency": true,
-      "artwork_review": "unreviewed_generation",
-      "github_uploaded": true
+      "path": "public/plant-icons/rasmussen/batches/11/101_naga-yellow.png",
+      "sha": "47766ae72ffd666bbbc1c40282a8b9001ddf12f3",
+      "artwork_status": "unreviewed original illustration",
+      "is_official_catalogue_image": false
     },
     {
-      "number": 102,
-      "rasmussen_sequence": 188,
+      "gallery_index": 102,
+      "catalogue_number": 188,
       "name": "Orange Lantern",
-      "file": "individual_png/102_orange-lantern.png",
-      "blob_sha": "68b5399e99ece8f71efa7d2a2f2e85db7c3e766f",
-      "source_url": "https://rasmussengardens.co.nz/products/orange-lantern-chilli-seeds-10-seeds",
-      "dimensions": {
-        "width": 512,
-        "height": 512
-      },
-      "format": "png",
-      "transparency": true,
-      "artwork_review": "unreviewed_generation",
-      "github_uploaded": true
+      "path": "public/plant-icons/rasmussen/batches/11/102_orange-lantern.png",
+      "sha": "68b5399e99ece8f71efa7d2a2f2e85db7c3e766f",
+      "artwork_status": "unreviewed original illustration",
+      "is_official_catalogue_image": false
     },
     {
-      "number": 103,
-      "rasmussen_sequence": 190,
+      "gallery_index": 103,
+      "catalogue_number": 190,
       "name": "Oxhorn",
-      "file": "individual_png/103_oxhorn.png",
-      "blob_sha": "0b0d94726564007c8de9c54c8ff8a03c3f44caec",
-      "source_url": "https://rasmussengardens.co.nz/products/oxhorn-chilli-seeds-10-seeds",
-      "dimensions": {
-        "width": 512,
-        "height": 512
-      },
-      "format": "png",
-      "transparency": true,
-      "artwork_review": "unreviewed_generation",
-      "github_uploaded": true
+      "path": "public/plant-icons/rasmussen/batches/11/103_oxhorn.png",
+      "sha": "0b0d94726564007c8de9c54c8ff8a03c3f44caec",
+      "artwork_status": "unreviewed original illustration",
+      "is_official_catalogue_image": false
     },
     {
-      "number": 104,
-      "rasmussen_sequence": 191,
+      "gallery_index": 104,
+      "catalogue_number": 191,
       "name": "Oz Latern White",
-      "file": "individual_png/104_oz-latern-white.png",
-      "blob_sha": "9bcf8c64bb86f7af9f65d3265ade44828becbfa6",
-      "source_url": "https://rasmussengardens.co.nz/products/habanero-oz-latern-white-chilli-seeds-10-seeds",
-      "dimensions": {
-        "width": 512,
-        "height": 512
-      },
-      "format": "png",
-      "transparency": true,
-      "artwork_review": "unreviewed_generation",
-      "github_uploaded": true
+      "path": "public/plant-icons/rasmussen/batches/11/104_oz-latern-white.png",
+      "sha": "9bcf8c64bb86f7af9f65d3265ade44828becbfa6",
+      "artwork_status": "unreviewed original illustration",
+      "is_official_catalogue_image": false
     },
     {
-      "number": 105,
-      "rasmussen_sequence": 194,
+      "gallery_index": 105,
+      "catalogue_number": 194,
       "name": "Pasilla (Chilaca) Bajio",
-      "file": "individual_png/105_pasilla-chilaca-bajio.png",
-      "blob_sha": "636a644c01cc87a31c1b2e9af067e5121cb2515e",
-      "source_url": "https://rasmussengardens.co.nz/products/pasilla-chilaca-bajio-chilli-seeds-10-seeds",
-      "dimensions": {
-        "width": 512,
-        "height": 512
-      },
-      "format": "png",
-      "transparency": true,
-      "artwork_review": "unreviewed_generation",
-      "github_uploaded": true
+      "path": "public/plant-icons/rasmussen/batches/11/105_pasilla-chilaca-bajio.png",
+      "sha": "636a644c01cc87a31c1b2e9af067e5121cb2515e",
+      "artwork_status": "unreviewed original illustration",
+      "is_official_catalogue_image": false
     },
     {
-      "number": 106,
-      "rasmussen_sequence": 196,
+      "gallery_index": 106,
+      "catalogue_number": 196,
       "name": "Peri Peri",
-      "file": "individual_png/106_peri-peri.png",
-      "blob_sha": "a43fd07d92db97f7c851d28edf6c1fab24865904",
-      "source_url": "https://rasmussengardens.co.nz/products/peri-peri-chilli-seeds-10-seeds",
-      "dimensions": {
-        "width": 512,
-        "height": 512
-      },
-      "format": "png",
-      "transparency": true,
-      "artwork_review": "unreviewed_generation",
-      "github_uploaded": true
+      "path": "public/plant-icons/rasmussen/batches/11/106_peri-peri.png",
+      "sha": "a43fd07d92db97f7c851d28edf6c1fab24865904",
+      "artwork_status": "unreviewed original illustration",
+      "is_official_catalogue_image": false
     },
     {
-      "number": 107,
-      "rasmussen_sequence": 198,
+      "gallery_index": 107,
+      "catalogue_number": 198,
       "name": "Pimenta Leopard",
-      "file": "individual_png/107_pimenta-leopard.png",
-      "blob_sha": "df2f6c922ba9e00969129934e04aa8addcc3da6c",
-      "source_url": "https://rasmussengardens.co.nz/products/pimenta-leopard-chilli-seeds-10-seeds",
-      "dimensions": {
-        "width": 512,
-        "height": 512
-      },
-      "format": "png",
-      "transparency": true,
-      "artwork_review": "unreviewed_generation",
-      "github_uploaded": true
+      "path": "public/plant-icons/rasmussen/batches/11/107_pimenta-leopard.png",
+      "sha": "df2f6c922ba9e00969129934e04aa8addcc3da6c",
+      "artwork_status": "unreviewed original illustration",
+      "is_official_catalogue_image": false
     },
     {
-      "number": 108,
-      "rasmussen_sequence": 199,
+      "gallery_index": 108,
+      "catalogue_number": 199,
       "name": "Pimenta Luna",
-      "file": "individual_png/108_pimenta-luna.png",
-      "blob_sha": "fffe03e391a01ab66990713122e2b7a0552f6b64",
-      "source_url": "https://rasmussengardens.co.nz/products/pimenta-luna-chilli-seeds-10-seeds",
-      "dimensions": {
-        "width": 512,
-        "height": 512
-      },
-      "format": "png",
-      "transparency": true,
-      "artwork_review": "unreviewed_generation",
-      "github_uploaded": true
+      "path": "public/plant-icons/rasmussen/batches/11/108_pimenta-luna.png",
+      "sha": "fffe03e391a01ab66990713122e2b7a0552f6b64",
+      "artwork_status": "unreviewed original illustration",
+      "is_official_catalogue_image": false
     },
     {
-      "number": 109,
-      "rasmussen_sequence": 202,
+      "gallery_index": 109,
+      "catalogue_number": 202,
       "name": "Poblano - San Luis",
-      "file": "individual_png/109_poblano-san-luis.png",
-      "blob_sha": "a027b099aa40e2255c56462d09b2e9ba470f5266",
-      "source_url": "https://rasmussengardens.co.nz/products/poblano-san-luis-chilli-seeds-10-seeds",
-      "dimensions": {
-        "width": 512,
-        "height": 512
-      },
-      "format": "png",
-      "transparency": true,
-      "artwork_review": "unreviewed_generation",
-      "github_uploaded": true
+      "path": "public/plant-icons/rasmussen/batches/11/109_poblano-san-luis.png",
+      "sha": "a027b099aa40e2255c56462d09b2e9ba470f5266",
+      "artwork_status": "unreviewed original illustration",
+      "is_official_catalogue_image": false
     },
     {
-      "number": 110,
-      "rasmussen_sequence": 206,
+      "gallery_index": 110,
+      "catalogue_number": 206,
       "name": "Puerto Rican Yellow",
-      "file": "individual_png/110_puerto-rican-yellow.png",
-      "blob_sha": "6cca582aa17e01acd841febeaf6d74dceb02b941",
-      "source_url": "https://rasmussengardens.co.nz/products/puerto-rican-yellow-chilli-seeds-10-seeds",
-      "dimensions": {
-        "width": 512,
-        "height": 512
-      },
-      "format": "png",
-      "transparency": true,
-      "artwork_review": "unreviewed_generation",
-      "github_uploaded": true
+      "path": "public/plant-icons/rasmussen/batches/11/110_puerto-rican-yellow.png",
+      "sha": "6cca582aa17e01acd841febeaf6d74dceb02b941",
+      "artwork_status": "unreviewed original illustration",
+      "is_official_catalogue_image": false
     }
-  ]
+  ],
+  "note": "Individual PNG files are provided as custom artwork concepts, not official Rasmussen product imagery or cultivar-verified botanical references. This batch is separate from existing planner SVG assets."
 }
