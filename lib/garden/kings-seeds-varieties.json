@@ -1,0 +1,2147 @@
+[
+  {
+    "crop": "Amaranth",
+    "variety": "Garnet Red",
+    "id": "amaranth-garnet-red"
+  },
+  {
+    "crop": "Amaranth",
+    "variety": "Green & Red",
+    "id": "amaranth-green-red"
+  },
+  {
+    "crop": "Artichoke",
+    "variety": "Green Globe",
+    "id": "artichoke-green-globe"
+  },
+  {
+    "crop": "Asparagus",
+    "variety": "Mary Washington",
+    "id": "asparagus-mary-washington"
+  },
+  {
+    "crop": "Asparagus",
+    "variety": "Pacific Challenger F1",
+    "id": "asparagus-pacific-challenger-f1"
+  },
+  {
+    "crop": "Asparagus",
+    "variety": "Pacific Purple",
+    "id": "asparagus-pacific-purple-f1"
+  },
+  {
+    "crop": "Asparagus Pea",
+    "variety": "Asparagus Pea",
+    "id": "asparagus-pea"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Asian Winged",
+    "id": "bean-asian-winged"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Asian Yard Long",
+    "id": "bean-asian-yard-long"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Climbing Bicolour Pean",
+    "id": "bean-climbing-bicolour-pean"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Climbing Cornplanter Purple",
+    "id": "bean-climbing-cornplanter-purple"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Climbing Hopi Black Pinto",
+    "id": "bean-climbing-hopi-black-pinto"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Climbing Hopi Purple String",
+    "id": "bean-climbing-hopi-purple-string"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Climbing Lima del Papa",
+    "id": "bean-climbing-lima-del-papa"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Climbing Mangere Pole",
+    "id": "bean-climbing-mangere-pole"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Climbing Rydal A Yellow",
+    "id": "bean-climbing-rydal-a-yellow"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Climbing Shiny Fardenlosa",
+    "id": "bean-climbing-shiny-fardenlosa"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Climbing Volcanic",
+    "id": "bean-climbing-volcanic"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Climbing Yoeme Purple String",
+    "id": "bean-climbing-yoeme-purple-string"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Amish",
+    "id": "bean-dwarf-amish"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Berrgold Improved",
+    "id": "bean-dwarf-berrgold-improved"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Black Valentine",
+    "id": "bean-dwarf-black-valentine"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Borlotto Fire Tongue",
+    "id": "bean-dwarf-borlotto-fire-tongue"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Cannellino",
+    "id": "bean-dwarf-cannellino"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Colour Combo",
+    "id": "bean-dwarf-colour-combo"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Cranberry",
+    "id": "bean-dwarf-cranberry"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Fin de Bagnols",
+    "id": "bean-dwarf-fin-de-bagnols"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Kaiapoi Red",
+    "id": "bean-dwarf-kaiapoi-red"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Mayocoba",
+    "id": "bean-dwarf-mayocoba"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Purple Tee Pee",
+    "id": "bean-dwarf-purple-tee-pee"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Roquefort",
+    "id": "bean-dwarf-roquefort"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Top Crop",
+    "id": "bean-dwarf-top-crop"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Xera Select",
+    "id": "bean-dwarf-xera-select"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner Blue Lake",
+    "id": "bean-runner-blue-lake"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner Blue Shackamaxon",
+    "id": "bean-runner-blue-shackamaxon"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner Cherokee Trail of Tears",
+    "id": "bean-runner-cherokee-trail-of-tears"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner Good Mother Stallard",
+    "id": "bean-runner-good-mother-stallard"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner Holy Climbing",
+    "id": "bean-runner-holy-climbing"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner Hopi Beige",
+    "id": "bean-runner-hopi-beige"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner Indian Hannah",
+    "id": "bean-runner-indian-hannah"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner Italian Flat",
+    "id": "bean-runner-italian-flat"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner King of the Blues",
+    "id": "bean-runner-king-of-the-blues"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner Lazy Housewife",
+    "id": "bean-runner-lazy-housewife"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner Neekar Golden",
+    "id": "bean-runner-neekar-golden"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner Ojo de Cabra",
+    "id": "bean-runner-ojo-de-cabra"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner Purple Star",
+    "id": "bean-runner-purple-star"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner Scarlet",
+    "id": "bean-runner-scarlet"
+  },
+  {
+    "crop": "Beet",
+    "variety": "Perpetual Spinach",
+    "id": "beet-perpetual-spinach"
+  },
+  {
+    "crop": "Beetroot",
+    "variety": "Bulls Blood",
+    "id": "beetroot-bulls-blood"
+  },
+  {
+    "crop": "Beetroot",
+    "variety": "Chioggia",
+    "id": "beetroot-chioggia"
+  },
+  {
+    "crop": "Beetroot",
+    "variety": "Colour Blend",
+    "id": "beetroot-colour-blend"
+  },
+  {
+    "crop": "Beetroot",
+    "variety": "Cylindra",
+    "id": "beetroot-cylindra"
+  },
+  {
+    "crop": "Beetroot",
+    "variety": "Golden Detroit",
+    "id": "beetroot-golden-detroit"
+  },
+  {
+    "crop": "Beetroot",
+    "variety": "Pablo F1",
+    "id": "beetroot-pablo-f1"
+  },
+  {
+    "crop": "Beetroot",
+    "variety": "Ruby Queen",
+    "id": "beetroot-ruby-queen"
+  },
+  {
+    "crop": "Broad Bean",
+    "variety": "Coles Prolific",
+    "id": "broad-bean-coles-prolific"
+  },
+  {
+    "crop": "Broad Bean",
+    "variety": "Superaguadulce",
+    "id": "broad-bean-superaguadulce"
+  },
+  {
+    "crop": "Broccoli",
+    "variety": "Chinese Gai Lan",
+    "id": "broccoli-chinese-gai-lan"
+  },
+  {
+    "crop": "Broccoli",
+    "variety": "McLaren F1",
+    "id": "broccoli-mclaren-f1"
+  },
+  {
+    "crop": "Broccoli",
+    "variety": "Sprouting Summer Purple",
+    "id": "broccoli-sprouting-summer-purple"
+  },
+  {
+    "crop": "Broccoli",
+    "variety": "Sprouting Tasty Stems F1",
+    "id": "broccoli-tasty-stems-f1"
+  },
+  {
+    "crop": "Broccoli",
+    "variety": "Sprouting Winter Rudolph",
+    "id": "broccoli-sprouting-winter-rudolph"
+  },
+  {
+    "crop": "Broccoli",
+    "variety": "Summer Green F1",
+    "id": "broccoli-summer-green-f1"
+  },
+  {
+    "crop": "Broccoli",
+    "variety": "Winter Green F1",
+    "id": "broccoli-winter-green-f1"
+  },
+  {
+    "crop": "Brussels Sprouts",
+    "variety": "Jade F1",
+    "id": "brussels-sprouts-jade-f1"
+  },
+  {
+    "crop": "Burdock",
+    "variety": "Takinogawa Long",
+    "id": "burdock-takinogawa-long"
+  },
+  {
+    "crop": "Pumpkin",
+    "variety": "Butterscotch F1",
+    "id": "pumpkin-butternut-butterscotch-f1"
+  },
+  {
+    "crop": "Pumpkin",
+    "variety": "Waltham",
+    "id": "butternut-waltham"
+  },
+  {
+    "crop": "Cabbage",
+    "variety": "Chinese One Kilo Slowbolt F1",
+    "id": "cabbage-chinese-one-kilo-slowbolt-f1"
+  },
+  {
+    "crop": "Cabbage",
+    "variety": "Chinese Wa Wa Tsai F1",
+    "id": "cabbage-chinese-wa-wa-tsai-f1"
+  },
+  {
+    "crop": "Cabbage",
+    "variety": "Copenhagen Market",
+    "id": "cabbage-copenhagen-market"
+  },
+  {
+    "crop": "Cabbage",
+    "variety": "Kilaprince F1",
+    "id": "cabbage-kilaprince-f1"
+  },
+  {
+    "crop": "Cabbage",
+    "variety": "Mini Red F1",
+    "id": "cabbage-mini-red-f1"
+  },
+  {
+    "crop": "Cabbage",
+    "variety": "Red Acre",
+    "id": "cabbage-red-acre"
+  },
+  {
+    "crop": "Cabbage",
+    "variety": "Space Saver F1",
+    "id": "cabbage-space-saver-f1"
+  },
+  {
+    "crop": "Cabbage",
+    "variety": "Sugarloaf Mix",
+    "id": "cabbage-sugarloaf-mix"
+  },
+  {
+    "crop": "Cabbage",
+    "variety": "Vertus Savoy",
+    "id": "cabbage-vertus-savoy"
+  },
+  {
+    "crop": "Caigua",
+    "variety": "Caigua",
+    "id": "caigua"
+  },
+  {
+    "crop": "Cape Gooseberry",
+    "variety": "Cape Gooseberry",
+    "id": "cape-gooseberry"
+  },
+  {
+    "crop": "Capsicum",
+    "variety": "Bell Colour Mix",
+    "id": "capsicum-bell-colour-mix"
+  },
+  {
+    "crop": "Capsicum",
+    "variety": "California Wonder Golden",
+    "id": "capsicum-californian-wonder-golden"
+  },
+  {
+    "crop": "Capsicum",
+    "variety": "Cornos Red",
+    "id": "capsicum-cornos-red"
+  },
+  {
+    "crop": "Capsicum",
+    "variety": "Cornos Yellow",
+    "id": "capsicum-cornos-yellow"
+  },
+  {
+    "crop": "Capsicum",
+    "variety": "High Health F1",
+    "id": "capsicum-high-health-f1"
+  },
+  {
+    "crop": "Capsicum",
+    "variety": "Marconi Red",
+    "id": "capsicum-marconi-red"
+  },
+  {
+    "crop": "Capsicum",
+    "variety": "Marconi Yellow",
+    "id": "capsicum-marconi-yellow"
+  },
+  {
+    "crop": "Capsicum",
+    "variety": "Orange Bell",
+    "id": "capsicum-orange-bell-f1"
+  },
+  {
+    "crop": "Capsicum",
+    "variety": "Purple Beauty",
+    "id": "capsicum-purple-beauty-1"
+  },
+  {
+    "crop": "Capsicum",
+    "variety": "Red Bell F1",
+    "id": "capsicum-red-bell-f1"
+  },
+  {
+    "crop": "Capsicum",
+    "variety": "Yellow Banana",
+    "id": "capsicum-yellow-banana"
+  },
+  {
+    "crop": "Carob",
+    "variety": "Tree",
+    "id": "carob-tree"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Amsterdam Sprint",
+    "id": "carrot-amsterdam-sprint"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Black Nebula",
+    "id": "carrot-black-nebula"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Kuroda Improved",
+    "id": "carrot-kuroda-improved"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Nutri-Orange F1",
+    "id": "carrot-nutri-orange"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Nutri-Purple F1",
+    "id": "carrot-nutri-purple-f1"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Nutri-Red F1",
+    "id": "carrot-nutri-red-f1"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Nutri-White F1",
+    "id": "carrot-nutri-white-f1"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Nutri-Yellow F1",
+    "id": "carrot-nutri-yellow-f1"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Paris Market",
+    "id": "carrot-paris-market"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Rainbow Blend F1",
+    "id": "carrot-rainbow-blend-f1"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Resistafly F1",
+    "id": "carrot-resistafly-f1"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Scarlet Nantes",
+    "id": "carrot-scarlet-nantes"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Touchon",
+    "id": "carrot-touchon"
+  },
+  {
+    "crop": "Cauliflower",
+    "variety": "All The Year Round",
+    "id": "cauliflower-all-the-year-round"
+  },
+  {
+    "crop": "Cauliflower",
+    "variety": "Clementine F1",
+    "id": "cauliflower-clementine-f1"
+  },
+  {
+    "crop": "Cauliflower",
+    "variety": "Confetti",
+    "id": "cauliflower-confetti"
+  },
+  {
+    "crop": "Cauliflower",
+    "variety": "Romanesco Geum F1",
+    "id": "broccoflower-geum-f1"
+  },
+  {
+    "crop": "Cauliflower",
+    "variety": "Sprouting F1",
+    "id": "cauliflower-sprouting-fioretto-f1"
+  },
+  {
+    "crop": "Cauliflower",
+    "variety": "Summer Love F1",
+    "id": "cauliflower-summer-love-f1"
+  },
+  {
+    "crop": "Cauliflower",
+    "variety": "Violet Sicilian",
+    "id": "cauliflower-violet-sicilian"
+  },
+  {
+    "crop": "Cauliflower",
+    "variety": "Winter Love F1",
+    "id": "cauliflower-winter-love-f1"
+  },
+  {
+    "crop": "Celeriac",
+    "variety": "Mars",
+    "id": "celeriac-mars"
+  },
+  {
+    "crop": "Celery",
+    "variety": "For Cutting",
+    "id": "celery-for-cutting"
+  },
+  {
+    "crop": "Celery",
+    "variety": "Tall Utah",
+    "id": "celery-tall-utah"
+  },
+  {
+    "crop": "Celtuce",
+    "variety": "Celtuce",
+    "id": "celtuce"
+  },
+  {
+    "crop": "Chia",
+    "variety": "Chia",
+    "id": "chia"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Anaheim",
+    "id": "chilli-mild-anaheim"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Asian Fire F1",
+    "id": "chilli-medium-asian-fire-f1"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Bhut Jolokia",
+    "id": "chilli-hot-bhut-jolokia"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Carolina Reaper",
+    "id": "chilli-carolina-reaper"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Cayenne Flame",
+    "id": "chilli-cayenne-flame"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Habanero Red",
+    "id": "chilli-hot-habanero-red"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Habanero Yellow",
+    "id": "chilli-medium-habanero-yellow"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Hungarian Yellow Wax",
+    "id": "chilli-hungarian-yellow-wax"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Padron",
+    "id": "chilli-padron"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Pancho F1",
+    "id": "chilli-mild-pancho-f1"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Pepperoncini",
+    "id": "chilli-pepperoncini"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Poblano",
+    "id": "chilli-poblano"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Serrano",
+    "id": "chilli-mild-serrano"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Shishito F1",
+    "id": "chilli-mild-shishito-f1"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Spicy Blend",
+    "id": "chilli-hot-spicy-blend"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Tabasco",
+    "id": "chilli-tabasco"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Thai Hot F1",
+    "id": "chilli-medium-thai-hot-f1"
+  },
+  {
+    "crop": "Choy Sum",
+    "variety": "Choy Sum",
+    "id": "choy-sum"
+  },
+  {
+    "crop": "Collards",
+    "variety": "Greens",
+    "id": "collard-greens"
+  },
+  {
+    "crop": "Sweetcorn",
+    "variety": "Bicolour F1",
+    "id": "corn-bicolour-f1"
+  },
+  {
+    "crop": "Sweetcorn",
+    "variety": "Glass Gem",
+    "id": "corn-glass-gem"
+  },
+  {
+    "crop": "Sweetcorn",
+    "variety": "Golden Sweet F1",
+    "id": "corn-golden-sweet-f1"
+  },
+  {
+    "crop": "Sweetcorn",
+    "variety": "Painted Mountain",
+    "id": "corn-painted-mountain"
+  },
+  {
+    "crop": "Sweetcorn",
+    "variety": "Popcorn F1",
+    "id": "corn-popcorn-f1"
+  },
+  {
+    "crop": "Corn Salad",
+    "variety": "Verte de Cambrai",
+    "id": "corn-salad-verte-de-cambrai"
+  },
+  {
+    "crop": "Cress",
+    "variety": "American Upland",
+    "id": "cress-american-upland"
+  },
+  {
+    "crop": "Cucumber",
+    "variety": "Amira F1",
+    "id": "cucumber-amira-f1"
+  },
+  {
+    "crop": "Cucumber",
+    "variety": "Cornichon de Paris",
+    "id": "cucumber-cornichon-de-paris"
+  },
+  {
+    "crop": "Cucumber",
+    "variety": "Crunchy F1",
+    "id": "cucumber-crunchy-f1"
+  },
+  {
+    "crop": "Cucumber",
+    "variety": "Crystal Apple",
+    "id": "cucumber-crystal-apple"
+  },
+  {
+    "crop": "Cucumber",
+    "variety": "Homemade Pickles",
+    "id": "cucumber-homemade-pickles"
+  },
+  {
+    "crop": "Cucumber",
+    "variety": "Lebanese",
+    "id": "cucumber-lebanese"
+  },
+  {
+    "crop": "Cucumber",
+    "variety": "Medici F1",
+    "id": "cucumber-medici-f1"
+  },
+  {
+    "crop": "Cucumber",
+    "variety": "Poona Kheera",
+    "id": "cucumber-poona-kheera"
+  },
+  {
+    "crop": "Cucumber",
+    "variety": "Spacemaster",
+    "id": "cucumber-spacemaster"
+  },
+  {
+    "crop": "Cucumber",
+    "variety": "Tasty Queen F1",
+    "id": "cucumber-tasty-queen-f1"
+  },
+  {
+    "crop": "Cucumber",
+    "variety": "Telegraph F1",
+    "id": "cucumber-telegraph-f1"
+  },
+  {
+    "crop": "Eggplant",
+    "variety": "Ebony",
+    "id": "eggplant-ebony"
+  },
+  {
+    "crop": "Eggplant",
+    "variety": "Fiancee F1",
+    "id": "eggplant-fiancee-f1"
+  },
+  {
+    "crop": "Eggplant",
+    "variety": "Midnight F1",
+    "id": "eggplant-midnight-f1"
+  },
+  {
+    "crop": "Eggplant",
+    "variety": "Thai Green Egg F1",
+    "id": "eggplant-thai-green-egg-f1"
+  },
+  {
+    "crop": "Eggplant",
+    "variety": "Thai Purple F1",
+    "id": "eggplant-thai-purple"
+  },
+  {
+    "crop": "Endive",
+    "variety": "Ruffec Green Curled",
+    "id": "endive-ruffec-green-curled"
+  },
+  {
+    "crop": "Fennel",
+    "variety": "Milano",
+    "id": "fennel-milano"
+  },
+  {
+    "crop": "Goji",
+    "variety": "Berry",
+    "id": "goji-berry"
+  },
+  {
+    "crop": "Gourd",
+    "variety": "Asian Loki F1",
+    "id": "gourd-asian-loki-f1"
+  },
+  {
+    "crop": "Gourd",
+    "variety": "Bitter Melon Chikana F1",
+    "id": "melon-bitter-vanguard-f1"
+  },
+  {
+    "crop": "Gourd",
+    "variety": "Bitter Melon Keelen F1",
+    "id": "gourd-bitter-melon-keelen-f1"
+  },
+  {
+    "crop": "Gourd",
+    "variety": "Large Bottle",
+    "id": "gourd-large-bottle"
+  },
+  {
+    "crop": "Gourd",
+    "variety": "Large Fruited Mix",
+    "id": "gourd-large-mix"
+  },
+  {
+    "crop": "Gourd",
+    "variety": "Luffa",
+    "id": "luffa"
+  },
+  {
+    "crop": "Gourd",
+    "variety": "Luffa Angled Long Ridge F1",
+    "id": "luffa-angled-long-ridge-f1"
+  },
+  {
+    "crop": "Jícama",
+    "variety": "Jícama",
+    "id": "jicama"
+  },
+  {
+    "crop": "Kale",
+    "variety": "Blue Ridge F1",
+    "id": "kale-blue-ridge-f1"
+  },
+  {
+    "crop": "Kale",
+    "variety": "Cavolo Nero",
+    "id": "kale-cavolo-nero"
+  },
+  {
+    "crop": "Kale",
+    "variety": "Noble",
+    "id": "kale-noble"
+  },
+  {
+    "crop": "Kale",
+    "variety": "Red Russian",
+    "id": "kale-red-russian"
+  },
+  {
+    "crop": "Kale",
+    "variety": "Scarlet",
+    "id": "kale-scarlet"
+  },
+  {
+    "crop": "Kale",
+    "variety": "Squire",
+    "id": "kale-squire"
+  },
+  {
+    "crop": "Kiwano",
+    "variety": "Horned Melon",
+    "id": "kiwano-horned-melon"
+  },
+  {
+    "crop": "Kohlrabi",
+    "variety": "Early Purple Vienna",
+    "id": "kohlrabi-early-purple-vienna"
+  },
+  {
+    "crop": "Kohlrabi",
+    "variety": "Grand Duke F1",
+    "id": "kohlrabi-grand-duke-f1"
+  },
+  {
+    "crop": "Leek",
+    "variety": "Sentinel F1",
+    "id": "leek-sentinel-f1"
+  },
+  {
+    "crop": "Leek",
+    "variety": "Winter Giant",
+    "id": "leek-winter-giant"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Buttercrunch",
+    "id": "lettuce-buttercrunch"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Coral Green",
+    "id": "lettuce-coral-green"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Coral Red",
+    "id": "lettuce-coral-red"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Cos",
+    "id": "lettuce-cos"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Drunken Woman Fringed Head",
+    "id": "lettuce-drunken-woman-fringed-head"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Great Lakes",
+    "id": "lettuce-great-lakes"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Leaf Blend",
+    "id": "lettuce-leaf-blend"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Little Gem",
+    "id": "lettuce-little-gem"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Oakleaf Green",
+    "id": "lettuce-oakleaf-green"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Oakleaf Red",
+    "id": "lettuce-oakleaf-red"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Red Caesar",
+    "id": "lettuce-red-caesar"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Salanova Butterhead Green",
+    "id": "lettuce-salanova-butterhead-green"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Salanova Butterhead Red",
+    "id": "lettuce-salanova-butterhead-red"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Salanova Leaf Green",
+    "id": "lettuce-salanova-leaf-green"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Salanova Leaf Red",
+    "id": "lettuce-salanova-leaf-red"
+  },
+  {
+    "crop": "Melon",
+    "variety": "Charantais",
+    "id": "melon-charantais"
+  },
+  {
+    "crop": "Melon",
+    "variety": "Honeydew F1",
+    "id": "melon-honeydew-f1"
+  },
+  {
+    "crop": "Melon",
+    "variety": "Medley F1",
+    "id": "melon-medley-f1"
+  },
+  {
+    "crop": "Melon",
+    "variety": "Tuscan Delight F1",
+    "id": "melon-tuscan-delight-f1"
+  },
+  {
+    "crop": "Mesclun",
+    "variety": "Italian Blend",
+    "id": "mesclun-italian-blend"
+  },
+  {
+    "crop": "Mesclun",
+    "variety": "Kale Blend",
+    "id": "mesclun-kale-blend"
+  },
+  {
+    "crop": "Mesclun",
+    "variety": "Mild Blend",
+    "id": "mesclun-mild-blend"
+  },
+  {
+    "crop": "Mesclun",
+    "variety": "Oriental Blend",
+    "id": "mesclun-oriental-blend"
+  },
+  {
+    "crop": "Mesclun",
+    "variety": "Original Blend",
+    "id": "mesclun-original-blend"
+  },
+  {
+    "crop": "Mesclun",
+    "variety": "Red Blend",
+    "id": "mesclun-red-blend"
+  },
+  {
+    "crop": "Mesclun",
+    "variety": "Winter Blend",
+    "id": "mesclun-winter-blend"
+  },
+  {
+    "crop": "Mibuna",
+    "variety": "Mibuna",
+    "id": "mibuna-green-spray"
+  },
+  {
+    "crop": "Miner's Lettuce",
+    "variety": "Miner's Lettuce",
+    "id": "miners-lettuce"
+  },
+  {
+    "crop": "Mizuna",
+    "variety": "Mizuna",
+    "id": "mizuna"
+  },
+  {
+    "crop": "Mizuna",
+    "variety": "Red Coral",
+    "id": "mizuna-red-coral"
+  },
+  {
+    "crop": "Mizuna",
+    "variety": "Red Kingdom F1",
+    "id": "mizuna-red-kingdom-f1"
+  },
+  {
+    "crop": "Moringa",
+    "variety": "Horseradish Tree",
+    "id": "moringa-horseradish-tree"
+  },
+  {
+    "crop": "Mustard",
+    "variety": "Giant Red",
+    "id": "mustard-giant-red"
+  },
+  {
+    "crop": "Okra",
+    "variety": "Clemson Spineless",
+    "id": "okra-clemson-spineless"
+  },
+  {
+    "crop": "Okra",
+    "variety": "Millionaire F1",
+    "id": "okra-millionaire-f1"
+  },
+  {
+    "crop": "Onion",
+    "variety": "Italian Long Keeper",
+    "id": "onion-italian-long-keeper"
+  },
+  {
+    "crop": "Onion",
+    "variety": "Pearl Drop",
+    "id": "onion-pearl-drop"
+  },
+  {
+    "crop": "Onion",
+    "variety": "Pukekohe Long Keeper",
+    "id": "onion-pukekohe-long-keeper"
+  },
+  {
+    "crop": "Onion",
+    "variety": "Purplette",
+    "id": "onion-purplette"
+  },
+  {
+    "crop": "Onion",
+    "variety": "Red Brunswick",
+    "id": "onion-red-brunswick"
+  },
+  {
+    "crop": "Onion",
+    "variety": "Shallot Zebrune",
+    "id": "onion-shallot-zebrune"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Dwarf Top Crop (Organic)",
+    "id": "organic-bean-dwarf-top-crop"
+  },
+  {
+    "crop": "Bean",
+    "variety": "Runner Cobra (Organic)",
+    "id": "organic-bean-runner-cobra"
+  },
+  {
+    "crop": "Beet",
+    "variety": "Erbette (Organic)",
+    "id": "organic-silverbeet-erbette"
+  },
+  {
+    "crop": "Beetroot",
+    "variety": "Detroit Dark Red (Organic)",
+    "id": "organic-beetroot-detroit-dark-red"
+  },
+  {
+    "crop": "Broccoli",
+    "variety": "Belstar F1 (Organic)",
+    "id": "organic-belstar-broccoli-f1"
+  },
+  {
+    "crop": "Broccoli",
+    "variety": "Raab Spring Rapini (Organic)",
+    "id": "organic-broccoli-raab-spring-rapini"
+  },
+  {
+    "crop": "Broccoli",
+    "variety": "Waltham (Organic)",
+    "id": "organic-broccoli-waltham"
+  },
+  {
+    "crop": "Brussels Sprouts",
+    "variety": "Igor F1 (Organic)",
+    "id": "organic-brussels-sprouts-igor-f1"
+  },
+  {
+    "crop": "Pumpkin",
+    "variety": "Honeynut (Organic)",
+    "id": "organic-butternut-honeynut"
+  },
+  {
+    "crop": "Cabbage",
+    "variety": "Golden Acre (Organic)",
+    "id": "organic-cabbage-golden-acre"
+  },
+  {
+    "crop": "Capsicum",
+    "variety": "California Wonder Red (Organic)",
+    "id": "organic-capsicum-california-wonder-red"
+  },
+  {
+    "crop": "Capsicum",
+    "variety": "Cornito Mix F1 (Organic)",
+    "id": "organic-capsicum-cornito-mix-f1"
+  },
+  {
+    "crop": "Capsicum",
+    "variety": "Lunchbox Mix (Organic)",
+    "id": "organic-capsicum-lunchbox-mix"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Berlicum (Organic)",
+    "id": "organic-carrot-berlicum"
+  },
+  {
+    "crop": "Carrot",
+    "variety": "Tendersweet (Organic)",
+    "id": "organic-carrot-tendersweet"
+  },
+  {
+    "crop": "Cauliflower",
+    "variety": "Belot F1 (Organic)",
+    "id": "organic-cauliflower-belot-f1"
+  },
+  {
+    "crop": "Cauliflower",
+    "variety": "Liria F1 (Organic)",
+    "id": "organic-cauliflower-liria-f1"
+  },
+  {
+    "crop": "Cauliflower",
+    "variety": "Romanesco Early (Organic)",
+    "id": "organic-cauliflower-romanesco-early"
+  },
+  {
+    "crop": "Celery",
+    "variety": "Tango (Organic)",
+    "id": "organic-celery-tango"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Cayenne Red (Organic)",
+    "id": "organic-chilli-cayenne-red"
+  },
+  {
+    "crop": "Chilli",
+    "variety": "Jalapeno Early (Organic)",
+    "id": "organic-chilli-jalapeno-early"
+  },
+  {
+    "crop": "Sweetcorn",
+    "variety": "Early Gem (Organic)",
+    "id": "organic-corn-early-gem"
+  },
+  {
+    "crop": "Cress",
+    "variety": "Moss Curled (Organic)",
+    "id": "organic-cress-moss-curled"
+  },
+  {
+    "crop": "Cucumber",
+    "variety": "Paris Pickles (Organic)",
+    "id": "organic-cucumber-paris-pickles"
+  },
+  {
+    "crop": "Cucumber",
+    "variety": "Tendergreen (Organic)",
+    "id": "organic-cucumber-tendergreen"
+  },
+  {
+    "crop": "Eggplant",
+    "variety": "Black Beauty (Organic)",
+    "id": "organic-eggplant-black-beauty"
+  },
+  {
+    "crop": "Eggplant",
+    "variety": "Long Purple (Organic)",
+    "id": "organic-eggplant-long-purple"
+  },
+  {
+    "crop": "Kale",
+    "variety": "Tuscan Black (Organic)",
+    "id": "organic-kale-tuscan-black"
+  },
+  {
+    "crop": "Kale",
+    "variety": "Westerland (Organic)",
+    "id": "organic-kale-westerland"
+  },
+  {
+    "crop": "Kohlrabi",
+    "variety": "Purple Vienna (Organic)",
+    "id": "organic-kohlrabi-purple-vienna"
+  },
+  {
+    "crop": "Leek",
+    "variety": "Carentan Giant (Organic)",
+    "id": "organic-leek-carentan-giant"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Iceberg (Organic)",
+    "id": "organic-lettuce-iceberg"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Little Caesar (Organic)",
+    "id": "organic-lettuce-little-caesar"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Lollo Bionda (Organic)",
+    "id": "organic-lettuce-lollo-bionda"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Lollo Rossa (Organic)",
+    "id": "organic-lettuce-frill-lollo-rossa"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Merveille des Quatre Saisons (Organic)",
+    "id": "organic-lettuce-butterhead-merveille-des-quatre-saisons"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Parris Island Cos (Organic)",
+    "id": "organic-lettuce-cos-parris-island-cos"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Salad Bowl Green (Organic)",
+    "id": "organic-lettuce-oakleaf-green-salad-bowl"
+  },
+  {
+    "crop": "Lettuce",
+    "variety": "Salad Bowl Red (Organic)",
+    "id": "organic-lettuce-oakleaf-red-salad-bowl"
+  },
+  {
+    "crop": "Melon",
+    "variety": "Pride of Wisconsin (Organic)",
+    "id": "organic-melon-pride-of-wisconsin"
+  },
+  {
+    "crop": "Mesclun",
+    "variety": "Mesclun (Organic)",
+    "id": "organic-mesclun"
+  },
+  {
+    "crop": "Onion",
+    "variety": "Red Amposta (Organic)",
+    "id": "organic-onion-red-amposta"
+  },
+  {
+    "crop": "Onion",
+    "variety": "Shallot Conservor F1 (Organic)",
+    "id": "organic-onion-shallot-conservor-f1"
+  },
+  {
+    "crop": "Pak Choi",
+    "variety": "Shanghai Green (Organic)",
+    "id": "organic-pak-choi-shanghai-green"
+  },
+  {
+    "crop": "Parsnip",
+    "variety": "Guernsey (Organic)",
+    "id": "organic-parsnip-guernsey"
+  },
+  {
+    "crop": "Shiso",
+    "variety": "Bi-Colour (Organic)",
+    "id": "organic-perilla-bi-colour"
+  },
+  {
+    "crop": "Pumpkin",
+    "variety": "New England Pie (Organic)",
+    "id": "organic-pumpkin-new-england-pie"
+  },
+  {
+    "crop": "Pumpkin",
+    "variety": "Whangaparoa Crown (Organic)",
+    "id": "organic-pumpkin-whangaparoa-crown"
+  },
+  {
+    "crop": "Radicchio",
+    "variety": "Palla Rossa Early (Organic)",
+    "id": "organic-chicory-palla-rossa-early"
+  },
+  {
+    "crop": "Radish",
+    "variety": "Cherrybelle (Organic)",
+    "id": "organic-radish-cherrybelle"
+  },
+  {
+    "crop": "Radish",
+    "variety": "French Breakfast (Organic)",
+    "id": "organic-radish-french-breakfast"
+  },
+  {
+    "crop": "Radish",
+    "variety": "White Daikon (Organic)",
+    "id": "organic-radish-white-daikon"
+  },
+  {
+    "crop": "Rocket",
+    "variety": "Rocket (Organic)",
+    "id": "organic-rocket"
+  },
+  {
+    "crop": "Silverbeet",
+    "variety": "Bright Yellow (Organic)",
+    "id": "organic-silverbeet-bright-yellow"
+  },
+  {
+    "crop": "Silverbeet",
+    "variety": "Ruby Red (Organic)",
+    "id": "organic-silverbeet-ruby-red"
+  },
+  {
+    "crop": "Spinach",
+    "variety": "Bloomsdale (Organic)",
+    "id": "organic-spinach-bloomsdale"
+  },
+  {
+    "crop": "Spinach",
+    "variety": "Winter Giant (Organic)",
+    "id": "organic-spinach-winter-giant"
+  },
+  {
+    "crop": "Spring Onion",
+    "variety": "Tokyo Long White (Organic)",
+    "id": "organic-spring-onion-tokyo-long-white"
+  },
+  {
+    "crop": "Squash",
+    "variety": "Burgess Buttercup (Organic)",
+    "id": "organic-squash-burgess-buttercup"
+  },
+  {
+    "crop": "Squash",
+    "variety": "Winter Sweet F1 (Organic)",
+    "id": "organic-squash-winter-sweet-f1"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Confetti Mix (Organic)",
+    "id": "organic-tomato-confetti-mix"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Artisan Blush (Organic)",
+    "id": "organic-tomato-artisan-blush"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Beefsteak Select (Organic)",
+    "id": "organic-tomato-beefsteak-select"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Berkeley Tie-Dye Pink (Organic)",
+    "id": "organic-tomato-berkeley-tie-dye-pink"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Brad's Atomic Grape (Organic)",
+    "id": "organic-tomato-brads-atomic-grape"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Copia (Organic)",
+    "id": "organic-tomato-copia"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Costoluto Fiorentino (Organic)",
+    "id": "organic-tomato-costoluto-fiorentino"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Gardeners Delight (Organic)",
+    "id": "organic-tomato-gardeners-delight"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Indigo Blue Berries (Organic)",
+    "id": "organic-tomato-indigo-blue-berries"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Roma (Organic)",
+    "id": "organic-tomato-roma"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Rosella (Organic)",
+    "id": "organic-tomato-rosella"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Speckled Roman (Organic)",
+    "id": "organic-tomato-speckled-roman"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Sunrise Bumble Bee (Organic)",
+    "id": "organic-tomato-sunrise-bumble-bee"
+  },
+  {
+    "crop": "Turnip",
+    "variety": "Milan Red Top (Organic)",
+    "id": "organic-turnip-milan-red-top"
+  },
+  {
+    "crop": "Watermelon",
+    "variety": "Black Tail Mountain (Organic)",
+    "id": "organic-watermelon-black-tail-mountain"
+  },
+  {
+    "crop": "Zucchini",
+    "variety": "Black Beauty (Organic)",
+    "id": "organic-zucchini-black-beauty"
+  },
+  {
+    "crop": "Zucchini",
+    "variety": "Summer Gold (Organic)",
+    "id": "organic-zucchini-summer-gold"
+  },
+  {
+    "crop": "Pak Choi",
+    "variety": "Green Ace F1",
+    "id": "pak-choi-green-ace-f1"
+  },
+  {
+    "crop": "Pak Choi",
+    "variety": "Mei Quing Choi F1",
+    "id": "pak-choi-mei-quing-choi-f1"
+  },
+  {
+    "crop": "Pak Choi",
+    "variety": "Red Choi F1",
+    "id": "pak-choi-red-choi-f1"
+  },
+  {
+    "crop": "Pak Choi",
+    "variety": "White Stem",
+    "id": "pak-choi-white-stem"
+  },
+  {
+    "crop": "Papaya",
+    "variety": "Red Lady F1",
+    "id": "papaya-red-lady-f1"
+  },
+  {
+    "crop": "Parsnip",
+    "variety": "Javelin F1",
+    "id": "parsnip-javelin-f1"
+  },
+  {
+    "crop": "Passionfruit",
+    "variety": "Large Black",
+    "id": "passionfruit-large-black"
+  },
+  {
+    "crop": "Pea",
+    "variety": "Alderman Tall Climbing",
+    "id": "pea-alderman-tall-climbing"
+  },
+  {
+    "crop": "Pea",
+    "variety": "Greenfeast",
+    "id": "pea-greenfeast"
+  },
+  {
+    "crop": "Pea",
+    "variety": "Mucio",
+    "id": "pea-mucio"
+  },
+  {
+    "crop": "Pea",
+    "variety": "Sugar Snap Tall",
+    "id": "pea-sugar-snap-tall"
+  },
+  {
+    "crop": "Pepino",
+    "variety": "Pepino",
+    "id": "pepino"
+  },
+  {
+    "crop": "Shiso",
+    "variety": "Green (Perilla)",
+    "id": "perilla-green"
+  },
+  {
+    "crop": "Shiso",
+    "variety": "Purple",
+    "id": "perilla-purple"
+  },
+  {
+    "crop": "Pigeon Pea",
+    "variety": "Pigeon Pea",
+    "id": "pigeon-pea"
+  },
+  {
+    "crop": "Pumpkin",
+    "variety": "Atlantic Giant",
+    "id": "pumpkin-atlantic-giant"
+  },
+  {
+    "crop": "Pumpkin",
+    "variety": "Crown Prince F1",
+    "id": "pumpkin-crown-prince"
+  },
+  {
+    "crop": "Pumpkin",
+    "variety": "Flat White Boer",
+    "id": "pumpkin-flat-white-boer"
+  },
+  {
+    "crop": "Pumpkin",
+    "variety": "Henri's Potimarron",
+    "id": "pumpkin-henris-potimarron"
+  },
+  {
+    "crop": "Pumpkin",
+    "variety": "Kakai",
+    "id": "pumpkin-kakai"
+  },
+  {
+    "crop": "Pumpkin",
+    "variety": "Long Island Cheese",
+    "id": "pumpkin-long-island-cheese"
+  },
+  {
+    "crop": "Pumpkin",
+    "variety": "Musquee de Provence",
+    "id": "pumpkin-musquee-de-provence"
+  },
+  {
+    "crop": "Pumpkin",
+    "variety": "Queensland Blue",
+    "id": "pumpkin-queensland-blue"
+  },
+  {
+    "crop": "Pumpkin",
+    "variety": "Small Sugar",
+    "id": "pumpkin-small-sugar"
+  },
+  {
+    "crop": "Quinoa",
+    "variety": "Quinoa",
+    "id": "quinoa"
+  },
+  {
+    "crop": "Radicchio",
+    "variety": "Treviso",
+    "id": "chicory-treviso"
+  },
+  {
+    "crop": "Radish",
+    "variety": "Easter Egg",
+    "id": "radish-easter-egg"
+  },
+  {
+    "crop": "Radish",
+    "variety": "German Giant",
+    "id": "radish-german-giant"
+  },
+  {
+    "crop": "Radish",
+    "variety": "Gourmet Blend",
+    "id": "radish-gourmet-blend"
+  },
+  {
+    "crop": "Radish",
+    "variety": "Jin Mat F1",
+    "id": "radish-jin-mat-f1"
+  },
+  {
+    "crop": "Radish",
+    "variety": "Mini Daikon Purple F1",
+    "id": "radish-mini-daikon-purple-f1"
+  },
+  {
+    "crop": "Radish",
+    "variety": "Red Cherry F1",
+    "id": "radish-red-cherry-f1"
+  },
+  {
+    "crop": "Radish",
+    "variety": "Seol Chun F1",
+    "id": "radish-seol-chun-f1"
+  },
+  {
+    "crop": "Radish",
+    "variety": "Watermelon",
+    "id": "radish-watermelon"
+  },
+  {
+    "crop": "Radish",
+    "variety": "Winter Noir",
+    "id": "radish-winter-noir"
+  },
+  {
+    "crop": "Radish",
+    "variety": "Yuki",
+    "id": "radish-yuki"
+  },
+  {
+    "crop": "Rhubarb",
+    "variety": "Cherry Red",
+    "id": "rhubarb-cherry-red"
+  },
+  {
+    "crop": "Rocket",
+    "variety": "Runway",
+    "id": "rocket-runway"
+  },
+  {
+    "crop": "Roselle",
+    "variety": "Roselle",
+    "id": "roselle"
+  },
+  {
+    "crop": "Scallopini",
+    "variety": "Sunbeam F1",
+    "id": "zucchini-scallopini-sunbeam-f1"
+  },
+  {
+    "crop": "Shiso",
+    "variety": "Green",
+    "id": "shiso-green-1"
+  },
+  {
+    "crop": "Silverbeet",
+    "variety": "Ford Hook Giant",
+    "id": "silverbeet-ford-hook-giant"
+  },
+  {
+    "crop": "Silverbeet",
+    "variety": "Rainbow Lights",
+    "id": "silverbeet-rainbow-lights"
+  },
+  {
+    "crop": "Snow Pea",
+    "variety": "Goliath",
+    "id": "snow-pea-goliath"
+  },
+  {
+    "crop": "Snow Pea",
+    "variety": "Shiraz",
+    "id": "pea-shiraz"
+  },
+  {
+    "crop": "Snow Pea",
+    "variety": "Sugar Pod",
+    "id": "snow-pea-sugar-pod-copy"
+  },
+  {
+    "crop": "Soybean",
+    "variety": "Soybean",
+    "id": "soybean"
+  },
+  {
+    "crop": "Spinach",
+    "variety": "Malabar",
+    "id": "spinach-malabar"
+  },
+  {
+    "crop": "Spinach",
+    "variety": "New Zealand",
+    "id": "spinach-new-zealand"
+  },
+  {
+    "crop": "Spinach",
+    "variety": "Santana F1",
+    "id": "spinach-santana-f1"
+  },
+  {
+    "crop": "Spinach",
+    "variety": "Strawberry",
+    "id": "spinach-strawberry"
+  },
+  {
+    "crop": "Spinach",
+    "variety": "Summer Solstice F1",
+    "id": "spinach-summer-solstice-f1"
+  },
+  {
+    "crop": "Spinach",
+    "variety": "Winter Upright F1",
+    "id": "spinach-winter-upright-f1"
+  },
+  {
+    "crop": "Spring Onion",
+    "variety": "Ishikura",
+    "id": "spring-onion-ishikura"
+  },
+  {
+    "crop": "Spring Onion",
+    "variety": "Red Bunching",
+    "id": "spring-onion-red-bunching"
+  },
+  {
+    "crop": "Squash",
+    "variety": "African Gem F1",
+    "id": "squash-african-gem"
+  },
+  {
+    "crop": "Squash",
+    "variety": "Jade F1",
+    "id": "squash-jade-f1"
+  },
+  {
+    "crop": "Squash",
+    "variety": "Kumi Kumi",
+    "id": "squash-kumi-kumi"
+  },
+  {
+    "crop": "Squash",
+    "variety": "North Georgia Candy Roaster",
+    "id": "squash-north-georgia-candy-roaster"
+  },
+  {
+    "crop": "Squash",
+    "variety": "Spaghetti",
+    "id": "squash-spaghetti"
+  },
+  {
+    "crop": "Swede",
+    "variety": "Champion Purple Top",
+    "id": "swede-champion-purple-top"
+  },
+  {
+    "crop": "Tamarillo",
+    "variety": "Large Red",
+    "id": "tamarillo-large-red"
+  },
+  {
+    "crop": "Tomatillo",
+    "variety": "Grande Verde",
+    "id": "tomatillo-grande-verde"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Albenga Oxheart",
+    "id": "tomato-albenga-oxheart"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Amana Orange",
+    "id": "tomato-amana-orange"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Amish Orange Sherbert",
+    "id": "tomato-amish-orange-sherbert"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Ananas Noire",
+    "id": "tomato-ananas-noire"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Aunt Ruby's German Green",
+    "id": "tomato-aunt-rubys-german-green"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Baxters Early Bush",
+    "id": "tomato-baxters-early-bush"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Beefsteak Blend",
+    "id": "tomato-beefsteak-blend"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Black Cherry",
+    "id": "tomato-black"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Black Krim",
+    "id": "tomato-black-krim"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Bloody Butcher",
+    "id": "tomato-bloody-butcher"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Bob Logan",
+    "id": "tomato-bob-logan"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Brandywine Pink",
+    "id": "tomato-brandywine-pink"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Carol",
+    "id": "tomato-carol"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Cherokee Purple",
+    "id": "tomato-cherokee-purple"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Cherry Berry F1",
+    "id": "tomato-berry-f1"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Delicious",
+    "id": "tomato-delicious"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Fantastico F1",
+    "id": "tomato-fantastico-f1"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Glimpse",
+    "id": "tomato-glimpse"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Gold Nugget",
+    "id": "tomato-gold-nugget"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Golden Bell",
+    "id": "tomato-golden-bell"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Golden Cascade",
+    "id": "tomato-golden-cascade"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Golden Grape",
+    "id": "tomato-golden-grape"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Golden Light",
+    "id": "tomato-golden-light"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Green Zebra",
+    "id": "tomato-green-zebra"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Indigo Pear Drops",
+    "id": "tomato-indigo-pear-drops"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Kellogg's Breakfast",
+    "id": "tomato-kelloggs-breakfast"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Matt's Wild Cherry",
+    "id": "tomato-matts-wild-cherry"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Mini Orange",
+    "id": "tomato-mini-orange"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Moneymaker",
+    "id": "tomato-moneymaker"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Moonbeam",
+    "id": "tomato-moonbeam"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Mortgage Lifter",
+    "id": "tomato-mortgage-lifter"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Mountain Gold",
+    "id": "tomato-mountain-gold"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Oley",
+    "id": "tomato-oley"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Rainbow Cherry Blend",
+    "id": "tomato-rainbow-cherry-blend"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Red Pear",
+    "id": "tomato-red-pear"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Russian Red",
+    "id": "tomato-russian-red"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Sicilian Sauce F1",
+    "id": "tomato-sicilian-sauce-f1"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Sub Arctic Plenty",
+    "id": "tomato-sub-arctic-plenty"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Sugar Plum F1",
+    "id": "tomato-sugar-plum-f1"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Sungold F1",
+    "id": "tomato-sungold"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Tangella",
+    "id": "tomato-tangella"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Tigerella",
+    "id": "tomato-tigerella"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Tommy Toe",
+    "id": "tomato-tommy-toe"
+  },
+  {
+    "crop": "Tomato",
+    "variety": "Yellow Pear",
+    "id": "tomato-yellow-pear"
+  },
+  {
+    "crop": "Turnip",
+    "variety": "Milan Red Top",
+    "id": "turnip-milan-red-top"
+  },
+  {
+    "crop": "Turnip",
+    "variety": "Snowball",
+    "id": "turnip-snowball"
+  },
+  {
+    "crop": "Turnip",
+    "variety": "Tokyo White Cross F1",
+    "id": "turnip-tokyo-white-cross-f1"
+  },
+  {
+    "crop": "Water Spinach",
+    "variety": "Bamboo Leaf",
+    "id": "water-spinach-bamboo-leaf"
+  },
+  {
+    "crop": "Watercress",
+    "variety": "Watercress",
+    "id": "watercress"
+  },
+  {
+    "crop": "Watermelon",
+    "variety": "Apple F1",
+    "id": "watermelon-apple-f1"
+  },
+  {
+    "crop": "Watermelon",
+    "variety": "Charleston Gray",
+    "id": "watermelon-charleston-gray"
+  },
+  {
+    "crop": "Watermelon",
+    "variety": "Crimson Sweet",
+    "id": "watermelon-crimson-sweet"
+  },
+  {
+    "crop": "Watermelon",
+    "variety": "Dulce F1",
+    "id": "watermelon-dulce-f1"
+  },
+  {
+    "crop": "Watermelon",
+    "variety": "Gold in Gold F1",
+    "id": "watermelon-gold-in-gold-f1"
+  },
+  {
+    "crop": "Watermelon",
+    "variety": "Moon & Stars",
+    "id": "watermelon-moon-stars"
+  },
+  {
+    "crop": "Watermelon",
+    "variety": "Mountain Sweet Yellow",
+    "id": "watermelon-mountain-sweet-yellow"
+  },
+  {
+    "crop": "Watermelon",
+    "variety": "Sugar Baby",
+    "id": "watermelon-sugar-baby"
+  },
+  {
+    "crop": "Watermelon",
+    "variety": "Sweet Red F1",
+    "id": "watermelon-sweet-red-f1"
+  },
+  {
+    "crop": "Wild Rocket",
+    "variety": "Wild Rocket",
+    "id": "rocket-arugula"
+  },
+  {
+    "crop": "Wild Rocket",
+    "variety": "Dragons Fire",
+    "id": "wild-rocket-dragons-fire"
+  },
+  {
+    "crop": "Witloof",
+    "variety": "Witloof",
+    "id": "chicory-witloof"
+  },
+  {
+    "crop": "Zucchini",
+    "variety": "Black Coral F1",
+    "id": "zucchini-black-coral-f1"
+  },
+  {
+    "crop": "Zucchini",
+    "variety": "Cocozelle",
+    "id": "zucchini-cocozelle"
+  },
+  {
+    "crop": "Zucchini",
+    "variety": "Costata Romanesco",
+    "id": "zucchini-costata-romanesco"
+  },
+  {
+    "crop": "Zucchini",
+    "variety": "Gold Rush F1",
+    "id": "zucchini-gold-rush-f1"
+  },
+  {
+    "crop": "Zucchini",
+    "variety": "Rampicante",
+    "id": "squash-rampicante"
+  },
+  {
+    "crop": "Zucchini",
+    "variety": "Tondo di Nizza",
+    "id": "zucchini-tondo-di-nizza"
+  }
+]
