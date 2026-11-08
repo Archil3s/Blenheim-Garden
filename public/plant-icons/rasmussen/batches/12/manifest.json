@@ -1,0 +1,89 @@
+{
+  "batch": 12,
+  "range": "111–120",
+  "source": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
+  "type": "individual RGBA PNGs 512x512",
+  "notes": "These are recoloured/retouched adaptations of earlier original illustrated concepts, not official product imagery. The batch was made after two image-generation attempts returned incorrect varieties. Review cultivar accuracy before use in garden planner.",
+  "items": [
+    {
+      "catalogue_index": 111,
+      "source_sequence": 211,
+      "name": "Purple Pumpkin",
+      "path": "public/plant-icons/rasmussen/batches/12/individual_png/111_purple-pumpkin.png",
+      "sha": "c11d959c7de7b1355b04cb2df5139ad086fe2524",
+      "artwork_status": "adapted botanical concept — not cultivar verified"
+    },
+    {
+      "catalogue_index": 112,
+      "source_sequence": 212,
+      "name": "Purple Tiger Variegated",
+      "path": "public/plant-icons/rasmussen/batches/12/individual_png/112_purple-tiger-variegated.png",
+      "sha": "24ca30294e445bb6c95473bbff9347df6f363353",
+      "artwork_status": "adapted botanical concept — not cultivar verified"
+    },
+    {
+      "catalogue_index": 113,
+      "source_sequence": 213,
+      "name": "Purple UFO",
+      "path": "public/plant-icons/rasmussen/batches/12/individual_png/113_purple-ufo.png",
+      "sha": "18c8ef00f681a2926d3dff973e61978de281386a",
+      "artwork_status": "adapted botanical concept — not cultivar verified"
+    },
+    {
+      "catalogue_index": 114,
+      "source_sequence": 214,
+      "name": "Purple Varigetta",
+      "path": "public/plant-icons/rasmussen/batches/12/individual_png/114_purple-varigetta.png",
+      "sha": "49d642b1641f1efe7ef9298f27ff69010c819b98",
+      "artwork_status": "adapted botanical concept — not cultivar verified"
+    },
+    {
+      "catalogue_index": 115,
+      "source_sequence": 226,
+      "name": "Rare Chillies of Peru Chilli Seed Collection",
+      "path": "public/plant-icons/rasmussen/batches/12/individual_png/115_rare-chillies-of-peru-collection.png",
+      "sha": "eada4a542d0f200c72cf3f75f3c0f2eeba1395ab",
+      "artwork_status": "adapted botanical concept — not cultivar verified"
+    },
+    {
+      "catalogue_index": 116,
+      "source_sequence": 229,
+      "name": "Rocoto Aji Large Red",
+      "path": "public/plant-icons/rasmussen/batches/12/individual_png/116_rocoto-aji-large-red.png",
+      "sha": "cb2eb358454ad6a8dc2e9871b067f0a6f514f2ae",
+      "artwork_status": "adapted botanical concept — not cultivar verified"
+    },
+    {
+      "catalogue_index": 117,
+      "source_sequence": 230,
+      "name": "Rocoto Manzano Orange",
+      "path": "public/plant-icons/rasmussen/batches/12/individual_png/117_rocoto-manzano-orange.png",
+      "sha": "68b5399e99ece8f71efa7d2a2f2e85db7c3e766f",
+      "artwork_status": "adapted botanical concept — not cultivar verified"
+    },
+    {
+      "catalogue_index": 118,
+      "source_sequence": 231,
+      "name": "Rocoto Manzano Red",
+      "path": "public/plant-icons/rasmussen/batches/12/individual_png/118_rocoto-manzano-red.png",
+      "sha": "ba7fe2660b2a3a35159b48ad76d7dd9dc142aaf9",
+      "artwork_status": "adapted botanical concept — not cultivar verified"
+    },
+    {
+      "catalogue_index": 119,
+      "source_sequence": 232,
+      "name": "Rocoto Manzano Red Flat",
+      "path": "public/plant-icons/rasmussen/batches/12/individual_png/119_rocoto-manzano-red-flat.png",
+      "sha": "49cb5363594543d65d43a97fca3bb043ba55331b",
+      "artwork_status": "adapted botanical concept — not cultivar verified"
+    },
+    {
+      "catalogue_index": 120,
+      "source_sequence": 233,
+      "name": "Rocoto Manzano Yellow",
+      "path": "public/plant-icons/rasmussen/batches/12/individual_png/120_rocoto-manzano-yellow.png",
+      "sha": "087813fbd2cc901f4c059a33333824edcbc6e3be",
+      "artwork_status": "adapted botanical concept — not cultivar verified"
+    }
+  ]
+}
