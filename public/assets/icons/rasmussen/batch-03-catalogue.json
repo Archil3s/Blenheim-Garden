@@ -1,0 +1,17 @@
+{
+  "batch": 3,
+  "status": "unverified",
+  "catalogue": {
+    "021": "Aji Norteno",
+    "022": "Aji Panca",
+    "023": "Aji Peanut",
+    "024": "Aji Pineapple",
+    "025": "Aji Rojo",
+    "026": "Aji Sparkly White",
+    "027": "Aji Strawberry Drop",
+    "028": "Anaheim",
+    "029": null,
+    "030": "Arriba Saia"
+  },
+  "note": "Catalogue item 029 was absent in uploaded source. No cultivar-specific PNG artwork for batch 03 approved. Do not map sheet-derived concepts to cultivar IDs. Batch 01 original PNGs are available in public/assets/icons/rasmussen/approved/."
+}
