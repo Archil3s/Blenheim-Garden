@@ -1,0 +1,109 @@
+{
+  "batch": 13,
+  "range": "121-130",
+  "source": "User-supplied Rasmussen Gardens 137 chilli varieties gallery",
+  "production_approved": false,
+  "notice": "These PNG files are concept placeholders reusing prior original botanical drawings. They have correct catalogue names but should not be mistaken for cultivar-verified artwork. Image generation attempts did not depict the requested 121-130 varieties.",
+  "items": [
+    {
+      "gallery_index": 121,
+      "catalogue_sequence": 240,
+      "name": "Scarlett's Chilli Variegated",
+      "path": "public/plant-icons/rasmussen/batches/13/individual_png/121_scarletts-chilli-variegated.png",
+      "sha": "1117071120d1ae923dc6fa891661a7dc97fadb9d",
+      "reference_artwork": "Batch 05 Bolivian Rainbow",
+      "artwork_status": "UNREVIEWED concept placeholder; illustration reused from another variety",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 122,
+      "catalogue_sequence": 242,
+      "name": "Scotch Bonnet Red",
+      "path": "public/plant-icons/rasmussen/batches/13/individual_png/122_scotch-bonnet-red.png",
+      "sha": "821de52648888f7180dc9aaccb84270d8ee7e842",
+      "reference_artwork": "Batch 09 Jamaican Mushroom Red",
+      "artwork_status": "UNREVIEWED concept placeholder; illustration reused from another variety",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 123,
+      "catalogue_sequence": 243,
+      "name": "Serrano",
+      "path": "public/plant-icons/rasmussen/batches/13/individual_png/123_serrano.png",
+      "sha": "0b896923c463579eca21fd7e65f4d3955fbe115a",
+      "reference_artwork": "Batch 06 Chile de Arbol",
+      "artwork_status": "UNREVIEWED concept placeholder; illustration reused from another variety",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 124,
+      "catalogue_sequence": 244,
+      "name": "Shishito Blackout",
+      "path": "public/plant-icons/rasmussen/batches/13/individual_png/124_shishito-blackout.png",
+      "sha": "72456fc83b4b90e8644b83ae27a3ce2a57042f61",
+      "reference_artwork": "Batch 06 Czech Black",
+      "artwork_status": "UNREVIEWED concept placeholder; illustration reused from another variety",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 125,
+      "catalogue_sequence": 253,
+      "name": "Sugar Rush Cream",
+      "path": "public/plant-icons/rasmussen/batches/13/individual_png/125_sugar-rush-cream.png",
+      "sha": "ddfdda188318d32c765190ad817adbfda46f2e7a",
+      "reference_artwork": "Batch 10 White Thai",
+      "artwork_status": "UNREVIEWED concept placeholder; illustration reused from another variety",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 126,
+      "catalogue_sequence": 254,
+      "name": "Sugar Rush Peach",
+      "path": "public/plant-icons/rasmussen/batches/13/individual_png/126_sugar-rush-peach.png",
+      "sha": "fffe03e391a01ab66990713122e2b7a0552f6b64",
+      "reference_artwork": "Batch 11 Pimenta Luna",
+      "artwork_status": "UNREVIEWED concept placeholder; illustration reused from another variety",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 127,
+      "catalogue_sequence": 255,
+      "name": "Sugar Rush Peach Stumpy",
+      "path": "public/plant-icons/rasmussen/batches/13/individual_png/127_sugar-rush-peach-stumpy.png",
+      "sha": "c34e7a07decdb1c9c88af01cc2d9adc5a155c795",
+      "reference_artwork": "Batch 10 Mambo Orange",
+      "artwork_status": "UNREVIEWED concept placeholder; illustration reused from another variety",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 128,
+      "catalogue_sequence": 256,
+      "name": "Sugar Rush Red",
+      "path": "public/plant-icons/rasmussen/batches/13/individual_png/128_sugar-rush-red.png",
+      "sha": "0b0d94726564007c8de9c54c8ff8a03c3f44caec",
+      "reference_artwork": "Batch 11 Oxhorn",
+      "artwork_status": "UNREVIEWED concept placeholder; illustration reused from another variety",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 129,
+      "catalogue_sequence": 257,
+      "name": "Sugar Rush Stripey",
+      "path": "public/plant-icons/rasmussen/batches/13/individual_png/129_sugar-rush-stripey.png",
+      "sha": "59485233e5d5ee142307e047f26ebd542038b404",
+      "reference_artwork": "Batch 05 Candy Cane",
+      "artwork_status": "UNREVIEWED concept placeholder; illustration reused from another variety",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 130,
+      "catalogue_sequence": 259,
+      "name": "Sweet Paprika – Yugoslavia",
+      "path": "public/plant-icons/rasmussen/batches/13/individual_png/130_sweet-paprika-yugoslavia.png",
+      "sha": "1c49d8baa8b3090a50550d3af8300f8427ad5371",
+      "reference_artwork": "Batch 09 Jimmy Nardello",
+      "artwork_status": "UNREVIEWED concept placeholder; illustration reused from another variety",
+      "approved_for_production": false
+    }
+  ]
+}
