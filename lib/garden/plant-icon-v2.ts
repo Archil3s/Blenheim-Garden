@@ -24,6 +24,7 @@ export const PLANT_ICON_V2: PlantIconDefinition[] = [
   { key: "tomato", label: "Tomato", archetype: "fruiting", src: `${ROOT}/tomato.svg`, keywords: ["tomato", "beefsteak", "roma", "plum", "paste", "grape", "dwarf tomato"] },
   { key: "cherry-tomato", label: "Cherry tomato", archetype: "fruiting", src: `${ROOT}/cherry-tomato.svg`, keywords: ["cherry tomato", "cherry"] },
   { key: "lettuce", label: "Lettuce", archetype: "leafy", src: `${ROOT}/lettuce.svg`, keywords: ["lettuce"] },
+  { key: "taro", label: "Taro", archetype: "root", src: `${ROOT}/taro.svg`, keywords: ["taro", "colocasia", "dasheen"] },
   { key: "carrot", label: "Carrot", archetype: "root", src: `${ROOT}/carrot.svg`, keywords: ["carrot"] },
   { key: "strawberry", label: "Strawberry", archetype: "berry", src: `${ROOT}/strawberry.svg`, keywords: ["strawberry"] },
   { key: "bean-bush", label: "Bush bean", archetype: "legume-bush", src: `${ROOT}/bean-bush.svg`, keywords: ["bush bean", "dwarf bean", "green bean"] },
