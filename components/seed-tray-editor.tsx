@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { PlantArt } from "./plant-art";
 import { seedContainers } from "./seed-container-art";
 import { plants } from "@/lib/garden/plant-catalog";
@@ -10,12 +10,14 @@ const cropNames = [...new Set([...plants.map(plant => plant.name), ...SEED_CROPS
   .sort((a, b) => a.localeCompare(b));
 const catalogue = new Map(plants.map(plant => [plant.name, plant]));
 
-export function SeedCataloguePicker({ crop, variety, onChange }: {
+export function SeedCataloguePicker({ crop, variety, onChange, showVarietyOptions = false }: {
   crop: string;
   variety: string;
   onChange: (crop: string, variety: string) => void;
+  showVarietyOptions?: boolean;
 }) {
   const [search, setSearch] = useState("");
+  const varietyListId = useId();
   const needle = search.trim().toLowerCase();
   const varieties = catalogue.get(crop)?.varieties ?? [];
   const matches = cropNames.filter(name => name === crop || name.toLowerCase().includes(needle) ||
@@ -27,9 +29,13 @@ export function SeedCataloguePicker({ crop, variety, onChange }: {
       const options = catalogue.get(name)?.varieties ?? [];
       onChange(name, (needle && options.find(item => item.toLowerCase().includes(needle))) || options[0] || "");
     }}>{matches.map(name => <option key={name}>{name}</option>)}</select></label>
-    <label>Variety<input list="seed-catalogue-varieties" value={variety} placeholder="Choose or type a variety"
+    {showVarietyOptions && varieties.length > 0 && <label>Catalogue variety<select value={varieties.includes(variety) ? variety : ""} onChange={event => onChange(crop, event.target.value)}>
+      <option value="">Choose a variety</option>
+      {varieties.map(item => <option key={item}>{item}</option>)}
+    </select></label>}
+    <label>Variety<input list={varietyListId} value={variety} placeholder="Choose or type a variety"
       onChange={event => onChange(crop, event.target.value)} />
-      <datalist id="seed-catalogue-varieties">{varieties.map(item => <option key={item} value={item} />)}</datalist>
+      <datalist id={varietyListId}>{varieties.map(item => <option key={item} value={item} />)}</datalist>
     </label>
   </>;
 }
@@ -60,18 +66,39 @@ export function SeedTrayEditor({ container, crop, variety, cells, onChange }: {
   container: string; crop: string; variety: string; cells: SownCell[]; onChange: (cells: SownCell[]) => void;
 }) {
   const [erase, setErase] = useState(false);
+  const [editing, setEditing] = useState<SownCell | null>(null);
   if (!seedContainers.some(item => item.name === container && item.rows > 0)) return null;
   return <section className="seed-tray-editor">
     <h3>Sow into cells</h3>
-    <p>Choose a crop and variety above, then tap a cell to sow or replace one seed.</p>
+    <p>Choose a crop and variety above, then tap an empty cell to sow. Tap an occupied cell to change its variety.</p>
     <div className="seed-tray-actions">
       <strong>{cells.length} cells sown</strong>
-      <button type="button" aria-pressed={erase} onClick={() => setErase(value => !value)}>Erase cells</button>
-      {cells.length > 0 && <button type="button" onClick={() => onChange([])}>Clear tray</button>}
+      <button type="button" aria-pressed={erase} onClick={() => { setEditing(null); setErase(value => !value); }}>Erase cells</button>
+      {cells.length > 0 && <button type="button" onClick={() => { setEditing(null); onChange([]); }}>Clear tray</button>}
     </div>
     <SeedTrayGrid container={container} cells={cells} onCellClick={index => {
+      const occupied = cells.find(cell => cell.index === index);
+      if (!erase && occupied) {
+        setEditing(occupied);
+        return;
+      }
+      setEditing(null);
       const rest = cells.filter(cell => cell.index !== index);
       onChange(erase ? rest : [...rest, { index, crop, variety: variety.trim() }].sort((a, b) => a.index - b.index));
     }} />
+    {editing && <fieldset className="seed-container-picker" key={editing.index}>
+      <legend>Edit cell {editing.index + 1}</legend>
+      <div className="seed-form-grid">
+        <SeedCataloguePicker showVarietyOptions crop={editing.crop} variety={editing.variety}
+          onChange={(crop, variety) => setEditing({ ...editing, crop, variety })} />
+      </div>
+      <div className="seed-tray-actions">
+        <button type="button" onClick={() => {
+          onChange(cells.map(cell => cell.index === editing.index ? { ...editing, variety: editing.variety.trim() } : cell));
+          setEditing(null);
+        }}>Apply to cell {editing.index + 1}</button>
+        <button type="button" onClick={() => setEditing(null)}>Cancel</button>
+      </div>
+    </fieldset>}
   </section>;
 }
