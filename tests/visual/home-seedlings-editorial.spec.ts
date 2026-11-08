@@ -76,6 +76,13 @@ test("catalogue crops can be sown into individual cells and survive reload", asy
   await page.getByRole("button", { name: "Save batch" }).click();
   await page.reload();
   await expect(page.getByRole("heading", { name: "Mixed tray" })).toBeVisible();
-  await expect(tray.getByRole("img", { name: /Cell 2: Taro/ })).toBeVisible();
-  await expect(tray.getByRole("img", { name: /Cell 5: Tomato.*Roma/ })).toBeVisible();
+  await expect(tray.getByRole("button", { name: /Cell 2: Taro/ })).toContainText("Taro");
+  const savedTomato = tray.getByRole("button", { name: /Cell 5: Tomato.*Roma/ });
+  await expect(savedTomato).toContainText("Roma");
+  await savedTomato.click();
+  await cell.getByRole("combobox", { name: "Catalogue variety" }).selectOption("Moneymaker");
+  await cell.getByRole("button", { name: "Apply to cell 5" }).click();
+  await page.reload();
+  await expect(tray.getByRole("button", { name: /Cell 5: Tomato.*Moneymaker/ })).toContainText("Moneymaker");
+  await expect(tray.getByRole("button", { name: /Cell 2: Taro/ })).toContainText("Taro");
 });

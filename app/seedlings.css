@@ -159,3 +159,6 @@ button.seed-tray-cell { cursor: pointer; }
 button.seed-tray-cell:focus-visible { outline: 2px solid #f4db85; outline-offset: -3px; }
 .seed-batch-card .seed-tray-grid { margin-top: 12px; }
 .seed-batch-card .seed-tray-cell { min-height: 30px; }
+
+.seed-tray-cell[data-sown="true"] { padding: 5px 3px; gap: 3px; align-content: center; min-height: 53px; }
+.seed-cell-label { font-size: 10px; line-height: 1.15; color: #284633; overflow-wrap: anywhere; text-align: center; }

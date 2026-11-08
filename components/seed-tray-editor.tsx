@@ -19,7 +19,8 @@ export function SeedCataloguePicker({ crop, variety, onChange, showVarietyOption
   const [search, setSearch] = useState("");
   const varietyListId = useId();
   const needle = search.trim().toLowerCase();
-  const varieties = catalogue.get(crop)?.varieties ?? [];
+  const varietyCrop = crop === "Peas" ? "Pea" : crop === "Beans" ? "Bean" : crop === "Capsicum / chilli" ? "Capsicum" : crop;
+  const varieties = catalogue.get(varietyCrop)?.varieties ?? [];
   const matches = cropNames.filter(name => name === crop || name.toLowerCase().includes(needle) ||
     catalogue.get(name)?.varieties.some(item => item.toLowerCase().includes(needle)));
   return <>
@@ -40,21 +41,25 @@ export function SeedCataloguePicker({ crop, variety, onChange, showVarietyOption
   </>;
 }
 
-export function SeedTrayGrid({ container, cells, onCellClick }: {
+export function SeedTrayGrid({ container, cells, onCellClick, occupiedOnly = false }: {
   container: string;
   cells: readonly SownCell[];
   onCellClick?: (index: number) => void;
+  occupiedOnly?: boolean;
 }) {
   const tray = seedContainers.find(item => item.name === container);
   if (!tray || tray.rows === 0) return null;
   const occupied = new Map(cells.map(cell => [cell.index, cell]));
-  return <div className="seed-tray-grid" style={{ gridTemplateColumns: `repeat(${tray.columns}, minmax(32px, 1fr))` }}
+  return <div className="seed-tray-grid" style={{ gridTemplateColumns: `repeat(${tray.columns}, minmax(66px, 1fr))` }}
     role="group" aria-label={`${tray.name} cell layout`}>
     {Array.from({ length: tray.columns * tray.rows }, (_, index) => {
       const cell = occupied.get(index);
       const label = `Cell ${index + 1}: ${cell ? [cell.crop, cell.variety].filter(Boolean).join(" · ") : "empty"}`;
-      const content = cell ? <PlantArt crop={cell.crop} variety={cell.variety} fallback="🌱" /> : <span aria-hidden="true">{index + 1}</span>;
-      return onCellClick
+      const content = cell ? <>
+        <PlantArt crop={cell.crop} variety={cell.variety} fallback="🌱" />
+        <small className="seed-cell-label">{cell.variety || cell.crop}</small>
+      </> : <span aria-hidden="true">{index + 1}</span>;
+      return onCellClick && (!occupiedOnly || cell)
         ? <button type="button" className="seed-tray-cell" data-sown={Boolean(cell)} key={index} aria-label={label} title={label}
           onClick={() => onCellClick(index)}>{content}</button>
         : <span role="img" className="seed-tray-cell" data-sown={Boolean(cell)} key={index} aria-label={label} title={label}>{content}</span>;
@@ -62,21 +67,21 @@ export function SeedTrayGrid({ container, cells, onCellClick }: {
   </div>;
 }
 
-export function SeedTrayEditor({ container, crop, variety, cells, onChange }: {
-  container: string; crop: string; variety: string; cells: SownCell[]; onChange: (cells: SownCell[]) => void;
+export function SeedTrayEditor({ container, crop, variety, cells, onChange, editOnly = false }: {
+  container: string; crop: string; variety: string; cells: SownCell[]; onChange: (cells: SownCell[]) => void; editOnly?: boolean;
 }) {
   const [erase, setErase] = useState(false);
   const [editing, setEditing] = useState<SownCell | null>(null);
   if (!seedContainers.some(item => item.name === container && item.rows > 0)) return null;
   return <section className="seed-tray-editor">
-    <h3>Sow into cells</h3>
-    <p>Choose a crop and variety above, then tap an empty cell to sow. Tap an occupied cell to change its variety.</p>
+    <h3>{editOnly ? "Tray layout" : "Sow into cells"}</h3>
+    <p>{editOnly ? "Tap a planted cell to change its crop or variety." : "Choose a crop and variety above, then tap an empty cell to sow. Tap an occupied cell to change its variety."}</p>
     <div className="seed-tray-actions">
       <strong>{cells.length} cells sown</strong>
-      <button type="button" aria-pressed={erase} onClick={() => { setEditing(null); setErase(value => !value); }}>Erase cells</button>
-      {cells.length > 0 && <button type="button" onClick={() => { setEditing(null); onChange([]); }}>Clear tray</button>}
+      {!editOnly && <button type="button" aria-pressed={erase} onClick={() => { setEditing(null); setErase(value => !value); }}>Erase cells</button>}
+      {!editOnly && cells.length > 0 && <button type="button" onClick={() => { setEditing(null); onChange([]); }}>Clear tray</button>}
     </div>
-    <SeedTrayGrid container={container} cells={cells} onCellClick={index => {
+    <SeedTrayGrid container={container} cells={cells} occupiedOnly={editOnly} onCellClick={index => {
       const occupied = cells.find(cell => cell.index === index);
       if (!erase && occupied) {
         setEditing(occupied);

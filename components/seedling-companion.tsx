@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { PlantArt } from "./plant-art";
-import { SeedCataloguePicker, SeedTrayEditor, SeedTrayGrid } from "./seed-tray-editor";
+import { SeedCataloguePicker, SeedTrayEditor } from "./seed-tray-editor";
 import { SeedContainerArt, SeedContainerPicker, seedContainers } from "./seed-container-art";
 import { useEffect, useMemo, useState } from "react";
 import { addDays, findGuide, formatNzDate, getSavedBatches, saveBatches, SEED_CROPS, type SeedBatch } from "@/lib/garden/seedling-local";
@@ -70,7 +70,7 @@ export function SeedlingCompanion() {
       <div className="seed-heading"><div><span className="seed-eyebrow">YOUR SEED-RAISING JOURNAL</span><h1>Seedling <em>Companion.</em></h1><p>Know what to start, what to check and when your next batch should be sown.</p></div><button className="seed-add" onClick={()=>setShowForm(s=>!s)}>{showForm?"Close form":"＋ Add seed batch"}</button></div>
       <div className="seed-location"><span>Default location for new batches</span><div className="seed-switch"><button className={site==="waihopai"?"selected":""} onClick={()=>setSite("waihopai")}>Waihopai Valley</button><button className={site==="blenheim"?"selected":""} onClick={()=>setSite("blenheim")}>Blenheim Central</button></div><small>Both sites currently share generic sowing windows; no site-specific forecast or soil sensor is connected</small></div>
       {showForm&&<form className="seed-form" onSubmit={submit}><h2>Start tracking a batch</h2><div className="seed-form-grid">
-        <SeedCataloguePicker crop={form.crop} variety={form.variety} onChange={(crop, variety) => setForm(f => ({ ...f, crop, variety }))} />
+        <SeedCataloguePicker showVarietyOptions crop={form.crop} variety={form.variety} onChange={(crop, variety) => setForm(f => ({ ...f, crop, variety }))} />
         <label>Seeds sown<input type="number" min="1" max="9999" readOnly={mappedCells.length > 0} value={mappedCells.length || form.count} onChange={e=>setForm(f=>({...f,count:Number(e.target.value)}))}/></label>
         <label>Date sown<input type="date" required value={form.dateSown} onChange={e=>setForm(f=>({...f,dateSown:e.target.value}))}/></label>
         <label>Method<select disabled={mappedCells.length > 0} value={form.method} onChange={e=>setForm(f=>({...f,method:e.target.value as SeedBatch["method"],container:e.target.value==="direct"?"Direct in bed":f.container==="Direct in bed"?"Six-cell tray":f.container}))}><option value="indoors">Under grow light / indoors</option><option value="protected">Outside protected</option><option value="direct">Direct sow in bed</option></select></label>
@@ -84,7 +84,10 @@ export function SeedlingCompanion() {
       <section className="seed-section"><div className="seed-section-top"><div><span className="seed-eyebrow">YOUR GROWING BATCHES</span><h2>On the growing bench</h2></div><div className="seed-switch"><button className={filter==="all"?"selected":""} onClick={()=>setFilter("all")}>All</button><button className={filter==="indoor"?"selected":""} onClick={()=>setFilter("indoor")}>Under cover</button><button className={filter==="outdoor"?"selected":""} onClick={()=>setFilter("outdoor")}>Outside</button></div></div>
         {!visible.length?<div className="seed-empty"><span aria-hidden="true">01 /</span><h3>No batches in this view yet</h3><p>Add your first sowing to get a germination countdown, growth-stage checklist and succession date.</p><button className="seed-add" onClick={()=>setShowForm(true)}>＋ Add seed batch</button></div>:<div className="seed-batch-grid">{visible.map(b=>{const mixed = b.cells?.some(cell => cell.crop !== b.crop || cell.variety !== b.variety);const guide=mixed ? undefined : findGuide(b.crop);const step=stages.findIndex(s=>s.value===b.stage);const min=guide?addDays(b.dateSown,guide.emergenceDays[0]):null;const max=guide?addDays(b.dateSown,guide.emergenceDays[1]):null;const next=guide?.intervalDays?addDays(b.dateSown,guide.intervalDays):null;const due=next&&next<=today;
         return <article className="seed-batch-card" key={b.id}><div className="seed-batch-header"><div className="seed-batch-art"><SeedContainerArt name={b.container}/><PlantArt crop={cropArtName(b.crop)} variety={b.variety} fallback="🌱" /></div><div><span className="seed-crop-type">{b.site==="waihopai"?"Waihopai Valley":"Blenheim Central"} · {b.container}</span><h3>{mixed ? "Mixed tray" : b.crop}{!mixed && b.variety ? ` · ${b.variety}` : ""}</h3><small>{b.count} seeds · sown {formatNzDate(b.dateSown)}</small></div><button className="seed-delete" onClick={()=>{if(window.confirm("Delete this batch?"))persist(batches.filter(x=>x.id!==b.id));}} aria-label={`Delete ${b.crop} batch`}>×</button></div>
-        {b.cells?.length ? <SeedTrayGrid container={b.container} cells={b.cells} /> : null}
+        {b.cells?.length ? <SeedTrayEditor editOnly container={b.container} crop={b.crop} variety={b.variety} cells={b.cells} onChange={cells => {
+          const first = cells[0];
+          if (first) patchBatch(b.id, { cells, crop: first.crop, variety: first.variety, count: cells.length });
+        }} /> : null}
         <div className="seed-progress" aria-label={`Stage: ${stages[step]?.label}`}>{stages.map((s,i)=><span key={s.value} className={i<=step?"done":""}/>)}</div><div className="seed-stage-head"><strong>{stages[step]?.label}</strong><span>Stage {step+1} of {stages.length}</span></div><p className="seed-stage-hint">{stages[step]?.hint}</p>
         {b.stage==="sown"&&min&&max&&<p className="seed-milestone"><strong>Expected emergence:</strong> {formatNzDate(min)} – {formatNzDate(max)} (assuming suitable temperature)</p>}
         {next&&<p className="seed-milestone"><strong>Next succession sowing:</strong> {formatNzDate(next)}{due?" · Check conditions now":""}</p>}
