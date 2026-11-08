@@ -1,4 +1,5 @@
 import referencePlantData from "./reference-plant-data.json";
+import rasmussenVarieties from "./rasmussen-varieties.json";
 import { referencePlantNames } from "./plant-reference-names";
 
 export type PlantType = "Vegetable" | "Fruit" | "Herb" | "Flower" | "Native";
@@ -68,3 +69,15 @@ const additions: PlantOption[] = observedNames.filter((name) => !knownNames.has(
 
 // Keep established crops first so saved defaults and seasonal actions remain stable.
 export const plants: PlantOption[] = [...establishedPlants, ...additions];
+const plantsByName = new Map(plants.map(plant => [plant.name.toLowerCase(), plant]));
+for (const { crop, variety } of rasmussenVarieties) {
+  const key = crop.toLowerCase();
+  let plant = plantsByName.get(key);
+  if (!plant) {
+    plant = { name: crop, icon: "🌱", spacingCm: 30, spacing: "Set from seed packet", type: "Vegetable", varieties: [] };
+    unverifiedPlantNames.add(crop);
+    plants.push(plant);
+    plantsByName.set(key, plant);
+  }
+  if (!plant.varieties.includes(variety)) plant.varieties.push(variety);
+}

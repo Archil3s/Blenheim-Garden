@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { rasmussenPlantIcon } from "@/lib/garden/rasmussen-plant-icons";
 import { getPlantIconV2 } from "@/lib/garden/plant-icon-v2";
 import { plantIconBackground, plantIconSprite } from "@/lib/garden/plant-icons";
 import { catalogueArt } from "@/lib/garden/catalogue-art";
@@ -14,6 +15,11 @@ type PlantArtProps = {
 };
 
 export function PlantArt({ crop, variety, fallback, className, style }: PlantArtProps) {
+  const custom = rasmussenPlantIcon(crop, variety);
+  if (custom) return <span className={className} aria-hidden="true" title={variety ?? crop} style={{
+    display: "inline-block", width: "1em", height: "1em", flex: "0 0 auto", verticalAlign: "middle",
+    background: `url(${custom}) center / contain no-repeat`, ...style,
+  }} />;
   const reference = referencePlantSprite(crop, variety);
   if (reference) return <span className={`reference-plant-art ${className ?? ""}`} data-reference-sprite={reference.code}
     aria-hidden="true" title={`${crop}${variety ? ` · ${variety}` : ""}`}
