@@ -1,9 +1,12 @@
+export type SownCell = { index: number; crop: string; variety: string };
+
 export type SeedBatch = {
   id: string;
   crop: string;
   variety: string;
   dateSown: string;
   count: number;
+  cells?: SownCell[];
   site: "blenheim" | "waihopai";
   method: "indoors" | "protected" | "direct";
   container: string;

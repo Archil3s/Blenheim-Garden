@@ -146,3 +146,16 @@
 .seed-batch-art > span { position: absolute; right: -5px; bottom: 0; }
 .seed-batch-art .seed-container-art { width: 52px; height: 36px; }
 .seed-page .seed-plant-glyph { font-size: 24px; }
+.seed-tray-editor { margin: 16px 0; }
+.seed-tray-editor h3 { margin: 0 0 6px; }
+.seed-tray-editor p { margin: 0 0 10px; color: #425e4b; }
+.seed-tray-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.seed-tray-actions button { padding: 6px 10px; border: 1px solid #a7bcac; border-radius: 5px; background: #f9fbf8; color: #274b35; cursor: pointer; }
+.seed-tray-actions button[aria-pressed="true"] { background: #fae6da; border-color: #a06c52; }
+.seed-tray-grid { display: grid; gap: 4px; padding: 6px; max-width: 670px; overflow-x: auto; border-radius: 8px; background: #37473d; }
+.seed-tray-cell { display: grid; place-items: center; min-width: 0; min-height: 38px; border: 1px solid #8a7862; border-radius: 5px; background: #665140; color: #fff2d8; font-size: 13px; }
+.seed-tray-cell[data-sown="true"] { background: #ebefde; font-size: 24px; }
+button.seed-tray-cell { cursor: pointer; }
+button.seed-tray-cell:focus-visible { outline: 2px solid #f4db85; outline-offset: -3px; }
+.seed-batch-card .seed-tray-grid { margin-top: 12px; }
+.seed-batch-card .seed-tray-cell { min-height: 30px; }

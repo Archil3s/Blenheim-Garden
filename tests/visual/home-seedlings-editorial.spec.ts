@@ -55,3 +55,23 @@ test("seedling journal tracks a real batch and persists observed stages", async 
   await expect(page.locator(".seed-batch-card")).toHaveCount(0);
   expect(errors).toEqual([]);
 });
+
+test("catalogue crops can be sown into individual cells and survive reload", async ({ page }) => {
+  await page.goto("/seedlings");
+  await page.getByRole("button", { name: /Add seed batch/ }).first().click();
+  const tray = page.getByRole("group", { name: "Six-cell tray cell layout" });
+  await expect(tray.getByRole("button")).toHaveCount(6);
+  await page.getByLabel("Search seed catalogue").fill("Taro");
+  await page.getByRole("combobox", { name: "Crop", exact: true }).selectOption("Taro");
+  await tray.getByRole("button", { name: "Cell 2: empty" }).click();
+  await page.getByLabel("Search seed catalogue").fill("Black Krim");
+  await page.getByRole("combobox", { name: "Crop", exact: true }).selectOption("Tomato");
+  await expect(page.getByRole("combobox", { name: "Variety", exact: true })).toHaveValue("Black Krim");
+  await tray.getByRole("button", { name: "Cell 5: empty" }).click();
+  await expect(page.getByLabel("Seeds sown")).toHaveValue("2");
+  await page.getByRole("button", { name: "Save batch" }).click();
+  await page.reload();
+  await expect(page.getByRole("heading", { name: "Mixed tray" })).toBeVisible();
+  await expect(tray.getByRole("img", { name: /Cell 2: Taro/ })).toBeVisible();
+  await expect(tray.getByRole("img", { name: /Cell 5: Tomato.*Black Krim/ })).toBeVisible();
+});

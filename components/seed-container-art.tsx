@@ -32,8 +32,8 @@ export function SeedContainerArt({ name }: { name: string }) {
   </svg>;
 }
 
-export function SeedContainerPicker({ value, onChange }: { value: string; onChange: (name: string) => void }) {
-  return <fieldset className="seed-container-picker">
+export function SeedContainerPicker({ value, onChange, disabled = false }: { value: string; onChange: (name: string) => void; disabled?: boolean }) {
+  return <fieldset className="seed-container-picker" disabled={disabled}>
     <legend>Tray or container</legend>
     <div className="seed-container-options">{seedContainers.map(item => <label key={item.name} className="seed-container-option">
       <input type="radio" name="seed-container-preset" checked={value === item.name} onChange={() => onChange(item.name)} />
