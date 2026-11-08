@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "repo": "Archil3s/Blenheim-Garden",
+  "baseCatalogue": "lib/garden/kings-seeds-varieties.json",
+  "targetVarieties": 441,
+  "completed": 3,
+  "productionReady": false,
+  "updated": "2026-11-08",
+  "icons": [
+    {
+      "id": "amaranth-garnet-red",
+      "variety": "Amaranth Garnet Red",
+      "path": "icons/amaranth-garnet-red.png",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "PNG",
+      "background": "transparent",
+      "source": "individual generated concept",
+      "status": "review-required",
+      "gitBlobSha": "d9d9f47c59d98af19d2b696e61cd8b600ce6274b"
+    },
+    {
+      "id": "amaranth-green-red",
+      "variety": "Amaranth Green & Red",
+      "path": "icons/amaranth-green-red.png",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "PNG",
+      "background": "transparent",
+      "source": "individual generated concept",
+      "status": "review-required",
+      "gitBlobSha": "b15f1d6654568fce7174fb0b9ab33722e059e79b"
+    },
+    {
+      "id": "asparagus-pea",
+      "variety": "Asparagus Pea",
+      "path": "icons/asparagus-pea.png",
+      "dimensions": [
+        128,
+        128
+      ],
+      "format": "PNG",
+      "background": "transparent",
+      "source": "individual generated concept",
+      "status": "review-required",
+      "gitBlobSha": "7e73bd0770777c072b1e73c7fb17681582070f87"
+    }
+  ]
+}
