@@ -1,0 +1,1111 @@
+{
+  "schema_version": 1,
+  "description": "Rasmussen chilli catalogue to on-repo PNG artwork mapping; missing art is not silently substituted.",
+  "catalogue_count": 137,
+  "approved_count": 10,
+  "unreviewed_count": 40,
+  "pending_count": 87,
+  "notes": [
+    "Entries 011–040 have no approved individual PNGs despite earlier concept-sheet experiments; batch 04 had only catalogue data.",
+    "Entries 081–137 remain pending.",
+    "The batch 08 colour variants were adapted/recoloured from an earlier botanical icon; all unreviewed concepts require variety-accuracy checks before production use."
+  ],
+  "items": [
+    {
+      "index": 1,
+      "name": "7 Pot Jonah - Yellow",
+      "source_url": "https://rasmussengardens.co.nz/products/7-pot-jonah-yellow-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png",
+      "artwork_status": "approved_existing",
+      "batch": 1
+    },
+    {
+      "index": 2,
+      "name": "Aji Ahuachapan",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-ahuachapan-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/approved/002_aji-ahuachapan.png",
+      "artwork_status": "approved_existing",
+      "batch": 1
+    },
+    {
+      "index": 3,
+      "name": "Aji Amarillo",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-amarillo-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/approved/003_aji-amarillo.png",
+      "artwork_status": "approved_existing",
+      "batch": 1
+    },
+    {
+      "index": 4,
+      "name": "Aji Berry Amarillo",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-berry-amarillo-long-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/approved/004_aji-berry-amarillo.png",
+      "artwork_status": "approved_existing",
+      "batch": 1
+    },
+    {
+      "index": 5,
+      "name": "Aji Brazilian Pumpkin",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-brazilian-pumpkin-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/approved/005_aji-brazilian-pumpkin.png",
+      "artwork_status": "approved_existing",
+      "batch": 1
+    },
+    {
+      "index": 6,
+      "name": "Aji Champion",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-champion-chilli-seeds-10-seeds-copy",
+      "png_path": "public/assets/icons/rasmussen/approved/006_aji-champion.png",
+      "artwork_status": "approved_existing",
+      "batch": 1
+    },
+    {
+      "index": 7,
+      "name": "Aji Charapita – Peach",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-charapita-peach-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/approved/007_aji-charapita-peach.png",
+      "artwork_status": "approved_existing",
+      "batch": 1
+    },
+    {
+      "index": 8,
+      "name": "Aji Charapita Amarillo",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-charapita-armarillo-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/approved/008_aji-charapita-amarillo.png",
+      "artwork_status": "approved_existing",
+      "batch": 1
+    },
+    {
+      "index": 9,
+      "name": "Aji Charapón",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-charapon-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/approved/009_aji-charapon.png",
+      "artwork_status": "approved_existing",
+      "batch": 1
+    },
+    {
+      "index": 10,
+      "name": "Aji Cito",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-cito-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/approved/010_aji-cito.png",
+      "artwork_status": "approved_existing",
+      "batch": 1
+    },
+    {
+      "index": 11,
+      "name": "Aji Colorado Orange",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-colorado-orange-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 2
+    },
+    {
+      "index": 12,
+      "name": "Aji Cristal",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-cristal-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 2
+    },
+    {
+      "index": 13,
+      "name": "Aji Fantasy",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-fantasy-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 2
+    },
+    {
+      "index": 14,
+      "name": "Aji Giallo Arancio",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-giallo-arancio-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 2
+    },
+    {
+      "index": 15,
+      "name": "Aji Guyana",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-guyana-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 2
+    },
+    {
+      "index": 16,
+      "name": "Aji Lemon",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-lemon-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 2
+    },
+    {
+      "index": 17,
+      "name": "Aji Lemon Stumpy",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-lemon-starburst-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 2
+    },
+    {
+      "index": 18,
+      "name": "Aji Mango Stumpy",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-mango-stumpy-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 2
+    },
+    {
+      "index": 19,
+      "name": "Aji Melocoton",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-melocoton-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 2
+    },
+    {
+      "index": 20,
+      "name": "Aji Merkén (Cacho de cabra)",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 2
+    },
+    {
+      "index": 21,
+      "name": "Aji Norteno",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-norteno-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 3
+    },
+    {
+      "index": 22,
+      "name": "Aji Panca",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-panca-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 3
+    },
+    {
+      "index": 23,
+      "name": "Aji Peanut",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-peanut-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 3
+    },
+    {
+      "index": 24,
+      "name": "Aji Pineapple",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-pineapple-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 3
+    },
+    {
+      "index": 25,
+      "name": "Aji Rojo",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-rojo-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 3
+    },
+    {
+      "index": 26,
+      "name": "Aji Sparkly White",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-sparkly-white-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 3
+    },
+    {
+      "index": 27,
+      "name": "Aji Strawberry Drop",
+      "source_url": "https://rasmussengardens.co.nz/products/aji-strawberry-drop-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 3
+    },
+    {
+      "index": 28,
+      "name": "Anaheim",
+      "source_url": "https://rasmussengardens.co.nz/products/anaheim-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 3
+    },
+    {
+      "index": 29,
+      "name": "Arriba Saia",
+      "source_url": "https://rasmussengardens.co.nz/products/arriba-saia-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 3
+    },
+    {
+      "index": 30,
+      "name": "Bahamian Goat",
+      "source_url": "https://rasmussengardens.co.nz/products/bahamian-goat-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 3
+    },
+    {
+      "index": 31,
+      "name": "Bell Pepper - Mini - Yellow",
+      "source_url": "https://rasmussengardens.co.nz/products/mini-bell-pepper-yellow-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 4
+    },
+    {
+      "index": 32,
+      "name": "Bell Pepper - Orange",
+      "source_url": "https://rasmussengardens.co.nz/products/bell-pepper-orange-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 4
+    },
+    {
+      "index": 33,
+      "name": "Bell Pepper - Purple",
+      "source_url": "https://rasmussengardens.co.nz/products/bell-pepper-purple-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 4
+    },
+    {
+      "index": 34,
+      "name": "Bell Pepper - Red",
+      "source_url": "https://rasmussengardens.co.nz/products/bell-pepper-red-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 4
+    },
+    {
+      "index": 35,
+      "name": "Bell Pepper - Soroksari",
+      "source_url": "https://rasmussengardens.co.nz/products/bell-pepper-soroksari-chilli-seeds-10-seeds-1",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 4
+    },
+    {
+      "index": 36,
+      "name": "Berry Cream BBG",
+      "source_url": "https://rasmussengardens.co.nz/products/berry-cream-bbg-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 4
+    },
+    {
+      "index": 37,
+      "name": "Bhut Jolokia (Ghost)",
+      "source_url": "https://rasmussengardens.co.nz/products/bhut-jolokia-ghost-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 4
+    },
+    {
+      "index": 38,
+      "name": "Bhut Jolokia (Ghost) Chocolate",
+      "source_url": "https://rasmussengardens.co.nz/products/bhut-jolokia-ghost-chocolate-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 4
+    },
+    {
+      "index": 39,
+      "name": "Biquinho Iracema",
+      "source_url": "https://rasmussengardens.co.nz/products/biquinho-iracema-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 4
+    },
+    {
+      "index": 40,
+      "name": "Biquinho Yellow",
+      "source_url": "https://rasmussengardens.co.nz/products/biquinho-yellow-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 4
+    },
+    {
+      "index": 41,
+      "name": "Bishop Crown",
+      "source_url": "https://rasmussengardens.co.nz/products/bishop-crown-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-05/041_bishop-crown.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 5
+    },
+    {
+      "index": 42,
+      "name": "Black Fire",
+      "source_url": "https://rasmussengardens.co.nz/products/black-fire-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-05/042_black-fire.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 5
+    },
+    {
+      "index": 43,
+      "name": "Black Pearl",
+      "source_url": "https://rasmussengardens.co.nz/products/black-pearl-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-05/043_black-pearl.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 5
+    },
+    {
+      "index": 44,
+      "name": "Bleeding Heart Yellow BBG",
+      "source_url": "https://rasmussengardens.co.nz/products/bleeding-heart-yellow-bbg-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-05/044_bleeding-heart-yellow-bbg.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 5
+    },
+    {
+      "index": 45,
+      "name": "Bolivian Rainbow",
+      "source_url": "https://rasmussengardens.co.nz/products/bolivian-rainbow-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-05/045_bolivian-rainbow.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 5
+    },
+    {
+      "index": 46,
+      "name": "Brazilian Starfish Orange",
+      "source_url": "https://rasmussengardens.co.nz/products/brazilian-starfish-orange-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-05/046_brazilian-starfish-orange.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 5
+    },
+    {
+      "index": 47,
+      "name": "Brown Poblano",
+      "source_url": "https://rasmussengardens.co.nz/products/brown-poblano-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-05/047_brown-poblano.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 5
+    },
+    {
+      "index": 48,
+      "name": "Bulgarian Carrot",
+      "source_url": "https://rasmussengardens.co.nz/products/bulgarian-carrot-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-05/048_bulgarian-carrot.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 5
+    },
+    {
+      "index": 49,
+      "name": "Candy Cane",
+      "source_url": "https://rasmussengardens.co.nz/products/candy-cane-chilli-seeds-10-seeds-copy",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-05/049_candy-cane.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 5
+    },
+    {
+      "index": 50,
+      "name": "Carolina Reaper - Yellow",
+      "source_url": "https://rasmussengardens.co.nz/products/carolina-reaper-yellow-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-05/050_carolina-reaper-yellow.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 5
+    },
+    {
+      "index": 51,
+      "name": "Cayenne Antho",
+      "source_url": "https://rasmussengardens.co.nz/products/cayenne-antho-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-06/051_cayenne-antho.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 6
+    },
+    {
+      "index": 52,
+      "name": "Cherry Large Hot",
+      "source_url": "https://rasmussengardens.co.nz/products/cherry-large-hot-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-06/052_cherry-large-hot.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 6
+    },
+    {
+      "index": 53,
+      "name": "Cheyenne",
+      "source_url": "https://rasmussengardens.co.nz/products/cheyenne-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-06/053_cheyenne.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 6
+    },
+    {
+      "index": 54,
+      "name": "Chile de árbol",
+      "source_url": "https://rasmussengardens.co.nz/products/chile-de-arbol-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-06/054_chile-de-rbol.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 6
+    },
+    {
+      "index": 55,
+      "name": "Chile Japones",
+      "source_url": "https://rasmussengardens.co.nz/products/chile-japones-chilli-seeds-10-seeds-copy",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-06/055_chile-japones.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 6
+    },
+    {
+      "index": 56,
+      "name": "Chiltepin",
+      "source_url": "https://rasmussengardens.co.nz/products/chiltepin-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-06/056_chiltepin.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 6
+    },
+    {
+      "index": 57,
+      "name": "Czech Black",
+      "source_url": "https://rasmussengardens.co.nz/products/czech-black-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-06/057_czech-black.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 6
+    },
+    {
+      "index": 58,
+      "name": "Devils Claw Mustard",
+      "source_url": "https://rasmussengardens.co.nz/products/devils-claw-mustard-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-06/058_devils-claw-mustard.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 6
+    },
+    {
+      "index": 59,
+      "name": "Devils Tongue - Red",
+      "source_url": "https://rasmussengardens.co.nz/products/devils-tongue-red-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-06/059_devils-tongue-red.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 6
+    },
+    {
+      "index": 60,
+      "name": "Devils Tongue - Yellow",
+      "source_url": "https://rasmussengardens.co.nz/products/devils-tongue-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-06/060_devils-tongue-yellow.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 6
+    },
+    {
+      "index": 61,
+      "name": "Duemila",
+      "source_url": "https://rasmussengardens.co.nz/products/duemila-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-07/061_duemila.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 7
+    },
+    {
+      "index": 62,
+      "name": "Er Jing Tiao – Sichuan Cayenne",
+      "source_url": "https://rasmussengardens.co.nz/products/er-jing-tiao-sichuan-cayenne-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-07/062_er-jing-tiao-sichuan-cayenne.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 7
+    },
+    {
+      "index": 63,
+      "name": "Fatalii Jigsaw",
+      "source_url": "https://rasmussengardens.co.nz/products/fatalii-jigsaw-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-07/063_fatalii-jigsaw.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 7
+    },
+    {
+      "index": 64,
+      "name": "Fish Pepper - Red",
+      "source_url": "https://rasmussengardens.co.nz/products/fish-pepper-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-07/064_fish-pepper-red.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 7
+    },
+    {
+      "index": 65,
+      "name": "Fish Pepper - Yellow",
+      "source_url": "https://rasmussengardens.co.nz/products/fish-pepper-yellow-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-07/065_fish-pepper-yellow.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 7
+    },
+    {
+      "index": 66,
+      "name": "Fresno",
+      "source_url": "https://rasmussengardens.co.nz/products/fresno-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-07/066_fresno.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 7
+    },
+    {
+      "index": 67,
+      "name": "Friggitello",
+      "source_url": "https://rasmussengardens.co.nz/products/friggitello-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-07/067_friggitello.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 7
+    },
+    {
+      "index": 68,
+      "name": "Frontera Sweet Habanero",
+      "source_url": "https://rasmussengardens.co.nz/products/frontera-sweet-habanero-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-07/068_frontera-sweet-habanero.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 7
+    },
+    {
+      "index": 69,
+      "name": "Goat&#x27;s Weed",
+      "source_url": "https://rasmussengardens.co.nz/products/goats-weed-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-07/069_goat-s-weed.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 7
+    },
+    {
+      "index": 70,
+      "name": "Gochu Vita",
+      "source_url": "https://rasmussengardens.co.nz/products/gochu-vita-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-07/070_gochu-vita.png",
+      "artwork_status": "unreviewed_generated_concept",
+      "batch": 7
+    },
+    {
+      "index": 71,
+      "name": "Golden Nugget Variegated",
+      "source_url": "https://rasmussengardens.co.nz/products/golden-nugget-variegated-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-08/071_golden-nugget-variegated.png",
+      "artwork_status": "unreviewed_adapted_concept",
+      "batch": 8
+    },
+    {
+      "index": 72,
+      "name": "Guajillo",
+      "source_url": "https://rasmussengardens.co.nz/products/guajillo-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-08/072_guajillo.png",
+      "artwork_status": "unreviewed_adapted_concept",
+      "batch": 8
+    },
+    {
+      "index": 73,
+      "name": "Habanada",
+      "source_url": "https://rasmussengardens.co.nz/products/habanada-chilli-seeds-10-seeds-copy",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-08/073_habanada.png",
+      "artwork_status": "unreviewed_adapted_concept",
+      "batch": 8
+    },
+    {
+      "index": 74,
+      "name": "Habanero - Hot Lemon",
+      "source_url": "https://rasmussengardens.co.nz/products/habanero-hot-lemon-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-08/074_habanero-hot-lemon.png",
+      "artwork_status": "unreviewed_adapted_concept",
+      "batch": 8
+    },
+    {
+      "index": 75,
+      "name": "Habanero - Mustard",
+      "source_url": "https://rasmussengardens.co.nz/products/habanero-mustard-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-08/075_habanero-mustard.png",
+      "artwork_status": "unreviewed_adapted_concept",
+      "batch": 8
+    },
+    {
+      "index": 76,
+      "name": "Habanero - Peach",
+      "source_url": "https://rasmussengardens.co.nz/products/habanero-peach-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-08/076_habanero-peach.png",
+      "artwork_status": "unreviewed_adapted_concept",
+      "batch": 8
+    },
+    {
+      "index": 77,
+      "name": "Habanero - Red",
+      "source_url": "https://rasmussengardens.co.nz/products/habanero-red-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-08/077_habanero-red.png",
+      "artwork_status": "unreviewed_adapted_concept",
+      "batch": 8
+    },
+    {
+      "index": 78,
+      "name": "Habanero - White",
+      "source_url": "https://rasmussengardens.co.nz/products/habanero-white-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-08/078_habanero-white.png",
+      "artwork_status": "unreviewed_adapted_concept",
+      "batch": 8
+    },
+    {
+      "index": 79,
+      "name": "Habanero - Yellow",
+      "source_url": "https://rasmussengardens.co.nz/products/habanero-yellow-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-08/079_habanero-yellow.png",
+      "artwork_status": "unreviewed_adapted_concept",
+      "batch": 8
+    },
+    {
+      "index": 80,
+      "name": "Hangjiao 3 Solar Flare &#x27;space chilli&#x27;",
+      "source_url": "https://rasmussengardens.co.nz/products/hangjiao-3-solar-flare-space-chilli-chilli-seeds-10-seeds",
+      "png_path": "public/assets/icons/rasmussen/concepts/batch-08/080_hangjiao-3-solar-flare-space-chilli.png",
+      "artwork_status": "unreviewed_adapted_concept",
+      "batch": 8
+    },
+    {
+      "index": 81,
+      "name": "Hungarian Yellow Wax",
+      "source_url": "https://rasmussengardens.co.nz/products/hungarian-yellow-wax-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 9
+    },
+    {
+      "index": 82,
+      "name": "Inca Red Hot",
+      "source_url": "https://rasmussengardens.co.nz/products/inca-red-hot-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 9
+    },
+    {
+      "index": 83,
+      "name": "Jalapeño - El Jefe",
+      "source_url": "https://rasmussengardens.co.nz/products/jalapeno-el-jefe-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 9
+    },
+    {
+      "index": 84,
+      "name": "Jalapeño - Farmers Market",
+      "source_url": "https://rasmussengardens.co.nz/products/jalapeno-farmers-market-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 9
+    },
+    {
+      "index": 85,
+      "name": "Jalapeño - Mega Jefe",
+      "source_url": "https://rasmussengardens.co.nz/products/jalapeno-mega-jefe-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 9
+    },
+    {
+      "index": 86,
+      "name": "Jalapeño - Purple",
+      "source_url": "https://rasmussengardens.co.nz/products/jalapeno-purple-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 9
+    },
+    {
+      "index": 87,
+      "name": "Jamaican Mushroom Red",
+      "source_url": "https://rasmussengardens.co.nz/products/jamaican-mushroom-red-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 9
+    },
+    {
+      "index": 88,
+      "name": "Jamaican Mushroom Yellow",
+      "source_url": "https://rasmussengardens.co.nz/products/jamaican-mushroom-yellow-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 9
+    },
+    {
+      "index": 89,
+      "name": "Jimmy Nardello",
+      "source_url": "https://rasmussengardens.co.nz/products/jimmy-nardello-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 9
+    },
+    {
+      "index": 90,
+      "name": "Jwala",
+      "source_url": "https://rasmussengardens.co.nz/products/jwala-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 9
+    },
+    {
+      "index": 91,
+      "name": "KS Lemon Starburst",
+      "source_url": "https://rasmussengardens.co.nz/products/ks-lemon-starburst-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 10
+    },
+    {
+      "index": 92,
+      "name": "KS Starrscream Chocolate",
+      "source_url": "https://rasmussengardens.co.nz/products/ks-starrscream-chocolate-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 10
+    },
+    {
+      "index": 93,
+      "name": "KS White Thai",
+      "source_url": "https://rasmussengardens.co.nz/products/ks-white-thai-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 10
+    },
+    {
+      "index": 94,
+      "name": "Malawi Piquante &#x27;Peppadew&#x27;",
+      "source_url": "https://rasmussengardens.co.nz/products/malawi-piquante-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 10
+    },
+    {
+      "index": 95,
+      "name": "Mambo Orange",
+      "source_url": "https://rasmussengardens.co.nz/products/mambo-orange-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 10
+    },
+    {
+      "index": 96,
+      "name": "Marconi - Yellow",
+      "source_url": "https://rasmussengardens.co.nz/products/marconi-yellow-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 10
+    },
+    {
+      "index": 97,
+      "name": "Mexican Mole Chilli Seed Collection",
+      "source_url": "https://rasmussengardens.co.nz/products/mexican-mole-chilli-seed-collection",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 10
+    },
+    {
+      "index": 98,
+      "name": "Mexican Roasting Chilli Seed Collection",
+      "source_url": "https://rasmussengardens.co.nz/products/mexican-roasting-chilli-seed-collection",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 10
+    },
+    {
+      "index": 99,
+      "name": "Murupi Amarela Yellow",
+      "source_url": "https://rasmussengardens.co.nz/products/murupi-amarela-yellow-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 10
+    },
+    {
+      "index": 100,
+      "name": "Naga Red",
+      "source_url": "https://rasmussengardens.co.nz/products/naga-red-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 10
+    },
+    {
+      "index": 101,
+      "name": "Naga Yellow",
+      "source_url": "https://rasmussengardens.co.nz/products/naga-yellow-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 11
+    },
+    {
+      "index": 102,
+      "name": "Orange Lantern",
+      "source_url": "https://rasmussengardens.co.nz/products/orange-lantern-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 11
+    },
+    {
+      "index": 103,
+      "name": "Oxhorn",
+      "source_url": "https://rasmussengardens.co.nz/products/oxhorn-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 11
+    },
+    {
+      "index": 104,
+      "name": "Oz Latern White",
+      "source_url": "https://rasmussengardens.co.nz/products/habanero-oz-latern-white-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 11
+    },
+    {
+      "index": 105,
+      "name": "Pasilla (Chilaca) Bajio",
+      "source_url": "https://rasmussengardens.co.nz/products/pasilla-chilaca-bajio-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 11
+    },
+    {
+      "index": 106,
+      "name": "Peri Peri",
+      "source_url": "https://rasmussengardens.co.nz/products/peri-peri-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 11
+    },
+    {
+      "index": 107,
+      "name": "Pimenta Leopard",
+      "source_url": "https://rasmussengardens.co.nz/products/pimenta-leopard-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 11
+    },
+    {
+      "index": 108,
+      "name": "Pimenta Luna",
+      "source_url": "https://rasmussengardens.co.nz/products/pimenta-luna-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 11
+    },
+    {
+      "index": 109,
+      "name": "Poblano - San Luis",
+      "source_url": "https://rasmussengardens.co.nz/products/poblano-san-luis-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 11
+    },
+    {
+      "index": 110,
+      "name": "Puerto Rican Yellow",
+      "source_url": "https://rasmussengardens.co.nz/products/puerto-rican-yellow-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 11
+    },
+    {
+      "index": 111,
+      "name": "Purple Pumpkin",
+      "source_url": "https://rasmussengardens.co.nz/products/purple-pumpkin-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 12
+    },
+    {
+      "index": 112,
+      "name": "Purple Tiger Variegated",
+      "source_url": "https://rasmussengardens.co.nz/products/purple-tiger-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 12
+    },
+    {
+      "index": 113,
+      "name": "Purple UFO",
+      "source_url": "https://rasmussengardens.co.nz/products/purple-ufo-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 12
+    },
+    {
+      "index": 114,
+      "name": "Purple Varigetta",
+      "source_url": "https://rasmussengardens.co.nz/products/purple-varigetta-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 12
+    },
+    {
+      "index": 115,
+      "name": "Rare Chillies of Peru Chilli Seed Collection",
+      "source_url": "https://rasmussengardens.co.nz/products/rare-chillies-of-peru-chilli-seed-collection",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 12
+    },
+    {
+      "index": 116,
+      "name": "Rocoto Aji Large Red chilli",
+      "source_url": "https://rasmussengardens.co.nz/products/rocoto-aji-large-red-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 12
+    },
+    {
+      "index": 117,
+      "name": "Rocoto Manzano - Orange chilli",
+      "source_url": "https://rasmussengardens.co.nz/products/rocoto-manzano-orange-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 12
+    },
+    {
+      "index": 118,
+      "name": "Rocoto Manzano - Red chilli",
+      "source_url": "https://rasmussengardens.co.nz/products/rocoto-manzano-red-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 12
+    },
+    {
+      "index": 119,
+      "name": "Rocoto Manzano - Red Flat chilli",
+      "source_url": "https://rasmussengardens.co.nz/products/rocoto-manzano-red-flat-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 12
+    },
+    {
+      "index": 120,
+      "name": "Rocoto Manzano - Yellow chilli",
+      "source_url": "https://rasmussengardens.co.nz/products/rocoto-manzano-yellow-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 12
+    },
+    {
+      "index": 121,
+      "name": "Scarlett&#x27;s Chilli Variegated",
+      "source_url": "https://rasmussengardens.co.nz/products/scarletts-chilli-varigatted-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 13
+    },
+    {
+      "index": 122,
+      "name": "Scotch Bonnet Red",
+      "source_url": "https://rasmussengardens.co.nz/products/scotch-bonnet-red-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 13
+    },
+    {
+      "index": 123,
+      "name": "Serrano",
+      "source_url": "https://rasmussengardens.co.nz/products/serrano-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 13
+    },
+    {
+      "index": 124,
+      "name": "Shishito Blackout",
+      "source_url": "https://rasmussengardens.co.nz/products/blackout-shishito-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 13
+    },
+    {
+      "index": 125,
+      "name": "Sugar Rush Cream",
+      "source_url": "https://rasmussengardens.co.nz/products/sugar-rush-cream-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 13
+    },
+    {
+      "index": 126,
+      "name": "Sugar Rush Peach",
+      "source_url": "https://rasmussengardens.co.nz/products/sugar-rush-peach-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 13
+    },
+    {
+      "index": 127,
+      "name": "Sugar Rush Peach Stumpy",
+      "source_url": "https://rasmussengardens.co.nz/products/sugar-rush-peach-stumpy-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 13
+    },
+    {
+      "index": 128,
+      "name": "Sugar Rush Red",
+      "source_url": "https://rasmussengardens.co.nz/products/sugar-rush-red-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 13
+    },
+    {
+      "index": 129,
+      "name": "Sugar Rush Stripey",
+      "source_url": "https://rasmussengardens.co.nz/products/sugar-rush-stripey-chilli-seeds-10-seeds-copy",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 13
+    },
+    {
+      "index": 130,
+      "name": "Sweet Paprika – Yugoslavia",
+      "source_url": "https://rasmussengardens.co.nz/products/sweet-paprika-yugoslavia-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 13
+    },
+    {
+      "index": 131,
+      "name": "Tabasco",
+      "source_url": "https://rasmussengardens.co.nz/products/tabasco-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 14
+    },
+    {
+      "index": 132,
+      "name": "Uchu Cream Variegated",
+      "source_url": "https://rasmussengardens.co.nz/products/uchu-cream-variegated-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 14
+    },
+    {
+      "index": 133,
+      "name": "White Chupetinho",
+      "source_url": "https://rasmussengardens.co.nz/products/white-chupetinho-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 14
+    },
+    {
+      "index": 134,
+      "name": "White Coyote Zan",
+      "source_url": "https://rasmussengardens.co.nz/products/white-coyote-zan-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 14
+    },
+    {
+      "index": 135,
+      "name": "Yaki Blue",
+      "source_url": "https://rasmussengardens.co.nz/products/yaki-blue-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 14
+    },
+    {
+      "index": 136,
+      "name": "Yellow Banana",
+      "source_url": "https://rasmussengardens.co.nz/products/yellow-banana-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 14
+    },
+    {
+      "index": 137,
+      "name": "Zebrange Stripey",
+      "source_url": "https://rasmussengardens.co.nz/products/zebrange-stripey-chilli-seeds-10-seeds",
+      "png_path": null,
+      "artwork_status": "pending_artwork",
+      "batch": 14
+    }
+  ]
+}
