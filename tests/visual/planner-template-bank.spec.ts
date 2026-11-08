@@ -1,3 +1,4 @@
+import { createMainGardenTemplate } from "../../lib/garden/main-garden-template";
 import { removeBedKeepingPlants } from "../../lib/garden/detach-bed-plants";
 import { rowPlants } from "../../lib/garden/plan-editing";
 import { expect, test } from "@playwright/test";
@@ -297,4 +298,24 @@ test("nested beds can be drawn, locked and removed without deleting their plants
   await page.keyboard.press("Delete");
   await expect(page.locator(".plan-bed")).toHaveCount(23);
   await expect(page.locator(".planting-row[data-crop=Raspberry]")).toHaveCount(3);
+});
+
+
+test("main template clones the saved garden with metal beds and remapped locks", () => {
+  const template = createMainGardenTemplate();
+  const another = createMainGardenTemplate();
+  expect(template.bedMaterial).toBe("metal");
+  expect(template.beds).toHaveLength(24);
+  expect(template.plantingAreas).toHaveLength(16);
+  expect(template.lockedItems).toHaveLength(31);
+  const beds = new Set(template.beds.map(bed => bed.id));
+  expect(template.plantingAreas.every(area => beds.has(area.bedId) && !area.plantingId)).toBe(true);
+  const keys = new Set([
+    ...template.beds.map(item => "bed:" + item.id),
+    ...template.plantingAreas.map(item => "planting:" + item.id),
+    ...template.rows.map(item => "row:" + item.id),
+    ...template.objects.map(item => "object:" + item.id),
+  ]);
+  expect(template.lockedItems?.every(key => keys.has(key))).toBe(true);
+  expect(another.plantingAreas[0].id).not.toBe(template.plantingAreas[0].id);
 });
