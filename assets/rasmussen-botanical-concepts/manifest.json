@@ -1,0 +1,2006 @@
+{
+  "schemaVersion": 1,
+  "source": "rasmussen-gpt-images-prompt-pack.md",
+  "totalVarieties": 285,
+  "seedCollectionsIncluded": 6,
+  "completed": 0,
+  "productionReady": false,
+  "requiredOutput": "square RGBA transparent PNG, legible at 32px, cultivar-specific botanically detailed",
+  "icons": [
+    {
+      "number": 1,
+      "name": "7 Pot Jonah - Yellow Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/7-pot-jonah-yellow-chilli-seeds-10-seeds",
+      "suggestedFilename": "7-pot-jonah-yellow-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 2,
+      "name": "Aji Ahuachapan Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-ahuachapan-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-ahuachapan-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 3,
+      "name": "Aji Amarillo Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-amarillo-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-amarillo-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 4,
+      "name": "Aji Berry Amarillo Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-berry-amarillo-long-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-berry-amarillo-long-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 5,
+      "name": "Aji Brazilian Pumpkin Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-brazilian-pumpkin-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-brazilian-pumpkin-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 6,
+      "name": "Aji Champion Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-champion-chilli-seeds-10-seeds-copy",
+      "suggestedFilename": "aji-champion-chilli-seeds-10-seeds-copy.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 7,
+      "name": "Aji Charapita – Peach Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-charapita-peach-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-charapita-peach-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 8,
+      "name": "Aji Charapita Amarillo Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-charapita-armarillo-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-charapita-armarillo-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 9,
+      "name": "Aji Charapón Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-charapon-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-charapon-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 10,
+      "name": "Aji Cito Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-cito-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-cito-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 11,
+      "name": "Aji Colorado Orange Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-colorado-orange-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-colorado-orange-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 12,
+      "name": "Aji Cristal Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-cristal-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-cristal-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 13,
+      "name": "Aji Fantasy Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-fantasy-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-fantasy-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 14,
+      "name": "Aji Giallo Arancio Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-giallo-arancio-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-giallo-arancio-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 15,
+      "name": "Aji Guyana Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-guyana-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-guyana-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 16,
+      "name": "Aji Lemon Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-lemon-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-lemon-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 17,
+      "name": "Aji Lemon Stumpy Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-lemon-starburst-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-lemon-starburst-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 18,
+      "name": "Aji Mango Stumpy Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-mango-stumpy-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-mango-stumpy-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 19,
+      "name": "Aji Melocoton Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-melocoton-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-melocoton-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 20,
+      "name": "Aji Merkén (Cacho de cabra) Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-merken-cacho-de-cabra-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 21,
+      "name": "Aji Norteno Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-norteno-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-norteno-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 22,
+      "name": "Aji Panca Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-panca-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-panca-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 23,
+      "name": "Aji Peanut Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-peanut-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-peanut-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 24,
+      "name": "Aji Pineapple Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-pineapple-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-pineapple-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 25,
+      "name": "Aji Rojo Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-rojo-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-rojo-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 26,
+      "name": "Aji Sparkly White Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-sparkly-white-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-sparkly-white-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 27,
+      "name": "Aji Strawberry Drop Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/aji-strawberry-drop-chilli-seeds-10-seeds",
+      "suggestedFilename": "aji-strawberry-drop-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 28,
+      "name": "Anaheim Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/anaheim-chilli-seeds-10-seeds",
+      "suggestedFilename": "anaheim-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 29,
+      "name": "Anna Banana Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/anna-banana-tomato-10-seeds",
+      "suggestedFilename": "anna-banana-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 30,
+      "name": "Arriba Saia Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/arriba-saia-chilli-seeds-10-seeds",
+      "suggestedFilename": "arriba-saia-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 31,
+      "name": "Artichoke Violet de Provence",
+      "productUrl": "https://rasmussengardens.co.nz/products/artichoke-violet-de-provence-25-seeds",
+      "suggestedFilename": "artichoke-violet-de-provence-25-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 32,
+      "name": "Bahamian Goat Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/bahamian-goat-chilli-seeds-10-seeds",
+      "suggestedFilename": "bahamian-goat-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 33,
+      "name": "Beetroot - Chioggia",
+      "productUrl": "https://rasmussengardens.co.nz/products/beetroot-chioggia-150-seeds",
+      "suggestedFilename": "beetroot-chioggia-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 34,
+      "name": "Beetroot - White Albino",
+      "productUrl": "https://rasmussengardens.co.nz/products/beetroot-white-albino-100-seeds",
+      "suggestedFilename": "beetroot-white-albino-100-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 35,
+      "name": "Bell Pepper - Mini - Yellow Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/mini-bell-pepper-yellow-chilli-seeds-10-seeds",
+      "suggestedFilename": "mini-bell-pepper-yellow-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 36,
+      "name": "Bell Pepper - Orange Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/bell-pepper-orange-chilli-seeds-10-seeds",
+      "suggestedFilename": "bell-pepper-orange-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 37,
+      "name": "Bell Pepper - Purple Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/bell-pepper-purple-chilli-seeds-10-seeds",
+      "suggestedFilename": "bell-pepper-purple-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 38,
+      "name": "Bell Pepper - Red Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/bell-pepper-red-chilli-seeds-10-seeds",
+      "suggestedFilename": "bell-pepper-red-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 39,
+      "name": "Bell Pepper - Soroksari Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/bell-pepper-soroksari-chilli-seeds-10-seeds-1",
+      "suggestedFilename": "bell-pepper-soroksari-chilli-seeds-10-seeds-1.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 40,
+      "name": "Berry Cream BBG Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/berry-cream-bbg-chilli-seeds-10-seeds",
+      "suggestedFilename": "berry-cream-bbg-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 41,
+      "name": "Bhut Jolokia (Ghost) Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/bhut-jolokia-ghost-chilli-seeds-10-seeds",
+      "suggestedFilename": "bhut-jolokia-ghost-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 42,
+      "name": "Bhut Jolokia (Ghost) Chocolate Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/bhut-jolokia-ghost-chocolate-chilli-seeds-10-seeds",
+      "suggestedFilename": "bhut-jolokia-ghost-chocolate-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 43,
+      "name": "Bianca Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/bianca-tomato-10-seeds",
+      "suggestedFilename": "bianca-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 44,
+      "name": "Big Rainbow Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/big-rainbow-tomato-10-seeds",
+      "suggestedFilename": "big-rainbow-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 45,
+      "name": "Biquinho Iracema Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/biquinho-iracema-chilli-seeds-10-seeds",
+      "suggestedFilename": "biquinho-iracema-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 46,
+      "name": "Biquinho Yellow Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/biquinho-yellow-chilli-seeds-10-seeds",
+      "suggestedFilename": "biquinho-yellow-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 47,
+      "name": "Bishop Crown Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/bishop-crown-chilli-seeds-10-seeds",
+      "suggestedFilename": "bishop-crown-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 48,
+      "name": "Black Fire Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/black-fire-chilli-seeds-10-seeds",
+      "suggestedFilename": "black-fire-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 49,
+      "name": "Black Krim Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/black-krim-tomato-10-seeds",
+      "suggestedFilename": "black-krim-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 50,
+      "name": "Black Pearl Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/black-pearl-chilli-seeds-10-seeds",
+      "suggestedFilename": "black-pearl-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 51,
+      "name": "Black Zebra Cherry Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/black-zebra-cherry-tomato-10-seeds",
+      "suggestedFilename": "black-zebra-cherry-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 52,
+      "name": "Bleeding Heart Yellow BBG Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/bleeding-heart-yellow-bbg-chilli-seeds-10-seeds",
+      "suggestedFilename": "bleeding-heart-yellow-bbg-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 53,
+      "name": "Blue Beauty Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/blue-beauty-tomato-10-seeds",
+      "suggestedFilename": "blue-beauty-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 54,
+      "name": "Bolivian Rainbow Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/bolivian-rainbow-chilli-seeds-10-seeds",
+      "suggestedFilename": "bolivian-rainbow-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 55,
+      "name": "Brazilian Starfish Orange Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/brazilian-starfish-orange-chilli-seeds-10-seeds",
+      "suggestedFilename": "brazilian-starfish-orange-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 56,
+      "name": "Broad Bean – Hughey Crimson",
+      "productUrl": "https://rasmussengardens.co.nz/products/broad-bean-hughey-crimson-40-seeds",
+      "suggestedFilename": "broad-bean-hughey-crimson-40-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 57,
+      "name": "Broad Bean – Lucifer",
+      "productUrl": "https://rasmussengardens.co.nz/products/broad-bean-lucifer-30-seeds",
+      "suggestedFilename": "broad-bean-lucifer-30-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 58,
+      "name": "Broccoli - De Cicco",
+      "productUrl": "https://rasmussengardens.co.nz/products/broccoli-de-cicco-150-seeds",
+      "suggestedFilename": "broccoli-de-cicco-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 59,
+      "name": "Brown Poblano Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/brown-poblano-chilli-seeds-10-seeds",
+      "suggestedFilename": "brown-poblano-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 60,
+      "name": "Brussels Sprouts - Catskill",
+      "productUrl": "https://rasmussengardens.co.nz/products/brussels-sprouts-catskill-150-seeds",
+      "suggestedFilename": "brussels-sprouts-catskill-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 61,
+      "name": "Brussels Sprouts - Red Bull",
+      "productUrl": "https://rasmussengardens.co.nz/products/brussels-sprouts-red-bull-50-seeds",
+      "suggestedFilename": "brussels-sprouts-red-bull-50-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 62,
+      "name": "Bulgarian Carrot Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/bulgarian-carrot-chilli-seeds-10-seeds",
+      "suggestedFilename": "bulgarian-carrot-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 63,
+      "name": "Cabbage - Chieftain Savoy",
+      "productUrl": "https://rasmussengardens.co.nz/products/cabbage-chieftain-savoy-150-seeds",
+      "suggestedFilename": "cabbage-chieftain-savoy-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 64,
+      "name": "Cabbage - Golden Acre",
+      "productUrl": "https://rasmussengardens.co.nz/products/cabbage-golden-acre-150-seeds",
+      "suggestedFilename": "cabbage-golden-acre-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 65,
+      "name": "Cabbage - Greyhound",
+      "productUrl": "https://rasmussengardens.co.nz/products/cabbage-greyhound-150-seeds",
+      "suggestedFilename": "cabbage-greyhound-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 66,
+      "name": "Cabbage - Red Acre",
+      "productUrl": "https://rasmussengardens.co.nz/products/cabbage-red-acre-150-seeds",
+      "suggestedFilename": "cabbage-red-acre-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 67,
+      "name": "Candy Cane Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/candy-cane-chilli-seeds-10-seeds-copy",
+      "suggestedFilename": "candy-cane-chilli-seeds-10-seeds-copy.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 68,
+      "name": "Carolina Reaper - Yellow Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/carolina-reaper-yellow-chilli-seeds-10-seeds",
+      "suggestedFilename": "carolina-reaper-yellow-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 69,
+      "name": "Carrot - Kyoto Red",
+      "productUrl": "https://rasmussengardens.co.nz/products/carrot-kyoto-red-200-seeds",
+      "suggestedFilename": "carrot-kyoto-red-200-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 70,
+      "name": "Carrot - Parisian Market",
+      "productUrl": "https://rasmussengardens.co.nz/products/carrot-parisian-market-500-seeds",
+      "suggestedFilename": "carrot-parisian-market-500-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 71,
+      "name": "Carrot - Topweight",
+      "productUrl": "https://rasmussengardens.co.nz/products/carrot-topweight-500-seeds",
+      "suggestedFilename": "carrot-topweight-500-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 72,
+      "name": "Cayenne Antho Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/cayenne-antho-seeds-10-seeds",
+      "suggestedFilename": "cayenne-antho-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 73,
+      "name": "Celery - Chinese Pink",
+      "productUrl": "https://rasmussengardens.co.nz/products/chinese-pink-celery-150-seeds",
+      "suggestedFilename": "chinese-pink-celery-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 74,
+      "name": "Celery - Chinese White",
+      "productUrl": "https://rasmussengardens.co.nz/products/white-queen-celery-150-seeds",
+      "suggestedFilename": "white-queen-celery-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 75,
+      "name": "Cherry Large Hot Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/cherry-large-hot-chilli-seeds-10-seeds",
+      "suggestedFilename": "cherry-large-hot-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 76,
+      "name": "Cheyenne Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/cheyenne-seeds-10-seeds",
+      "suggestedFilename": "cheyenne-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 77,
+      "name": "Chile de árbol Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/chile-de-arbol-chilli-seeds-10-seeds",
+      "suggestedFilename": "chile-de-arbol-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 78,
+      "name": "Chile Japones Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/chile-japones-chilli-seeds-10-seeds-copy",
+      "suggestedFilename": "chile-japones-chilli-seeds-10-seeds-copy.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 79,
+      "name": "Chiltepin Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/chiltepin-chilli-seeds-10-seeds",
+      "suggestedFilename": "chiltepin-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 80,
+      "name": "Chinese Broccoli - Kailaan",
+      "productUrl": "https://rasmussengardens.co.nz/products/chinese-broccoli-kailaan-150-seeds",
+      "suggestedFilename": "chinese-broccoli-kailaan-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 81,
+      "name": "Clementine Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/clementine-tomato-10-seeds",
+      "suggestedFilename": "clementine-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 82,
+      "name": "Collards - Ole Timey Blue",
+      "productUrl": "https://rasmussengardens.co.nz/products/collards-ole-timey-blue-100-seeds",
+      "suggestedFilename": "collards-ole-timey-blue-100-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 83,
+      "name": "Copia Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/copia-tomato-10-seeds",
+      "suggestedFilename": "copia-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 84,
+      "name": "Costoluto Fiorentino Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/costoluto-fiorentino-tomato-10-seeds",
+      "suggestedFilename": "costoluto-fiorentino-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 85,
+      "name": "Cream Sausage Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/cream-sausage-tomato-10-seeds",
+      "suggestedFilename": "cream-sausage-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 86,
+      "name": "Cucumber - Lebanese",
+      "productUrl": "https://rasmussengardens.co.nz/products/cucumber-lebanese-20-seeds",
+      "suggestedFilename": "cucumber-lebanese-20-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 87,
+      "name": "Cucumber - Telegraph",
+      "productUrl": "https://rasmussengardens.co.nz/products/cucumber-telegraph-20-seeds",
+      "suggestedFilename": "cucumber-telegraph-20-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 88,
+      "name": "Cuor di Bue Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/cuor-di-bue-tomato-10-seeds",
+      "suggestedFilename": "cuor-di-bue-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 89,
+      "name": "Czech Black Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/czech-black-chilli-seeds-10-seeds",
+      "suggestedFilename": "czech-black-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 90,
+      "name": "Dark Galaxy Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/dark-galaxy-tomato-10-seeds",
+      "suggestedFilename": "dark-galaxy-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 91,
+      "name": "Devils Claw Mustard Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/devils-claw-mustard-chilli-seeds-10-seeds",
+      "suggestedFilename": "devils-claw-mustard-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 92,
+      "name": "Devils Tongue - Red Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/devils-tongue-red-chilli-seeds-10-seeds",
+      "suggestedFilename": "devils-tongue-red-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 93,
+      "name": "Devils Tongue - Yellow Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/devils-tongue-chilli-seeds-10-seeds",
+      "suggestedFilename": "devils-tongue-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 94,
+      "name": "Duemila Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/duemila-chilli-seeds-10-seeds",
+      "suggestedFilename": "duemila-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 95,
+      "name": "Eggplant - Black Beauty",
+      "productUrl": "https://rasmussengardens.co.nz/products/eggplant-black-beauty-30-seeds",
+      "suggestedFilename": "eggplant-black-beauty-30-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 96,
+      "name": "Eggplant - Rabi Long Green",
+      "productUrl": "https://rasmussengardens.co.nz/products/eggplant-rabi-long-green-30-seeds",
+      "suggestedFilename": "eggplant-rabi-long-green-30-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 97,
+      "name": "Eggplant - Thai Green Egg",
+      "productUrl": "https://rasmussengardens.co.nz/products/eggplant-thai-green-egg-30-seeds",
+      "suggestedFilename": "eggplant-thai-green-egg-30-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 98,
+      "name": "Eggplant - Violetta Lunga",
+      "productUrl": "https://rasmussengardens.co.nz/products/eggplant-violetta-lunga-30-seeds",
+      "suggestedFilename": "eggplant-violetta-lunga-30-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 99,
+      "name": "Egyptian Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/egyptian-tomato-10-seeds",
+      "suggestedFilename": "egyptian-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 100,
+      "name": "Er Jing Tiao – Sichuan Cayenne Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/er-jing-tiao-sichuan-cayenne-chilli-seeds-10-seeds",
+      "suggestedFilename": "er-jing-tiao-sichuan-cayenne-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 101,
+      "name": "Fatalii Jigsaw Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/fatalii-jigsaw-chilli-seeds-10-seeds",
+      "suggestedFilename": "fatalii-jigsaw-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 102,
+      "name": "Feuerwerk Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/feuerwerk-tomato-10-seeds",
+      "suggestedFilename": "feuerwerk-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 103,
+      "name": "Fish Pepper - Red Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/fish-pepper-chilli-seeds-10-seeds",
+      "suggestedFilename": "fish-pepper-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 104,
+      "name": "Fish Pepper - Yellow Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/fish-pepper-yellow-chilli-seeds-10-seeds",
+      "suggestedFilename": "fish-pepper-yellow-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 105,
+      "name": "Fresno Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/fresno-chilli-seeds-10-seeds",
+      "suggestedFilename": "fresno-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 106,
+      "name": "Friggitello Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/friggitello-chilli-seeds-10-seeds",
+      "suggestedFilename": "friggitello-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 107,
+      "name": "Frontera Sweet Habanero Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/frontera-sweet-habanero-chilli-seeds-10-seeds",
+      "suggestedFilename": "frontera-sweet-habanero-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 108,
+      "name": "Furry Red Boar Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/furry-red-boar-tomato-10-seeds",
+      "suggestedFilename": "furry-red-boar-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 109,
+      "name": "Gajo de Melon Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/gajo-de-melon-tomato-10-seeds",
+      "suggestedFilename": "gajo-de-melon-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 110,
+      "name": "Garden Peach Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/garden-peach-tomato-10-seeds",
+      "suggestedFilename": "garden-peach-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 111,
+      "name": "Gardener’s Delight Cherry Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/gardener-s-delight-cherry-tomato-10-seeds",
+      "suggestedFilename": "gardener-s-delight-cherry-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 112,
+      "name": "German Red Strawberry Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/german-red-strawberry-tomato-10-seeds",
+      "suggestedFilename": "german-red-strawberry-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 113,
+      "name": "Gherkin - National Pickling Cucumber",
+      "productUrl": "https://rasmussengardens.co.nz/products/gherkin-national-pickling-cucumber-20-seeds",
+      "suggestedFilename": "gherkin-national-pickling-cucumber-20-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 114,
+      "name": "Goat's Weed Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/goats-weed-chilli-seeds-10-seeds",
+      "suggestedFilename": "goats-weed-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 115,
+      "name": "Gochu Vita Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/gochu-vita-chilli-seeds-10-seeds",
+      "suggestedFilename": "gochu-vita-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 116,
+      "name": "Golden Nugget Variegated Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/golden-nugget-variegated-chilli-seeds-10-seeds",
+      "suggestedFilename": "golden-nugget-variegated-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 117,
+      "name": "Green Sausage Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/green-sausage-tomato-10-seeds",
+      "suggestedFilename": "green-sausage-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 118,
+      "name": "Guajillo Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/guajillo-chilli-seeds-10-seeds",
+      "suggestedFilename": "guajillo-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 119,
+      "name": "Habanada Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/habanada-chilli-seeds-10-seeds-copy",
+      "suggestedFilename": "habanada-chilli-seeds-10-seeds-copy.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 120,
+      "name": "Habanero - Hot Lemon Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/habanero-hot-lemon-chilli-seeds-10-seeds",
+      "suggestedFilename": "habanero-hot-lemon-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 121,
+      "name": "Habanero - Mustard Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/habanero-mustard-chilli-seeds-10-seeds",
+      "suggestedFilename": "habanero-mustard-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 122,
+      "name": "Habanero - Peach Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/habanero-peach-chilli-seeds-10-seeds",
+      "suggestedFilename": "habanero-peach-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 123,
+      "name": "Habanero - Red Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/habanero-red-chilli-seeds-10-seeds",
+      "suggestedFilename": "habanero-red-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 124,
+      "name": "Habanero - White Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/habanero-white-chilli-seeds-10-seeds",
+      "suggestedFilename": "habanero-white-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 125,
+      "name": "Habanero - Yellow Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/habanero-yellow-chilli-seeds-10-seeds",
+      "suggestedFilename": "habanero-yellow-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 126,
+      "name": "Hangjiao 3 Solar Flare 'space chilli' Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/hangjiao-3-solar-flare-space-chilli-chilli-seeds-10-seeds",
+      "suggestedFilename": "hangjiao-3-solar-flare-space-chilli-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 127,
+      "name": "Hazel May Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/hazel-may-tomato-10-seeds",
+      "suggestedFilename": "hazel-may-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 128,
+      "name": "Hungarian Yellow Wax Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/hungarian-yellow-wax-chilli-seeds-10-seeds",
+      "suggestedFilename": "hungarian-yellow-wax-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 129,
+      "name": "Hurma Ukraine Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/hurma-ukraine-tomato-10-seeds",
+      "suggestedFilename": "hurma-ukraine-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 130,
+      "name": "Inca Red Hot Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/inca-red-hot-chilli-seeds-10-seeds",
+      "suggestedFilename": "inca-red-hot-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 131,
+      "name": "Indigo Gold Berries Cherry Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/indigo-gold-berries-cherry-tomato-10-seeds",
+      "suggestedFilename": "indigo-gold-berries-cherry-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 132,
+      "name": "Indigo Pear Drop Cherry Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/indigo-pear-drop-cherry-tomato-10-seeds",
+      "suggestedFilename": "indigo-pear-drop-cherry-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 133,
+      "name": "Indigo Rose Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/indigo-rose-tomato-10-seeds",
+      "suggestedFilename": "indigo-rose-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 134,
+      "name": "Italian Red Cherry Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/italian-red-cherry-tomato-10-seeds",
+      "suggestedFilename": "italian-red-cherry-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 135,
+      "name": "J Walsh Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/j-walsh-tomato-10-seeds",
+      "suggestedFilename": "j-walsh-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 136,
+      "name": "Jalapeño - El Jefe Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/jalapeno-el-jefe-chilli-seeds-10-seeds",
+      "suggestedFilename": "jalapeno-el-jefe-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 137,
+      "name": "Jalapeño - Farmers Market Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/jalapeno-farmers-market-chilli-seeds-10-seeds",
+      "suggestedFilename": "jalapeno-farmers-market-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 138,
+      "name": "Jalapeño - Mega Jefe Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/jalapeno-mega-jefe-chilli-seeds-10-seeds",
+      "suggestedFilename": "jalapeno-mega-jefe-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 139,
+      "name": "Jalapeño - Purple Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/jalapeno-purple-chilli-seeds-10-seeds",
+      "suggestedFilename": "jalapeno-purple-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 140,
+      "name": "Jamaican Mushroom Red Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/jamaican-mushroom-red-chilli-seeds-10-seeds",
+      "suggestedFilename": "jamaican-mushroom-red-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 141,
+      "name": "Jamaican Mushroom Yellow Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/jamaican-mushroom-yellow-chilli-seeds-10-seeds",
+      "suggestedFilename": "jamaican-mushroom-yellow-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 142,
+      "name": "Japanese Black Trifele Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/japanese-black-trifele-tomato-10-seeds",
+      "suggestedFilename": "japanese-black-trifele-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 143,
+      "name": "Jaune Flamme Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/jaune-flamme-tomato-10-seeds",
+      "suggestedFilename": "jaune-flamme-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 144,
+      "name": "Jícama",
+      "productUrl": "https://rasmussengardens.co.nz/products/jicama-10-seeds",
+      "suggestedFilename": "jicama-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 145,
+      "name": "Jimmy Nardello Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/jimmy-nardello-chilli-seeds-10-seeds",
+      "suggestedFilename": "jimmy-nardello-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 146,
+      "name": "Jwala Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/jwala-chilli-seeds-10-seeds",
+      "suggestedFilename": "jwala-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 147,
+      "name": "Kale -  Dazzling Blue Lacinato",
+      "productUrl": "https://rasmussengardens.co.nz/products/kale-dazzling-blue-lacinato-100-seeds",
+      "suggestedFilename": "kale-dazzling-blue-lacinato-100-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 148,
+      "name": "Kiwi Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/kiwi-tomato-10-seeds",
+      "suggestedFilename": "kiwi-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 149,
+      "name": "KS Lemon Starburst Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/ks-lemon-starburst-chilli-seeds-10-seeds",
+      "suggestedFilename": "ks-lemon-starburst-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 150,
+      "name": "KS Starrscream Chocolate Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/ks-starrscream-chocolate-chilli-seeds-10-seeds",
+      "suggestedFilename": "ks-starrscream-chocolate-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 151,
+      "name": "KS White Thai Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/ks-white-thai-chilli-seeds-10-seeds",
+      "suggestedFilename": "ks-white-thai-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 152,
+      "name": "Large Mennonite Pink Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/large-mennonite-pink-tomato-10-seeds",
+      "suggestedFilename": "large-mennonite-pink-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 153,
+      "name": "Lemon Drop - Cherry Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/lemon-drop-cherry-tomato-10-seeds",
+      "suggestedFilename": "lemon-drop-cherry-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 154,
+      "name": "Lettuce - Alkindus",
+      "productUrl": "https://rasmussengardens.co.nz/products/lettuce-alkindus-75-seeds",
+      "suggestedFilename": "lettuce-alkindus-75-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 155,
+      "name": "Lettuce - Drunken Woman",
+      "productUrl": "https://rasmussengardens.co.nz/products/lettuce-drunken-woman-150-seeds",
+      "suggestedFilename": "lettuce-drunken-woman-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 156,
+      "name": "Lettuce - Flashy Trout’s Back",
+      "productUrl": "https://rasmussengardens.co.nz/products/lettuce-flashy-trout-s-back150-seeds",
+      "suggestedFilename": "lettuce-flashy-trout-s-back150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 157,
+      "name": "Lettuce - Green Deer Tongue",
+      "productUrl": "https://rasmussengardens.co.nz/products/lettuce-green-deer-tongue-150-seeds",
+      "suggestedFilename": "lettuce-green-deer-tongue-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 158,
+      "name": "Lettuce - Iceberg",
+      "productUrl": "https://rasmussengardens.co.nz/products/lettuce-iceberg-150-seeds",
+      "suggestedFilename": "lettuce-iceberg-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 159,
+      "name": "Lettuce - Italienischer",
+      "productUrl": "https://rasmussengardens.co.nz/products/lettuce-italienischer-150-seeds",
+      "suggestedFilename": "lettuce-italienischer-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 160,
+      "name": "Lettuce - Pomegranate Crunch",
+      "productUrl": "https://rasmussengardens.co.nz/products/lettuce-pomegranate-crunch-75-seeds",
+      "suggestedFilename": "lettuce-pomegranate-crunch-75-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 161,
+      "name": "Lettuce - Truchas",
+      "productUrl": "https://rasmussengardens.co.nz/products/lettuce-truchas-75-seeds",
+      "suggestedFilename": "lettuce-truchas-75-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 162,
+      "name": "Luffa - Sponge",
+      "productUrl": "https://rasmussengardens.co.nz/products/luffa-sponge-10-seeds",
+      "suggestedFilename": "luffa-sponge-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 163,
+      "name": "Malabar Spinach - Red",
+      "productUrl": "https://rasmussengardens.co.nz/products/malabar-spinach-red-15-seeds",
+      "suggestedFilename": "malabar-spinach-red-15-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 164,
+      "name": "Malawi Piquante 'Peppadew' Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/malawi-piquante-chilli-seeds-10-seeds",
+      "suggestedFilename": "malawi-piquante-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 165,
+      "name": "Mambo Orange Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/mambo-orange-chilli-seeds-10-seeds",
+      "suggestedFilename": "mambo-orange-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 166,
+      "name": "Marconi - Yellow Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/marconi-yellow-chilli-seeds-10-seeds",
+      "suggestedFilename": "marconi-yellow-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 167,
+      "name": "Matt's Wild Cherry Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/matts-wild-cherry-tomato-10-seeds",
+      "suggestedFilename": "matts-wild-cherry-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 168,
+      "name": "Melon - Honeydew",
+      "productUrl": "https://rasmussengardens.co.nz/products/honeydew-melon-10-seeds",
+      "suggestedFilename": "honeydew-melon-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 169,
+      "name": "Mexican Fresh Salsa Garden Seed Collection",
+      "productUrl": "https://rasmussengardens.co.nz/products/mexican-salsa-garden-seed-collection",
+      "suggestedFilename": "mexican-salsa-garden-seed-collection.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 170,
+      "name": "Mexican Mole Chilli Seed Collection",
+      "productUrl": "https://rasmussengardens.co.nz/products/mexican-mole-chilli-seed-collection",
+      "suggestedFilename": "mexican-mole-chilli-seed-collection.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 171,
+      "name": "Mexican Roasting Chilli Seed Collection",
+      "productUrl": "https://rasmussengardens.co.nz/products/mexican-roasting-chilli-seed-collection",
+      "suggestedFilename": "mexican-roasting-chilli-seed-collection.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 172,
+      "name": "Mexican Salsa Verde Garden Seed Collection",
+      "productUrl": "https://rasmussengardens.co.nz/products/mexican-salsa-verde-garden-seed-collection",
+      "suggestedFilename": "mexican-salsa-verde-garden-seed-collection.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 173,
+      "name": "Mexico Midget Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/mexico-midget-tomato-10-seeds",
+      "suggestedFilename": "mexico-midget-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 174,
+      "name": "Mexico Pink Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/mexico-pink-tomato-10-seeds",
+      "suggestedFilename": "mexico-pink-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 175,
+      "name": "Mirabelle Blanche Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/mirabelle-blanche-tomato-10-seeds",
+      "suggestedFilename": "mirabelle-blanche-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 176,
+      "name": "Moonglow Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/moonglow-tomato-10-seeds",
+      "suggestedFilename": "moonglow-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 177,
+      "name": "Murupi Amarela Yellow Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/murupi-amarela-yellow-chilli-seeds-10-seeds",
+      "suggestedFilename": "murupi-amarela-yellow-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 178,
+      "name": "Naga Red Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/naga-red-chilli-seeds-10-seeds",
+      "suggestedFilename": "naga-red-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 179,
+      "name": "Naga Yellow Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/naga-yellow-chilli-seeds-10-seeds",
+      "suggestedFilename": "naga-yellow-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 180,
+      "name": "New Zealand Spinach",
+      "productUrl": "https://rasmussengardens.co.nz/products/new-zealand-spinach-30-seeds",
+      "suggestedFilename": "new-zealand-spinach-30-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 181,
+      "name": "Oaxacan Jewel Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/oaxacan-jewel-tomato-10-seeds",
+      "suggestedFilename": "oaxacan-jewel-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 182,
+      "name": "Oley Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/oley-tomato-10-seeds",
+      "suggestedFilename": "oley-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 183,
+      "name": "Onion - Ailsa Craig",
+      "productUrl": "https://rasmussengardens.co.nz/products/onion-ailsa-craig-75-seeds",
+      "suggestedFilename": "onion-ailsa-craig-75-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 184,
+      "name": "Onion - Pukekohe Long Keeper",
+      "productUrl": "https://rasmussengardens.co.nz/products/onion-pukekohe-long-keeper-100-seeds",
+      "suggestedFilename": "onion-pukekohe-long-keeper-100-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 185,
+      "name": "Onion - Red Long of Tropea",
+      "productUrl": "https://rasmussengardens.co.nz/products/onion-red-long-of-tropea-100-seeds",
+      "suggestedFilename": "onion-red-long-of-tropea-100-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 186,
+      "name": "Onion - Walla Walla Sweet",
+      "productUrl": "https://rasmussengardens.co.nz/products/onion-walla-walla-sweet-100-seeds",
+      "suggestedFilename": "onion-walla-walla-sweet-100-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 187,
+      "name": "Orange Icicle Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/orange-icicle-tomato-10-seeds",
+      "suggestedFilename": "orange-icicle-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 188,
+      "name": "Orange Lantern Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/orange-lantern-chilli-seeds-10-seeds",
+      "suggestedFilename": "orange-lantern-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 189,
+      "name": "Orange Russian Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/orange-russian-tomato-10-seeds",
+      "suggestedFilename": "orange-russian-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 190,
+      "name": "Oxhorn Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/oxhorn-chilli-seeds-10-seeds",
+      "suggestedFilename": "oxhorn-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 191,
+      "name": "Oz Latern White Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/habanero-oz-latern-white-chilli-seeds-10-seeds",
+      "suggestedFilename": "habanero-oz-latern-white-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 192,
+      "name": "Pak Choi - Canton White (Dwarf)",
+      "productUrl": "https://rasmussengardens.co.nz/products/pak-choi-canton-white-dwarf-150-seeds",
+      "suggestedFilename": "pak-choi-canton-white-dwarf-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 193,
+      "name": "Pak Choi - Red Choi F1",
+      "productUrl": "https://rasmussengardens.co.nz/products/pak-choi-red-choi-f1-150-seeds",
+      "suggestedFilename": "pak-choi-red-choi-f1-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 194,
+      "name": "Pasilla (Chilaca) Bajio Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/pasilla-chilaca-bajio-chilli-seeds-10-seeds",
+      "suggestedFilename": "pasilla-chilaca-bajio-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 195,
+      "name": "Peach Blow Sutton Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/peach-blow-sutton-tomato-10-seeds",
+      "suggestedFilename": "peach-blow-sutton-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 196,
+      "name": "Peri Peri Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/peri-peri-chilli-seeds-10-seeds",
+      "suggestedFilename": "peri-peri-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 197,
+      "name": "Pigeon Pea",
+      "productUrl": "https://rasmussengardens.co.nz/products/pigeon-pea-30-seeds",
+      "suggestedFilename": "pigeon-pea-30-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 198,
+      "name": "Pimenta Leopard Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/pimenta-leopard-chilli-seeds-10-seeds",
+      "suggestedFilename": "pimenta-leopard-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 199,
+      "name": "Pimenta Luna Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/pimenta-luna-chilli-seeds-10-seeds",
+      "suggestedFilename": "pimenta-luna-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 200,
+      "name": "Pink Berkeley Tie Dye Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/pink-berkeley-tie-dye-tomato-10-seeds",
+      "suggestedFilename": "pink-berkeley-tie-dye-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 201,
+      "name": "Pink Grapefruit Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/pink-grapefruit-tomato-10-seeds",
+      "suggestedFilename": "pink-grapefruit-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 202,
+      "name": "Poblano - San Luis Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/poblano-san-luis-chilli-seeds-10-seeds",
+      "suggestedFilename": "poblano-san-luis-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 203,
+      "name": "Popcorn - Mushroom",
+      "productUrl": "https://rasmussengardens.co.nz/products/popcorn-mushroom-75-seeds",
+      "suggestedFilename": "popcorn-mushroom-75-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 204,
+      "name": "Popcorn - Ruby Red",
+      "productUrl": "https://rasmussengardens.co.nz/products/popcorn-ruby-red-75-seeds",
+      "suggestedFilename": "popcorn-ruby-red-75-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 205,
+      "name": "Principe Borghese Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/principe-borghese-tomato-10-seeds",
+      "suggestedFilename": "principe-borghese-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 206,
+      "name": "Puerto Rican Yellow Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/puerto-rican-yellow-chilli-seeds-10-seeds",
+      "suggestedFilename": "puerto-rican-yellow-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 207,
+      "name": "Pumpkin - Butternut Waltham",
+      "productUrl": "https://rasmussengardens.co.nz/products/pumpkin-butternut-waltham-10-seeds",
+      "suggestedFilename": "pumpkin-butternut-waltham-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 208,
+      "name": "Pumpkin - Kabocha 'Japanese Pumpkin'",
+      "productUrl": "https://rasmussengardens.co.nz/products/pumpkin-kabocha-japanese-pumpkin-10-seeds",
+      "suggestedFilename": "pumpkin-kabocha-japanese-pumpkin-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 209,
+      "name": "Pumpkin - Kumi Kumi",
+      "productUrl": "https://rasmussengardens.co.nz/products/pumpkin-kumi-kumi-10-seeds",
+      "suggestedFilename": "pumpkin-kumi-kumi-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 210,
+      "name": "Pumpkin - Sugar Pie",
+      "productUrl": "https://rasmussengardens.co.nz/products/pumpkin-sugar-pie-10-seeds",
+      "suggestedFilename": "pumpkin-sugar-pie-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 211,
+      "name": "Purple Pumpkin Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/purple-pumpkin-chilli-seeds-10-seeds",
+      "suggestedFilename": "purple-pumpkin-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 212,
+      "name": "Purple Tiger Variegated Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/purple-tiger-chilli-seeds-10-seeds",
+      "suggestedFilename": "purple-tiger-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 213,
+      "name": "Purple UFO Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/purple-ufo-chilli-seeds-10-seeds",
+      "suggestedFilename": "purple-ufo-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 214,
+      "name": "Purple Varigetta Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/purple-varigetta-chilli-seeds-10-seeds",
+      "suggestedFilename": "purple-varigetta-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 215,
+      "name": "Quinoa - Taiwanese Giant Tree Spinach",
+      "productUrl": "https://rasmussengardens.co.nz/products/quinoa-taiwanese-giant-tree-spinach-100-seeds",
+      "suggestedFilename": "quinoa-taiwanese-giant-tree-spinach-100-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 216,
+      "name": "Radicchio - Palla Rossa",
+      "productUrl": "https://rasmussengardens.co.nz/products/radicchio-palla-rossa-500-seeds",
+      "suggestedFilename": "radicchio-palla-rossa-500-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 217,
+      "name": "Radish - Crayon Colours Mix",
+      "productUrl": "https://rasmussengardens.co.nz/products/radish-crayon-colours-mix-250-seeds",
+      "suggestedFilename": "radish-crayon-colours-mix-250-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 218,
+      "name": "Radish - Daikon Relish Cross",
+      "productUrl": "https://rasmussengardens.co.nz/products/radish-daikon-relish-cross-75-seeds",
+      "suggestedFilename": "radish-daikon-relish-cross-75-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 219,
+      "name": "Radish - Easter Egg Mix",
+      "productUrl": "https://rasmussengardens.co.nz/products/radish-easter-egg-mix-250-seeds",
+      "suggestedFilename": "radish-easter-egg-mix-250-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 220,
+      "name": "Radish - French Breakfast",
+      "productUrl": "https://rasmussengardens.co.nz/products/radish-french-breakfast-250-seeds",
+      "suggestedFilename": "radish-french-breakfast-250-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 221,
+      "name": "Radish - Hailstone",
+      "productUrl": "https://rasmussengardens.co.nz/products/radish-hailstone-250-seeds",
+      "suggestedFilename": "radish-hailstone-250-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 222,
+      "name": "Radish - Rats Tail",
+      "productUrl": "https://rasmussengardens.co.nz/products/radish-rats-tail-75-seeds",
+      "suggestedFilename": "radish-rats-tail-75-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 223,
+      "name": "Radish - White Icicle",
+      "productUrl": "https://rasmussengardens.co.nz/products/radish-white-icicle-250-seeds",
+      "suggestedFilename": "radish-white-icicle-250-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 224,
+      "name": "Rainbow Heirloom Tomato Seed Collection",
+      "productUrl": "https://rasmussengardens.co.nz/products/rainbow-heirloom-tomato-seed-collection",
+      "suggestedFilename": "rainbow-heirloom-tomato-seed-collection.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 225,
+      "name": "Ramitode de dulce Currant Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/ramitode-de-dulce-currant-tomato-10-seeds",
+      "suggestedFilename": "ramitode-de-dulce-currant-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 226,
+      "name": "Rare Chillies of Peru Chilli Seed Collection",
+      "productUrl": "https://rasmussengardens.co.nz/products/rare-chillies-of-peru-chilli-seed-collection",
+      "suggestedFilename": "rare-chillies-of-peru-chilli-seed-collection.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 227,
+      "name": "Reisetomate Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/reisetomate-tomato-10-seeds",
+      "suggestedFilename": "reisetomate-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 228,
+      "name": "Rhubarb - Cardinal Crunch",
+      "productUrl": "https://rasmussengardens.co.nz/products/rhubarb-cardinal-crunch-20-seeds",
+      "suggestedFilename": "rhubarb-cardinal-crunch-20-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 229,
+      "name": "Rocoto Aji Large Red chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/rocoto-aji-large-red-chilli-seeds-10-seeds",
+      "suggestedFilename": "rocoto-aji-large-red-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 230,
+      "name": "Rocoto Manzano - Orange chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/rocoto-manzano-orange-chilli-seeds-10-seeds",
+      "suggestedFilename": "rocoto-manzano-orange-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 231,
+      "name": "Rocoto Manzano - Red chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/rocoto-manzano-red-chilli-seeds-10-seeds",
+      "suggestedFilename": "rocoto-manzano-red-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 232,
+      "name": "Rocoto Manzano - Red Flat chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/rocoto-manzano-red-flat-chilli-seeds-10-seeds",
+      "suggestedFilename": "rocoto-manzano-red-flat-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 233,
+      "name": "Rocoto Manzano - Yellow chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/rocoto-manzano-yellow-chilli-seeds-10-seeds",
+      "suggestedFilename": "rocoto-manzano-yellow-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 234,
+      "name": "Rose Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/rose-tomato-10-seeds",
+      "suggestedFilename": "rose-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 235,
+      "name": "San Marzano Redorta Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/san-marzano-redorta-tomato-10-seeds",
+      "suggestedFilename": "san-marzano-redorta-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 236,
+      "name": "Scabitha Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/scabitha-tomato-10-seeds",
+      "suggestedFilename": "scabitha-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 237,
+      "name": "Scallopini - Benning’s Green Tint",
+      "productUrl": "https://rasmussengardens.co.nz/products/scallopini-benning-s-green-tint-10-seeds",
+      "suggestedFilename": "scallopini-benning-s-green-tint-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 238,
+      "name": "Scallopini - Golden Orb",
+      "productUrl": "https://rasmussengardens.co.nz/products/scallopini-golden-orb-10-seeds",
+      "suggestedFilename": "scallopini-golden-orb-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 239,
+      "name": "Scallopini - White Pearl",
+      "productUrl": "https://rasmussengardens.co.nz/products/scallopini-white-pearl-10-seeds",
+      "suggestedFilename": "scallopini-white-pearl-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 240,
+      "name": "Scarlett's Chilli Variegated Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/scarletts-chilli-varigatted-chilli-seeds-10-seeds",
+      "suggestedFilename": "scarletts-chilli-varigatted-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 241,
+      "name": "Scoresby Dwarf Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/scoresby-dwarf-tomato-10-seeds",
+      "suggestedFilename": "scoresby-dwarf-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 242,
+      "name": "Scotch Bonnet Red Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/scotch-bonnet-red-chilli-seeds-10-seeds",
+      "suggestedFilename": "scotch-bonnet-red-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 243,
+      "name": "Serrano Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/serrano-chilli-seeds-10-seeds",
+      "suggestedFilename": "serrano-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 244,
+      "name": "Shishito Blackout Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/blackout-shishito-chilli-seeds-10-seeds",
+      "suggestedFilename": "blackout-shishito-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 245,
+      "name": "Shiso - Crimson  (perilla)",
+      "productUrl": "https://rasmussengardens.co.nz/products/crimson-shiso-perilla-150-seeds",
+      "suggestedFilename": "crimson-shiso-perilla-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 246,
+      "name": "Shiso - Green (perilla)",
+      "productUrl": "https://rasmussengardens.co.nz/products/green-shiso-perilla-150-seeds",
+      "suggestedFilename": "green-shiso-perilla-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 247,
+      "name": "Shiso - Red (perilla)",
+      "productUrl": "https://rasmussengardens.co.nz/products/red-shiso-perilla-150-seeds",
+      "suggestedFilename": "red-shiso-perilla-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 248,
+      "name": "Silverbeet - Silverado Compacta",
+      "productUrl": "https://rasmussengardens.co.nz/products/silverbeet-silverado-compacta-150-seeds",
+      "suggestedFilename": "silverbeet-silverado-compacta-150-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 249,
+      "name": "Silvery Fir Tree Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/silvery-fir-tree-tomato-10-seeds",
+      "suggestedFilename": "silvery-fir-tree-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 250,
+      "name": "Speckled Roman Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/speckled-roman-tomato-10-seeds",
+      "suggestedFilename": "speckled-roman-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 251,
+      "name": "Squash - Delicata",
+      "productUrl": "https://rasmussengardens.co.nz/products/delicata-squash-10-seeds",
+      "suggestedFilename": "delicata-squash-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 252,
+      "name": "Squash - Tromba d’Albenga",
+      "productUrl": "https://rasmussengardens.co.nz/products/squash-tromba-d-albenga-10-seeds",
+      "suggestedFilename": "squash-tromba-d-albenga-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 253,
+      "name": "Sugar Rush Cream Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/sugar-rush-cream-chilli-seeds-10-seeds",
+      "suggestedFilename": "sugar-rush-cream-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 254,
+      "name": "Sugar Rush Peach Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/sugar-rush-peach-chilli-seeds-10-seeds",
+      "suggestedFilename": "sugar-rush-peach-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 255,
+      "name": "Sugar Rush Peach Stumpy Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/sugar-rush-peach-stumpy-chilli-seeds-10-seeds",
+      "suggestedFilename": "sugar-rush-peach-stumpy-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 256,
+      "name": "Sugar Rush Red Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/sugar-rush-red-chilli-seeds-10-seeds",
+      "suggestedFilename": "sugar-rush-red-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 257,
+      "name": "Sugar Rush Stripey Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/sugar-rush-stripey-chilli-seeds-10-seeds-copy",
+      "suggestedFilename": "sugar-rush-stripey-chilli-seeds-10-seeds-copy.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 258,
+      "name": "Sunrise Bumble Bee Cherry Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/sunrise-bumble-bee-cherry-tomato-10-seeds",
+      "suggestedFilename": "sunrise-bumble-bee-cherry-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 259,
+      "name": "Sweet Paprika – Yugoslavia Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/sweet-paprika-yugoslavia-chilli-seeds-10-seeds",
+      "suggestedFilename": "sweet-paprika-yugoslavia-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 260,
+      "name": "Tabasco Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/tabasco-chilli-seeds-10-seeds",
+      "suggestedFilename": "tabasco-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 261,
+      "name": "Tangerine Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/tangerine-tomato-10-seeds",
+      "suggestedFilename": "tangerine-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 262,
+      "name": "Tiger Melon",
+      "productUrl": "https://rasmussengardens.co.nz/products/tiger-melon-10-seeds",
+      "suggestedFilename": "tiger-melon-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 263,
+      "name": "Tlacolula Pink Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/tlacolula-pink-tomato-10-seeds",
+      "suggestedFilename": "tlacolula-pink-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 264,
+      "name": "Tomatillo - Amethyst & Emerald Geodes",
+      "productUrl": "https://rasmussengardens.co.nz/products/tomatillo-amethyst-emerald-geodes-10-seeds",
+      "suggestedFilename": "tomatillo-amethyst-emerald-geodes-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 265,
+      "name": "Tomatillo - Chupon de Malinalco",
+      "productUrl": "https://rasmussengardens.co.nz/products/tomatillo-chupon-de-malinalco-10-seeds",
+      "suggestedFilename": "tomatillo-chupon-de-malinalco-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 266,
+      "name": "Tomatillo - Plaza Latina Giant Green",
+      "productUrl": "https://rasmussengardens.co.nz/products/tomatillo-plaza-latina-giant-green-10-seeds",
+      "suggestedFilename": "tomatillo-plaza-latina-giant-green-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 267,
+      "name": "Tomatillo - Purple Keepers Modern Landrace",
+      "productUrl": "https://rasmussengardens.co.nz/products/tomatillo-purple-keepers-modern-landrace-10-seeds",
+      "suggestedFilename": "tomatillo-purple-keepers-modern-landrace-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 268,
+      "name": "Tomatillo - Purple Violeta",
+      "productUrl": "https://rasmussengardens.co.nz/products/tomatillo-purple-violeta-10-seeds",
+      "suggestedFilename": "tomatillo-purple-violeta-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 269,
+      "name": "Tomatillo - Verde Puebla",
+      "productUrl": "https://rasmussengardens.co.nz/products/tomatillo-verde-puebla-10-seeds",
+      "suggestedFilename": "tomatillo-verde-puebla-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 270,
+      "name": "Turnip - Wonnegold",
+      "productUrl": "https://rasmussengardens.co.nz/products/turnip-wonnegold-50-seeds",
+      "suggestedFilename": "turnip-wonnegold-50-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 271,
+      "name": "Uchu Cream Variegated Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/uchu-cream-variegated-chilli-seeds-10-seeds",
+      "suggestedFilename": "uchu-cream-variegated-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 272,
+      "name": "Variegated Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/variegated-tomato-10-seeds",
+      "suggestedFilename": "variegated-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 273,
+      "name": "Vintage Wine - Stripped Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/vintage-wine-stripped-tomato-10-seeds",
+      "suggestedFilename": "vintage-wine-stripped-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 274,
+      "name": "White Chupetinho Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/white-chupetinho-chilli-seeds-10-seeds",
+      "suggestedFilename": "white-chupetinho-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 275,
+      "name": "White Coyote Zan Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/white-coyote-zan-chilli-seeds-10-seeds",
+      "suggestedFilename": "white-coyote-zan-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 276,
+      "name": "White Wonder Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/white-wonder-tomato-10-seeds",
+      "suggestedFilename": "white-wonder-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 277,
+      "name": "Window Box Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/window-box-tomato-10-seeds",
+      "suggestedFilename": "window-box-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 278,
+      "name": "Yaki Blue Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/yaki-blue-chilli-seeds-10-seeds",
+      "suggestedFilename": "yaki-blue-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 279,
+      "name": "Yellow Banana Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/yellow-banana-chilli-seeds-10-seeds",
+      "suggestedFilename": "yellow-banana-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 280,
+      "name": "Yellow Cropper Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/yellow-cropper-tomato-10-seeds",
+      "suggestedFilename": "yellow-cropper-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 281,
+      "name": "Yellow Yummy Tomato",
+      "productUrl": "https://rasmussengardens.co.nz/products/yellow-yummy-tomato-10-seeds",
+      "suggestedFilename": "yellow-yummy-tomato-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 282,
+      "name": "Zatta Melon",
+      "productUrl": "https://rasmussengardens.co.nz/products/zatta-melon-15-seeds",
+      "suggestedFilename": "zatta-melon-15-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 283,
+      "name": "Zebrange Stripey Chilli Seeds",
+      "productUrl": "https://rasmussengardens.co.nz/products/zebrange-stripey-chilli-seeds-10-seeds",
+      "suggestedFilename": "zebrange-stripey-chilli-seeds-10-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 284,
+      "name": "Zucchini – Black Beauty",
+      "productUrl": "https://rasmussengardens.co.nz/products/zucchini-black-beauty-15-seeds",
+      "suggestedFilename": "zucchini-black-beauty-15-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    },
+    {
+      "number": 285,
+      "name": "Zucchini – Yellow",
+      "productUrl": "https://rasmussengardens.co.nz/products/zucchini-yellow-15-seeds",
+      "suggestedFilename": "zucchini-yellow-15-seeds.png",
+      "status": "needs-verified-cultivar-photo-and-individual-generation"
+    }
+  ]
+}
