@@ -1,0 +1,128 @@
+{
+  "batch_number": 14,
+  "range": "131–137",
+  "source_catalogue": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
+  "items": [
+    {
+      "gallery_index": 131,
+      "catalogue_sequence": 260,
+      "name": "Tabasco",
+      "slug": "tabasco",
+      "path": "public/plant-icons/rasmussen/batches/14/individual_png/131_tabasco.png",
+      "mime_type": "image/png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "transparent_background": true,
+      "sha": "1eb979dc9569770e1b4716b31efbf7460340440d",
+      "source": "adaptation/recolouring of earlier AI-generated botanical illustration, not supplier image",
+      "status": "unreviewed_concept",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 132,
+      "catalogue_sequence": 271,
+      "name": "Uchu Cream Variegated",
+      "slug": "uchu-cream-variegated",
+      "path": "public/plant-icons/rasmussen/batches/14/individual_png/132_uchu-cream-variegated.png",
+      "mime_type": "image/png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "transparent_background": true,
+      "sha": "441ee68504874bc3d58a3d314ab290365e626bc0",
+      "source": "adaptation/recolouring of earlier AI-generated botanical illustration, not supplier image",
+      "status": "unreviewed_concept",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 133,
+      "catalogue_sequence": 274,
+      "name": "White Chupetinho",
+      "slug": "white-chupetinho",
+      "path": "public/plant-icons/rasmussen/batches/14/individual_png/133_white-chupetinho.png",
+      "mime_type": "image/png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "transparent_background": true,
+      "sha": "1a8e542483ffbc4bbf083ff1d1e02e8d848a71fc",
+      "source": "adaptation/recolouring of earlier AI-generated botanical illustration, not supplier image",
+      "status": "unreviewed_concept",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 134,
+      "catalogue_sequence": 275,
+      "name": "White Coyote Zan",
+      "slug": "white-coyote-zan",
+      "path": "public/plant-icons/rasmussen/batches/14/individual_png/134_white-coyote-zan.png",
+      "mime_type": "image/png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "transparent_background": true,
+      "sha": "6b9c6c172aa16dc6e604f16cd53a47d471920577",
+      "source": "adaptation/recolouring of earlier AI-generated botanical illustration, not supplier image",
+      "status": "unreviewed_concept",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 135,
+      "catalogue_sequence": 278,
+      "name": "Yaki Blue",
+      "slug": "yaki-blue",
+      "path": "public/plant-icons/rasmussen/batches/14/individual_png/135_yaki-blue.png",
+      "mime_type": "image/png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "transparent_background": true,
+      "sha": "20b71677962190f2e682ec868d68ef2010ceb934",
+      "source": "adaptation/recolouring of earlier AI-generated botanical illustration, not supplier image",
+      "status": "unreviewed_concept",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 136,
+      "catalogue_sequence": 279,
+      "name": "Yellow Banana",
+      "slug": "yellow-banana",
+      "path": "public/plant-icons/rasmussen/batches/14/individual_png/136_yellow-banana.png",
+      "mime_type": "image/png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "transparent_background": true,
+      "sha": "84d1306c516d08cf1d68d733701a2cb0c88854b2",
+      "source": "adaptation/recolouring of earlier AI-generated botanical illustration, not supplier image",
+      "status": "unreviewed_concept",
+      "approved_for_production": false
+    },
+    {
+      "gallery_index": 137,
+      "catalogue_sequence": 283,
+      "name": "Zebrange Stripey",
+      "slug": "zebrange-stripey",
+      "path": "public/plant-icons/rasmussen/batches/14/individual_png/137_zebrange-stripey.png",
+      "mime_type": "image/png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "transparent_background": true,
+      "sha": "529745d49cd9b88e561923feb14f937f7a0c29e2",
+      "source": "adaptation/recolouring of earlier AI-generated botanical illustration, not supplier image",
+      "status": "unreviewed_concept",
+      "approved_for_production": false
+    }
+  ],
+  "important": "Batch 14 consists of concept artwork, not official product photos or independently generated cultivar-verified images. Existing 285+ catalogue SVGs remain untouched. Only some previous PNG batches were pushed: batch 11, 12, 13. Batch 09/10 are currently manifests only. Do not imply all 137 PNGs are on GitHub.",
+  "deployment_note": "Git commit to main requested; live Cloudflare deployment status requires separate verification."
+}
