@@ -1,0 +1,111 @@
+{
+  "batch": 10,
+  "range": "091–100",
+  "items": [
+    {
+      "gallery_index": 91,
+      "catalogue_sequence": 149,
+      "name": "KS Lemon Starburst",
+      "reference_url": "https://rasmussengardens.co.nz/products/ks-lemon-starburst-chilli-seeds-10-seeds",
+      "expected_png": "091_ks-lemon-starburst.png",
+      "existing_repo_svg": "public/plant-icons/rasmussen/ks-lemon-starburst-chilli-seeds-10-seeds.svg",
+      "png_uploaded_to_github": false,
+      "artwork_verified": false
+    },
+    {
+      "gallery_index": 92,
+      "catalogue_sequence": 150,
+      "name": "KS Starrscream Chocolate",
+      "reference_url": "https://rasmussengardens.co.nz/products/ks-starrscream-chocolate-chilli-seeds-10-seeds",
+      "expected_png": "092_ks-starrscream-chocolate.png",
+      "existing_repo_svg": "public/plant-icons/rasmussen/ks-starrscream-chocolate-chilli-seeds-10-seeds.svg",
+      "png_uploaded_to_github": false,
+      "artwork_verified": false
+    },
+    {
+      "gallery_index": 93,
+      "catalogue_sequence": 151,
+      "name": "KS White Thai",
+      "reference_url": "https://rasmussengardens.co.nz/products/ks-white-thai-chilli-seeds-10-seeds",
+      "expected_png": "093_ks-white-thai.png",
+      "existing_repo_svg": "public/plant-icons/rasmussen/ks-white-thai-chilli-seeds-10-seeds.svg",
+      "png_uploaded_to_github": false,
+      "artwork_verified": false
+    },
+    {
+      "gallery_index": 94,
+      "catalogue_sequence": 164,
+      "name": "Malawi Piquante 'Peppadew'",
+      "reference_url": "https://rasmussengardens.co.nz/products/malawi-piquante-chilli-seeds-10-seeds",
+      "expected_png": "094_malawi-piquante-peppadew.png",
+      "existing_repo_svg": "public/plant-icons/rasmussen/malawi-piquante-chilli-seeds-10-seeds.svg",
+      "png_uploaded_to_github": false,
+      "artwork_verified": false
+    },
+    {
+      "gallery_index": 95,
+      "catalogue_sequence": 165,
+      "name": "Mambo Orange",
+      "reference_url": "https://rasmussengardens.co.nz/products/mambo-orange-chilli-seeds-10-seeds",
+      "expected_png": "095_mambo-orange.png",
+      "existing_repo_svg": "public/plant-icons/rasmussen/mambo-orange-chilli-seeds-10-seeds.svg",
+      "png_uploaded_to_github": false,
+      "artwork_verified": false
+    },
+    {
+      "gallery_index": 96,
+      "catalogue_sequence": 166,
+      "name": "Marconi - Yellow",
+      "reference_url": "https://rasmussengardens.co.nz/products/marconi-yellow-chilli-seeds-10-seeds",
+      "expected_png": "096_marconi-yellow.png",
+      "existing_repo_svg": "public/plant-icons/rasmussen/marconi-yellow-chilli-seeds-10-seeds.svg",
+      "png_uploaded_to_github": false,
+      "artwork_verified": false
+    },
+    {
+      "gallery_index": 97,
+      "catalogue_sequence": 170,
+      "name": "Mexican Mole Chilli Seed Collection",
+      "reference_url": "https://rasmussengardens.co.nz/products/mexican-mole-chilli-seed-collection",
+      "expected_png": "097_mexican-mole-chilli-seed-collection.png",
+      "existing_repo_svg": "public/plant-icons/rasmussen/mexican-mole-chilli-seed-collection.svg",
+      "png_uploaded_to_github": false,
+      "artwork_verified": false
+    },
+    {
+      "gallery_index": 98,
+      "catalogue_sequence": 171,
+      "name": "Mexican Roasting Chilli Seed Collection",
+      "reference_url": "https://rasmussengardens.co.nz/products/mexican-roasting-chilli-seed-collection",
+      "expected_png": "098_mexican-roasting-chilli-seed-collection.png",
+      "existing_repo_svg": "public/plant-icons/rasmussen/mexican-roasting-chilli-seed-collection.svg",
+      "png_uploaded_to_github": false,
+      "artwork_verified": false
+    },
+    {
+      "gallery_index": 99,
+      "catalogue_sequence": 177,
+      "name": "Murupi Amarela Yellow",
+      "reference_url": "https://rasmussengardens.co.nz/products/murupi-amarela-yellow-chilli-seeds-10-seeds",
+      "expected_png": "099_murupi-amarela-yellow.png",
+      "existing_repo_svg": "public/plant-icons/rasmussen/murupi-amarela-yellow-chilli-seeds-10-seeds.svg",
+      "png_uploaded_to_github": false,
+      "artwork_verified": false
+    },
+    {
+      "gallery_index": 100,
+      "catalogue_sequence": 178,
+      "name": "Naga Red",
+      "reference_url": "https://rasmussengardens.co.nz/products/naga-red-chilli-seeds-10-seeds",
+      "expected_png": "100_naga-red.png",
+      "existing_repo_svg": "public/plant-icons/rasmussen/naga-red-chilli-seeds-10-seeds.svg",
+      "png_uploaded_to_github": false,
+      "artwork_verified": false
+    }
+  ],
+  "asset_type": "individual 512x512 transparent PNG illustration concepts",
+  "local_download": "Rasmussen_Chilli_Batch_10_Individual_PNGs.zip",
+  "github_png_status": "not_uploaded",
+  "source": "User-provided Rasmussen_Chilli_137_Icon_Gallery(2).html",
+  "warning": "Separate newly generated PNG artwork exists only in downloadable conversation ZIP. SVGs in existing_repo_svg are older, different artwork and should not be represented as the newly generated PNGs."
+}
