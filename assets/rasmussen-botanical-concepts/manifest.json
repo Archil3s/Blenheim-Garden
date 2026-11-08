@@ -3,7 +3,7 @@
   "source": "rasmussen-gpt-images-prompt-pack.md",
   "totalVarieties": 285,
   "seedCollectionsIncluded": 6,
-  "completed": 0,
+  "completed": 10,
   "productionReady": false,
   "requiredOutput": "square RGBA transparent PNG, legible at 32px, cultivar-specific botanically detailed",
   "icons": [
@@ -12,70 +12,160 @@
       "name": "7 Pot Jonah - Yellow Chilli Seeds",
       "productUrl": "https://rasmussengardens.co.nz/products/7-pot-jonah-yellow-chilli-seeds-10-seeds",
       "suggestedFilename": "7-pot-jonah-yellow-chilli-seeds-10-seeds.png",
-      "status": "needs-verified-cultivar-photo-and-individual-generation"
+      "status": "concept-review-required",
+      "path": "icons/7-pot-jonah-yellow-chilli-seeds-10-seeds.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "PNG",
+      "transparentBackground": true,
+      "cultivarPhotoVerified": false,
+      "gitBlobSha": "6833bcfde37d221199c76c9648a8c5c94cb20560"
     },
     {
       "number": 2,
       "name": "Aji Ahuachapan Chilli Seeds",
       "productUrl": "https://rasmussengardens.co.nz/products/aji-ahuachapan-chilli-seeds-10-seeds",
       "suggestedFilename": "aji-ahuachapan-chilli-seeds-10-seeds.png",
-      "status": "needs-verified-cultivar-photo-and-individual-generation"
+      "status": "concept-review-required",
+      "path": "icons/aji-ahuachapan-chilli-seeds-10-seeds.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "PNG",
+      "transparentBackground": true,
+      "cultivarPhotoVerified": false,
+      "gitBlobSha": "e4305b43e6002e273faa71872c3a88cfd4f78537"
     },
     {
       "number": 3,
       "name": "Aji Amarillo Chilli Seeds",
       "productUrl": "https://rasmussengardens.co.nz/products/aji-amarillo-chilli-seeds-10-seeds",
       "suggestedFilename": "aji-amarillo-chilli-seeds-10-seeds.png",
-      "status": "needs-verified-cultivar-photo-and-individual-generation"
+      "status": "concept-review-required",
+      "path": "icons/aji-amarillo-chilli-seeds-10-seeds.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "PNG",
+      "transparentBackground": true,
+      "cultivarPhotoVerified": false,
+      "gitBlobSha": "8f68cc1c9a5ae5cff336eebba96ff519c7bb36b7"
     },
     {
       "number": 4,
       "name": "Aji Berry Amarillo Chilli Seeds",
       "productUrl": "https://rasmussengardens.co.nz/products/aji-berry-amarillo-long-chilli-seeds-10-seeds",
       "suggestedFilename": "aji-berry-amarillo-long-chilli-seeds-10-seeds.png",
-      "status": "needs-verified-cultivar-photo-and-individual-generation"
+      "status": "concept-review-required",
+      "path": "icons/aji-berry-amarillo-long-chilli-seeds-10-seeds.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "PNG",
+      "transparentBackground": true,
+      "cultivarPhotoVerified": false,
+      "gitBlobSha": "c3baa6273d2435392fdee36f710f8f333bb46c0e"
     },
     {
       "number": 5,
       "name": "Aji Brazilian Pumpkin Chilli Seeds",
       "productUrl": "https://rasmussengardens.co.nz/products/aji-brazilian-pumpkin-chilli-seeds-10-seeds",
       "suggestedFilename": "aji-brazilian-pumpkin-chilli-seeds-10-seeds.png",
-      "status": "needs-verified-cultivar-photo-and-individual-generation"
+      "status": "concept-review-required",
+      "path": "icons/aji-brazilian-pumpkin-chilli-seeds-10-seeds.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "PNG",
+      "transparentBackground": true,
+      "cultivarPhotoVerified": false,
+      "gitBlobSha": "e18f450ed3ebdf4e4eec06b1bc8161d4aaed7042"
     },
     {
       "number": 6,
       "name": "Aji Champion Chilli Seeds",
       "productUrl": "https://rasmussengardens.co.nz/products/aji-champion-chilli-seeds-10-seeds-copy",
       "suggestedFilename": "aji-champion-chilli-seeds-10-seeds-copy.png",
-      "status": "needs-verified-cultivar-photo-and-individual-generation"
+      "status": "concept-review-required",
+      "path": "icons/aji-champion-chilli-seeds-10-seeds-copy.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "PNG",
+      "transparentBackground": true,
+      "cultivarPhotoVerified": false,
+      "gitBlobSha": "4a7cb0bc795b8e9d3e7e682c1695b93059ba33ad"
     },
     {
       "number": 7,
       "name": "Aji Charapita – Peach Chilli Seeds",
       "productUrl": "https://rasmussengardens.co.nz/products/aji-charapita-peach-chilli-seeds-10-seeds",
       "suggestedFilename": "aji-charapita-peach-chilli-seeds-10-seeds.png",
-      "status": "needs-verified-cultivar-photo-and-individual-generation"
+      "status": "concept-review-required",
+      "path": "icons/aji-charapita-peach-chilli-seeds-10-seeds.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "PNG",
+      "transparentBackground": true,
+      "cultivarPhotoVerified": false,
+      "gitBlobSha": "1e4f7ed5dbfa1b1901e1913415c80f376bff2cd1"
     },
     {
       "number": 8,
       "name": "Aji Charapita Amarillo Chilli Seeds",
       "productUrl": "https://rasmussengardens.co.nz/products/aji-charapita-armarillo-chilli-seeds-10-seeds",
       "suggestedFilename": "aji-charapita-armarillo-chilli-seeds-10-seeds.png",
-      "status": "needs-verified-cultivar-photo-and-individual-generation"
+      "status": "concept-review-required",
+      "path": "icons/aji-charapita-armarillo-chilli-seeds-10-seeds.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "PNG",
+      "transparentBackground": true,
+      "cultivarPhotoVerified": false,
+      "gitBlobSha": "0180cf41ac6b26c7cf672470876082c2dcb4bad2"
     },
     {
       "number": 9,
       "name": "Aji Charapón Chilli Seeds",
       "productUrl": "https://rasmussengardens.co.nz/products/aji-charapon-chilli-seeds-10-seeds",
       "suggestedFilename": "aji-charapon-chilli-seeds-10-seeds.png",
-      "status": "needs-verified-cultivar-photo-and-individual-generation"
+      "status": "concept-review-required",
+      "path": "icons/aji-charapon-chilli-seeds-10-seeds.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "PNG",
+      "transparentBackground": true,
+      "cultivarPhotoVerified": false,
+      "gitBlobSha": "fbd715633ed294baca40265461b0588fbec7cea2"
     },
     {
       "number": 10,
       "name": "Aji Cito Chilli Seeds",
       "productUrl": "https://rasmussengardens.co.nz/products/aji-cito-chilli-seeds-10-seeds",
       "suggestedFilename": "aji-cito-chilli-seeds-10-seeds.png",
-      "status": "needs-verified-cultivar-photo-and-individual-generation"
+      "status": "concept-review-required",
+      "path": "icons/aji-cito-chilli-seeds-10-seeds.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "format": "PNG",
+      "transparentBackground": true,
+      "cultivarPhotoVerified": false,
+      "gitBlobSha": "10aa0b09353f22599ef45aa0087cba4948b025d1"
     },
     {
       "number": 11,
@@ -2002,5 +2092,7 @@
       "suggestedFilename": "zucchini-yellow-15-seeds.png",
       "status": "needs-verified-cultivar-photo-and-individual-generation"
     }
-  ]
+  ],
+  "lastCompletedBatch": "001",
+  "lastUpdated": "2026-11-08"
 }
