@@ -319,3 +319,28 @@ test("main template clones the saved garden with metal beds and remapped locks",
   expect(template.lockedItems?.every(key => keys.has(key))).toBe(true);
   expect(another.plantingAreas[0].id).not.toBe(template.plantingAreas[0].id);
 });
+
+test("locked beds pass canvas clicks through to their unlocked plantings", async ({ page }, info) => {
+  test.skip(info.project.name !== "desktop", "Checks desktop canvas hit targets.");
+  await page.route("**/api/**", route => route.fulfill({ json: data({
+    ...fixture, lockedItems: ["bed:1", "object:layout-path-main"],
+  }) }));
+  await page.goto("/planner");
+  await expect(page.locator(".gv-save")).toHaveText("Saved ✓");
+  const bed = page.locator(".plan-bed").first();
+  const area = bed.locator(".planting-area");
+  const toggle = page.getByRole("button", { name: "Edit locked items", exact: true });
+  await expect(bed).toHaveCSS("pointer-events", "none");
+  await expect(page.locator(".path-object[data-skip-locked=true]")).toHaveCSS("pointer-events", "none");
+  await area.locator(".planting-area-label").click();
+  await expect(area).toHaveClass(/selected/);
+  await expect(bed).not.toHaveClass(/selected/);
+  await toggle.click();
+  await expect(bed).toHaveCSS("pointer-events", "auto");
+  await bed.focus();
+  await page.keyboard.press("Enter");
+  await expect(bed).toHaveClass(/selected/);
+  await expect(page.getByRole("button", { name: "Unlock item", exact: true })).toBeVisible();
+  await toggle.click();
+  await expect(bed).not.toHaveClass(/selected/);
+});

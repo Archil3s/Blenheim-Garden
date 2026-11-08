@@ -7,8 +7,8 @@ import { PlantArt } from "./plant-art";
 
 export type RowDragMode = "row-drag" | "row-start" | "row-end" | "row-block";
 
-export function PlannerPlantingRow({ row, selected = false, handles = false, preview = false, onDrag }: {
-  row: PlannerRow; selected?: boolean; handles?: boolean; preview?: boolean;
+export function PlannerPlantingRow({ row, selected = false, handles = false, preview = false, skipLocked = false, onDrag }: {
+  row: PlannerRow; selected?: boolean; handles?: boolean; preview?: boolean; skipLocked?: boolean;
   onDrag?: (event: PointerEvent<HTMLElement>, row: PlannerRow, mode?: RowDragMode) => void;
 }) {
   const length = Math.hypot(row.x2 - row.x1, row.y2 - row.y1);
@@ -20,7 +20,7 @@ export function PlannerPlantingRow({ row, selected = false, handles = false, pre
   const symbolScale = density ? Math.min(1, squareFootCm / columns / width * .9, squareFootCm / lines / height * .9) : 1;
   const single = length < 1 && !row.block;
   return <div className={`planting-row ${row.block ? "planting-block" : ""} ${selected ? "selected" : ""} ${preview ? "draft-planting-row" : ""}`}
-    data-crop={row.crop} data-count={row.count} data-planting-mode={row.block?.mode ?? "row"}
+    data-skip-locked={skipLocked} data-crop={row.crop} data-count={row.count} data-planting-mode={row.block?.mode ?? "row"}
     style={{ left: single ? row.x1 - width / 2 : row.x1, top: row.y1 - 12,
       width: single ? width : Math.max(1, length), height: row.block ? row.block.depthCm + 24 : 24,
       transformOrigin: "0 12px", transform: `rotate(${angle}deg)`,

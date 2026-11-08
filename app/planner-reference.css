@@ -495,3 +495,15 @@
   .gv-v4-bed-title, .empty-bed-label, .layout-label, .text-object,
   .tree-object > small, .structure-object > small
 ) { display: none; }
+
+
+.garden-canvas .plan-bed[data-skip-locked="true"],
+.garden-canvas .plan-bed[data-skip-locked="true"] > .resize-handle,
+.garden-canvas :is(.layout-object,.planting-row,.planting-area)[data-skip-locked="true"],
+.garden-canvas :is(.layout-object,.planting-row,.planting-area)[data-skip-locked="true"] * {
+  pointer-events: none !important;
+}
+.garden-canvas.tool-select .plan-bed[data-skip-locked="true"] > .planting-area:not(.has-explicit-placements):not([data-skip-locked="true"]),
+.garden-canvas.tool-select .plan-bed[data-skip-locked="true"] > .planting-area:not([data-skip-locked="true"]) .planting-area-label {
+  pointer-events: auto;
+}

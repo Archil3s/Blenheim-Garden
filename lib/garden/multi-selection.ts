@@ -50,8 +50,9 @@ export function selectableItems(plan: PlannerPlan, layer = "all"): PlanSelection
   ];
 }
 
-export function selectInBox(plan: PlannerPlan, box: SelectionBox, layer = "all") {
+export function selectInBox(plan: PlannerPlan, box: SelectionBox, layer = "all", canSelect: (item: PlanSelection) => boolean = () => true) {
   return canonicalSelection(plan, selectableItems(plan, layer).filter((item) => {
+    if (!canSelect(item)) return false;
     const rect = selectionBounds(plan, item)!;
     return rect.x >= box.x && rect.y >= box.y && rect.x + rect.w <= box.x + box.w && rect.y + rect.h <= box.y + box.h;
   }));
