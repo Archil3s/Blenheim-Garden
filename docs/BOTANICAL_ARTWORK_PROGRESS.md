@@ -86,4 +86,20 @@ Batch 04 passed the production build and 28 focused Playwright checks. Cloudflar
 - Kings Seeds | beetroot-bulls-blood | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/beetroot-bulls-blood | burgundy foliage and red stems match V8056 | dimensions and alpha bounds validated | integrated in /test-garden.
 - Kings Seeds | beetroot-chioggia | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/beetroot-chioggia | red root and pale concentric rings match V8057 | dimensions and alpha bounds validated | integrated in /test-garden.
 
-Batch 05 passed the production build and 28 focused Playwright checks. Cloudflare verification pending.
+Batch 05 passed the production build and 28 focused Playwright checks. Cloudflare deployment succeeded for commit 9c19fd030c15fb3468630f28e0a6e5f4235ecf95 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42685318321).
+
+## Batch 06
+
+- Kings Seeds | beetroot-colour-blend | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/beetroot-colour-blend | mixed gold, red and pink beets and ringed slice match blend photo | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | beetroot-cylindra | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/beetroot-cylindra | elongated red cylindrical roots match V8060 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | beetroot-golden-detroit | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/beetroot-golden-detroit | round orange roots and yellow-veined green leaves match V8061 | dimensions and alpha bounds validated | integrated in /test-garden.
+
+- Kings Seeds | beetroot-pablo-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/beetroot-pablo-f1 | uniform round crimson roots and red-veined green foliage match V8389 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | beetroot-ruby-queen | generated_qa_passed | master and gallery exported | https://survivalgardenseeds.com/products/ruby-queen-beet-seeds | ruby globe root with broad shoulder and burgundy stems matches cultivar photo | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | broad-bean-coles-prolific | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/broad-bean-coles-prolific | shorter olive green pods and pale beans match V8036 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | broad-bean-superaguadulce | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/broad-bean-superaguadulce | elongated green pods and long row of seeds match V8037 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | broccoli-chinese-gai-lan | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/broccoli-chinese-gai-lan | thick stems and broad dark leaves match V8002 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | broccoli-mclaren-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/broccoli-mclaren-f1 | dense blue-green dome and glaucous foliage match V8415 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | broccoli-sprouting-summer-purple | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/broccoli-sprouting-summer-purple | revised closed purple buds and narrow shoots match V8064 | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 06 passed the production build and 28 focused Playwright checks. Cloudflare verification pending.
