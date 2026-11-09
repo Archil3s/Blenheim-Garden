@@ -628,5 +628,75 @@
     "gallery": "/plant-icons/generated/kings-seeds/gallery/capsicum-yellow-banana.png",
     "referenceUrl": "https://www.kingsseeds.co.nz/products/capsicum-yellow-banana",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:carob-tree": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/carob-tree.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/carob-tree.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/carob-tree",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:carrot-amsterdam-sprint": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/carrot-amsterdam-sprint.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/carrot-amsterdam-sprint.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/carrot-amsterdam-sprint",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:carrot-black-nebula": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/carrot-black-nebula.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/carrot-black-nebula.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/carrot-black-nebula",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:carrot-kuroda-improved": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/carrot-kuroda-improved.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/carrot-kuroda-improved.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/carrot-kuroda-improved",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:carrot-nutri-orange": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/carrot-nutri-orange.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/carrot-nutri-orange.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/carrot-nutri-orange",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:carrot-nutri-purple-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/carrot-nutri-purple-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/carrot-nutri-purple-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/carrot-nutri-purple-f1",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:carrot-nutri-red-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/carrot-nutri-red-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/carrot-nutri-red-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/carrot-nutri-red-f1",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:carrot-nutri-white-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/carrot-nutri-white-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/carrot-nutri-white-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8383-1.jpg",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:carrot-nutri-yellow-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/carrot-nutri-yellow-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/carrot-nutri-yellow-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/carrot-nutri-yellow-f1",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:carrot-paris-market": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/carrot-paris-market.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/carrot-paris-market.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/carrot-paris-market",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }

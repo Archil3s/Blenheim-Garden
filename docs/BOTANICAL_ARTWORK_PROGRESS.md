@@ -152,3 +152,19 @@ Cloudflare deployment succeeded for commit 8b581a885bf647e56137bc822f1364c29d69e
 - Kings Seeds | capsicum-yellow-banana | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/capsicum-yellow-banana | pale yellow-green tapered fruit matches V8092 | dimensions and alpha bounds validated | integrated in /test-garden.
 
 Batch 09 passed the production build and all 28 focused Playwright checks.
+Cloudflare deployment succeeded for commit 266181f54188543f023504955e1a34599344eab9 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42697731165).
+
+## Batch 10
+
+- Kings Seeds | carob-tree | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/carob-tree | flattened curved chocolate-brown pods match V8094 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | carrot-amsterdam-sprint | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/carrot-amsterdam-sprint | slender cylindrical orange roots with rounded tips match V8095 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | carrot-black-nebula | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/carrot-black-nebula | near-black root and dark purple cross section match V8359 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | carrot-kuroda-improved | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/carrot-kuroda-improved | broad conical root and pale growth rings match V8096 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | carrot-nutri-orange | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/carrot-nutri-orange | long slender orange roots and fine taper match V8387 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | carrot-nutri-purple-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/carrot-nutri-purple-f1 | dusty plum skin and pale taper match V8385 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | carrot-nutri-red-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/carrot-nutri-red-f1 | rose-red root and lighter longitudinal core match V8386 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | carrot-paris-market | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/carrot-paris-market | orange globes with slender taproots match V8097 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | carrot-nutri-white-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/cdn/shop/files/V8383-1.jpg | ivory root and long smooth taper match V8383 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | carrot-nutri-yellow-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/carrot-nutri-yellow-f1 | straw-yellow root with a fine curved taper matches V8384 | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 10 passed the production build and all 28 focused Playwright checks.
