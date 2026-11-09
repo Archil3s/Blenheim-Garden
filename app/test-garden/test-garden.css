@@ -71,3 +71,7 @@
  .tg-asset-icon{width:80px;height:80px}
  .tg-controls .tg-status-select{flex-direction:column;align-items:flex-start}
 }
+
+/* Long source/group names must not force horizontal scrolling on compact phones. */
+.tg-stats small,.tg-stats span{white-space:normal;overflow-wrap:anywhere}
+.tg-controls-bottom .tg-status-select{max-width:100%}

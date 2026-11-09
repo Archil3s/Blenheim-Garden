@@ -16,7 +16,7 @@ test("only exact supplier original icons appear; all other cards show artwork pe
   await expect(page.locator("#tg-inspector")).toContainText("No verified image file mapped");
   await expect(page.locator("#tg-inspector").getByRole("link", { name: /Open original image/ })).toHaveCount(0);
 
-  await page.getByLabel("CATALOGUE").selectOption("Rasmussen");
+  await page.locator(".tg-controls select").first().selectOption("Rasmussen");
   await page.getByRole("searchbox", { name: "SEARCH BY CROP OR VARIETY" }).fill("7 Pot Jonah");
   await expect(page.locator(".tg-plot")).toHaveCount(1);
   await expect(page.locator(".tg-plot img")).toHaveAttribute("src", "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png");
@@ -41,14 +41,14 @@ test("only exact supplier original icons appear; all other cards show artwork pe
 
 test("verified filter shows only the 10 original Rasmussen HTML PNGs and no Kings substitutes", async ({ page }) => {
   await page.goto("/test-garden");
-  await page.getByLabel("ARTWORK STATUS").selectOption("Verified originals only");
+  await page.locator(".tg-status-select select").selectOption("Verified originals only");
   await expect(page.locator(".tg-plot")).toHaveCount(10);
   await expect(page.locator(".tg-plot img[data-art-source='verified-original']")).toHaveCount(10);
   const srcs = await page.locator(".tg-plot img").evaluateAll(imgs => imgs.map(img => img.getAttribute("src") ?? ""));
   expect(srcs.every(src => src.startsWith("/assets/icons/rasmussen/approved/"))).toBe(true);
-  await page.getByLabel("CATALOGUE").selectOption("Kings Seeds");
+  await page.locator(".tg-controls select").first().selectOption("Kings Seeds");
   await expect(page.locator(".tg-plot")).toHaveCount(0);
-  await page.getByLabel("ARTWORK STATUS").selectOption("Artwork pending only");
+  await page.locator(".tg-status-select select").selectOption("Artwork pending only");
   await expect(page.locator(".tg-plot")).toHaveCount(72);
   await expect(page.locator(".tg-plot img")).toHaveCount(0);
 });
@@ -57,8 +57,8 @@ for (const width of [320, 390, 760, 1024]) {
   test("original PNGs stay fully contained at viewport " + width, async ({ page }) => {
     await page.setViewportSize({ width, height: 844 });
     await page.goto("/test-garden");
-    await page.getByLabel("CATALOGUE").selectOption("Rasmussen");
-    await page.getByLabel("ARTWORK STATUS").selectOption("Verified originals only");
+    await page.locator(".tg-controls select").first().selectOption("Rasmussen");
+    await page.locator(".tg-status-select select").selectOption("Verified originals only");
     const image = page.locator(".tg-plot img").first();
     await expect(image).toBeVisible();
     await expect(image).toHaveJSProperty("naturalWidth", 512);
