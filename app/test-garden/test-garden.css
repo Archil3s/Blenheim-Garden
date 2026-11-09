@@ -41,3 +41,33 @@
   .tg-plot-art,.tg-gallery-mode .tg-plot-art{height:82px}
   .tg-asset-icon{width:80px;height:80px}
 }
+
+
+/* Strict source icon audit: complete original art or a clearly marked pending state. */
+.tg-plot{overflow:hidden}
+.tg-plot-art{min-width:0;max-width:100%;display:grid;place-items:center;overflow:hidden;height:91px}
+.tg-asset-icon{display:block;max-width:100%;max-height:100%;width:88px;height:88px;object-fit:contain;object-position:center;padding:4px}
+.tg-artwork-pending{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:#7a8175;text-align:center;font-size:10px;line-height:1.3;font-weight:600}
+.tg-pending-mark{width:32px;height:32px;border:1px dashed #bcc6b9;border-radius:50%;display:grid;place-items:center;color:#9ba79a;font-size:19px;font-weight:400}
+.tg-plot-label{white-space:normal;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;min-height:2.36em;max-height:2.36em}
+.tg-plot-status{font-size:9px;letter-spacing:.02em;color:#87795d;font-weight:700}
+.tg-plot-status.is-verified{color:#346c49}
+.tg-controls .tg-status-select{display:flex;flex-direction:row;gap:8px;align-items:center}
+.tg-controls .tg-status-select span{white-space:nowrap}
+.tg-controls .tg-status-select select{height:38px;width:auto;min-width:165px}
+.tg-large-art .tg-artwork-pending{font-size:15px}
+.tg-large-art .tg-pending-mark{width:48px;height:48px;font-size:27px}
+@media(max-width:760px){
+ .tg-plots{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .tg-plot{padding:9px 7px 10px;gap:5px;min-height:160px}
+ .tg-plot-art,.tg-gallery-mode .tg-plot-art{height:88px}
+ .tg-asset-icon{width:86px;height:86px}
+ .tg-plot-label{font-size:12px;text-align:center}
+ .tg-plot-meta{font-size:10px}
+ .tg-controls .tg-status-select select{min-width:145px;max-width:190px}
+}
+@media(max-width:380px){
+ .tg-plot-art,.tg-gallery-mode .tg-plot-art{height:82px}
+ .tg-asset-icon{width:80px;height:80px}
+ .tg-controls .tg-status-select{flex-direction:column;align-items:flex-start}
+}
