@@ -1,0 +1,24 @@
+# Botanical artwork handoff
+
+Audited main at d4f130950586d19f8c4df74e1bc3d11a4ff75756.
+
+- The live JSON catalogues contain 429 unique Kings Seeds IDs and 279 unique Rasmussen IDs. The 441 and 137 counts in the source audit refer to the supplied source sets. Reconcile missing or expanded IDs before using the source counts as gallery denominators.
+- All ten approved Rasmussen paths in the source manifest exist. No originals or mappings were changed.
+- The first pending Kings Seeds ID is amaranth-garnet-red. The ImageGen capability check produced a draft that touches the canvas edge and has not undergone two-reference QA. It is excluded from accepted assets.
+- Resume with the exact cultivar photo and an approved style reference. Complete and validate the first ten pending IDs in catalogue order before integrating and pushing the batch.
+- Batch 01 passed the production build and 28 focused browser checks across desktop, laptop, tablet and a 390 px touch viewport. All 20 PNG files decode and have unique SHA-256 hashes within their size class. Cloudflare deployment pending.
+
+## Batch 01
+
+- Kings Seeds | amaranth-garnet-red | generated_qa_passed | master and gallery PNGs exported under public/plant-icons/generated/kings-seeds | photo https://www.winnowseedco.ca/product-page/amaranth-garnet-red | branching red panicles, alternate bronze leaves and red stem match the cultivar reference | PNGs decode at 512 and 128 with full alpha bounds 93,46,328,420 and 23,12,83,105; mobile rendering verified | local, integrated in /test-garden.
+- Style reference: public/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png. This verified original was used for illustration style only.
+- Kings Seeds | amaranth-green-red | generated_qa_passed | master and gallery PNGs exported under public/plant-icons/generated/kings-seeds | photo https://www.kingsseeds.co.nz/products/amaranth-green-red | green margins and burgundy centres match V8000; leaf-stage silhouette distinct from Garnet Red | decoded at 512 and 128; alpha bounds 47,50,419,413 and 11,13,106,104; mobile rendering verified | local, integrated in /test-garden.
+- Kings Seeds | artichoke-green-globe | generated_qa_passed | master and gallery PNGs exported under public/plant-icons/generated/kings-seeds | photo https://www.kingsseeds.co.nz/products/artichoke-green-globe | closed globe bud, broad green bracts and lobed leaf match V8028; first render rejected for exterior haze | alpha bounds and PNG dimensions validated; mobile rendering verified | local, integrated in /test-garden.
+
+- Kings Seeds | asparagus-mary-washington | generated_qa_passed | master and gallery PNGs exported under public/plant-icons/generated/kings-seeds | photo https://www.kingsseeds.co.nz/products/asparagus-mary-washington | thick green spears with closed purple-tinged tips match V8031; first render rejected for edge proximity | decoded at 512 and 128 with alpha bounds 68,46,377,420 and 17,12,95,105; mobile rendering verified | local, integrated in /test-garden.
+- Kings Seeds | asparagus-pacific-challenger-f1 | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/asparagus-pacific-challenger-f1 | upright, uniform green spears match V8388; rejected first render for haze | 512 and 128 decoded, alpha bounds 192,47,129,419 and 48,12,33,105 | integrated in /test-garden.
+- Kings Seeds | asparagus-pacific-purple-f1 | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/asparagus-pacific-purple-f1 | burgundy stems and pointed purple tips match V8402 | 512 and 128 decoded, alpha bounds 133,47,248,418 and 33,12,63,105 | integrated in /test-garden.
+- Kings Seeds | asparagus-pea | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/asparagus-pea | scarlet legume flowers and compact leafy habit match V8033; winged pod visible | 512 and 128 decoded, alpha bounds 48,47,415,419 and 12,12,104,105 | integrated in /test-garden.
+- Kings Seeds | bean-asian-winged | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-asian-winged | corrugated winged pods match V8034 | 512 and 128 decoded, alpha bounds 105,46,304,420 and 26,12,77,105 | integrated in /test-garden.
+- Kings Seeds | bean-asian-yard-long | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-asian-yard-long | pencil-thin hanging pods match V8055 | 512 and 128 decoded, alpha bounds 194,46,125,420 and 48,12,33,105 | integrated in /test-garden.
+- Kings Seeds | bean-climbing-bicolour-pean | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ (Bi-colour Pean photo) | rounded ivory and oxblood dry seeds match exact heritage cultivar HFC035 | 512 and 128 decoded, alpha bounds 46,72,420,369 and 12,18,105,93 | integrated in /test-garden.

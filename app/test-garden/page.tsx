@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import generatedArtwork from "@/lib/garden/generated-artwork-manifest.json";
 import kingsSeeds from "@/lib/garden/kings-seeds-varieties.json";
 import rasmussen from "@/lib/garden/rasmussen-varieties.json";
 import { catalogueArt } from "@/lib/garden/catalogue-art";
@@ -8,8 +9,8 @@ import { IconTestGarden, type TestGardenEntry } from "@/components/icon-test-gar
 import "./test-garden.css";
 
 export const metadata: Metadata = {
-  title: "Original Plant Artwork Audit | Blenheim Garden",
-  description: "View exact source artwork, without clipped or unrelated substitute illustrations.",
+  title: "Botanical Artwork Audit | Blenheim Garden",
+  description: "Inspect verified originals and reviewed cultivar illustrations.",
 };
 
 const pairKey = (crop: string, variety: string) => JSON.stringify([crop.toLowerCase(), variety.toLowerCase()]);
@@ -23,12 +24,28 @@ const verifiedRasmussen = new Map(rasmussenManifest.items
   .filter(item => item.artwork_status === "approved_existing" && Boolean(item.png_path))
   .map(item => [normalizeName(item.name), "/" + item.png_path!.replace(/^public\//, "")] as const));
 
+const generatedById = new Map(Object.entries(generatedArtwork));
+
+function generatedFields(id: string): Partial<TestGardenEntry> {
+  const artwork = generatedById.get(id);
+  if (!artwork || (artwork.status !== "generated_qa_passed" &&
+      artwork.status !== "needs_review" && artwork.status !== "failed")) return {};
+  return {
+    artworkStatus: artwork.status,
+    icon: artwork.gallery,
+    master: artwork.master,
+    referenceUrl: artwork.referenceUrl,
+    styleReference: artwork.styleReference,
+  };
+}
+
 const suppliers = [...kingsSeeds, ...rasmussen];
 const supplierPairs = new Set(suppliers.map(item => pairKey(item.crop, item.variety)));
 const entries: TestGardenEntry[] = [
   ...kingsSeeds.map((item): TestGardenEntry => ({
     id: "kings:" + item.id, group: "Kings Seeds", crop: item.crop, variety: item.variety,
     label: item.crop + " · " + item.variety, artworkStatus: "pending",
+    ...generatedFields("kings:" + item.id),
     pendingReason: "The supplied Kings Seeds PDF contains picture pieces cropped from a comparison sheet, including incomplete or neighbouring artwork. No full original individual PNG is verified for this variety.",
   })),
   ...rasmussen.map((item): TestGardenEntry => {
@@ -37,6 +54,7 @@ const entries: TestGardenEntry[] = [
       id: "rasmussen:" + item.id, group: "Rasmussen", crop: item.crop,
       variety: item.variety, label: item.crop + " · " + item.variety,
       icon, artworkStatus: icon ? "verified" : "pending",
+      ...(!icon && generatedFields("rasmussen:" + item.id)),
       sourceFile: icon ? "Rasmussen_Chilli_137_Icon_Gallery(2).html" : undefined,
       pendingReason: icon ? undefined : "No original individual PNG for this exact variety is verified in the supplied Rasmussen HTML gallery. Unreviewed concept batches are excluded.",
     };

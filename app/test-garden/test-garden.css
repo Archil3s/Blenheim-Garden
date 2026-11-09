@@ -75,3 +75,20 @@
 /* Long source/group names must not force horizontal scrolling on compact phones. */
 .tg-stats small,.tg-stats span{white-space:normal;overflow-wrap:anywhere}
 .tg-controls-bottom .tg-status-select{max-width:100%}
+
+.tg-plot-art {
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+}
+
+.tg-gallery-mode .tg-plot-art {
+  height: 91px;
+}
+
+@media (max-width: 760px) {
+  .tg-gallery-mode .tg-plot-art { height: 88px; }
+}
+
+@media (max-width: 380px) {
+  .tg-plot .tg-plot-art { height: 82px; }
+  .tg-plot .tg-asset-icon { width: 80px; height: 80px; }
+}

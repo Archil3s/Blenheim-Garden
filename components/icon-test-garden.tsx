@@ -11,7 +11,10 @@ export type TestGardenEntry = {
   label: string;
   icon?: string;
   sourceFile?: string;
-  artworkStatus: "verified" | "pending";
+  master?: string;
+  referenceUrl?: string;
+  styleReference?: string;
+  artworkStatus: "verified" | "generated_qa_passed" | "needs_review" | "pending" | "failed";
   pendingReason?: string;
 };
 
@@ -19,21 +22,40 @@ const groups: Array<TestGardenEntry["group"]> = ["Kings Seeds", "Rasmussen", "Re
 const groupShort: Record<TestGardenEntry["group"], string> = {
   "Kings Seeds": "KS", Rasmussen: "RG", "Reference catalogue": "REF", "Planner extras": "APP",
 };
+const artworkLabels: Record<TestGardenEntry["artworkStatus"], string> = {
+  verified: "Verified original",
+  generated_qa_passed: "Generated artwork",
+  needs_review: "Needs review",
+  pending: "Artwork pending",
+  failed: "Artwork failed QA",
+};
+
+const artworkFilters = {
+  "Verified originals only": "verified",
+  "Generated artwork only": "generated_qa_passed",
+  "Needs review only": "needs_review",
+  "Artwork pending only": "pending",
+  "Failed QA only": "failed",
+} as const;
+
+type ArtworkFilter = "All artwork" | keyof typeof artworkFilters;
 const PAGE_SIZE = 72;
 const BED_SIZE = 8;
 
-function PlantImage({ entry, failed, onBroken }: {
-  entry: TestGardenEntry; failed: boolean; onBroken: (id: string) => void;
+function PlantImage({ entry, failed, onBroken, detail = false }: {
+  entry: TestGardenEntry; failed: boolean; detail?: boolean; onBroken: (id: string) => void;
 }) {
-  if (entry.artworkStatus !== "verified" || !entry.icon || failed) {
+  const path = detail ? entry.master ?? entry.icon : entry.icon;
+  const original = entry.artworkStatus === "verified";
+  if ((!original && entry.artworkStatus !== "generated_qa_passed") || !path || failed) {
     return <span className="tg-artwork-pending" role="status">
       <span className="tg-pending-mark" aria-hidden="true">—</span>
-      <span>{failed ? "Image unavailable" : "Artwork pending"}</span>
+      <span>{failed ? "Image unavailable" : artworkLabels[entry.artworkStatus]}</span>
     </span>;
   }
-  return <img src={entry.icon} loading="lazy" decoding="async"
-    alt={entry.crop + " " + entry.variety + " original illustration"}
-    data-art-source="verified-original" className="tg-asset-icon"
+  return <img src={path} loading="lazy" decoding="async"
+    alt={entry.crop + " " + entry.variety + (original ? " original illustration" : " generated illustration")}
+    data-art-source={original ? "verified-original" : "generated"} className="tg-asset-icon"
     onError={() => onBroken(entry.id)} />;
 }
 
@@ -43,7 +65,7 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
   const [query, setQuery] = useState("");
   const [limit, setLimit] = useState(PAGE_SIZE);
   const [layout, setLayout] = useState<"beds" | "cards">("beds");
-  const [artworkFilter, setArtworkFilter] = useState("All artwork");
+  const [artworkFilter, setArtworkFilter] = useState<ArtworkFilter>("All artwork");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [broken, setBroken] = useState<Record<string, true>>({});
 
@@ -57,14 +79,18 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
     return entries.filter(entry =>
       (source === "All sources" || entry.group === source) &&
       (crop === "All crops" || entry.crop === crop) &&
-      (artworkFilter === "All artwork" || (artworkFilter === "Verified originals only"
-        ? entry.artworkStatus === "verified" && !broken[entry.id]
-        : entry.artworkStatus === "pending" || Boolean(broken[entry.id]))) &&
+      (artworkFilter === "All artwork" || (!broken[entry.id] && entry.artworkStatus === artworkFilters[artworkFilter])) &&
       (!search || (entry.crop + " " + entry.variety + " " + entry.group).toLocaleLowerCase().includes(search))
     );
   }, [entries, source, crop, artworkFilter, query, broken]);
   const shown = filtered.slice(0, limit);
-  const verifiedCount = entries.filter(entry => entry.artworkStatus === "verified").length;
+  const statusCounts = (items: TestGardenEntry[]) => ({
+    verified: items.filter(item => item.artworkStatus === "verified").length,
+    generated: items.filter(item => item.artworkStatus === "generated_qa_passed").length,
+    review: items.filter(item => item.artworkStatus === "needs_review").length,
+    pending: items.filter(item => item.artworkStatus === "pending").length,
+  });
+  const totals = statusCounts(entries);
   const beds = Array.from({ length: Math.ceil(shown.length / BED_SIZE) },
     (_, i) => shown.slice(i * BED_SIZE, (i + 1) * BED_SIZE));
   const selected = entries.find(entry => entry.id === selectedId) ?? null;
@@ -96,7 +122,7 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
       <div>
         <div className="tg-kicker"><span className="tg-kicker-mark" /> QA FIELD / TEST TEMPLATE 01</div>
         <h1>Every plant.<br /><em>One test garden.</em></h1>
-        <p>Only exact, source-verified individual illustrations appear. Missing artwork is clearly marked Artwork pending—not replaced with a generic illustration or cropped image. Tap a plant to inspect its source.</p>
+        <p>Explore verified originals and reviewed botanical illustrations. Tap a plant to see its artwork and provenance.</p>
       </div>
       <div className="tg-safety">
         <span className="tg-safety-dot" /> ISOLATED PREVIEW
@@ -107,12 +133,18 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
 
     <section className="tg-stats" aria-label="Catalogue coverage">
       <div><small>TOTAL TEST PLOTS</small><strong>{entries.length.toLocaleString()}</strong><span>all catalogue entries</span></div>
-      {groups.map(group => <div key={group}><small>{group.toUpperCase()}</small><strong>{groupCounts[group].toLocaleString()}</strong><span>{entries.filter(item => item.group === group && item.artworkStatus === "verified").length} verified originals</span></div>)}
+      {groups.map(group => {
+        const counts = statusCounts(entries.filter(item => item.group === group));
+        return <div key={group}><small>{group.toUpperCase()}</small>
+          <strong>{groupCounts[group].toLocaleString()}</strong>
+          <span>{counts.verified} originals · {counts.generated} generated · {counts.review} needs review · {counts.pending} pending</span>
+        </div>;
+      })}
     </section>
 
     <section className="tg-workspace" aria-label="Test garden controls">
       <div className="tg-controls">
-        <label className="tg-search"><span>SEARCH BY CROP OR VARIETY</span><input type="search" value={query} placeholder="e.g. Carolina Reaper, basil, Powder Blue…" onChange={event => { setQuery(event.target.value); setLimit(PAGE_SIZE); }} /></label>
+        <label className="tg-search"><span>SEARCH BY CROP OR VARIETY OR SUPPLIER</span><input type="search" value={query} placeholder="e.g. Carolina Reaper, basil, Powder Blue…" onChange={event => { setQuery(event.target.value); setLimit(PAGE_SIZE); }} /></label>
         <label><span>CATALOGUE</span><select value={source} onChange={event => changeSource(event.target.value)}>
           <option>All sources</option>{groups.map(group => <option key={group}>{group}</option>)}
         </select></label>
@@ -126,10 +158,9 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
           </div>
           <label className="tg-status-select"><span>ARTWORK STATUS</span>
             <select aria-label="ARTWORK STATUS" value={artworkFilter}
-              onChange={event => { setArtworkFilter(event.target.value); setLimit(PAGE_SIZE); }}>
+              onChange={event => { setArtworkFilter(event.target.value as ArtworkFilter); setLimit(PAGE_SIZE); }}>
               <option>All artwork</option>
-              <option>Verified originals only</option>
-              <option>Artwork pending only</option>
+              {Object.keys(artworkFilters).map(label => <option key={label}>{label}</option>)}
             </select>
           </label>
           <button type="button" className="tg-reset" onClick={reset}>Reset filters</button>
@@ -137,7 +168,7 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
       </div>
       <div className="tg-results" role="status" aria-live="polite">
         <span><strong>{shown.length.toLocaleString()}</strong> of {filtered.length.toLocaleString()} matching plots displayed</span>
-        <span><strong>{verifiedCount}</strong> verified original PNGs · <strong>{entries.length - verifiedCount}</strong> pending</span>
+        <span><strong>{totals.verified}</strong> verified original PNGs · <strong>{totals.generated}</strong> generated · <strong>{totals.review}</strong> needs review · <strong>{totals.pending}</strong> pending</span>
         <span>{Object.keys(broken).length} failed images detected so far — only loaded images have been checked</span>
       </div>
     </section>
@@ -156,7 +187,7 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
                   <span className="tg-plot-art"><PlantImage entry={entry} failed={Boolean(broken[entry.id])} onBroken={recordBroken} /></span>
                   <span className="tg-plot-label" title={entry.label}>{entry.variety}</span>
                   <span className="tg-plot-meta">{groupShort[entry.group]} · {entry.crop}</span>
-                  <span className={"tg-plot-status" + (entry.artworkStatus === "verified" && !broken[entry.id] ? " is-verified" : "")}>{entry.artworkStatus === "verified" && !broken[entry.id] ? "Original PNG" : "Pending"}</span>
+                  <span className={"tg-plot-status" + (entry.artworkStatus === "verified" && !broken[entry.id] ? " is-verified" : "")}>{broken[entry.id] ? "Image unavailable" : artworkLabels[entry.artworkStatus]}</span>
                 </button>)}
               </div>
             </div>)}
@@ -172,15 +203,16 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
         {selected ? <>
           <div className="tg-inspector-head"><span>{selected.group}</span><button type="button" onClick={() => setSelectedId(null)} aria-label="Close selected icon details">×</button></div>
           <h2>{selected.variety}</h2><p className="tg-inspector-crop">{selected.crop}</p>
-          <div className="tg-large-art"><PlantImage entry={selected} failed={Boolean(broken[selected.id])} onBroken={recordBroken} /></div>
+          <div className="tg-large-art"><PlantImage detail entry={selected} failed={Boolean(broken[selected.id])} onBroken={recordBroken} /></div>
           <dl>
-            <div><dt>Status</dt><dd>{broken[selected.id] ? "Image unavailable" : selected.artworkStatus === "verified" ? "Verified original" : "Artwork pending"}</dd></div>
-            <div><dt>Artwork type</dt><dd>{selected.artworkStatus === "verified" ? "Individual original PNG" : "No approved standalone source"}</dd></div>
-            <div><dt>Original source</dt><dd>{selected.sourceFile ?? "None verified"}</dd></div>
+            <div><dt>Status</dt><dd>{broken[selected.id] ? "Image unavailable" : artworkLabels[selected.artworkStatus]}</dd></div>
+            <div><dt>Artwork type</dt><dd>{selected.artworkStatus === "verified" ? "Individual original PNG" : selected.master ? "AI-generated botanical illustration" : "No approved standalone source"}</dd></div>
+            <div><dt>{selected.referenceUrl ? "Botanical reference" : "Original source"}</dt><dd>{selected.referenceUrl ? <a href={selected.referenceUrl} target="_blank" rel="noreferrer">Cultivar photo</a> : selected.sourceFile ?? "None verified"}</dd></div>
+          {selected.styleReference && <div><dt>Style reference</dt><dd><a href={selected.styleReference} target="_blank" rel="noreferrer">Verified illustration</a></dd></div>}
           </dl>
           {selected.artworkStatus === "pending" && <p className="tg-qa-warning">{selected.pendingReason ?? "An original individual image is required before this variety can be shown."}</p>}
-          {selected.artworkStatus === "verified" && selected.icon && !broken[selected.id] &&
-            <a className="tg-file-link" href={selected.icon} target="_blank" rel="noreferrer">Open original image ↗</a>}
+          {selected.icon && !broken[selected.id] && (selected.artworkStatus === "verified" || selected.artworkStatus === "generated_qa_passed") &&
+            <a className="tg-file-link" href={selected.master ?? selected.icon} target="_blank" rel="noreferrer">{selected.master ? "Open master image ↗" : "Open original image ↗"}</a>}
           <div className="tg-path">{selected.icon ?? "No verified image file mapped"}</div>
         </> : <div className="tg-inspector-idle"><div className="tg-inspector-plant">✳</div><h2>Select a plot</h2><p>Tap a variety to see its exact source image or why the artwork is still pending.</p></div>}
         <div className="tg-inspector-foot"><strong>Correct artwork takes priority over coverage.</strong><br />Unreviewed concepts, contact-sheet fragments and substitute SVGs are excluded from this source audit.</div>

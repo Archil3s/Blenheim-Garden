@@ -1,0 +1,72 @@
+{
+  "kings:amaranth-garnet-red": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/amaranth-garnet-red.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/amaranth-garnet-red.png",
+    "referenceUrl": "https://www.winnowseedco.ca/product-page/amaranth-garnet-red",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:amaranth-green-red": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/amaranth-green-red.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/amaranth-green-red.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/amaranth-green-red",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:artichoke-green-globe": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/artichoke-green-globe.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/artichoke-green-globe.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/artichoke-green-globe",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:asparagus-mary-washington": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/asparagus-mary-washington.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/asparagus-mary-washington.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-mary-washington",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:asparagus-pacific-challenger-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/asparagus-pacific-challenger-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/asparagus-pacific-challenger-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-pacific-challenger-f1",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:asparagus-pacific-purple-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/asparagus-pacific-purple-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/asparagus-pacific-purple-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-pacific-purple-f1",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:asparagus-pea": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/asparagus-pea.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/asparagus-pea.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-pea",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:bean-asian-winged": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/bean-asian-winged.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-asian-winged.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-asian-winged",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:bean-asian-yard-long": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/bean-asian-yard-long.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-asian-yard-long.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-asian-yard-long",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:bean-climbing-bicolour-pean": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-bicolour-pean.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-bicolour-pean.png",
+    "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  }
+}

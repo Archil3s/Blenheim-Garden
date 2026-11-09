@@ -570,3 +570,10 @@ for default-garden plans containing original numeric bed identities 1–12 and n
 custom boundary. Empty, new and PDF template plans never gain this overlay; adding
 a starter bed after clearing cannot resurrect it. This preserves the original
 reference view without adding uneditable items to new templates.
+
+## Botanical artwork batch 01
+
+The isolated test garden reads generated artwork by supplier and catalogue ID.
+The card uses the 128 px image and the inspector opens the 512 px master with
+cultivar and style provenance. The existing two-column phone layout is used.
+Production build and 28 focused Playwright checks passed on desktop, laptop, tablet and phone. Desktop and 390 px phone captures were inspected. User feedback is pending.

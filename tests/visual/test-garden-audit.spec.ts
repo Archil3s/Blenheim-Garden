@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test("only exact supplier original icons appear; all other cards show artwork pending", async ({ page }) => {
+test("pending artwork stays unmapped and verified originals retain their source", async ({ page }) => {
   const mutations: string[] = [];
   page.on("request", request => {
     if (request.method() !== "GET" && request.url().includes("/api/garden")) mutations.push(request.url());
@@ -10,14 +10,16 @@ test("only exact supplier original icons appear; all other cards show artwork pe
   const total = Number((await page.locator(".tg-stats strong").first().innerText()).replace(/,/g, ""));
   expect(total).toBeGreaterThan(1100);
   await expect(page.locator(".tg-plot")).toHaveCount(72);
+  await page.locator(".tg-status-select select").selectOption("Artwork pending only");
   await expect(page.locator(".tg-plot").first()).toContainText("Artwork pending");
   await expect(page.locator(".tg-plot").first().locator("img")).toHaveCount(0);
   await page.locator(".tg-plot").first().click();
   await expect(page.locator("#tg-inspector")).toContainText("No verified image file mapped");
   await expect(page.locator("#tg-inspector").getByRole("link", { name: /Open original image/ })).toHaveCount(0);
 
+  await page.locator(".tg-status-select select").selectOption("All artwork");
   await page.locator(".tg-controls select").first().selectOption("Rasmussen");
-  await page.getByRole("searchbox", { name: "SEARCH BY CROP OR VARIETY" }).fill("7 Pot Jonah");
+  await page.getByRole("searchbox", { name: "SEARCH BY CROP OR VARIETY OR SUPPLIER" }).fill("7 Pot Jonah");
   await expect(page.locator(".tg-plot")).toHaveCount(1);
   await expect(page.locator(".tg-plot img")).toHaveAttribute("src", "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png");
   await page.locator(".tg-plot").first().click();
@@ -25,7 +27,7 @@ test("only exact supplier original icons appear; all other cards show artwork pe
   await expect(page.locator("#tg-inspector").getByRole("link", { name: /Open original image/ }))
     .toHaveAttribute("href", "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png");
 
-  await page.getByRole("searchbox", { name: "SEARCH BY CROP OR VARIETY" }).fill("Zebrange Stripey");
+  await page.getByRole("searchbox", { name: "SEARCH BY CROP OR VARIETY OR SUPPLIER" }).fill("Zebrange Stripey");
   await expect(page.locator(".tg-plot")).toHaveCount(1);
   await expect(page.locator(".tg-plot").first().locator("img")).toHaveCount(0);
   await page.locator(".tg-plot").first().click();
@@ -57,9 +59,11 @@ for (const width of [320, 390, 760, 1024]) {
   test("original PNGs stay fully contained at viewport " + width, async ({ page }) => {
     await page.setViewportSize({ width, height: 844 });
     await page.goto("/test-garden");
-    await page.locator(".tg-controls select").first().selectOption("Rasmussen");
+    await page.locator(".tg-status-select select").selectOption("All artwork");
+  await page.locator(".tg-controls select").first().selectOption("Rasmussen");
     await page.locator(".tg-status-select select").selectOption("Verified originals only");
     const image = page.locator(".tg-plot img").first();
+    await image.scrollIntoViewIfNeeded();
     await expect(image).toBeVisible();
     await expect(image).toHaveJSProperty("naturalWidth", 512);
     const contained = await page.locator(".tg-plot-art").evaluateAll(elements => elements.every(el => {
@@ -74,3 +78,44 @@ for (const width of [320, 390, 760, 1024]) {
     expect(overflow).toBeLessThanOrEqual(1);
   });
 }
+
+test("generated catalogue cards load their gallery PNGs and open the correct masters", async ({ page }) => {
+  await page.goto("/test-garden");
+  await page.locator(".tg-status-select select").selectOption("Generated artwork only");
+  await page.getByRole("button", { name: "Icon gallery" }).click();
+  const cards = page.locator(".tg-plot");
+  const images = cards.locator("img[data-art-source='generated']");
+  await expect(images).toHaveCount(await cards.count());
+  expect(await images.count()).toBeGreaterThanOrEqual(10);
+  for (const image of await images.all()) {
+    await image.scrollIntoViewIfNeeded();
+    await expect(image).toHaveJSProperty("naturalWidth", 128);
+    await expect(image).toHaveJSProperty("naturalHeight", 128);
+    const fits = await image.evaluate(el => {
+      const imageRect = el.getBoundingClientRect();
+      const frameRect = el.parentElement!.getBoundingClientRect();
+      return getComputedStyle(el).objectFit === "contain" &&
+        imageRect.left >= frameRect.left - 1 && imageRect.right <= frameRect.right + 1 &&
+        imageRect.top >= frameRect.top - 1 && imageRect.bottom <= frameRect.bottom + 1;
+    });
+    expect(fits).toBe(true);
+  }
+  await page.screenshot({ path: test.info().outputPath("generated-gallery.png"), fullPage: true });
+  const garnet = cards.filter({ hasText: "Garnet Red" });
+  await expect(garnet.locator("img")).toHaveAttribute("src",
+    "/plant-icons/generated/kings-seeds/gallery/amaranth-garnet-red.png");
+  await garnet.click();
+  const inspector = page.locator("#tg-inspector");
+  await expect(inspector.locator("img")).toHaveJSProperty("naturalWidth", 512);
+  await expect(inspector.getByRole("link", { name: /Open master image/ })).toHaveAttribute("href",
+    "/plant-icons/generated/kings-seeds/master/amaranth-garnet-red.png");
+  await expect(inspector.getByRole("link", { name: "Cultivar photo" })).toHaveAttribute("href",
+    "https://www.winnowseedco.ca/product-page/amaranth-garnet-red");
+  if (page.viewportSize()!.width <= 760) {
+    const [first, second, third] = await Promise.all([0, 1, 2].map(index => cards.nth(index).boundingBox()));
+    expect(first!.y).toBe(second!.y);
+    expect(second!.x).toBeGreaterThan(first!.x);
+    expect(third!.y).toBeGreaterThan(first!.y);
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
+});
