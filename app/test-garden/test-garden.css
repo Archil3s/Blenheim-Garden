@@ -18,3 +18,26 @@
 @media(max-width:1100px){.tg-bed-grid{grid-template-columns:1fr}.tg-layout{grid-template-columns:minmax(0,1fr) 278px}.tg-plot{min-height:132px}}@media(max-width:760px){.tg-topbar{height:auto;padding:13px 17px;align-items:flex-start;flex-wrap:wrap}.tg-topbar nav{gap:13px;flex-wrap:wrap}.tg-topbar nav a,.tg-current{font-size:11px}.tg-brand{font-size:24px}.tg-brand strong{font-size:10px}.tg-intro{grid-template-columns:1fr;padding:33px 17px 24px;gap:24px}.tg-intro h1{font-size:56px}.tg-stats{padding:0 17px;margin-bottom:22px;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.tg-stats>div:first-child{grid-column:1/-1}.tg-workspace{padding:0 17px}.tg-controls{grid-template-columns:1fr 1fr;gap:12px;padding:13px}.tg-search{grid-column:1/-1}.tg-results{font-size:11px}.tg-layout{padding:0 17px 55px;display:flex;flex-direction:column-reverse;gap:16px}.tg-inspector{position:static;width:100%}.tg-growing-ground{width:100%;padding:14px}.tg-bed-grid{grid-template-columns:1fr;gap:22px}.tg-bed{padding:10px;border-width:6px}.tg-plot{min-height:119px;padding:7px 3px}.tg-plot-art{height:65px}.tg-asset-icon{height:60px;width:60px}.tg-plot-label{font-size:10px}.tg-plot-meta{font-size:8px}.tg-footer{padding:18px 17px;flex-wrap:wrap}}
 @media(max-width:380px){.tg-controls{grid-template-columns:1fr}.tg-search{grid-column:auto}.tg-plots{grid-template-columns:repeat(2,minmax(0,1fr))}.tg-plot-art{height:77px}.tg-asset-icon{width:70px;height:70px}.tg-intro h1{font-size:47px}.tg-controls-bottom{gap:12px}}
 @media(prefers-reduced-motion:reduce){.tg-plot{transition:none}.tg-plot:hover{transform:none}}
+
+/* The old sheet-cropped SVGs contain clipped pixels inside the SVG itself.
+   Use clean fallback illustrations in the QA grid and contain each image safely. */
+.tg-plot{overflow:hidden}
+.tg-plot-art{flex:0 0 auto;position:relative;min-width:0;max-width:100%;overflow:hidden}
+.tg-asset-icon{display:block;max-width:100%;max-height:100%;object-fit:contain;object-position:center;padding:5px}
+.tg-native-icon{max-width:100%;max-height:100%;overflow:hidden}
+.tg-plot-label{white-space:normal;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;min-height:2.36em;max-height:2.36em}
+.tg-plot-status{color:#446b50;font-size:9px;font-weight:700;letter-spacing:.02em;white-space:nowrap}
+.tg-qa-warning{font-size:12px;line-height:1.45;color:#8b6c37;background:#fff8e9;border-left:3px solid #d8b878;padding:9px 10px}
+.tg-concept{margin-bottom:16px}
+@media(max-width:760px){
+  .tg-plots{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .tg-plot{min-height:153px;padding:9px 8px 10px;gap:5px}
+  .tg-plot-art,.tg-gallery-mode .tg-plot-art{height:86px}
+  .tg-asset-icon{width:83px;height:83px}
+  .tg-plot-label{font-size:12px;text-align:center}
+  .tg-plot-meta{font-size:10px}
+}
+@media(max-width:380px){
+  .tg-plot-art,.tg-gallery-mode .tg-plot-art{height:82px}
+  .tg-asset-icon{width:80px;height:80px}
+}

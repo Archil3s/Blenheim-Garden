@@ -12,6 +12,8 @@ export type TestGardenEntry = {
   label: string;
   icon: string;
   concept?: string;
+  legacyIcon?: string;
+  previewStatus?: "approved" | "review-required";
   visual: "image" | "planner";
 };
 
@@ -29,8 +31,17 @@ function PlantImage({ entry, onBroken, large = false }: {
     return <PlantArt crop={entry.crop} variety={entry.variety} fallback="🌱"
       className="tg-native-icon" style={{ fontSize: large ? 124 : 66 }} />;
   }
-  return <img src={entry.icon} loading="lazy" decoding="async" alt=""
-    className="tg-asset-icon" onError={() => onBroken(entry.id)} />;
+  return <img key={entry.id} src={entry.concept ?? entry.icon} loading="lazy" decoding="async" alt=""
+    className="tg-asset-icon" data-art-source={entry.concept ? "uploaded-png" : "catalogue"}
+    onError={event => {
+      const image = event.currentTarget;
+      if (entry.concept && image.dataset.fallback !== "true") {
+        image.dataset.fallback = "true";
+        image.src = entry.icon;
+      } else {
+        onBroken(entry.id);
+      }
+    }} />;
 }
 
 export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
@@ -40,6 +51,7 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
   const [limit, setLimit] = useState(PAGE_SIZE);
   const [layout, setLayout] = useState<"beds" | "cards">("beds");
   const [onlyBroken, setOnlyBroken] = useState(false);
+  const [uploadedOnly, setUploadedOnly] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [broken, setBroken] = useState<Record<string, true>>({});
 
@@ -54,10 +66,12 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
       (source === "All sources" || entry.group === source) &&
       (crop === "All crops" || entry.crop === crop) &&
       (!onlyBroken || Boolean(broken[entry.id])) &&
+      (!uploadedOnly || Boolean(entry.concept)) &&
       (!search || (entry.crop + " " + entry.variety + " " + entry.group).toLocaleLowerCase().includes(search))
     );
-  }, [entries, source, crop, onlyBroken, query, broken]);
+  }, [entries, source, crop, onlyBroken, uploadedOnly, query, broken]);
   const shown = filtered.slice(0, limit);
+  const uploadedCount = entries.filter(entry => Boolean(entry.concept)).length;
   const beds = Array.from({ length: Math.ceil(shown.length / BED_SIZE) },
     (_, i) => shown.slice(i * BED_SIZE, (i + 1) * BED_SIZE));
   const selected = entries.find(entry => entry.id === selectedId) ?? null;
@@ -73,7 +87,7 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
   }
   function changeSource(value: string) { setSource(value); setCrop("All crops"); setLimit(PAGE_SIZE); }
   function changeCrop(value: string) { setCrop(value); setLimit(PAGE_SIZE); }
-  function reset() { setSource("All sources"); setCrop("All crops"); setQuery(""); setLimit(PAGE_SIZE); setOnlyBroken(false); }
+  function reset() { setSource("All sources"); setCrop("All crops"); setQuery(""); setLimit(PAGE_SIZE); setOnlyBroken(false); setUploadedOnly(false); }
 
   return <main className="tg-shell">
     <a href="#tg-garden" className="tg-skip">Skip to test garden</a>
@@ -89,7 +103,7 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
       <div>
         <div className="tg-kicker"><span className="tg-kicker-mark" /> QA FIELD / TEST TEMPLATE 01</div>
         <h1>Every plant.<br /><em>One test garden.</em></h1>
-        <p>A safe, read-only garden assembled from the real supplier catalogues and the planner’s icon renderer. Each plot represents one named crop or variety—select a plant to inspect its artwork and source.</p>
+        <p>A read-only audit of every variety. Uploaded individual PNGs display first when available; otherwise clean catalogue artwork is used. Select a plant to compare the preview with its existing planner icon.</p>
       </div>
       <div className="tg-safety">
         <span className="tg-safety-dot" /> ISOLATED PREVIEW
@@ -118,11 +132,13 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
             <button type="button" aria-pressed={layout === "cards"} onClick={() => setLayout("cards")}>Icon gallery</button>
           </div>
           <label className="tg-toggle"><input type="checkbox" checked={onlyBroken} onChange={event => { setOnlyBroken(event.target.checked); setLimit(PAGE_SIZE); }} /> Broken icons only</label>
+          <label className="tg-toggle"><input type="checkbox" checked={uploadedOnly} onChange={event => { setUploadedOnly(event.target.checked); setLimit(PAGE_SIZE); }} /> Uploaded PNGs only</label>
           <button type="button" className="tg-reset" onClick={reset}>Reset filters</button>
         </div>
       </div>
       <div className="tg-results" role="status" aria-live="polite">
         <span><strong>{shown.length.toLocaleString()}</strong> of {filtered.length.toLocaleString()} matching plots displayed</span>
+        <span><strong>{uploadedCount}</strong> uploaded PNG previews available (unreviewed concepts identified)</span>
         <span>{Object.keys(broken).length} failed images detected so far — only loaded images have been checked</span>
       </div>
     </section>
@@ -141,6 +157,7 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
                   <span className="tg-plot-art"><PlantImage entry={entry} onBroken={recordBroken} /></span>
                   <span className="tg-plot-label" title={entry.label}>{entry.variety}</span>
                   <span className="tg-plot-meta">{groupShort[entry.group]} · {entry.crop}</span>
+                  {entry.concept && <span className="tg-plot-status">{entry.previewStatus === "approved" ? "Approved PNG" : "PNG · review"}</span>}
                 </button>)}
               </div>
             </div>)}
@@ -157,16 +174,21 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
           <div className="tg-inspector-head"><span>{selected.group}</span><button type="button" onClick={() => setSelectedId(null)} aria-label="Close selected icon details">×</button></div>
           <h2>{selected.variety}</h2><p className="tg-inspector-crop">{selected.crop}</p>
           <div className="tg-large-art"><PlantImage entry={selected} onBroken={recordBroken} large /></div>
-          <dl><div><dt>Source</dt><dd>{selected.group}</dd></div><div><dt>Renderer</dt><dd>{selected.visual === "planner" ? "In-app PlantArt fallback chain" : "Actual catalogue image path"}</dd></div><div><dt>Icon status</dt><dd>{broken[selected.id] ? "Image failed to load" : selected.visual === "planner" ? "Needs visual inspection" : "No loading failure reported yet"}</dd></div></dl>
-          {selected.icon && <a className="tg-file-link" href={selected.icon} target="_blank" rel="noreferrer">Open source icon ↗</a>}
-          {selected.concept && <div className="tg-concept">
-            <h3>Alternative PNG concept</h3>
-            <p>Comparison only — earlier Rasmussen artwork is not cultivar-verified.</p>
-            <img src={selected.concept} loading="lazy" alt={"Unreviewed concept for " + selected.variety} onError={() => recordBroken(selected.id)} />
-            <a href={selected.concept} target="_blank" rel="noreferrer">Open concept PNG ↗</a>
+          <dl>
+            <div><dt>Source</dt><dd>{selected.group}</dd></div>
+            <div><dt>Displayed artwork</dt><dd>{selected.concept ? "Individual PNG preview" : selected.group === "Kings Seeds" ? "Clean catalogue SVG" : selected.visual === "planner" ? "PlantArt renderer" : "Catalogue icon"}</dd></div>
+            <div><dt>Artwork status</dt><dd>{broken[selected.id] ? "Image failed to load" : selected.previewStatus === "approved" ? "Approved PNG" : selected.previewStatus === "review-required" ? "Unreviewed PNG concept" : "Catalogue fallback"}</dd></div>
+          </dl>
+          {selected.concept && <p className="tg-qa-warning">This individual PNG is available in GitHub for visual review; unreviewed files are not enabled in the production planner.</p>}
+          {(selected.concept || (selected.legacyIcon && selected.legacyIcon !== selected.icon)) && <div className="tg-concept">
+            <h3>Current planner artwork · comparison</h3>
+            <p>This is the older icon, which may contain clipped image-sheet fragments.</p>
+            <img src={selected.legacyIcon ?? selected.icon} loading="lazy" alt={"Previous planner artwork for " + selected.variety} />
+            <a href={selected.legacyIcon ?? selected.icon} target="_blank" rel="noreferrer">Open current planner icon</a>
           </div>}
-          <div className="tg-path">{selected.icon || "Resolved by the application’s plant icon renderer"}</div>
-        </> : <div className="tg-inspector-idle"><div className="tg-inspector-plant">✳</div><h2>Select a plot</h2><p>Tap a variety in the test garden to inspect the exact icon used by Blenheim Garden. Where available, earlier alternative PNG concepts are shown for comparison.</p></div>}
+          {(selected.concept || selected.icon) && <a className="tg-file-link" href={selected.concept ?? selected.icon} target="_blank" rel="noreferrer">Open displayed icon ↗</a>}
+          <div className="tg-path">{selected.concept ?? selected.icon || "Resolved by the application's plant icon renderer"}</div>
+        </> : <div className="tg-inspector-idle"><div className="tg-inspector-plant">✳</div><h2>Select a plot</h2><p>Tap a variety in the test garden to inspect the exact icon used by Blenheim Garden. Where uploaded PNGs exist, they are displayed in the plots and the current planner image is shown for comparison.</p></div>}
         <div className="tg-inspector-foot"><strong>Artwork status ≠ botanical accuracy.</strong><br />These previews help find broken, generic or mismatched icons. Individual files still need cultivar review.</div>
       </aside>
     </div>
