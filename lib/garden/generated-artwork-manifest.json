@@ -278,5 +278,75 @@
     "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-indian-hannah.png",
     "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:bean-runner-italian-flat": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/bean-runner-italian-flat.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-italian-flat.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-italian-flat",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:bean-runner-king-of-the-blues": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/bean-runner-king-of-the-blues.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-king-of-the-blues.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-king-of-the-blues",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:bean-runner-lazy-housewife": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/bean-runner-lazy-housewife.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-lazy-housewife.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-lazy-housewife",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:bean-runner-neekar-golden": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/bean-runner-neekar-golden.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-neekar-golden.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-neekar-golden",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:bean-runner-ojo-de-cabra": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/bean-runner-ojo-de-cabra.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-ojo-de-cabra.png",
+    "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:bean-runner-purple-star": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/bean-runner-purple-star.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-purple-star.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-purple-star",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:bean-runner-scarlet": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/bean-runner-scarlet.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-scarlet.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-scarlet",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:beet-perpetual-spinach": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/beet-perpetual-spinach.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/beet-perpetual-spinach.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/beet-perpetual-spinach",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:beetroot-bulls-blood": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/beetroot-bulls-blood.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/beetroot-bulls-blood.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/beetroot-bulls-blood",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:beetroot-chioggia": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/beetroot-chioggia.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/beetroot-chioggia.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/beetroot-chioggia",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }

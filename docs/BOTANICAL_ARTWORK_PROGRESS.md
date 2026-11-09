@@ -69,4 +69,21 @@ Batch 03 passed the production build and 28 focused Playwright checks. Cloudflar
 - Kings Seeds | bean-runner-hopi-beige | generated_qa_passed | master and gallery exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | beige mottling and rust eye match cultivar | dimensions and alpha bounds validated | integrated in /test-garden.
 - Kings Seeds | bean-runner-indian-hannah | generated_qa_passed | master and gallery exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | blocky mixed speckled, patched and black seeds match cultivar | dimensions and alpha bounds validated | integrated in /test-garden.
 
-Batch 04 passed the production build and 28 focused Playwright checks. Cloudflare verification pending.
+Batch 04 passed the production build and 28 focused Playwright checks. Cloudflare deployment succeeded for commit b1234d8879d7eed69cc2ee0ed5a4df13bfcb8f82 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42682608667).
+
+## Batch 05
+
+- Kings Seeds | bean-runner-italian-flat | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/bean-runner-italian-flat | broad flat green pods with wavy seams match V8049 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | bean-runner-king-of-the-blues | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/bean-runner-king-of-the-blues | long curved indigo-purple pods match V8050 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | bean-runner-lazy-housewife | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/bean-runner-lazy-housewife | replacement shows elongated pale green pods with subtle seed swellings matching V8051 | dimensions and alpha bounds validated | integrated in /test-garden.
+
+
+- Kings Seeds | bean-runner-neekar-golden | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/bean-runner-neekar-golden | long, straight golden wax pods match V8053 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | bean-runner-ojo-de-cabra | generated_qa_passed | master and gallery exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | gray-beige seeds with brown stripes and dark eye rings match the cultivar photo | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | bean-runner-purple-star | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/bean-runner-purple-star | broad plum seeds with pale flecks match HFC014 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | bean-runner-scarlet | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/bean-runner-scarlet | red flowers and green wavy pods match V8054 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | beet-perpetual-spinach | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/beet-perpetual-spinach | green stalks and elongated leaves match V8282 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | beetroot-bulls-blood | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/beetroot-bulls-blood | burgundy foliage and red stems match V8056 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | beetroot-chioggia | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/beetroot-chioggia | red root and pale concentric rings match V8057 | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 05 passed the production build and 28 focused Playwright checks. Cloudflare verification pending.
