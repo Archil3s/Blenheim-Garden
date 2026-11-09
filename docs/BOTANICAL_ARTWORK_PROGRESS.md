@@ -53,4 +53,20 @@ Batch 02 passed the production build and 28 focused Playwright checks. Cloudflar
 - Kings Seeds | bean-dwarf-mayocoba | generated_qa_passed | master and gallery PNGs exported | https://shop.woodlandfoods.com/products/mayocoba-beans/c-23/p-17423 | plump oval buttery yellow dry seeds match Mayocoba photo | decoded at 512 and 128, alpha bounds 47,80,418,352 and 12,20,105,89 | integrated in /test-garden.
 - Kings Seeds | bean-dwarf-purple-tee-pee | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-dwarf-purple-tee-pee | slender violet pods match V8044 | decoded at 512 and 128, alpha bounds 91,47,331,419 and 23,12,83,105 | integrated in /test-garden.
 
-Batch 03 passed the production build and 28 focused Playwright checks. Cloudflare verification pending.
+Batch 03 passed the production build and 28 focused Playwright checks. Cloudflare deployment succeeded for commit 7a2d4025d5e00a5efa6bb1fec41c4cd699d82293 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42603413759).
+
+
+## Batch 04
+
+- Kings Seeds | bean-dwarf-roquefort | generated_qa_passed | replacement two-pod master and gallery exported | https://www.kingsseeds.co.nz/products/bean-dwarf-roquefort | V8045 pale wax pods; replacement avoids detached flecks in draft | 512 and 128 decoded with alpha bounds 78,46,357,420 and 20,12,89,105 | integrated in /test-garden.
+- Kings Seeds | bean-dwarf-top-crop | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-dwarf-top-crop | medium green rounded pods match V8046 | PNG dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | bean-dwarf-xera-select | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-dwarf-xera-select | straight slender green pods match V8047 | PNG dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | bean-runner-blue-lake | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | narrow ivory dry seeds match Blue Lake photo | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | bean-runner-blue-shackamaxon | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | angular glossy blue-black seeds match Blue Shackamaxon photo | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | bean-runner-cherokee-trail-of-tears | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | oblong dark seeds with soft depressions match the cultivar photo | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | bean-runner-good-mother-stallard | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | rounded seeds and dense burgundy marbling match the cultivar photo | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | bean-runner-holy-climbing | generated_qa_passed | master and gallery exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | ivory seeds with black eye markings match Angel Bean | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | bean-runner-hopi-beige | generated_qa_passed | master and gallery exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | beige mottling and rust eye match cultivar | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | bean-runner-indian-hannah | generated_qa_passed | master and gallery exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | blocky mixed speckled, patched and black seeds match cultivar | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 04 passed the production build and 28 focused Playwright checks. Cloudflare verification pending.
