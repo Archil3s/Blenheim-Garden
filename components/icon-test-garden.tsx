@@ -187,7 +187,7 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
             <a href={selected.legacyIcon ?? selected.icon} target="_blank" rel="noreferrer">Open current planner icon</a>
           </div>}
           {(selected.concept || selected.icon) && <a className="tg-file-link" href={selected.concept ?? selected.icon} target="_blank" rel="noreferrer">Open displayed icon ↗</a>}
-          <div className="tg-path">{selected.concept ?? selected.icon || "Resolved by the application's plant icon renderer"}</div>
+          <div className="tg-path">{selected.concept ?? selected.icon}</div>
         </> : <div className="tg-inspector-idle"><div className="tg-inspector-plant">✳</div><h2>Select a plot</h2><p>Tap a variety in the test garden to inspect the exact icon used by Blenheim Garden. Where uploaded PNGs exist, they are displayed in the plots and the current planner image is shown for comparison.</p></div>}
         <div className="tg-inspector-foot"><strong>Artwork status ≠ botanical accuracy.</strong><br />These previews help find broken, generic or mismatched icons. Individual files still need cultivar review.</div>
       </aside>
