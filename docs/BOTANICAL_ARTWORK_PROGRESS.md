@@ -168,3 +168,19 @@ Cloudflare deployment succeeded for commit 266181f54188543f023504955e1a34599344e
 - Kings Seeds | carrot-nutri-yellow-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/carrot-nutri-yellow-f1 | straw-yellow root with a fine curved taper matches V8384 | dimensions and alpha bounds validated | integrated in /test-garden.
 
 Batch 10 passed the production build and all 28 focused Playwright checks.
+Cloudflare deployment succeeded for commit 708149bce681cd0900c74dfec8d6945b0cac8765 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42700762312).
+
+## Batch 11
+
+- Kings Seeds | carrot-rainbow-blend-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/carrot-rainbow-blend-f1 | five root colours and tapered shapes match V8099 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | carrot-scarlet-nantes | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/carrot-scarlet-nantes | warm orange cylindrical roots and rounded taper match V8100 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | carrot-resistafly-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/carrot-resistafly-f1 | pale orange cylindrical root and blunt tip match V8418 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | carrot-touchon | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/carrot-touchon | coral orange cylindrical roots and fine tips match V8101 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cauliflower-all-the-year-round | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cauliflower-all-the-year-round | rounded chalk-white curd clusters and green wrappers match V8102 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cauliflower-clementine-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cauliflower-clementine-f1 | orange curd dome and slate wrapper leaves match V8417 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cauliflower-confetti | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cauliflower-confetti | ivory orange green and purple curds match V8421 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | broccoflower-geum-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/broccoflower-geum-f1 | chartreuse spiral cone clusters match V8063 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cauliflower-summer-love-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cauliflower-summer-love-f1 | small white curd and tall blue-gray wrappers match V8445 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cauliflower-sprouting-fioretto-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cauliflower-sprouting-fioretto-f1 | branching pale-green stems and ivory curds match V8390 | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 11 passed the production build and all 28 focused Playwright checks.
