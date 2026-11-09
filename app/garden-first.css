@@ -156,3 +156,30 @@
     content: "✓";
   }
 }
+/* Responsive More dropdown: keep the trigger inside the mobile viewport and
+   render the popup above the drawing toolbar, including on iOS Safari. */
+.gv-app .gv-more > .gv-more-trigger {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 40px; border: 0; border-radius: 7px; padding: 0 14px;
+  background: #fff; color: #354c40; font-size: 13px; font-weight: 650;
+  cursor: pointer; white-space: nowrap; touch-action: manipulation;
+}
+.gv-app .gv-more[data-open="true"] > .gv-more-trigger { background: #edf4ee; color: #245c46; }
+.gv-app .gv-more-panel { max-height: min(78dvh, 610px); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+@media (max-width: 760px) {
+  /* Secondary title tabs are in the More dropdown or in the reports menu.
+     Keeping all seven titlebar buttons visible pushed More off screen. */
+  .gv-app .gv-primary-nav > .planner-report-tab,
+  .gv-app .gv-primary-nav > .planner-visible-settings,
+  .gv-app .gv-primary-nav > button[data-season-view="today"] { display: none !important; }
+  .gv-app .gv-titlebar .gv-title-left { flex: 1 1 0; min-width: 0; }
+  .gv-app .gv-titlebar .gv-primary-nav { flex: 0 0 auto; gap: 3px; min-width: 0; }
+  .gv-app .gv-more > .gv-more-trigger { padding: 0 11px; min-height: 44px; }
+  .gv-app .gv-more-panel {
+    position: fixed; inset: auto 8px auto auto; top: calc(54px + env(safe-area-inset-top, 0px));
+    right: 8px !important; left: auto; z-index: 1000;
+    width: min(294px, calc(100vw - 16px));
+    max-height: min(72dvh, calc(100dvh - 68px - env(safe-area-inset-bottom, 0px)));
+    overflow: auto; background: white; overscroll-behavior: contain; touch-action: pan-y;
+  }
+}

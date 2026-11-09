@@ -204,7 +204,8 @@ export function GardenPlanner() {
   const canvasRef = useRef<HTMLDivElement>(null);
   const dragFrameRef = useRef<{ left: number; top: number; scale: number; scrollLeft: number; scrollTop: number; pointerId: number; trusted: boolean; moved: boolean; snapshot: PlanState; future: PlanState[]; ids: Map<number, string> } | null>(null);
   const draftFrameRef = useRef<{ left: number; top: number; scale: number; scrollLeft: number; scrollTop: number; pointerId: number } | null>(null);
-  const moreRef = useRef<HTMLDetailsElement>(null);
+  const moreRef = useRef<HTMLDivElement>(null);
+  const [moreOpen, setMoreOpen] = useState(false);
   const stageScrollRef = useRef<HTMLDivElement>(null);
   const [savedSnapshot, setSavedSnapshot] = useState<string | null>(null);
   const [autoFit, setAutoFit] = useState(true);
@@ -413,15 +414,25 @@ export function GardenPlanner() {
     return () => { cancelAnimationFrame(frame); window.removeEventListener("resize", fit); };
   }, [autoFit, fitRequest, CANVAS_WIDTH, CANVAS_HEIGHT]);
 
+  // Do not close the menu in a capture-phase click handler: on mobile Safari
+  // that removes the tapped item before its own click handler can run.
   useEffect(() => {
-    const closeMore = (event: MouseEvent) => {
-      const more = moreRef.current;
-      const target = event.target as HTMLElement;
-      if (more?.open && (!more.contains(target) || target.closest(".gv-more-panel button, .gv-more-panel a"))) more.open = false;
+    if (!moreOpen) return;
+    const outsideTap = (event: PointerEvent) => {
+      if (!moreRef.current?.contains(event.target as Node)) setMoreOpen(false);
     };
-    document.addEventListener("click", closeMore, true);
-    return () => document.removeEventListener("click", closeMore, true);
-  }, []);
+    const escapeMenu = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setMoreOpen(false);
+      moreRef.current?.querySelector<HTMLButtonElement>(".gv-more-trigger")?.focus();
+    };
+    document.addEventListener("pointerdown", outsideTap);
+    document.addEventListener("keydown", escapeMenu);
+    return () => {
+      document.removeEventListener("pointerdown", outsideTap);
+      document.removeEventListener("keydown", escapeMenu);
+    };
+  }, [moreOpen]);
 
   const selectedBed = selection?.kind === "bed" ? plan.beds.find((item) => String(item.id) === selection.id) ?? null : null;
   const selectedPlanting = selection?.kind === "planting" ? plan.plantingAreas.find((item) => item.id === selection.id) ?? null : null;
@@ -1227,13 +1238,20 @@ export function GardenPlanner() {
         <button type="button" className={`planner-report-tab ${reportView === "parts" ? "active" : ""}`} aria-label="Open parts list" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "parts" }))}>Parts List</button>
         <button type="button" className={`planner-report-tab ${reportView === "calendar" ? "active" : ""}`} aria-label="Open planting calendar" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "calendar" }))}>Calendar</button>
         <button type="button" className={`planner-report-tab ${notesOpen ? "active" : ""}`} aria-label="Plan notes" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(true); }}>Notes</button><button type="button" data-season-view="today">Today</button>
-        <details ref={moreRef} className="gv-more" onKeyDown={(event) => { if (event.key === "Escape") { event.stopPropagation(); event.currentTarget.open = false; event.currentTarget.querySelector("summary")?.focus(); } }}><summary>More <span aria-hidden="true">⌄</span></summary><div className="gv-more-panel">
+        <div ref={moreRef} className="gv-more" data-open={moreOpen}>
+          <button type="button" className="gv-more-trigger" aria-expanded={moreOpen} aria-controls="gv-more-panel" onClick={() => setMoreOpen(value => !value)}>
+            More <span aria-hidden="true">{moreOpen ? "⌃" : "⌄"}</span>
+          </button>
+          {moreOpen && <div id="gv-more-panel" className="gv-more-panel" onClick={(event) => {
+            if ((event.target as HTMLElement).closest("a, button")) setMoreOpen(false);
+          }}>
           <nav className="gv-tabs" aria-label="Garden records"><button type="button">Photos</button><button type="button">Notes</button></nav>
           <button type="button" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(true); }}>Plan notes</button><PlannerReports plan={plan} period={{ year: planningYear, month: months.indexOf(month) }} onPeriodChange={period => { setPlanningYear(period.year); setMonth(months[period.month]); setSelection(null); }} onDatesChange={changeSchedule} onShowPlanting={showCalendarPlanting} /><button type="button" data-season-view="week">This Week</button>
           <a href="/3d" target="_blank" rel="noopener">Live 3D ↗</a> <Link href="/test-garden">All plant icons · Test garden ↗</Link>
           <button type="button" className="gv-settings">Settings</button>
           <div className="gv-layout-options" />
-        </div></details>
+          </div>}
+        </div>
         <button type="button" className="gv-save" onClick={() => void savePlan()} disabled={saveState === "saving"}> {saveLabel}</button>
       </nav>
     </header>
