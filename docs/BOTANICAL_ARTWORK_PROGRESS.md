@@ -6,7 +6,7 @@ Audited main at d4f130950586d19f8c4df74e1bc3d11a4ff75756.
 - All ten approved Rasmussen paths in the source manifest exist. No originals or mappings were changed.
 - The first pending Kings Seeds ID is amaranth-garnet-red. The ImageGen capability check produced a draft that touches the canvas edge and has not undergone two-reference QA. It is excluded from accepted assets.
 - Resume with the exact cultivar photo and an approved style reference. Complete and validate the first ten pending IDs in catalogue order before integrating and pushing the batch.
-- Batch 01 passed the production build and 28 focused browser checks across desktop, laptop, tablet and a 390 px touch viewport. All 20 PNG files decode and have unique SHA-256 hashes within their size class. Cloudflare deployment pending.
+- Batch 01 passed the production build and 28 focused browser checks across desktop, laptop, tablet and a 390 px touch viewport. All 20 PNG files decode and have unique SHA-256 hashes within their size class. Cloudflare deployment succeeded for commit cf8f2846df1f8bf3690c1e2787c77aabc543e26d (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42599261113).
 
 ## Batch 01
 
@@ -22,3 +22,19 @@ Audited main at d4f130950586d19f8c4df74e1bc3d11a4ff75756.
 - Kings Seeds | bean-asian-winged | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-asian-winged | corrugated winged pods match V8034 | 512 and 128 decoded, alpha bounds 105,46,304,420 and 26,12,77,105 | integrated in /test-garden.
 - Kings Seeds | bean-asian-yard-long | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-asian-yard-long | pencil-thin hanging pods match V8055 | 512 and 128 decoded, alpha bounds 194,46,125,420 and 48,12,33,105 | integrated in /test-garden.
 - Kings Seeds | bean-climbing-bicolour-pean | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ (Bi-colour Pean photo) | rounded ivory and oxblood dry seeds match exact heritage cultivar HFC035 | 512 and 128 decoded, alpha bounds 46,72,420,369 and 12,18,105,93 | integrated in /test-garden.
+
+## Batch 02
+
+- Kings Seeds | bean-climbing-cornplanter-purple | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-climbing-cornplanter-purple | elongated dark purple-black mature seeds match HFC032 | both dimensions and alpha bounds validated | integrated in /test-garden.
+
+- Kings Seeds | bean-climbing-hopi-black-pinto | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | ivory seeds with black flecks and a near-black variant match the Trust photo; background halo removed with ImageGen | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | bean-climbing-hopi-purple-string | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | pink-mauve oblong seeds with black lengthwise streaks match the cultivar photo; halo removed with ImageGen | decoded at 512 and 128 with alpha bounds 47,91,418,329 and 12,23,105,83 | integrated in /test-garden.
+- Kings Seeds | bean-climbing-lima-del-papa | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | flattened crescent seeds and chestnut marbling match the cultivar photo; halo removed with ImageGen | decoded at 512 and 128 with alpha bounds 46,95,420,322 and 12,24,105,81 | integrated in /test-garden.
+- Kings Seeds | bean-climbing-mangere-pole | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | slim straight ivory seeds match Mangere Pole reference | decoded at 512 and 128 with alpha bounds 46,164,419,185 and 12,41,105,47 | integrated in /test-garden.
+- Kings Seeds | bean-climbing-rydal-a-yellow | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-climbing-rydal-a-yellow | dry seed burgundy and near-black colour variation matches HFC042 | decoded at 512 and 128 with alpha bounds 46,65,420,382 and 12,17,105,95 | integrated in /test-garden.
+- Kings Seeds | bean-climbing-shiny-fardenlosa | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | plump glossy ivory curved seed forms distinguish it from slender Mangere Pole | decoded at 512 and 128 with alpha bounds 46,47,419,419 and 12,12,105,105 | integrated in /test-garden.
+- Kings Seeds | bean-climbing-volcanic | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | tapered tan dry seeds match Volcanic reference; halo removed with ImageGen | decoded at 512 and 128, alpha bounds 47,152,419,209 and 12,38,105,53 | integrated in /test-garden.
+- Kings Seeds | bean-climbing-yoeme-purple-string | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | muted plum with pale lengthwise bands matches Yoeme photo | decoded at 512 and 128, alpha bounds 47,153,418,207 and 12,38,105,53 | integrated in /test-garden.
+- Kings Seeds | bean-dwarf-amish | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | near-black narrow seeds with tan flecks match Amish Dwarf photo | decoded at 512 and 128, alpha bounds 47,53,418,408 and 12,13,105,103 | integrated in /test-garden.
+
+Batch 02 passed the production build and 28 focused Playwright checks. Cloudflare verification pending.
