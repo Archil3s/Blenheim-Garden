@@ -1230,7 +1230,7 @@ export function GardenPlanner() {
         <details ref={moreRef} className="gv-more" onKeyDown={(event) => { if (event.key === "Escape") { event.stopPropagation(); event.currentTarget.open = false; event.currentTarget.querySelector("summary")?.focus(); } }}><summary>More <span aria-hidden="true">⌄</span></summary><div className="gv-more-panel">
           <nav className="gv-tabs" aria-label="Garden records"><button type="button">Photos</button><button type="button">Notes</button></nav>
           <button type="button" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(true); }}>Plan notes</button><PlannerReports plan={plan} period={{ year: planningYear, month: months.indexOf(month) }} onPeriodChange={period => { setPlanningYear(period.year); setMonth(months[period.month]); setSelection(null); }} onDatesChange={changeSchedule} onShowPlanting={showCalendarPlanting} /><button type="button" data-season-view="week">This Week</button>
-          <a href="/3d" target="_blank" rel="noopener">Live 3D ↗</a>
+          <a href="/3d" target="_blank" rel="noopener">Live 3D ↗</a> <Link href="/test-garden">All plant icons · Test garden ↗</Link>
           <button type="button" className="gv-settings">Settings</button>
           <div className="gv-layout-options" />
         </div></details>

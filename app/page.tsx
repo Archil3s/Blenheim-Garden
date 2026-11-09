@@ -56,6 +56,7 @@ export default function Home() {
           <Link href="/planner">Garden planner</Link>
           <Link href="/seedlings">Seedling journal</Link>
           <Link href="/3d">3D view</Link>
+          <Link href="/test-garden">Test garden</Link>
         </nav>
       </header>
 
@@ -84,7 +85,7 @@ export default function Home() {
 
         <section className="home-section home-library" aria-labelledby="home-spaces">
           <div className="home-section-heading">
-            <div><span className="home-eyebrow">THE WORKSPACE</span><h2 id="home-spaces">Three ways to work in the garden.</h2></div>
+            <div><span className="home-eyebrow">THE WORKSPACE</span><h2 id="home-spaces">Four ways to work in the garden.</h2></div>
             <span className="home-section-aside">From planning to planting</span>
           </div>
           <div className="home-workspace-list">
@@ -102,6 +103,11 @@ export default function Home() {
               <span className="home-index">03</span>
               <span className="home-item-body"><strong>Explore in 3D</strong><span>See crop placement and garden structures from another angle.</span></span>
               <span className="home-item-meta">GARDEN VISUALISATION</span><span className="home-link-arrow" aria-hidden="true">↗</span>
+            </Link>
+            <Link href="/test-garden" className="home-workspace-item">
+              <span className="home-index">04</span>
+              <span className="home-item-body"><strong>Test every plant icon</strong><span>A read-only garden of supplier varieties and reference artwork.</span></span>
+              <span className="home-item-meta">ICON TEST GARDEN</span><span className="home-link-arrow" aria-hidden="true">↗</span>
             </Link>
           </div>
         </section>
