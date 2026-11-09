@@ -102,4 +102,21 @@ Batch 05 passed the production build and 28 focused Playwright checks. Cloudflar
 - Kings Seeds | broccoli-mclaren-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/broccoli-mclaren-f1 | dense blue-green dome and glaucous foliage match V8415 | dimensions and alpha bounds validated | integrated in /test-garden.
 - Kings Seeds | broccoli-sprouting-summer-purple | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/broccoli-sprouting-summer-purple | revised closed purple buds and narrow shoots match V8064 | dimensions and alpha bounds validated | integrated in /test-garden.
 
-Batch 06 passed the production build and 28 focused Playwright checks. Cloudflare verification pending.
+Batch 06 passed the production build and 28 focused Playwright checks. Cloudflare deployment succeeded for commit d1860751e4db37c69254e43daa685b7f5308f4f6 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42688032469).
+
+
+## Batch 07
+
+- Kings Seeds | broccoli-tasty-stems-f1 | generated_qa_passed | replacement master and gallery exported | https://www.kingsseeds.co.nz/products/broccoli-tasty-stems-f1 | three long stems and open branching heads of closed buds match V8066 | dimensions and alpha bounds validated; review fine edges at gallery scale | integrated in /test-garden.
+
+- Kings Seeds | broccoli-sprouting-winter-rudolph | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/broccoli-sprouting-winter-rudolph | compact clustered purple heads match V8065 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | broccoli-summer-green-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/broccoli-summer-green-f1 | dense slate-green crowns with lobed contours match V8067 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | broccoli-winter-green-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/broccoli-winter-green-f1 | fine blue-green dome and lobed waxy leaves match V8068 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | brussels-sprouts-jade-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/brussels-sprouts-jade-f1 | dense staggered round green sprouts along a pale stalk match V8069 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | burdock-takinogawa-long | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/burdock-takinogawa-long | wavy olive basal foliage matches V8072 supplier photo | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | pumpkin-butternut-butterscotch-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/pumpkin-butternut-butterscotch-f1 | compact caramel rind and golden cut flesh match V8236 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | butternut-waltham | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/butternut-waltham | elongated neck and buff flecked rind match V8423 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cabbage-chinese-one-kilo-slowbolt-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cabbage-chinese-one-kilo-slowbolt-f1 | tall dark crinkled head and white ribs match V8004 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cabbage-chinese-wa-wa-tsai-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cabbage-chinese-wa-wa-tsai-f1 | compact pale savoyed heads and broad ivory ribs match V8005 | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 07 passed the production build and all 28 focused Playwright checks.
