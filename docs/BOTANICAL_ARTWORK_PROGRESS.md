@@ -184,3 +184,19 @@ Cloudflare deployment succeeded for commit 708149bce681cd0900c74dfec8d6945b0cac8
 - Kings Seeds | cauliflower-sprouting-fioretto-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cauliflower-sprouting-fioretto-f1 | branching pale-green stems and ivory curds match V8390 | dimensions and alpha bounds validated | integrated in /test-garden.
 
 Batch 11 passed the production build and all 28 focused Playwright checks.
+Cloudflare deployment succeeded for commit e27abd829f219135049fb7208aea695b1302d129 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42703942625).
+
+## Batch 12
+
+- Kings Seeds | cauliflower-violet-sicilian | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cauliflower-violet-sicilian | deep violet curd and blue-green leaves match V8106 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | celeriac-mars | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/celeriac-mars | knobbly cream root and ribbed stems match V8107 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cauliflower-winter-love-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/cdn/shop/files/V8446-W.png | ivory dome and flared sage-green wrappers match V8446 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | celery-for-cutting | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/celery-for-cutting | thin ribbed stalks and serrated leaves match V8109 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | celery-tall-utah | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/celery-tall-utah | thick chartreuse ribbed stalks match V8406 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | celtuce | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/celtuce | scarred pale stalk and narrow crinkled leaves match V8007 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-mild-anaheim | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-mild-anaheim | broad glossy green pods and blunt taper match V8122 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chia | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chia | narrow pale bracted spike and opposite leaves match V8458 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-medium-asian-fire-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-medium-asian-fire-f1 | slender smooth scarlet pods match V8116 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-hot-bhut-jolokia | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-hot-bhut-jolokia | wrinkled scarlet pod and pointed taper match V8113 | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 12 passed the production build and all 28 focused Playwright checks.
