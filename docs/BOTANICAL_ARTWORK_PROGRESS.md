@@ -37,4 +37,20 @@ Audited main at d4f130950586d19f8c4df74e1bc3d11a4ff75756.
 - Kings Seeds | bean-climbing-yoeme-purple-string | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | muted plum with pale lengthwise bands matches Yoeme photo | decoded at 512 and 128, alpha bounds 47,153,418,207 and 12,38,105,53 | integrated in /test-garden.
 - Kings Seeds | bean-dwarf-amish | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | near-black narrow seeds with tan flecks match Amish Dwarf photo | decoded at 512 and 128, alpha bounds 47,53,418,408 and 12,13,105,103 | integrated in /test-garden.
 
-Batch 02 passed the production build and 28 focused Playwright checks. Cloudflare verification pending.
+Batch 02 passed the production build and 28 focused Playwright checks. Cloudflare deployment succeeded for commit 21fec5a55c18af63b56d86a1694ad0bfdc774fce (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42601425393).
+
+
+## Batch 03
+
+- Kings Seeds | bean-dwarf-berrgold-improved | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-dwarf-berrgold-improved | golden slender wax pods match V8038 | decoded at 512 and 128 with alpha bounds 115,47,283,418 and 29,12,71,105 | integrated in /test-garden.
+- Kings Seeds | bean-dwarf-black-valentine | generated_qa_passed | master and gallery PNGs exported | https://www.diggers.com.au/products/bean-black-valentine | pale green pods, light pink flower and black seed with pale eye match the cultivar reference | decoded at 512 and 128 with alpha bounds 72,46,368,420 and 18,12,93,105 | integrated in /test-garden.
+- Kings Seeds | bean-dwarf-borlotto-fire-tongue | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-dwarf-borlotto-fire-tongue | broad pods and cream seeds with burgundy flame markings match V8039 | decoded at 512 and 128 with alpha bounds 47,66,419,379 and 11,17,106,95 | integrated in /test-garden.
+- Kings Seeds | bean-dwarf-cannellino | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-dwarf-cannellino | plump green shelling pods and ivory seeds match V8040 | decoded at 512 and 128, alpha bounds 66,46,380,419 and 16,12,96,105 | integrated in /test-garden.
+- Kings Seeds | bean-dwarf-colour-combo | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-dwarf-colour-combo | yellow, green and violet slender pods match V8042 | decoded at 512 and 128, alpha bounds 69,47,374,419 and 17,12,94,105 | integrated in /test-garden.
+- Kings Seeds | bean-dwarf-cranberry | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-dwarf-cranberry | cream oval seeds with cranberry flecks and broken bands match HFC038 | decoded at 512 and 128, alpha bounds 47,83,419,347 and 12,21,105,87 | integrated in /test-garden.
+- Kings Seeds | bean-dwarf-fin-de-bagnols | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-dwarf-fin-de-bagnols | narrow green filet pods match V8043 | decoded at 512 and 128, alpha bounds 60,46,391,420 and 15,12,98,105 | integrated in /test-garden.
+- Kings Seeds | bean-dwarf-kaiapoi-red | generated_qa_passed | master and gallery PNGs exported | https://www.heritagefoodcrops.org.nz/heirloom-beans/ | oblong crimson dry seeds match Kaiapoi Red photo | decoded at 512 and 128, alpha bounds 46,97,419,319 and 12,24,105,81 | integrated in /test-garden.
+- Kings Seeds | bean-dwarf-mayocoba | generated_qa_passed | master and gallery PNGs exported | https://shop.woodlandfoods.com/products/mayocoba-beans/c-23/p-17423 | plump oval buttery yellow dry seeds match Mayocoba photo | decoded at 512 and 128, alpha bounds 47,80,418,352 and 12,20,105,89 | integrated in /test-garden.
+- Kings Seeds | bean-dwarf-purple-tee-pee | generated_qa_passed | master and gallery PNGs exported | https://www.kingsseeds.co.nz/products/bean-dwarf-purple-tee-pee | slender violet pods match V8044 | decoded at 512 and 128, alpha bounds 91,47,331,419 and 23,12,83,105 | integrated in /test-garden.
+
+Batch 03 passed the production build and 28 focused Playwright checks. Cloudflare verification pending.
