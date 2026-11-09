@@ -488,5 +488,75 @@
     "gallery": "/plant-icons/generated/kings-seeds/gallery/cabbage-chinese-wa-wa-tsai-f1.png",
     "referenceUrl": "https://www.kingsseeds.co.nz/products/cabbage-chinese-wa-wa-tsai-f1",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:cabbage-copenhagen-market": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/cabbage-copenhagen-market.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/cabbage-copenhagen-market.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/cabbage-copenhagen-market",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:cabbage-kilaprince-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/cabbage-kilaprince-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/cabbage-kilaprince-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/cabbage-kilaprince-f1",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:cabbage-mini-red-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/cabbage-mini-red-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/cabbage-mini-red-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/cabbage-mini-red-f1",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:cabbage-red-acre": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/cabbage-red-acre.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/cabbage-red-acre.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/cabbage-red-acre",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:cabbage-space-saver-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/cabbage-space-saver-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/cabbage-space-saver-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/cabbage-space-saver-f1",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:cabbage-sugarloaf-mix": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/cabbage-sugarloaf-mix.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/cabbage-sugarloaf-mix.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8420-1.png",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:cabbage-vertus-savoy": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/cabbage-vertus-savoy.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/cabbage-vertus-savoy.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/cabbage-vertus-savoy",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:caigua": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/caigua.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/caigua.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/caigua",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:cape-gooseberry": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/cape-gooseberry.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/cape-gooseberry.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/cape-gooseberry",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:capsicum-bell-colour-mix": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/capsicum-bell-colour-mix.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/capsicum-bell-colour-mix.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/capsicum-bell-colour-mix",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }

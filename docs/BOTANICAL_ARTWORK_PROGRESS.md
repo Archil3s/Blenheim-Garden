@@ -120,3 +120,19 @@ Batch 06 passed the production build and 28 focused Playwright checks. Cloudflar
 - Kings Seeds | cabbage-chinese-wa-wa-tsai-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cabbage-chinese-wa-wa-tsai-f1 | compact pale savoyed heads and broad ivory ribs match V8005 | dimensions and alpha bounds validated | integrated in /test-garden.
 
 Batch 07 passed the production build and all 28 focused Playwright checks.
+Cloudflare deployment succeeded for commit 61b58aac044cd46ce0611e031b95584806ebec71 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42691200257).
+
+## Batch 08
+
+- Kings Seeds | cabbage-copenhagen-market | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cabbage-copenhagen-market | spherical light-green head and broad folded top leaf match V8074 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cabbage-kilaprince-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cabbage-kilaprince-f1 | waxy blue-green head and ivory cross section match V8416 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cabbage-mini-red-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cabbage-mini-red-f1 | compact purple head and ruffled indigo wrapper leaves match V8076 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cabbage-red-acre | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cabbage-red-acre | slate wrapper leaves and magenta head match V8455 supplier listing photo | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cabbage-space-saver-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cabbage-space-saver-f1 | compact pale center and dark green radial leaves match V8077 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cabbage-vertus-savoy | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cabbage-vertus-savoy | deeply blistered slate-green leaves and olive heart match V8079 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | caigua | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/caigua | pale green curved tapered pods match V8080 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cape-gooseberry | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cape-gooseberry | golden berry and split papery husk match V8081 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | capsicum-bell-colour-mix | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/capsicum-bell-colour-mix | four colours and lobed fruit match V8082 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cabbage-sugarloaf-mix | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/cdn/shop/files/V8420-1.png | pale green and purple conical heads match V8420 | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 08 passed the production build and all 28 focused Playwright checks.
