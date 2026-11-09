@@ -136,3 +136,19 @@ Cloudflare deployment succeeded for commit 61b58aac044cd46ce0611e031b95584806ebe
 - Kings Seeds | cabbage-sugarloaf-mix | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/cdn/shop/files/V8420-1.png | pale green and purple conical heads match V8420 | dimensions and alpha bounds validated | integrated in /test-garden.
 
 Batch 08 passed the production build and all 28 focused Playwright checks.
+Cloudflare deployment succeeded for commit 8b581a885bf647e56137bc822f1364c29d69ec7c (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42694691005).
+
+## Batch 09
+
+- Kings Seeds | capsicum-californian-wonder-golden | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/capsicum-californian-wonder-golden | golden yellow blocky lobed fruit matches V8084 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | capsicum-cornos-red | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/capsicum-cornos-red | long tapered red bull horns and green ripening shoulder match V8088 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | capsicum-cornos-yellow | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/capsicum-cornos-yellow | glossy yellow tapered bull horn matches current listing V8434 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | capsicum-high-health-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/capsicum-high-health-f1 | slender green fruit and long thin stems match V8091 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | capsicum-marconi-red | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/capsicum-marconi-red | elongated blunt lobed red fruit matches V8089 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | capsicum-marconi-yellow | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/capsicum-marconi-yellow | angular golden fruit and blunt ends match V8427 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | capsicum-purple-beauty-1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/capsicum-purple-beauty-1 | compact blue-violet lobes and green stalk match V8396 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | capsicum-orange-bell-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/cdn/shop/files/V8086-1.jpg | orange blocky lobes and short stalk match V8086 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | capsicum-red-bell-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/capsicum-red-bell-f1 | scarlet blocky fruit and lance-shaped leaf match V8087 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | capsicum-yellow-banana | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/capsicum-yellow-banana | pale yellow-green tapered fruit matches V8092 | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 09 passed the production build and all 28 focused Playwright checks.
