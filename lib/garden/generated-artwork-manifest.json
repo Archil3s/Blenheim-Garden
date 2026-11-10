@@ -1958,5 +1958,75 @@
     "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-spring-onion-tokyo-long-white.png",
     "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/O6051-2_1080x.png?v=1720405396",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-squash-burgess-buttercup": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-squash-burgess-buttercup.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-squash-burgess-buttercup.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6100_1080x.jpg?v=1690171002",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-squash-winter-sweet-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-squash-winter-sweet-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-squash-winter-sweet-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6059-1_42d56a14-c600-4259-b543-7264c60c8a17_1080x.jpg?v=1721355330",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-tomato-confetti-mix": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-tomato-confetti-mix.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-tomato-confetti-mix.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6107-1_6c1e0e1d-15d5-43c6-b89f-31c2f1bc580c_1080x.jpg?v=1720660862",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-tomato-artisan-blush": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-tomato-artisan-blush.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-tomato-artisan-blush.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6072-1_e46bee77-6b01-46c7-9b8d-b2c2f9f902a5_1080x.jpg?v=1721355754",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-tomato-beefsteak-select": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-tomato-beefsteak-select.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-tomato-beefsteak-select.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6069-1_464c96e9-2cd7-47bd-bd89-3030a82cf218_1080x.jpg?v=1721355634",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-tomato-berkeley-tie-dye-pink": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-tomato-berkeley-tie-dye-pink.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-tomato-berkeley-tie-dye-pink.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6113-1_8f04a813-6e9e-4465-93ba-1ba06195fb62_1080x.png?v=1752445850",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-tomato-brads-atomic-grape": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-tomato-brads-atomic-grape.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-tomato-brads-atomic-grape.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6114-1_caa818a8-1521-4ca0-baa6-a5b07bef9b83_1080x.png?v=1752445856",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-tomato-copia": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-tomato-copia.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-tomato-copia.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6115-1_82b33001-05a9-4c19-83a4-a7c6c8f0e78c_1080x.png?v=1752445852",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-tomato-costoluto-fiorentino": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-tomato-costoluto-fiorentino.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-tomato-costoluto-fiorentino.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6070-1_3ca2686a-e03c-47e7-916a-0ab8e902285e_1080x.jpg?v=1721355670",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-tomato-gardeners-delight": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-tomato-gardeners-delight.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-tomato-gardeners-delight.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6073-1_968e100b-96a4-44d3-b440-e96a65c5b536_1080x.jpg?v=1721355794",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }
