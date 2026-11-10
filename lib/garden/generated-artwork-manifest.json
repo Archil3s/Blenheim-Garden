@@ -1118,5 +1118,75 @@
     "gallery": "/plant-icons/generated/kings-seeds/gallery/endive-ruffec-green-curled.png",
     "referenceUrl": "https://www.kingsseeds.co.nz/products/endive-ruffec-green-curled",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:fennel-milano": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/fennel-milano.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/fennel-milano.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/fennel-milano",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:goji-berry": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/goji-berry.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/goji-berry.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/goji-berry",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:gourd-asian-loki-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/gourd-asian-loki-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/gourd-asian-loki-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/gourd-asian-loki-f1",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:melon-bitter-vanguard-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/melon-bitter-vanguard-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/melon-bitter-vanguard-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/melon-bitter-vanguard-f1",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:gourd-bitter-melon-keelen-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/gourd-bitter-melon-keelen-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/gourd-bitter-melon-keelen-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/gourd-bitter-melon-keelen-f1",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:gourd-large-bottle": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/gourd-large-bottle.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/gourd-large-bottle.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/gourd-large-bottle",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:gourd-large-mix": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/gourd-large-mix.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/gourd-large-mix.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/gourd-large-mix",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:luffa": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/luffa.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/luffa.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/luffa",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:luffa-angled-long-ridge-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/luffa-angled-long-ridge-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/luffa-angled-long-ridge-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/luffa-angled-long-ridge-f1",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:jicama": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/jicama.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/jicama.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/jicama",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }

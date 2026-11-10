@@ -264,3 +264,19 @@ Cloudflare deployment succeeded for commit 5ab68ea8c9ce90f9662766623a195d66bc047
 - Kings Seeds | endive-ruffec-green-curled | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/endive-ruffec-green-curled | deeply curled green rosette with pale center | dimensions and alpha bounds validated | integrated in /test-garden.
 
 Batch 16 passed the production build and all 28 focused Playwright checks.
+Cloudflare deployment succeeded for commit a69d8c98c4abf6045748811f2657276c7ba6e22d (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42740971915).
+
+## Batch 17
+
+- Kings Seeds | fennel-milano | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/fennel-milano | pale rounded bulbs and feathery green fronds | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | goji-berry | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/goji-berry | glossy red berries on a leafy sprig | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | gourd-asian-loki-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/gourd-asian-loki-f1 | long smooth pale green gourds | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | melon-bitter-vanguard-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/melon-bitter-vanguard-f1 | pale green elongated bitter melon with shallow ribs | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | gourd-bitter-melon-keelen-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/gourd-bitter-melon-keelen-f1 | dark green pointed bitter melon with densely warted skin | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | gourd-large-bottle | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/gourd-large-bottle | round pale green bases with bottle necks | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | gourd-large-mix | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/gourd-large-mix | smooth pale and dark mottled bottle shapes | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | luffa | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/luffa | tan dried loofahs with porous cross sections | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | luffa-angled-long-ridge-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/luffa-angled-long-ridge-f1 | long green gourds with angular ribs | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | jicama | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/jicama | round tan tubers with thin roots | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 17 passed the production build and all 28 focused Playwright checks.
