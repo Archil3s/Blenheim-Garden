@@ -248,3 +248,19 @@ Cloudflare deployment succeeded for commit 996689b902329b5b2fe4f85c1e45e93be8d87
 - Kings Seeds | cucumber-medici-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cucumber-medici-f1 | slender straight green fruit with pale longitudinal striping | dimensions and alpha bounds validated | integrated in /test-garden.
 
 Batch 15 passed the production build and all 28 focused Playwright checks.
+Cloudflare deployment succeeded for commit 5ab68ea8c9ce90f9662766623a195d66bc04791e (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42739445342).
+
+## Batch 16
+
+- Kings Seeds | cucumber-poona-kheera | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cucumber-poona-kheera | rust-brown netted skin | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cucumber-spacemaster | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cucumber-spacemaster | dark compact fruit and yellow blossom | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cucumber-tasty-queen-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cucumber-tasty-queen-f1 | slender tapered ridged green fruit | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cucumber-telegraph-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cucumber-telegraph-f1 | long hanging dark green cucumber | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | eggplant-ebony | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/eggplant-ebony | glossy black ovoid fruits | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | eggplant-fiancee-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/eggplant-fiancee-f1 | cluster of narrow violet fruit with pale streaks | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | eggplant-midnight-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/eggplant-midnight-f1 | long glossy aubergine with green calyx | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | eggplant-thai-green-egg-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/eggplant-thai-green-egg-f1 | round ivory-green fruit with striped shoulders | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | eggplant-thai-purple | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/eggplant-thai-purple | round violet fruit with mottling | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | endive-ruffec-green-curled | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/endive-ruffec-green-curled | deeply curled green rosette with pale center | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 16 passed the production build and all 28 focused Playwright checks.
