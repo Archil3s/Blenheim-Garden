@@ -1888,5 +1888,75 @@
     "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-pumpkin-whangaparoa-crown.png",
     "referenceUrl": "https://www.naturesnutrition.co.nz/cdn/shop/files/pumpkin_grande.jpg?v=1724214671",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-chicory-palla-rossa-early": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-chicory-palla-rossa-early.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-chicory-palla-rossa-early.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6019-1_e7fed6ac-68dc-47db-ba26-4d0074b96d77_1080x.jpg?v=1721352038",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-radish-cherrybelle": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-radish-cherrybelle.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-radish-cherrybelle.png",
+    "referenceUrl": "https://northcircleseeds.com/cdn/shop/products/CherryBelleOrg_800x.png?v=1607981854",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-radish-french-breakfast": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-radish-french-breakfast.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-radish-french-breakfast.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6061-1_fdafb219-2424-476c-a709-8f9b796f89d3_1080x.jpg?v=1721355411",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-radish-white-daikon": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-radish-white-daikon.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-radish-white-daikon.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6063-1_48daea41-28d4-46e7-abf4-0f9b21008b11_1080x.jpg?v=1721355471",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-rocket": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-rocket.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-rocket.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6064-1_bfe5c2f6-8d2b-4ba8-ab9e-f82aae3b675b_1080x.jpg?v=1721355511",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-silverbeet-bright-yellow": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-silverbeet-bright-yellow.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-silverbeet-bright-yellow.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6066-1_e18986d3-8854-4ee8-92b9-38a5f8c900bd_1080x.jpg?v=1721355557",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-silverbeet-ruby-red": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-silverbeet-ruby-red.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-silverbeet-ruby-red.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6067-1_b82aa1ab-a139-46e7-9000-edfa4c21e149_1080x.jpg?v=1721355580",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-spinach-bloomsdale": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-spinach-bloomsdale.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-spinach-bloomsdale.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6098-1_f75555ce-83a0-4b3f-8021-1ba767a33feb_1080x.jpg?v=1721356166",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-spinach-winter-giant": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-spinach-winter-giant.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-spinach-winter-giant.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6068-1_028250d7-4091-4dc7-a32d-55d9bb070c9e_1080x.jpg?v=1721355611",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-spring-onion-tokyo-long-white": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-spring-onion-tokyo-long-white.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-spring-onion-tokyo-long-white.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/O6051-2_1080x.png?v=1720405396",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }

@@ -439,9 +439,22 @@ Cloudflare deployment succeeded for Batch 23 commit 14941fa (https://github.com/
 - Kings Seeds | organic-pumpkin-new-england-pie | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6057-1_732c3535-0a83-40eb-b039-e8d66df342f2_1080x.jpg?v=1721355263 | exact cultivar photo and alpha bounds checked.
 - Kings Seeds | organic-pumpkin-whangaparoa-crown | generated_qa_passed | 512 px master and 128 px gallery | https://www.naturesnutrition.co.nz/cdn/shop/files/pumpkin_grande.jpg?v=1724214671 | exact cultivar photo and alpha bounds checked.
 
+## Batch 28
+
+- Kings Seeds | organic-chicory-palla-rossa-early | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6019-1_e7fed6ac-68dc-47db-ba26-4d0074b96d77_1080x.jpg?v=1721352038 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-radish-cherrybelle | generated_qa_passed | 512 px master and 128 px gallery | https://northcircleseeds.com/cdn/shop/products/CherryBelleOrg_800x.png?v=1607981854 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-radish-french-breakfast | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6061-1_fdafb219-2424-476c-a709-8f9b796f89d3_1080x.jpg?v=1721355411 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-radish-white-daikon | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6063-1_48daea41-28d4-46e7-abf4-0f9b21008b11_1080x.jpg?v=1721355471 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-rocket | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6064-1_bfe5c2f6-8d2b-4ba8-ab9e-f82aae3b675b_1080x.jpg?v=1721355511 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-silverbeet-bright-yellow | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6066-1_e18986d3-8854-4ee8-92b9-38a5f8c900bd_1080x.jpg?v=1721355557 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-silverbeet-ruby-red | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6067-1_b82aa1ab-a139-46e7-9000-edfa4c21e149_1080x.jpg?v=1721355580 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-spinach-bloomsdale | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6098-1_f75555ce-83a0-4b3f-8021-1ba767a33feb_1080x.jpg?v=1721356166 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-spinach-winter-giant | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6068-1_028250d7-4091-4dc7-a32d-55d9bb070c9e_1080x.jpg?v=1721355611 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-spring-onion-tokyo-long-white | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/products/O6051-2_1080x.png?v=1720405396 | harvest artwork checked against cultivar photo. Earlier stages pending.
+
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 270 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 159 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps 280 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 149 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
@@ -473,3 +486,4 @@ Produce separate transparent 512 px masters and 128 px gallery PNGs in the appro
 For every exact Kings Seeds and Rasmussen catalogue ID, verify all six ordered stage mappings and their two PNG sizes. Apply the same check to previously deployed icons, the ten preserved Rasmussen originals, and each future batch. A cultivar with only its existing image is still pending growth-stage coverage. Count an existing illustration as Harvest only after reviewing it against that stage. Show missing stages as pending in /test-garden and record each stage's source and review status. The overall goal stays open until the full catalogue passes this audit.
 
 Batch 27 passed the production build and focused Playwright suite.
+Cloudflare deployment succeeded for Batch 27 commit db457531dff3b8d7730e2a0e185157e5d81f502b (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42899970005).
