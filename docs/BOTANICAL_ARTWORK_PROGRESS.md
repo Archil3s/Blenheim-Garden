@@ -363,6 +363,23 @@ Cloudflare deployment succeeded for Batch 21 commit ed74dd2 (https://github.com/
 
 Batch 22 passed the production build and focused Playwright suite.
 
+Cloudflare deployment succeeded for Batch 22 commit 36e3798 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42800913088).
+
+## Batch 23
+
+- Kings Seeds | onion-red-brunswick | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8216-1_41373639-d486-44c5-b13c-7f2799205c0d_1080x.jpg?v=1725597585 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | onion-shallot-zebrune | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8220-1_1d623113-843d-4424-8004-1b27f6966cb0_1080x.jpg?v=1725597714 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | organic-bean-dwarf-top-crop | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8046-1_37dfb8e2-ab71-4103-a069-84c7798c630b_1080x.jpg?v=1721601929 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | organic-bean-runner-cobra | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6003-1_3f191879-613d-42dc-8abe-b96e6caac8a6_1080x.jpg?v=1721351373 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | organic-silverbeet-erbette | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6065-1_1ffe37a9-d40a-4cf9-8597-64af2ba74d81_1080x.jpg?v=1721355530 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | organic-beetroot-detroit-dark-red | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6005-1_d49b7e2e-d75f-4e02-97c2-34e78b44d76f_1080x.jpg?v=1721351544 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | organic-belstar-broccoli-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6006-1_77913c72-78c9-4984-ae2c-664067c23e3b_1080x.jpg?v=1721351579 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | organic-broccoli-raab-spring-rapini | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6008-1_169932ae-7ff0-46cc-8a03-1baf961ced75_1080x.jpg?v=1721351657 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | organic-broccoli-waltham | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6007-1_b7110884-6b37-46f9-b2ab-f34d62666789_1080x.jpg?v=1721351613 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | organic-brussels-sprouts-igor-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6009-1_6001442f-530c-4f81-9212-00f35337a10b_1080x.jpg?v=1721351692 | exact supplier photo and alpha bounds checked.
+
+Batch 23 passed the production build and focused Playwright suite.
+
 ## Batch 24 reference preparation
 
 - Kings Seeds | organic-cauliflower-belot-f1 | reference_found | Agrosemens exact cultivar photo | https://www.agrosemens.com/jardin-graine-bio-choux-chou-fleur/215-Semences-Graines-Semence-Bio-Chou-Fleur.html
@@ -370,7 +387,7 @@ Batch 22 passed the production build and focused Playwright suite.
 
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 220 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 209 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps 230 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 199 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
