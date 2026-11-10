@@ -216,3 +216,19 @@ Cloudflare deployment succeeded for commit 47455425a1c94d7a5ba8ea229b03ffbafe362
 - Kings Seeds | chilli-mild-serrano | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-mild-serrano | smooth narrow red pod and blunt taper match V8127 | dimensions and alpha bounds validated | integrated in /test-garden.
 
 Batch 13 passed the production build and all 28 focused Playwright checks.
+Cloudflare deployment succeeded for commit 0d811156807053af46ca4ead80be3f2a2478cfa0 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42729968949).
+
+## Batch 14
+
+- Kings Seeds | chilli-mild-shishito-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-mild-shishito-f1 | olive-green creased pod and hooked blunt tip match V8128 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-hot-spicy-blend | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-hot-spicy-blend | varied round and tapered fruit shapes match V8115 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-tabasco | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-tabasco | small tapered red orange and yellow-green pods match V8412 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-medium-thai-hot-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-medium-thai-hot-f1 | upright red and pale green pods match V8121 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | choy-sum | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/choy-sum | smooth oval leaves and four-petalled yellow flowers match V8008 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | collard-greens | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/collard-greens | broad green leaves and pale branching ribs match V8129 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | corn-bicolour-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/corn-bicolour-f1 | gold and scattered ivory kernels match V8130 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | corn-painted-mountain | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/corn-painted-mountain | loose matte multicolour kernels match HFC016 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | corn-glass-gem | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/corn-glass-gem | glossy translucent multicolour kernels and dry husk | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | corn-golden-sweet-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/corn-golden-sweet-f1 | uniform golden kernels and short green husk | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 14 passed the production build and all 28 focused Playwright checks.
