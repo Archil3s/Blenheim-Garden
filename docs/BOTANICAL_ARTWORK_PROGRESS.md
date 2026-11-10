@@ -378,16 +378,31 @@ Cloudflare deployment succeeded for Batch 22 commit 36e3798 (https://github.com/
 - Kings Seeds | organic-broccoli-waltham | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6007-1_b7110884-6b37-46f9-b2ab-f34d62666789_1080x.jpg?v=1721351613 | exact supplier photo and alpha bounds checked.
 - Kings Seeds | organic-brussels-sprouts-igor-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6009-1_6001442f-530c-4f81-9212-00f35337a10b_1080x.jpg?v=1721351692 | exact supplier photo and alpha bounds checked.
 
-Batch 23 passed the production build and focused Playwright suite.
+Batch 23 passed the production build. Playwright passed 27 checks on the first attempt, and the phone gallery alignment check passed on retry.
+
+Cloudflare deployment succeeded for Batch 23 commit 14941fa (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42803533931).
 
 ## Batch 24 reference preparation
 
 - Kings Seeds | organic-cauliflower-belot-f1 | reference_found | Agrosemens exact cultivar photo | https://www.agrosemens.com/jardin-graine-bio-choux-chou-fleur/215-Semences-Graines-Semence-Bio-Chou-Fleur.html
 - Kings Seeds | organic-cauliflower-liria-f1 | reference_found | De Bolster exact cultivar photo | https://www.bolster.eu/cauliflower-liria-f1-brassica-oleracea/p9157
 
+## Batch 24
+
+- Kings Seeds | organic-butternut-honeynut | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6055-W_1080x.png?v=1784974002 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-cabbage-golden-acre | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6116-1_4f62f6b8-4891-43d6-9f1a-b92682b562f9_1080x.png?v=1752445819 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-capsicum-california-wonder-red | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6091-1_1080x.png?v=1688788245 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-capsicum-cornito-mix-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6104-1_c42694a0-63cd-4d10-ba29-76fc6dba853a_1080x.jpg?v=1720660858 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-capsicum-lunchbox-mix | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6105-1_329c7439-6c21-400b-a4ed-17c66488b814_1080x.jpg?v=1720660858 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-carrot-berlicum | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6014-1_1ccd06cd-6f2a-4783-898d-59f4820258b3_1080x.jpg?v=1721351840 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-carrot-tendersweet | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6015-1_b9d4f4e4-12b3-41b3-a84c-a45e03ad7438_1080x.jpg?v=1721351894 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-cauliflower-belot-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.agrosemens.com/215-5887-thickbox_default/Semences-Graines-Semence-Bio-Chou-Fleur.jpg | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-cauliflower-liria-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.bolster.eu/media/images/1442_dbweb.jpg?1749107409 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-cauliflower-romanesco-early | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6016-1_0657fedb-64b5-456b-8e51-3db1f4b5bc30_1080x.jpg?v=1721351925 | exact cultivar photo and alpha bounds checked.
+
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 230 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 199 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps 240 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 189 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
@@ -398,3 +413,5 @@ Rasmussen Batch 24 reference gap: silverbeet-silverado-compacta-150-seeds still 
 ## Rasmussen reference inventory
 
 The local work/references/rasmussen-pending.tsv inventory covers 269 catalogue IDs outside the ten verified originals. It records 267 downloaded photo references and two unresolved IDs: Rocoto Manzano Red Flat and Scarlett’s Variegated Chilli. Oz Lantern White, Golden Orb and Silverado Compacta references have since been recovered.
+
+Batch 24 passed the production build and focused Playwright suite.
