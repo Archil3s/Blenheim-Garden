@@ -2,6 +2,37 @@
 
 This file is the operating contract for coding agents working in `Archil3s/Blenheim-Garden`.
 
+
+## 0. Primary engineering principle — Ponytail (all development)
+
+**The best code is the code you never needed to write.** Use the [Ponytail approach](https://github.com/DietrichGebert/ponytail) as the default decision rule for every Codex or AI-agent change in this repository. This is an engineering principle, **not** a visual theme, production dependency or instruction to install a new framework.
+
+Before writing or replacing code, stop at the first option that **fully solves the user's request**:
+
+1. **Is new code needed?** If the desired behaviour already works, do not add a feature or configuration.
+2. **Does Blenheim Garden already do it?** Reuse the existing helper, component, CSS token, planner model, service and data path. Search callers before changing shared logic.
+3. **Can TypeScript/JavaScript or the platform do it?** Prefer native browser, React, Next.js and JavaScript facilities where they fit the existing architecture.
+4. **Can an already-installed dependency do it?** Reuse it; do not add packages for small conveniences.
+5. **Can a short, readable expression do it?** Prefer it over boilerplate, but never compress code so far that the intent becomes hard to understand.
+6. **Otherwise, implement the smallest complete change.** Keep the existing architecture, interfaces and conventions. No speculative abstractions or "for later" scaffolding.
+
+**Smallest complete change, not fewest lines at any cost:**
+
+- Inspect the actual current implementation and trace affected callers, state, tests, fixtures, exports and data paths before editing. Fix the shared root cause once; do not stack local workarounds.
+- Never delete or weaken validation, meaningful error handling, authentication, accessibility, data preservation, browser compatibility or user-requested behaviour just to reduce code.
+- Preserve canonical centimetre-based garden geometry, plant counts, measured bed positions, Undo/Redo, saved history, D1/R2 bindings and quotas, protected writes, named gardens, mobile functionality and 2D/3D editing/synchronization.
+- Prefer deletion of proven dead code over duplication, but never remove features or persistent records to make a test pass.
+- Use existing components and design tokens for visual improvements. Follow `DESIGN.md` and the existing botanical, anti-slop visual contract; do not introduce a generic dashboard or unrelated UI framework.
+- **Verify at the risk level of the change.** Add or update a small focused test for new nontrivial logic. Run the applicable lint/build/interaction checks. For visual or 3D work, retain the mandatory real-browser and viewport evidence described below. A smaller diff does not excuse skipping verification.
+- If a necessary shortcut has a known limit, leave a concise `shortcut: <limit>, <when to upgrade>` comment. Explain only non-obvious reasoning; avoid decorative comments.
+- Report what changed, the checks actually run, and any known limitation or unverified risk. Never claim a build, browser test or deployment occurred unless it did.
+
+**Decision test:** If two implementations meet the same correctness, safety, accessibility, data and UX requirements, choose the one that adds less code and fewer moving parts. If a requirement forces more code, implement it fully.
+
+These principles govern implementation choices. The product invariants, security requirements and verification contract in the rest of this file remain mandatory and **take precedence over code-size savings**.
+
+---
+
 The application is highly visual. A successful compile is **not** sufficient evidence that a change is correct. For any user-interface, layout, interaction, canvas, sprite, responsive, WebGL, or styling change, visual verification in a real browser is part of the definition of done.
 
 ---
