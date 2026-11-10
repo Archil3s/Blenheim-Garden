@@ -280,3 +280,19 @@ Cloudflare deployment succeeded for commit a69d8c98c4abf6045748811f2657276c7ba6e
 - Kings Seeds | jicama | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/jicama | round tan tubers with thin roots | dimensions and alpha bounds validated | integrated in /test-garden.
 
 Batch 17 passed the production build and all 28 focused Playwright checks.
+Cloudflare deployment succeeded for commit c1b6ac6044a72c28b176595da600beacf1f1be75 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42742566723).
+
+## Batch 18
+
+- Kings Seeds | kale-blue-ridge-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/kale-blue-ridge-f1 | densely curled olive green rosette | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | kale-cavolo-nero | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/kale-cavolo-nero | elongated blue green blistered leaves | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | kale-noble | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/kale-noble | broad green leaves with prominent pale veins | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | kale-red-russian | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/kale-red-russian | lobed light green leaves and purple stems | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | kale-scarlet | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/kale-scarlet | deep purple curly foliage | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | kale-squire | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/kale-squire | tight green rosette with finely curled margins | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | kiwano-horned-melon | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/kiwano-horned-melon | mottled gold-green fruit with prominent horns | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | kohlrabi-early-purple-vienna | generated_qa_passed | master and gallery exported | https://www.holmesseed.com/early-purple-vienna/ | purple swollen stem with radiating petioles | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | kohlrabi-grand-duke-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/kohlrabi-grand-duke-f1 | pale green globe with long green petioles | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | leek-sentinel-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/leek-sentinel-f1 | straight white shank and upright blue-green leaves | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 18 passed the production build and all 28 focused Playwright checks.
