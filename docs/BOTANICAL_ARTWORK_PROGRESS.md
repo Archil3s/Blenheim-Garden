@@ -480,7 +480,7 @@ Cloudflare deployment succeeded for Batch 23 commit 14941fa (https://github.com/
 
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 300 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 129 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps 310 of them. The local inventory at work/references/pending-catalogue.tsv includes the remaining 119 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
@@ -516,3 +516,18 @@ Cloudflare deployment succeeded for Batch 27 commit db457531dff3b8d7730e2a0e1851
 Cloudflare deployment succeeded for Batch 28 commit 54463fb9eddb6a16fda0f422cfb332068aee5bf1 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42908044773).
 
 Batch 29 passed all 28 focused browser checks and deployed on Cloudflare at b5cc199 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42915206076).
+
+Batch 30 deployed on Cloudflare at 0ba8f16 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42922020390). The production build passed. Playwright passed 27 checks on the first attempt and the phone gallery check passed on retry.
+
+## Kings Seeds Batch 31
+
+- Kings Seeds | pak-choi-mei-quing-choi-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8020-1_b9ae4de0-2d45-4a37-beab-865243dd1d33_1080x.jpg?v=1721601074 | Harvest reviewed against the cultivar photo. Earlier stages pending.
+- Kings Seeds | pak-choi-red-choi-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8021-1_c12b4093-a3a7-4969-9843-2ba13e6d8380_1080x.jpg?v=1721601115 | Harvest reviewed against the cultivar photo. Earlier stages pending.
+- Kings Seeds | pak-choi-white-stem | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8024-1_6ffd3aff-294e-4487-ad04-0e9bb700b5c1_1080x.jpg?v=1721601189 | Harvest reviewed against the cultivar photo. Earlier stages pending.
+- Kings Seeds | papaya-red-lady-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8410-1_525c2dc3-ffca-4853-92a5-ed7a024409d5_1080x.png?v=1752445840 | Harvest reviewed against the cultivar photo. Earlier stages pending.
+- Kings Seeds | parsnip-javelin-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8409-1_ec6776d8-298c-40da-9fbd-62648ee8ff90_1080x.png?v=1752445845 | Harvest reviewed against the cultivar photo. Earlier stages pending.
+- Kings Seeds | passionfruit-large-black | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8227-1_2fe5bd18-639c-4c1b-a5ea-719ea76d81c8_1080x.jpg?v=1720667504 | Harvest reviewed against the cultivar photo. Earlier stages pending.
+- Kings Seeds | pea-alderman-tall-climbing | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8228-1_8017ee52-63d5-4a81-a002-839748665e1b_1080x.jpg?v=1725598002 | Harvest reviewed against the cultivar photo. Earlier stages pending.
+- Kings Seeds | pea-greenfeast | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8229-1_c58aaef1-9285-4100-a4b6-7ec889f39f04_1080x.jpg?v=1725598046 | Harvest reviewed against the cultivar photo. Earlier stages pending.
+- Kings Seeds | pea-mucio | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8391-1_e6bc0266-b6c6-48b5-ad51-59f28265482a_1080x.jpg?v=1720660865 | Harvest reviewed against the cultivar photo. Earlier stages pending.
+- Kings Seeds | pea-sugar-snap-tall | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8426-1W_1080x.png?v=1757032954 | Harvest reviewed against the cultivar photo. Earlier stages pending.
