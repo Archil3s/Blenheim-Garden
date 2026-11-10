@@ -296,3 +296,19 @@ Cloudflare deployment succeeded for commit c1b6ac6044a72c28b176595da600beacf1f1b
 - Kings Seeds | leek-sentinel-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/leek-sentinel-f1 | straight white shank and upright blue-green leaves | dimensions and alpha bounds validated | integrated in /test-garden.
 
 Batch 18 passed the production build and all 28 focused Playwright checks.
+Cloudflare deployment succeeded for commit d129a17d1635ff9bd1a5df7efe8c1c41e0c5eb7a (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42744239288).
+
+## Batch 19
+
+- Kings Seeds | leek-winter-giant | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/leek-winter-giant | thick white shanks with blue-green leaves | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | lettuce-buttercrunch | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/lettuce-buttercrunch | soft layered green butterhead | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | lettuce-coral-green | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/lettuce-coral-green | bright green frilled coral rosette | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | lettuce-coral-red | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/lettuce-coral-red | burgundy finely curled coral rosette | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | lettuce-cos | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/lettuce-cos | upright elongated green cos leaves | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | lettuce-drunken-woman-fringed-head | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/lettuce-drunken-woman-fringed-head | green centre with burgundy fringed margins | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | lettuce-great-lakes | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/lettuce-great-lakes | compact crisphead with scalloped outer leaves | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | lettuce-leaf-blend | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/lettuce-leaf-blend | mixed burgundy and lime leaves | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | lettuce-little-gem | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/lettuce-little-gem | small compact green head with pale heart | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | lettuce-oakleaf-green | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/lettuce-oakleaf-green | rounded oak-shaped lime leaves | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 19 passed the production build and all 28 focused Playwright checks.
