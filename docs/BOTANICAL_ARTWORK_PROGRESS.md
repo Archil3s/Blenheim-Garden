@@ -346,6 +346,23 @@ Cloudflare deployment succeeded for Batch 20 commit 212a77a (https://github.com/
 
 Batch 21 passed the production build and all 28 focused Playwright checks.
 
+Cloudflare deployment succeeded for Batch 21 commit ed74dd2 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42798103136).
+
+## Batch 22
+
+- Kings Seeds | mizuna-red-coral | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/Mizuna_Red_Coral_-_Candy_1080x.png?v=1778457594 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | mizuna-red-kingdom-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8015-1_caa1fec8-5d55-4e2f-a0be-b700755470ef_1080x.jpg?v=1721600904 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | moringa-horseradish-tree | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8208-1_79e00ab3-5ff1-46e5-b225-082547058567_1080x.jpg?v=1725597298 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | mustard-giant-red | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8017-1_22f18bf6-c450-40e5-96ac-c4d864014b99_1080x.jpg?v=1721600979 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | okra-clemson-spineless | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8210-1_97cf2ef5-9e69-41e8-bba0-4fa6eff170c3_1080x.jpg?v=1725597345 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | okra-millionaire-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8211-1_2683e23b-d9fa-456c-9da3-91e8e90c515a_1080x.jpg?v=1725597376 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | onion-italian-long-keeper | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/products/V8213-1_1080x.png?v=1688015157 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | onion-pearl-drop | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8214-1_05f64e74-974f-4417-9f8e-0b469f85b6a4_1080x.jpg?v=1725597509 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | onion-pukekohe-long-keeper | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8375-1_05db4dd7-9182-4c64-97e8-7d311290a8b9_1080x.jpg?v=1725603547 | exact supplier photo and alpha bounds checked.
+- Kings Seeds | onion-purplette | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8215-1_c06e85b9-a032-4a9a-a43e-c0cb37ffb8ad_1080x.jpg?v=1720748852 | exact supplier photo and alpha bounds checked.
+
+Batch 22 passed the production build and focused Playwright suite.
+
 ## Batch 24 reference preparation
 
 - Kings Seeds | organic-cauliflower-belot-f1 | reference_found | Agrosemens exact cultivar photo | https://www.agrosemens.com/jardin-graine-bio-choux-chou-fleur/215-Semences-Graines-Semence-Bio-Chou-Fleur.html
@@ -353,7 +370,7 @@ Batch 21 passed the production build and all 28 focused Playwright checks.
 
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 210 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 219 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps 220 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 209 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
