@@ -1748,5 +1748,75 @@
     "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-kale-tuscan-black.png",
     "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6034-1_37ec5e23-c2f8-414d-a3c6-30a0010df070_1080x.jpg?v=1721352925",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-kale-westerland": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-kale-westerland.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-kale-westerland.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6096-1_95a0e872-f31e-44ca-965c-7edfe9baa322_1080x.jpg?v=1721354121",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-kohlrabi-purple-vienna": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-kohlrabi-purple-vienna.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-kohlrabi-purple-vienna.png",
+    "referenceUrl": "https://kwekerijkweek.be/cdn/shop/files/KOOLRABI_purplevienna_1.png?v=1690287827",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-leek-carentan-giant": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-leek-carentan-giant.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-leek-carentan-giant.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6036-1_bbc8546d-254a-41cb-923a-1248b07324f3_1080x.jpg?v=1721353019",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-lettuce-iceberg": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-lettuce-iceberg.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-lettuce-iceberg.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6042-1_7bbf0683-7a40-4723-95b6-7b16e03b610b_1080x.jpg?v=1721353201",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-lettuce-little-caesar": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-lettuce-little-caesar.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-lettuce-little-caesar.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8363-1_1080x.png?v=1688853411",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-lettuce-lollo-bionda": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-lettuce-lollo-bionda.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-lettuce-lollo-bionda.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6117-1_f650a5be-ef5f-4dca-be8e-eb52a99e0b95_1080x.png?v=1752445835",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-lettuce-frill-lollo-rossa": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-lettuce-frill-lollo-rossa.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-lettuce-frill-lollo-rossa.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6041-1_24d2b2d1-0730-4fc2-b949-a3b450043b33_1080x.jpg?v=1721353173",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-lettuce-butterhead-merveille-des-quatre-saisons": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-lettuce-butterhead-merveille-des-quatre-saisons.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-lettuce-butterhead-merveille-des-quatre-saisons.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6038-1_cb8991e7-1ef5-496a-a8a4-6219404fea23_1080x.jpg?v=1721353084",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-lettuce-cos-parris-island-cos": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-lettuce-cos-parris-island-cos.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-lettuce-cos-parris-island-cos.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6039-1_56596bc2-f7df-4454-ab60-caf8aa108bb2_1080x.jpg?v=1721353115",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-lettuce-oakleaf-green-salad-bowl": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-lettuce-oakleaf-green-salad-bowl.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-lettuce-oakleaf-green-salad-bowl.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6043-1_1080x.png?v=1729037347",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }

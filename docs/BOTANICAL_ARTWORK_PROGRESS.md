@@ -413,9 +413,22 @@ Cloudflare deployment succeeded for Batch 23 commit 14941fa (https://github.com/
 - Kings Seeds | organic-eggplant-long-purple | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6028-1_06cac7cd-2fd0-40bd-b044-d24ae1773969_1080x.jpg?v=1721352651 | exact cultivar photo and alpha bounds checked.
 - Kings Seeds | organic-kale-tuscan-black | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6034-1_37ec5e23-c2f8-414d-a3c6-30a0010df070_1080x.jpg?v=1721352925 | exact cultivar photo and alpha bounds checked.
 
+## Batch 26
+
+- Kings Seeds | organic-kale-westerland | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6096-1_95a0e872-f31e-44ca-965c-7edfe9baa322_1080x.jpg?v=1721354121 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-kohlrabi-purple-vienna | generated_qa_passed | 512 px master and 128 px gallery | https://kwekerijkweek.be/cdn/shop/files/KOOLRABI_purplevienna_1.png?v=1690287827 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-leek-carentan-giant | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6036-1_bbc8546d-254a-41cb-923a-1248b07324f3_1080x.jpg?v=1721353019 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-lettuce-iceberg | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6042-1_7bbf0683-7a40-4723-95b6-7b16e03b610b_1080x.jpg?v=1721353201 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-lettuce-little-caesar | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8363-1_1080x.png?v=1688853411 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-lettuce-lollo-bionda | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6117-1_f650a5be-ef5f-4dca-be8e-eb52a99e0b95_1080x.png?v=1752445835 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-lettuce-frill-lollo-rossa | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6041-1_24d2b2d1-0730-4fc2-b949-a3b450043b33_1080x.jpg?v=1721353173 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-lettuce-butterhead-merveille-des-quatre-saisons | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6038-1_cb8991e7-1ef5-496a-a8a4-6219404fea23_1080x.jpg?v=1721353084 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-lettuce-cos-parris-island-cos | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6039-1_56596bc2-f7df-4454-ab60-caf8aa108bb2_1080x.jpg?v=1721353115 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-lettuce-oakleaf-green-salad-bowl | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6043-1_1080x.png?v=1729037347 | exact cultivar photo and alpha bounds checked.
+
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 250 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 179 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps 260 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 169 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
@@ -431,3 +444,6 @@ Batch 24 passed the production build and focused Playwright suite.
 Cloudflare deployment succeeded for Batch 24 commit 1e24a19 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42806062465).
 
 Batch 25 passed the production build and focused Playwright suite.
+Cloudflare deployment succeeded for Batch 25 commit 860eff6 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42808578635). The phone gallery alignment check passed on retry.
+
+Batch 26 passed the production build and focused Playwright suite.
