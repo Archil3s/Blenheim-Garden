@@ -465,9 +465,22 @@ Cloudflare deployment succeeded for Batch 23 commit 14941fa (https://github.com/
 - Kings Seeds | organic-tomato-costoluto-fiorentino | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6070-1_3ca2686a-e03c-47e7-916a-0ab8e902285e_1080x.jpg?v=1721355670 | harvest artwork checked against cultivar photo. Earlier stages pending.
 - Kings Seeds | organic-tomato-gardeners-delight | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6073-1_968e100b-96a4-44d3-b440-e96a65c5b536_1080x.jpg?v=1721355794 | harvest artwork checked against cultivar photo. Earlier stages pending.
 
+## Batch 30
+
+- Kings Seeds | organic-tomato-indigo-blue-berries | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6074-1_7af89365-b0c6-4e7b-8748-e7834eb8d1a9_1080x.jpg?v=1721355813 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-tomato-roma | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6077-1_72195a20-f37f-43b7-89e1-60ee56f505d7_1080x.jpg?v=1721355958 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-tomato-rosella | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6075-1_eee7347c-d016-4b5e-be84-9cbf021902f3_1080x.jpg?v=1721355853 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-tomato-speckled-roman | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6106-1_f48dd204-22a4-48e5-90f3-5535314c66c5_1080x.jpg?v=1720660860 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-tomato-sunrise-bumble-bee | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6076-1_9c4f9aad-a652-4c4c-91f2-66c92f033f2a_1080x.jpg?v=1721355882 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-turnip-milan-red-top | generated_qa_passed | 512 px master and 128 px gallery | https://www.monjardinbio.com/cdn/shop/products/navet-milan-rouge-bio-zoom.jpg?v=1660480794 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-watermelon-black-tail-mountain | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6124-W_1080x.png?v=1784973927 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-zucchini-black-beauty | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/products/O6081-1_1080x.png?v=1688006161 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | organic-zucchini-summer-gold | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6082-1_3b596660-1bf3-4edd-9341-06ecd30938e9_1080x.jpg?v=1721356114 | harvest artwork checked against cultivar photo. Earlier stages pending.
+- Kings Seeds | pak-choi-green-ace-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8019-1_1ed7700a-93ce-488b-9c05-a8cb5ff1a823_1080x.jpg?v=1721601050 | harvest artwork checked against cultivar photo. Earlier stages pending.
+
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 290 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 139 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps 300 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 129 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
@@ -501,3 +514,5 @@ For every exact Kings Seeds and Rasmussen catalogue ID, verify all six ordered s
 Batch 27 passed the production build and focused Playwright suite.
 Cloudflare deployment succeeded for Batch 27 commit db457531dff3b8d7730e2a0e185157e5d81f502b (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42899970005).
 Cloudflare deployment succeeded for Batch 28 commit 54463fb9eddb6a16fda0f422cfb332068aee5bf1 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42908044773).
+
+Batch 29 passed all 28 focused browser checks and deployed on Cloudflare at b5cc199 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42915206076).

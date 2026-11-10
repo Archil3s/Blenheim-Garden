@@ -2028,5 +2028,75 @@
     "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-tomato-gardeners-delight.png",
     "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6073-1_968e100b-96a4-44d3-b440-e96a65c5b536_1080x.jpg?v=1721355794",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-tomato-indigo-blue-berries": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-tomato-indigo-blue-berries.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-tomato-indigo-blue-berries.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6074-1_7af89365-b0c6-4e7b-8748-e7834eb8d1a9_1080x.jpg?v=1721355813",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-tomato-roma": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-tomato-roma.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-tomato-roma.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6077-1_72195a20-f37f-43b7-89e1-60ee56f505d7_1080x.jpg?v=1721355958",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-tomato-rosella": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-tomato-rosella.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-tomato-rosella.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6075-1_eee7347c-d016-4b5e-be84-9cbf021902f3_1080x.jpg?v=1721355853",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-tomato-speckled-roman": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-tomato-speckled-roman.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-tomato-speckled-roman.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6106-1_f48dd204-22a4-48e5-90f3-5535314c66c5_1080x.jpg?v=1720660860",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-tomato-sunrise-bumble-bee": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-tomato-sunrise-bumble-bee.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-tomato-sunrise-bumble-bee.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6076-1_9c4f9aad-a652-4c4c-91f2-66c92f033f2a_1080x.jpg?v=1721355882",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-turnip-milan-red-top": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-turnip-milan-red-top.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-turnip-milan-red-top.png",
+    "referenceUrl": "https://www.monjardinbio.com/cdn/shop/products/navet-milan-rouge-bio-zoom.jpg?v=1660480794",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-watermelon-black-tail-mountain": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-watermelon-black-tail-mountain.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-watermelon-black-tail-mountain.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6124-W_1080x.png?v=1784973927",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-zucchini-black-beauty": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-zucchini-black-beauty.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-zucchini-black-beauty.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/O6081-1_1080x.png?v=1688006161",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-zucchini-summer-gold": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-zucchini-summer-gold.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-zucchini-summer-gold.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6082-1_3b596660-1bf3-4edd-9341-06ecd30938e9_1080x.jpg?v=1721356114",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:pak-choi-green-ace-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/pak-choi-green-ace-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/pak-choi-green-ace-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8019-1_1ed7700a-93ce-488b-9c05-a8cb5ff1a823_1080x.jpg?v=1721601050",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }
