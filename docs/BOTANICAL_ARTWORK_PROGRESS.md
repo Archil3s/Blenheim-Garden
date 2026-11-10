@@ -312,3 +312,38 @@ Cloudflare deployment succeeded for commit d129a17d1635ff9bd1a5df7efe8c1c41e0c5e
 - Kings Seeds | lettuce-oakleaf-green | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/lettuce-oakleaf-green | rounded oak-shaped lime leaves | dimensions and alpha bounds validated | integrated in /test-garden.
 
 Batch 19 passed the production build and all 28 focused Playwright checks.
+Cloudflare deployment succeeded for commit b5a3a32fedf58ecc48b5bcfb77a3d6296b81ea8f (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42745865757).
+
+## Batch 20
+
+- Kings Seeds | lettuce-oakleaf-red | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8394-1_1e41694f-dca8-4386-8450-3852696f1f4d_1080x.jpg?v=1720660867 | compared with the exact cultivar photo and validated alpha bounds.
+- Kings Seeds | lettuce-red-caesar | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8183-1_4136b71f-ef9f-46be-be58-b788987cffe8_1080x.jpg?v=1725596040 | compared with the exact cultivar photo and validated alpha bounds.
+- Kings Seeds | lettuce-salanova-butterhead-green | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8405-1_590515b8-16b5-4797-aa34-aa1763d4128b_1080x.png?v=1752445834 | compared with the exact cultivar photo and validated alpha bounds.
+- Kings Seeds | lettuce-salanova-butterhead-red | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8395-1_d3dd6034-72d0-4d6f-a865-d76050eccaec_1080x.jpg?v=1720660869 | compared with the exact cultivar photo and validated alpha bounds.
+- Kings Seeds | lettuce-salanova-leaf-green | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8460-W_1080x.png?v=1784972497 | compared with the exact cultivar photo and validated alpha bounds.
+- Kings Seeds | lettuce-salanova-leaf-red | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8461-W.png | compared with the exact cultivar photo and validated alpha bounds.
+- Kings Seeds | melon-charantais | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8436-W_433f3055-4a86-4ee2-a52a-e9787f7cf590_1080x.png?v=1784972330 | compared with the exact cultivar photo and validated alpha bounds.
+- Kings Seeds | melon-honeydew-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8422-1_7ef91907-c789-46db-bb9b-9efe2660dc09_1080x.png?v=1752445835 | compared with the exact cultivar photo and validated alpha bounds.
+- Kings Seeds | melon-medley-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8400-1_1080x.png?v=1721993175 | compared with the exact cultivar photo and validated alpha bounds.
+- Kings Seeds | melon-tuscan-delight-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8197-1_35a9e951-458b-4a30-80a2-5a992654e0d8_1080x.jpg?v=1725596849 | compared with the exact cultivar photo and validated alpha bounds.
+
+Batch 20 passed the production build. The focused Playwright suite passed 27 checks on the first run, and the remaining phone gallery check passed three consecutive targeted reruns.
+
+## Batch 24 reference preparation
+
+- Kings Seeds | organic-cauliflower-belot-f1 | reference_found | Agrosemens exact cultivar photo | https://www.agrosemens.com/jardin-graine-bio-choux-chou-fleur/215-Semences-Graines-Semence-Bio-Chou-Fleur.html
+- Kings Seeds | organic-cauliflower-liria-f1 | reference_found | De Bolster exact cultivar photo | https://www.bolster.eu/cauliflower-liria-f1-brassica-oleracea/p9157
+
+## Pending Kings Seeds reference inventory
+
+The current catalogue has 429 IDs. The generated artwork manifest maps 200 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 229 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+
+Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
+
+Rasmussen Batch 22 reference gap: rocoto-manzano-red-flat-chilli-seeds-10-seeds needs a labelled photo that distinguishes the Flat selection from standard Red.
+
+Rasmussen Batch 24 reference gap: silverbeet-silverado-compacta-150-seeds still needs a labelled photo confirming the Compacta selection.
+
+## Rasmussen reference inventory
+
+The local work/references/rasmussen-pending.tsv inventory covers 269 catalogue IDs outside the ten verified originals. It records 267 downloaded photo references and two unresolved IDs: Rocoto Manzano Red Flat and Scarlett’s Variegated Chilli. Oz Lantern White, Golden Orb and Silverado Compacta references have since been recovered.
