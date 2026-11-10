@@ -838,5 +838,75 @@
     "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-hot-bhut-jolokia.png",
     "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-hot-bhut-jolokia",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:chilli-carolina-reaper": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/chilli-carolina-reaper.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-carolina-reaper.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-carolina-reaper",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:chilli-cayenne-flame": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/chilli-cayenne-flame.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-cayenne-flame.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-cayenne-flame",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:chilli-hot-habanero-red": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/chilli-hot-habanero-red.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-hot-habanero-red.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-hot-habanero-red",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:chilli-medium-habanero-yellow": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/chilli-medium-habanero-yellow.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-medium-habanero-yellow.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-medium-habanero-yellow",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:chilli-hungarian-yellow-wax": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/chilli-hungarian-yellow-wax.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-hungarian-yellow-wax.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-hungarian-yellow-wax",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:chilli-padron": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/chilli-padron.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-padron.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-padron",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:chilli-mild-pancho-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/chilli-mild-pancho-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-mild-pancho-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-mild-pancho-f1",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:chilli-pepperoncini": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/chilli-pepperoncini.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-pepperoncini.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-pepperoncini",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:chilli-poblano": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/chilli-poblano.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-poblano.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-poblano",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:chilli-mild-serrano": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/chilli-mild-serrano.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-mild-serrano.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-mild-serrano",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }

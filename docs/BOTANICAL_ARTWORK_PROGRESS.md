@@ -200,3 +200,19 @@ Cloudflare deployment succeeded for commit e27abd829f219135049fb7208aea695b1302d
 - Kings Seeds | chilli-hot-bhut-jolokia | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-hot-bhut-jolokia | wrinkled scarlet pod and pointed taper match V8113 | dimensions and alpha bounds validated | integrated in /test-garden.
 
 Batch 12 passed the production build and all 28 focused Playwright checks.
+Cloudflare deployment succeeded for commit 47455425a1c94d7a5ba8ea229b03ffbafe362b0c (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42707496513).
+
+## Batch 13
+
+- Kings Seeds | chilli-carolina-reaper | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-carolina-reaper | squat rumpled red pod and stinger match V8397 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-cayenne-flame | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-cayenne-flame | slender rippled red and green pods match V8117 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-hot-habanero-red | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-hot-habanero-red | smooth red lantern and tapered lobes match V8114 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-medium-habanero-yellow | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-medium-habanero-yellow | yellow glossy irregular lobed pods match V8118 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-padron | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-padron | compact emerald pods and irregular contours match V8439 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-hungarian-yellow-wax | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-hungarian-yellow-wax | pale butter-yellow pod and blunt taper match V8124 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-mild-pancho-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-mild-pancho-f1 | smooth green body and blunt tip match V8126 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-pepperoncini | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-pepperoncini | folded green and scarlet pods with blunt tips match V8440 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-poblano | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-poblano | broad dark-green shoulder and pointed taper match V8441 | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | chilli-mild-serrano | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/chilli-mild-serrano | smooth narrow red pod and blunt taper match V8127 | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 13 passed the production build and all 28 focused Playwright checks.
