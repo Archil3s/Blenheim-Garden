@@ -1,5 +1,6 @@
 "use client";
 
+import { growthStages, type GrowthArtworkByStage } from "@/lib/garden/growth-artwork";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
@@ -16,6 +17,7 @@ export type TestGardenEntry = {
   styleReference?: string;
   artworkStatus: "verified" | "generated_qa_passed" | "needs_review" | "pending" | "failed";
   pendingReason?: string;
+  growthArtwork?: GrowthArtworkByStage;
 };
 
 const groups: Array<TestGardenEntry["group"]> = ["Kings Seeds", "Rasmussen", "Reference catalogue", "Planner extras"];
@@ -57,6 +59,26 @@ function PlantImage({ entry, failed, onBroken, detail = false }: {
     alt={entry.crop + " " + entry.variety + (original ? " original illustration" : " generated illustration")}
     data-art-source={original ? "verified-original" : "generated"} className="tg-asset-icon"
     onError={() => onBroken(entry.id)} />;
+}
+
+function GrowthStageArtwork({ artwork }: { artwork: GrowthArtworkByStage }) {
+  return <section aria-label="Seed to harvest">
+    <h3>Seed to harvest</h3>
+    <ol className="tg-growth-stages">
+      {growthStages.map(([id, label]) => {
+        const stage = artwork[id];
+        const reviewed = stage?.status === "generated_qa_passed" || stage?.status === "verified";
+        return <li key={id}>
+          <strong>{label}</strong>
+          {reviewed ? <a href={stage.master} target="_blank" rel="noreferrer">
+            <img src={stage.gallery} alt={label + " illustration"} loading="lazy" decoding="async" />
+          </a> : <span>{stage ? artworkLabels[stage.status] : "Pending"}</span>}
+          {stage?.referenceUrl && <a href={stage.referenceUrl} target="_blank" rel="noreferrer">Reference</a>}
+          {stage?.sourceFile && <small>{stage.sourceFile}</small>}
+        </li>;
+      })}
+    </ol>
+  </section>;
 }
 
 export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
@@ -213,6 +235,7 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
           {selected.artworkStatus === "pending" && <p className="tg-qa-warning">{selected.pendingReason ?? "An original individual image is required before this variety can be shown."}</p>}
           {selected.icon && !broken[selected.id] && (selected.artworkStatus === "verified" || selected.artworkStatus === "generated_qa_passed") &&
             <a className="tg-file-link" href={selected.master ?? selected.icon} target="_blank" rel="noreferrer">{selected.master ? "Open master image ↗" : "Open original image ↗"}</a>}
+          {selected.growthArtwork && <GrowthStageArtwork artwork={selected.growthArtwork} />}
           <div className="tg-path">{selected.icon ?? "No verified image file mapped"}</div>
         </> : <div className="tg-inspector-idle"><div className="tg-inspector-plant">✳</div><h2>Select a plot</h2><p>Tap a variety to see its exact source image or why the artwork is still pending.</p></div>}
         <div className="tg-inspector-foot"><strong>Correct artwork takes priority over coverage.</strong><br />Unreviewed concepts, contact-sheet fragments and substitute SVGs are excluded from this source audit.</div>

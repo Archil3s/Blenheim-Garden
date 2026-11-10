@@ -531,3 +531,7 @@ Batch 30 deployed on Cloudflare at 0ba8f16 (https://github.com/Archil3s/Blenheim
 - Kings Seeds | pea-greenfeast | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8229-1_c58aaef1-9285-4100-a4b6-7ec889f39f04_1080x.jpg?v=1725598046 | Harvest reviewed against the cultivar photo. Earlier stages pending.
 - Kings Seeds | pea-mucio | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8391-1_e6bc0266-b6c6-48b5-ad51-59f28265482a_1080x.jpg?v=1720660865 | Harvest reviewed against the cultivar photo. Earlier stages pending.
 - Kings Seeds | pea-sugar-snap-tall | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8426-1W_1080x.png?v=1757032954 | Harvest reviewed against the cultivar photo. Earlier stages pending.
+
+Batch 31 passed the production build and all 28 focused browser checks. Cloudflare deployed commit 40eddc7 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42926815464).
+
+The /test-garden inspector displays all six stages for every supplier entry. The growth-stage manifest starts with ten reviewed Batch 31 harvest mappings. Unmapped stages display Pending. The production build and all 32 focused browser checks passed.

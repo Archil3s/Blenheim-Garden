@@ -92,3 +92,29 @@
   .tg-plot .tg-plot-art { height: 82px; }
   .tg-plot .tg-asset-icon { width: 80px; height: 80px; }
 }
+
+.tg-growth-stages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.tg-growth-stages li {
+  display: grid;
+  align-content: start;
+  gap: 0.25rem;
+  padding: 0.4rem;
+  border: 1px solid currentColor;
+  border-radius: 0.4rem;
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+.tg-growth-stages img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}

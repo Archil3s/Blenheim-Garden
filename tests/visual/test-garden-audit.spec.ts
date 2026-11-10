@@ -119,3 +119,16 @@ test("generated catalogue cards load their gallery PNGs and open the correct mas
   }
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
 });
+
+test("supplier inspector shows all growth stages in order and links reviewed harvest", async ({ page }) => {
+  await page.goto("/test-garden");
+  await page.getByRole("searchbox").fill("Passionfruit Large Black");
+  await page.locator(".tg-plot").first().click();
+  const stages = page.getByRole("region", { name: "Seed to harvest" });
+  await expect(stages.locator("li strong")).toHaveText([
+    "Seed", "First sprout", "Baby plant", "Semi-mature", "Pre-harvest", "Harvest",
+  ]);
+  await expect(stages.getByText("Pending", { exact: true })).toHaveCount(5);
+  await expect(stages.getByRole("link", { name: "Harvest illustration" }))
+    .toHaveAttribute("href", /master\/passionfruit-large-black\.png$/);
+});

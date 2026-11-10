@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import growthArtwork from "@/lib/garden/growth-artwork-manifest";
 import generatedArtwork from "@/lib/garden/generated-artwork-manifest.json";
 import kingsSeeds from "@/lib/garden/kings-seeds-varieties.json";
 import rasmussen from "@/lib/garden/rasmussen-varieties.json";
@@ -46,6 +47,7 @@ const entries: TestGardenEntry[] = [
     id: "kings:" + item.id, group: "Kings Seeds", crop: item.crop, variety: item.variety,
     label: item.crop + " · " + item.variety, artworkStatus: "pending",
     ...generatedFields("kings:" + item.id),
+    growthArtwork: growthArtwork["kings:" + item.id] ?? {},
     pendingReason: "The supplied Kings Seeds PDF contains picture pieces cropped from a comparison sheet, including incomplete or neighbouring artwork. No full original individual PNG is verified for this variety.",
   })),
   ...rasmussen.map((item): TestGardenEntry => {
@@ -55,6 +57,7 @@ const entries: TestGardenEntry[] = [
       variety: item.variety, label: item.crop + " · " + item.variety,
       icon, artworkStatus: icon ? "verified" : "pending",
       ...(!icon && generatedFields("rasmussen:" + item.id)),
+      growthArtwork: growthArtwork["rasmussen:" + item.id] ?? {},
       sourceFile: icon ? "Rasmussen_Chilli_137_Icon_Gallery(2).html" : undefined,
       pendingReason: icon ? undefined : "No original individual PNG for this exact variety is verified in the supplied Rasmussen HTML gallery. Unreviewed concept batches are excluded.",
     };
