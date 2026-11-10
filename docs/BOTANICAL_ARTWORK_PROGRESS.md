@@ -400,9 +400,22 @@ Cloudflare deployment succeeded for Batch 23 commit 14941fa (https://github.com/
 - Kings Seeds | organic-cauliflower-liria-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.bolster.eu/media/images/1442_dbweb.jpg?1749107409 | exact cultivar photo and alpha bounds checked.
 - Kings Seeds | organic-cauliflower-romanesco-early | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6016-1_0657fedb-64b5-456b-8e51-3db1f4b5bc30_1080x.jpg?v=1721351925 | exact cultivar photo and alpha bounds checked.
 
+## Batch 25
+
+- Kings Seeds | organic-celery-tango | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/1_5759f70c-af0a-4f67-8259-5d3c76cdae59_1080x.png?v=1701996554 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-chilli-cayenne-red | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6094-1_1080x.png?v=1688788254 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-chilli-jalapeno-early | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6095-1_1080x.png?v=1688788248 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-corn-early-gem | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6126-W_1080x.png?v=1784972759 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-cress-moss-curled | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/products/O6022-1_1080x.png?v=1688020013 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-cucumber-paris-pickles | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6023-1_effee9d3-8341-4a08-94a2-8b8a195ea836_1080x.jpg?v=1721352275 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-cucumber-tendergreen | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6024-2_1080x.jpg?v=1721352311 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-eggplant-black-beauty | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6027-W_1080x.png?v=1784973962 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-eggplant-long-purple | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6028-1_06cac7cd-2fd0-40bd-b044-d24ae1773969_1080x.jpg?v=1721352651 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-kale-tuscan-black | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6034-1_37ec5e23-c2f8-414d-a3c6-30a0010df070_1080x.jpg?v=1721352925 | exact cultivar photo and alpha bounds checked.
+
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 240 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 189 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps 250 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 179 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
@@ -415,3 +428,6 @@ Rasmussen Batch 24 reference gap: silverbeet-silverado-compacta-150-seeds still 
 The local work/references/rasmussen-pending.tsv inventory covers 269 catalogue IDs outside the ten verified originals. It records 267 downloaded photo references and two unresolved IDs: Rocoto Manzano Red Flat and Scarlett’s Variegated Chilli. Oz Lantern White, Golden Orb and Silverado Compacta references have since been recovered.
 
 Batch 24 passed the production build and focused Playwright suite.
+Cloudflare deployment succeeded for Batch 24 commit 1e24a19 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42806062465).
+
+Batch 25 passed the production build and focused Playwright suite.
