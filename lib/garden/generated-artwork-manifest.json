@@ -1818,5 +1818,75 @@
     "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-lettuce-oakleaf-green-salad-bowl.png",
     "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6043-1_1080x.png?v=1729037347",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-lettuce-oakleaf-red-salad-bowl": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-lettuce-oakleaf-red-salad-bowl.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-lettuce-oakleaf-red-salad-bowl.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6044-1_67c9a22b-f6ac-47f3-8d80-521e48351c46_1080x.jpg?v=1721353286",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-melon-pride-of-wisconsin": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-melon-pride-of-wisconsin.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-melon-pride-of-wisconsin.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6097-1_10e7b11b-f33f-4f75-86fd-1d51731ad285_1080x.jpg?v=1721354054",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-mesclun": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-mesclun.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-mesclun.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6045-1_98b10ce0-b9fd-4e72-ab3f-fc743878cb48_1080x.jpg?v=1721353336",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-onion-red-amposta": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-onion-red-amposta.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-onion-red-amposta.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6048-1_1bb6b4c7-2e70-406e-98e6-8aa2164ba011_1080x.jpg?v=1721354938",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-onion-shallot-conservor-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-onion-shallot-conservor-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-onion-shallot-conservor-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6118-1_638a21ce-4e86-4687-9a49-8027899cc0f3_1080x.png?v=1752445840",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-pak-choi-shanghai-green": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-pak-choi-shanghai-green.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-pak-choi-shanghai-green.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6119-1_7dad39b0-30d0-492f-b92a-bd22415cf64a_1080x.png?v=1752445840",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-parsnip-guernsey": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-parsnip-guernsey.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-parsnip-guernsey.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8226-1_1080x.png?v=1752445840",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-perilla-bi-colour": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-perilla-bi-colour.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-perilla-bi-colour.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/3_15d18f93-0ca0-4934-b077-5f0e8a8e540c_1080x.png?v=1754440705",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-pumpkin-new-england-pie": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-pumpkin-new-england-pie.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-pumpkin-new-england-pie.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6057-1_732c3535-0a83-40eb-b039-e8d66df342f2_1080x.jpg?v=1721355263",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:organic-pumpkin-whangaparoa-crown": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/organic-pumpkin-whangaparoa-crown.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-pumpkin-whangaparoa-crown.png",
+    "referenceUrl": "https://www.naturesnutrition.co.nz/cdn/shop/files/pumpkin_grande.jpg?v=1724214671",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }

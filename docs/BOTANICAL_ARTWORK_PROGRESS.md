@@ -426,9 +426,22 @@ Cloudflare deployment succeeded for Batch 23 commit 14941fa (https://github.com/
 - Kings Seeds | organic-lettuce-cos-parris-island-cos | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6039-1_56596bc2-f7df-4454-ab60-caf8aa108bb2_1080x.jpg?v=1721353115 | exact cultivar photo and alpha bounds checked.
 - Kings Seeds | organic-lettuce-oakleaf-green-salad-bowl | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6043-1_1080x.png?v=1729037347 | exact cultivar photo and alpha bounds checked.
 
+## Batch 27
+
+- Kings Seeds | organic-lettuce-oakleaf-red-salad-bowl | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6044-1_67c9a22b-f6ac-47f3-8d80-521e48351c46_1080x.jpg?v=1721353286 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-melon-pride-of-wisconsin | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6097-1_10e7b11b-f33f-4f75-86fd-1d51731ad285_1080x.jpg?v=1721354054 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-mesclun | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6045-1_98b10ce0-b9fd-4e72-ab3f-fc743878cb48_1080x.jpg?v=1721353336 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-onion-red-amposta | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6048-1_1bb6b4c7-2e70-406e-98e6-8aa2164ba011_1080x.jpg?v=1721354938 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-onion-shallot-conservor-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6118-1_638a21ce-4e86-4687-9a49-8027899cc0f3_1080x.png?v=1752445840 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-pak-choi-shanghai-green | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6119-1_7dad39b0-30d0-492f-b92a-bd22415cf64a_1080x.png?v=1752445840 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-parsnip-guernsey | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8226-1_1080x.png?v=1752445840 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-perilla-bi-colour | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/3_15d18f93-0ca0-4934-b077-5f0e8a8e540c_1080x.png?v=1754440705 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-pumpkin-new-england-pie | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6057-1_732c3535-0a83-40eb-b039-e8d66df342f2_1080x.jpg?v=1721355263 | exact cultivar photo and alpha bounds checked.
+- Kings Seeds | organic-pumpkin-whangaparoa-crown | generated_qa_passed | 512 px master and 128 px gallery | https://www.naturesnutrition.co.nz/cdn/shop/files/pumpkin_grande.jpg?v=1724214671 | exact cultivar photo and alpha bounds checked.
+
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 260 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 169 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps 270 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 159 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
@@ -447,3 +460,16 @@ Batch 25 passed the production build and focused Playwright suite.
 Cloudflare deployment succeeded for Batch 25 commit 860eff6 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42808578635). The phone gallery alignment check passed on retry.
 
 Batch 26 passed the production build and focused Playwright suite.
+Cloudflare deployment succeeded for Batch 26 commit e4e302d (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42887774804).
+
+## Approved growth-stage expansion
+
+The approved Little Gem mockup adds six stages per Kings Seeds and Rasmussen catalogue entry, including entries with artwork already deployed and all future entries. The sequence is Seed, First sprout, Baby plant, Semi-mature, Pre-harvest, and Harvest. The approved proof sheet is saved locally at work/little-gem-growth-mockup.png.
+
+Produce separate transparent 512 px masters and 128 px gallery PNGs in the approved botanical style. Preserve the deployed artwork and ten Rasmussen originals. Reuse existing artwork for Harvest when the illustration depicts the harvested form. Use cultivar and stage references where available and record provenance. Present stages together in /test-garden and keep the production planner resolver and saved garden data intact. Review each stage visually and technically and apply the same build, browser, and deployment checks to each validated batch. The library completion audit includes this expansion.
+
+### Completion gate for both catalogues
+
+For every exact Kings Seeds and Rasmussen catalogue ID, verify all six ordered stage mappings and their two PNG sizes. Apply the same check to previously deployed icons, the ten preserved Rasmussen originals, and each future batch. A cultivar with only its existing image is still pending growth-stage coverage. Count an existing illustration as Harvest only after reviewing it against that stage. Show missing stages as pending in /test-garden and record each stage's source and review status. The overall goal stays open until the full catalogue passes this audit.
+
+Batch 27 passed the production build and focused Playwright suite.
