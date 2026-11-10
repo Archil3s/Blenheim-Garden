@@ -329,6 +329,23 @@ Cloudflare deployment succeeded for commit b5a3a32fedf58ecc48b5bcfb77a3d6296b81e
 
 Batch 20 passed the production build. The focused Playwright suite passed 27 checks on the first run, and the remaining phone gallery check passed three consecutive targeted reruns.
 
+Cloudflare deployment succeeded for Batch 20 commit 212a77a (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42795534694).
+
+## Batch 21
+
+- Kings Seeds | mesclun-italian-blend | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/products/V8198-1_1080x.png?v=1688013177 | compared with the exact supplier photo and validated alpha bounds.
+- Kings Seeds | mesclun-kale-blend | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8199-1_93870567-e029-43f4-b099-d86687cbf9f6_1080x.jpg?v=1725596928 | compared with the exact supplier photo and validated alpha bounds.
+- Kings Seeds | mesclun-mild-blend | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/products/V8201-1_1080x.png?v=1688013345 | compared with the exact supplier photo and validated alpha bounds.
+- Kings Seeds | mesclun-oriental-blend | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8202-1_a795bed1-8fd8-4781-ad34-4783011d48c5_1080x.jpg?v=1725597049 | compared with the exact supplier photo and validated alpha bounds.
+- Kings Seeds | mesclun-original-blend | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8203-1_48e2614b-0df8-4c84-8c15-7b40fbf54913_1080x.jpg?v=1725597112 | compared with the exact supplier photo and validated alpha bounds.
+- Kings Seeds | mesclun-red-blend | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8204-1_cdda5019-51cd-4106-b3a9-c28ea1774a9e_1080x.jpg?v=1725597144 | compared with the exact supplier photo and validated alpha bounds.
+- Kings Seeds | mesclun-winter-blend | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8205-1_63c73b9e-8510-415b-aef6-8f375fde2abe_1080x.jpg?v=1725597204 | compared with the exact supplier photo and validated alpha bounds.
+- Kings Seeds | mibuna-green-spray | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8012-1_98818975-4b44-429f-adb4-71ef8246c757_1080x.jpg?v=1721600811 | compared with the exact supplier photo and validated alpha bounds.
+- Kings Seeds | miners-lettuce | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8206-1_7a14f18d-dcdb-4e24-a1cc-436c97ee0902_1080x.jpg?v=1725597233 | compared with the exact supplier photo and validated alpha bounds.
+- Kings Seeds | mizuna | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8013-1_8ac5607b-3989-4301-990c-ea51e03c8ab3_1080x.jpg?v=1721600850 | compared with the exact supplier photo and validated alpha bounds.
+
+Batch 21 passed the production build and all 28 focused Playwright checks.
+
 ## Batch 24 reference preparation
 
 - Kings Seeds | organic-cauliflower-belot-f1 | reference_found | Agrosemens exact cultivar photo | https://www.agrosemens.com/jardin-graine-bio-choux-chou-fleur/215-Semences-Graines-Semence-Bio-Chou-Fleur.html
@@ -336,7 +353,7 @@ Batch 20 passed the production build. The focused Playwright suite passed 27 che
 
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 200 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 229 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps 210 of them. The local inventory at work/references/pending-catalogue.tsv matches the remaining 219 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
