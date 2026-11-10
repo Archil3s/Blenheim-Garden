@@ -232,3 +232,19 @@ Cloudflare deployment succeeded for commit 0d811156807053af46ca4ead80be3f2a2478c
 - Kings Seeds | corn-golden-sweet-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/corn-golden-sweet-f1 | uniform golden kernels and short green husk | dimensions and alpha bounds validated | integrated in /test-garden.
 
 Batch 14 passed the production build and all 28 focused Playwright checks.
+Cloudflare deployment succeeded for commit 996689b902329b5b2fe4f85c1e45e93be8d87b52 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42737589068).
+
+## Batch 15
+
+- Kings Seeds | corn-popcorn-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/corn-popcorn-f1 | gold popping kernels and papery husk | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | corn-salad-verte-de-cambrai | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/corn-salad-verte-de-cambrai | rounded glossy green leaves in a dense rosette | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cress-american-upland | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cress-american-upland | small rounded leaflets along branching stems | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cucumber-amira-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cucumber-amira-f1 | slender dark-green fruit hanging beneath broad leaves | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cucumber-cornichon-de-paris | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cucumber-cornichon-de-paris | two crossed bumpy pickling cucumbers, using the supplier photo shared with Homemade Pickles | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cucumber-crunchy-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cucumber-crunchy-f1 | short dark-green snack cucumbers on a leafy vine | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cucumber-crystal-apple | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cucumber-crystal-apple | pale cream apple cucumbers with a yellow blossom | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cucumber-homemade-pickles | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cucumber-homemade-pickles | medium-green bumpy cucumbers on a flowering vine, using the supplier photo shared with Cornichon de Paris | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cucumber-lebanese | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cucumber-lebanese | short plump green fruit with light ridges | dimensions and alpha bounds validated | integrated in /test-garden.
+- Kings Seeds | cucumber-medici-f1 | generated_qa_passed | master and gallery exported | https://www.kingsseeds.co.nz/products/cucumber-medici-f1 | slender straight green fruit with pale longitudinal striping | dimensions and alpha bounds validated | integrated in /test-garden.
+
+Batch 15 passed the production build and all 28 focused Playwright checks.
