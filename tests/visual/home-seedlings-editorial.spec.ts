@@ -27,8 +27,8 @@ test("seedling journal tracks a real batch and persists observed stages", async 
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Seedling");
   await page.getByRole("button", { name: /Add seed batch/ }).first().click();
   const form = page.locator("form.seed-form");
-  await form.getByLabel("Crop").selectOption({ label: "Peas" });
-  await form.getByLabel("Variety").fill("Trial autumn peas");
+  await form.getByRole("combobox", { name: "Crop", exact: true }).selectOption({ label: "Peas" });
+  await form.getByRole("combobox", { name: "Variety", exact: true }).fill("Trial autumn peas");
   await form.getByLabel("Seeds sown").fill("12");
   await form.getByRole("radio", { name: /12-cell tray/ }).check();
   await expect(form.getByLabel("Container name or custom setup")).toHaveValue("12-cell tray");
