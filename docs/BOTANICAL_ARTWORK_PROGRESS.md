@@ -681,3 +681,7 @@ Batch 39 deployed at 1d33361 (https://github.com/Archil3s/Blenheim-Garden/action
 Batch 40 is in progress locally. Moneymaker, Moonbeam and Mortgage Lifter passed visual comparison and 512 px and 128 px PNG export checks. ImageGen returned a quota error on Mountain Gold with a reported reset of 2026-11-11 09:43:42 UTC. Resume with Mountain Gold at index 3. Integrate and deploy after the ten-illustration batch passes review.
 
 Ten existing artichoke, asparagus and bean illustrations passed Harvest-stage review. Their exact cultivar mappings and original provenance are recorded in the growth-stage manifest, bringing the reviewed Harvest count to 131. The production build and all 36 browser checks passed.
+
+The previous Harvest mappings deployed at 1ed7511 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42947365270).
+
+Reviewed the ten dwarf bean illustrations from Batch 03 as harvested pods or dried beans and mapped them by exact cultivar ID. Both PNG sizes were verified, bringing the Harvest total to 141. The production build and all 36 browser checks passed.

@@ -1214,6 +1214,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:bean-dwarf-berrgold-improved": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-berrgold-improved.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-berrgold-improved.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-berrgold-improved",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-dwarf-black-valentine": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-black-valentine.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-black-valentine.png",
+      "referenceUrl": "https://www.diggers.com.au/products/bean-black-valentine",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-dwarf-borlotto-fire-tongue": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-borlotto-fire-tongue.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-borlotto-fire-tongue.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-borlotto-fire-tongue",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-dwarf-cannellino": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-cannellino.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-cannellino.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-cannellino",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-dwarf-colour-combo": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-colour-combo.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-colour-combo.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-colour-combo",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-dwarf-cranberry": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-cranberry.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-cranberry.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-cranberry",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-dwarf-fin-de-bagnols": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-fin-de-bagnols.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-fin-de-bagnols.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-fin-de-bagnols",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-dwarf-kaiapoi-red": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-kaiapoi-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-kaiapoi-red.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-dwarf-mayocoba": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-mayocoba.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-mayocoba.png",
+      "referenceUrl": "https://shop.woodlandfoods.com/products/mayocoba-beans/c-23/p-17423",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-dwarf-purple-tee-pee": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-purple-tee-pee.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-purple-tee-pee.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-purple-tee-pee",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
