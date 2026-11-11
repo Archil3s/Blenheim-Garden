@@ -46,3 +46,7 @@ export function newZealandCareDate(now = new Date()) {
 export function careDateLabel(value: string) {
   return new Date(value + "T12:00:00").toLocaleDateString("en-NZ", { day: "numeric", month: "short", year: "numeric" });
 }
+
+export function careShortDate(value: string) {
+  return new Date(value + "T12:00:00").toLocaleDateString("en-NZ", { day: "numeric", month: "short" });
+}
