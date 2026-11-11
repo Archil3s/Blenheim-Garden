@@ -1484,6 +1484,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "sourceFile": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
       "styleReference": "/assets/icons/rasmussen/approved/010_aji-cito.png"
     }
+  },
+  "kings:beetroot-chioggia": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/beetroot-chioggia.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/beetroot-chioggia.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/beetroot-chioggia",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:beetroot-colour-blend": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/beetroot-colour-blend.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/beetroot-colour-blend.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/beetroot-colour-blend",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:beetroot-cylindra": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/beetroot-cylindra.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/beetroot-cylindra.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/beetroot-cylindra",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:beetroot-golden-detroit": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/beetroot-golden-detroit.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/beetroot-golden-detroit.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/beetroot-golden-detroit",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:beetroot-pablo-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/beetroot-pablo-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/beetroot-pablo-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/beetroot-pablo-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:beetroot-ruby-queen": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/beetroot-ruby-queen.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/beetroot-ruby-queen.png",
+      "referenceUrl": "https://survivalgardenseeds.com/products/ruby-queen-beet-seeds",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:broad-bean-coles-prolific": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/broad-bean-coles-prolific.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/broad-bean-coles-prolific.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/broad-bean-coles-prolific",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:broad-bean-superaguadulce": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/broad-bean-superaguadulce.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/broad-bean-superaguadulce.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/broad-bean-superaguadulce",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:broccoli-chinese-gai-lan": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/broccoli-chinese-gai-lan.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/broccoli-chinese-gai-lan.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/broccoli-chinese-gai-lan",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:broccoli-mclaren-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/broccoli-mclaren-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/broccoli-mclaren-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/broccoli-mclaren-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

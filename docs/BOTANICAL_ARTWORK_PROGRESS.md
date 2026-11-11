@@ -693,3 +693,7 @@ Reviewed and mapped ten more existing bean illustrations, from Xera Select throu
 The additional bean Harvest mappings deployed at f4cf571 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42948517669).
 
 All ten verified Rasmussen originals depict ripe fruit and now have separate 512 px and 128 px transparent Harvest exports mapped to their exact catalogue IDs. Original PNGs were preserved byte-for-byte. The Harvest manifest has 161 mappings. The production build and all 36 browser checks passed.
+
+The Rasmussen Harvest exports deployed at 7242421 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42949347780).
+
+Reviewed and mapped ten existing beetroot, broad bean, and broccoli illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 171, and the production build and all 36 browser checks passed.
