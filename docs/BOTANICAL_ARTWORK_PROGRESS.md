@@ -765,3 +765,7 @@ Reviewed and mapped ten existing moringa, mustard, okra and onion illustrations 
 The prior Harvest mappings deployed at 45792b1 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42984781189).
 
 Reviewed ten existing Kings Seeds organic vegetable illustrations and mapped them to Harvest. Both PNG sizes were verified. The Harvest total reached 341. The production build and all 36 browser checks passed.
+
+The prior organic vegetable Harvest mappings deployed at 43cd6d7 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42985570641).
+
+Mapped ten reviewed organic capsicum, carrot, cauliflower, celery and chilli illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 351. The production build and all 36 browser checks passed.

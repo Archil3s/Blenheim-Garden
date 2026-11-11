@@ -3104,6 +3104,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6116-1_4f62f6b8-4891-43d6-9f1a-b92682b562f9_1080x.png?v=1752445819",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:organic-capsicum-california-wonder-red": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-capsicum-california-wonder-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-capsicum-california-wonder-red.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6091-1_1080x.png?v=1688788245",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-capsicum-cornito-mix-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-capsicum-cornito-mix-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-capsicum-cornito-mix-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6104-1_c42694a0-63cd-4d10-ba29-76fc6dba853a_1080x.jpg?v=1720660858",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-capsicum-lunchbox-mix": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-capsicum-lunchbox-mix.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-capsicum-lunchbox-mix.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6105-1_329c7439-6c21-400b-a4ed-17c66488b814_1080x.jpg?v=1720660858",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-carrot-berlicum": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-carrot-berlicum.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-carrot-berlicum.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6014-1_1ccd06cd-6f2a-4783-898d-59f4820258b3_1080x.jpg?v=1721351840",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-carrot-tendersweet": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-carrot-tendersweet.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-carrot-tendersweet.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6015-1_b9d4f4e4-12b3-41b3-a84c-a45e03ad7438_1080x.jpg?v=1721351894",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-cauliflower-belot-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-cauliflower-belot-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-cauliflower-belot-f1.png",
+      "referenceUrl": "https://www.agrosemens.com/215-5887-thickbox_default/Semences-Graines-Semence-Bio-Chou-Fleur.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-cauliflower-liria-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-cauliflower-liria-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-cauliflower-liria-f1.png",
+      "referenceUrl": "https://www.bolster.eu/media/images/1442_dbweb.jpg?1749107409",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-cauliflower-romanesco-early": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-cauliflower-romanesco-early.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-cauliflower-romanesco-early.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6016-1_0657fedb-64b5-456b-8e51-3db1f4b5bc30_1080x.jpg?v=1721351925",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-celery-tango": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-celery-tango.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-celery-tango.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/1_5759f70c-af0a-4f67-8259-5d3c76cdae59_1080x.png?v=1701996554",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-chilli-cayenne-red": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-chilli-cayenne-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-chilli-cayenne-red.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6094-1_1080x.png?v=1688788254",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
