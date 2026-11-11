@@ -745,3 +745,7 @@ Reviewed and mapped ten existing goji, gourd, bitter melon, luffa, jicama and ka
 The prior Harvest mappings deployed at c2fcdea (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42981878304).
 
 Reviewed and mapped ten existing kale, kiwano, kohlrabi and leek illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 291. The production build and all 36 browser checks passed.
+
+The prior Harvest mappings deployed at 378e846 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42982421931).
+
+Reviewed and mapped ten existing lettuce illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 301. The production build and all 36 browser checks passed.

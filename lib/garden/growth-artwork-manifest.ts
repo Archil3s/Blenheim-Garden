@@ -2654,6 +2654,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/products/leek-winter-giant",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:lettuce-buttercrunch": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-buttercrunch.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-buttercrunch.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/lettuce-buttercrunch",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:lettuce-coral-green": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-coral-green.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-coral-green.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/lettuce-coral-green",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:lettuce-coral-red": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-coral-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-coral-red.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/lettuce-coral-red",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:lettuce-cos": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-cos.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-cos.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/lettuce-cos",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:lettuce-drunken-woman-fringed-head": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-drunken-woman-fringed-head.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-drunken-woman-fringed-head.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/lettuce-drunken-woman-fringed-head",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:lettuce-great-lakes": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-great-lakes.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-great-lakes.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/lettuce-great-lakes",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:lettuce-leaf-blend": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-leaf-blend.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-leaf-blend.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/lettuce-leaf-blend",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:lettuce-oakleaf-green": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-oakleaf-green.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/lettuce-oakleaf-green",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:lettuce-oakleaf-red": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-oakleaf-red.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8394-1_1e41694f-dca8-4386-8450-3852696f1f4d_1080x.jpg?v=1720660867",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:lettuce-red-caesar": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-red-caesar.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-red-caesar.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8183-1_4136b71f-ef9f-46be-be58-b788987cffe8_1080x.jpg?v=1725596040",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
   }
 };
 
