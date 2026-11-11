@@ -2384,6 +2384,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/products/cucumber-poona-kheera",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:cucumber-spacemaster": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cucumber-spacemaster.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cucumber-spacemaster.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cucumber-spacemaster",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cucumber-tasty-queen-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cucumber-tasty-queen-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cucumber-tasty-queen-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cucumber-tasty-queen-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cucumber-telegraph-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cucumber-telegraph-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cucumber-telegraph-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cucumber-telegraph-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:eggplant-ebony": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/eggplant-ebony.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/eggplant-ebony.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/eggplant-ebony",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:eggplant-fiancee-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/eggplant-fiancee-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/eggplant-fiancee-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/eggplant-fiancee-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:eggplant-midnight-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/eggplant-midnight-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/eggplant-midnight-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/eggplant-midnight-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:eggplant-thai-green-egg-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/eggplant-thai-green-egg-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/eggplant-thai-green-egg-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/eggplant-thai-green-egg-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:eggplant-thai-purple": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/eggplant-thai-purple.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/eggplant-thai-purple.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/eggplant-thai-purple",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:endive-ruffec-green-curled": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/endive-ruffec-green-curled.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/endive-ruffec-green-curled.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/endive-ruffec-green-curled",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:fennel-milano": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/fennel-milano.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/fennel-milano.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/fennel-milano",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
