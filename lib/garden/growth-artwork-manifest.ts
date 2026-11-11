@@ -1304,6 +1304,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-purple-tee-pee",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:bean-dwarf-xera-select": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-xera-select.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-xera-select.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-xera-select",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-runner-blue-lake": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-runner-blue-lake.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-blue-lake.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-runner-blue-shackamaxon": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-runner-blue-shackamaxon.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-blue-shackamaxon.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-runner-cherokee-trail-of-tears": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-runner-cherokee-trail-of-tears.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-cherokee-trail-of-tears.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-runner-good-mother-stallard": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-runner-good-mother-stallard.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-good-mother-stallard.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-runner-holy-climbing": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-runner-holy-climbing.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-holy-climbing.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-runner-hopi-beige": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-runner-hopi-beige.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-hopi-beige.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-runner-indian-hannah": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-runner-indian-hannah.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-indian-hannah.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-runner-italian-flat": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-runner-italian-flat.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-italian-flat.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-italian-flat",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-runner-king-of-the-blues": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-runner-king-of-the-blues.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-king-of-the-blues.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-king-of-the-blues",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

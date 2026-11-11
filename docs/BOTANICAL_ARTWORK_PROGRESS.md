@@ -685,3 +685,7 @@ Ten existing artichoke, asparagus and bean illustrations passed Harvest-stage re
 The previous Harvest mappings deployed at 1ed7511 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42947365270).
 
 Reviewed the ten dwarf bean illustrations from Batch 03 as harvested pods or dried beans and mapped them by exact cultivar ID. Both PNG sizes were verified, bringing the Harvest total to 141. The production build and all 36 browser checks passed.
+
+The dwarf bean Harvest mappings deployed at 0b9a239 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42947942059).
+
+Reviewed and mapped ten more existing bean illustrations, from Xera Select through King of the Blues. Both PNG sizes were verified. There are now 151 reviewed Harvest mappings. The production build and all 36 browser checks passed.
