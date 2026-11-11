@@ -3806,6 +3806,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8348-1_ec3581c0-9f93-4278-ba66-2e3fa5c09572_1080x.jpg?v=1725602748",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:watercress": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/watercress.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/watercress.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8349-1_a13fa372-ddbe-4830-8564-dac9d02ba52a_1080x.jpg?v=1725602777",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:watermelon-apple-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/watermelon-apple-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/watermelon-apple-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8432-W_1080x.png?v=1784972011",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:watermelon-charleston-gray": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/watermelon-charleston-gray.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/watermelon-charleston-gray.png",
+      "referenceUrl": "https://sowtrueseed.com/cdn/shop/products/Charleston_Gray_2.jpg?v=1752171949",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:watermelon-crimson-sweet": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/watermelon-crimson-sweet.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/watermelon-crimson-sweet.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6079-1_52dde458-bde7-423d-be49-e743cc5cd002_1080x.jpg?v=1721356026",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:watermelon-dulce-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/watermelon-dulce-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/watermelon-dulce-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/WatermelonDulce_1080x.png?v=1697138268",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:watermelon-gold-in-gold-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/watermelon-gold-in-gold-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/watermelon-gold-in-gold-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8350-1_8379fe20-8eea-4880-b002-546a703c1ed8_1080x.jpg?v=1725602833",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:watermelon-moon-stars": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/watermelon-moon-stars.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/watermelon-moon-stars.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8350-W2_1080x.png?v=1784973797",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:watermelon-mountain-sweet-yellow": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/watermelon-mountain-sweet-yellow.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/watermelon-mountain-sweet-yellow.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8444-W_1080x.png?v=1784972069",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:watermelon-sugar-baby": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/watermelon-sugar-baby.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/watermelon-sugar-baby.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6080-1_9e7b4672-198d-4bb6-b61e-afe8c9fc6562_1080x.jpg?v=1721356048",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:watermelon-sweet-red-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/watermelon-sweet-red-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/watermelon-sweet-red-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8352-1_3bf805ad-39b8-4108-b257-5b340724566a_1080x.jpg?v=1725602901",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

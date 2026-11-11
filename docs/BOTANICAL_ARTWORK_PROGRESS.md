@@ -480,7 +480,7 @@ Cloudflare deployment succeeded for Batch 23 commit 14941fa (https://github.com/
 
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 410 of them. The local inventory at work/references/pending-catalogue.tsv includes the remaining 39 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps 420 of them. The local inventory at work/references/pending-catalogue.tsv includes the remaining 39 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
@@ -846,3 +846,20 @@ Batch 40 deployed at 8cfc259 (https://github.com/Archil3s/Blenheim-Garden/action
 - Kings Seeds | water-spinach-bamboo-leaf | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8348-1_ec3581c0-9f93-4278-ba66-2e3fa5c09572_1080x.jpg?v=1725602748 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 41 passed the production build and all 36 focused browser checks. There are 410 Kings Seeds cultivar illustrations and 416 Harvest mappings across both suppliers. Nineteen Kings Seeds cultivars still need their first illustration.
+
+Batch 41 deployed at f6a9d82 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/43086718542).
+
+## Kings Seeds Batch 42
+
+- Kings Seeds | watercress | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8349-1_a13fa372-ddbe-4830-8564-dac9d02ba52a_1080x.jpg?v=1725602777 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | watermelon-apple-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8432-W_1080x.png?v=1784972011 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | watermelon-charleston-gray | generated_qa_passed | 512 px master and 128 px gallery | https://sowtrueseed.com/cdn/shop/products/Charleston_Gray_2.jpg?v=1752171949 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | watermelon-crimson-sweet | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6079-1_52dde458-bde7-423d-be49-e743cc5cd002_1080x.jpg?v=1721356026 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | watermelon-dulce-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/WatermelonDulce_1080x.png?v=1697138268 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | watermelon-gold-in-gold-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8350-1_8379fe20-8eea-4880-b002-546a703c1ed8_1080x.jpg?v=1725602833 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | watermelon-moon-stars | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8350-W2_1080x.png?v=1784973797 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | watermelon-mountain-sweet-yellow | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8444-W_1080x.png?v=1784972069 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | watermelon-sugar-baby | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/O6080-1_9e7b4672-198d-4bb6-b61e-afe8c9fc6562_1080x.jpg?v=1721356048 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | watermelon-sweet-red-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8352-1_3bf805ad-39b8-4108-b257-5b340724566a_1080x.jpg?v=1725602901 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 42 passed the production build and all 36 focused browser checks. There are 420 Kings Seeds cultivar illustrations and 426 reviewed Harvest mappings across both suppliers. Nine Kings Seeds cultivars still need their first illustration.
