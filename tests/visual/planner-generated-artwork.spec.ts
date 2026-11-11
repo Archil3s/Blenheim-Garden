@@ -39,7 +39,7 @@ test("generated artwork appears on placed plants and in the plant picker", async
   await page.goto("/planner");
   await expect(page.locator(".gv-save")).toHaveText("Saved ✓");
   await expect(page.locator(".planting-area[data-crop='Amaranth'] .planting-area-icons i span").first())
-    .toHaveCSS("background-image", /generated\\/kings-seeds\\/gallery\\/amaranth-garnet-red\\.png/);
+    .toHaveCSS("background-image", /amaranth-garnet-red[.]png/);
 
   await page.locator(".gv-rail button")
     .filter({ has: page.locator("small", { hasText: /^Plants$/ }) }).click();
@@ -47,7 +47,7 @@ test("generated artwork appears on placed plants and in the plant picker", async
   await page.getByPlaceholder("Plant or variety").fill("Amaranth");
   await page.locator(".gv-plant-list > button[data-crop='Amaranth']").click();
   await expect(page.locator(".gv-ready-strip span span").first())
-    .toHaveCSS("background-image", /generated\\/kings-seeds\\/gallery\\/amaranth-garnet-red\\.png/);
+    .toHaveCSS("background-image", /amaranth-garnet-red[.]png/);
   expect((await page.request.get(kingsGallery)).ok()).toBe(true);
 
   await page.screenshot({ path: testInfo.outputPath("planner-generated-artwork.png"), fullPage: true });
