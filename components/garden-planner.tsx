@@ -303,18 +303,18 @@ export function GardenPlanner() {
   const [clipboardReady, setClipboardReady] = useState(false);
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [loadSource, setLoadSource] = useState<LoadSource>("starting");
-  const [careEvents, setCareEvents] = useState<CareEvent[]>([]);
+  const [careRecords, setCareRecords] = useState<{ gardenId: string; events: CareEvent[] }>({ gardenId: "", events: [] });
+  const careEvents = careRecords.gardenId === activeGardenId ? careRecords.events : [];
 
   useEffect(() => {
     let cancelled = false;
-    setCareEvents([]);
     void fetch("/api/garden/care?gardenId=" + encodeURIComponent(activeGardenId), { cache: "no-store" })
       .then(async (response) => {
         if (!response.ok) throw new Error("Unable to load care markers.");
         return response.json() as Promise<{ ok: boolean; events?: CareEvent[] }>;
       })
-      .then((data) => { if (!cancelled && data.ok) setCareEvents(data.events ?? []); })
-      .catch(() => { if (!cancelled) setCareEvents([]); });
+      .then((data) => { if (!cancelled && data.ok) setCareRecords({ gardenId: activeGardenId, events: data.events ?? [] }); })
+      .catch(() => { if (!cancelled) setCareRecords({ gardenId: activeGardenId, events: [] }); });
     return () => { cancelled = true; };
   }, [activeGardenId]);
 
