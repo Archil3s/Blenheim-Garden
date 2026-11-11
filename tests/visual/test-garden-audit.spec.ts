@@ -1,4 +1,9 @@
 import { expect, test } from "@playwright/test";
+import generatedArtwork from "../../lib/garden/generated-artwork-manifest.json";
+import kingsSeeds from "../../lib/garden/kings-seeds-varieties.json";
+
+const mappedKingsIds = new Set(Object.keys(generatedArtwork));
+const pendingKingsCount = kingsSeeds.filter(({ id }) => !mappedKingsIds.has("kings:" + id)).length;
 
 test("pending artwork stays unmapped and verified originals retain their source", async ({ page }) => {
   const mutations: string[] = [];
@@ -51,7 +56,7 @@ test("verified filter shows only the 10 original Rasmussen HTML PNGs and no King
   await page.locator(".tg-controls select").first().selectOption("Kings Seeds");
   await expect(page.locator(".tg-plot")).toHaveCount(0);
   await page.locator(".tg-status-select select").selectOption("Artwork pending only");
-  await expect(page.locator(".tg-plot")).toHaveCount(72);
+  await expect(page.locator(".tg-plot")).toHaveCount(Math.min(72, pendingKingsCount));
   await expect(page.locator(".tg-plot img")).toHaveCount(0);
 });
 

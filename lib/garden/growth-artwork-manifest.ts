@@ -764,6 +764,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/V8290-1_1080x.png?v=1688025774",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:spinach-summer-solstice-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/spinach-summer-solstice-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/spinach-summer-solstice-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8293-1_46e5a694-8a1f-49ec-a528-4d05e8d5868d_1080x.jpg?v=1720749577",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:spinach-winter-upright-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/spinach-winter-upright-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/spinach-winter-upright-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8294-1_0a598065-a2c9-4779-93ec-138ec4c78075_1080x.jpg?v=1720749599",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:spring-onion-ishikura": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/spring-onion-ishikura.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/spring-onion-ishikura.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8221-1_774e3fa7-0627-47cf-8572-410a18590dcd_1080x.jpg?v=1725597750",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:spring-onion-red-bunching": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/spring-onion-red-bunching.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/spring-onion-red-bunching.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/V8222-1_1080x.png?v=1688021265",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:squash-african-gem": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/squash-african-gem.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/squash-african-gem.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8249-1_78d93829-72e7-4a07-bcaf-e0ab76d97d7b_1080x.jpg?v=1725598710",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:squash-jade-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/squash-jade-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/squash-jade-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8250-1_3a6f0948-b84e-4c05-804a-f7015d079b7c_1080x.jpg?v=1725598742",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:squash-kumi-kumi": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/squash-kumi-kumi.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/squash-kumi-kumi.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8251-1_8e54db78-76ee-4b4c-90c3-0fc3e67b9346_1080x.jpg?v=1725598783",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:squash-north-georgia-candy-roaster": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/squash-north-georgia-candy-roaster.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/squash-north-georgia-candy-roaster.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8443-W_1080x.png?v=1784973417",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:squash-spaghetti": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/squash-spaghetti.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/squash-spaghetti.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/V8255-2_1080x.png?v=1720430580",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:swede-champion-purple-top": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/swede-champion-purple-top.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/swede-champion-purple-top.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8295-1_642b4937-8bf4-4d0a-b7d4-d9de296a5b14_1080x.jpg?v=1725600762",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
