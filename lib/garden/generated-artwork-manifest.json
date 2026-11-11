@@ -2168,5 +2168,75 @@
     "gallery": "/plant-icons/generated/kings-seeds/gallery/pea-sugar-snap-tall.png",
     "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8426-1W_1080x.png?v=1757032954",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:pepino": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/pepino.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/pepino.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/V8235-1_1080x.png?v=1688019301",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:perilla-green": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/perilla-green.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/perilla-green.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8411-1W_1080x.png?v=1765489917",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:perilla-purple": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/perilla-purple.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/perilla-purple.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8025-1_26f1bb02-c3e9-44dd-b747-69c78f074cb1_1080x.jpg?v=1721601208",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:pigeon-pea": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/pigeon-pea.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/pigeon-pea.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8364-1_17995513-cfc2-45e5-bcf6-a268bb05ff44_1080x.jpg?v=1725603279",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:pumpkin-atlantic-giant": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/pumpkin-atlantic-giant.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/pumpkin-atlantic-giant.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8237-1_4c88c93a-ddca-4111-ad66-0c2184c8ca9f_1080x.jpg?v=1725598318",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:pumpkin-crown-prince": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/pumpkin-crown-prince.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/pumpkin-crown-prince.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8239-1_008dced8-c2dc-4076-bbcc-6e61c38b2b6d_1080x.jpg?v=1720749408",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:pumpkin-flat-white-boer": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/pumpkin-flat-white-boer.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/pumpkin-flat-white-boer.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8240-1_4241dd3b-3ec6-468f-8a80-93b7de3a1465_1080x.jpg?v=1725598435",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:pumpkin-henris-potimarron": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/pumpkin-henris-potimarron.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/pumpkin-henris-potimarron.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8241-1_7fe02bb3-0809-424c-9476-41b1965bcad4_1080x.jpg?v=1725598479",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:pumpkin-kakai": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/pumpkin-kakai.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/pumpkin-kakai.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8398-W_1080x.png?v=1784973841",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:pumpkin-long-island-cheese": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/pumpkin-long-island-cheese.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/pumpkin-long-island-cheese.png",
+    "referenceUrl": "https://www.harrisseeds.com/cdn/shop/files/01699b_b3194d47-74ff-4dd8-82b4-4d4ddbe2d692.jpg?v=1738389538",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }
