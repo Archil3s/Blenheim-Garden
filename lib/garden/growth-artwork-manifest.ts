@@ -2744,6 +2744,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8183-1_4136b71f-ef9f-46be-be58-b788987cffe8_1080x.jpg?v=1725596040",
       "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
     }
+  },
+  "kings:lettuce-salanova-butterhead-green": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-salanova-butterhead-green.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-salanova-butterhead-green.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8405-1_590515b8-16b5-4797-aa34-aa1763d4128b_1080x.png?v=1752445834",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:lettuce-salanova-butterhead-red": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-salanova-butterhead-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-salanova-butterhead-red.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8395-1_d3dd6034-72d0-4d6f-a865-d76050eccaec_1080x.jpg?v=1720660869",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:lettuce-salanova-leaf-green": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-salanova-leaf-green.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-salanova-leaf-green.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8460-W_1080x.png?v=1784972497",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:lettuce-salanova-leaf-red": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-salanova-leaf-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-salanova-leaf-red.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8461-W.png",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:melon-charantais": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/melon-charantais.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/melon-charantais.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8436-W_433f3055-4a86-4ee2-a52a-e9787f7cf590_1080x.png?v=1784972330",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:melon-honeydew-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/melon-honeydew-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/melon-honeydew-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8422-1_7ef91907-c789-46db-bb9b-9efe2660dc09_1080x.png?v=1752445835",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:melon-medley-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/melon-medley-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/melon-medley-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8400-1_1080x.png?v=1721993175",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:melon-tuscan-delight-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/melon-tuscan-delight-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/melon-tuscan-delight-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8197-1_35a9e951-458b-4a30-80a2-5a992654e0d8_1080x.jpg?v=1725596849",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:mesclun-italian-blend": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/mesclun-italian-blend.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/mesclun-italian-blend.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/V8198-1_1080x.png?v=1688013177",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:mesclun-kale-blend": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/mesclun-kale-blend.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/mesclun-kale-blend.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8199-1_93870567-e029-43f4-b099-d86687cbf9f6_1080x.jpg?v=1725596928",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
   }
 };
 
