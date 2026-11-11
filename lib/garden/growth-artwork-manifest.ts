@@ -2834,6 +2834,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8199-1_93870567-e029-43f4-b099-d86687cbf9f6_1080x.jpg?v=1725596928",
       "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
     }
+  },
+  "kings:mesclun-mild-blend": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/mesclun-mild-blend.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/mesclun-mild-blend.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/V8201-1_1080x.png?v=1688013345",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:mesclun-oriental-blend": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/mesclun-oriental-blend.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/mesclun-oriental-blend.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8202-1_a795bed1-8fd8-4781-ad34-4783011d48c5_1080x.jpg?v=1725597049",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:mesclun-original-blend": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/mesclun-original-blend.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/mesclun-original-blend.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8203-1_48e2614b-0df8-4c84-8c15-7b40fbf54913_1080x.jpg?v=1725597112",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:mesclun-red-blend": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/mesclun-red-blend.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/mesclun-red-blend.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8204-1_cdda5019-51cd-4106-b3a9-c28ea1774a9e_1080x.jpg?v=1725597144",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:mesclun-winter-blend": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/mesclun-winter-blend.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/mesclun-winter-blend.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8205-1_63c73b9e-8510-415b-aef6-8f375fde2abe_1080x.jpg?v=1725597204",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:mibuna-green-spray": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/mibuna-green-spray.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/mibuna-green-spray.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8012-1_98818975-4b44-429f-adb4-71ef8246c757_1080x.jpg?v=1721600811",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:miners-lettuce": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/miners-lettuce.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/miners-lettuce.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8206-1_7a14f18d-dcdb-4e24-a1cc-436c97ee0902_1080x.jpg?v=1725597233",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:mizuna": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/mizuna.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/mizuna.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8013-1_8ac5607b-3989-4301-990c-ea51e03c8ab3_1080x.jpg?v=1721600850",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:mizuna-red-coral": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/mizuna-red-coral.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/mizuna-red-coral.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/Mizuna_Red_Coral_-_Candy_1080x.png?v=1778457594",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/mizuna.png"
+    }
+  },
+  "kings:mizuna-red-kingdom-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/mizuna-red-kingdom-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/mizuna-red-kingdom-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8015-1_caa1fec8-5d55-4e2f-a0be-b700755470ef_1080x.jpg?v=1721600904",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/mizuna.png"
+    }
   }
 };
 
