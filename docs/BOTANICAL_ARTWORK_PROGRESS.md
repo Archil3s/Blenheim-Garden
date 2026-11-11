@@ -879,3 +879,22 @@ Batch 42 deployed at d9831d3 (https://github.com/Archil3s/Blenheim-Garden/action
 - Kings Seeds | zucchini-tondo-di-nizza | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8453_W_1080x.png?v=1784970099 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 43 passed the production build and all 36 focused browser checks. The generated artwork manifest covers all 429 Kings Seeds IDs. The growth manifest has 435 reviewed Harvest mappings across both suppliers. Four existing Kings Seeds icons still need dedicated Harvest art, and earlier growth stages remain pending across the catalogue.
+
+Batch 43 deployed at 775ca92 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/43091521766).
+
+## Rasmussen Batch 01
+
+- Rasmussen | aji-colorado-orange-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/2A9862F7-84E7-4205-B692-B9F67971CD71.png?v=1743915279&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-cristal-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://southdevonchillifarm.co.uk/cdn/shop/files/AjiCrystal2_d6d2123f-34ff-4b6c-b0dc-1743fc2f7c91.jpg?v=1726582142&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-fantasy-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiFantasy.png?v=1744687289&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-giallo-arancio-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiGialloArancio.png?v=1744625909&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-guyana-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/D722CEB6-17ED-49B0-AF38-302ED10C535E.png?v=1743915362&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-lemon-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/710A1E46-3BB0-4B24-90C3-7E0340981A4A_5df4fdc9-6b7a-410a-8dfb-9c2fd78b6a33.png?v=1759100133&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-lemon-starburst-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiLemonStarburst.png?v=1744690396&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-mango-stumpy-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0F6FC353-1E27-4AA7-8041-9CBD0A533FC7.png?v=1743915417 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-melocoton-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiMelocoton_1.png?v=1745009464&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-merken-cacho-de-cabra-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiMerkenCachodecabra.png?v=1744690903&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+
+Aji Lemon Stumpy is the supplier and catalogue display name for the historical aji-lemon-starburst product ID. The artwork follows the exact Stumpy reference.
+
+Rasmussen Batch 01 passed the production build and all 40 focused browser checks. Rasmussen now has ten generated illustrations and ten verified originals. The library has 445 reviewed Harvest mappings.

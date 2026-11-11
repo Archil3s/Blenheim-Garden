@@ -157,3 +157,15 @@ test("Little Gem opens reviewed artwork for all six growth stages", async ({ pag
     await expect.poll(() => image.evaluate(node => (node as HTMLImageElement).naturalWidth)).toBe(128);
   }
 });
+
+test("Rasmussen generated cultivar opens its exact Harvest artwork", async ({ page }) => {
+  await page.goto("/test-garden");
+  await page.getByRole("searchbox").fill("Aji Lemon Stumpy");
+  await page.getByRole("button", { name: /Aji Lemon Stumpy/ }).click();
+  const harvest = page.getByRole("region", { name: "Seed to harvest" })
+    .getByRole("link", { name: "Harvest illustration" });
+  await expect(harvest).toHaveAttribute("href",
+    "/plant-icons/generated/rasmussen/master/aji-lemon-starburst-chilli-seeds-10-seeds.png");
+  await harvest.scrollIntoViewIfNeeded();
+  await expect(harvest.getByRole("img")).toHaveJSProperty("naturalWidth", 128);
+});

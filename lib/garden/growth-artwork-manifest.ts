@@ -3977,6 +3977,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8453_W_1080x.png?v=1784970099",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "rasmussen:aji-colorado-orange-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/aji-colorado-orange-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/aji-colorado-orange-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/2A9862F7-84E7-4205-B692-B9F67971CD71.png?v=1743915279&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:aji-cristal-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/aji-cristal-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/aji-cristal-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://southdevonchillifarm.co.uk/cdn/shop/files/AjiCrystal2_d6d2123f-34ff-4b6c-b0dc-1743fc2f7c91.jpg?v=1726582142&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:aji-fantasy-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/aji-fantasy-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/aji-fantasy-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiFantasy.png?v=1744687289&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:aji-giallo-arancio-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/aji-giallo-arancio-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/aji-giallo-arancio-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiGialloArancio.png?v=1744625909&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:aji-guyana-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/aji-guyana-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/aji-guyana-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/D722CEB6-17ED-49B0-AF38-302ED10C535E.png?v=1743915362&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:aji-lemon-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/aji-lemon-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/aji-lemon-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/710A1E46-3BB0-4B24-90C3-7E0340981A4A_5df4fdc9-6b7a-410a-8dfb-9c2fd78b6a33.png?v=1759100133&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:aji-lemon-starburst-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/aji-lemon-starburst-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/aji-lemon-starburst-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiLemonStarburst.png?v=1744690396&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:aji-mango-stumpy-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/aji-mango-stumpy-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/aji-mango-stumpy-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0F6FC353-1E27-4AA7-8041-9CBD0A533FC7.png?v=1743915417",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:aji-melocoton-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/aji-melocoton-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/aji-melocoton-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiMelocoton_1.png?v=1745009464&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:aji-merken-cacho-de-cabra-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiMerkenCachodecabra.png?v=1744690903&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
