@@ -717,3 +717,7 @@ Reviewed and mapped existing carob and nine carrot illustrations to Harvest. Bot
 The carob and carrot Harvest mappings deployed at 30868bf (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42952192471).
 
 Reviewed and mapped four existing carrot and six cauliflower and broccoflower illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 221. The production build and all 36 browser checks passed.
+
+The carrot and cauliflower Harvest mappings deployed at 0efda07 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42952714961).
+
+Reviewed and mapped ten existing cauliflower, celeriac, celery, celtuce, and chilli illustrations to Harvest. Chia remains pending Harvest review because its illustration shows a flowering spike. Both PNG sizes were verified. The Harvest total reached 231. The production build and all 36 browser checks passed.

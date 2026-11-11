@@ -2024,6 +2024,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/products/cauliflower-sprouting-fioretto-f1",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:cauliflower-violet-sicilian": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cauliflower-violet-sicilian.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cauliflower-violet-sicilian.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cauliflower-violet-sicilian",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:celeriac-mars": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/celeriac-mars.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/celeriac-mars.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/celeriac-mars",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cauliflower-winter-love-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cauliflower-winter-love-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cauliflower-winter-love-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8446-W.png",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:celery-for-cutting": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/celery-for-cutting.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/celery-for-cutting.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/celery-for-cutting",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:celery-tall-utah": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/celery-tall-utah.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/celery-tall-utah.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/celery-tall-utah",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:celtuce": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/celtuce.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/celtuce.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/celtuce",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:chilli-mild-anaheim": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/chilli-mild-anaheim.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-mild-anaheim.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-mild-anaheim",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:chilli-medium-asian-fire-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/chilli-medium-asian-fire-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-medium-asian-fire-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-medium-asian-fire-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:chilli-hot-bhut-jolokia": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/chilli-hot-bhut-jolokia.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-hot-bhut-jolokia.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-hot-bhut-jolokia",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:chilli-carolina-reaper": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/chilli-carolina-reaper.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-carolina-reaper.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-carolina-reaper",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
