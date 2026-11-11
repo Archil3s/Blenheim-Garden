@@ -2238,5 +2238,75 @@
     "gallery": "/plant-icons/generated/kings-seeds/gallery/pumpkin-long-island-cheese.png",
     "referenceUrl": "https://www.harrisseeds.com/cdn/shop/files/01699b_b3194d47-74ff-4dd8-82b4-4d4ddbe2d692.jpg?v=1738389538",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:pumpkin-musquee-de-provence": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/pumpkin-musquee-de-provence.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/pumpkin-musquee-de-provence.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8245-1_ddbee6fc-53a8-48f8-90c0-0069d9ba07e4_1080x.jpg?v=1725598554",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:pumpkin-queensland-blue": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/pumpkin-queensland-blue.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/pumpkin-queensland-blue.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8246-1_36b2624f-697f-4ff7-ab65-fed2b648a10b_1080x.jpg?v=1725598603",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:pumpkin-small-sugar": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/pumpkin-small-sugar.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/pumpkin-small-sugar.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8247-1_aec4c6a1-0b9d-42e9-8c4a-845aadd145dd_1080x.jpg?v=1725598635",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:quinoa": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/quinoa.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/quinoa.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8452-W_1080x.png?v=1784781445",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:chicory-treviso": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/chicory-treviso.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/chicory-treviso.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8111-1_aa322ea3-d26c-418a-b1a7-9c108db1d37b_1080x.jpg?v=1725587599",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:radish-easter-egg": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/radish-easter-egg.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/radish-easter-egg.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8257-1_0df34af7-9c50-4930-886e-470786c170f2_1080x.jpg?v=1725599129",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:radish-german-giant": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/radish-german-giant.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/radish-german-giant.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/V8259-1_1080x.png?v=1688008675",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:radish-gourmet-blend": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/radish-gourmet-blend.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/radish-gourmet-blend.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8261-1_c6e0ed8d-f4e8-464e-923e-6be4b6443474_1080x.jpg?v=1725599221",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:radish-jin-mat-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/radish-jin-mat-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/radish-jin-mat-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8268-1_8d4a7b0e-68f1-4b09-b032-4177c7373b8a_1080x.jpg?v=1725599337",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:radish-mini-daikon-purple-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/radish-mini-daikon-purple-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/radish-mini-daikon-purple-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8269-1_7ddbe3a4-5a4a-4cff-928f-eee2ddbd0e86_1080x.jpg?v=1725599396",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }
