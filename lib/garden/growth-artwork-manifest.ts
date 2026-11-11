@@ -3194,6 +3194,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6094-1_1080x.png?v=1688788254",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:organic-chilli-jalapeno-early": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-chilli-jalapeno-early.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-chilli-jalapeno-early.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6095-1_1080x.png?v=1688788248",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-corn-early-gem": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-corn-early-gem.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-corn-early-gem.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6126-W_1080x.png?v=1784972759",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-cress-moss-curled": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-cress-moss-curled.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-cress-moss-curled.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/O6022-1_1080x.png?v=1688020013",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-cucumber-paris-pickles": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-cucumber-paris-pickles.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-cucumber-paris-pickles.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6023-1_effee9d3-8341-4a08-94a2-8b8a195ea836_1080x.jpg?v=1721352275",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-cucumber-tendergreen": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-cucumber-tendergreen.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-cucumber-tendergreen.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6024-2_1080x.jpg?v=1721352311",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-eggplant-black-beauty": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-eggplant-black-beauty.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-eggplant-black-beauty.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6027-W_1080x.png?v=1784973962",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-eggplant-long-purple": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-eggplant-long-purple.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-eggplant-long-purple.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6028-1_06cac7cd-2fd0-40bd-b044-d24ae1773969_1080x.jpg?v=1721352651",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-kale-tuscan-black": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-kale-tuscan-black.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-kale-tuscan-black.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6034-1_37ec5e23-c2f8-414d-a3c6-30a0010df070_1080x.jpg?v=1721352925",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-kale-westerland": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-kale-westerland.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-kale-westerland.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6096-1_95a0e872-f31e-44ca-965c-7edfe9baa322_1080x.jpg?v=1721354121",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-kohlrabi-purple-vienna": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-kohlrabi-purple-vienna.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-kohlrabi-purple-vienna.png",
+      "referenceUrl": "https://kwekerijkweek.be/cdn/shop/files/KOOLRABI_purplevienna_1.png?v=1690287827",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

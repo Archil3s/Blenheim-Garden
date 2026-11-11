@@ -769,3 +769,7 @@ Reviewed ten existing Kings Seeds organic vegetable illustrations and mapped the
 The prior organic vegetable Harvest mappings deployed at 43cd6d7 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42985570641).
 
 Mapped ten reviewed organic capsicum, carrot, cauliflower, celery and chilli illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 351. The production build and all 36 browser checks passed.
+
+The prior organic vegetable Harvest mappings deployed at 87785b7 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42986270741).
+
+Reviewed ten organic Kings Seeds illustrations from Early Jalapeno through Purple Vienna kohlrabi and mapped them to Harvest. Both PNG sizes were verified. The Harvest total reached 361. The production build and all 36 browser checks passed.
