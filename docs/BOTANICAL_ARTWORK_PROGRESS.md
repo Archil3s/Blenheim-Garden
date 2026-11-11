@@ -761,3 +761,7 @@ Reviewed and mapped ten existing mesclun, mibuna, miner's lettuce and mizuna ill
 The prior Harvest mappings deployed at 2b3ccdf (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42984100823).
 
 Reviewed and mapped ten existing moringa, mustard, okra and onion illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 331. The production build and all 36 browser checks passed.
+
+The prior Harvest mappings deployed at 45792b1 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42984781189).
+
+Reviewed ten existing Kings Seeds organic vegetable illustrations and mapped them to Harvest. Both PNG sizes were verified. The Harvest total reached 341. The production build and all 36 browser checks passed.

@@ -3014,6 +3014,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8220-1_1d623113-843d-4424-8004-1b27f6966cb0_1080x.jpg?v=1725597714",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:organic-bean-dwarf-top-crop": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-bean-dwarf-top-crop.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-bean-dwarf-top-crop.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8046-1_37dfb8e2-ab71-4103-a069-84c7798c630b_1080x.jpg?v=1721601929",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-bean-runner-cobra": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-bean-runner-cobra.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-bean-runner-cobra.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6003-1_3f191879-613d-42dc-8abe-b96e6caac8a6_1080x.jpg?v=1721351373",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-silverbeet-erbette": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-silverbeet-erbette.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-silverbeet-erbette.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6065-1_1ffe37a9-d40a-4cf9-8597-64af2ba74d81_1080x.jpg?v=1721355530",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-beetroot-detroit-dark-red": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-beetroot-detroit-dark-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-beetroot-detroit-dark-red.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6005-1_d49b7e2e-d75f-4e02-97c2-34e78b44d76f_1080x.jpg?v=1721351544",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-belstar-broccoli-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-belstar-broccoli-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-belstar-broccoli-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6006-1_77913c72-78c9-4984-ae2c-664067c23e3b_1080x.jpg?v=1721351579",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-broccoli-raab-spring-rapini": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-broccoli-raab-spring-rapini.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-broccoli-raab-spring-rapini.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6008-1_169932ae-7ff0-46cc-8a03-1baf961ced75_1080x.jpg?v=1721351657",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-broccoli-waltham": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-broccoli-waltham.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-broccoli-waltham.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6007-1_b7110884-6b37-46f9-b2ab-f34d62666789_1080x.jpg?v=1721351613",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-brussels-sprouts-igor-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-brussels-sprouts-igor-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-brussels-sprouts-igor-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6009-1_6001442f-530c-4f81-9212-00f35337a10b_1080x.jpg?v=1721351692",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-butternut-honeynut": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-butternut-honeynut.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-butternut-honeynut.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6055-W_1080x.png?v=1784974002",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:organic-cabbage-golden-acre": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/organic-cabbage-golden-acre.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/organic-cabbage-golden-acre.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6116-1_4f62f6b8-4891-43d6-9f1a-b92682b562f9_1080x.png?v=1752445819",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
