@@ -450,6 +450,50 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.harrisseeds.com/cdn/shop/files/01699b_b3194d47-74ff-4dd8-82b4-4d4ddbe2d692.jpg?v=1738389538",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:lettuce-little-gem": {
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-little-gem-seed.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-little-gem-seed.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/lettuce-little-gem",
+      "sourceFile": "Approved Little Gem growth mockup"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-little-gem-first-sprout.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-little-gem-first-sprout.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/lettuce-little-gem",
+      "sourceFile": "Approved Little Gem growth mockup"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-little-gem-baby-plant.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-little-gem-baby-plant.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/lettuce-little-gem",
+      "sourceFile": "Approved Little Gem growth mockup"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-little-gem-semi-mature.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-little-gem-semi-mature.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/lettuce-little-gem",
+      "sourceFile": "Approved Little Gem growth mockup"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-little-gem-pre-harvest.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-little-gem-pre-harvest.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/lettuce-little-gem",
+      "sourceFile": "Approved Little Gem growth mockup"
+    },
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/lettuce-little-gem-harvest.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/lettuce-little-gem-harvest.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/lettuce-little-gem",
+      "sourceFile": "Approved Little Gem growth mockup"
+    }
   }
 };
 

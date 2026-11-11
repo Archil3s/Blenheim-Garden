@@ -552,3 +552,7 @@ Mapped 30 previously reviewed Kings Seeds harvest illustrations to their exact c
 - Kings Seeds | pumpkin-long-island-cheese | generated_qa_passed | 512 px master and 128 px gallery | https://www.harrisseeds.com/cdn/shop/files/01699b_b3194d47-74ff-4dd8-82b4-4d4ddbe2d692.jpg?v=1738389538 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 32 passed the production build and all 32 focused browser checks. The Kings Seeds manifest contains 320 unique assets at each size. Fifty cultivars have reviewed Harvest mappings.
+
+Batch 32 deployed at 86de64f (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42931273086).
+
+Little Gem lettuce has six reviewed growth images in /test-garden. Each transparent PNG is exported individually from the approved Little Gem mockup, using resampling for the 512 px masters. The original catalogue icon remains in its existing mapping. Both PNG sizes passed review, the production build passed and all 36 browser checks passed.

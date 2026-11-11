@@ -132,3 +132,19 @@ test("supplier inspector shows all growth stages in order and links reviewed har
   await expect(stages.getByRole("link", { name: "Harvest illustration" }))
     .toHaveAttribute("href", /master\/passionfruit-large-black\.png$/);
 });
+
+test("Little Gem opens reviewed artwork for all six growth stages", async ({ page }) => {
+  await page.goto("/test-garden");
+  await page.getByRole("searchbox").fill("lettuce little gem");
+  await page.locator(".tg-plot").first().click();
+  const stages = page.getByRole("region", { name: "Seed to harvest" });
+  const stageIds = ["seed", "first-sprout", "baby-plant", "semi-mature", "pre-harvest", "harvest"];
+  for (const [index, stage] of stageIds.entries()) {
+    const row = stages.locator("li").nth(index);
+    await expect(row.getByRole("link").first())
+      .toHaveAttribute("href", "/plant-icons/generated/kings-seeds/master/lettuce-little-gem-" + stage + ".png");
+    const image = row.getByRole("img");
+    await image.scrollIntoViewIfNeeded();
+    await expect.poll(() => image.evaluate(node => (node as HTMLImageElement).naturalWidth)).toBe(128);
+  }
+});
