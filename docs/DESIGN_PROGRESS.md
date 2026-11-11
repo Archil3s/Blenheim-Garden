@@ -577,3 +577,11 @@ The isolated test garden reads generated artwork by supplier and catalogue ID.
 The card uses the 128 px image and the inspector opens the 512 px master with
 cultivar and style provenance. The existing two-column phone layout is used.
 Production build and 28 focused Playwright checks passed on desktop, laptop, tablet and phone. Desktop and 390 px phone captures were inspected. User feedback is pending.
+
+## Planner-generated botanical artwork (12 November 2026)
+
+The user requested that the newest generated crop illustrations become the images used by the measured Garden Planner. The existing `supplierPlantIcon()` resolver now takes exact crop/variety matches from `lib/garden/generated-artwork-manifest.json` when `status === "generated_qa_passed"`, using the compact gallery PNGs for 2D rendering. Existing supplier SVGs remain the fallback for ungenerated/pending varieties; no duplicate renderer, packages, or image copies were added.
+
+All 449 manifest entries were checked against the repository's actual public PNG paths at the time of this change (429 Kings Seeds and 20 Rasmussen; no missing master/gallery pairs). This integration is based on internal artwork QA status, **not independent botanical/cultivar verification**. Existing geometry, plant placements, counts, D1/R2 and 3D behaviour were not edited.
+
+Focused Playwright coverage was added for exact-variety selection, fallback, image availability, visible planted beds and the plant picker. Build, browser and responsive acceptance are pending GitHub Actions PR checks; no live Cloudflare deployment is claimed here.
