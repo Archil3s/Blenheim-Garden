@@ -5,7 +5,7 @@ import generatedArtwork from "./generated-artwork-manifest.json";
 
 const key = (crop: string, variety: string) => JSON.stringify([crop.toLowerCase(), variety.toLowerCase()]);
 const suppliedIds = new Set(suppliedKingsSeedsArt);
-const icons = new Map([
+const icons = new Map<string, string>([
   ...kingsSeedsVarieties.map(item => [key(item.crop, item.variety), `/plant-icons/kings-seeds/${item.id}.svg`] as const),
   ...varieties.map(item => [key(item.crop, item.variety), `/plant-icons/rasmussen/${item.id}.svg`] as const),
   ...kingsSeedsVarieties.filter(item => suppliedIds.has(item.id))
