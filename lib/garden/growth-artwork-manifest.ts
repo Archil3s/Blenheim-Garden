@@ -1574,6 +1574,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/products/broccoli-mclaren-f1",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:broccoli-sprouting-summer-purple": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/broccoli-sprouting-summer-purple.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/broccoli-sprouting-summer-purple.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/broccoli-sprouting-summer-purple",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:broccoli-tasty-stems-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/broccoli-tasty-stems-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/broccoli-tasty-stems-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/broccoli-tasty-stems-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:broccoli-sprouting-winter-rudolph": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/broccoli-sprouting-winter-rudolph.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/broccoli-sprouting-winter-rudolph.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/broccoli-sprouting-winter-rudolph",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:broccoli-summer-green-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/broccoli-summer-green-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/broccoli-summer-green-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/broccoli-summer-green-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:broccoli-winter-green-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/broccoli-winter-green-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/broccoli-winter-green-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/broccoli-winter-green-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:brussels-sprouts-jade-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/brussels-sprouts-jade-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/brussels-sprouts-jade-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/brussels-sprouts-jade-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:pumpkin-butternut-butterscotch-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/pumpkin-butternut-butterscotch-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/pumpkin-butternut-butterscotch-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/pumpkin-butternut-butterscotch-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:butternut-waltham": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/butternut-waltham.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/butternut-waltham.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/butternut-waltham",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cabbage-chinese-one-kilo-slowbolt-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cabbage-chinese-one-kilo-slowbolt-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cabbage-chinese-one-kilo-slowbolt-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cabbage-chinese-one-kilo-slowbolt-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cabbage-chinese-wa-wa-tsai-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cabbage-chinese-wa-wa-tsai-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cabbage-chinese-wa-wa-tsai-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cabbage-chinese-wa-wa-tsai-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

@@ -697,3 +697,7 @@ All ten verified Rasmussen originals depict ripe fruit and now have separate 512
 The Rasmussen Harvest exports deployed at 7242421 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42949347780).
 
 Reviewed and mapped ten existing beetroot, broad bean, and broccoli illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 171, and the production build and all 36 browser checks passed.
+
+The prior Harvest mappings deployed at 28963e2 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42949895172).
+
+Reviewed and mapped ten existing broccoli, Brussels sprout, butternut and Chinese cabbage illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 181. The production build and all 36 browser checks passed.
