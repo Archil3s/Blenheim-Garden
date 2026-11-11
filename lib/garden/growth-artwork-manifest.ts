@@ -2924,6 +2924,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8015-1_caa1fec8-5d55-4e2f-a0be-b700755470ef_1080x.jpg?v=1721600904",
       "styleReference": "/plant-icons/generated/kings-seeds/master/mizuna.png"
     }
+  },
+  "kings:moringa-horseradish-tree": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/moringa-horseradish-tree.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/moringa-horseradish-tree.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8208-1_79e00ab3-5ff1-46e5-b225-082547058567_1080x.jpg?v=1725597298",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/lettuce-oakleaf-green.png"
+    }
+  },
+  "kings:mustard-giant-red": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/mustard-giant-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/mustard-giant-red.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8017-1_22f18bf6-c450-40e5-96ac-c4d864014b99_1080x.jpg?v=1721600979",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/mizuna.png"
+    }
+  },
+  "kings:okra-clemson-spineless": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/okra-clemson-spineless.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/okra-clemson-spineless.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8210-1_97cf2ef5-9e69-41e8-bba0-4fa6eff170c3_1080x.jpg?v=1725597345",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/mizuna.png"
+    }
+  },
+  "kings:okra-millionaire-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/okra-millionaire-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/okra-millionaire-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8211-1_2683e23b-d9fa-456c-9da3-91e8e90c515a_1080x.jpg?v=1725597376",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/mizuna.png"
+    }
+  },
+  "kings:onion-italian-long-keeper": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/onion-italian-long-keeper.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/onion-italian-long-keeper.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/V8213-1_1080x.png?v=1688015157",
+      "styleReference": "/plant-icons/generated/kings-seeds/master/mizuna.png"
+    }
+  },
+  "kings:onion-pearl-drop": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/onion-pearl-drop.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/onion-pearl-drop.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8214-1_05f64e74-974f-4417-9f8e-0b469f85b6a4_1080x.jpg?v=1725597509",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:onion-pukekohe-long-keeper": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/onion-pukekohe-long-keeper.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/onion-pukekohe-long-keeper.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8375-1_05db4dd7-9182-4c64-97e8-7d311290a8b9_1080x.jpg?v=1725603547",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:onion-purplette": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/onion-purplette.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/onion-purplette.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8215-1_c06e85b9-a032-4a9a-a43e-c0cb37ffb8ad_1080x.jpg?v=1720748852",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:onion-red-brunswick": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/onion-red-brunswick.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/onion-red-brunswick.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8216-1_41373639-d486-44c5-b13c-7f2799205c0d_1080x.jpg?v=1725597585",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:onion-shallot-zebrune": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/onion-shallot-zebrune.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/onion-shallot-zebrune.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8220-1_1d623113-843d-4424-8004-1b27f6966cb0_1080x.jpg?v=1725597714",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
