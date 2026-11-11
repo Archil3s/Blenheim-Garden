@@ -2728,5 +2728,75 @@
     "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-mini-orange.png",
     "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/HFC021-1_8bf51190-541f-4fb2-91a3-b6c56e204aa5_1080x.png?v=1752445883",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-moneymaker": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-moneymaker.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-moneymaker.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8342-1_74d42ac5-9946-4f0d-adb5-2ed3f6fdf8e3_1080x.jpg?v=1725602536",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-moonbeam": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-moonbeam.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-moonbeam.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/HFC022-1_2125d7a8-dac0-415b-9ecb-d31704475f55_1080x.png?v=1752445884",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-mortgage-lifter": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-mortgage-lifter.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-mortgage-lifter.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8365-1_49a7f5e1-e7e6-42da-bfc7-e62e7a9cf7b0_1080x.jpg?v=1725603321",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-mountain-gold": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-mountain-gold.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-mountain-gold.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/HFC030-W2_1080x.png?v=1785389082",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-oley": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-oley.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-oley.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/HFC023-1_1b0ba677-a799-4aa2-b682-4364a67c2785_1080x.png?v=1752445885",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-rainbow-cherry-blend": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-rainbow-cherry-blend.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-rainbow-cherry-blend.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8329-1_1b835e16-e377-4e14-ae08-ff67551bad56_1080x.jpg?v=1725602028",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-red-pear": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-red-pear.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-red-pear.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8369-1_204200e3-7427-436e-b723-6792205b4d86_1080x.jpg?v=1725603444",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-russian-red": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-russian-red.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-russian-red.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8343-1_2f6c31b5-14ba-475e-bfdc-8c00b6203473_1080x.jpg?v=1725602568",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-sicilian-sauce-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-sicilian-sauce-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-sicilian-sauce-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8337-1_67c7d7da-01a2-49a9-bf18-8faebcc19b65_1080x.jpg?v=1725602317",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-sub-arctic-plenty": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-sub-arctic-plenty.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-sub-arctic-plenty.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8344-1_fe1529ed-69cc-48ed-bf03-163b2f96b351_1080x.jpg?v=1725602604",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }
