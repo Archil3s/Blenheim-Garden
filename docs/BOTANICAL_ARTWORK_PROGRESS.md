@@ -737,3 +737,7 @@ Reviewed ten existing Kings Seeds leafy green and cucumber illustrations and map
 The prior Harvest mappings deployed at 8286d6c (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42957300355).
 
 Reviewed and mapped ten existing cucumber, eggplant, endive and fennel illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 271. The production build and 35 browser checks passed on the first run. The tablet gallery check timed out and passed on rerun.
+
+The prior Harvest mappings deployed at 940301a (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42981311146).
+
+Reviewed and mapped ten existing goji, gourd, bitter melon, luffa, jicama and kale illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 281. The production build and all 36 browser checks passed.
