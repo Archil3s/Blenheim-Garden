@@ -1034,6 +1034,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/HFC018-1_78c6b78f-cf64-46ab-8adf-0114be4cee11_1080x.png?v=1752445879",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:tomato-gold-nugget": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-gold-nugget.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-gold-nugget.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8321-1_b3b42256-143b-4b4d-9714-564255e0eceb_1080x.jpg?v=1725601751",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-golden-bell": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-golden-bell.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-golden-bell.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/HFC019-1_7b9d0657-5332-4efd-9990-774fa3cfcbfb_1080x.png?v=1752445880",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-golden-cascade": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-golden-cascade.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-golden-cascade.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8322-1_ad186c7e-af59-41dc-892b-456e5398d58e_1080x.jpg?v=1725601784",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-golden-grape": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-golden-grape.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-golden-grape.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/06/Golden-Grape-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-golden-light": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-golden-light.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-golden-light.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/HFC020-1_208b897a-2441-4426-9d02-8b0fde5cc9df_1080x.png?v=1752445882",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-green-zebra": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-green-zebra.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-green-zebra.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/V8311-1_1080x.png?v=1688024870",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-indigo-pear-drops": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-indigo-pear-drops.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-indigo-pear-drops.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8326-1_3ecd6038-4856-412a-a7a7-35dd3c6e6472_1080x.jpg?v=1725601910",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-kelloggs-breakfast": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-kelloggs-breakfast.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-kelloggs-breakfast.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8414-1_db5cd994-65b1-4246-9877-db95aced6e63_1080x.png?v=1752445855",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-matts-wild-cherry": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-matts-wild-cherry.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-matts-wild-cherry.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8368-1_60cc94fe-4522-43d6-a775-0d9ca6774a1f_1080x.jpg?v=1725603404",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-mini-orange": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-mini-orange.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-mini-orange.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/HFC021-1_8bf51190-541f-4fb2-91a3-b6c56e204aa5_1080x.png?v=1752445883",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
