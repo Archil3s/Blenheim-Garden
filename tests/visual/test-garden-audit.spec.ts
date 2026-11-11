@@ -111,7 +111,7 @@ test("generated catalogue cards load their gallery PNGs and open the correct mas
     "/plant-icons/generated/kings-seeds/gallery/amaranth-garnet-red.png");
   await garnet.click();
   const inspector = page.locator("#tg-inspector");
-  await expect(inspector.locator("img")).toHaveJSProperty("naturalWidth", 512);
+  await expect(inspector.locator(".tg-large-art img")).toHaveJSProperty("naturalWidth", 512);
   await expect(inspector.getByRole("link", { name: /Open master image/ })).toHaveAttribute("href",
     "/plant-icons/generated/kings-seeds/master/amaranth-garnet-red.png");
   await expect(inspector.getByRole("link", { name: "Cultivar photo" })).toHaveAttribute("href",

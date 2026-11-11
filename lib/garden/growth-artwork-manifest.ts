@@ -3599,6 +3599,33 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/products/beetroot-bulls-blood",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:amaranth-garnet-red": {
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/amaranth-garnet-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/amaranth-garnet-red.png",
+      "referenceUrl": "https://www.winnowseedco.ca/product-page/amaranth-garnet-red",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:asparagus-pea": {
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/asparagus-pea.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/asparagus-pea.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-pea",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:chia": {
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/chia.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/chia.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/chia",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

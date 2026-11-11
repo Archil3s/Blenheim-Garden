@@ -789,3 +789,26 @@ Reviewed and mapped ten existing climbing, dwarf and runner bean illustrations t
 The prior bean Harvest mappings deployed at a5feedf (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42989042488).
 
 Reviewed the nine existing Kings Seeds icons still lacking a Harvest mapping. Five depict the harvested part and were mapped. Garnet Red amaranth, asparagus pea, Takinogawa Long burdock and chia still require separate Harvest artwork. Both PNG sizes were verified for the five mappings. The Harvest total reached 396. The production build and all 36 browser checks passed.
+
+The final review of existing Kings Seeds icons deployed at f0f386d (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42989778004).
+
+Reconciled all 39 remaining Kings Seeds catalogue IDs to Batches 40 through 43 in catalogue order. All 39 reference files exist and have distinct SHA-256 hashes and HTTPS provenance. Batch 40 resumes with Mountain Gold after the reported 09:43:42 UTC quota reset. Rasmussen's original source manifest lists Red Flat separately from Manzano Red. The existing Red Flat concept illustration still requires exact cultivar photo review.
+
+Reconciled the Rasmussen queue against the 279 catalogue IDs and ten verified originals. The 269 queued IDs have no duplicates or omissions. All 268 available references have distinct SHA-256 hashes, HTTPS provenance and valid decodable image data (244 PNG, 22 JPEG, two WebP). Rocoto Manzano Red Flat remains the single reference gap.
+
+Audited all 4,248 growth-stage slots across the 708 live cultivar IDs. The manifest contains 396 Harvest mappings and the five earlier Little Gem stages. Each mapped PNG pair passed dimension and RGBA checks and has provenance. The local references/growth-stage-pending.tsv queue records the 3,847 missing slots by exact supplier, cultivar ID and stage. The three staged Batch 40 pairs also passed the size and RGBA checks.
+
+Prepared the local Rasmussen export and integration scripts for generated artwork. The first ten reference rows passed the script's catalogue, provenance and existing-mapping checks. Integration will validate the generated PNG pairs before writing either manifest.
+
+Ran the Rasmussen catalogue and provenance preflight against all 27 generation batches. Twenty-six passed. Batch 22 contains the unresolved Rocoto Manzano Red Flat reference. The other nine entries in that batch have local photos.
+
+All 39 reference images for Kings Seeds Batches 40–43 passed full raster decoding.
+
+Stage references for the four existing Kings Seeds illustrations that need dedicated Harvest artwork:
+
+- Garnet Red amaranth | Kings Seeds identifies young leaves and mature grain as harvestable. Use a ripe panicle with visible seed, or the harvested young leaves. https://www.kingsseeds.co.nz/products/amaranth-garnet-red
+- Asparagus pea | Illustrate the small, harvest-sized winged pods. Use the New Zealand supplier photo for cultivar identity and the UK seed supplier description for pod size. https://www.kingsseeds.co.nz/products/asparagus-pea and https://www.kingsseeds.com/10301-asparagus-pea
+- Takinogawa Long burdock | Use harvested roots as the subject. RareSeeds provides a named Takinogawa root photo and La Ferme de Sainte Marthe documents the exact Long cultivar. https://www.rareseeds.com/burdock-takinogawa and https://www.fermedesaintemarthe.com/en/products/bardane-japonaise-takinogawa-long-ou-gobo-ab
+- Chia | Kings Seeds identifies the seed heads as the harvested part. Show a mature seed head with seed detail. https://www.kingsseeds.co.nz/products/chia
+
+Mapped existing Garnet Red amaranth, asparagus pea and chia artwork to Pre-harvest after review. Their Harvest slots remain pending. Burdock remains unassigned to a stage. Both PNG sizes and the production build passed. All 36 browser checks passed after narrowing the master preview assertion to distinguish it from the new stage thumbnails.
