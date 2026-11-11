@@ -689,3 +689,7 @@ Reviewed the ten dwarf bean illustrations from Batch 03 as harvested pods or dri
 The dwarf bean Harvest mappings deployed at 0b9a239 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42947942059).
 
 Reviewed and mapped ten more existing bean illustrations, from Xera Select through King of the Blues. Both PNG sizes were verified. There are now 151 reviewed Harvest mappings. The production build and all 36 browser checks passed.
+
+The additional bean Harvest mappings deployed at f4cf571 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42948517669).
+
+All ten verified Rasmussen originals depict ripe fruit and now have separate 512 px and 128 px transparent Harvest exports mapped to their exact catalogue IDs. Original PNGs were preserved byte-for-byte. The Harvest manifest has 161 mappings. The production build and all 36 browser checks passed.

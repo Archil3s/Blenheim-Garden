@@ -1394,6 +1394,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-king-of-the-blues",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "rasmussen:7-pot-jonah-yellow-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "verified",
+      "master": "/plant-icons/growth/rasmussen/master/7-pot-jonah-yellow-chilli-seeds-10-seeds-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/7-pot-jonah-yellow-chilli-seeds-10-seeds-harvest.png",
+      "sourceFile": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:aji-ahuachapan-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "verified",
+      "master": "/plant-icons/growth/rasmussen/master/aji-ahuachapan-chilli-seeds-10-seeds-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-ahuachapan-chilli-seeds-10-seeds-harvest.png",
+      "sourceFile": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
+      "styleReference": "/assets/icons/rasmussen/approved/002_aji-ahuachapan.png"
+    }
+  },
+  "rasmussen:aji-amarillo-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "verified",
+      "master": "/plant-icons/growth/rasmussen/master/aji-amarillo-chilli-seeds-10-seeds-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-amarillo-chilli-seeds-10-seeds-harvest.png",
+      "sourceFile": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
+      "styleReference": "/assets/icons/rasmussen/approved/003_aji-amarillo.png"
+    }
+  },
+  "rasmussen:aji-berry-amarillo-long-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "verified",
+      "master": "/plant-icons/growth/rasmussen/master/aji-berry-amarillo-long-chilli-seeds-10-seeds-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-berry-amarillo-long-chilli-seeds-10-seeds-harvest.png",
+      "sourceFile": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
+      "styleReference": "/assets/icons/rasmussen/approved/004_aji-berry-amarillo.png"
+    }
+  },
+  "rasmussen:aji-brazilian-pumpkin-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "verified",
+      "master": "/plant-icons/growth/rasmussen/master/aji-brazilian-pumpkin-chilli-seeds-10-seeds-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-brazilian-pumpkin-chilli-seeds-10-seeds-harvest.png",
+      "sourceFile": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
+      "styleReference": "/assets/icons/rasmussen/approved/005_aji-brazilian-pumpkin.png"
+    }
+  },
+  "rasmussen:aji-champion-chilli-seeds-10-seeds-copy": {
+    "harvest": {
+      "status": "verified",
+      "master": "/plant-icons/growth/rasmussen/master/aji-champion-chilli-seeds-10-seeds-copy-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-champion-chilli-seeds-10-seeds-copy-harvest.png",
+      "sourceFile": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
+      "styleReference": "/assets/icons/rasmussen/approved/006_aji-champion.png"
+    }
+  },
+  "rasmussen:aji-charapita-peach-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "verified",
+      "master": "/plant-icons/growth/rasmussen/master/aji-charapita-peach-chilli-seeds-10-seeds-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapita-peach-chilli-seeds-10-seeds-harvest.png",
+      "sourceFile": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
+      "styleReference": "/assets/icons/rasmussen/approved/007_aji-charapita-peach.png"
+    }
+  },
+  "rasmussen:aji-charapita-armarillo-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "verified",
+      "master": "/plant-icons/growth/rasmussen/master/aji-charapita-armarillo-chilli-seeds-10-seeds-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapita-armarillo-chilli-seeds-10-seeds-harvest.png",
+      "sourceFile": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
+      "styleReference": "/assets/icons/rasmussen/approved/008_aji-charapita-amarillo.png"
+    }
+  },
+  "rasmussen:aji-charapon-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "verified",
+      "master": "/plant-icons/growth/rasmussen/master/aji-charapon-chilli-seeds-10-seeds-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapon-chilli-seeds-10-seeds-harvest.png",
+      "sourceFile": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
+      "styleReference": "/assets/icons/rasmussen/approved/009_aji-charapon.png"
+    }
+  },
+  "rasmussen:aji-cito-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "verified",
+      "master": "/plant-icons/growth/rasmussen/master/aji-cito-chilli-seeds-10-seeds-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-cito-chilli-seeds-10-seeds-harvest.png",
+      "sourceFile": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
+      "styleReference": "/assets/icons/rasmussen/approved/010_aji-cito.png"
+    }
   }
 };
 
