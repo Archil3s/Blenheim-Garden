@@ -705,3 +705,7 @@ Reviewed and mapped ten existing broccoli, Brussels sprout, butternut and Chines
 The prior Harvest mappings deployed at 9449e17 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42950506829).
 
 Reviewed and mapped ten existing cabbage, caigua, Cape gooseberry and capsicum illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 191. The production build and all 36 browser checks passed.
+
+The prior Harvest mappings deployed at d9c3ff3 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42951051194).
+
+Reviewed and mapped ten existing Kings Seeds capsicum illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 201. The production build and all 36 browser checks passed.

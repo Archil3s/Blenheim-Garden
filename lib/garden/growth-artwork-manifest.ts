@@ -1754,6 +1754,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8420-1.png",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:capsicum-californian-wonder-golden": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/capsicum-californian-wonder-golden.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/capsicum-californian-wonder-golden.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/capsicum-californian-wonder-golden",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:capsicum-cornos-red": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/capsicum-cornos-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/capsicum-cornos-red.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/capsicum-cornos-red",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:capsicum-cornos-yellow": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/capsicum-cornos-yellow.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/capsicum-cornos-yellow.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/capsicum-cornos-yellow",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:capsicum-high-health-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/capsicum-high-health-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/capsicum-high-health-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/capsicum-high-health-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:capsicum-marconi-red": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/capsicum-marconi-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/capsicum-marconi-red.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/capsicum-marconi-red",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:capsicum-marconi-yellow": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/capsicum-marconi-yellow.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/capsicum-marconi-yellow.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/capsicum-marconi-yellow",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:capsicum-purple-beauty-1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/capsicum-purple-beauty-1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/capsicum-purple-beauty-1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/capsicum-purple-beauty-1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:capsicum-orange-bell-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/capsicum-orange-bell-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/capsicum-orange-bell-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8086-1.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:capsicum-red-bell-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/capsicum-red-bell-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/capsicum-red-bell-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/capsicum-red-bell-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:capsicum-yellow-banana": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/capsicum-yellow-banana.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/capsicum-yellow-banana.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/capsicum-yellow-banana",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
