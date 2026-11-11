@@ -785,3 +785,7 @@ Reviewed and mapped eight existing organic vegetable illustrations and two runne
 The prior Harvest mappings deployed at f506918 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42988393781).
 
 Reviewed and mapped ten existing climbing, dwarf and runner bean illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 391. The production build and all 36 browser checks passed.
+
+The prior bean Harvest mappings deployed at a5feedf (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42989042488).
+
+Reviewed the nine existing Kings Seeds icons still lacking a Harvest mapping. Five depict the harvested part and were mapped. Garnet Red amaranth, asparagus pea, Takinogawa Long burdock and chia still require separate Harvest artwork. Both PNG sizes were verified for the five mappings. The Harvest total reached 396. The production build and all 36 browser checks passed.

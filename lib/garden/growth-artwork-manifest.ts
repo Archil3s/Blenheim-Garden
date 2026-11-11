@@ -3554,6 +3554,51 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:amaranth-green-red": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/amaranth-green-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/amaranth-green-red.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/amaranth-green-red",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-runner-purple-star": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-runner-purple-star.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-purple-star.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-purple-star",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-runner-scarlet": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-runner-scarlet.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-scarlet.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-scarlet",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:beet-perpetual-spinach": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/beet-perpetual-spinach.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/beet-perpetual-spinach.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/beet-perpetual-spinach",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:beetroot-bulls-blood": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/beetroot-bulls-blood.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/beetroot-bulls-blood.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/beetroot-bulls-blood",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
