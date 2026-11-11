@@ -713,3 +713,7 @@ Reviewed and mapped ten existing Kings Seeds capsicum illustrations to Harvest. 
 The capsicum Harvest mappings deployed at 6d0bd90 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42951651439).
 
 Reviewed and mapped existing carob and nine carrot illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 211. The production build and all 36 browser checks passed.
+
+The carob and carrot Harvest mappings deployed at 30868bf (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42952192471).
+
+Reviewed and mapped four existing carrot and six cauliflower and broccoflower illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 221. The production build and all 36 browser checks passed.

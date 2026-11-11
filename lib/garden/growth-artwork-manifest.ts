@@ -1934,6 +1934,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/products/carrot-nutri-yellow-f1",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:carrot-rainbow-blend-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/carrot-rainbow-blend-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/carrot-rainbow-blend-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/carrot-rainbow-blend-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:carrot-scarlet-nantes": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/carrot-scarlet-nantes.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/carrot-scarlet-nantes.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/carrot-scarlet-nantes",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:carrot-resistafly-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/carrot-resistafly-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/carrot-resistafly-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/carrot-resistafly-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:carrot-touchon": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/carrot-touchon.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/carrot-touchon.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/carrot-touchon",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cauliflower-all-the-year-round": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cauliflower-all-the-year-round.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cauliflower-all-the-year-round.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cauliflower-all-the-year-round",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cauliflower-clementine-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cauliflower-clementine-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cauliflower-clementine-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cauliflower-clementine-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cauliflower-confetti": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cauliflower-confetti.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cauliflower-confetti.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cauliflower-confetti",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:broccoflower-geum-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/broccoflower-geum-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/broccoflower-geum-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/broccoflower-geum-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cauliflower-summer-love-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cauliflower-summer-love-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cauliflower-summer-love-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cauliflower-summer-love-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cauliflower-sprouting-fioretto-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cauliflower-sprouting-fioretto-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cauliflower-sprouting-fioretto-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cauliflower-sprouting-fioretto-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
