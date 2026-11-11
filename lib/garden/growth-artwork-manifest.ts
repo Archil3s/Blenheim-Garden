@@ -674,6 +674,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8448-W_6e052c70-910e-4bd9-aa04-260bd9ebe376_1080x.png?v=1784971965",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:silverbeet-ford-hook-giant": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/silverbeet-ford-hook-giant.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/silverbeet-ford-hook-giant.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8286-1_5e546452-95b5-427d-a5ec-ecf225f254bb_1080x.jpg?v=1725600514",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:silverbeet-rainbow-lights": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/silverbeet-rainbow-lights.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/silverbeet-rainbow-lights.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/V8287-1_1080x.png?v=1688000945",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:snow-pea-goliath": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/snow-pea-goliath.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/snow-pea-goliath.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8232-1_fce42a47-d7bd-4e58-b345-5e5a82553dd7_1080x.jpg?v=1725598157",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:pea-shiraz": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/pea-shiraz.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/pea-shiraz.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8230-1_3bfcaea4-4bdb-4098-8c2f-0d4274337a90_1080x.jpg?v=1725598112",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:snow-pea-sugar-pod-copy": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/snow-pea-sugar-pod-copy.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/snow-pea-sugar-pod-copy.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8403-1_767c072f-69b2-48b2-bf90-168ee8caaec9_1080x.png?v=1752445845",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:soybean": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/soybean.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/soybean.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8447-W_1080x.png?v=1784973631",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:spinach-malabar": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/spinach-malabar.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/spinach-malabar.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/V8288-1_1080x.png?v=1725600587",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:spinach-new-zealand": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/spinach-new-zealand.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/spinach-new-zealand.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8289-1_e752c1c9-5f52-4ae3-a626-72e8c74a194e_1080x.jpg?v=1725600617",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:spinach-santana-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/spinach-santana-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/spinach-santana-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8292-1_dff99fe0-4500-4e2f-af8a-40150a5f1c61_1080x.jpg?v=1725600696",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:spinach-strawberry": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/spinach-strawberry.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/spinach-strawberry.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/V8290-1_1080x.png?v=1688025774",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

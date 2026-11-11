@@ -480,7 +480,7 @@ Cloudflare deployment succeeded for Batch 23 commit 14941fa (https://github.com/
 
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 340 of them. The local inventory at work/references/pending-catalogue.tsv includes the remaining 89 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps 350 of them. The local inventory at work/references/pending-catalogue.tsv includes the remaining 79 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
@@ -590,3 +590,20 @@ Batch 33 deployed at f53f5cd (https://github.com/Archil3s/Blenheim-Garden/action
 - Kings Seeds | shiso-green-1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8448-W_6e052c70-910e-4bd9-aa04-260bd9ebe376_1080x.png?v=1784971965 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 34 passed the production build and all 36 browser checks after the phone gallery test was corrected to measure card positions in a single browser call. The Kings Seeds manifest has 340 unique assets at each size and 71 reviewed Harvest mappings.
+
+Batch 34 deployed at ee489fe (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42935858227).
+
+## Kings Seeds Batch 35
+
+- Kings Seeds | silverbeet-ford-hook-giant | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8286-1_5e546452-95b5-427d-a5ec-ecf225f254bb_1080x.jpg?v=1725600514 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | silverbeet-rainbow-lights | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/products/V8287-1_1080x.png?v=1688000945 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | snow-pea-goliath | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8232-1_fce42a47-d7bd-4e58-b345-5e5a82553dd7_1080x.jpg?v=1725598157 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | pea-shiraz | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8230-1_3bfcaea4-4bdb-4098-8c2f-0d4274337a90_1080x.jpg?v=1725598112 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | snow-pea-sugar-pod-copy | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8403-1_767c072f-69b2-48b2-bf90-168ee8caaec9_1080x.png?v=1752445845 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | soybean | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8447-W_1080x.png?v=1784973631 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | spinach-malabar | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/products/V8288-1_1080x.png?v=1725600587 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | spinach-new-zealand | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8289-1_e752c1c9-5f52-4ae3-a626-72e8c74a194e_1080x.jpg?v=1725600617 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | spinach-santana-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8292-1_dff99fe0-4500-4e2f-af8a-40150a5f1c61_1080x.jpg?v=1725600696 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | spinach-strawberry | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/products/V8290-1_1080x.png?v=1688025774 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 35 passed the production build and all 36 focused browser checks. The Kings Seeds manifest has 350 unique assets at each size and 81 reviewed Harvest mappings.
