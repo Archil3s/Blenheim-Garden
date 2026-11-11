@@ -3464,6 +3464,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-neekar-golden",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:bean-climbing-lima-del-papa": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-lima-del-papa.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-lima-del-papa.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-climbing-mangere-pole": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-mangere-pole.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-mangere-pole.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-climbing-rydal-a-yellow": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-rydal-a-yellow.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-rydal-a-yellow.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-climbing-rydal-a-yellow",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-climbing-shiny-fardenlosa": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-shiny-fardenlosa.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-shiny-fardenlosa.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-climbing-volcanic": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-volcanic.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-volcanic.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-climbing-yoeme-purple-string": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-yoeme-purple-string.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-yoeme-purple-string.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-dwarf-amish": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-amish.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-amish.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-dwarf-roquefort": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-roquefort.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-roquefort.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-roquefort",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-dwarf-top-crop": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-top-crop.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-top-crop.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-top-crop",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-runner-ojo-de-cabra": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-runner-ojo-de-cabra.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-ojo-de-cabra.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

@@ -781,3 +781,7 @@ Reviewed and mapped ten existing organic leek, lettuce and melon illustrations t
 The prior organic Harvest mappings deployed at 88b0d34 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42987663252).
 
 Reviewed and mapped eight existing organic vegetable illustrations and two runner bean illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 381. The production build and all 36 browser checks passed.
+
+The prior Harvest mappings deployed at f506918 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42988393781).
+
+Reviewed and mapped ten existing climbing, dwarf and runner bean illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 391. The production build and all 36 browser checks passed.
