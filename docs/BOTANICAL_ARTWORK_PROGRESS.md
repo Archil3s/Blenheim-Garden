@@ -898,3 +898,20 @@ Batch 43 deployed at 775ca92 (https://github.com/Archil3s/Blenheim-Garden/action
 Aji Lemon Stumpy is the supplier and catalogue display name for the historical aji-lemon-starburst product ID. The artwork follows the exact Stumpy reference.
 
 Rasmussen Batch 01 passed the production build and all 40 focused browser checks. Rasmussen now has ten generated illustrations and ten verified originals. The library has 445 reviewed Harvest mappings.
+
+Rasmussen Batch 01 deployed at e69e532 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/43094056836).
+
+## Rasmussen Batch 02
+
+- Rasmussen | aji-norteno-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://www.tomatenfluesterer.at/cdn/shop/files/Aji-Norteno-Pepper-DER-TOMATENFLUSTERER-59467044.jpg?v=1700311746&width=1445 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-panca-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Panca_Chilli_Seeds_10_seeds_c1fc2a4d-5bb2-414c-86cf-f3da46075fb7.png?v=1751492101 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-peanut-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiPeanut.png?v=1744626251&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-pineapple-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://www.barney.dk/cdn/shop/files/Aji-Pineapple.jpg?v=1759526551 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-rojo-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/9784C412-B965-4B90-9F3B-785D7B3D606F_42474444-e3e7-449b-ad0d-756ff2382154.png?v=1759100146&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-sparkly-white-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/C1F7D06D-C83B-4DD1-AC36-13A3A3C12B53.png?v=1743915870&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | aji-strawberry-drop-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiStrawberryDrop_b55133b5-56e7-4709-91be-b8793b9c246c.png?v=1759100149 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | anaheim-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/CB453B1B-D409-4157-96A5-40E74C8C669A.png?v=1743918180&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | anna-banana-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-6868451224287324368.png?v=1744147015&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | arriba-saia-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp | Harvest reviewed and mapped. Earlier stages pending.
+
+Rasmussen Batch 02 passed the production build and all 40 focused browser checks. Rasmussen now has twenty generated illustrations and ten verified originals. The library has 455 reviewed Harvest mappings.
