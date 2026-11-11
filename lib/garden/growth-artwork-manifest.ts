@@ -854,6 +854,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8295-1_642b4937-8bf4-4d0a-b7d4-d9de296a5b14_1080x.jpg?v=1725600762",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:tamarillo-large-red": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tamarillo-large-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tamarillo-large-red.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8296-1_63bbcc0c-bc49-4634-bb97-7f54582e67e6_1080x.jpg?v=1720749731",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomatillo-grande-verde": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomatillo-grande-verde.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomatillo-grande-verde.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8297-1_3d4a9a17-69fe-486e-a829-2a3a28e45ca1_1080x.jpg?v=1725600821",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-albenga-oxheart": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-albenga-oxheart.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-albenga-oxheart.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8298-1_75721542-f9f4-4391-9cd8-b0b261306eb3_1080x.jpg?v=1725600932",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-amana-orange": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-amana-orange.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-amana-orange.png",
+      "referenceUrl": "https://extension.rutgers.edu/sites/default/files/styles/16x9_full_500_1_5x/public/tomato-varieties/Amana_Orange-1_0.jpg?h=69f2b9d0&itok=2cK0BaGp",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-amish-orange-sherbert": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-amish-orange-sherbert.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-amish-orange-sherbert.png",
+      "referenceUrl": "https://www.sadost.ru/img/_big_foto/semena-tomat-amishey-oranjeviy-scherbet-amish-orange-sherbet_big_2.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-ananas-noire": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-ananas-noire.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-ananas-noire.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8399-1_b79f6752-c7f0-4fc1-8b76-01bddceff618_1080x.jpg?v=1720660873",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-aunt-rubys-german-green": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-aunt-rubys-german-green.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-aunt-rubys-german-green.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8299-1_97b3739e-5c0c-438a-b90d-5a4ff694a70b_1080x.jpg?v=1725601024",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-baxters-early-bush": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-baxters-early-bush.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-baxters-early-bush.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8317-1_6c57ac6b-c69c-4ba0-84d0-9fcdb302af23_1080x.jpg?v=1725601603",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-beefsteak-blend": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-beefsteak-blend.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-beefsteak-blend.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8314-1W_1080x.png?v=1764630396",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-black": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-black.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-black.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8318-1_2894eee7-370c-414a-a545-8a75d6aa0f33_1080x.jpg?v=1725601636",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

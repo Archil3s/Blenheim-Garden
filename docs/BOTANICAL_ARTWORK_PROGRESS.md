@@ -480,7 +480,7 @@ Cloudflare deployment succeeded for Batch 23 commit 14941fa (https://github.com/
 
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 360 of them. The local inventory at work/references/pending-catalogue.tsv includes the remaining 69 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps 370 of them. The local inventory at work/references/pending-catalogue.tsv includes the remaining 59 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
@@ -624,3 +624,20 @@ Batch 35 deployed at 0df5691 (https://github.com/Archil3s/Blenheim-Garden/action
 - Kings Seeds | swede-champion-purple-top | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8295-1_642b4937-8bf4-4d0a-b7d4-d9de296a5b14_1080x.jpg?v=1725600762 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 36 passed the production build and all 36 browser checks after the pending filter test was updated to account for fewer than 72 remaining Kings Seeds entries. The Kings Seeds manifest has 360 unique assets at each size and 91 reviewed Harvest mappings.
+
+Batch 36 deployed at 9fb1244 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42939568589).
+
+## Kings Seeds Batch 37
+
+- Kings Seeds | tamarillo-large-red | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8296-1_63bbcc0c-bc49-4634-bb97-7f54582e67e6_1080x.jpg?v=1720749731 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | tomatillo-grande-verde | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8297-1_3d4a9a17-69fe-486e-a829-2a3a28e45ca1_1080x.jpg?v=1725600821 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | tomato-albenga-oxheart | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8298-1_75721542-f9f4-4391-9cd8-b0b261306eb3_1080x.jpg?v=1725600932 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | tomato-amana-orange | generated_qa_passed | 512 px master and 128 px gallery | https://extension.rutgers.edu/sites/default/files/styles/16x9_full_500_1_5x/public/tomato-varieties/Amana_Orange-1_0.jpg?h=69f2b9d0&itok=2cK0BaGp | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | tomato-amish-orange-sherbert | generated_qa_passed | 512 px master and 128 px gallery | https://www.sadost.ru/img/_big_foto/semena-tomat-amishey-oranjeviy-scherbet-amish-orange-sherbet_big_2.jpg | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | tomato-ananas-noire | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8399-1_b79f6752-c7f0-4fc1-8b76-01bddceff618_1080x.jpg?v=1720660873 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | tomato-aunt-rubys-german-green | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8299-1_97b3739e-5c0c-438a-b90d-5a4ff694a70b_1080x.jpg?v=1725601024 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | tomato-baxters-early-bush | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8317-1_6c57ac6b-c69c-4ba0-84d0-9fcdb302af23_1080x.jpg?v=1725601603 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | tomato-beefsteak-blend | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8314-1W_1080x.png?v=1764630396 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | tomato-black | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8318-1_2894eee7-370c-414a-a545-8a75d6aa0f33_1080x.jpg?v=1725601636 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 37 passed the production build and all 36 focused browser checks. The Kings Seeds manifest has 370 unique assets at each size and 101 reviewed Harvest mappings.
