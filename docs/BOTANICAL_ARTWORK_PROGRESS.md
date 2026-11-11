@@ -721,3 +721,7 @@ Reviewed and mapped four existing carrot and six cauliflower and broccoflower il
 The carrot and cauliflower Harvest mappings deployed at 0efda07 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42952714961).
 
 Reviewed and mapped ten existing cauliflower, celeriac, celery, celtuce, and chilli illustrations to Harvest. Chia remains pending Harvest review because its illustration shows a flowering spike. Both PNG sizes were verified. The Harvest total reached 231. The production build and all 36 browser checks passed.
+
+The prior Harvest mappings deployed at b66f3f8 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42953256524).
+
+Reviewed and mapped ten existing Kings Seeds chilli illustrations to Harvest, using the cultivar's documented harvest colour, including green-picked varieties. Both PNG sizes were verified. The Harvest total reached 241. The production build and all 36 browser checks passed.
