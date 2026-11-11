@@ -112,10 +112,14 @@ test("generated catalogue cards load their gallery PNGs and open the correct mas
   await expect(inspector.getByRole("link", { name: "Cultivar photo" })).toHaveAttribute("href",
     "https://www.winnowseedco.ca/product-page/amaranth-garnet-red");
   if (page.viewportSize()!.width <= 760) {
-    const [first, second, third] = await Promise.all([0, 1, 2].map(index => cards.nth(index).boundingBox()));
-    expect(first!.y).toBe(second!.y);
-    expect(second!.x).toBeGreaterThan(first!.x);
-    expect(third!.y).toBeGreaterThan(first!.y);
+    const [first, second, third] = await cards.evaluateAll(nodes =>
+      nodes.slice(0, 3).map(node => {
+        const { x, y } = node.getBoundingClientRect();
+        return { x, y };
+      }));
+    expect(first.y).toBe(second.y);
+    expect(second.x).toBeGreaterThan(first.x);
+    expect(third.y).toBeGreaterThan(first.y);
   }
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
 });

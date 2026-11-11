@@ -584,6 +584,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8269-1_7ddbe3a4-5a4a-4cff-928f-eee2ddbd0e86_1080x.jpg?v=1725599396",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:radish-red-cherry-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/radish-red-cherry-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/radish-red-cherry-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8264-1_e46a3849-576e-4b98-bb68-7f40f516f14e_1080x.jpg?v=1725599291",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:radish-seol-chun-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/radish-seol-chun-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/radish-seol-chun-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8271-1_2cd46ef4-8013-44bc-b7af-b0e65fe37c86_1080x.jpg?v=1725599445",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:radish-watermelon": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/radish-watermelon.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/radish-watermelon.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8273-1_11e33119-270a-4e87-838f-a411668aabfa_1080x.jpg?v=1725599500",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:radish-winter-noir": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/radish-winter-noir.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/radish-winter-noir.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8407-1_7800ab65-0e4b-4c0d-b451-fe2773c3f082_1080x.png?v=1752445846",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:radish-yuki": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/radish-yuki.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/radish-yuki.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8401-W1_1080x.png?v=1740521778",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:rhubarb-cherry-red": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/rhubarb-cherry-red.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/rhubarb-cherry-red.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8275-1_ca5fb914-259d-4dcd-835b-ca791389e147_1080x.jpg?v=1725599550",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:rocket-runway": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/rocket-runway.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/rocket-runway.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8277-1_16fdf807-4d08-4b1f-9f9f-71001288904d_1080x.jpg?v=1725599758",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:roselle": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/roselle.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/roselle.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8279-1_eadc10ea-ae8a-4be6-b2f0-052e587aca85_1080x.jpg?v=1725600196",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:zucchini-scallopini-sunbeam-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/zucchini-scallopini-sunbeam-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/zucchini-scallopini-sunbeam-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8358-1_17f6894a-b275-4181-83e7-d5798d71e8b0_1080x.jpg?v=1725603120",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:shiso-green-1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/shiso-green-1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/shiso-green-1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8448-W_6e052c70-910e-4bd9-aa04-260bd9ebe376_1080x.png?v=1784971965",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

@@ -480,7 +480,7 @@ Cloudflare deployment succeeded for Batch 23 commit 14941fa (https://github.com/
 
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 330 of them. The local inventory at work/references/pending-catalogue.tsv includes the remaining 99 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps 340 of them. The local inventory at work/references/pending-catalogue.tsv includes the remaining 89 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
@@ -490,7 +490,7 @@ Rasmussen Batch 24 reference gap: silverbeet-silverado-compacta-150-seeds still 
 
 ## Rasmussen reference inventory
 
-The local work/references/rasmussen-pending.tsv inventory covers 269 catalogue IDs outside the ten verified originals. It records 267 downloaded photo references and two unresolved IDs: Rocoto Manzano Red Flat and Scarlett’s Variegated Chilli. Oz Lantern White, Golden Orb and Silverado Compacta references have since been recovered.
+The local work/references/rasmussen-pending.tsv inventory covers 269 catalogue IDs outside the ten verified originals. It records 268 downloaded photo references and one unresolved ID, Rocoto Manzano Red Flat. Scarlett's Variegated Chilli now maps to the CoqHot cultivar photo in the local inventory. Oz Lantern White, Golden Orb and Silverado Compacta references have since been recovered.
 
 Batch 24 passed the production build and focused Playwright suite.
 Cloudflare deployment succeeded for Batch 24 commit 1e24a19 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42806062465).
@@ -573,3 +573,20 @@ Little Gem deployed at 686e465 (https://github.com/Archil3s/Blenheim-Garden/acti
 - Kings Seeds | radish-mini-daikon-purple-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8269-1_7ddbe3a4-5a4a-4cff-928f-eee2ddbd0e86_1080x.jpg?v=1725599396 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 33 passed the production build and all 36 focused browser checks. The Kings Seeds manifest contains 330 unique assets at each size. Sixty-one cultivars have reviewed Harvest mappings.
+
+Batch 33 deployed at f53f5cd (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42933789242).
+
+## Kings Seeds Batch 34
+
+- Kings Seeds | radish-red-cherry-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8264-1_e46a3849-576e-4b98-bb68-7f40f516f14e_1080x.jpg?v=1725599291 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | radish-seol-chun-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8271-1_2cd46ef4-8013-44bc-b7af-b0e65fe37c86_1080x.jpg?v=1725599445 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | radish-watermelon | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8273-1_11e33119-270a-4e87-838f-a411668aabfa_1080x.jpg?v=1725599500 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | radish-winter-noir | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8407-1_7800ab65-0e4b-4c0d-b451-fe2773c3f082_1080x.png?v=1752445846 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | radish-yuki | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8401-W1_1080x.png?v=1740521778 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | rhubarb-cherry-red | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8275-1_ca5fb914-259d-4dcd-835b-ca791389e147_1080x.jpg?v=1725599550 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | rocket-runway | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8277-1_16fdf807-4d08-4b1f-9f9f-71001288904d_1080x.jpg?v=1725599758 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | roselle | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8279-1_eadc10ea-ae8a-4be6-b2f0-052e587aca85_1080x.jpg?v=1725600196 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | zucchini-scallopini-sunbeam-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8358-1_17f6894a-b275-4181-83e7-d5798d71e8b0_1080x.jpg?v=1725603120 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | shiso-green-1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8448-W_6e052c70-910e-4bd9-aa04-260bd9ebe376_1080x.png?v=1784971965 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 34 passed the production build and all 36 browser checks after the phone gallery test was corrected to measure card positions in a single browser call. The Kings Seeds manifest has 340 unique assets at each size and 71 reviewed Harvest mappings.
