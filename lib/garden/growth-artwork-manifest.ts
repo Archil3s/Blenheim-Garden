@@ -2294,6 +2294,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/products/corn-popcorn-f1",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:corn-salad-verte-de-cambrai": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/corn-salad-verte-de-cambrai.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/corn-salad-verte-de-cambrai.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/corn-salad-verte-de-cambrai",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cress-american-upland": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cress-american-upland.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cress-american-upland.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cress-american-upland",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cucumber-amira-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cucumber-amira-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cucumber-amira-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cucumber-amira-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cucumber-cornichon-de-paris": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cucumber-cornichon-de-paris.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cucumber-cornichon-de-paris.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cucumber-cornichon-de-paris",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cucumber-crunchy-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cucumber-crunchy-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cucumber-crunchy-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cucumber-crunchy-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cucumber-crystal-apple": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cucumber-crystal-apple.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cucumber-crystal-apple.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cucumber-crystal-apple",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cucumber-homemade-pickles": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cucumber-homemade-pickles.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cucumber-homemade-pickles.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cucumber-homemade-pickles",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cucumber-lebanese": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cucumber-lebanese.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cucumber-lebanese.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cucumber-lebanese",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cucumber-medici-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cucumber-medici-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cucumber-medici-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cucumber-medici-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:cucumber-poona-kheera": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/cucumber-poona-kheera.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/cucumber-poona-kheera.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/cucumber-poona-kheera",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
