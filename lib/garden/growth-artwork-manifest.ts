@@ -2564,6 +2564,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/products/kale-blue-ridge-f1",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:kale-cavolo-nero": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/kale-cavolo-nero.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/kale-cavolo-nero.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/kale-cavolo-nero",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:kale-noble": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/kale-noble.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/kale-noble.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/kale-noble",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:kale-red-russian": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/kale-red-russian.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/kale-red-russian.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/kale-red-russian",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:kale-scarlet": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/kale-scarlet.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/kale-scarlet.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/kale-scarlet",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:kale-squire": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/kale-squire.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/kale-squire.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/kale-squire",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:kiwano-horned-melon": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/kiwano-horned-melon.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/kiwano-horned-melon.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/kiwano-horned-melon",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:kohlrabi-early-purple-vienna": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/kohlrabi-early-purple-vienna.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/kohlrabi-early-purple-vienna.png",
+      "referenceUrl": "https://www.holmesseed.com/early-purple-vienna/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:kohlrabi-grand-duke-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/kohlrabi-grand-duke-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/kohlrabi-grand-duke-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/kohlrabi-grand-duke-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:leek-sentinel-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/leek-sentinel-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/leek-sentinel-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/leek-sentinel-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:leek-winter-giant": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/leek-winter-giant.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/leek-winter-giant.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/leek-winter-giant",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
