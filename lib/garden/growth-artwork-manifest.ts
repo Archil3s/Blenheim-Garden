@@ -3896,6 +3896,87 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8352-1_3bf805ad-39b8-4108-b257-5b340724566a_1080x.jpg?v=1725602901",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:rocket-arugula": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/rocket-arugula.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/rocket-arugula.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8277_1080x.jpg?v=1741408842",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:wild-rocket-dragons-fire": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/wild-rocket-dragons-fire.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/wild-rocket-dragons-fire.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8419-1_eb870cc3-1edc-4a8e-9abf-9c53f65a0ccd_1080x.png?v=1752445846",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:chicory-witloof": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/chicory-witloof.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/chicory-witloof.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/products/V8112-1_1080x.png?v=1688002011",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:zucchini-black-coral-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/zucchini-black-coral-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/zucchini-black-coral-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8353-1_0356270e-8f20-41d9-ada7-87b6adc336ba_1080x.jpg?v=1725602938",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:zucchini-cocozelle": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/zucchini-cocozelle.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/zucchini-cocozelle.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8354-1_dc00fb6d-acc3-449c-a8fb-24c23e3a4c85_1080x.jpg?v=1725602980",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:zucchini-costata-romanesco": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/zucchini-costata-romanesco.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/zucchini-costata-romanesco.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8355-1_146c37ca-86b1-4e3f-a057-34094f8c7fd2_1080x.jpg?v=1725603015",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:zucchini-gold-rush-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/zucchini-gold-rush-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/zucchini-gold-rush-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8356-1_0a3703f7-eb5b-4fb8-92af-f82afaee9386_1080x.jpg?v=1725603050",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:squash-rampicante": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/squash-rampicante.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/squash-rampicante.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8254-1_8473ce6d-badc-4d64-81b0-407c0a5ebc05_1080x.jpg?v=1725598910",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:zucchini-tondo-di-nizza": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/zucchini-tondo-di-nizza.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/zucchini-tondo-di-nizza.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8453_W_1080x.png?v=1784970099",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

@@ -480,7 +480,7 @@ Cloudflare deployment succeeded for Batch 23 commit 14941fa (https://github.com/
 
 ## Pending Kings Seeds reference inventory
 
-The current catalogue has 429 IDs. The generated artwork manifest maps 420 of them. The local inventory at work/references/pending-catalogue.tsv includes the remaining 39 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
+The current catalogue has 429 IDs. The generated artwork manifest maps all 429 of them. The local inventory at work/references/pending-catalogue.tsv includes the remaining 39 IDs in catalogue order and records a distinct local reference filename and its source URL for each. These references are queued for illustration and visual review.
 
 Rasmussen Batch 18 reference gap: habanero-oz-latern-white-chilli-seeds-10-seeds remains pending an exact labelled photo. Generic White Habanero references were excluded.
 
@@ -863,3 +863,19 @@ Batch 41 deployed at f6a9d82 (https://github.com/Archil3s/Blenheim-Garden/action
 - Kings Seeds | watermelon-sweet-red-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8352-1_3bf805ad-39b8-4108-b257-5b340724566a_1080x.jpg?v=1725602901 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 42 passed the production build and all 36 focused browser checks. There are 420 Kings Seeds cultivar illustrations and 426 reviewed Harvest mappings across both suppliers. Nine Kings Seeds cultivars still need their first illustration.
+
+Batch 42 deployed at d9831d3 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/43089178710).
+
+## Kings Seeds Batch 43
+
+- Kings Seeds | rocket-arugula | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8277_1080x.jpg?v=1741408842 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | wild-rocket-dragons-fire | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8419-1_eb870cc3-1edc-4a8e-9abf-9c53f65a0ccd_1080x.png?v=1752445846 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | chicory-witloof | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/products/V8112-1_1080x.png?v=1688002011 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | zucchini-black-coral-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8353-1_0356270e-8f20-41d9-ada7-87b6adc336ba_1080x.jpg?v=1725602938 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | zucchini-cocozelle | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8354-1_dc00fb6d-acc3-449c-a8fb-24c23e3a4c85_1080x.jpg?v=1725602980 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | zucchini-costata-romanesco | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8355-1_146c37ca-86b1-4e3f-a057-34094f8c7fd2_1080x.jpg?v=1725603015 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | zucchini-gold-rush-f1 | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8356-1_0a3703f7-eb5b-4fb8-92af-f82afaee9386_1080x.jpg?v=1725603050 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | squash-rampicante | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8254-1_8473ce6d-badc-4d64-81b0-407c0a5ebc05_1080x.jpg?v=1725598910 | Harvest reviewed and mapped. Earlier stages pending.
+- Kings Seeds | zucchini-tondo-di-nizza | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8453_W_1080x.png?v=1784970099 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 43 passed the production build and all 36 focused browser checks. The generated artwork manifest covers all 429 Kings Seeds IDs. The growth manifest has 435 reviewed Harvest mappings across both suppliers. Four existing Kings Seeds icons still need dedicated Harvest art, and earlier growth stages remain pending across the catalogue.
