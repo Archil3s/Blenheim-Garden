@@ -944,6 +944,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8318-1_2894eee7-370c-414a-a545-8a75d6aa0f33_1080x.jpg?v=1725601636",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:tomato-black-krim": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-black-krim.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-black-krim.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8302-1_8d05e07f-36e7-484c-94c5-f9fc61a30350_1080x.jpg?v=1725601122",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-bloody-butcher": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-bloody-butcher.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-bloody-butcher.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8338-1_f72f2b0c-2760-4eac-bd62-244bfe47c83d_1080x.jpg?v=1725602339",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-bob-logan": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-bob-logan.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-bob-logan.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/HFC027-W2.png",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-brandywine-pink": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-brandywine-pink.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-brandywine-pink.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8305-1_1dbbd392-659c-46dc-ba82-e9107fe7e5b9_1080x.jpg?v=1725601262",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-carol": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-carol.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-carol.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/HFC028-W2.png",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-cherokee-purple": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-cherokee-purple.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-cherokee-purple.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8334-1_3c797b82-a140-4682-80c8-822a553917c6_1080x.jpg?v=1725602185",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-berry-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-berry-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-berry-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8319-1_2f7a10b3-c547-4a91-8419-19cdf7127375_1080x.jpg?v=1725601668",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-delicious": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-delicious.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-delicious.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8413-1_a29d7fd9-8b62-4147-9564-cf480c078d47_1080x.png?v=1752445851",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-fantastico-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-fantastico-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-fantastico-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8320-1_bf96eaa8-8e04-451a-ad2c-b1d3b0ed5b6f_1080x.jpg?v=1725601712",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:tomato-glimpse": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/tomato-glimpse.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-glimpse.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/HFC018-1_78c6b78f-cf64-46ab-8adf-0114be4cee11_1080x.png?v=1752445879",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
