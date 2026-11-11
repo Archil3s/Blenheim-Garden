@@ -31,7 +31,8 @@ export function GardenCareJournal() {
 
   useEffect(() => {
     const id = readActiveGardenId();
-    setGardenId(id);
+    queueMicrotask(() => {
+      setGardenId(id);
     const params = new URLSearchParams(window.location.search);
     const draftDate = params.get("date");
     if (draftDate && /^\d{4}-\d{2}-\d{2}$/.test(draftDate)) setDate(draftDate);
@@ -44,6 +45,8 @@ export function GardenCareJournal() {
       const dilutions = params.getAll("dilution");
       setProducts(draftProducts.slice(0, 8).map((name, i) => ({ name: name.slice(0, 160), dilution: (dilutions[i] ?? "").slice(0, 80) })));
     }
+
+    });
 
     async function load() {
       try {
