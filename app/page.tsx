@@ -55,6 +55,7 @@ export default function Home() {
           <Link href="/" aria-current="page">Overview</Link>
           <Link href="/planner">Garden planner</Link>
           <Link href="/seedlings">Seedling journal</Link>
+          <Link href="/care">Fertilising & spraying</Link>
           <Link href="/3d">3D view</Link>
           <Link href="/test-garden">Test garden</Link>
         </nav>
@@ -85,7 +86,7 @@ export default function Home() {
 
         <section className="home-section home-library" aria-labelledby="home-spaces">
           <div className="home-section-heading">
-            <div><span className="home-eyebrow">THE WORKSPACE</span><h2 id="home-spaces">Four ways to work in the garden.</h2></div>
+            <div><span className="home-eyebrow">THE WORKSPACE</span><h2 id="home-spaces">Five ways to work in the garden.</h2></div>
             <span className="home-section-aside">From planning to planting</span>
           </div>
           <div className="home-workspace-list">
@@ -104,8 +105,13 @@ export default function Home() {
               <span className="home-item-body"><strong>Explore in 3D</strong><span>See crop placement and garden structures from another angle.</span></span>
               <span className="home-item-meta">GARDEN VISUALISATION</span><span className="home-link-arrow" aria-hidden="true">↗</span>
             </Link>
-            <Link href="/test-garden" className="home-workspace-item">
+            <Link href="/care" className="home-workspace-item">
               <span className="home-index">04</span>
+              <span className="home-item-body"><strong>Fertilise & protect crops</strong><span>Record fertilisers, sprays and withholding periods, with visual treatment history on the garden map.</span></span>
+              <span className="home-item-meta">GARDEN CARE JOURNAL</span><span className="home-link-arrow" aria-hidden="true">↗</span>
+            </Link>
+            <Link href="/test-garden" className="home-workspace-item">
+              <span className="home-index">05</span>
               <span className="home-item-body"><strong>Test every plant icon</strong><span>A read-only garden of supplier varieties and reference artwork.</span></span>
               <span className="home-item-meta">ICON TEST GARDEN</span><span className="home-link-arrow" aria-hidden="true">↗</span>
             </Link>

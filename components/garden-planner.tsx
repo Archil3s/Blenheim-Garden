@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { careDateLabel, careShortDate, lastCareForTarget, type CareEvent } from "@/lib/garden/care";
 import { parsePlanLocks, planLockKey, preservesPlanLocks } from "@/lib/garden/plan-item-locks";
 import { changeIndividualPlant } from "@/lib/garden/plan-editing";
 import { IndividualPlantControls } from "./individual-plant-controls";
@@ -302,6 +303,20 @@ export function GardenPlanner() {
   const [clipboardReady, setClipboardReady] = useState(false);
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [loadSource, setLoadSource] = useState<LoadSource>("starting");
+  const [careRecords, setCareRecords] = useState<{ gardenId: string; events: CareEvent[] }>({ gardenId: "", events: [] });
+  const careEvents = careRecords.gardenId === activeGardenId ? careRecords.events : [];
+
+  useEffect(() => {
+    let cancelled = false;
+    void fetch("/api/garden/care?gardenId=" + encodeURIComponent(activeGardenId), { cache: "no-store" })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("Unable to load care markers.");
+        return response.json() as Promise<{ ok: boolean; events?: CareEvent[] }>;
+      })
+      .then((data) => { if (!cancelled && data.ok) setCareRecords({ gardenId: activeGardenId, events: data.events ?? [] }); })
+      .catch(() => { if (!cancelled) setCareRecords({ gardenId: activeGardenId, events: [] }); });
+    return () => { cancelled = true; };
+  }, [activeGardenId]);
 
   useEffect(() => {
     const receive = (event: Event) => {
@@ -1203,10 +1218,12 @@ export function GardenPlanner() {
     const symbol = originalSymbolSizes ? referencePlantDimensions(area.crop, area.variety) : null;
     const renderLimit = overview ? 400 : 1600;
     const positions = bed ? plantPositionsForArea(area, areaSize.width, areaSize.height, renderLimit) : [];
+    const care = lastCareForTarget(careEvents, area.crop, "area:" + area.id);
     const sampleStep = Math.max(1, Math.ceil(Math.round(area.count) / renderLimit));
     return <div key={area.id} data-skip-locked={skipLockedItem({ kind: "planting", id: area.id })} className={`planting-area ${area.placements ? "has-explicit-placements" : ""} ${overview ? "is-overview" : ""} ${selected ? "selected" : ""}`} data-crop={area.crop} data-pattern={area.pattern} style={{ left: `${area.x}%`, top: `${area.y}%`, width: `${area.w}%`, height: `${area.h}%`, ["--area-icon-size" as string]: `${symbol?.width ?? area.iconSize}px`, ["--area-icon-height" as string]: `${symbol?.height ?? area.iconSize}px` }} onPointerDown={(event) => overview && bed && tool === "select" && !area.placements && !clickedPlantId(event) && !lockedKeys.has("bed:" + bed.id) ? startBedInteraction(event, bed) : startPlantingInteraction(event, area)}>
       <span className="planting-area-icons">{overview && !positions.length && zoom >= 45 && <i className="gv-overview-art" style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)", ["--area-icon-size" as string]: `${30 / (zoom / 100)}px` }}><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></i>}{positions.map((position, index) => { const plantId = area.placements?.[index]?.id ?? `${area.id}:generated-${index * sampleStep}`; return <i key={plantId} data-plant-id={plantId} data-selected-plant={selected && selection?.plantId === plantId} style={{ left: position.x, top: position.y, transform: `translate(-50%, -50%) rotate(${position.rotation}deg)` }}><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></i>; })}</span>
       <span className="planting-area-label" title={`${area.crop} · ${area.variety} · ${area.count} plants · ${area.spacingCm} cm spacing`}><span className="gv-crop-symbol" aria-hidden="true"><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></span><span className="gv-crop-name">{area.variety}</span><b>×{area.count}</b></span>
+       {(care.fertiliser || care.spray) && <span className="garden-care-flags" role="note" aria-label={"Last treatment for " + area.crop}>{care.fertiliser && <span className="fed" title={"Last fertilised " + careDateLabel(care.fertiliser.occurredOn)}>Fed {careShortDate(care.fertiliser.occurredOn)}</span>}{care.spray && <span className="sprayed" title={"Last sprayed " + careDateLabel(care.spray.occurredOn)}>Sprayed {careShortDate(care.spray.occurredOn)}</span>}</span>}
       {selected && !groupSelection.length && !overview && <span className="planting-spacing-badge">↔ {area.spacingCm} cm</span>}
       {selected && !groupSelection.length && !selectionLocked && <span className="planting-area-resize" onPointerDown={(event) => startPlantingInteraction(event, area, true)} />}
     </div>;
@@ -1237,6 +1254,7 @@ export function GardenPlanner() {
         <button type="button" className={`planner-report-tab ${reportView === "plants" ? "active" : ""}`} aria-label="Open plant list" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "plants" }))}>Plant List</button>
         <button type="button" className={`planner-report-tab ${reportView === "parts" ? "active" : ""}`} aria-label="Open parts list" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "parts" }))}>Parts List</button>
         <button type="button" className={`planner-report-tab ${reportView === "calendar" ? "active" : ""}`} aria-label="Open planting calendar" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "calendar" }))}>Calendar</button>
+        <Link href="/care" className="planner-care-link" aria-label="Open fertilising and spraying journal">Fertilise & Spray</Link>
         <button type="button" className={`planner-report-tab ${notesOpen ? "active" : ""}`} aria-label="Plan notes" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(true); }}>Notes</button><button type="button" data-season-view="today">Today</button>
         <div ref={moreRef} className="gv-more" data-open={moreOpen}>
           <button type="button" className="gv-more-trigger" aria-expanded={moreOpen} aria-controls="gv-more-panel" onClick={() => setMoreOpen(value => !value)}>
@@ -1245,7 +1263,7 @@ export function GardenPlanner() {
           {moreOpen && <div id="gv-more-panel" className="gv-more-panel" onClick={(event) => {
             if ((event.target as HTMLElement).closest("a, button")) setMoreOpen(false);
           }}>
-          <nav className="gv-tabs" aria-label="Garden records"><button type="button">Photos</button><button type="button">Notes</button></nav>
+          <nav className="gv-tabs" aria-label="Garden records"><button type="button">Photos</button><button type="button">Notes</button></nav><Link href="/care">Fertilising & spraying</Link>
           <button type="button" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(true); }}>Plan notes</button><PlannerReports plan={plan} period={{ year: planningYear, month: months.indexOf(month) }} onPeriodChange={period => { setPlanningYear(period.year); setMonth(months[period.month]); setSelection(null); }} onDatesChange={changeSchedule} onShowPlanting={showCalendarPlanting} /><button type="button" data-season-view="week">This Week</button>
           <a href="/3d" target="_blank" rel="noopener">Live 3D ↗</a> <Link href="/test-garden">All plant icons · Test garden ↗</Link>
           <button type="button" className="gv-settings">Settings</button>
@@ -1275,7 +1293,12 @@ export function GardenPlanner() {
           if (object.type === "structure") { const preset = structurePreset(object.kind); return <div key={object.id} data-kind={object.kind} data-skip-locked={skipLockedObject(object)} className={`layout-object structure-object ${selected ? "selected" : ""}`} style={{ left: object.x - object.widthCm / 2, top: object.y - object.depthCm / 2, width: object.widthCm, height: object.depthCm, transform: `rotate(${object.rotationDeg}deg)` }} onPointerDown={(event) => startObjectInteraction(event, object)}><span className="structure-symbol reference-structure-symbol" aria-hidden="true"><ReferenceObjectArt kind={object.kind} widthCm={object.widthCm} depthCm={object.depthCm} /></span><small>{object.label ?? preset.label}</small>{selected && !groupSelection.length && !selectionLocked && <span className="resize-handle structure-resize-handle" title="Resize structure" onPointerDown={(event) => startObjectInteraction(event, object, "structure-resize")} />}</div>; }
           return <div key={object.id} data-skip-locked={skipLockedObject(object)} className={`layout-object text-object ${selected ? "selected" : ""}`} style={{ left: object.x, top: object.y, fontSize: object.fontSize }} onPointerDown={(event) => startObjectInteraction(event, object)}>{object.text}</div>;
         })}
-        {visiblePlan.rows.map(row => <PlannerPlantingRow key={row.id} row={row} selectedPlantId={selection?.kind === "row" && selection.id === row.id ? selection.plantId : undefined} skipLocked={skipLockedItem({ kind: "row", id: row.id })} selected={isSelected("row", row.id)} handles={isSelected("row", row.id) && !groupSelection.length && !selectionLocked} onDrag={startRowInteraction} />)}
+        {visiblePlan.rows.map(row => {
+          const care = lastCareForTarget(careEvents, row.crop, "row:" + row.id);
+          return <Fragment key={row.id}><PlannerPlantingRow row={row} selectedPlantId={selection?.kind === "row" && selection.id === row.id ? selection.plantId : undefined} skipLocked={skipLockedItem({ kind: "row", id: row.id })} selected={isSelected("row", row.id)} handles={isSelected("row", row.id) && !groupSelection.length && !selectionLocked} onDrag={startRowInteraction} />
+            {(care.fertiliser || care.spray) && <span className="garden-care-flags garden-care-row-flags" style={{ left: (row.x1 + row.x2) / 2, top: (row.y1 + row.y2) / 2 }} role="note" aria-label={"Last treatment for " + row.crop}>{care.fertiliser && <span className="fed" title={"Last fertilised " + careDateLabel(care.fertiliser.occurredOn)}>Fed {careShortDate(care.fertiliser.occurredOn)}</span>}{care.spray && <span className="sprayed" title={"Last sprayed " + careDateLabel(care.spray.occurredOn)}>Sprayed {careShortDate(care.spray.occurredOn)}</span>}</span>}
+          </Fragment>;
+        })}
         {plan.beds.length > 0 && <div className="garden-bed-coordinate-layer">{plan.beds.map((bed) => {
           const selected = isSelected("bed", bed.id);
           const areas = visiblePlan.plantingAreas.filter((area) => area.bedId === bed.id);
