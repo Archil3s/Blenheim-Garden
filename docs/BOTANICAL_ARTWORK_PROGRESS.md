@@ -535,3 +535,5 @@ Batch 30 deployed on Cloudflare at 0ba8f16 (https://github.com/Archil3s/Blenheim
 Batch 31 passed the production build and all 28 focused browser checks. Cloudflare deployed commit 40eddc7 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42926815464).
 
 The /test-garden inspector displays all six stages for every supplier entry. The growth-stage manifest starts with ten reviewed Batch 31 harvest mappings. Unmapped stages display Pending. The production build and all 32 focused browser checks passed.
+
+Mapped 30 previously reviewed Kings Seeds harvest illustrations to their exact cultivar growth records, for 40 mapped Harvest slots. Verified catalogue keys, reference URLs and both PNG sizes. The production build passed. Playwright passed 31 checks on the first attempt and the phone gallery check on retry.
