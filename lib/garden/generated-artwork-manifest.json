@@ -2798,5 +2798,75 @@
     "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-sub-arctic-plenty.png",
     "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8344-1_fe1529ed-69cc-48ed-bf03-163b2f96b351_1080x.jpg?v=1725602604",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-sugar-plum-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-sugar-plum-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-sugar-plum-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8328-1_e4919a85-c7f6-4e68-b55a-28afd9ae439b_1080x.jpg?v=1725601981",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-sungold": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-sungold.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-sungold.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8382-1_d6fd6665-321f-476f-8f4e-7f85e3951294_1080x.jpg?v=1725603711",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-tangella": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-tangella.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-tangella.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/HFC024-1_3b773cc1-8e48-41c1-94f4-0198184d6077_1080x.png?v=1752445888",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-tigerella": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-tigerella.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-tigerella.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8366-1_4e537429-8f07-4b6f-be32-4375c41f0cdf_1080x.jpg?v=1725603361",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-tommy-toe": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-tommy-toe.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-tommy-toe.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8331-1_e2551b50-e6b0-4102-9aa1-f8037eecbaf5_1080x.jpg?v=1725602085",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:tomato-yellow-pear": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/tomato-yellow-pear.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/tomato-yellow-pear.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8381-1_41b7ca3e-5860-4c88-89d6-19b9e3309392_1080x.jpg?v=1725603672",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:turnip-milan-red-top": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/turnip-milan-red-top.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/turnip-milan-red-top.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/O6078-1_89d4bec7-1652-4069-a922-da035a800bb9_1080x.jpg?v=1721355994",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:turnip-snowball": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/turnip-snowball.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/turnip-snowball.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8346-1_84bd78ac-0c47-4935-9495-a6f594cdfe82_1080x.jpg?v=1725602684",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:turnip-tokyo-white-cross-f1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/turnip-tokyo-white-cross-f1.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/turnip-tokyo-white-cross-f1.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8347-1_f0c12eaf-c1c7-46cc-80b5-28692ba6a133_1080x.jpg?v=1725602717",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "kings:water-spinach-bamboo-leaf": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/kings-seeds/master/water-spinach-bamboo-leaf.png",
+    "gallery": "/plant-icons/generated/kings-seeds/gallery/water-spinach-bamboo-leaf.png",
+    "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8348-1_ec3581c0-9f93-4278-ba66-2e3fa5c09572_1080x.jpg?v=1725602748",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }
