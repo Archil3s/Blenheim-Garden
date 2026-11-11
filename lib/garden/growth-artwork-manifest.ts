@@ -2204,6 +2204,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-mild-shishito-f1",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:chilli-hot-spicy-blend": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/chilli-hot-spicy-blend.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-hot-spicy-blend.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-hot-spicy-blend",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:chilli-tabasco": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/chilli-tabasco.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-tabasco.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-tabasco",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:chilli-medium-thai-hot-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/chilli-medium-thai-hot-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/chilli-medium-thai-hot-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/chilli-medium-thai-hot-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:choy-sum": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/choy-sum.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/choy-sum.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/choy-sum",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:collard-greens": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/collard-greens.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/collard-greens.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/collard-greens",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:corn-bicolour-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/corn-bicolour-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/corn-bicolour-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/corn-bicolour-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:corn-painted-mountain": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/corn-painted-mountain.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/corn-painted-mountain.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/corn-painted-mountain",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:corn-glass-gem": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/corn-glass-gem.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/corn-glass-gem.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/corn-glass-gem",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:corn-golden-sweet-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/corn-golden-sweet-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/corn-golden-sweet-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/corn-golden-sweet-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:corn-popcorn-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/corn-popcorn-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/corn-popcorn-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/corn-popcorn-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

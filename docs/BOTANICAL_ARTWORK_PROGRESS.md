@@ -725,3 +725,7 @@ Reviewed and mapped ten existing cauliflower, celeriac, celery, celtuce, and chi
 The prior Harvest mappings deployed at b66f3f8 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42953256524).
 
 Reviewed and mapped ten existing Kings Seeds chilli illustrations to Harvest, using the cultivar's documented harvest colour, including green-picked varieties. Both PNG sizes were verified. The Harvest total reached 241. The production build and all 36 browser checks passed.
+
+The prior Harvest mappings deployed at 02dfceb (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42953809613).
+
+Reviewed and mapped ten existing Kings Seeds chilli, leafy green and corn illustrations to Harvest. Both PNG sizes were verified. The Harvest total reached 251. The production build and all 36 browser checks passed.
