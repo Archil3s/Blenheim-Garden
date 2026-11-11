@@ -675,3 +675,9 @@ Batch 38 deployed at 8f372d7 (https://github.com/Archil3s/Blenheim-Garden/action
 - Kings Seeds | tomato-mini-orange | generated_qa_passed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/HFC021-1_8bf51190-541f-4fb2-91a3-b6c56e204aa5_1080x.png?v=1752445883 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 39 passed the production build and all 36 focused browser checks. The Kings Seeds manifest has 390 unique assets at each size and 121 reviewed Harvest mappings.
+
+Batch 39 deployed at 1d33361 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/42946128654).
+
+Batch 40 is in progress locally. Moneymaker, Moonbeam and Mortgage Lifter passed visual comparison and 512 px and 128 px PNG export checks. ImageGen returned a quota error on Mountain Gold with a reported reset of 2026-11-11 09:43:42 UTC. Resume with Mountain Gold at index 3. Integrate and deploy after the ten-illustration batch passes review.
+
+Ten existing artichoke, asparagus and bean illustrations passed Harvest-stage review. Their exact cultivar mappings and original provenance are recorded in the growth-stage manifest, bringing the reviewed Harvest count to 131. The production build and all 36 browser checks passed.

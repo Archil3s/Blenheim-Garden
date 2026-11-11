@@ -1124,6 +1124,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/HFC021-1_8bf51190-541f-4fb2-91a3-b6c56e204aa5_1080x.png?v=1752445883",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "kings:artichoke-green-globe": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/artichoke-green-globe.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/artichoke-green-globe.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/artichoke-green-globe",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:asparagus-mary-washington": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/asparagus-mary-washington.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/asparagus-mary-washington.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-mary-washington",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:asparagus-pacific-challenger-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/asparagus-pacific-challenger-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/asparagus-pacific-challenger-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-pacific-challenger-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:asparagus-pacific-purple-f1": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/asparagus-pacific-purple-f1.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/asparagus-pacific-purple-f1.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-pacific-purple-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-asian-winged": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-asian-winged.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-asian-winged.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-asian-winged",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-asian-yard-long": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-asian-yard-long.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-asian-yard-long.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-asian-yard-long",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-climbing-bicolour-pean": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-bicolour-pean.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-bicolour-pean.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-climbing-cornplanter-purple": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-cornplanter-purple.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-cornplanter-purple.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-climbing-cornplanter-purple",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-climbing-hopi-black-pinto": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-hopi-black-pinto.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-hopi-black-pinto.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:bean-climbing-hopi-purple-string": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-hopi-purple-string.png",
+      "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-hopi-purple-string.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
