@@ -47,7 +47,7 @@ The bed is a visual QA display, **not a physically spaced planting recommendatio
 
 ## Editable sample in the real 2D planner
 
-Use **/planner → Garden → Editable icon sample bed · all approved varieties**.
+Use **/planner → More → Editable icon sample bed · all approved varieties**.
 Unlike the read-only `/test-garden` gallery, this loads a real, editable planner template with one large bed and one actual planting area for each QA-approved supplier PNG. Plantings have correct crop and variety identifiers, are selectable in the standard inspector, and display the approved 2D icons.
 
 When two suppliers have the same crop and variety (currently Anaheim chilli), the sample planting adds a supplier suffix to the displayed variety name to retain the two distinct approved image mappings. Saved ordinary plantings are unaffected.
