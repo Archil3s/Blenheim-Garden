@@ -139,7 +139,7 @@ test("supplier inspector shows all growth stages in order and links reviewed har
   ]);
   await expect(stages.getByText("Pending", { exact: true })).toHaveCount(5);
   await expect(stages.getByRole("link", { name: "Harvest illustration" }))
-    .toHaveAttribute("href", /master\/passionfruit-large-black\.png$/);
+    .toHaveAttribute("href", "/plant-icons/generated/rasmussen/master/aji-cristal-chilli-seeds-10-seeds.png");
 });
 
 test("Little Gem opens reviewed artwork for all six growth stages", async ({ page }) => {
