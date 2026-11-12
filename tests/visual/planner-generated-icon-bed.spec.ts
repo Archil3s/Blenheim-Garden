@@ -39,9 +39,12 @@ for (const width of [390, 1440]) {
     }));
     await page.goto("/planner?gardenId=icon-sample-browser-test");
     await expect(page.locator(".gv-save")).toHaveText("Saved ✓");
-    await page.locator(".planner-garden-menu summary").click();
+    await page.getByRole("button", { name: /^More/ }).click();
+    const menu = page.locator("#gv-more-panel");
+    await expect(menu).toBeVisible();
     page.once("dialog", dialog => dialog.accept());
-    await page.getByRole("button", { name: "Editable icon sample bed · all approved varieties" }).click();
+    await menu.getByRole("button", { name: "Editable icon sample bed · all approved varieties" }).click();
+    await expect(menu).toHaveCount(0);
 
     await expect(page.locator(".plan-bed")).toHaveCount(1);
     await expect(page.locator(".planting-area")).toHaveCount(approvedGeneratedPlantIcons.length);
