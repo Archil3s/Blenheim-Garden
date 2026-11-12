@@ -43,3 +43,13 @@ It currently includes 429 Kings Seeds and 20 Rasmussen images. Supplier identiti
 Use the search and catalogue controls to inspect a subset; **Reset filters** restores the complete approved-artwork bed.
 Selecting an icon opens the existing artwork inspector with its 512px master and botanical reference.
 The bed is a visual QA display, **not a physically spaced planting recommendation**. It never loads or saves the user's working plan, never modifies D1/R2, and never overrides local garden drafts.
+
+
+## Editable sample in the real 2D planner
+
+Use **/planner → Garden → Editable icon sample bed · all approved varieties**.
+Unlike the read-only `/test-garden` gallery, this loads a real, editable planner template with one large bed and one actual planting area for each QA-approved supplier PNG. Plantings have correct crop and variety identifiers, are selectable in the standard inspector, and display the approved 2D icons.
+
+When two suppliers have the same crop and variety (currently Anaheim chilli), the sample planting adds a supplier suffix to the displayed variety name to retain the two distinct approved image mappings. Saved ordinary plantings are unaffected.
+
+**Safety:** Loading a template replaces the current unsaved draft after confirmation. The existing Undo and **Restore previous draft** actions can recover that draft. To save the test bed without replacing an existing cloud garden, first create a separate named garden. Clicking the template alone does not write to D1. This oversized botanical icon sample is for visual verification, not for physically accurate planting densities or seasonal cultivation.

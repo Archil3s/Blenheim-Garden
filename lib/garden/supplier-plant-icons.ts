@@ -14,13 +14,24 @@ const icons = new Map<string, string>([
 
 // The 2D PlantArt renderer uses reviewed 128px artwork; the 3D meshes are separate.
 const generatedIcons: Record<string, { status: string; gallery: string }> = generatedArtwork;
-for (const [source, sourceVarieties] of [
-  ["kings", kingsSeedsVarieties],
-  ["rasmussen", varieties],
+export type ApprovedGeneratedPlantIcon = {
+  source: "Kings Seeds" | "Rasmussen";
+  crop: string;
+  variety: string;
+  gallery: string;
+};
+export const approvedGeneratedPlantIcons: ApprovedGeneratedPlantIcon[] = [];
+for (const [sourceId, source, sourceVarieties] of [
+  ["kings", "Kings Seeds", kingsSeedsVarieties],
+  ["rasmussen", "Rasmussen", varieties],
 ] as const) {
   for (const { crop, variety, id } of sourceVarieties) {
-    const artwork = generatedIcons[`${source}:${id}`];
-    if (artwork?.status === "generated_qa_passed") icons.set(key(crop, variety), artwork.gallery);
+    const artwork = generatedIcons[`${sourceId}:${id}`];
+    if (artwork?.status !== "generated_qa_passed") continue;
+    approvedGeneratedPlantIcons.push({ source, crop, variety, gallery: artwork.gallery });
+    icons.set(key(crop, variety), artwork.gallery);
+    // Source-qualified names are used only when an icon sample has duplicate cultivar names.
+    icons.set(key(crop, `${variety} · ${source}`), artwork.gallery);
   }
 }
 
