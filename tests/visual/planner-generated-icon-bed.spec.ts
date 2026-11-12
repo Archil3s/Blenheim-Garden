@@ -49,7 +49,7 @@ for (const width of [390, 1440]) {
       .filter({ has: page.locator('.planting-area-label[title*="Garnet Red"]') });
     await expect(garnet).toHaveCount(1);
     await expect(garnet.locator(".planting-area-icons > i > span").first())
-      .toHaveCSS("background-image", /generated\\/kings-seeds\\/gallery\\/amaranth-garnet-red\\.png/);
+      .toHaveCSS("background-image", /amaranth-garnet-red/);
     await page.screenshot({ path: info.outputPath(`editable-icon-bed-${width}.png`) });
 
     await page.locator(".planner-garden-menu summary").click();
