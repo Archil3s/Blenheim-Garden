@@ -118,3 +118,23 @@
   aspect-ratio: 1;
   object-fit: contain;
 }
+
+
+/* One read-only display bed for every generated, QA-approved supplier variety. */
+.tg-showcase-bed .tg-bed-grid { grid-template-columns: minmax(0, 1fr); }
+.tg-showcase-bed .tg-bed { padding: 16px; }
+.tg-showcase-bed .tg-plots { grid-template-columns: repeat(auto-fill, minmax(116px, 1fr)); gap: 9px; }
+.tg-showcase-bed .tg-plot { min-height: 150px; padding: 10px 6px; }
+.tg-showcase-bed .tg-plot-label {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.25;
+  min-height: 2.5em;
+  max-height: 2.5em;
+  overflow: hidden;
+}
+@media (max-width: 760px) {
+  .tg-showcase-bed .tg-plots { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .tg-showcase-bed .tg-bed { padding: 9px; }
+  .tg-showcase-bed .tg-garden-header { flex-wrap: wrap; }
+}
