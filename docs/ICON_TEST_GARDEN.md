@@ -33,3 +33,13 @@ Rasmussen concept batches include adapted/reused AI drawings not verified agains
 ## Verification
  
 Run `bun run build` and check the `/test-garden` route on desktop and mobile. Select a supplier crop, a planner-only crop and a Rasmussen variety with a concept PNG; check that saved gardens remain unchanged after visiting the route.
+
+## All new icons · showcase bed
+
+Open `/test-garden#generated-bed` or use **Garden → All new icons · showcase bed** from the 2D planner.
+This dedicated read-only mode places **every `generated_qa_passed` catalogue illustration** in **one display bed**, one plot per supplier variety, with the crop and variety labelled beneath the 2D PNG.
+It currently includes 429 Kings Seeds and 20 Rasmussen images. Supplier identities are kept separate, including the two Anaheim artworks, which cannot be distinguished by the live planner's crop/variety-only key.
+
+Use the search and catalogue controls to inspect a subset; **Reset filters** restores the complete approved-artwork bed.
+Selecting an icon opens the existing artwork inspector with its 512px master and botanical reference.
+The bed is a visual QA display, **not a physically spaced planting recommendation**. It never loads or saves the user's working plan, never modifies D1/R2, and never overrides local garden drafts.
