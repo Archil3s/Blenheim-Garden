@@ -51,7 +51,7 @@ for (const width of [390, 1440]) {
       await expect(icon).toHaveCSS("background-size", "contain");
       const loaded = await icon.evaluate(async element => {
         const css = getComputedStyle(element).backgroundImage;
-        const path = css.slice(css.indexOf("(") + 1, css.lastIndexOf(")")).replaceAll("\"", "").replaceAll("\'", "");
+        const path = css.slice(css.indexOf("(") + 1, css.lastIndexOf(")")).replaceAll("\"", "").replaceAll("'", "");
         if (!path) return false;
         const image = new Image();
         image.src = path;
