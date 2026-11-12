@@ -135,7 +135,10 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
   }
   useEffect(() => {
     if (window.location.hash === "#generated-bed") {
-      queueMicrotask(showNewIconsBed);
+      queueMicrotask(() => {
+        setSource("All sources"); setCrop("All crops"); setQuery("");
+        setArtworkFilter("Generated artwork only"); setLayout("new-icons");
+      });
     }
   }, []);
   function reset() { setSource("All sources"); setCrop("All crops"); setQuery(""); setLimit(PAGE_SIZE); setArtworkFilter(layout === "new-icons" ? "Generated artwork only" : "All artwork"); }
