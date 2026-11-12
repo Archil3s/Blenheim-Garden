@@ -169,3 +169,34 @@ test("Rasmussen generated cultivar opens its exact Harvest artwork", async ({ pa
   await harvest.scrollIntoViewIfNeeded();
   await expect(harvest.getByRole("img")).toHaveJSProperty("naturalWidth", 128);
 });
+
+
+test("all approved generated varieties occupy one isolated showcase bed", async ({ page }) => {
+  const writes: string[] = [];
+  page.on("request", request => {
+    if (request.url().includes("/api/garden") && request.method() !== "GET") writes.push(request.url());
+  });
+  await page.goto("/test-garden#generated-bed");
+  const tab = page.getByRole("button", { name: "All new icons bed" });
+  await expect(tab).toHaveAttribute("aria-pressed", "true");
+  const expected = Object.values(generatedArtwork)
+    .filter(artwork => artwork.status === "generated_qa_passed").length;
+  expect(expected).toBe(449);
+  await expect(page.locator(".tg-showcase-bed .tg-bed")).toHaveCount(1);
+  await expect(page.locator(".tg-showcase-bed .tg-plot")).toHaveCount(expected);
+  await expect(page.locator(".tg-showcase-bed .tg-plot img[data-art-source='generated']")).toHaveCount(expected);
+
+  const kings = page.locator('[data-artwork-id="kings:chilli-mild-anaheim"] img');
+  const rasmussen = page.locator('[data-artwork-id="rasmussen:anaheim-chilli-seeds-10-seeds"] img');
+  await expect(kings).toHaveAttribute("src", generatedArtwork["kings:chilli-mild-anaheim"].gallery);
+  await expect(rasmussen).toHaveAttribute("src", generatedArtwork["rasmussen:anaheim-chilli-seeds-10-seeds"].gallery);
+  expect(await kings.getAttribute("src")).not.toBe(await rasmussen.getAttribute("src"));
+
+  await page.getByRole("searchbox", { name: "SEARCH BY CROP OR VARIETY OR SUPPLIER" }).fill("Aji Cristal");
+  await expect(page.locator(".tg-showcase-bed .tg-plot")).toHaveCount(1);
+  await page.locator(".tg-showcase-bed .tg-plot").click();
+  await expect(page.locator("#tg-inspector h2")).toHaveText("Aji Cristal");
+  await expect(page.locator("#tg-inspector").getByRole("link", { name: /Open master image/ }))
+    .toHaveAttribute("href", /master\\/aji-cristal-chilli-seeds-10-seeds\\.png$/);
+  expect(writes).toEqual([]);
+});
