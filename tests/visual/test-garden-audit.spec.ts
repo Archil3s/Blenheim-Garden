@@ -139,7 +139,7 @@ test("supplier inspector shows all growth stages in order and links reviewed har
   ]);
   await expect(stages.getByText("Pending", { exact: true })).toHaveCount(5);
   await expect(stages.getByRole("link", { name: "Harvest illustration" }))
-    .toHaveAttribute("href", "/plant-icons/generated/rasmussen/master/aji-cristal-chilli-seeds-10-seeds.png");
+    .toHaveAttribute("href", "/plant-icons/generated/kings-seeds/master/passionfruit-large-black.png");
 });
 
 test("Little Gem opens reviewed artwork for all six growth stages", async ({ page }) => {
@@ -197,6 +197,6 @@ test("all approved generated varieties occupy one isolated showcase bed", async 
   await page.locator(".tg-showcase-bed .tg-plot").click();
   await expect(page.locator("#tg-inspector h2")).toHaveText("Aji Cristal");
   await expect(page.locator("#tg-inspector").getByRole("link", { name: /Open master image/ }))
-    .toHaveAttribute("href", /master\\/aji-cristal-chilli-seeds-10-seeds\\.png$/);
+    .toHaveAttribute("href", "/plant-icons/generated/rasmussen/master/aji-cristal-chilli-seeds-10-seeds.png");
   expect(writes).toEqual([]);
 });
