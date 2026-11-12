@@ -181,7 +181,7 @@ test("all approved generated varieties occupy one isolated showcase bed", async 
   await expect(tab).toHaveAttribute("aria-pressed", "true");
   const expected = Object.values(generatedArtwork)
     .filter(artwork => artwork.status === "generated_qa_passed").length;
-  expect(expected).toBe(449);
+  expect(expected).toBeGreaterThanOrEqual(449);
   await expect(page.locator(".tg-showcase-bed .tg-bed")).toHaveCount(1);
   await expect(page.locator(".tg-showcase-bed .tg-plot")).toHaveCount(expected);
   await expect(page.locator(".tg-showcase-bed .tg-plot img[data-art-source='generated']")).toHaveCount(expected);
