@@ -2,7 +2,7 @@
 
 import { growthStages, type GrowthArtworkByStage } from "@/lib/garden/growth-artwork";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export type TestGardenEntry = {
   id: string;
@@ -86,7 +86,7 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
   const [crop, setCrop] = useState("All crops");
   const [query, setQuery] = useState("");
   const [limit, setLimit] = useState(PAGE_SIZE);
-  const [layout, setLayout] = useState<"beds" | "cards">("beds");
+  const [layout, setLayout] = useState<"beds" | "cards" | "new-icons">("beds");
   const [artworkFilter, setArtworkFilter] = useState<ArtworkFilter>("All artwork");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [broken, setBroken] = useState<Record<string, true>>({});
@@ -105,7 +105,7 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
       (!search || (entry.crop + " " + entry.variety + " " + entry.group).toLocaleLowerCase().includes(search))
     );
   }, [entries, source, crop, artworkFilter, query, broken]);
-  const shown = filtered.slice(0, limit);
+  const shown = layout === "new-icons" ? filtered : filtered.slice(0, limit);
   const statusCounts = (items: TestGardenEntry[]) => ({
     verified: items.filter(item => item.artworkStatus === "verified").length,
     generated: items.filter(item => item.artworkStatus === "generated_qa_passed").length,
@@ -113,8 +113,9 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
     pending: items.filter(item => item.artworkStatus === "pending").length,
   });
   const totals = statusCounts(entries);
-  const beds = Array.from({ length: Math.ceil(shown.length / BED_SIZE) },
-    (_, i) => shown.slice(i * BED_SIZE, (i + 1) * BED_SIZE));
+  const beds = layout === "new-icons" ? (shown.length ? [shown] : []) :
+    Array.from({ length: Math.ceil(shown.length / BED_SIZE) },
+      (_, i) => shown.slice(i * BED_SIZE, (i + 1) * BED_SIZE));
   const selected = entries.find(entry => entry.id === selectedId) ?? null;
 
   function select(entry: TestGardenEntry) {
@@ -128,7 +129,19 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
   }
   function changeSource(value: string) { setSource(value); setCrop("All crops"); setLimit(PAGE_SIZE); }
   function changeCrop(value: string) { setCrop(value); setLimit(PAGE_SIZE); }
-  function reset() { setSource("All sources"); setCrop("All crops"); setQuery(""); setLimit(PAGE_SIZE); setArtworkFilter("All artwork"); }
+  function showNewIconsBed() {
+    setSource("All sources"); setCrop("All crops"); setQuery("");
+    setArtworkFilter("Generated artwork only"); setLayout("new-icons");
+  }
+  useEffect(() => {
+    if (window.location.hash === "#generated-bed") {
+      queueMicrotask(() => {
+        setSource("All sources"); setCrop("All crops"); setQuery("");
+        setArtworkFilter("Generated artwork only"); setLayout("new-icons");
+      });
+    }
+  }, []);
+  function reset() { setSource("All sources"); setCrop("All crops"); setQuery(""); setLimit(PAGE_SIZE); setArtworkFilter(layout === "new-icons" ? "Generated artwork only" : "All artwork"); }
 
   return <main className="tg-shell">
     <a href="#tg-garden" className="tg-skip">Skip to test garden</a>
@@ -177,10 +190,11 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
           <div role="group" aria-label="Garden display style" className="tg-segment">
             <button type="button" aria-pressed={layout === "beds"} onClick={() => setLayout("beds")}>Garden beds</button>
             <button type="button" aria-pressed={layout === "cards"} onClick={() => setLayout("cards")}>Icon gallery</button>
+            <button type="button" aria-pressed={layout === "new-icons"} onClick={showNewIconsBed}>All new icons bed</button>
           </div>
           <label className="tg-status-select"><span>ARTWORK STATUS</span>
             <select aria-label="ARTWORK STATUS" value={artworkFilter}
-              onChange={event => { setArtworkFilter(event.target.value as ArtworkFilter); setLimit(PAGE_SIZE); }}>
+              onChange={event => { setArtworkFilter(event.target.value as ArtworkFilter); setLimit(PAGE_SIZE); if (layout === "new-icons" && event.target.value !== "Generated artwork only") setLayout("beds"); }}>
               <option>All artwork</option>
               {Object.keys(artworkFilters).map(label => <option key={label}>{label}</option>)}
             </select>
@@ -196,14 +210,15 @@ export function IconTestGarden({ entries }: { entries: TestGardenEntry[] }) {
     </section>
 
     <div className="tg-layout">
-      <section id="tg-garden" aria-label="Visual plant test garden" className={layout === "beds" ? "tg-growing-ground" : "tg-growing-ground tg-gallery-mode"}>
+      <section id="tg-garden" aria-label="Visual plant test garden" className={layout === "new-icons" ? "tg-growing-ground tg-showcase-bed" : layout === "beds" ? "tg-growing-ground" : "tg-growing-ground tg-gallery-mode"}>
         {layout === "beds" && <div className="tg-garden-header"><span>TEST ALLOTMENT</span><span>ONE ICON PER PLOT · NOT TO SCALE</span></div>}
+        {layout === "new-icons" && <div className="tg-garden-header"><span>BOTANICAL SHOWCASE BED</span><span>{shown.length} APPROVED IMAGES · ONE OF EACH VARIETY · NOT TO SCALE</span></div>}
         {filtered.length === 0 ? <div className="tg-empty">No matching varieties. Clear the filters or try another crop.</div> :
           <div className="tg-bed-grid">
             {beds.map((bed, i) => <div className="tg-bed" key={bed[0].id}>
-              {layout === "beds" && <div className="tg-bed-title"><span>BED {String(i + 1).padStart(2, "0")}</span><span>{bed.length} plant variants</span></div>}
+              {layout !== "cards" && <div className="tg-bed-title"><span>{layout === "new-icons" ? "ALL NEW ARTWORK · SINGLE DISPLAY BED" : `BED ${String(i + 1).padStart(2, "0")}`}</span><span>{bed.length} plant variants</span></div>}
               <div className="tg-plots">
-                {bed.map(entry => <button key={entry.id} type="button"
+                {bed.map(entry => <button key={entry.id} data-artwork-id={entry.id} type="button"
                   className={"tg-plot" + (selectedId === entry.id ? " selected" : "") + (broken[entry.id] ? " broken" : "")}
                   onClick={() => select(entry)} aria-pressed={selectedId === entry.id} title={entry.label}>
                   <span className="tg-plot-art"><PlantImage entry={entry} failed={Boolean(broken[entry.id])} onBroken={recordBroken} /></span>
