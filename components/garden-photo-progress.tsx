@@ -9,8 +9,6 @@ const EDIT_KEY_SESSION = "blenheim-garden-edit-key";
 const views = Array.from({ length: 8 }, (_, index) => ({
   number: index + 1,
   title: "View " + String(index + 1).padStart(2, "0"),
-  x: (index % 4) * 100 / 3,
-  y: Math.floor(index / 4) * 100,
 }));
 
 type MediaItem = {
@@ -39,8 +37,9 @@ function photoDate(item: MediaItem) {
   }).format(parsed);
 }
 function BaselinePhoto({ number, name }: { number: number; name: string }) {
-  const view = views[number - 1];
-  return <div className="progress-start-photo" role="img" aria-label={name + ", original garden condition"} style={{ backgroundPosition: view.x + "% " + view.y + "%" }} />;
+  return <div className="progress-start-photo" role="img" aria-label={name + ", original garden condition"}>
+    <Image src={"/progress/view-" + String(number).padStart(2, "0") + ".jpg"} alt="" width={440} height={952} unoptimized loading="lazy" />
+  </div>;
 }
 
 export function GardenPhotoProgress() {
