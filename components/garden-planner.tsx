@@ -1228,6 +1228,7 @@ export function GardenPlanner() {
       <Link href="/" title="Overview" aria-label="Overview"><PlannerIcon name="home" /></Link>
       <Link href="/planner" title="Garden Planner" aria-label="Garden Planner" aria-current="page"><PlannerIcon name="plan" /></Link>
       <Link href="/seedlings" title="Seedling journal" aria-label="Seedling journal"><PlannerIcon name="journal" /></Link>
+      <Link href="/progress" title="Photo progress" aria-label="Photo progress"><PlannerIcon name="journal" /></Link>
       <button type="button" title="Seasonal guidance" aria-label="Seasonal guidance" data-season-view="today"><PlannerIcon name="plant" /></button>
       <a className="planner-app-3d" href="/3d" title="3D garden" aria-label="3D garden"><PlannerIcon name="structure" /></a>
     </nav>
@@ -1247,6 +1248,7 @@ export function GardenPlanner() {
             if ((event.target as HTMLElement).closest("a, button")) setMoreOpen(false);
           }}>
           <nav className="gv-tabs" aria-label="Garden records"><button type="button">Photos</button><button type="button">Notes</button></nav>
+          <Link href="/progress">Track photo progress ↗</Link>
           <button type="button" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(true); }}>Plan notes</button><PlannerReports plan={plan} period={{ year: planningYear, month: months.indexOf(month) }} onPeriodChange={period => { setPlanningYear(period.year); setMonth(months[period.month]); setSelection(null); }} onDatesChange={changeSchedule} onShowPlanting={showCalendarPlanting} /><button type="button" data-season-view="week">This Week</button>
           <a href="/3d" target="_blank" rel="noopener">Live 3D ↗</a> <Link href="/test-garden">All plant icons · Test garden ↗</Link>
           <button type="button" disabled={Boolean(interaction || draft) || loadSource === "starting"} onClick={() => { if (window.confirm("Load the complete icon sample into this 2D planner? This replaces your current draft, which can be restored with Undo or Restore previous draft. For a separate saved sample, create a new named garden first.")) { startGardenTemplate(createGeneratedIconBedTemplate); setOriginalSymbolSizes(false); } }}>Editable icon sample bed · all approved varieties</button>
