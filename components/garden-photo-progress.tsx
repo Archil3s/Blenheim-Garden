@@ -55,8 +55,6 @@ export function GardenPhotoProgress() {
   const [editKey, setEditKey] = useState("");
 
   const refresh = useCallback(async () => {
-    setLoading(true);
-    setError("");
     try {
       const response = await fetch("/api/garden/media?targetType=garden&targetId=" + GARDEN_ID, { cache: "no-store" });
       const result = await response.json() as MediaResult;
