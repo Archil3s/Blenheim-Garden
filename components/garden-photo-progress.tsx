@@ -42,21 +42,26 @@ function BaselinePhoto({ number, name }: { number: number; name: string }) {
   </div>;
 }
 
-export function GardenPhotoProgress() {
-  const [items, setItems] = useState<MediaItem[]>([]);
-  const [selected, setSelected] = useState(1);
-  const [files, setFiles] = useState<File[]>([]);
-  const [date, setDate] = useState("");
-  const [notes, setNotes] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [busy, setBusy] = useState(false);
-  const [status, setStatus] = useState("");
-  const [error, setError] = useState("");
-  const [editKey, setEditKey] = useState("");
-
-  const refresh = useCallback(async () => {
+async function fetchProgressPhotos(): Promise<MediaItem[]> {
+  const response = await fetch("/api/garden/media?targetType=garden&targetId=" + GARDEN_ID, { cache: "no-store" });
+  const result = await response.json() as MediaResult;
+  if (!response.ok || !result.ok) throw new Error(result.error || "Could not load photos.");
+  return (result.items || []).filter(item => item.targetType === "garden" && item.targetId === GARDEN_ID && item.mediaType === "photo" && viewNumber(item.caption) !== null);  const refresh = useCallback(async () => {
     try {
-      const response = await fetch("/api/garden/media?targetType=garden&targetId=" + GARDEN_ID, { cache: "no-store" });
+      setItems(await fetchProgressPhotos());
+    } catch (reason) {
+      setError(mediaError(reason));
+    } finally { setLoading(false); }
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+    void fetchProgressPhotos()
+      .then(next => { if (mounted) setItems(next); })
+      .catch(reason => { if (mounted) setError(mediaError(reason)); })
+      .finally(() => { if (mounted) setLoading(false); });
+    return () => { mounted = false; };
+  }, []);media?targetType=garden&targetId=" + GARDEN_ID, { cache: "no-store" });
       const result = await response.json() as MediaResult;
       if (!response.ok || !result.ok) throw new Error(result.error || "Could not load photos.");
       setItems((result.items || []).filter(item => item.targetType === "garden" && item.targetId === GARDEN_ID && item.mediaType === "photo" && viewNumber(item.caption) !== null));
