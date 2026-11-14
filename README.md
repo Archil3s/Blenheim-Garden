@@ -2,7 +2,7 @@
 
 A visual home-garden planner and seedling journal for Blenheim, Marlborough.
 
-**Routes:** `/` garden overview, `/planner` measured garden planner, `/seedlings` Seedling Companion (currently local browser storage only), `/3d` WebGL view.
+**Routes:** `/` garden overview, `/planner` measured garden planner, `/seedlings` Seedling Companion (currently local browser storage only), `/progress` photo progress journal, `/3d` WebGL view.
 
 **Design overhaul:** See [DESIGN.md](DESIGN.md) and [docs/DESIGN_PROGRESS.md](docs/DESIGN_PROGRESS.md) for the visual standards, roadmap, progress, feedback register and QA evidence. Developer skills live in `.agents/skills/` with upstream licence attribution. The in-progress design changes are prepared on a review branch, not automatically deployed.
 
@@ -92,6 +92,12 @@ The planner supports:
 - chronological history including finished plantings
 - deletion of individual notes and harvest records
 - whole-garden notes from the top Notes tab
+
+### Photo progress journal
+
+Open `/progress` from the homepage or the planner's More menu. Eight garden-bed photographs supplied by the gardener are archived as individual, web-optimised starting views in `public/progress`. They are intentionally labelled View 01–08 (not bed numbers) because the corresponding saved bed IDs and original capture dates were not supplied.
+
+Choose the same viewpoint and upload subsequent photos with a date and optional note. Progress records reuse the existing protected garden R2 media API and its quotas. The journal sorts dated uploads, shows a before/latest comparison and earlier updates, and leaves original snapshots intact. The unrelated restaurant photo was excluded.
 
 ### Photos & video
 
