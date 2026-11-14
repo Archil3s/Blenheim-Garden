@@ -46,7 +46,25 @@ async function fetchProgressPhotos(): Promise<MediaItem[]> {
   const response = await fetch("/api/garden/media?targetType=garden&targetId=" + GARDEN_ID, { cache: "no-store" });
   const result = await response.json() as MediaResult;
   if (!response.ok || !result.ok) throw new Error(result.error || "Could not load photos.");
-  return (result.items || []).filter(item => item.targetType === "garden" && item.targetId === GARDEN_ID && item.mediaType === "photo" && viewNumber(item.caption) !== null);  const refresh = useCallback(async () => {
+  return (result.items || []).filter(item => item.targetType === "garden" && item.targetId === GARDEN_ID && item.mediaType === "photo" && viewNumber(item.caption) !== null);
+}
+function mediaError(reason: unknown) {
+  return reason instanceof Error ? reason.message : "Could not load photos.";
+}
+
+export function GardenPhotoProgress() {
+  const [items, setItems] = useState<MediaItem[]>([]);
+  const [selected, setSelected] = useState(1);
+  const [files, setFiles] = useState<File[]>([]);
+  const [date, setDate] = useState("");
+  const [notes, setNotes] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [busy, setBusy] = useState(false);
+  const [status, setStatus] = useState("");
+  const [error, setError] = useState("");
+  const [editKey, setEditKey] = useState("");
+
+  const refresh = useCallback(async () => {
     try {
       setItems(await fetchProgressPhotos());
     } catch (reason) {
@@ -61,18 +79,7 @@ async function fetchProgressPhotos(): Promise<MediaItem[]> {
       .catch(reason => { if (mounted) setError(mediaError(reason)); })
       .finally(() => { if (mounted) setLoading(false); });
     return () => { mounted = false; };
-  }, []);media?targetType=garden&targetId=" + GARDEN_ID, { cache: "no-store" });
-      const result = await response.json() as MediaResult;
-      if (!response.ok || !result.ok) throw new Error(result.error || "Could not load photos.");
-      setItems((result.items || []).filter(item => item.targetType === "garden" && item.targetId === GARDEN_ID && item.mediaType === "photo" && viewNumber(item.caption) !== null));
-    } catch (reason) {
-      setError(reason instanceof Error ? reason.message : "Could not load photos.");
-    } finally { setLoading(false); }
   }, []);
-
-  useEffect(() => {
-    void refresh();
-  }, [refresh]);
 
   const selectedPhotos = useMemo(() => items.filter(item => viewNumber(item.caption) === selected)
     .sort((a, b) => (b.capturedAt || b.createdAt).localeCompare(a.capturedAt || a.createdAt)), [items, selected]);
