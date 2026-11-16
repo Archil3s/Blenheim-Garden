@@ -915,3 +915,18 @@ Rasmussen Batch 01 deployed at e69e532 (https://github.com/Archil3s/Blenheim-Gar
 - Rasmussen | arriba-saia-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp | Harvest reviewed and mapped. Earlier stages pending.
 
 Rasmussen Batch 02 passed the production build and all 40 focused browser checks. Rasmussen now has twenty generated illustrations and ten verified originals. The library has 455 reviewed Harvest mappings.
+
+## Rasmussen Batch 03
+
+- Rasmussen | artichoke-violet-de-provence-25-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://www.edenbrothers.com/cdn/shop/files/artichoke-violet-de-provence-aly-1.jpg?v=1724342123&width=1445 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | bahamian-goat-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://pepperjoe.com/cdn/shop/files/Bahamian-Goat-Pepper.02.jpg?v=1730930995&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | beetroot-chioggia-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_Chioggia_150_seeds.png?v=1776722697&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | beetroot-white-albino-100-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_White_Albino_100_seeds.png?v=1776721352&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | mini-bell-pepper-yellow-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Mini_Bell_Pepper_-_Yellow_Chilli_Seeds_10_seeds_b9e5cf59-03dc-40bf-bad8-af76e4c9c395.png?v=1778027633&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | bell-pepper-orange-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Bell_Pepper_-_Orange_Chilli_Seeds_10_seeds.png?v=1778027869&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | bell-pepper-purple-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/BellPepper-Purple_1.png?v=1744628884&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | bell-pepper-red-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Bell_Pepper_-_Red_Chilli_Plant_in_4_pot.png?v=1761701654&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | bell-pepper-soroksari-chilli-seeds-10-seeds-1 | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Bell_Pepper_-_Soroksari_Chilli_Seeds_10_seeds_54ff8cec-8b18-4033-b793-eb817e8aa58a.png?v=1779003643&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | berry-cream-bbg-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://i0.wp.com/patrickspepperpatch.com/wp-content/uploads/2022/09/mamp-2-e1662667057655.jpg?fit=615%2C403&ssl=1 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 03 passed the production build and all 40 focused browser checks. Rasmussen now has 30 generated illustrations plus ten verified originals. The library has 465 reviewed Harvest mappings.

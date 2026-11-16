@@ -3141,5 +3141,75 @@
     "gallery": "/plant-icons/generated/rasmussen/gallery/arriba-saia-chilli-seeds-10-seeds.png",
     "referenceUrl": "https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:artichoke-violet-de-provence-25-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/artichoke-violet-de-provence-25-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/artichoke-violet-de-provence-25-seeds.png",
+    "referenceUrl": "https://www.edenbrothers.com/cdn/shop/files/artichoke-violet-de-provence-aly-1.jpg?v=1724342123&width=1445",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:bahamian-goat-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/bahamian-goat-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/bahamian-goat-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://pepperjoe.com/cdn/shop/files/Bahamian-Goat-Pepper.02.jpg?v=1730930995&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:beetroot-chioggia-150-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/beetroot-chioggia-150-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/beetroot-chioggia-150-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_Chioggia_150_seeds.png?v=1776722697&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:beetroot-white-albino-100-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/beetroot-white-albino-100-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/beetroot-white-albino-100-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_White_Albino_100_seeds.png?v=1776721352&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:mini-bell-pepper-yellow-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/mini-bell-pepper-yellow-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/mini-bell-pepper-yellow-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Mini_Bell_Pepper_-_Yellow_Chilli_Seeds_10_seeds_b9e5cf59-03dc-40bf-bad8-af76e4c9c395.png?v=1778027633&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:bell-pepper-orange-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/bell-pepper-orange-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/bell-pepper-orange-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Bell_Pepper_-_Orange_Chilli_Seeds_10_seeds.png?v=1778027869&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:bell-pepper-purple-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/bell-pepper-purple-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/bell-pepper-purple-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/BellPepper-Purple_1.png?v=1744628884&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:bell-pepper-red-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/bell-pepper-red-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/bell-pepper-red-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Bell_Pepper_-_Red_Chilli_Plant_in_4_pot.png?v=1761701654&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:bell-pepper-soroksari-chilli-seeds-10-seeds-1": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/bell-pepper-soroksari-chilli-seeds-10-seeds-1.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/bell-pepper-soroksari-chilli-seeds-10-seeds-1.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Bell_Pepper_-_Soroksari_Chilli_Seeds_10_seeds_54ff8cec-8b18-4033-b793-eb817e8aa58a.png?v=1779003643&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:berry-cream-bbg-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/berry-cream-bbg-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/berry-cream-bbg-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://i0.wp.com/patrickspepperpatch.com/wp-content/uploads/2022/09/mamp-2-e1662667057655.jpg?fit=615%2C403&ssl=1",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }
