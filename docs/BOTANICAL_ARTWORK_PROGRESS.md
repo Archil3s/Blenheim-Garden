@@ -1099,3 +1099,20 @@ Batch 12 deployed at 0ec5e8a (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | jamaican-mushroom-red-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/JamaicanMushroom-Red.png?v=1745009184&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 13 passed the production build and all 44 focused browser checks. Rasmussen now has 130 generated illustrations plus ten verified originals. The library has 565 reviewed Harvest mappings.
+
+Batch 13 deployed at a806db3 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44196165321).
+
+## Rasmussen Batch 14
+
+- Rasmussen | jamaican-mushroom-yellow-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/JamaicanMushroom-Yellow.png?v=1745009253&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | japanese-black-trifele-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-4829446491312583573.png?v=1744146570&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | jaune-flamme-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-2581024378773043568.png?v=1744146541&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | jicama-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-6847059145466812691.png?v=1744084789&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | jimmy-nardello-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Jimmy_Nardello_Chilli_Seeds_10_seeds.png?v=1778230350&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | jwala-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Jwala_Chilli_Seeds_9c61e14e-bea7-4c96-8b26-36d5e685118d.png?v=1759100211&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | kale-dazzling-blue-lacinato-100-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Kale_-__Dazzling_Blue_Lacinato_100_seeds.png?v=1754900115&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | kiwi-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-6908983620458414450.png?v=1744146512&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | ks-lemon-starburst-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/KS_Lemon_Starburst_Chilli_Seeds_10_seeds.png?v=1783732402&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | ks-starrscream-chocolate-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/KS_Starrscream_Chocolate_Chilli_Seeds_10_seeds.png?v=1784866939&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 14 passed the production build and all 44 focused browser checks. Rasmussen now has 140 generated illustrations plus ten verified originals. The library has 575 reviewed Harvest mappings.
