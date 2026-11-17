@@ -1116,3 +1116,20 @@ Batch 13 deployed at a806db3 (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | ks-starrscream-chocolate-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/KS_Starrscream_Chocolate_Chilli_Seeds_10_seeds.png?v=1784866939&width=533 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 14 passed the production build and all 44 focused browser checks. Rasmussen now has 140 generated illustrations plus ten verified originals. The library has 575 reviewed Harvest mappings.
+
+Batch 14 deployed at f459b7f (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44197925190).
+
+## Rasmussen Batch 15
+
+- Rasmussen | ks-white-thai-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5878785031049799848.png?v=1743998737&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | large-mennonite-pink-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-7957196436250196799.png?v=1744146468&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | lemon-drop-cherry-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-2907535371344413881.png?v=1744146444&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | lettuce-alkindus-75-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-6847059142265090549.png?v=1744084809&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | lettuce-drunken-woman-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Lettuce_-_Drunken_Woman_150_seeds.png?v=1772309976&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | lettuce-flashy-trout-s-back150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5787587331222256472.png?v=1744084824&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | lettuce-green-deer-tongue-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-1130865318206925652.png?v=1744084851&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | lettuce-iceberg-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Lettuce_-_Iceberg_150_seeds.png?v=1772309898&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | lettuce-italienischer-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-6589228066794776671.png?v=1744084867&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | lettuce-pomegranate-crunch-75-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-4164039663388251542.png?v=1744084887&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 15 passed the production build and all 44 focused browser checks. Rasmussen now has 150 generated illustrations plus ten verified originals. The library has 585 reviewed Harvest mappings.

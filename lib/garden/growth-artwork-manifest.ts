@@ -5237,6 +5237,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/KS_Starrscream_Chocolate_Chilli_Seeds_10_seeds.png?v=1784866939&width=533",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "rasmussen:ks-white-thai-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/ks-white-thai-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/ks-white-thai-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5878785031049799848.png?v=1743998737&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:large-mennonite-pink-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/large-mennonite-pink-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/large-mennonite-pink-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-7957196436250196799.png?v=1744146468&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:lemon-drop-cherry-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/lemon-drop-cherry-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/lemon-drop-cherry-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-2907535371344413881.png?v=1744146444&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:lettuce-alkindus-75-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/lettuce-alkindus-75-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/lettuce-alkindus-75-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-6847059142265090549.png?v=1744084809&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:lettuce-drunken-woman-150-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/lettuce-drunken-woman-150-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/lettuce-drunken-woman-150-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Lettuce_-_Drunken_Woman_150_seeds.png?v=1772309976&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:lettuce-flashy-trout-s-back150-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/lettuce-flashy-trout-s-back150-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/lettuce-flashy-trout-s-back150-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5787587331222256472.png?v=1744084824&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:lettuce-green-deer-tongue-150-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/lettuce-green-deer-tongue-150-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/lettuce-green-deer-tongue-150-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-1130865318206925652.png?v=1744084851&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:lettuce-iceberg-150-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/lettuce-iceberg-150-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/lettuce-iceberg-150-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Lettuce_-_Iceberg_150_seeds.png?v=1772309898&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:lettuce-italienischer-150-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/lettuce-italienischer-150-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/lettuce-italienischer-150-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-6589228066794776671.png?v=1744084867&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:lettuce-pomegranate-crunch-75-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/lettuce-pomegranate-crunch-75-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/lettuce-pomegranate-crunch-75-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-4164039663388251542.png?v=1744084887&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
