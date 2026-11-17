@@ -1133,3 +1133,20 @@ Batch 14 deployed at f459b7f (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | lettuce-pomegranate-crunch-75-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-4164039663388251542.png?v=1744084887&width=533 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 15 passed the production build and all 44 focused browser checks. Rasmussen now has 150 generated illustrations plus ten verified originals. The library has 585 reviewed Harvest mappings.
+
+Batch 15 deployed at 1da34b3 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44199702285).
+
+## Rasmussen Batch 16
+
+- Rasmussen | lettuce-truchas-75-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-4350939049818573778.png?v=1744084909&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | luffa-sponge-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Luffa_-_Sponge_10_seeds.png?v=1758433868&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | malabar-spinach-red-15-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-3762093397797672063.png?v=1744084930&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | malawi-piquante-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Malawi_Piquante.png?v=1746699902&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | mambo-orange-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/MamboOrange.png?v=1744710564&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | marconi-yellow-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Marconi_-_Yellow_Chilli_Seeds_10_seeds.png?v=1777788309&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | matts-wild-cherry-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Matt_s_Wild_Cherry_Tomato_10_seeds.png?v=1746069097&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | honeydew-melon-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Honeydew_Melon_10_seeds.png?v=1772915383&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | mexico-midget-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-9114624619058412904.png?v=1746651512&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | mexico-pink-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-2868128872858453373.png?v=1744146418&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 16 passed the production build and all 44 focused browser checks. Rasmussen now has 160 generated illustrations plus ten verified originals. The library has 595 reviewed Harvest mappings.

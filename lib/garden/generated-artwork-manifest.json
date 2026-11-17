@@ -4051,5 +4051,75 @@
     "gallery": "/plant-icons/generated/rasmussen/gallery/lettuce-pomegranate-crunch-75-seeds.png",
     "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-4164039663388251542.png?v=1744084887&width=533",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:lettuce-truchas-75-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/lettuce-truchas-75-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/lettuce-truchas-75-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-4350939049818573778.png?v=1744084909&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:luffa-sponge-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/luffa-sponge-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/luffa-sponge-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Luffa_-_Sponge_10_seeds.png?v=1758433868&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:malabar-spinach-red-15-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/malabar-spinach-red-15-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/malabar-spinach-red-15-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-3762093397797672063.png?v=1744084930&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:malawi-piquante-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/malawi-piquante-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/malawi-piquante-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Malawi_Piquante.png?v=1746699902&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:mambo-orange-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/mambo-orange-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/mambo-orange-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/MamboOrange.png?v=1744710564&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:marconi-yellow-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/marconi-yellow-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/marconi-yellow-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Marconi_-_Yellow_Chilli_Seeds_10_seeds.png?v=1777788309&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:matts-wild-cherry-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/matts-wild-cherry-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/matts-wild-cherry-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Matt_s_Wild_Cherry_Tomato_10_seeds.png?v=1746069097&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:honeydew-melon-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/honeydew-melon-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/honeydew-melon-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Honeydew_Melon_10_seeds.png?v=1772915383&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:mexico-midget-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/mexico-midget-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/mexico-midget-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-9114624619058412904.png?v=1746651512&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:mexico-pink-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/mexico-pink-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/mexico-pink-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-2868128872858453373.png?v=1744146418&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }
