@@ -1082,3 +1082,20 @@ Batch 11 deployed at 2b76935 (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | inca-red-hot-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5269673182252388836_bceed6c1-4dc2-4d46-ba7e-a76db22832bb.png?v=1759100201&width=533 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 12 passed the production build and all 44 focused browser checks. Rasmussen now has 120 generated illustrations plus ten verified originals. The library has 555 reviewed Harvest mappings.
+
+Batch 12 deployed at 0ec5e8a (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44194290847).
+
+## Rasmussen Batch 13
+
+- Rasmussen | indigo-gold-berries-cherry-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Indigo_Gold_Berries_Cherry_Tomato_10_seeds.png?v=1778053709&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | indigo-pear-drop-cherry-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Indigo_Pear_Drop_Cherry_Tomato_10_seeds.png?v=1777975054&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | indigo-rose-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-2271401903405726133.png?v=1744146661&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | italian-red-cherry-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5255039740486687926.png?v=1746651869&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | j-walsh-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5381140525062187745.png?v=1746651305&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | jalapeno-el-jefe-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-1343660206598141893.png?v=1743998785&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | jalapeno-farmers-market-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Jalape_o_-_Farmers_Market.png?v=1749028003&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | jalapeno-mega-jefe-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Jalapeo_-_Mega_Jefe_Chilli_Plant_in_4_pot.png?v=1760082869&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | jalapeno-purple-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-1408962402024820873_fcfdce6a-a64b-46e6-91c9-c28948cad317.png?v=1759100207&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | jamaican-mushroom-red-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/JamaicanMushroom-Red.png?v=1745009184&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 13 passed the production build and all 44 focused browser checks. Rasmussen now has 130 generated illustrations plus ten verified originals. The library has 565 reviewed Harvest mappings.

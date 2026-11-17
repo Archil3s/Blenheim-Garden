@@ -3841,5 +3841,75 @@
     "gallery": "/plant-icons/generated/rasmussen/gallery/inca-red-hot-chilli-seeds-10-seeds.png",
     "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5269673182252388836_bceed6c1-4dc2-4d46-ba7e-a76db22832bb.png?v=1759100201&width=533",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:indigo-gold-berries-cherry-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/indigo-gold-berries-cherry-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/indigo-gold-berries-cherry-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Indigo_Gold_Berries_Cherry_Tomato_10_seeds.png?v=1778053709&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:indigo-pear-drop-cherry-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/indigo-pear-drop-cherry-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/indigo-pear-drop-cherry-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Indigo_Pear_Drop_Cherry_Tomato_10_seeds.png?v=1777975054&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:indigo-rose-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/indigo-rose-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/indigo-rose-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-2271401903405726133.png?v=1744146661&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:italian-red-cherry-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/italian-red-cherry-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/italian-red-cherry-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5255039740486687926.png?v=1746651869&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:j-walsh-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/j-walsh-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/j-walsh-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5381140525062187745.png?v=1746651305&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:jalapeno-el-jefe-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/jalapeno-el-jefe-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/jalapeno-el-jefe-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-1343660206598141893.png?v=1743998785&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:jalapeno-farmers-market-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/jalapeno-farmers-market-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/jalapeno-farmers-market-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Jalape_o_-_Farmers_Market.png?v=1749028003&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:jalapeno-mega-jefe-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/jalapeno-mega-jefe-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/jalapeno-mega-jefe-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Jalapeo_-_Mega_Jefe_Chilli_Plant_in_4_pot.png?v=1760082869&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:jalapeno-purple-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/jalapeno-purple-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/jalapeno-purple-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-1408962402024820873_fcfdce6a-a64b-46e6-91c9-c28948cad317.png?v=1759100207&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:jamaican-mushroom-red-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/jamaican-mushroom-red-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/jamaican-mushroom-red-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/JamaicanMushroom-Red.png?v=1745009184&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }
