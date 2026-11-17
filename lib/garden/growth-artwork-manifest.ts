@@ -4517,6 +4517,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://seedsofplenty.com.au/cdn/shop/products/V-CAR-06p1.jpg",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "rasmussen:carrot-topweight-500-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/carrot-topweight-500-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/carrot-topweight-500-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Carrot_-_Topweight_500_seeds.png?v=1771919019&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:cayenne-antho-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/cayenne-antho-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/cayenne-antho-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/CayenneAntho.png?v=1744698261&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:chinese-pink-celery-150-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/chinese-pink-celery-150-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/chinese-pink-celery-150-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Chinese_Pink_Celery_150_seeds.png?v=1754899339&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:white-queen-celery-150-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/white-queen-celery-150-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/white-queen-celery-150-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Celery_-_Chinese_White_150_seeds.png?v=1754899245&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:cherry-large-hot-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/cherry-large-hot-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/cherry-large-hot-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/D5F3C9B3-3200-43D8-A116-E05BFE08C593.png?v=1743918455&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:cheyenne-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/cheyenne-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/cheyenne-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Cheyenne_2.png?v=1744708438&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:chile-de-arbol-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/chile-de-arbol-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/chile-de-arbol-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Chiledearbol.png?v=1744708637&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:chile-japones-chilli-seeds-10-seeds-copy": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/chile-japones-chilli-seeds-10-seeds-copy.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/chile-japones-chilli-seeds-10-seeds-copy.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/ChileJapones.png?v=1744708859&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:chiltepin-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/chiltepin-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/chiltepin-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://inheritedseeds.com/cdn/shop/products/PSX_20210913_123902_640x453_a570b09e-a700-42c2-ba91-7afff5463a33_2048x.jpg?v=1632757822",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:chinese-broccoli-kailaan-150-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/chinese-broccoli-kailaan-150-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/chinese-broccoli-kailaan-150-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Chinese_Broccoli_-_Kailaan_150_seeds.png?v=1776736079&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

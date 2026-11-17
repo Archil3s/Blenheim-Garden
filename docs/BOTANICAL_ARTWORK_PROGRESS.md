@@ -981,3 +981,19 @@ Batch 05 deployed at c5357db (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | carrot-parisian-market-500-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://seedsofplenty.com.au/cdn/shop/products/V-CAR-06p1.jpg | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 06 passed the production build and all 44 focused browser checks. Rasmussen now has 60 generated illustrations plus ten verified originals. The library has 495 reviewed Harvest mappings.
+Batch 06 deployed at 7bfd39a (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44180796003).
+
+## Rasmussen Batch 07
+
+- Rasmussen | carrot-topweight-500-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Carrot_-_Topweight_500_seeds.png?v=1771919019&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | cayenne-antho-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/CayenneAntho.png?v=1744698261&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | chinese-pink-celery-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Chinese_Pink_Celery_150_seeds.png?v=1754899339&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | white-queen-celery-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Celery_-_Chinese_White_150_seeds.png?v=1754899245&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | cherry-large-hot-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/D5F3C9B3-3200-43D8-A116-E05BFE08C593.png?v=1743918455&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | cheyenne-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Cheyenne_2.png?v=1744708438&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | chile-de-arbol-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Chiledearbol.png?v=1744708637&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | chile-japones-chilli-seeds-10-seeds-copy | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/ChileJapones.png?v=1744708859&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | chiltepin-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://inheritedseeds.com/cdn/shop/products/PSX_20210913_123902_640x453_a570b09e-a700-42c2-ba91-7afff5463a33_2048x.jpg?v=1632757822 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | chinese-broccoli-kailaan-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Chinese_Broccoli_-_Kailaan_150_seeds.png?v=1776736079&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 07 passed the production build and all 44 focused browser checks. Rasmussen now has 70 generated illustrations plus ten verified originals. The library has 505 reviewed Harvest mappings.
