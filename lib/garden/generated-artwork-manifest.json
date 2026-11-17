@@ -3491,5 +3491,75 @@
     "gallery": "/plant-icons/generated/rasmussen/gallery/chinese-broccoli-kailaan-150-seeds.png",
     "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Chinese_Broccoli_-_Kailaan_150_seeds.png?v=1776736079&width=533",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:clementine-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/clementine-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/clementine-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-1422474861888346866.png?v=1745315303&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:collards-ole-timey-blue-100-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/collards-ole-timey-blue-100-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/collards-ole-timey-blue-100-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-2066488138417859340.png?v=1744084751&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:copia-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/copia-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/copia-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-182857575953057140.png?v=1744146971&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:costoluto-fiorentino-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/costoluto-fiorentino-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/costoluto-fiorentino-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-7564257366304778001.png?v=1744146942&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:cream-sausage-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/cream-sausage-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/cream-sausage-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5762819004087334577.png?v=1745315546&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:cucumber-lebanese-20-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/cucumber-lebanese-20-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/cucumber-lebanese-20-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Cucumber_-_Lebanese_20_seeds.png?v=1787714956&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:cucumber-telegraph-20-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/cucumber-telegraph-20-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/cucumber-telegraph-20-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Cucumber_-_Telegraph_20_seeds.png?v=1787715402&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:cuor-di-bue-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/cuor-di-bue-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/cuor-di-bue-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-2656461158533589710.png?v=1745315777&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:czech-black-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/czech-black-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/czech-black-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Czech_Black_Chilli_Seeds_10_seeds.png?v=1776987573&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:dark-galaxy-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/dark-galaxy-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/dark-galaxy-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-7564257368229590292.png?v=1744146878&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }

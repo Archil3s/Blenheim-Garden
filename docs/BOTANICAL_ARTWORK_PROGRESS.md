@@ -997,3 +997,20 @@ Batch 06 deployed at 7bfd39a (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | chinese-broccoli-kailaan-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Chinese_Broccoli_-_Kailaan_150_seeds.png?v=1776736079&width=533 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 07 passed the production build and all 44 focused browser checks. Rasmussen now has 70 generated illustrations plus ten verified originals. The library has 505 reviewed Harvest mappings.
+
+Batch 07 deployed at 076eaf8 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44183641432).
+
+## Rasmussen Batch 08
+
+- Rasmussen | clementine-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-1422474861888346866.png?v=1745315303&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | collards-ole-timey-blue-100-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-2066488138417859340.png?v=1744084751&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | copia-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-182857575953057140.png?v=1744146971&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | costoluto-fiorentino-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-7564257366304778001.png?v=1744146942&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | cream-sausage-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5762819004087334577.png?v=1745315546&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | cucumber-lebanese-20-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Cucumber_-_Lebanese_20_seeds.png?v=1787714956&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | cucumber-telegraph-20-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Cucumber_-_Telegraph_20_seeds.png?v=1787715402&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | cuor-di-bue-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-2656461158533589710.png?v=1745315777&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | czech-black-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Czech_Black_Chilli_Seeds_10_seeds.png?v=1776987573&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | dark-galaxy-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-7564257368229590292.png?v=1744146878&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 08 passed the production build and all 44 focused browser checks. Rasmussen now has 80 generated illustrations plus ten verified originals. The library has 515 reviewed Harvest mappings.
