@@ -1014,3 +1014,20 @@ Batch 07 deployed at 076eaf8 (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | dark-galaxy-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-7564257368229590292.png?v=1744146878&width=533 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 08 passed the production build and all 44 focused browser checks. Rasmussen now has 80 generated illustrations plus ten verified originals. The library has 515 reviewed Harvest mappings.
+
+Batch 08 deployed at 02da7c8 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44186278756).
+
+## Rasmussen Batch 09
+
+- Rasmussen | devils-claw-mustard-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Devils_Claw_Mustard.png?v=1749109150&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | devils-tongue-red-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Devils_Tongue_-_Red_Chilli_Seeds_10_seeds.png?v=1780563836&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | devils-tongue-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Devils_Tongue_Chilli_Seeds.png?v=1748249825&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | duemila-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/9484D575-2D73-4A6E-B187-56297DABAA64.png?v=1743918959&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | eggplant-black-beauty-30-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Eggplant_-_Black_Beauty_30_seeds.png?v=1788037669&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | eggplant-rabi-long-green-30-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Eggplant_-_Rabi_Long_Green_30_seeds.png?v=1788035950&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | eggplant-thai-green-egg-30-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Eggplant_-_Thai_Green_Egg_30_seeds.png?v=1788131279&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | eggplant-violetta-lunga-30-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Eggplant_-_Violetta_Lunga_30_seeds.png?v=1788038582&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | egyptian-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Egyptian_Tomato_10_seeds.png?v=1777930015&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | er-jing-tiao-sichuan-cayenne-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://baobaofarm.ca/cdn/shop/products/IMG_2061-chinese_long_pepper_super_sichuan_400x_d27bd23d-44e9-4850-b611-f4d6c5faf203.webp?v=1678240926&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 09 passed the production build and all 44 focused browser checks. Rasmussen now has 90 generated illustrations plus ten verified originals. The library has 525 reviewed Harvest mappings.
