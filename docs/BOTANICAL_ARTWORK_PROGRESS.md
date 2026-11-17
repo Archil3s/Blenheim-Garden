@@ -964,3 +964,20 @@ Batch 04 deployed at 9d6a369 (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | brussels-sprouts-catskill-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/2016/2681/files/Brussel-Sprouts-Catskill-Comp.jpg?v=1762198159 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 05 passed the production build and all 44 focused browser checks. Rasmussen now has 50 generated illustrations plus ten verified originals. The library has 485 reviewed Harvest mappings.
+
+Batch 05 deployed at c5357db (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44177996300).
+
+## Rasmussen Batch 06
+
+- Rasmussen | brussels-sprouts-red-bull-50-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Brussels_Sprouts_-_Red_Bull_50_seeds.png | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | bulgarian-carrot-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/89936954-C949-42DA-8399-F4C8433F9545.png | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | cabbage-chieftain-savoy-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://www.adaptiveseeds.com/wp-content/uploads/2014/12/cabbage-chieftan-savoy-3.jpg | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | cabbage-golden-acre-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Cabbage_-_Golden_Acre_150_seeds.png | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | cabbage-greyhound-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://seaspringseeds.co.uk/wp-content/uploads/2018/10/greyhound-web20.jpg | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | cabbage-red-acre-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://www.damseeds.com/cdn/shop/products/1361.jpg | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | candy-cane-chilli-seeds-10-seeds-copy | generated_qa_passed | 512 px master and 128 px gallery | https://pepperjoe.com/cdn/shop/files/Candy-Cane-Pepper.jpg | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | carolina-reaper-yellow-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Carolina_Reaper_-_Yellow.png | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | carrot-kyoto-red-200-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://res.cloudinary.com/rareseeds/image/upload/c_lpad%2Cdpr_1.0%2Cf_auto%2Cq_auto/v1/media/catalog/product/c/a/carrot_kyoto_red_1_1.jpg?_i=AB | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | carrot-parisian-market-500-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://seedsofplenty.com.au/cdn/shop/products/V-CAR-06p1.jpg | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 06 passed the production build and all 44 focused browser checks. Rasmussen now has 60 generated illustrations plus ten verified originals. The library has 495 reviewed Harvest mappings.

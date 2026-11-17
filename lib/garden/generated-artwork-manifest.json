@@ -3351,5 +3351,75 @@
     "gallery": "/plant-icons/generated/rasmussen/gallery/brussels-sprouts-catskill-150-seeds.png",
     "referenceUrl": "https://cdn.shopify.com/s/files/1/2016/2681/files/Brussel-Sprouts-Catskill-Comp.jpg?v=1762198159",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:brussels-sprouts-red-bull-50-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/brussels-sprouts-red-bull-50-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/brussels-sprouts-red-bull-50-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Brussels_Sprouts_-_Red_Bull_50_seeds.png",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:bulgarian-carrot-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/bulgarian-carrot-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/bulgarian-carrot-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/89936954-C949-42DA-8399-F4C8433F9545.png",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:cabbage-chieftain-savoy-150-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/cabbage-chieftain-savoy-150-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/cabbage-chieftain-savoy-150-seeds.png",
+    "referenceUrl": "https://www.adaptiveseeds.com/wp-content/uploads/2014/12/cabbage-chieftan-savoy-3.jpg",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:cabbage-golden-acre-150-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/cabbage-golden-acre-150-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/cabbage-golden-acre-150-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Cabbage_-_Golden_Acre_150_seeds.png",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:cabbage-greyhound-150-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/cabbage-greyhound-150-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/cabbage-greyhound-150-seeds.png",
+    "referenceUrl": "https://seaspringseeds.co.uk/wp-content/uploads/2018/10/greyhound-web20.jpg",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:cabbage-red-acre-150-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/cabbage-red-acre-150-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/cabbage-red-acre-150-seeds.png",
+    "referenceUrl": "https://www.damseeds.com/cdn/shop/products/1361.jpg",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:candy-cane-chilli-seeds-10-seeds-copy": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/candy-cane-chilli-seeds-10-seeds-copy.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/candy-cane-chilli-seeds-10-seeds-copy.png",
+    "referenceUrl": "https://pepperjoe.com/cdn/shop/files/Candy-Cane-Pepper.jpg",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:carolina-reaper-yellow-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/carolina-reaper-yellow-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/carolina-reaper-yellow-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Carolina_Reaper_-_Yellow.png",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:carrot-kyoto-red-200-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/carrot-kyoto-red-200-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/carrot-kyoto-red-200-seeds.png",
+    "referenceUrl": "https://res.cloudinary.com/rareseeds/image/upload/c_lpad%2Cdpr_1.0%2Cf_auto%2Cq_auto/v1/media/catalog/product/c/a/carrot_kyoto_red_1_1.jpg?_i=AB",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:carrot-parisian-market-500-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/carrot-parisian-market-500-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/carrot-parisian-market-500-seeds.png",
+    "referenceUrl": "https://seedsofplenty.com.au/cdn/shop/products/V-CAR-06p1.jpg",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }
