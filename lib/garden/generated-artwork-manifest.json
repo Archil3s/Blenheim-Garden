@@ -3701,5 +3701,75 @@
     "gallery": "/plant-icons/generated/rasmussen/gallery/garden-peach-tomato-10-seeds.png",
     "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-8177875894228342254.png?v=1746651042&width=1946",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:gardener-s-delight-cherry-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/gardener-s-delight-cherry-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/gardener-s-delight-cherry-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-7157807500572647458.png?v=1744146760&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:german-red-strawberry-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/german-red-strawberry-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/german-red-strawberry-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-7157807499944239857.png?v=1744146722&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:gherkin-national-pickling-cucumber-20-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/gherkin-national-pickling-cucumber-20-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/gherkin-national-pickling-cucumber-20-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Gherkin_-_National_Pickling_Cucumber_20_seeds.png?v=1761473468&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:goats-weed-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/goats-weed-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/goats-weed-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Goats_Weed_Chilli_Seeds_10_seeds.png?v=1784085629&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:gochu-vita-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/gochu-vita-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/gochu-vita-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Gochu_Vita_Chilli_Seeds_10_seeds.png?v=1777856826&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:golden-nugget-variegated-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/golden-nugget-variegated-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/golden-nugget-variegated-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/B70BA650-B3B0-4B7A-A1D6-32B0EF081C1A.png?v=1743921840&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:green-sausage-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/green-sausage-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/green-sausage-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Green_Sausage_Tomato_10_seeds.png?v=1778209176&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:guajillo-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/guajillo-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/guajillo-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/C6A564F9-0127-4974-8165-1C03FDF6AB93.png?v=1743921869&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:habanada-chilli-seeds-10-seeds-copy": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/habanada-chilli-seeds-10-seeds-copy.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/habanada-chilli-seeds-10-seeds-copy.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Habanada_Chilli.png?v=1749109717&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:habanero-hot-lemon-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/habanero-hot-lemon-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/habanero-hot-lemon-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Habanero_Hot_Lemon_Chilli_Seeds_10_seeds.png?v=1777868632&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }

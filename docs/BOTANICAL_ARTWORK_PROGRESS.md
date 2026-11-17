@@ -1048,3 +1048,20 @@ Batch 09 deployed at 187f670 (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | garden-peach-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-8177875894228342254.png?v=1746651042&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 10 passed the production build and all 44 focused browser checks. Rasmussen now has 100 generated illustrations plus ten verified originals. The library has 535 reviewed Harvest mappings.
+
+Batch 10 deployed at bee5e40 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44190542095).
+
+## Rasmussen Batch 11
+
+- Rasmussen | gardener-s-delight-cherry-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-7157807500572647458.png?v=1744146760&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | german-red-strawberry-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-7157807499944239857.png?v=1744146722&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | gherkin-national-pickling-cucumber-20-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Gherkin_-_National_Pickling_Cucumber_20_seeds.png?v=1761473468&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | goats-weed-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Goats_Weed_Chilli_Seeds_10_seeds.png?v=1784085629&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | gochu-vita-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Gochu_Vita_Chilli_Seeds_10_seeds.png?v=1777856826&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | golden-nugget-variegated-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/B70BA650-B3B0-4B7A-A1D6-32B0EF081C1A.png?v=1743921840&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | green-sausage-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Green_Sausage_Tomato_10_seeds.png?v=1778209176&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | guajillo-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/C6A564F9-0127-4974-8165-1C03FDF6AB93.png?v=1743921869&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | habanada-chilli-seeds-10-seeds-copy | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Habanada_Chilli.png?v=1749109717&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | habanero-hot-lemon-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Habanero_Hot_Lemon_Chilli_Seeds_10_seeds.png?v=1777868632&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 11 passed the production build and all 44 focused browser checks. Rasmussen now has 110 generated illustrations plus ten verified originals. The library has 545 reviewed Harvest mappings.
