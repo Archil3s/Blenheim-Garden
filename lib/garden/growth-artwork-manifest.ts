@@ -4337,6 +4337,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5269673168418145426.png?v=1744629111&width=1946",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "rasmussen:black-zebra-cherry-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/black-zebra-cherry-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/black-zebra-cherry-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Black_Zebra_Cherry_Tomato_10_seeds.png?v=1778053201&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:bleeding-heart-yellow-bbg-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/bleeding-heart-yellow-bbg-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/bleeding-heart-yellow-bbg-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Bleeding_Heart_Yellow_BBG_Chilli_Seeds_10_seeds.png?v=1783733641&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:blue-beauty-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/blue-beauty-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/blue-beauty-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Blue_Beauty_Tomato_10_seeds.png?v=1778208856&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:bolivian-rainbow-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/bolivian-rainbow-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/bolivian-rainbow-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/9599B612-9439-4E73-B188-17FB66A6D469.png?v=1743918373&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:brazilian-starfish-orange-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/brazilian-starfish-orange-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/brazilian-starfish-orange-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://static.wixstatic.com/media/8d9077_228f7b22304d46d586aaf15d0b1fefe3~mv2.jpg/v1/fill/w_480%2Ch_534%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/8d9077_228f7b22304d46d586aaf15d0b1fefe3~mv2.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:broad-bean-hughey-crimson-40-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/broad-bean-hughey-crimson-40-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/broad-bean-hughey-crimson-40-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Broad_Bean__Hughey_Crimson_40_seeds.png?v=1776120956&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:broad-bean-lucifer-30-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/broad-bean-lucifer-30-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/broad-bean-lucifer-30-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Broad_Bean__Lucifer_30_seeds.png?v=1776118971&width=600",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:broccoli-de-cicco-150-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/broccoli-de-cicco-150-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/broccoli-de-cicco-150-seeds.png",
+      "referenceUrl": "https://www.everwilde.com/media/0800/VBRODEC-A-De-Cicco-Broccoli-Seeds.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:brown-poblano-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/brown-poblano-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/brown-poblano-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/B165C08A-3643-4629-8844-CD3C4686DD83.png?v=1743918404&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:brussels-sprouts-catskill-150-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/brussels-sprouts-catskill-150-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/brussels-sprouts-catskill-150-seeds.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/2016/2681/files/Brussel-Sprouts-Catskill-Comp.jpg?v=1762198159",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

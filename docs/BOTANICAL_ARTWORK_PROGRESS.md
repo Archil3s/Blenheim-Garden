@@ -947,3 +947,20 @@ Batch 03 deployed at dbc2528 (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | black-pearl-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5269673168418145426.png?v=1744629111&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 04 passed the production build and all 44 focused browser checks. Rasmussen now has 40 generated illustrations plus ten verified originals. The library has 475 reviewed Harvest mappings.
+
+Batch 04 deployed at 9d6a369 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44175346684).
+
+## Rasmussen Batch 05
+
+- Rasmussen | black-zebra-cherry-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Black_Zebra_Cherry_Tomato_10_seeds.png?v=1778053201&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | bleeding-heart-yellow-bbg-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Bleeding_Heart_Yellow_BBG_Chilli_Seeds_10_seeds.png?v=1783733641&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | blue-beauty-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Blue_Beauty_Tomato_10_seeds.png?v=1778208856&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | bolivian-rainbow-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/9599B612-9439-4E73-B188-17FB66A6D469.png?v=1743918373&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | brazilian-starfish-orange-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://static.wixstatic.com/media/8d9077_228f7b22304d46d586aaf15d0b1fefe3~mv2.jpg/v1/fill/w_480%2Ch_534%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/8d9077_228f7b22304d46d586aaf15d0b1fefe3~mv2.jpg | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | broad-bean-hughey-crimson-40-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Broad_Bean__Hughey_Crimson_40_seeds.png?v=1776120956&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | broad-bean-lucifer-30-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Broad_Bean__Lucifer_30_seeds.png?v=1776118971&width=600 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | broccoli-de-cicco-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://www.everwilde.com/media/0800/VBRODEC-A-De-Cicco-Broccoli-Seeds.jpg | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | brown-poblano-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/B165C08A-3643-4629-8844-CD3C4686DD83.png?v=1743918404&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | brussels-sprouts-catskill-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/2016/2681/files/Brussel-Sprouts-Catskill-Comp.jpg?v=1762198159 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 05 passed the production build and all 44 focused browser checks. Rasmussen now has 50 generated illustrations plus ten verified originals. The library has 485 reviewed Harvest mappings.
