@@ -1065,3 +1065,20 @@ Batch 10 deployed at bee5e40 (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | habanero-hot-lemon-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Habanero_Hot_Lemon_Chilli_Seeds_10_seeds.png?v=1777868632&width=533 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 11 passed the production build and all 44 focused browser checks. Rasmussen now has 110 generated illustrations plus ten verified originals. The library has 545 reviewed Harvest mappings.
+
+Batch 11 deployed at 2b76935 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44192499697).
+
+## Rasmussen Batch 12
+
+- Rasmussen | habanero-mustard-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Habanero_Mustard_Chilli_Seeds_10_seeds.png?v=1785225912&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | habanero-peach-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Habanero_Peach_Chilli_Seeds.png?v=1748249732&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | habanero-red-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/DDB7B964-4AFE-47D6-A6B5-0A2977CD6777.png?v=1743922074&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | habanero-white-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-2186959235940727689.png?v=1743998845&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | habanero-yellow-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-1408962398835017570.png?v=1743998924&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | hangjiao-3-solar-flare-space-chilli-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Hangjiao_3_Solar_Flare_space_chilli_Chilli_Seeds_10_seeds.png?v=1783734136&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | hazel-may-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Hazel_May_Tomato_10_seeds.png?v=1778054902&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | hungarian-yellow-wax-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Hungarian_Yellow_Wax_Chilli_Seeds_10_seeds.png?v=1778653449&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | hurma-ukraine-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5787587313907165709.png?v=1744146682&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | inca-red-hot-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5269673182252388836_bceed6c1-4dc2-4d46-ba7e-a76db22832bb.png?v=1759100201&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 12 passed the production build and all 44 focused browser checks. Rasmussen now has 120 generated illustrations plus ten verified originals. The library has 555 reviewed Harvest mappings.
