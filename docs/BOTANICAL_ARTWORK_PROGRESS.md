@@ -1031,3 +1031,20 @@ Batch 08 deployed at 02da7c8 (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | er-jing-tiao-sichuan-cayenne-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://baobaofarm.ca/cdn/shop/products/IMG_2061-chinese_long_pepper_super_sichuan_400x_d27bd23d-44e9-4850-b611-f4d6c5faf203.webp?v=1678240926&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 09 passed the production build and all 44 focused browser checks. Rasmussen now has 90 generated illustrations plus ten verified originals. The library has 525 reviewed Harvest mappings.
+
+Batch 09 deployed at 187f670 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44188464991).
+
+## Rasmussen Batch 10
+
+- Rasmussen | fatalii-jigsaw-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://fatalii.net/jigsaw/1.jpg | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | feuerwerk-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-2271401902960612027.png?v=1744146853&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | fish-pepper-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/A6519973-F44A-4C6C-8D59-8CFBA18D2DD8.png?v=1743921756&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | fish-pepper-yellow-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Fish_Pepper_-_Yellow_Chilli_Seeds_10_seeds.png?v=1779484903&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | fresno-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://www.sandiaseed.com/cdn/shop/files/Fresnoonepepper.jpg?v=1755799413 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | friggitello-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AC4FC00B-07CA-404C-AEEE-E8065B5F6E1E.png?v=1743921784&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | frontera-sweet-habanero-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Frontera_Sweet_Habanero_Chilli_Seeds_10_seeds.png?v=1777863184&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | furry-red-boar-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-2581024378723723188.png?v=1744146827&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | gajo-de-melon-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-3087679337085405308.png?v=1744146793&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | garden-peach-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-8177875894228342254.png?v=1746651042&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 10 passed the production build and all 44 focused browser checks. Rasmussen now has 100 generated illustrations plus ten verified originals. The library has 535 reviewed Harvest mappings.
