@@ -1150,3 +1150,20 @@ Batch 15 deployed at 1da34b3 (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | mexico-pink-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-2868128872858453373.png?v=1744146418&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 16 passed the production build and all 44 focused browser checks. Rasmussen now has 160 generated illustrations plus ten verified originals. The library has 595 reviewed Harvest mappings.
+
+Batch 16 deployed at f708b5f (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44201219460).
+
+## Rasmussen Batch 17
+
+- Rasmussen | mirabelle-blanche-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-1253591471152994834.png?v=1746651718&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | moonglow-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Moonglow_Tomato_10_seeds_bbd9ad1f-c728-4c12-830d-67e85453339e.png?v=1775001908&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | murupi-amarela-yellow-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Murupi_Amarela_Yellow_Chilli_Seeds_10_seeds.png?v=1746699796&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | naga-red-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-2776930785669589852.png?v=1743998715&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | naga-yellow-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://www.gorolchilli.cz/assets/images/products/27/naga-yellow-8_logo1280x.jpg | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | new-zealand-spinach-30-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/New_Zealand_Spinach_30_seeds.png?v=1753781144&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | oaxacan-jewel-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-6813282144860766723.png?v=1744146367&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | oley-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Oley_Tomato_10_seeds.png?v=1778209463&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | onion-ailsa-craig-75-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-8741948687121267997.png?v=1744084945&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | onion-pukekohe-long-keeper-100-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Onion_-_Pukekohe_Long_Keeper_150_seeds.png?v=1776737592&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 17 passed the production build and all 44 focused browser checks. Rasmussen now has 170 generated illustrations plus ten verified originals. The library has 605 reviewed Harvest mappings.

@@ -5417,6 +5417,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-2868128872858453373.png?v=1744146418&width=1946",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "rasmussen:mirabelle-blanche-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/mirabelle-blanche-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/mirabelle-blanche-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-1253591471152994834.png?v=1746651718&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:moonglow-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/moonglow-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/moonglow-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Moonglow_Tomato_10_seeds_bbd9ad1f-c728-4c12-830d-67e85453339e.png?v=1775001908&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:murupi-amarela-yellow-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/murupi-amarela-yellow-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/murupi-amarela-yellow-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Murupi_Amarela_Yellow_Chilli_Seeds_10_seeds.png?v=1746699796&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:naga-red-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/naga-red-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/naga-red-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-2776930785669589852.png?v=1743998715&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:naga-yellow-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/naga-yellow-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/naga-yellow-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://www.gorolchilli.cz/assets/images/products/27/naga-yellow-8_logo1280x.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:new-zealand-spinach-30-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/new-zealand-spinach-30-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/new-zealand-spinach-30-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/New_Zealand_Spinach_30_seeds.png?v=1753781144&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:oaxacan-jewel-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/oaxacan-jewel-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/oaxacan-jewel-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-6813282144860766723.png?v=1744146367&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:oley-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/oley-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/oley-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Oley_Tomato_10_seeds.png?v=1778209463&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:onion-ailsa-craig-75-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/onion-ailsa-craig-75-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/onion-ailsa-craig-75-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-8741948687121267997.png?v=1744084945&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:onion-pukekohe-long-keeper-100-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/onion-pukekohe-long-keeper-100-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/onion-pukekohe-long-keeper-100-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Onion_-_Pukekohe_Long_Keeper_150_seeds.png?v=1776737592&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
