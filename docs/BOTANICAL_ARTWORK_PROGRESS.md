@@ -1184,3 +1184,20 @@ Batch 17 deployed at e00f5ac (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | pasilla-chilaca-bajio-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Pasilla_Chilaca_Bajio_Chilli_Seeds_10_seeds.png?v=1783736775&width=533 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 18 passed the production build and all 44 focused browser checks. Rasmussen now has 180 generated illustrations plus ten verified originals. The library has 615 reviewed Harvest mappings.
+
+Batch 18 deployed at ca775ba (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44205006498).
+
+## Rasmussen Batch 19
+
+- Rasmussen | peach-blow-sutton-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Peach_Blow_Sutton_Tomato_10_seeds.png?v=1778210579&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | peri-peri-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5269673181948577483.png?v=1743998636&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | pigeon-pea-30-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Pigeon_Pea_30_seeds.png?v=1788150139&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | pimenta-leopard-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5909184329083020445.png?v=1743998614&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | pimenta-luna-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5269673182278396200.png?v=1743998594&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | pink-berkeley-tie-dye-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-8515642803700456589.png?v=1744146209&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | pink-grapefruit-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-2066488137067966195.png?v=1744146158&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | poblano-san-luis-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5909184329813868253.png?v=1743998568&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | popcorn-mushroom-75-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Popcorn_-_Mushroom_75_seeds.png | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | popcorn-ruby-red-75-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Popcorn_-_Ruby_Red_75_seeds.png?v=1791966771&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 19 passed the production build and all 44 focused browser checks. Rasmussen now has 190 generated illustrations plus ten verified originals. The library has 625 reviewed Harvest mappings.

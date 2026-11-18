@@ -5597,6 +5597,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Pasilla_Chilaca_Bajio_Chilli_Seeds_10_seeds.png?v=1783736775&width=533",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "rasmussen:peach-blow-sutton-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/peach-blow-sutton-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/peach-blow-sutton-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Peach_Blow_Sutton_Tomato_10_seeds.png?v=1778210579&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:peri-peri-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/peri-peri-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/peri-peri-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5269673181948577483.png?v=1743998636&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:pigeon-pea-30-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/pigeon-pea-30-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/pigeon-pea-30-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Pigeon_Pea_30_seeds.png?v=1788150139&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:pimenta-leopard-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/pimenta-leopard-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/pimenta-leopard-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5909184329083020445.png?v=1743998614&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:pimenta-luna-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/pimenta-luna-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/pimenta-luna-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5269673182278396200.png?v=1743998594&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:pink-berkeley-tie-dye-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/pink-berkeley-tie-dye-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/pink-berkeley-tie-dye-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-8515642803700456589.png?v=1744146209&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:pink-grapefruit-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/pink-grapefruit-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/pink-grapefruit-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-2066488137067966195.png?v=1744146158&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:poblano-san-luis-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/poblano-san-luis-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/poblano-san-luis-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5909184329813868253.png?v=1743998568&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:popcorn-mushroom-75-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/popcorn-mushroom-75-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/popcorn-mushroom-75-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Popcorn_-_Mushroom_75_seeds.png",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:popcorn-ruby-red-75-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/popcorn-ruby-red-75-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/popcorn-ruby-red-75-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Popcorn_-_Ruby_Red_75_seeds.png?v=1791966771&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
