@@ -1218,3 +1218,20 @@ Batch 19 deployed at 13c1212 (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | purple-varigetta-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Purple_Varigetta_Chilli_Seeds_10_seeds.png?v=1778654387&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 20 passed the production build and all 44 focused browser checks. Rasmussen now has 200 generated illustrations plus ten verified originals. The library has 635 reviewed Harvest mappings.
+
+Batch 20 deployed at d833157 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44208691557).
+
+## Rasmussen Batch 21
+
+- Rasmussen | quinoa-taiwanese-giant-tree-spinach-100-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Quinoa_-_Taiwanese_Giant_Tree_Spinach_100_seeds.png?v=1754902947&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | radicchio-palla-rossa-500-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Radicchio_-_Palla_Rossa_500_seeds.png?v=1788035010&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | radish-crayon-colours-mix-250-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Radish_-_Crayon_Colours_Mix_250_seeds.png?v=1762418341&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | radish-daikon-relish-cross-75-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Radish_-_Daikon_Relish_Cross_75_seeds.png?v=1753700876&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | radish-easter-egg-mix-250-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Radish_-_Easter_Egg_Mix_250_seeds.png?v=1762418516&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | radish-french-breakfast-250-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Radish_-_French_Breakfast_250_seeds.png?v=1772009023&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | radish-hailstone-250-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Radish_-_Hailstone_250_seeds.png?v=1789110876&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | radish-rats-tail-75-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Radish_-_Rats_Tail_75_seeds.png?v=1753701027&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | radish-white-icicle-250-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Radish_-_White_Icicle_250_seeds.png?v=1753700853&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | ramitode-de-dulce-currant-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Ramitode_de_dulce_Currant_Tomato.png?v=1746528272&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 21 passed the production build and all 44 focused browser checks. Rasmussen now has 210 generated illustrations plus ten verified originals. The library has 645 reviewed Harvest mappings.
