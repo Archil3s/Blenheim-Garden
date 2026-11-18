@@ -1201,3 +1201,20 @@ Batch 18 deployed at ca775ba (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | popcorn-ruby-red-75-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Popcorn_-_Ruby_Red_75_seeds.png?v=1791966771&width=533 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 19 passed the production build and all 44 focused browser checks. Rasmussen now has 190 generated illustrations plus ten verified originals. The library has 625 reviewed Harvest mappings.
+
+Batch 19 deployed at 13c1212 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44206915144).
+
+## Rasmussen Batch 20
+
+- Rasmussen | principe-borghese-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5543267051267669429.png?v=1744146116&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | puerto-rican-yellow-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Puerto_Rican_Yellow_Chilli_Seeds_10_seeds.png?v=1783737454&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | pumpkin-butternut-waltham-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Pumpkin_-_Butternut_Waltham_10_seeds.png?v=1753699341&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | pumpkin-kabocha-japanese-pumpkin-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Pumpkin_-_Kabocha_Japanese_Pumpkin_10_seeds.png?v=1753699510&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | pumpkin-kumi-kumi-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Pumpkin_-_Kumi_Kumi_10_seeds.png?v=1762211725&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | pumpkin-sugar-pie-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Pumpkin_-_Sugar_Pie_10_seeds.png?v=1753699491&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | purple-pumpkin-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/PurplePumpkin.png?v=1744711893&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | purple-tiger-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/PurpleTiger.png?v=1744712205&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | purple-ufo-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-2776930786462616704.png?v=1743998542&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | purple-varigetta-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Purple_Varigetta_Chilli_Seeds_10_seeds.png?v=1778654387&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 20 passed the production build and all 44 focused browser checks. Rasmussen now has 200 generated illustrations plus ten verified originals. The library has 635 reviewed Harvest mappings.
