@@ -1235,3 +1235,19 @@ Batch 20 deployed at d833157 (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | ramitode-de-dulce-currant-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Ramitode_de_dulce_Currant_Tomato.png?v=1746528272&width=533 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 21 passed the production build and all 44 focused browser checks. Rasmussen now has 210 generated illustrations plus ten verified originals. The library has 645 reviewed Harvest mappings.
+
+Batch 21 deployed at 1ea5bff (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44210436077).
+
+## Rasmussen Batch 22
+
+- Rasmussen | reisetomate-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-1563213948315988206.png?v=1746652024&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | rhubarb-cardinal-crunch-20-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Rhubarb_-_Cardinal_Crunch_20_seeds.png?v=1788509158&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | rocoto-aji-large-red-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5909184325770644561.png?v=1743998518&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | rocoto-manzano-orange-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5208874586627816740.png?v=1743981199&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | rocoto-manzano-red-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Rocoto_Manzano_-_Red_chilli_Seeds_10_seeds.png?v=1780036726&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | rocoto-manzano-yellow-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Rocoto_Manzano_-_Yellow.png?v=1748339671&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | rose-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-3613474609564314936.png?v=1744146024&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | san-marzano-redorta-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/San_Marzano_Redorta_Tomato_10_seeds.png?v=1773472638&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | scabitha-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Scabitha_Tomato_10_seeds.png?v=1778210555&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+
+Rocoto Manzano Red Flat remains pending an exact cultivar photograph. The nine reviewed entries passed the production build and all 44 focused browser checks. Rasmussen now has 229 Harvest illustrations including ten verified originals.

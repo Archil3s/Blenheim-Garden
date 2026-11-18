@@ -5867,6 +5867,87 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Ramitode_de_dulce_Currant_Tomato.png?v=1746528272&width=533",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "rasmussen:reisetomate-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/reisetomate-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/reisetomate-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-1563213948315988206.png?v=1746652024&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:rhubarb-cardinal-crunch-20-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/rhubarb-cardinal-crunch-20-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/rhubarb-cardinal-crunch-20-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Rhubarb_-_Cardinal_Crunch_20_seeds.png?v=1788509158&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:rocoto-aji-large-red-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/rocoto-aji-large-red-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/rocoto-aji-large-red-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5909184325770644561.png?v=1743998518&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:rocoto-manzano-orange-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/rocoto-manzano-orange-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/rocoto-manzano-orange-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5208874586627816740.png?v=1743981199&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:rocoto-manzano-red-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/rocoto-manzano-red-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/rocoto-manzano-red-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Rocoto_Manzano_-_Red_chilli_Seeds_10_seeds.png?v=1780036726&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:rocoto-manzano-yellow-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/rocoto-manzano-yellow-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/rocoto-manzano-yellow-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Rocoto_Manzano_-_Yellow.png?v=1748339671&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:rose-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/rose-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/rose-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-3613474609564314936.png?v=1744146024&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:san-marzano-redorta-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/san-marzano-redorta-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/san-marzano-redorta-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/San_Marzano_Redorta_Tomato_10_seeds.png?v=1773472638&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:scabitha-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/scabitha-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/scabitha-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Scabitha_Tomato_10_seeds.png?v=1778210555&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 
