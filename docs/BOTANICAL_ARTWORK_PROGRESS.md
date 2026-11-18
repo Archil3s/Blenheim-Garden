@@ -1167,3 +1167,20 @@ Batch 16 deployed at f708b5f (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | onion-pukekohe-long-keeper-100-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Onion_-_Pukekohe_Long_Keeper_150_seeds.png?v=1776737592&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 17 passed the production build and all 44 focused browser checks. Rasmussen now has 170 generated illustrations plus ten verified originals. The library has 605 reviewed Harvest mappings.
+
+Batch 17 deployed at e00f5ac (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44203189074).
+
+## Rasmussen Batch 18
+
+- Rasmussen | onion-red-long-of-tropea-100-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-6648900758604588289.png?v=1744084963&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | onion-walla-walla-sweet-100-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-8741948688508073388.png?v=1744084980&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | orange-icicle-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Orange_Icicle_Tomato_10_seeds.png?v=1760685733&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | orange-lantern-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Orange_Lantern_Chilli_Seeds.png?v=1748249647&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | orange-russian-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-8038261245098974066.png?v=1744146320&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | oxhorn-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Oxhorn.png?v=1744711534&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | habanero-oz-latern-white-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://junglestory.co.nz/cdn/shop/files/Habanero_-_Oz_Latern_White_Chilli_Seeds_10_seeds.png?v=1790072430 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | pak-choi-canton-white-dwarf-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Pak_Choi_-_Canton_White_Dwarf_150_seeds.png?v=1776737063&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | pak-choi-red-choi-f1-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Pak_Choi_-_Red_Choi_F1_150_seeds.png?v=1789246431&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | pasilla-chilaca-bajio-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Pasilla_Chilaca_Bajio_Chilli_Seeds_10_seeds.png?v=1783736775&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 18 passed the production build and all 44 focused browser checks. Rasmussen now has 180 generated illustrations plus ten verified originals. The library has 615 reviewed Harvest mappings.

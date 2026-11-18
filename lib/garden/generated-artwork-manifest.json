@@ -4191,5 +4191,75 @@
     "gallery": "/plant-icons/generated/rasmussen/gallery/onion-pukekohe-long-keeper-100-seeds.png",
     "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Onion_-_Pukekohe_Long_Keeper_150_seeds.png?v=1776737592&width=1946",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:onion-red-long-of-tropea-100-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/onion-red-long-of-tropea-100-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/onion-red-long-of-tropea-100-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-6648900758604588289.png?v=1744084963&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:onion-walla-walla-sweet-100-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/onion-walla-walla-sweet-100-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/onion-walla-walla-sweet-100-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-8741948688508073388.png?v=1744084980&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:orange-icicle-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/orange-icicle-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/orange-icicle-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Orange_Icicle_Tomato_10_seeds.png?v=1760685733&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:orange-lantern-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/orange-lantern-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/orange-lantern-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Orange_Lantern_Chilli_Seeds.png?v=1748249647&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:orange-russian-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/orange-russian-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/orange-russian-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-8038261245098974066.png?v=1744146320&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:oxhorn-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/oxhorn-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/oxhorn-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Oxhorn.png?v=1744711534&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:habanero-oz-latern-white-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/habanero-oz-latern-white-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/habanero-oz-latern-white-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://junglestory.co.nz/cdn/shop/files/Habanero_-_Oz_Latern_White_Chilli_Seeds_10_seeds.png?v=1790072430",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:pak-choi-canton-white-dwarf-150-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/pak-choi-canton-white-dwarf-150-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/pak-choi-canton-white-dwarf-150-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Pak_Choi_-_Canton_White_Dwarf_150_seeds.png?v=1776737063&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:pak-choi-red-choi-f1-150-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/pak-choi-red-choi-f1-150-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/pak-choi-red-choi-f1-150-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Pak_Choi_-_Red_Choi_F1_150_seeds.png?v=1789246431&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:pasilla-chilaca-bajio-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/pasilla-chilaca-bajio-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/pasilla-chilaca-bajio-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Pasilla_Chilaca_Bajio_Chilli_Seeds_10_seeds.png?v=1783736775&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }
