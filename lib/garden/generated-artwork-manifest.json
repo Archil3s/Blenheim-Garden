@@ -4534,5 +4534,75 @@
     "gallery": "/plant-icons/generated/rasmussen/gallery/scabitha-tomato-10-seeds.png",
     "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Scabitha_Tomato_10_seeds.png?v=1778210555&width=533",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:scallopini-benning-s-green-tint-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/scallopini-benning-s-green-tint-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/scallopini-benning-s-green-tint-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Scallopini_-_Bennings_Green_Tint_10_seeds.png?v=1753781332&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:scallopini-golden-orb-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/scallopini-golden-orb-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/scallopini-golden-orb-10-seeds.png",
+    "referenceUrl": "https://junglestory.co.nz/cdn/shop/files/Scallopini_-_Golden_Orb_10_seeds.png?v=1793407831",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:scallopini-white-pearl-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/scallopini-white-pearl-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/scallopini-white-pearl-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Scallopini_-_White_Pearl_10_seeds.png?v=1762418109&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:scarletts-chilli-varigatted-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/scarletts-chilli-varigatted-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/scarletts-chilli-varigatted-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://www.coqhot.com/wp-content/uploads/2026/07/scarlett-variegated-1.webp",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:scoresby-dwarf-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/scoresby-dwarf-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/scoresby-dwarf-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Scoresby_Dwarf_Tomato_10_seeds.png?v=1778210118&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:scotch-bonnet-red-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/scotch-bonnet-red-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/scotch-bonnet-red-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/ScotchBonnetRed.png?v=1744887502&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:serrano-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/serrano-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/serrano-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Serrano_1.png?v=1744887917&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:blackout-shishito-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/blackout-shishito-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/blackout-shishito-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Blackout_Shishito_Chilli_Seeds_10_seeds.png?v=1783732196&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:crimson-shiso-perilla-150-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/crimson-shiso-perilla-150-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/crimson-shiso-perilla-150-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-7167940616277179078.png?v=1744085004&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:green-shiso-perilla-150-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/green-shiso-perilla-150-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/green-shiso-perilla-150-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Shiso_Green_perilla_150_seeds.png?v=1775288053&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }

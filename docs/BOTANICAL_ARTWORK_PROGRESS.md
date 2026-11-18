@@ -1251,3 +1251,20 @@ Batch 21 deployed at 1ea5bff (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | scabitha-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Scabitha_Tomato_10_seeds.png?v=1778210555&width=533 | Harvest reviewed and mapped. Earlier stages pending.
 
 Rocoto Manzano Red Flat remains pending an exact cultivar photograph. The nine reviewed entries passed the production build and all 44 focused browser checks. Rasmussen now has 229 Harvest illustrations including ten verified originals.
+
+Batch 22 deployed at 87b12da (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44212113103).
+
+## Rasmussen Batch 23
+
+- Rasmussen | scallopini-benning-s-green-tint-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Scallopini_-_Bennings_Green_Tint_10_seeds.png?v=1753781332&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | scallopini-golden-orb-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://junglestory.co.nz/cdn/shop/files/Scallopini_-_Golden_Orb_10_seeds.png?v=1793407831 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | scallopini-white-pearl-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Scallopini_-_White_Pearl_10_seeds.png?v=1762418109&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | scarletts-chilli-varigatted-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://www.coqhot.com/wp-content/uploads/2026/07/scarlett-variegated-1.webp | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | scoresby-dwarf-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Scoresby_Dwarf_Tomato_10_seeds.png?v=1778210118&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | scotch-bonnet-red-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/ScotchBonnetRed.png?v=1744887502&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | serrano-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Serrano_1.png?v=1744887917&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | blackout-shishito-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Blackout_Shishito_Chilli_Seeds_10_seeds.png?v=1783732196&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | crimson-shiso-perilla-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-7167940616277179078.png?v=1744085004&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | green-shiso-perilla-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Shiso_Green_perilla_150_seeds.png?v=1775288053&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 23 passed the production build and all 44 focused browser checks. Rasmussen now has 239 Harvest illustrations including ten verified originals.
