@@ -1397,3 +1397,20 @@ Kings Seeds Harvest completion deployed at eb2fdfc (https://github.com/Archil3s/
 - Rasmussen | aji-cito-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCito.png?v=1744625451&width=1946 | Visually reviewed and mapped.
 
 Aji Cito and Aji Ahuachapan each have six mapped stages. The seed and seedling anatomy is based on pepper growth references. Production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 01 deployed at 7bf752c (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44590094818).
+
+## Rasmussen Growth Batch 02
+
+- Rasmussen | aji-amarillo-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Amarillo_2.png?v=1745008492&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-amarillo-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Amarillo_2.png?v=1745008492&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-amarillo-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Amarillo_2.png?v=1745008492&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-amarillo-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Amarillo_2.png?v=1745008492&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-amarillo-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Amarillo_2.png?v=1745008492&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-berry-amarillo-long-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiBerryAmarilloLong.png?v=1744686578 | Visually reviewed and mapped.
+- Rasmussen | aji-berry-amarillo-long-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiBerryAmarilloLong.png?v=1744686578 | Visually reviewed and mapped.
+- Rasmussen | aji-berry-amarillo-long-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiBerryAmarilloLong.png?v=1744686578 | Visually reviewed and mapped.
+- Rasmussen | aji-berry-amarillo-long-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiBerryAmarilloLong.png?v=1744686578 | Visually reviewed and mapped.
+- Rasmussen | aji-berry-amarillo-long-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiBerryAmarilloLong.png?v=1744686578 | Visually reviewed and mapped.
+
+Aji Amarillo and Aji Berry Amarillo Long each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
