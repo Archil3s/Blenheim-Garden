@@ -3607,6 +3607,13 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/amaranth-garnet-red.png",
       "referenceUrl": "https://www.winnowseedco.ca/product-page/amaranth-garnet-red",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/amaranth-garnet-red-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/amaranth-garnet-red-harvest.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8379-2_1080x.png?v=1721082912",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:asparagus-pea": {
@@ -3616,6 +3623,13 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/asparagus-pea.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-pea",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pea-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pea-harvest.png",
+      "referenceUrl": "https://www.kingsseeds.com/images/thumbs/0009022_10301-1_550.jpeg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:chia": {
@@ -3623,6 +3637,13 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "status": "generated_qa_passed",
       "master": "/plant-icons/generated/kings-seeds/master/chia.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/chia.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/chia",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/chia-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/chia-harvest.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/chia",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
@@ -6387,6 +6408,15 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/rasmussen/master/zucchini-yellow-15-seeds.png",
       "gallery": "/plant-icons/generated/rasmussen/gallery/zucchini-yellow-15-seeds.png",
       "referenceUrl": "https://junglestory.co.nz/cdn/shop/files/Zucchini__Yellow_15_seeds.png?v=1788855184",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "kings:burdock-takinogawa-long": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/burdock-takinogawa-long-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/burdock-takinogawa-long-harvest.png",
+      "referenceUrl": "https://www.rareseeds.com/burdock-takinogawa",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   }

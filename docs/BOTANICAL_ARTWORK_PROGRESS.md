@@ -1369,3 +1369,14 @@ Batch 26 deployed at bedb967 (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | zucchini-yellow-15-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://junglestory.co.nz/cdn/shop/files/Zucchini__Yellow_15_seeds.png?v=1788855184 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 27 passed the production build and all 44 focused browser checks. Rasmussen now has 278 Harvest illustrations including ten verified originals.
+
+Batch 27 deployed at a4d0730 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44585745943).
+
+## Kings Seeds Harvest Completion
+
+- Kings Seeds | amaranth-garnet-red | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/cdn/shop/files/V8379-2_1080x.png?v=1721082912 | Harvest visually reviewed and mapped.
+- Kings Seeds | asparagus-pea | 512 px master and 128 px gallery | https://www.kingsseeds.com/images/thumbs/0009022_10301-1_550.jpeg | Harvest visually reviewed and mapped.
+- Kings Seeds | burdock-takinogawa-long | 512 px master and 128 px gallery | https://www.rareseeds.com/burdock-takinogawa | Harvest visually reviewed and mapped.
+- Kings Seeds | chia | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/chia | Harvest visually reviewed and mapped.
+
+Kings Seeds now has 429 Harvest mappings. Production build and all 44 focused gallery checks passed.
