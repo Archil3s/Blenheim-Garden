@@ -1584,3 +1584,20 @@ Rasmussen Growth Batch 11 deployed at efc5044 (https://github.com/Archil3s/Blenh
 - Rasmussen | aji-pineapple-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://www.barney.dk/cdn/shop/files/Aji-Pineapple.jpg?v=1759526551 | Visually reviewed and mapped.
 
 Aji Peanut and Aji Pineapple each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 12 deployed at ed1d220 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44616572201).
+
+## Rasmussen Growth Batch 13
+
+- Rasmussen | aji-rojo-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/9784C412-B965-4B90-9F3B-785D7B3D606F_42474444-e3e7-449b-ad0d-756ff2382154.png?v=1759100146&width=533 | Visually reviewed and mapped.
+- Rasmussen | aji-rojo-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/9784C412-B965-4B90-9F3B-785D7B3D606F_42474444-e3e7-449b-ad0d-756ff2382154.png?v=1759100146&width=533 | Visually reviewed and mapped.
+- Rasmussen | aji-rojo-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/9784C412-B965-4B90-9F3B-785D7B3D606F_42474444-e3e7-449b-ad0d-756ff2382154.png?v=1759100146&width=533 | Visually reviewed and mapped.
+- Rasmussen | aji-rojo-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/9784C412-B965-4B90-9F3B-785D7B3D606F_42474444-e3e7-449b-ad0d-756ff2382154.png?v=1759100146&width=533 | Visually reviewed and mapped.
+- Rasmussen | aji-rojo-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/9784C412-B965-4B90-9F3B-785D7B3D606F_42474444-e3e7-449b-ad0d-756ff2382154.png?v=1759100146&width=533 | Visually reviewed and mapped.
+- Rasmussen | aji-sparkly-white-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/C1F7D06D-C83B-4DD1-AC36-13A3A3C12B53.png?v=1743915870&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-sparkly-white-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/C1F7D06D-C83B-4DD1-AC36-13A3A3C12B53.png?v=1743915870&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-sparkly-white-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/C1F7D06D-C83B-4DD1-AC36-13A3A3C12B53.png?v=1743915870&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-sparkly-white-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/C1F7D06D-C83B-4DD1-AC36-13A3A3C12B53.png?v=1743915870&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-sparkly-white-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/C1F7D06D-C83B-4DD1-AC36-13A3A3C12B53.png?v=1743915870&width=1946 | Visually reviewed and mapped.
+
+Aji Rojo and Aji Sparkly White each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.

@@ -4972,6 +4972,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/rasmussen/gallery/aji-rojo-chilli-seeds-10-seeds.png",
       "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/9784C412-B965-4B90-9F3B-785D7B3D606F_42474444-e3e7-449b-ad0d-756ff2382154.png?v=1759100146&width=533",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-rojo-chilli-seeds-10-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-rojo-chilli-seeds-10-seeds-seed.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/9784C412-B965-4B90-9F3B-785D7B3D606F_42474444-e3e7-449b-ad0d-756ff2382154.png?v=1759100146&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-rojo-chilli-seeds-10-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-rojo-chilli-seeds-10-seeds-first-sprout.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/9784C412-B965-4B90-9F3B-785D7B3D606F_42474444-e3e7-449b-ad0d-756ff2382154.png?v=1759100146&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-rojo-chilli-seeds-10-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-rojo-chilli-seeds-10-seeds-baby-plant.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/9784C412-B965-4B90-9F3B-785D7B3D606F_42474444-e3e7-449b-ad0d-756ff2382154.png?v=1759100146&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-rojo-chilli-seeds-10-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-rojo-chilli-seeds-10-seeds-semi-mature.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/9784C412-B965-4B90-9F3B-785D7B3D606F_42474444-e3e7-449b-ad0d-756ff2382154.png?v=1759100146&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-rojo-chilli-seeds-10-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-rojo-chilli-seeds-10-seeds-pre-harvest.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/9784C412-B965-4B90-9F3B-785D7B3D606F_42474444-e3e7-449b-ad0d-756ff2382154.png?v=1759100146&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "rasmussen:aji-sparkly-white-chilli-seeds-10-seeds": {
@@ -4979,6 +5014,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "status": "generated_qa_passed",
       "master": "/plant-icons/generated/rasmussen/master/aji-sparkly-white-chilli-seeds-10-seeds.png",
       "gallery": "/plant-icons/generated/rasmussen/gallery/aji-sparkly-white-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/C1F7D06D-C83B-4DD1-AC36-13A3A3C12B53.png?v=1743915870&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-sparkly-white-chilli-seeds-10-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-sparkly-white-chilli-seeds-10-seeds-seed.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/C1F7D06D-C83B-4DD1-AC36-13A3A3C12B53.png?v=1743915870&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-sparkly-white-chilli-seeds-10-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-sparkly-white-chilli-seeds-10-seeds-first-sprout.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/C1F7D06D-C83B-4DD1-AC36-13A3A3C12B53.png?v=1743915870&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-sparkly-white-chilli-seeds-10-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-sparkly-white-chilli-seeds-10-seeds-baby-plant.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/C1F7D06D-C83B-4DD1-AC36-13A3A3C12B53.png?v=1743915870&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-sparkly-white-chilli-seeds-10-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-sparkly-white-chilli-seeds-10-seeds-semi-mature.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/C1F7D06D-C83B-4DD1-AC36-13A3A3C12B53.png?v=1743915870&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-sparkly-white-chilli-seeds-10-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-sparkly-white-chilli-seeds-10-seeds-pre-harvest.png",
       "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/C1F7D06D-C83B-4DD1-AC36-13A3A3C12B53.png?v=1743915870&width=1946",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
