@@ -4674,5 +4674,75 @@
     "gallery": "/plant-icons/generated/rasmussen/gallery/sugar-rush-red-chilli-seeds-10-seeds.png",
     "referenceUrl": "https://scovillecanada.com/cdn/shop/files/SugarRushRed.png?v=1728057934",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:sugar-rush-stripey-chilli-seeds-10-seeds-copy": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/sugar-rush-stripey-chilli-seeds-10-seeds-copy.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/sugar-rush-stripey-chilli-seeds-10-seeds-copy.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/SugarRushStripey.png?v=1744713480&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:sunrise-bumble-bee-cherry-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/sunrise-bumble-bee-cherry-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/sunrise-bumble-bee-cherry-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-8814006281680414674.png?v=1744145960&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:sweet-paprika-yugoslavia-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/sweet-paprika-yugoslavia-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/sweet-paprika-yugoslavia-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Sweet_Paprika__Yugoslavia_Chilli_Seeds_10_seeds.png?v=1778231240&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:tabasco-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/tabasco-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/tabasco-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://www.worldofchillies.com/shop/tabasco-chilli/files/stack_drag_image-701.jpg",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:tangerine-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/tangerine-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/tangerine-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Tangerine_Tomato_10_seeds.png?v=1746154819&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:tiger-melon-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/tiger-melon-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/tiger-melon-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Tiger_Melon_10_seeds.png?v=1747222964&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:tlacolula-pink-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/tlacolula-pink-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/tlacolula-pink-tomato-10-seeds.png",
+    "referenceUrl": "https://res.cloudinary.com/rareseeds/image/upload/c_lpad%2Cdpr_1.0%2Cf_auto%2Cq_auto/v1/media/catalog/product/t/o/tomato-tlacolula-pink-lss-dsc_2642.jpg?_i=AB",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:tomatillo-amethyst-emerald-geodes-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/tomatillo-amethyst-emerald-geodes-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/tomatillo-amethyst-emerald-geodes-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Tomatillo_Amethyst__Emerald_Geodes_10_seeds.png?v=1780986349&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:tomatillo-chupon-de-malinalco-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/tomatillo-chupon-de-malinalco-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/tomatillo-chupon-de-malinalco-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Tomatillo_Chupon_de_Malinalco.png?v=1746959555&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:tomatillo-plaza-latina-giant-green-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/tomatillo-plaza-latina-giant-green-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/tomatillo-plaza-latina-giant-green-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-7167940618612770854.png?v=1744794183&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }

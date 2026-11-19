@@ -1319,3 +1319,20 @@ Batch 23 deployed at f30f63e (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | sugar-rush-red-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://scovillecanada.com/cdn/shop/files/SugarRushRed.png?v=1728057934 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 24 passed the production build and all 44 focused browser checks. Rasmussen now has 249 Harvest illustrations including ten verified originals.
+
+Batch 24 deployed at 13c7636 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44578302955).
+
+## Rasmussen Batch 25
+
+- Rasmussen | sugar-rush-stripey-chilli-seeds-10-seeds-copy | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/SugarRushStripey.png?v=1744713480&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | sunrise-bumble-bee-cherry-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-8814006281680414674.png?v=1744145960&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | sweet-paprika-yugoslavia-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Sweet_Paprika__Yugoslavia_Chilli_Seeds_10_seeds.png?v=1778231240&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | tabasco-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://www.worldofchillies.com/shop/tabasco-chilli/files/stack_drag_image-701.jpg | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | tangerine-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Tangerine_Tomato_10_seeds.png?v=1746154819&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | tiger-melon-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Tiger_Melon_10_seeds.png?v=1747222964&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | tlacolula-pink-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://res.cloudinary.com/rareseeds/image/upload/c_lpad%2Cdpr_1.0%2Cf_auto%2Cq_auto/v1/media/catalog/product/t/o/tomato-tlacolula-pink-lss-dsc_2642.jpg?_i=AB | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | tomatillo-amethyst-emerald-geodes-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Tomatillo_Amethyst__Emerald_Geodes_10_seeds.png?v=1780986349&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | tomatillo-chupon-de-malinalco-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Tomatillo_Chupon_de_Malinalco.png?v=1746959555&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | tomatillo-plaza-latina-giant-green-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-7167940618612770854.png?v=1744794183&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 25 passed the production build and all 44 focused browser checks. Rasmussen now has 259 Harvest illustrations including ten verified originals.
