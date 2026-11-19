@@ -1499,3 +1499,20 @@ Rasmussen Growth Batch 06 deployed at 26b9ec1 (https://github.com/Archil3s/Blenh
 - Rasmussen | aji-giallo-arancio-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiGialloArancio.png?v=1744625909&width=1946 | Visually reviewed and mapped.
 
 Aji Fantasy and Aji Giallo Arancio each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 07 deployed at b882841 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44603939449).
+
+## Rasmussen Growth Batch 08
+
+- Rasmussen | aji-guyana-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/D722CEB6-17ED-49B0-AF38-302ED10C535E.png?v=1743915362&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-guyana-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/D722CEB6-17ED-49B0-AF38-302ED10C535E.png?v=1743915362&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-guyana-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/D722CEB6-17ED-49B0-AF38-302ED10C535E.png?v=1743915362&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-guyana-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/D722CEB6-17ED-49B0-AF38-302ED10C535E.png?v=1743915362&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-guyana-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/D722CEB6-17ED-49B0-AF38-302ED10C535E.png?v=1743915362&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-lemon-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/710A1E46-3BB0-4B24-90C3-7E0340981A4A_5df4fdc9-6b7a-410a-8dfb-9c2fd78b6a33.png?v=1759100133&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-lemon-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/710A1E46-3BB0-4B24-90C3-7E0340981A4A_5df4fdc9-6b7a-410a-8dfb-9c2fd78b6a33.png?v=1759100133&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-lemon-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/710A1E46-3BB0-4B24-90C3-7E0340981A4A_5df4fdc9-6b7a-410a-8dfb-9c2fd78b6a33.png?v=1759100133&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-lemon-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/710A1E46-3BB0-4B24-90C3-7E0340981A4A_5df4fdc9-6b7a-410a-8dfb-9c2fd78b6a33.png?v=1759100133&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-lemon-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/710A1E46-3BB0-4B24-90C3-7E0340981A4A_5df4fdc9-6b7a-410a-8dfb-9c2fd78b6a33.png?v=1759100133&width=1946 | Visually reviewed and mapped.
+
+Aji Guyana and Aji Lemon each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
