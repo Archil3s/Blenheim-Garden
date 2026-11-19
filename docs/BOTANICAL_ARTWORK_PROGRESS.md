@@ -1601,3 +1601,20 @@ Rasmussen Growth Batch 12 deployed at ed1d220 (https://github.com/Archil3s/Blenh
 - Rasmussen | aji-sparkly-white-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/C1F7D06D-C83B-4DD1-AC36-13A3A3C12B53.png?v=1743915870&width=1946 | Visually reviewed and mapped.
 
 Aji Rojo and Aji Sparkly White each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 13 deployed at ed404ac (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44618713630).
+
+## Rasmussen Growth Batch 14
+
+- Rasmussen | aji-strawberry-drop-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiStrawberryDrop_b55133b5-56e7-4709-91be-b8793b9c246c.png?v=1759100149 | Visually reviewed and mapped.
+- Rasmussen | aji-strawberry-drop-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiStrawberryDrop_b55133b5-56e7-4709-91be-b8793b9c246c.png?v=1759100149 | Visually reviewed and mapped.
+- Rasmussen | aji-strawberry-drop-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiStrawberryDrop_b55133b5-56e7-4709-91be-b8793b9c246c.png?v=1759100149 | Visually reviewed and mapped.
+- Rasmussen | aji-strawberry-drop-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiStrawberryDrop_b55133b5-56e7-4709-91be-b8793b9c246c.png?v=1759100149 | Visually reviewed and mapped.
+- Rasmussen | aji-strawberry-drop-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiStrawberryDrop_b55133b5-56e7-4709-91be-b8793b9c246c.png?v=1759100149 | Visually reviewed and mapped.
+- Rasmussen | anaheim-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/CB453B1B-D409-4157-96A5-40E74C8C669A.png?v=1743918180&width=1946 | Visually reviewed and mapped.
+- Rasmussen | anaheim-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/CB453B1B-D409-4157-96A5-40E74C8C669A.png?v=1743918180&width=1946 | Visually reviewed and mapped.
+- Rasmussen | anaheim-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/CB453B1B-D409-4157-96A5-40E74C8C669A.png?v=1743918180&width=1946 | Visually reviewed and mapped.
+- Rasmussen | anaheim-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/CB453B1B-D409-4157-96A5-40E74C8C669A.png?v=1743918180&width=1946 | Visually reviewed and mapped.
+- Rasmussen | anaheim-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/CB453B1B-D409-4157-96A5-40E74C8C669A.png?v=1743918180&width=1946 | Visually reviewed and mapped.
+
+Aji Strawberry Drop and Anaheim each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.

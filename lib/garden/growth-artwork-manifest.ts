@@ -5060,6 +5060,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/rasmussen/gallery/aji-strawberry-drop-chilli-seeds-10-seeds.png",
       "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiStrawberryDrop_b55133b5-56e7-4709-91be-b8793b9c246c.png?v=1759100149",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-strawberry-drop-chilli-seeds-10-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-strawberry-drop-chilli-seeds-10-seeds-seed.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiStrawberryDrop_b55133b5-56e7-4709-91be-b8793b9c246c.png?v=1759100149",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-strawberry-drop-chilli-seeds-10-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-strawberry-drop-chilli-seeds-10-seeds-first-sprout.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiStrawberryDrop_b55133b5-56e7-4709-91be-b8793b9c246c.png?v=1759100149",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-strawberry-drop-chilli-seeds-10-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-strawberry-drop-chilli-seeds-10-seeds-baby-plant.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiStrawberryDrop_b55133b5-56e7-4709-91be-b8793b9c246c.png?v=1759100149",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-strawberry-drop-chilli-seeds-10-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-strawberry-drop-chilli-seeds-10-seeds-semi-mature.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiStrawberryDrop_b55133b5-56e7-4709-91be-b8793b9c246c.png?v=1759100149",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-strawberry-drop-chilli-seeds-10-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-strawberry-drop-chilli-seeds-10-seeds-pre-harvest.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiStrawberryDrop_b55133b5-56e7-4709-91be-b8793b9c246c.png?v=1759100149",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "rasmussen:anaheim-chilli-seeds-10-seeds": {
@@ -5067,6 +5102,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "status": "generated_qa_passed",
       "master": "/plant-icons/generated/rasmussen/master/anaheim-chilli-seeds-10-seeds.png",
       "gallery": "/plant-icons/generated/rasmussen/gallery/anaheim-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/CB453B1B-D409-4157-96A5-40E74C8C669A.png?v=1743918180&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/anaheim-chilli-seeds-10-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/anaheim-chilli-seeds-10-seeds-seed.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/CB453B1B-D409-4157-96A5-40E74C8C669A.png?v=1743918180&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/anaheim-chilli-seeds-10-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/anaheim-chilli-seeds-10-seeds-first-sprout.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/CB453B1B-D409-4157-96A5-40E74C8C669A.png?v=1743918180&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/anaheim-chilli-seeds-10-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/anaheim-chilli-seeds-10-seeds-baby-plant.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/CB453B1B-D409-4157-96A5-40E74C8C669A.png?v=1743918180&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/anaheim-chilli-seeds-10-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/anaheim-chilli-seeds-10-seeds-semi-mature.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/CB453B1B-D409-4157-96A5-40E74C8C669A.png?v=1743918180&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/anaheim-chilli-seeds-10-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/anaheim-chilli-seeds-10-seeds-pre-harvest.png",
       "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/CB453B1B-D409-4157-96A5-40E74C8C669A.png?v=1743918180&width=1946",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
