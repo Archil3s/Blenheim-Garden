@@ -1448,3 +1448,20 @@ Rasmussen Growth Batch 03 deployed at 983abf8 (https://github.com/Archil3s/Blenh
 - Rasmussen | aji-charapita-armarillo-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5967731109627236000.png?v=1743910109&width=1946 | Visually reviewed and mapped.
 
 Aji Charapita Amarillo and Aji Charapita Peach each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 04 deployed at ab20ff5 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44597097189).
+
+## Rasmussen Growth Batch 05
+
+- Rasmussen | 7-pot-jonah-yellow-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/2135891885.jpg?v=1745969573&width=1946 | Visually reviewed and mapped.
+- Rasmussen | 7-pot-jonah-yellow-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/2135891885.jpg?v=1745969573&width=1946 | Visually reviewed and mapped.
+- Rasmussen | 7-pot-jonah-yellow-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/2135891885.jpg?v=1745969573&width=1946 | Visually reviewed and mapped.
+- Rasmussen | 7-pot-jonah-yellow-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/2135891885.jpg?v=1745969573&width=1946 | Visually reviewed and mapped.
+- Rasmussen | 7-pot-jonah-yellow-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/2135891885.jpg?v=1745969573&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-charapon-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapon.png?v=1744625103&width=1445 | Visually reviewed and mapped.
+- Rasmussen | aji-charapon-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapon.png?v=1744625103&width=1445 | Visually reviewed and mapped.
+- Rasmussen | aji-charapon-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapon.png?v=1744625103&width=1445 | Visually reviewed and mapped.
+- Rasmussen | aji-charapon-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapon.png?v=1744625103&width=1445 | Visually reviewed and mapped.
+- Rasmussen | aji-charapon-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapon.png?v=1744625103&width=1445 | Visually reviewed and mapped.
+
+Aji Charapon and 7 Pot Jonah Yellow each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
