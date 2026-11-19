@@ -6038,6 +6038,96 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Shiso_Green_perilla_150_seeds.png?v=1775288053&width=1946",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "rasmussen:red-shiso-perilla-150-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/red-shiso-perilla-150-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/red-shiso-perilla-150-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Shiso_Red_perilla_150_seeds.png?v=1775288174&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:silverbeet-silverado-compacta-150-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/silverbeet-silverado-compacta-150-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/silverbeet-silverado-compacta-150-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Silverbeet_-_Silverado_Compacta_150_seeds.png",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:silvery-fir-tree-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/silvery-fir-tree-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/silvery-fir-tree-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Silvery_Fir_Tree_Tomato_10_seeds.png?v=1778092604&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:speckled-roman-tomato-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/speckled-roman-tomato-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/speckled-roman-tomato-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Speckled_Roman_Tomato_10_seeds.png?v=1777975331&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:delicata-squash-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/delicata-squash-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/delicata-squash-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Delicata_squash_10_seeds.png?v=1747222927&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:squash-tromba-d-albenga-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/squash-tromba-d-albenga-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/squash-tromba-d-albenga-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Squash_-_Tromba_dAlbenga_10_seeds.png?v=1753700034&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:sugar-rush-cream-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/sugar-rush-cream-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/sugar-rush-cream-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/sugarrushcream.png?v=1745008918&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:sugar-rush-peach-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/sugar-rush-peach-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/sugar-rush-peach-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/sugarrushpeach_1.png?v=1744712651&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:sugar-rush-peach-stumpy-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/sugar-rush-peach-stumpy-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/sugar-rush-peach-stumpy-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Sugar_Rush_Peach_Stumpy_Chilli_Plant_in_4_pot.png?v=1760083131&width=600",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
+  },
+  "rasmussen:sugar-rush-red-chilli-seeds-10-seeds": {
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/generated/rasmussen/master/sugar-rush-red-chilli-seeds-10-seeds.png",
+      "gallery": "/plant-icons/generated/rasmussen/gallery/sugar-rush-red-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://scovillecanada.com/cdn/shop/files/SugarRushRed.png?v=1728057934",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

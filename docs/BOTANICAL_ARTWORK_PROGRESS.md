@@ -1268,3 +1268,54 @@ Batch 22 deployed at 87b12da (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | green-shiso-perilla-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Shiso_Green_perilla_150_seeds.png?v=1775288053&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 23 passed the production build and all 44 focused browser checks. Rasmussen now has 239 Harvest illustrations including ten verified originals.
+
+## Kings Seeds Harvest Reference Check
+
+- Asparagus pea | Inspected the UK supplier photograph showing young winged pods alongside a flower. Saved locally as references/asparagus-pea-harvest-candidate.jpg for Harvest artwork. https://www.kingsseeds.com/images/thumbs/0009022_10301-1_550.jpeg
+- Chia | Confirmed mature seed heads and seeds as the Harvest subject. The supplier image download returned HTTP 403. https://www.kingsseeds.co.nz/products/chia
+- Takinogawa Long burdock | The candidate root-photo download returned HTTP 403. https://www.rareseeds.com/burdock-takinogawa
+- Takinogawa burdock | Downloaded and visually verified the named RareSeeds harvest photograph from its image host. Saved locally as references/takinogawa-burdock-harvest.jpg. The image shows long, slender, tan harvested taproots. https://www.rareseeds.com/burdock-takinogawa
+- Chia | Saved and visually checked the Kings Seeds V8458 catalogue photograph as references/chia-supplier-v8458.png. Use it for spike structure. The green spikes are a pre-harvest reference. Use the labelled Commons photograph for mature seed shape and markings. https://www.kingsseeds.co.nz/products/chia and https://commons.wikimedia.org/wiki/File:Semillas_de_Ch%C3%ADa.jpg
+- Garnet Red amaranth | Saved and visually reviewed the Kings Seeds photo of the named young-leaf selection as references/garnet-red-young-leaf.png. Use its burgundy leaves and magenta stems alongside the vegetable listing, which identifies young leaves as a harvest. https://www.kingsseeds.co.nz/products/amaranth-garnet-red and https://www.kingsseeds.co.nz/products/amaranth-garnet-red-microgreen
+
+### Rasmussen growth-stage reference follow-up
+
+- Aji Cito | The supplier plant listing identifies the exact cultivar and documents its bushy growth habit and green-to-yellow ripening. https://rasmussengardens.co.nz/products/aji-cito-chilli-plant-in-4-pot
+- Aji Ahuachapán | The supplier plant listing identifies the exact cultivar and documents its tall habit and tapered orange ripe pods. https://rasmussengardens.co.nz/products/aji-ahuachapan-chilli-plant-in-4-pot
+- The ten seed-product JSON lookups returned HTTP 403. The two plant listings supply stage context while photo retrieval remains pending.
+
+- Rocoto Manzano Red Flat | Exact product slug returned no indexed results. Image search surfaced standard Manzano Red without a Flat selection label, so those photos were excluded. The archive availability request could not be verified. All six slots remain pending an exact photo.
+
+### Pepper early-stage references
+
+- First Sprout | Use two narrow pointed cotyledons on a short emerging stem. UC Agriculture and Natural Resources documents the cotyledon shape and distinguishes the later true leaves. https://ucanr.edu/blog/stanislaus-sprout/article/growing-peppers-seed-part-1-supplies-planting-seeds-and-seedlings
+- Baby Plant | Show the first true leaves and continued shoot growth above the cotyledons. Kansas State Research and Extension describes this transition in its transplant guide. https://www.brown.k-state.edu/lawn-garden/documents/Growing%20Your%20Own%20Vegetable%20Transplants.pdf
+- The pepper seedling study supplies a Capsicum annuum developmental comparison in Figure 1. Use it as species-level evidence alongside the named cultivar photo. https://pmc.ncbi.nlm.nih.gov/articles/PMC4577988/
+
+### Tomato early-stage references
+
+- First Sprout | Show a slender shoot with two narrow smooth-edged cotyledons. Western Michigan University Figure 11 documents their shape. https://files.wmich.edu/s3fs-public/attachments/u5694/2024/Plant_Nutrient_Deficiency.pdf
+- Baby Plant | Show the first true leaves above and between the lower cotyledons. The University of Kentucky tomato grafting guide labels both structures on a seedling. Use the named supplier photograph separately for cultivar traits. https://ccd.uky.edu/sites/default/files/2026-03/ccd-ta-04_gh-grafting_accessible.pdf
+
+### Cucurbit early-stage references
+
+- First Sprout | Use two large fleshy cotyledons with smooth edges on an emerging stem. The International Seed Testing Association documents this structure for melon and squash, including pumpkin. https://www.idseed.org/ckfinder/userfiles/files/M%26P%202023%20En.pdf
+- Baby Plant | Show a developing true leaf above the cotyledons. Ohio State's pumpkin development slides show the transition, and the University of Florida squash guide shows the contrast between oval cotyledons and lobed true leaves. Use the exact supplier photo for mature cultivar traits. https://bpb-us-w2.wpmucdn.com/u.osu.edu/dist/f/4395/files/2017/11/Pumpkin-prod-basics-swveg2017-1a1jw7y.pdf and https://ipm.ifas.ufl.edu/pdfs/reflective_mulch_whiteflies_and_squash.pdf
+- Rocoto Manzano Red Flat | Checked the available workspace HTML, attachment names, and repository history for the exact cultivar. The recorded concept and catalogue records identify the cultivar, but no labelled source photograph was recovered from those files.
+
+Batch 23 deployed at f30f63e (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44213755510).
+
+## Rasmussen Batch 24
+
+- Rasmussen | red-shiso-perilla-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Shiso_Red_perilla_150_seeds.png?v=1775288174&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | silverbeet-silverado-compacta-150-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Silverbeet_-_Silverado_Compacta_150_seeds.png | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | silvery-fir-tree-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Silvery_Fir_Tree_Tomato_10_seeds.png?v=1778092604&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | speckled-roman-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Speckled_Roman_Tomato_10_seeds.png?v=1777975331&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | delicata-squash-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Delicata_squash_10_seeds.png?v=1747222927&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | squash-tromba-d-albenga-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Squash_-_Tromba_dAlbenga_10_seeds.png?v=1753700034&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | sugar-rush-cream-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/sugarrushcream.png?v=1745008918&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | sugar-rush-peach-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/sugarrushpeach_1.png?v=1744712651&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | sugar-rush-peach-stumpy-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Sugar_Rush_Peach_Stumpy_Chilli_Plant_in_4_pot.png?v=1760083131&width=600 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | sugar-rush-red-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://scovillecanada.com/cdn/shop/files/SugarRushRed.png?v=1728057934 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 24 passed the production build and all 44 focused browser checks. Rasmussen now has 249 Harvest illustrations including ten verified originals.
