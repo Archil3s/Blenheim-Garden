@@ -1353,3 +1353,19 @@ Batch 25 deployed at 2ea410c (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | white-wonder-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-7005811031023466699.png?v=1744145916&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 26 passed the production build and all 44 focused browser checks. Rasmussen now has 269 Harvest illustrations including ten verified originals.
+
+Batch 26 deployed at bedb967 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44583187367).
+
+## Rasmussen Batch 27
+
+- Rasmussen | window-box-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-8741948686990336574.png?v=1744145897&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | yaki-blue-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Yaki_Blue_Chilli.png?v=1749030986&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | yellow-banana-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Yellow_Banana_Chilli_Seeds_10_seeds.png?v=1778653962&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | yellow-cropper-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Yellow_Cropper_Tomato_10_seeds_544097f1-1b20-4e0e-ab87-d6e67a092df2.png?v=1778209891&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | yellow-yummy-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Yellow_Yummy_Tomato_10_seeds.png?v=1746154952&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | zatta-melon-15-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/ZattaMelon.png?v=1744237569&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | zebrange-stripey-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Zebrange_Stripey_Chilli_Seeds_10_seeds.png?v=1779172246&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | zucchini-black-beauty-15-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://junglestory.co.nz/cdn/shop/files/Zucchini__Black_Beauty_15_seeds_e6991e79-e3d9-44fa-9569-4c03453a79cb.png?v=1792374785 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | zucchini-yellow-15-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://junglestory.co.nz/cdn/shop/files/Zucchini__Yellow_15_seeds.png?v=1788855184 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 27 passed the production build and all 44 focused browser checks. Rasmussen now has 278 Harvest illustrations including ten verified originals.

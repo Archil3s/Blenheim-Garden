@@ -32,7 +32,7 @@ test("pending artwork stays unmapped and verified originals retain their source"
   await expect(page.locator("#tg-inspector").getByRole("link", { name: /Open original image/ }))
     .toHaveAttribute("href", "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png");
 
-  await page.getByRole("searchbox", { name: "SEARCH BY CROP OR VARIETY OR SUPPLIER" }).fill("Zebrange Stripey");
+  await page.getByRole("searchbox", { name: "SEARCH BY CROP OR VARIETY OR SUPPLIER" }).fill("Rocoto Manzano - Red Flat");
   await expect(page.locator(".tg-plot")).toHaveCount(1);
   await expect(page.locator(".tg-plot").first().locator("img")).toHaveCount(0);
   await page.locator(".tg-plot").first().click();

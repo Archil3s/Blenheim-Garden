@@ -4814,5 +4814,68 @@
     "gallery": "/plant-icons/generated/rasmussen/gallery/white-wonder-tomato-10-seeds.png",
     "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-7005811031023466699.png?v=1744145916&width=1946",
     "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:window-box-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/window-box-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/window-box-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-8741948686990336574.png?v=1744145897&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:yaki-blue-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/yaki-blue-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/yaki-blue-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Yaki_Blue_Chilli.png?v=1749030986&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:yellow-banana-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/yellow-banana-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/yellow-banana-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Yellow_Banana_Chilli_Seeds_10_seeds.png?v=1778653962&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:yellow-cropper-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/yellow-cropper-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/yellow-cropper-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Yellow_Cropper_Tomato_10_seeds_544097f1-1b20-4e0e-ab87-d6e67a092df2.png?v=1778209891&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:yellow-yummy-tomato-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/yellow-yummy-tomato-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/yellow-yummy-tomato-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Yellow_Yummy_Tomato_10_seeds.png?v=1746154952&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:zatta-melon-15-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/zatta-melon-15-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/zatta-melon-15-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/ZattaMelon.png?v=1744237569&width=1946",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:zebrange-stripey-chilli-seeds-10-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/zebrange-stripey-chilli-seeds-10-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/zebrange-stripey-chilli-seeds-10-seeds.png",
+    "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Zebrange_Stripey_Chilli_Seeds_10_seeds.png?v=1779172246&width=533",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:zucchini-black-beauty-15-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/zucchini-black-beauty-15-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/zucchini-black-beauty-15-seeds.png",
+    "referenceUrl": "https://junglestory.co.nz/cdn/shop/files/Zucchini__Black_Beauty_15_seeds_e6991e79-e3d9-44fa-9569-4c03453a79cb.png?v=1792374785",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+  },
+  "rasmussen:zucchini-yellow-15-seeds": {
+    "status": "generated_qa_passed",
+    "master": "/plant-icons/generated/rasmussen/master/zucchini-yellow-15-seeds.png",
+    "gallery": "/plant-icons/generated/rasmussen/gallery/zucchini-yellow-15-seeds.png",
+    "referenceUrl": "https://junglestory.co.nz/cdn/shop/files/Zucchini__Yellow_15_seeds.png?v=1788855184",
+    "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
   }
 }
