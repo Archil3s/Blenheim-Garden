@@ -1631,6 +1631,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapita-peach-chilli-seeds-10-seeds-harvest.png",
       "sourceFile": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
       "styleReference": "/assets/icons/rasmussen/approved/007_aji-charapita-peach.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-charapita-peach-chilli-seeds-10-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapita-peach-chilli-seeds-10-seeds-seed.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapita_Peach.png?v=1744686874&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-charapita-peach-chilli-seeds-10-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapita-peach-chilli-seeds-10-seeds-first-sprout.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapita_Peach.png?v=1744686874&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-charapita-peach-chilli-seeds-10-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapita-peach-chilli-seeds-10-seeds-baby-plant.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapita_Peach.png?v=1744686874&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-charapita-peach-chilli-seeds-10-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapita-peach-chilli-seeds-10-seeds-semi-mature.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapita_Peach.png?v=1744686874&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-charapita-peach-chilli-seeds-10-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapita-peach-chilli-seeds-10-seeds-pre-harvest.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapita_Peach.png?v=1744686874&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "rasmussen:aji-charapita-armarillo-chilli-seeds-10-seeds": {
@@ -1640,6 +1675,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapita-armarillo-chilli-seeds-10-seeds-harvest.png",
       "sourceFile": "Rasmussen_Chilli_137_Icon_Gallery(2).html",
       "styleReference": "/assets/icons/rasmussen/approved/008_aji-charapita-amarillo.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-charapita-armarillo-chilli-seeds-10-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapita-armarillo-chilli-seeds-10-seeds-seed.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5967731109627236000.png?v=1743910109&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-charapita-armarillo-chilli-seeds-10-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapita-armarillo-chilli-seeds-10-seeds-first-sprout.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5967731109627236000.png?v=1743910109&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-charapita-armarillo-chilli-seeds-10-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapita-armarillo-chilli-seeds-10-seeds-baby-plant.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5967731109627236000.png?v=1743910109&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-charapita-armarillo-chilli-seeds-10-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapita-armarillo-chilli-seeds-10-seeds-semi-mature.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5967731109627236000.png?v=1743910109&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-charapita-armarillo-chilli-seeds-10-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-charapita-armarillo-chilli-seeds-10-seeds-pre-harvest.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-5967731109627236000.png?v=1743910109&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "rasmussen:aji-charapon-chilli-seeds-10-seeds": {

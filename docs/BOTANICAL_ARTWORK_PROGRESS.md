@@ -1431,3 +1431,20 @@ Rasmussen Growth Batch 02 deployed at c91f575 (https://github.com/Archil3s/Blenh
 - Rasmussen | aji-champion-chilli-seeds-10-seeds-copy | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiChampion.png?v=1744624572&width=1946 | Visually reviewed and mapped.
 
 Aji Brazilian Pumpkin and Aji Champion each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 03 deployed at 983abf8 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44594869065).
+
+## Rasmussen Growth Batch 04
+
+- Rasmussen | aji-charapita-peach-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapita_Peach.png?v=1744686874&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-charapita-peach-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapita_Peach.png?v=1744686874&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-charapita-peach-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapita_Peach.png?v=1744686874&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-charapita-peach-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapita_Peach.png?v=1744686874&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-charapita-peach-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapita_Peach.png?v=1744686874&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-charapita-armarillo-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5967731109627236000.png?v=1743910109&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-charapita-armarillo-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5967731109627236000.png?v=1743910109&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-charapita-armarillo-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5967731109627236000.png?v=1743910109&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-charapita-armarillo-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5967731109627236000.png?v=1743910109&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-charapita-armarillo-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5967731109627236000.png?v=1743910109&width=1946 | Visually reviewed and mapped.
+
+Aji Charapita Amarillo and Aji Charapita Peach each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
