@@ -1567,3 +1567,20 @@ Rasmussen Growth Batch 10 deployed at a7277ed (https://github.com/Archil3s/Blenh
 - Rasmussen | aji-panca-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Panca_Chilli_Seeds_10_seeds_c1fc2a4d-5bb2-414c-86cf-f3da46075fb7.png?v=1751492101 | Visually reviewed and mapped.
 
 Aji Norteno and Aji Panca each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 11 deployed at efc5044 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44614332583).
+
+## Rasmussen Growth Batch 12
+
+- Rasmussen | aji-peanut-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiPeanut.png?v=1744626251&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-peanut-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiPeanut.png?v=1744626251&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-peanut-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiPeanut.png?v=1744626251&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-peanut-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiPeanut.png?v=1744626251&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-peanut-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiPeanut.png?v=1744626251&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-pineapple-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://www.barney.dk/cdn/shop/files/Aji-Pineapple.jpg?v=1759526551 | Visually reviewed and mapped.
+- Rasmussen | aji-pineapple-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://www.barney.dk/cdn/shop/files/Aji-Pineapple.jpg?v=1759526551 | Visually reviewed and mapped.
+- Rasmussen | aji-pineapple-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://www.barney.dk/cdn/shop/files/Aji-Pineapple.jpg?v=1759526551 | Visually reviewed and mapped.
+- Rasmussen | aji-pineapple-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://www.barney.dk/cdn/shop/files/Aji-Pineapple.jpg?v=1759526551 | Visually reviewed and mapped.
+- Rasmussen | aji-pineapple-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://www.barney.dk/cdn/shop/files/Aji-Pineapple.jpg?v=1759526551 | Visually reviewed and mapped.
+
+Aji Peanut and Aji Pineapple each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
