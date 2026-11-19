@@ -1618,3 +1618,20 @@ Rasmussen Growth Batch 13 deployed at ed404ac (https://github.com/Archil3s/Blenh
 - Rasmussen | anaheim-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/CB453B1B-D409-4157-96A5-40E74C8C669A.png?v=1743918180&width=1946 | Visually reviewed and mapped.
 
 Aji Strawberry Drop and Anaheim each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 14 deployed at a4199af (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44621101039).
+
+## Rasmussen Growth Batch 15
+
+- Rasmussen | anna-banana-tomato-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-6868451224287324368.png?v=1744147015&width=533 | Visually reviewed and mapped.
+- Rasmussen | anna-banana-tomato-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-6868451224287324368.png?v=1744147015&width=533 | Visually reviewed and mapped.
+- Rasmussen | anna-banana-tomato-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-6868451224287324368.png?v=1744147015&width=533 | Visually reviewed and mapped.
+- Rasmussen | anna-banana-tomato-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-6868451224287324368.png?v=1744147015&width=533 | Visually reviewed and mapped.
+- Rasmussen | anna-banana-tomato-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-6868451224287324368.png?v=1744147015&width=533 | Visually reviewed and mapped.
+- Rasmussen | arriba-saia-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp | Visually reviewed and mapped.
+- Rasmussen | arriba-saia-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp | Visually reviewed and mapped.
+- Rasmussen | arriba-saia-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp | Visually reviewed and mapped.
+- Rasmussen | arriba-saia-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp | Visually reviewed and mapped.
+- Rasmussen | arriba-saia-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp | Visually reviewed and mapped.
+
+Anna Banana Tomato and Arriba Saia Chilli each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.

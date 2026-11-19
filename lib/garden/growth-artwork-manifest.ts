@@ -5148,6 +5148,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/rasmussen/gallery/anna-banana-tomato-10-seeds.png",
       "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-6868451224287324368.png?v=1744147015&width=533",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/anna-banana-tomato-10-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/anna-banana-tomato-10-seeds-seed.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-6868451224287324368.png?v=1744147015&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/anna-banana-tomato-10-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/anna-banana-tomato-10-seeds-first-sprout.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-6868451224287324368.png?v=1744147015&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/anna-banana-tomato-10-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/anna-banana-tomato-10-seeds-baby-plant.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-6868451224287324368.png?v=1744147015&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/anna-banana-tomato-10-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/anna-banana-tomato-10-seeds-semi-mature.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-6868451224287324368.png?v=1744147015&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/anna-banana-tomato-10-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/anna-banana-tomato-10-seeds-pre-harvest.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/0001-6868451224287324368.png?v=1744147015&width=533",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "rasmussen:arriba-saia-chilli-seeds-10-seeds": {
@@ -5155,6 +5190,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "status": "generated_qa_passed",
       "master": "/plant-icons/generated/rasmussen/master/arriba-saia-chilli-seeds-10-seeds.png",
       "gallery": "/plant-icons/generated/rasmussen/gallery/arriba-saia-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/arriba-saia-chilli-seeds-10-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/arriba-saia-chilli-seeds-10-seeds-seed.png",
+      "referenceUrl": "https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/arriba-saia-chilli-seeds-10-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/arriba-saia-chilli-seeds-10-seeds-first-sprout.png",
+      "referenceUrl": "https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/arriba-saia-chilli-seeds-10-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/arriba-saia-chilli-seeds-10-seeds-baby-plant.png",
+      "referenceUrl": "https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/arriba-saia-chilli-seeds-10-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/arriba-saia-chilli-seeds-10-seeds-semi-mature.png",
+      "referenceUrl": "https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/arriba-saia-chilli-seeds-10-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/arriba-saia-chilli-seeds-10-seeds-pre-harvest.png",
       "referenceUrl": "https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
