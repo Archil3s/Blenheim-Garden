@@ -1380,3 +1380,20 @@ Batch 27 deployed at a4d0730 (https://github.com/Archil3s/Blenheim-Garden/action
 - Kings Seeds | chia | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/chia | Harvest visually reviewed and mapped.
 
 Kings Seeds now has 429 Harvest mappings. Production build and all 44 focused gallery checks passed.
+
+Kings Seeds Harvest completion deployed at eb2fdfc (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44587081957).
+
+## Rasmussen Growth Batch 01
+
+- Rasmussen | aji-ahuachapan-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Ahuachapan_ac300ebb-72a5-41c6-8e94-b329d88bfc10.png?v=1759098423&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-ahuachapan-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Ahuachapan_ac300ebb-72a5-41c6-8e94-b329d88bfc10.png?v=1759098423&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-ahuachapan-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Ahuachapan_ac300ebb-72a5-41c6-8e94-b329d88bfc10.png?v=1759098423&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-ahuachapan-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Ahuachapan_ac300ebb-72a5-41c6-8e94-b329d88bfc10.png?v=1759098423&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-ahuachapan-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Ahuachapan_ac300ebb-72a5-41c6-8e94-b329d88bfc10.png?v=1759098423&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-cito-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCito.png?v=1744625451&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-cito-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCito.png?v=1744625451&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-cito-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCito.png?v=1744625451&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-cito-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCito.png?v=1744625451&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-cito-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCito.png?v=1744625451&width=1946 | Visually reviewed and mapped.
+
+Aji Cito and Aji Ahuachapan each have six mapped stages. The seed and seedling anatomy is based on pepper growth references. Production build and all 44 focused gallery checks passed.
