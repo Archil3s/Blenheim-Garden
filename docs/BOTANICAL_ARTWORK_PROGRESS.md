@@ -1550,3 +1550,20 @@ Rasmussen Growth Batch 09 deployed at 7e45902 (https://github.com/Archil3s/Blenh
 - Rasmussen | aji-merken-cacho-de-cabra-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiMerkenCachodecabra.png?v=1744690903&width=1946 | Visually reviewed and mapped.
 
 Aji Melocoton and Aji Merken Cacho de Cabra each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 10 deployed at a7277ed (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44611964339).
+
+## Rasmussen Growth Batch 11
+
+- Rasmussen | aji-norteno-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://www.tomatenfluesterer.at/cdn/shop/files/Aji-Norteno-Pepper-DER-TOMATENFLUSTERER-59467044.jpg?v=1700311746&width=1445 | Visually reviewed and mapped.
+- Rasmussen | aji-norteno-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://www.tomatenfluesterer.at/cdn/shop/files/Aji-Norteno-Pepper-DER-TOMATENFLUSTERER-59467044.jpg?v=1700311746&width=1445 | Visually reviewed and mapped.
+- Rasmussen | aji-norteno-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://www.tomatenfluesterer.at/cdn/shop/files/Aji-Norteno-Pepper-DER-TOMATENFLUSTERER-59467044.jpg?v=1700311746&width=1445 | Visually reviewed and mapped.
+- Rasmussen | aji-norteno-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://www.tomatenfluesterer.at/cdn/shop/files/Aji-Norteno-Pepper-DER-TOMATENFLUSTERER-59467044.jpg?v=1700311746&width=1445 | Visually reviewed and mapped.
+- Rasmussen | aji-norteno-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://www.tomatenfluesterer.at/cdn/shop/files/Aji-Norteno-Pepper-DER-TOMATENFLUSTERER-59467044.jpg?v=1700311746&width=1445 | Visually reviewed and mapped.
+- Rasmussen | aji-panca-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Panca_Chilli_Seeds_10_seeds_c1fc2a4d-5bb2-414c-86cf-f3da46075fb7.png?v=1751492101 | Visually reviewed and mapped.
+- Rasmussen | aji-panca-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Panca_Chilli_Seeds_10_seeds_c1fc2a4d-5bb2-414c-86cf-f3da46075fb7.png?v=1751492101 | Visually reviewed and mapped.
+- Rasmussen | aji-panca-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Panca_Chilli_Seeds_10_seeds_c1fc2a4d-5bb2-414c-86cf-f3da46075fb7.png?v=1751492101 | Visually reviewed and mapped.
+- Rasmussen | aji-panca-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Panca_Chilli_Seeds_10_seeds_c1fc2a4d-5bb2-414c-86cf-f3da46075fb7.png?v=1751492101 | Visually reviewed and mapped.
+- Rasmussen | aji-panca-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Aji_Panca_Chilli_Seeds_10_seeds_c1fc2a4d-5bb2-414c-86cf-f3da46075fb7.png?v=1751492101 | Visually reviewed and mapped.
+
+Aji Norteno and Aji Panca each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.

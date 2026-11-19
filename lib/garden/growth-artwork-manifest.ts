@@ -4796,6 +4796,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/rasmussen/gallery/aji-norteno-chilli-seeds-10-seeds.png",
       "referenceUrl": "https://www.tomatenfluesterer.at/cdn/shop/files/Aji-Norteno-Pepper-DER-TOMATENFLUSTERER-59467044.jpg?v=1700311746&width=1445",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-norteno-chilli-seeds-10-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-norteno-chilli-seeds-10-seeds-seed.png",
+      "referenceUrl": "https://www.tomatenfluesterer.at/cdn/shop/files/Aji-Norteno-Pepper-DER-TOMATENFLUSTERER-59467044.jpg?v=1700311746&width=1445",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-norteno-chilli-seeds-10-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-norteno-chilli-seeds-10-seeds-first-sprout.png",
+      "referenceUrl": "https://www.tomatenfluesterer.at/cdn/shop/files/Aji-Norteno-Pepper-DER-TOMATENFLUSTERER-59467044.jpg?v=1700311746&width=1445",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-norteno-chilli-seeds-10-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-norteno-chilli-seeds-10-seeds-baby-plant.png",
+      "referenceUrl": "https://www.tomatenfluesterer.at/cdn/shop/files/Aji-Norteno-Pepper-DER-TOMATENFLUSTERER-59467044.jpg?v=1700311746&width=1445",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-norteno-chilli-seeds-10-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-norteno-chilli-seeds-10-seeds-semi-mature.png",
+      "referenceUrl": "https://www.tomatenfluesterer.at/cdn/shop/files/Aji-Norteno-Pepper-DER-TOMATENFLUSTERER-59467044.jpg?v=1700311746&width=1445",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-norteno-chilli-seeds-10-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-norteno-chilli-seeds-10-seeds-pre-harvest.png",
+      "referenceUrl": "https://www.tomatenfluesterer.at/cdn/shop/files/Aji-Norteno-Pepper-DER-TOMATENFLUSTERER-59467044.jpg?v=1700311746&width=1445",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "rasmussen:aji-panca-chilli-seeds-10-seeds": {
@@ -4803,6 +4838,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "status": "generated_qa_passed",
       "master": "/plant-icons/generated/rasmussen/master/aji-panca-chilli-seeds-10-seeds.png",
       "gallery": "/plant-icons/generated/rasmussen/gallery/aji-panca-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Aji_Panca_Chilli_Seeds_10_seeds_c1fc2a4d-5bb2-414c-86cf-f3da46075fb7.png?v=1751492101",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-panca-chilli-seeds-10-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-panca-chilli-seeds-10-seeds-seed.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Aji_Panca_Chilli_Seeds_10_seeds_c1fc2a4d-5bb2-414c-86cf-f3da46075fb7.png?v=1751492101",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-panca-chilli-seeds-10-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-panca-chilli-seeds-10-seeds-first-sprout.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Aji_Panca_Chilli_Seeds_10_seeds_c1fc2a4d-5bb2-414c-86cf-f3da46075fb7.png?v=1751492101",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-panca-chilli-seeds-10-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-panca-chilli-seeds-10-seeds-baby-plant.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Aji_Panca_Chilli_Seeds_10_seeds_c1fc2a4d-5bb2-414c-86cf-f3da46075fb7.png?v=1751492101",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-panca-chilli-seeds-10-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-panca-chilli-seeds-10-seeds-semi-mature.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Aji_Panca_Chilli_Seeds_10_seeds_c1fc2a4d-5bb2-414c-86cf-f3da46075fb7.png?v=1751492101",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-panca-chilli-seeds-10-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-panca-chilli-seeds-10-seeds-pre-harvest.png",
       "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/Aji_Panca_Chilli_Seeds_10_seeds_c1fc2a4d-5bb2-414c-86cf-f3da46075fb7.png?v=1751492101",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
