@@ -1336,3 +1336,20 @@ Batch 24 deployed at 13c7636 (https://github.com/Archil3s/Blenheim-Garden/action
 - Rasmussen | tomatillo-plaza-latina-giant-green-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-7167940618612770854.png?v=1744794183&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
 
 Batch 25 passed the production build and all 44 focused browser checks. Rasmussen now has 259 Harvest illustrations including ten verified originals.
+
+Batch 25 deployed at 2ea410c (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44580920849).
+
+## Rasmussen Batch 26
+
+- Rasmussen | tomatillo-purple-keepers-modern-landrace-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Tomatillo_Purple_Keepers_Modern_Landrace_10_seeds.png?v=1780985587&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | tomatillo-purple-violeta-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Tomatillo_-_Purple_Violeta_1.png?v=1744794751&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | tomatillo-verde-puebla-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-8814006280104046405.png?v=1744794208&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | turnip-wonnegold-50-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://junglestory.co.nz/cdn/shop/files/Turnip_-_Wonnegold_50_seeds_3259f8a1-cd22-4894-b934-a6b1668691ad.png?v=1793303785 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | uchu-cream-variegated-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Uchu_Cream_Variegated_Chilli_Seeds.png?v=1748340090&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | variegated-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-4978068362576461863.png?v=1746652776&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | vintage-wine-stripped-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Vintage_Wine_-_Stripped_Tomato_10_seeds.png?v=1778210029&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | white-chupetinho-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-5909184329455919322.png?v=1743980817&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | white-coyote-zan-chilli-seeds-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-2186959234679160227.png?v=1743980775&width=533 | Harvest reviewed and mapped. Earlier stages pending.
+- Rasmussen | white-wonder-tomato-10-seeds | generated_qa_passed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0001-7005811031023466699.png?v=1744145916&width=1946 | Harvest reviewed and mapped. Earlier stages pending.
+
+Batch 26 passed the production build and all 44 focused browser checks. Rasmussen now has 269 Harvest illustrations including ten verified originals.
