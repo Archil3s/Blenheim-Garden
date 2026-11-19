@@ -4708,6 +4708,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/rasmussen/gallery/aji-melocoton-chilli-seeds-10-seeds.png",
       "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiMelocoton_1.png?v=1745009464&width=1946",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-melocoton-chilli-seeds-10-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-melocoton-chilli-seeds-10-seeds-seed.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiMelocoton_1.png?v=1745009464&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-melocoton-chilli-seeds-10-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-melocoton-chilli-seeds-10-seeds-first-sprout.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiMelocoton_1.png?v=1745009464&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-melocoton-chilli-seeds-10-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-melocoton-chilli-seeds-10-seeds-baby-plant.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiMelocoton_1.png?v=1745009464&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-melocoton-chilli-seeds-10-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-melocoton-chilli-seeds-10-seeds-semi-mature.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiMelocoton_1.png?v=1745009464&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-melocoton-chilli-seeds-10-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-melocoton-chilli-seeds-10-seeds-pre-harvest.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiMelocoton_1.png?v=1745009464&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "rasmussen:aji-merken-cacho-de-cabra-chilli-seeds-10-seeds": {
@@ -4715,6 +4750,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "status": "generated_qa_passed",
       "master": "/plant-icons/generated/rasmussen/master/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds.png",
       "gallery": "/plant-icons/generated/rasmussen/gallery/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiMerkenCachodecabra.png?v=1744690903&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds-seed.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiMerkenCachodecabra.png?v=1744690903&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds-first-sprout.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiMerkenCachodecabra.png?v=1744690903&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds-baby-plant.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiMerkenCachodecabra.png?v=1744690903&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds-semi-mature.png",
+      "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiMerkenCachodecabra.png?v=1744690903&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/aji-merken-cacho-de-cabra-chilli-seeds-10-seeds-pre-harvest.png",
       "referenceUrl": "https://rasmussengardens.co.nz/cdn/shop/files/AjiMerkenCachodecabra.png?v=1744690903&width=1946",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }

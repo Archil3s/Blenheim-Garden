@@ -1533,3 +1533,20 @@ Rasmussen Growth Batch 08 deployed at 334c0c6 (https://github.com/Archil3s/Blenh
 - Rasmussen | aji-mango-stumpy-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0F6FC353-1E27-4AA7-8041-9CBD0A533FC7.png?v=1743915417 | Visually reviewed and mapped.
 
 Aji Lemon Stumpy and Aji Mango Stumpy each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 09 deployed at 7e45902 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44609543750).
+
+## Rasmussen Growth Batch 10
+
+- Rasmussen | aji-melocoton-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiMelocoton_1.png?v=1745009464&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-melocoton-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiMelocoton_1.png?v=1745009464&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-melocoton-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiMelocoton_1.png?v=1745009464&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-melocoton-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiMelocoton_1.png?v=1745009464&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-melocoton-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiMelocoton_1.png?v=1745009464&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-merken-cacho-de-cabra-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiMerkenCachodecabra.png?v=1744690903&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-merken-cacho-de-cabra-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiMerkenCachodecabra.png?v=1744690903&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-merken-cacho-de-cabra-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiMerkenCachodecabra.png?v=1744690903&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-merken-cacho-de-cabra-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiMerkenCachodecabra.png?v=1744690903&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-merken-cacho-de-cabra-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiMerkenCachodecabra.png?v=1744690903&width=1946 | Visually reviewed and mapped.
+
+Aji Melocoton and Aji Merken Cacho de Cabra each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
