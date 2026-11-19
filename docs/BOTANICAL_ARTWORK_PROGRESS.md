@@ -1414,3 +1414,20 @@ Rasmussen Growth Batch 01 deployed at 7bf752c (https://github.com/Archil3s/Blenh
 - Rasmussen | aji-berry-amarillo-long-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiBerryAmarilloLong.png?v=1744686578 | Visually reviewed and mapped.
 
 Aji Amarillo and Aji Berry Amarillo Long each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 02 deployed at c91f575 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44592593426).
+
+## Rasmussen Growth Batch 03
+
+- Rasmussen | aji-brazilian-pumpkin-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiBrazilianPumpkin.png?v=1744624078&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-brazilian-pumpkin-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiBrazilianPumpkin.png?v=1744624078&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-brazilian-pumpkin-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiBrazilianPumpkin.png?v=1744624078&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-brazilian-pumpkin-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiBrazilianPumpkin.png?v=1744624078&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-brazilian-pumpkin-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiBrazilianPumpkin.png?v=1744624078&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-champion-chilli-seeds-10-seeds-copy | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiChampion.png?v=1744624572&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-champion-chilli-seeds-10-seeds-copy | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiChampion.png?v=1744624572&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-champion-chilli-seeds-10-seeds-copy | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiChampion.png?v=1744624572&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-champion-chilli-seeds-10-seeds-copy | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiChampion.png?v=1744624572&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-champion-chilli-seeds-10-seeds-copy | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiChampion.png?v=1744624572&width=1946 | Visually reviewed and mapped.
+
+Aji Brazilian Pumpkin and Aji Champion each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
