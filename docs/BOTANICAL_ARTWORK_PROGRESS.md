@@ -1482,3 +1482,20 @@ Rasmussen Growth Batch 05 deployed at f9a04c8 (https://github.com/Archil3s/Blenh
 - Rasmussen | aji-cristal-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://southdevonchillifarm.co.uk/cdn/shop/files/AjiCrystal2_d6d2123f-34ff-4b6c-b0dc-1743fc2f7c91.jpg?v=1726582142&width=1946 | Visually reviewed and mapped.
 
 Aji Colorado Orange and Aji Cristal each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 06 deployed at 26b9ec1 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44601702937).
+
+## Rasmussen Growth Batch 07
+
+- Rasmussen | aji-fantasy-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiFantasy.png?v=1744687289&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-fantasy-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiFantasy.png?v=1744687289&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-fantasy-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiFantasy.png?v=1744687289&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-fantasy-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiFantasy.png?v=1744687289&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-fantasy-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiFantasy.png?v=1744687289&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-giallo-arancio-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiGialloArancio.png?v=1744625909&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-giallo-arancio-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiGialloArancio.png?v=1744625909&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-giallo-arancio-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiGialloArancio.png?v=1744625909&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-giallo-arancio-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiGialloArancio.png?v=1744625909&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-giallo-arancio-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiGialloArancio.png?v=1744625909&width=1946 | Visually reviewed and mapped.
+
+Aji Fantasy and Aji Giallo Arancio each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
