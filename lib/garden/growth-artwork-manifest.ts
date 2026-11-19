@@ -5236,6 +5236,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/rasmussen/gallery/artichoke-violet-de-provence-25-seeds.png",
       "referenceUrl": "https://www.edenbrothers.com/cdn/shop/files/artichoke-violet-de-provence-aly-1.jpg?v=1724342123&width=1445",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/artichoke-violet-de-provence-25-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/artichoke-violet-de-provence-25-seeds-seed.png",
+      "referenceUrl": "https://www.edenbrothers.com/cdn/shop/files/artichoke-violet-de-provence-aly-1.jpg?v=1724342123&width=1445",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/artichoke-violet-de-provence-25-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/artichoke-violet-de-provence-25-seeds-first-sprout.png",
+      "referenceUrl": "https://www.edenbrothers.com/cdn/shop/files/artichoke-violet-de-provence-aly-1.jpg?v=1724342123&width=1445",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/artichoke-violet-de-provence-25-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/artichoke-violet-de-provence-25-seeds-baby-plant.png",
+      "referenceUrl": "https://www.edenbrothers.com/cdn/shop/files/artichoke-violet-de-provence-aly-1.jpg?v=1724342123&width=1445",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/artichoke-violet-de-provence-25-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/artichoke-violet-de-provence-25-seeds-semi-mature.png",
+      "referenceUrl": "https://www.edenbrothers.com/cdn/shop/files/artichoke-violet-de-provence-aly-1.jpg?v=1724342123&width=1445",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/artichoke-violet-de-provence-25-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/artichoke-violet-de-provence-25-seeds-pre-harvest.png",
+      "referenceUrl": "https://www.edenbrothers.com/cdn/shop/files/artichoke-violet-de-provence-aly-1.jpg?v=1724342123&width=1445",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "rasmussen:bahamian-goat-chilli-seeds-10-seeds": {
@@ -5243,6 +5278,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "status": "generated_qa_passed",
       "master": "/plant-icons/generated/rasmussen/master/bahamian-goat-chilli-seeds-10-seeds.png",
       "gallery": "/plant-icons/generated/rasmussen/gallery/bahamian-goat-chilli-seeds-10-seeds.png",
+      "referenceUrl": "https://pepperjoe.com/cdn/shop/files/Bahamian-Goat-Pepper.02.jpg?v=1730930995&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/bahamian-goat-chilli-seeds-10-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/bahamian-goat-chilli-seeds-10-seeds-seed.png",
+      "referenceUrl": "https://pepperjoe.com/cdn/shop/files/Bahamian-Goat-Pepper.02.jpg?v=1730930995&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/bahamian-goat-chilli-seeds-10-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/bahamian-goat-chilli-seeds-10-seeds-first-sprout.png",
+      "referenceUrl": "https://pepperjoe.com/cdn/shop/files/Bahamian-Goat-Pepper.02.jpg?v=1730930995&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/bahamian-goat-chilli-seeds-10-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/bahamian-goat-chilli-seeds-10-seeds-baby-plant.png",
+      "referenceUrl": "https://pepperjoe.com/cdn/shop/files/Bahamian-Goat-Pepper.02.jpg?v=1730930995&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/bahamian-goat-chilli-seeds-10-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/bahamian-goat-chilli-seeds-10-seeds-semi-mature.png",
+      "referenceUrl": "https://pepperjoe.com/cdn/shop/files/Bahamian-Goat-Pepper.02.jpg?v=1730930995&width=1946",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/bahamian-goat-chilli-seeds-10-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/bahamian-goat-chilli-seeds-10-seeds-pre-harvest.png",
       "referenceUrl": "https://pepperjoe.com/cdn/shop/files/Bahamian-Goat-Pepper.02.jpg?v=1730930995&width=1946",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }

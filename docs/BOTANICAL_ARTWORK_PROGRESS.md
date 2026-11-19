@@ -1635,3 +1635,20 @@ Rasmussen Growth Batch 14 deployed at a4199af (https://github.com/Archil3s/Blenh
 - Rasmussen | arriba-saia-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://acdn-us.mitiendanube.com/stores/003/612/494/products/1001592140-ef31c00ffd4dbdcfa417744799582513-1024-1024.webp | Visually reviewed and mapped.
 
 Anna Banana Tomato and Arriba Saia Chilli each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 15 deployed at 1d3ef4d (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44623466066).
+
+## Rasmussen Growth Batch 16
+
+- Rasmussen | artichoke-violet-de-provence-25-seeds | seed | 512 px master and 128 px gallery | https://www.edenbrothers.com/cdn/shop/files/artichoke-violet-de-provence-aly-1.jpg?v=1724342123&width=1445 | Visually reviewed and mapped.
+- Rasmussen | artichoke-violet-de-provence-25-seeds | first-sprout | 512 px master and 128 px gallery | https://www.edenbrothers.com/cdn/shop/files/artichoke-violet-de-provence-aly-1.jpg?v=1724342123&width=1445 | Visually reviewed and mapped.
+- Rasmussen | artichoke-violet-de-provence-25-seeds | baby-plant | 512 px master and 128 px gallery | https://www.edenbrothers.com/cdn/shop/files/artichoke-violet-de-provence-aly-1.jpg?v=1724342123&width=1445 | Visually reviewed and mapped.
+- Rasmussen | artichoke-violet-de-provence-25-seeds | semi-mature | 512 px master and 128 px gallery | https://www.edenbrothers.com/cdn/shop/files/artichoke-violet-de-provence-aly-1.jpg?v=1724342123&width=1445 | Visually reviewed and mapped.
+- Rasmussen | artichoke-violet-de-provence-25-seeds | pre-harvest | 512 px master and 128 px gallery | https://www.edenbrothers.com/cdn/shop/files/artichoke-violet-de-provence-aly-1.jpg?v=1724342123&width=1445 | Visually reviewed and mapped.
+- Rasmussen | bahamian-goat-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://pepperjoe.com/cdn/shop/files/Bahamian-Goat-Pepper.02.jpg?v=1730930995&width=1946 | Visually reviewed and mapped.
+- Rasmussen | bahamian-goat-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://pepperjoe.com/cdn/shop/files/Bahamian-Goat-Pepper.02.jpg?v=1730930995&width=1946 | Visually reviewed and mapped.
+- Rasmussen | bahamian-goat-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://pepperjoe.com/cdn/shop/files/Bahamian-Goat-Pepper.02.jpg?v=1730930995&width=1946 | Visually reviewed and mapped.
+- Rasmussen | bahamian-goat-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://pepperjoe.com/cdn/shop/files/Bahamian-Goat-Pepper.02.jpg?v=1730930995&width=1946 | Visually reviewed and mapped.
+- Rasmussen | bahamian-goat-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://pepperjoe.com/cdn/shop/files/Bahamian-Goat-Pepper.02.jpg?v=1730930995&width=1946 | Visually reviewed and mapped.
+
+Violet de Provence Artichoke and Bahamian Goat Chilli each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
