@@ -1516,3 +1516,20 @@ Rasmussen Growth Batch 07 deployed at b882841 (https://github.com/Archil3s/Blenh
 - Rasmussen | aji-lemon-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/710A1E46-3BB0-4B24-90C3-7E0340981A4A_5df4fdc9-6b7a-410a-8dfb-9c2fd78b6a33.png?v=1759100133&width=1946 | Visually reviewed and mapped.
 
 Aji Guyana and Aji Lemon each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 08 deployed at 334c0c6 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44606659221).
+
+## Rasmussen Growth Batch 09
+
+- Rasmussen | aji-lemon-starburst-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiLemonStarburst.png?v=1744690396&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-lemon-starburst-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiLemonStarburst.png?v=1744690396&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-lemon-starburst-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiLemonStarburst.png?v=1744690396&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-lemon-starburst-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiLemonStarburst.png?v=1744690396&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-lemon-starburst-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiLemonStarburst.png?v=1744690396&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-mango-stumpy-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0F6FC353-1E27-4AA7-8041-9CBD0A533FC7.png?v=1743915417 | Visually reviewed and mapped.
+- Rasmussen | aji-mango-stumpy-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0F6FC353-1E27-4AA7-8041-9CBD0A533FC7.png?v=1743915417 | Visually reviewed and mapped.
+- Rasmussen | aji-mango-stumpy-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0F6FC353-1E27-4AA7-8041-9CBD0A533FC7.png?v=1743915417 | Visually reviewed and mapped.
+- Rasmussen | aji-mango-stumpy-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0F6FC353-1E27-4AA7-8041-9CBD0A533FC7.png?v=1743915417 | Visually reviewed and mapped.
+- Rasmussen | aji-mango-stumpy-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/0F6FC353-1E27-4AA7-8041-9CBD0A533FC7.png?v=1743915417 | Visually reviewed and mapped.
+
+Aji Lemon Stumpy and Aji Mango Stumpy each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.

@@ -163,7 +163,7 @@ test("Rasmussen generated cultivar opens its exact Harvest artwork", async ({ pa
   await page.getByRole("searchbox").fill("Aji Lemon Stumpy");
   await page.getByRole("button", { name: /Aji Lemon Stumpy/ }).click();
   const harvest = page.getByRole("region", { name: "Seed to harvest" })
-    .getByRole("link", { name: "Harvest illustration" });
+    .getByRole("link", { name: "Harvest illustration", exact: true });
   await expect(harvest).toHaveAttribute("href",
     "/plant-icons/generated/rasmussen/master/aji-lemon-starburst-chilli-seeds-10-seeds.png");
   await harvest.scrollIntoViewIfNeeded();
