@@ -1465,3 +1465,20 @@ Rasmussen Growth Batch 04 deployed at ab20ff5 (https://github.com/Archil3s/Blenh
 - Rasmussen | aji-charapon-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/AjiCharapon.png?v=1744625103&width=1445 | Visually reviewed and mapped.
 
 Aji Charapon and 7 Pot Jonah Yellow each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 05 deployed at f9a04c8 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44599546189).
+
+## Rasmussen Growth Batch 06
+
+- Rasmussen | aji-colorado-orange-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/2A9862F7-84E7-4205-B692-B9F67971CD71.png?v=1743915279&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-colorado-orange-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/2A9862F7-84E7-4205-B692-B9F67971CD71.png?v=1743915279&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-colorado-orange-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/2A9862F7-84E7-4205-B692-B9F67971CD71.png?v=1743915279&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-colorado-orange-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/2A9862F7-84E7-4205-B692-B9F67971CD71.png?v=1743915279&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-colorado-orange-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/2A9862F7-84E7-4205-B692-B9F67971CD71.png?v=1743915279&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-cristal-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://southdevonchillifarm.co.uk/cdn/shop/files/AjiCrystal2_d6d2123f-34ff-4b6c-b0dc-1743fc2f7c91.jpg?v=1726582142&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-cristal-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://southdevonchillifarm.co.uk/cdn/shop/files/AjiCrystal2_d6d2123f-34ff-4b6c-b0dc-1743fc2f7c91.jpg?v=1726582142&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-cristal-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://southdevonchillifarm.co.uk/cdn/shop/files/AjiCrystal2_d6d2123f-34ff-4b6c-b0dc-1743fc2f7c91.jpg?v=1726582142&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-cristal-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://southdevonchillifarm.co.uk/cdn/shop/files/AjiCrystal2_d6d2123f-34ff-4b6c-b0dc-1743fc2f7c91.jpg?v=1726582142&width=1946 | Visually reviewed and mapped.
+- Rasmussen | aji-cristal-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://southdevonchillifarm.co.uk/cdn/shop/files/AjiCrystal2_d6d2123f-34ff-4b6c-b0dc-1743fc2f7c91.jpg?v=1726582142&width=1946 | Visually reviewed and mapped.
+
+Aji Colorado Orange and Aji Cristal each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
