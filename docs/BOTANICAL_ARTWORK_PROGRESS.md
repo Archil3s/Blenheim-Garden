@@ -1938,3 +1938,20 @@ Kings Seeds Growth Batch deployed at 2a9793c (https://github.com/Archil3s/Blenhe
 - Kings Seeds | bean-dwarf-roquefort | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8045-1.png?v=1687991667 | Visually reviewed and mapped.
 
 Mayocoba and Purple Tee Pee now have six stages. Roquefort gained Seed and First sprout, with black seed coats confirmed by Kings Seeds. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch deployed at 0068ac9 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44863249843).
+
+## Kings Seeds Growth Batch 16
+
+- Kings Seeds | bean-dwarf-roquefort | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8045-1.png?v=1687991667 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-roquefort | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8045-1.png?v=1687991667 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-roquefort | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8045-1.png?v=1687991667 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-top-crop | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8046-1_37dfb8e2-ab71-4103-a069-84c7798c630b.jpg?v=1721601929 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-top-crop | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8046-1_37dfb8e2-ab71-4103-a069-84c7798c630b.jpg?v=1721601929 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-top-crop | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8046-1_37dfb8e2-ab71-4103-a069-84c7798c630b.jpg?v=1721601929 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-top-crop | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8046-1_37dfb8e2-ab71-4103-a069-84c7798c630b.jpg?v=1721601929 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-top-crop | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8046-1_37dfb8e2-ab71-4103-a069-84c7798c630b.jpg?v=1721601929 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-xera-select | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8047-1_550930bd-6b19-4fed-a06d-c51802763bd1.jpg?v=1721601961 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-xera-select | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8047-1_550930bd-6b19-4fed-a06d-c51802763bd1.jpg?v=1721601961 | Visually reviewed and mapped.
+
+Roquefort and Top Crop now have six stages. Xera Select gained Seed and First sprout. The production build and all 44 focused browser checks passed.

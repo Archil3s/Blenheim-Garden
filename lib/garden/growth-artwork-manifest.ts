@@ -2012,6 +2012,20 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-xera-select.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-xera-select",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-xera-select-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-xera-select-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8047-1_550930bd-6b19-4fed-a06d-c51802763bd1.jpg?v=1721601961",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-xera-select-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-xera-select-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8047-1_550930bd-6b19-4fed-a06d-c51802763bd1.jpg?v=1721601961",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-runner-blue-lake": {
@@ -4844,6 +4858,27 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-roquefort-first-sprout.png",
       "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8045-1.png?v=1687991667",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-roquefort-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-roquefort-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8045-1.png?v=1687991667",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-roquefort-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-roquefort-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8045-1.png?v=1687991667",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-roquefort-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-roquefort-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8045-1.png?v=1687991667",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-dwarf-top-crop": {
@@ -4852,6 +4887,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-top-crop.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-top-crop.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-top-crop",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-top-crop-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-top-crop-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8046-1_37dfb8e2-ab71-4103-a069-84c7798c630b.jpg?v=1721601929",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-top-crop-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-top-crop-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8046-1_37dfb8e2-ab71-4103-a069-84c7798c630b.jpg?v=1721601929",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-top-crop-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-top-crop-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8046-1_37dfb8e2-ab71-4103-a069-84c7798c630b.jpg?v=1721601929",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-top-crop-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-top-crop-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8046-1_37dfb8e2-ab71-4103-a069-84c7798c630b.jpg?v=1721601929",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-top-crop-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-top-crop-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8046-1_37dfb8e2-ab71-4103-a069-84c7798c630b.jpg?v=1721601929",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
