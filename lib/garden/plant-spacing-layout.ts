@@ -58,10 +58,15 @@ export function plantPositionsForArea(
   widthCm: number,
   heightCm: number,
   maxRendered = 1600,
+  placementStep = 1,
 ): PlantCanvasPosition[] {
-  if (area.placements) return area.placements.map((p) => ({
-    x: p.x * widthCm / 100, y: p.y * heightCm / 100, rotation: 0,
-  }));
+  if (area.placements) {
+    const placements = area.placements;
+    return Array.from({ length: Math.ceil(placements.length / placementStep) }, (_, index) => {
+      const p = placements[index * placementStep];
+      return { x: p.x * widthCm / 100, y: p.y * heightCm / 100, rotation: 0 };
+    });
+  }
   const layout = layoutFor(area, widthCm, heightCm);
   const desired = Math.max(1, Math.round(area.count));
   if (desired > layout.count) {
@@ -83,14 +88,14 @@ export function plantPositionsForArea(
   const positions: PlantCanvasPosition[] = [];
   let logicalIndex = 0;
 
-  for (let row = 0; row < layout.rows; row += 1) {
+  for (let row = 0; row < layout.rows && logicalIndex < desired; row += 1) {
     const staggeredRow = area.pattern === "staggered" && row % 2 === 1 && layout.baseColumns > 1;
     const columns = staggeredRow ? layout.baseColumns - 1 : layout.baseColumns;
     const usedWidth = (columns - 1) * layout.spacingCm;
     const startX = (layout.widthCm - usedWidth) / 2;
 
-    for (let column = 0; column < columns; column += 1) {
-      if (logicalIndex < desired && logicalIndex % sampleEvery === 0) {
+    for (let column = 0; column < columns && logicalIndex < desired; column += 1) {
+      if (logicalIndex % sampleEvery === 0) {
         positions.push({
           x: startX + column * layout.spacingCm,
           y: startY + row * layout.rowStepCm,

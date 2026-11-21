@@ -8,7 +8,7 @@ import { groupedPlantList, plantListRows, partsListRows, csvText, planSvg } from
 import { PlantingCalendar } from "./planting-calendar";
 import type { CalendarPlanting } from "@/lib/garden/planting-calendar";
 import type { PlantingSchedule } from "@/lib/garden/planting-schedule";
-import { PlantArt } from "./plant-art";
+import { PlannerPlantArt as PlantArt } from "./planner-art";
 
 type Report = "plants" | "parts" | "calendar" | "export";
 

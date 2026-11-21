@@ -598,3 +598,33 @@ uses the removed More summary selector and was excluded from the final run.
 Production build passed. ESLint reported two existing icon-gallery warnings.
 Before/after screenshots and the four-screen phone walkthrough are in the
 task outputs. User feedback is pending.
+
+## Mobile grid performance P-018 — 22 November 2026
+
+The cold planner now starts the saved-plan request while its scripts load.
+A return visit can use the named garden's local draft. The planner distinguishes
+loading, an empty garden and a load failure. The default sample shown after a
+failed uncached load is read-only and does not replace the saved draft.
+
+Compact phone views keep measured beds and true crop counts while sampling
+canvas marks and deferring detailed artwork. The dedicated artwork sample
+still displays its full artwork. Phone browsing pans from beds or empty ground
+and opens the inspector on a tap. Two-finger input cancels unfinished editing
+gestures. Fit resets the view, and the bed inspector can center the camera
+without changing the plan. Drawing controls wrap into a vertical overflow
+area, keeping the bottom actions accessible.
+
+Under 4× CPU throttling and a simulated slower connection, first-use times
+improved from 4.03 to 3.14 seconds on a cold iPhone-sized visit and from
+4.06 to 3.11 seconds on an Android-sized visit. Return visits improved from
+3.47 seconds to 2.99 and 2.83 seconds. The 9,600-placement plan improved from
+16.64 to 3.36 seconds and from 16.92 to 3.34 seconds. Dense gesture frame
+intervals above 50 ms fell from 72 to 12 and from 68 to 13. Each
+measurement is one Chromium emulation run on the same machine. The task
+outputs retain the raw profiles and screenshots. User feedback is pending.
+
+The production build passed. The eight phone checks passed twice, and the
+wider-viewport and editor suites covered wheel/pinch navigation, Fit,
+named gardens, exact archived plant counts, template restoration, and the
+3D view. Protected D1 tests used isolated fixtures. The production garden
+data was not changed. ESLint reported two existing icon-gallery warnings.

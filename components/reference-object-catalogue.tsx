@@ -1,6 +1,6 @@
 import { referenceObjects, referenceObjectGroups } from "@/lib/garden/reference-objects";
 import type { PlannerStructureKind } from "@/lib/garden/planner-plan";
-import { ReferenceObjectArt } from "./reference-object-art";
+import { PlannerObjectArt as ReferenceObjectArt } from "./planner-art";
 
 export function ReferenceObjectCatalogue({ search, selected, onSelect, category = "all" }: {
   category?: string; search: string; selected: PlannerStructureKind; onSelect: (kind: PlannerStructureKind) => void;

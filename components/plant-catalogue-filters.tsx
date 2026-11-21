@@ -3,7 +3,7 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { defaultPlantFilters, plantFacts, rotationFamilies, type PlantFilters } from "@/lib/garden/plant-catalogue-filters";
-import { PlantArt } from "./plant-art";
+import { PlannerPlantArt as PlantArt } from "./planner-art";
 
 export function PlantCatalogueFilters({ value, onChange, onReset, selected, children, extra }: {
   value: PlantFilters; onChange: (value: PlantFilters) => void;

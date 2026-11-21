@@ -594,6 +594,7 @@
     min-height: 44px;
   }
   .reference-planner.gv-device-mobile .gv-context summary,
+  .reference-planner.gv-device-mobile .gv-stage-status :is(button, summary) { touch-action: manipulation; }
   .reference-planner.gv-device-mobile .gv-stage-status summary {
     align-content: center;
   }
@@ -626,7 +627,7 @@
     width: auto;
   }
   .reference-planner.gv-device-mobile .plant-entry-actions button { width: 44px; height: 44px; }
-  .reference-planner.gv-device-mobile .gv-cloud-state { display: none; }
+  .gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-cloud-state { display: none; }
 
   .garden-size-dialog.plan-beds-dialog {
     inset: auto 0 0;
@@ -648,4 +649,70 @@
     left: 50px !important;
     border-top-left-radius: 14px;
   }
+}
+
+.planner-load-notice {
+  position: absolute;
+  z-index: 8;
+  inset: 58px 12px auto;
+  width: fit-content;
+  max-width: calc(100% - 24px);
+  margin: 0 auto;
+  padding: 8px 12px;
+  border: 1px solid #bbcfca;
+  border-radius: 6px;
+  background: #fff;
+  color: #245b43;
+}
+.planner-load-notice button { min-height: 44px; }
+
+@media (max-width: 760px) {
+  .reference-planner.gv-device-mobile[data-mobile-tools=true]:not(.gv-view-3d) .gv-quickbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: start;
+    height: auto;
+    min-height: 0;
+    max-height: 145px;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  .reference-planner.gv-device-mobile[data-mobile-tools=true] .gv-quickbar > :not(.gv-cloud-state) {
+    display: flex;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    max-width: 100%;
+    height: auto;
+  }
+  .reference-planner.gv-device-mobile[data-mobile-tools=true] .gv-quickbar .planner-plan-actions {
+    display: none;
+  }
+  .reference-planner.gv-device-mobile[data-mobile-tools=true] .gv-quickbar .gv-quick-actions button {
+    min-width: 44px;
+  }
+}
+
+.reference-planner .planting-area[data-compact=true] .planting-area-icons i::before {
+  content: "";
+  display: block;
+  width: 32%;
+  height: 32%;
+  border-radius: 50%;
+  background: #43906a;
+}
+
+.planner-compact-object {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #688572;
+  background: #64837240;
+}
+.planner-compact-row-mark {
+  display: block;
+  width: 32%;
+  height: 32%;
+  margin: 34%;
+  border-radius: 50%;
+  background: #43906a;
 }

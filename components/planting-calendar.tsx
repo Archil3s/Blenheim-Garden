@@ -5,7 +5,7 @@ import { CROP_WINDOWS, blenheimFrostForMonth } from "@/lib/garden/blenheim-calen
 import { calendarMonthEvents, calendarMonths, calendarPlantings, calendarSources, cropCalendarGuide, harvestGuide, type CalendarPlanting } from "@/lib/garden/planting-calendar";
 import { csvText } from "@/lib/garden/plan-reports";
 import { CalendarDatesDialog } from "./calendar-dates-dialog";
-import { PlantArt } from "./plant-art";
+import { PlannerPlantArt as PlantArt } from "./planner-art";
 
 export function PlantingCalendar({ plan, period = { year: 2026, month: 8 }, onPeriodChange, onDatesChange, onShowPlanting }: {
   plan: PlannerPlan; period?: PlanningPeriod; onPeriodChange?: (period: PlanningPeriod) => void;

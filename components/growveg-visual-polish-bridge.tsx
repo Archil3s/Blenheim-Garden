@@ -2,65 +2,6 @@
 
 import { useEffect } from "react";
 
-const cropIcons: Record<string, string> = {
-  "🍅": "Tomato",
-  "🍓": "Strawberry",
-  "🫘": "Bean",
-  "🥬": "Lettuce",
-  "🎃": "Pumpkin",
-  "🥕": "Carrot",
-  "🥦": "Broccoli",
-  "🔴": "Raspberry",
-  "🫐": "Blueberry",
-  "🌿": "Herbs",
-};
-
-function cropFromText(text: string) {
-  for (const [icon, crop] of Object.entries(cropIcons)) {
-    if (text.includes(icon)) return crop;
-  }
-  return null;
-}
-
-function decorateCrops() {
-  document.querySelectorAll<HTMLElement>(".gv-plant-list > button").forEach((button) => {
-    const crop = button.querySelector("strong")?.textContent?.trim();
-    if (crop) button.dataset.crop = crop;
-  });
-
-  document.querySelectorAll<HTMLElement>(".planting-area").forEach((area) => {
-    if (area.dataset.crop) return;
-    const text = area.querySelector(".planting-area-icons i")?.textContent ?? area.textContent ?? "";
-    const crop = cropFromText(text);
-    if (crop) area.dataset.crop = crop;
-  });
-
-  document.querySelectorAll<HTMLElement>(".planting-row").forEach((row) => {
-    if (row.dataset.crop) return;
-    const crop = cropFromText(row.textContent ?? "");
-    if (crop) row.dataset.crop = crop;
-  });
-
-  const ready = document.querySelector<HTMLElement>(".gv-ready-strip");
-  if (ready && !ready.dataset.crop) {
-    const crop = cropFromText(ready.textContent ?? "");
-    if (crop) ready.dataset.crop = crop;
-  }
-}
-
-function zoomValue() {
-  const label = document.querySelector<HTMLElement>(".gv-quick-center strong");
-  return Number.parseInt(label?.textContent ?? "90", 10) || 90;
-}
-
-function decorateZoom() {
-  const app = document.querySelector<HTMLElement>(".gv-app");
-  if (!app) return;
-  const zoom = zoomValue();
-  app.dataset.zoom = String(zoom);
-  app.dataset.zoomTier = zoom < 80 ? "low" : zoom < 110 ? "medium" : "high";
-}
-
 function ensureAdvancedLayoutToggle() {
   const context = document.querySelector<HTMLElement>(".gv-context");
   const modebar = context?.querySelector<HTMLElement>(".gv-v4-modebar");
@@ -83,18 +24,15 @@ function ensureAdvancedLayoutToggle() {
 
 export function GrowVegVisualPolishBridge() {
   useEffect(() => {
-    const decorate = () => {
-      ensureAdvancedLayoutToggle();
-      decorateCrops();
-      decorateZoom();
-    };
-
-    decorate();
-    const observer = new MutationObserver(decorate);
-    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
-
+    const body = document.querySelector(".gv-body");
+    if (!body) return;
+    ensureAdvancedLayoutToggle();
+    const observer = new MutationObserver(records => {
+      if (records.some(record => record.target === body ||
+        record.target instanceof Element && record.target.closest(".gv-context"))) ensureAdvancedLayoutToggle();
+    });
+    observer.observe(body, { childList: true, subtree: true });
     return () => observer.disconnect();
   }, []);
-
   return null;
 }
