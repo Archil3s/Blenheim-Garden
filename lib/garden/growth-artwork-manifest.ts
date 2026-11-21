@@ -1572,6 +1572,20 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-berrgold-improved.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-berrgold-improved",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-berrgold-improved-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-berrgold-improved-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8038-1_977b8e08-5e5a-45b2-9b30-aa9f55ea3555.jpg?v=1721601636",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-berrgold-improved-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-berrgold-improved-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8038-1_977b8e08-5e5a-45b2-9b30-aa9f55ea3555.jpg?v=1721601636",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-dwarf-black-valentine": {
@@ -4406,6 +4420,27 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-yoeme-purple-string-first-sprout.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/purple-string-1024x768.jpg",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-yoeme-purple-string-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-yoeme-purple-string-baby-plant.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/purple-string-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-yoeme-purple-string-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-yoeme-purple-string-semi-mature.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/purple-string-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-yoeme-purple-string-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-yoeme-purple-string-pre-harvest.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/purple-string-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-dwarf-amish": {
@@ -4414,6 +4449,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-amish.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-amish.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-amish-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-amish-seed.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/wonder-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-amish-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-amish-first-sprout.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/wonder-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-amish-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-amish-baby-plant.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/wonder-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-amish-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-amish-semi-mature.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/wonder-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-amish-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-amish-pre-harvest.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/wonder-1024x575.jpg",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },

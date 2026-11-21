@@ -1836,3 +1836,20 @@ Kings Seeds Growth Batch deployed at 5e9daee (https://github.com/Archil3s/Blenhe
 - Kings Seeds | bean-climbing-yoeme-purple-string | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/purple-string-1024x768.jpg | Visually reviewed and mapped.
 
 Shiny Fardenlosa and Volcanic now have six stages. Yoeme Purple String gained Seed and First sprout. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch deployed at 96b1a7b (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44856481900).
+
+## Kings Seeds Growth Batch 10
+
+- Kings Seeds | bean-climbing-yoeme-purple-string | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/purple-string-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-yoeme-purple-string | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/purple-string-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-yoeme-purple-string | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/purple-string-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-amish | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/wonder-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-amish | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/wonder-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-amish | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/wonder-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-amish | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/wonder-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-amish | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/wonder-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-berrgold-improved | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8038-1_977b8e08-5e5a-45b2-9b30-aa9f55ea3555.jpg?v=1721601636 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-berrgold-improved | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8038-1_977b8e08-5e5a-45b2-9b30-aa9f55ea3555.jpg?v=1721601636 | Visually reviewed and mapped.
+
+Yoeme Purple String and Dwarf Amish now have six stages. Berrgold Improved gained Seed and First sprout. The production build and all 44 focused browser checks passed.
