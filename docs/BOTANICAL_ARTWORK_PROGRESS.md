@@ -1955,3 +1955,20 @@ Kings Seeds Growth Batch deployed at 0068ac9 (https://github.com/Archil3s/Blenhe
 - Kings Seeds | bean-dwarf-xera-select | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8047-1_550930bd-6b19-4fed-a06d-c51802763bd1.jpg?v=1721601961 | Visually reviewed and mapped.
 
 Roquefort and Top Crop now have six stages. Xera Select gained Seed and First sprout. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch deployed at 0e2c905 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44864426247).
+
+## Kings Seeds Growth Batch 17
+
+- Kings Seeds | bean-dwarf-xera-select | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8047-1_550930bd-6b19-4fed-a06d-c51802763bd1.jpg?v=1721601961 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-xera-select | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8047-1_550930bd-6b19-4fed-a06d-c51802763bd1.jpg?v=1721601961 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-xera-select | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8047-1_550930bd-6b19-4fed-a06d-c51802763bd1.jpg?v=1721601961 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-blue-lake | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/blue-1-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-blue-lake | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/blue-1-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-blue-lake | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/blue-1-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-blue-lake | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/blue-1-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-blue-lake | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/blue-1-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-blue-shackamaxon | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/blue-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-blue-shackamaxon | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/blue-1024x768.jpg | Visually reviewed and mapped.
+
+Xera Select and Blue Lake now have six stages. Blue Shackamaxon gained Seed and First sprout. The production build and all 44 focused browser checks passed.
