@@ -1586,6 +1586,27 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-berrgold-improved-first-sprout.png",
       "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8038-1_977b8e08-5e5a-45b2-9b30-aa9f55ea3555.jpg?v=1721601636",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-berrgold-improved-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-berrgold-improved-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8038-1_977b8e08-5e5a-45b2-9b30-aa9f55ea3555.jpg?v=1721601636",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-berrgold-improved-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-berrgold-improved-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8038-1_977b8e08-5e5a-45b2-9b30-aa9f55ea3555.jpg?v=1721601636",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-berrgold-improved-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-berrgold-improved-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8038-1_977b8e08-5e5a-45b2-9b30-aa9f55ea3555.jpg?v=1721601636",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-dwarf-black-valentine": {
@@ -1595,6 +1616,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-black-valentine.png",
       "referenceUrl": "https://www.diggers.com.au/products/bean-black-valentine",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-black-valentine-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-black-valentine-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0488/7855/1202/products/bean-black-valentine-s0113_fe519c0a-02b9-4d7d-b9ee-6b2926417071.jpg?v=1637121550",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-black-valentine-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-black-valentine-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0488/7855/1202/products/bean-black-valentine-s0113_fe519c0a-02b9-4d7d-b9ee-6b2926417071.jpg?v=1637121550",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-black-valentine-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-black-valentine-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0488/7855/1202/products/bean-black-valentine-s0113_fe519c0a-02b9-4d7d-b9ee-6b2926417071.jpg?v=1637121550",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-black-valentine-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-black-valentine-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0488/7855/1202/products/bean-black-valentine-s0113_fe519c0a-02b9-4d7d-b9ee-6b2926417071.jpg?v=1637121550",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-black-valentine-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-black-valentine-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0488/7855/1202/products/bean-black-valentine-s0113_fe519c0a-02b9-4d7d-b9ee-6b2926417071.jpg?v=1637121550",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-dwarf-borlotto-fire-tongue": {
@@ -1603,6 +1659,20 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-borlotto-fire-tongue.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-borlotto-fire-tongue.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-borlotto-fire-tongue",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-borlotto-fire-tongue-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-borlotto-fire-tongue-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8039-2.png?v=1720423767",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-borlotto-fire-tongue-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-borlotto-fire-tongue-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8039-2.png?v=1720423767",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },

@@ -1853,3 +1853,20 @@ Kings Seeds Growth Batch deployed at 96b1a7b (https://github.com/Archil3s/Blenhe
 - Kings Seeds | bean-dwarf-berrgold-improved | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8038-1_977b8e08-5e5a-45b2-9b30-aa9f55ea3555.jpg?v=1721601636 | Visually reviewed and mapped.
 
 Yoeme Purple String and Dwarf Amish now have six stages. Berrgold Improved gained Seed and First sprout. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch deployed at b386c91 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44857683368).
+
+## Kings Seeds Growth Batch 11
+
+- Kings Seeds | bean-dwarf-berrgold-improved | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8038-1_977b8e08-5e5a-45b2-9b30-aa9f55ea3555.jpg?v=1721601636 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-berrgold-improved | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8038-1_977b8e08-5e5a-45b2-9b30-aa9f55ea3555.jpg?v=1721601636 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-berrgold-improved | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8038-1_977b8e08-5e5a-45b2-9b30-aa9f55ea3555.jpg?v=1721601636 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-black-valentine | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0488/7855/1202/products/bean-black-valentine-s0113_fe519c0a-02b9-4d7d-b9ee-6b2926417071.jpg?v=1637121550 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-black-valentine | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0488/7855/1202/products/bean-black-valentine-s0113_fe519c0a-02b9-4d7d-b9ee-6b2926417071.jpg?v=1637121550 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-black-valentine | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0488/7855/1202/products/bean-black-valentine-s0113_fe519c0a-02b9-4d7d-b9ee-6b2926417071.jpg?v=1637121550 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-black-valentine | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0488/7855/1202/products/bean-black-valentine-s0113_fe519c0a-02b9-4d7d-b9ee-6b2926417071.jpg?v=1637121550 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-black-valentine | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0488/7855/1202/products/bean-black-valentine-s0113_fe519c0a-02b9-4d7d-b9ee-6b2926417071.jpg?v=1637121550 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-borlotto-fire-tongue | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8039-2.png?v=1720423767 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-borlotto-fire-tongue | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8039-2.png?v=1720423767 | Visually reviewed and mapped.
+
+Berrgold Improved and Black Valentine now have six stages. Borlotto Fire Tongue gained Seed and First sprout. The production build and all 44 focused browser checks passed.
