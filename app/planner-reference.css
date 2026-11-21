@@ -716,3 +716,54 @@
   border-radius: 50%;
   background: #43906a;
 }
+
+.planner-phone-mode,
+.planner-phone-save-feedback,
+.gv-app .gv-more-panel .planner-phone-link { display: none; }
+
+@media (max-width: 760px) {
+  .gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-plan-name {
+    max-width: none;
+    min-height: 44px;
+  }
+  .gv-app.gv-device-mobile .gv-more-panel .planner-phone-link { display: flex; }
+  .reference-planner.gv-device-mobile[data-report-view=plan]:not(.gv-view-3d) .gv-stage {
+    display: flex;
+    flex-direction: column;
+  }
+  .reference-planner.gv-device-mobile[data-report-view=plan]:not(.gv-view-3d) .gv-stage-scroll {
+    flex: 1;
+    min-height: 0;
+    height: auto;
+  }
+  .reference-planner.gv-device-mobile[data-report-view=plan]:not(.gv-view-3d) .gv-stage-status {
+    order: -1;
+    flex-shrink: 0;
+  }
+  .reference-planner.gv-device-mobile[data-report-view=plan]:not(.gv-view-3d) .planner-phone-mode {
+    display: block;
+    flex-shrink: 0;
+    padding: 4px 10px;
+    border-bottom: 1px solid #ccd6d1;
+    background: #f7faf8;
+    color: #36584a;
+    font-size: 11px;
+  }
+  .reference-planner.gv-device-mobile[data-report-view=plan]:not(.gv-view-3d) .planner-phone-save-feedback:not(:empty) {
+    display: block;
+    margin: 0;
+    padding: 8px 12px;
+    border-top: 1px solid #ccd6d1;
+    background: #fff;
+    color: #36584a;
+    font-size: 13px;
+  }
+  .reference-planner.gv-device-mobile[data-mobile-tools=true]:not(.gv-view-3d) .gv-quickbar {
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+  }
+  .reference-planner.gv-device-mobile .gv-context-header button:last-child {
+    width: 44px;
+    height: 44px;
+  }
+}

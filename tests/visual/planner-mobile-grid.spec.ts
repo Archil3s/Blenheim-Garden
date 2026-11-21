@@ -99,3 +99,46 @@ test("an unavailable saved garden cannot overwrite its plan with the sample", as
   await expect(page.getByRole("button", { name: "Retry" })).toBeVisible();
   expect(await page.evaluate(() => localStorage.getItem("blenheim-garden-live-plan"))).toBeNull();
 });
+
+test("phone returns to browse mode when closing drawing tools", async ({ page }, info) => {
+  test.skip(info.project.name !== "phone", "Phone toolbar.");
+  await page.route("**/api/**", route => route.fulfill({
+    json: { ok: true, plan: fixture, items: [], notes: [], beds: [], gardens: [] },
+  }));
+  await page.goto("/planner");
+  await expect(page.locator(".gv-save")).toHaveText("Saved ✓");
+
+  const quick = page.getByRole("navigation", { name: "Quick garden actions" });
+  const tools = quick.getByRole("button", { name: "Tools", exact: true });
+  const toolbar = page.locator("#planner-edit-toolbar");
+  await expect(tools).toHaveAttribute("aria-expanded", "false");
+  await tools.tap();
+  await expect(tools).toHaveAttribute("aria-expanded", "true");
+  await expect(toolbar).toBeVisible();
+  await page.locator(".gv-rail").getByRole("button", { name: "Bed", exact: true }).tap();
+  await expect(page.locator(".garden-canvas")).toHaveClass(/tool-bed/);
+  await expect(page.getByRole("complementary", { name: "Garden inspector" })).toBeVisible();
+  await tools.tap();
+  await expect(toolbar).toBeHidden();
+  await expect(page.locator(".garden-canvas")).toHaveClass(/tool-select/);
+  await expect(page.getByText("Browse · tap a bed or drag the map")).toBeVisible();
+
+  await page.getByRole("button", { name: /^More/ }).tap();
+  await expect(page.getByRole("link", { name: "Overview", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Seedling journal", exact: true })).toBeVisible();
+  await page.getByRole("button", { name: /^More/ }).tap();
+  await page.screenshot({ path: info.outputPath("browse.png") });
+});
+
+test("phone explains when a garden save stays on the device", async ({ page }, info) => {
+  test.skip(info.project.name !== "phone", "Phone save feedback.");
+  await page.route("**/api/**", route => route.fulfill({
+    json: { ok: true, plan: fixture, items: [], notes: [], beds: [], gardens: [] },
+  }));
+  await page.goto("/planner");
+  await expect(page.locator(".gv-save")).toHaveText("Saved ✓");
+  await page.locator(".gv-save").tap();
+  await expect(page.getByText("Saved on this device. Set your edit key to save online.")).toBeVisible();
+  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem("blenheim-garden-plan") ?? "null"));
+  expect(saved.plantingAreas).toEqual(fixture.plantingAreas);
+});

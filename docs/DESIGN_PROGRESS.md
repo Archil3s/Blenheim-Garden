@@ -628,3 +628,18 @@ wider-viewport and editor suites covered wheel/pinch navigation, Fit,
 named gardens, exact archived plant counts, template restoration, and the
 3D view. Protected D1 tests used isolated fixtures. The production garden
 data was not changed. ESLint reported two existing icon-gallery warnings.
+
+## Mobile planner interface P-019 — 22 November 2026
+
+Phone users can see whether they are browsing, moving the map or using a
+drawing tool. Closing Tools returns to browse mode and cancels transient
+drawing state. The dock exposes the Beds dialog, catalogue state, editing
+controls and progress link. Overview and Seedling journal are reachable in
+More. Local-only and failed saves appear above the dock. The toolbar scrolls
+vertically when its controls wrap, and the inspector close target is 44 px.
+
+The production build passed. Ten phone checks and 24 desktop, laptop and
+tablet checks passed in Chromium. Both phone viewport sizes had no horizontal
+page overflow. Bed edits, plant counts and saved history were verified with
+isolated test data. Screenshots were reviewed at all five viewport sizes.
+ESLint reported two existing icon-gallery warnings. User feedback is pending.
