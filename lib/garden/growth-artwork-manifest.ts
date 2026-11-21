@@ -1308,6 +1308,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-asian-winged.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-asian-winged",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-asian-winged-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-asian-winged-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8034-1_dc89bd8e-fc9a-42ae-b77f-9e88ab40c38b.jpg?v=1721601517",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-asian-winged-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-asian-winged-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8034-1_dc89bd8e-fc9a-42ae-b77f-9e88ab40c38b.jpg?v=1721601517",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-asian-winged-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-asian-winged-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8034-1_dc89bd8e-fc9a-42ae-b77f-9e88ab40c38b.jpg?v=1721601517",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-asian-winged-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-asian-winged-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8034-1_dc89bd8e-fc9a-42ae-b77f-9e88ab40c38b.jpg?v=1721601517",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-asian-winged-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-asian-winged-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8034-1_dc89bd8e-fc9a-42ae-b77f-9e88ab40c38b.jpg?v=1721601517",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-asian-yard-long": {
@@ -1316,6 +1351,20 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-asian-yard-long.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-asian-yard-long.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-asian-yard-long",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-asian-yard-long-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-asian-yard-long-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8055-1_0fcbffb4-ea5d-4948-8c25-edbff9e4c389.jpg?v=1721602213",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-asian-yard-long-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-asian-yard-long-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8055-1_0fcbffb4-ea5d-4948-8c25-edbff9e4c389.jpg?v=1721602213",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
@@ -4188,6 +4237,27 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "status": "generated_qa_passed",
       "master": "/plant-icons/growth/kings-seeds/master/asparagus-pea-seed.png",
       "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pea-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8033-1_944823dc-9076-4254-9eff-d730dcd9e008.jpg?v=1721601476",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pea-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pea-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8033-1_944823dc-9076-4254-9eff-d730dcd9e008.jpg?v=1721601476",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pea-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pea-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8033-1_944823dc-9076-4254-9eff-d730dcd9e008.jpg?v=1721601476",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pea-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pea-semi-mature.png",
       "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8033-1_944823dc-9076-4254-9eff-d730dcd9e008.jpg?v=1721601476",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }

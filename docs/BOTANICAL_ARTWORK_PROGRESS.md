@@ -1734,3 +1734,20 @@ Kings Seeds Growth Batch 02 deployed at b4572c2 (https://github.com/Archil3s/Ble
 - Kings Seeds | asparagus-pea | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8033-1_944823dc-9076-4254-9eff-d730dcd9e008.jpg?v=1721601476 | Visually reviewed and mapped.
 
 Pacific Challenger F1 and Pacific Purple F1 now have six stages. Asparagus pea Seed is also mapped. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch deployed at 9844061 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44849397062).
+
+## Kings Seeds Growth Batch 04
+
+- Kings Seeds | asparagus-pea | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8033-1_944823dc-9076-4254-9eff-d730dcd9e008.jpg?v=1721601476 | Visually reviewed and mapped.
+- Kings Seeds | asparagus-pea | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8033-1_944823dc-9076-4254-9eff-d730dcd9e008.jpg?v=1721601476 | Visually reviewed and mapped.
+- Kings Seeds | asparagus-pea | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8033-1_944823dc-9076-4254-9eff-d730dcd9e008.jpg?v=1721601476 | Visually reviewed and mapped.
+- Kings Seeds | bean-asian-winged | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8034-1_dc89bd8e-fc9a-42ae-b77f-9e88ab40c38b.jpg?v=1721601517 | Visually reviewed and mapped.
+- Kings Seeds | bean-asian-winged | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8034-1_dc89bd8e-fc9a-42ae-b77f-9e88ab40c38b.jpg?v=1721601517 | Visually reviewed and mapped.
+- Kings Seeds | bean-asian-winged | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8034-1_dc89bd8e-fc9a-42ae-b77f-9e88ab40c38b.jpg?v=1721601517 | Visually reviewed and mapped.
+- Kings Seeds | bean-asian-winged | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8034-1_dc89bd8e-fc9a-42ae-b77f-9e88ab40c38b.jpg?v=1721601517 | Visually reviewed and mapped.
+- Kings Seeds | bean-asian-winged | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8034-1_dc89bd8e-fc9a-42ae-b77f-9e88ab40c38b.jpg?v=1721601517 | Visually reviewed and mapped.
+- Kings Seeds | bean-asian-yard-long | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8055-1_0fcbffb4-ea5d-4948-8c25-edbff9e4c389.jpg?v=1721602213 | Visually reviewed and mapped.
+- Kings Seeds | bean-asian-yard-long | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8055-1_0fcbffb4-ea5d-4948-8c25-edbff9e4c389.jpg?v=1721602213 | Visually reviewed and mapped.
+
+Asian winged bean now has six stages. Asparagus pea gained three stages and Asian yard-long bean gained two. The production build and all 44 focused browser checks passed.
