@@ -1938,6 +1938,27 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-mayocoba-first-sprout.png",
       "referenceUrl": "https://shop.woodlandfoods.com/img/WF_Images/B91-mayocoba-beans-main.jpg",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-mayocoba-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-mayocoba-baby-plant.png",
+      "referenceUrl": "https://shop.woodlandfoods.com/img/WF_Images/B91-mayocoba-beans-main.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-mayocoba-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-mayocoba-semi-mature.png",
+      "referenceUrl": "https://shop.woodlandfoods.com/img/WF_Images/B91-mayocoba-beans-main.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-mayocoba-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-mayocoba-pre-harvest.png",
+      "referenceUrl": "https://shop.woodlandfoods.com/img/WF_Images/B91-mayocoba-beans-main.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-dwarf-purple-tee-pee": {
@@ -1946,6 +1967,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-purple-tee-pee.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-purple-tee-pee.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-purple-tee-pee",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-purple-tee-pee-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-purple-tee-pee-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8044-1_dd2197ea-f08c-4c12-b6ff-fa44ad0048bd.jpg?v=1721601856",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-purple-tee-pee-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-purple-tee-pee-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8044-1_dd2197ea-f08c-4c12-b6ff-fa44ad0048bd.jpg?v=1721601856",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-purple-tee-pee-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-purple-tee-pee-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8044-1_dd2197ea-f08c-4c12-b6ff-fa44ad0048bd.jpg?v=1721601856",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-purple-tee-pee-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-purple-tee-pee-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8044-1_dd2197ea-f08c-4c12-b6ff-fa44ad0048bd.jpg?v=1721601856",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-purple-tee-pee-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-purple-tee-pee-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8044-1_dd2197ea-f08c-4c12-b6ff-fa44ad0048bd.jpg?v=1721601856",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
@@ -4773,6 +4829,20 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-roquefort.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-roquefort.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-roquefort",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-roquefort-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-roquefort-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8045-1.png?v=1687991667",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-roquefort-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-roquefort-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8045-1.png?v=1687991667",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },

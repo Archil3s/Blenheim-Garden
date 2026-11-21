@@ -1921,3 +1921,20 @@ Kings Seeds Growth Batch deployed at 347a80b (https://github.com/Archil3s/Blenhe
 - Kings Seeds | bean-dwarf-mayocoba | first-sprout | 512 px master and 128 px gallery | https://shop.woodlandfoods.com/img/WF_Images/B91-mayocoba-beans-main.jpg | Visually reviewed and mapped.
 
 Fin de Bagnols and Kaiapoi Red now have six stages. Mayocoba gained Seed and First sprout. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch deployed at 2a9793c (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44862151126).
+
+## Kings Seeds Growth Batch 15
+
+- Kings Seeds | bean-dwarf-mayocoba | baby-plant | 512 px master and 128 px gallery | https://shop.woodlandfoods.com/img/WF_Images/B91-mayocoba-beans-main.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-mayocoba | semi-mature | 512 px master and 128 px gallery | https://shop.woodlandfoods.com/img/WF_Images/B91-mayocoba-beans-main.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-mayocoba | pre-harvest | 512 px master and 128 px gallery | https://shop.woodlandfoods.com/img/WF_Images/B91-mayocoba-beans-main.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-purple-tee-pee | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8044-1_dd2197ea-f08c-4c12-b6ff-fa44ad0048bd.jpg?v=1721601856 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-purple-tee-pee | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8044-1_dd2197ea-f08c-4c12-b6ff-fa44ad0048bd.jpg?v=1721601856 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-purple-tee-pee | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8044-1_dd2197ea-f08c-4c12-b6ff-fa44ad0048bd.jpg?v=1721601856 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-purple-tee-pee | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8044-1_dd2197ea-f08c-4c12-b6ff-fa44ad0048bd.jpg?v=1721601856 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-purple-tee-pee | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8044-1_dd2197ea-f08c-4c12-b6ff-fa44ad0048bd.jpg?v=1721601856 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-roquefort | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8045-1.png?v=1687991667 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-roquefort | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8045-1.png?v=1687991667 | Visually reviewed and mapped.
+
+Mayocoba and Purple Tee Pee now have six stages. Roquefort gained Seed and First sprout, with black seed coats confirmed by Kings Seeds. The production build and all 44 focused browser checks passed.
