@@ -1139,6 +1139,34 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/artichoke-green-globe-seed.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/artichoke-green-globe",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/artichoke-green-globe-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/artichoke-green-globe-first-sprout.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/artichoke-green-globe",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/artichoke-green-globe-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/artichoke-green-globe-baby-plant.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/artichoke-green-globe",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/artichoke-green-globe-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/artichoke-green-globe-semi-mature.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/artichoke-green-globe",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/artichoke-green-globe-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/artichoke-green-globe-pre-harvest.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/artichoke-green-globe",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:asparagus-mary-washington": {
@@ -1146,6 +1174,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "status": "generated_qa_passed",
       "master": "/plant-icons/generated/kings-seeds/master/asparagus-mary-washington.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/asparagus-mary-washington.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-mary-washington",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-mary-washington-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-mary-washington-seed.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-mary-washington",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-mary-washington-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-mary-washington-first-sprout.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-mary-washington",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-mary-washington-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-mary-washington-baby-plant.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-mary-washington",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-mary-washington-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-mary-washington-semi-mature.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-mary-washington",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-mary-washington-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-mary-washington-pre-harvest.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-mary-washington",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
@@ -1156,6 +1219,13 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/asparagus-pacific-challenger-f1.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/asparagus-pacific-challenger-f1.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-pacific-challenger-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pacific-challenger-f1-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pacific-challenger-f1-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8388-1_b870f493-4409-4c07-94ee-74bf4782e061.jpg?v=1725603906",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },

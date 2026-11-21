@@ -1700,3 +1700,20 @@ Rasmussen Growth Batch 18 deployed at a5b9596 (https://github.com/Archil3s/Blenh
 - Kings Seeds | artichoke-green-globe | seed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/artichoke-green-globe | Visually reviewed and mapped.
 
 Two amaranth Seed renders were regenerated to isolate the seeds. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch 01 deployed at 09d39e1 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44846818463).
+
+## Kings Seeds Growth Batch 02
+
+- Kings Seeds | artichoke-green-globe | first-sprout | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/artichoke-green-globe | Visually reviewed and mapped.
+- Kings Seeds | artichoke-green-globe | baby-plant | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/artichoke-green-globe | Visually reviewed and mapped.
+- Kings Seeds | artichoke-green-globe | semi-mature | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/artichoke-green-globe | Visually reviewed and mapped.
+- Kings Seeds | artichoke-green-globe | pre-harvest | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/artichoke-green-globe | Visually reviewed and mapped.
+- Kings Seeds | asparagus-mary-washington | seed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/asparagus-mary-washington | Visually reviewed and mapped.
+- Kings Seeds | asparagus-mary-washington | first-sprout | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/asparagus-mary-washington | Visually reviewed and mapped.
+- Kings Seeds | asparagus-mary-washington | baby-plant | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/asparagus-mary-washington | Visually reviewed and mapped.
+- Kings Seeds | asparagus-mary-washington | semi-mature | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/asparagus-mary-washington | Visually reviewed and mapped.
+- Kings Seeds | asparagus-mary-washington | pre-harvest | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/asparagus-mary-washington | Visually reviewed and mapped.
+- Kings Seeds | asparagus-pacific-challenger-f1 | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8388-1_b870f493-4409-4c07-94ee-74bf4782e061.jpg?v=1725603906 | Visually reviewed and mapped.
+
+Green Globe artichoke and Mary Washington asparagus now have six stages. The Pacific Challenger F1 Seed illustration is also mapped. The production build and all 44 focused browser checks passed.
