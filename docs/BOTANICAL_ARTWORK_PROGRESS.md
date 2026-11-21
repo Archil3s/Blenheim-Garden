@@ -1819,3 +1819,20 @@ Kings Seeds Growth Batch deployed at 100404a (https://github.com/Archil3s/Blenhe
 - Kings Seeds | bean-climbing-shiny-fardenlosa | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/shiny-1024x575.jpg | Visually reviewed and mapped.
 
 Mangere Pole and Rydal A Yellow now have six stages. Shiny Fardenlosa gained Seed and First sprout. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch deployed at 5e9daee (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44855387492).
+
+## Kings Seeds Growth Batch 09
+
+- Kings Seeds | bean-climbing-shiny-fardenlosa | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/shiny-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-shiny-fardenlosa | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/shiny-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-shiny-fardenlosa | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/shiny-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-volcanic | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Volcanic-Bean-4JPG-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-volcanic | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Volcanic-Bean-4JPG-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-volcanic | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Volcanic-Bean-4JPG-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-volcanic | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Volcanic-Bean-4JPG-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-volcanic | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Volcanic-Bean-4JPG-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-yoeme-purple-string | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/purple-string-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-yoeme-purple-string | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/purple-string-1024x768.jpg | Visually reviewed and mapped.
+
+Shiny Fardenlosa and Volcanic now have six stages. Yoeme Purple String gained Seed and First sprout. The production build and all 44 focused browser checks passed.

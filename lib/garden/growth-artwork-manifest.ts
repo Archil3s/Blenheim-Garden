@@ -4318,6 +4318,27 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-shiny-fardenlosa-first-sprout.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/shiny-1024x575.jpg",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-shiny-fardenlosa-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-shiny-fardenlosa-baby-plant.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/shiny-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-shiny-fardenlosa-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-shiny-fardenlosa-semi-mature.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/shiny-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-shiny-fardenlosa-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-shiny-fardenlosa-pre-harvest.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/shiny-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-climbing-volcanic": {
@@ -4327,6 +4348,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-volcanic.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-volcanic-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-volcanic-seed.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Volcanic-Bean-4JPG-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-volcanic-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-volcanic-first-sprout.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Volcanic-Bean-4JPG-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-volcanic-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-volcanic-baby-plant.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Volcanic-Bean-4JPG-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-volcanic-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-volcanic-semi-mature.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Volcanic-Bean-4JPG-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-volcanic-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-volcanic-pre-harvest.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Volcanic-Bean-4JPG-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-climbing-yoeme-purple-string": {
@@ -4335,6 +4391,20 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-yoeme-purple-string.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-yoeme-purple-string.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-yoeme-purple-string-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-yoeme-purple-string-seed.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/purple-string-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-yoeme-purple-string-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-yoeme-purple-string-first-sprout.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/purple-string-1024x768.jpg",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
