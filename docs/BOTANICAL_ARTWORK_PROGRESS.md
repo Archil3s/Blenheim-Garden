@@ -1887,3 +1887,20 @@ Kings Seeds Growth Batch deployed at 5408c64 (https://github.com/Archil3s/Blenhe
 - Kings Seeds | bean-dwarf-colour-combo | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8042-1_a6eb81fc-ed2f-49e3-9084-90d2e0c82e3d.jpg?v=1721601800 | Visually reviewed and mapped.
 
 Borlotto Fire Tongue and Cannellino now have six stages. Colour Combo gained Seed and First sprout, with seed-coat colors inferred because the cultivar photo shows pods. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch deployed at 1c6013f (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44860002004).
+
+## Kings Seeds Growth Batch 13
+
+- Kings Seeds | bean-dwarf-colour-combo | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8042-1_a6eb81fc-ed2f-49e3-9084-90d2e0c82e3d.jpg?v=1721601800 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-colour-combo | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8042-1_a6eb81fc-ed2f-49e3-9084-90d2e0c82e3d.jpg?v=1721601800 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-colour-combo | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8042-1_a6eb81fc-ed2f-49e3-9084-90d2e0c82e3d.jpg?v=1721601800 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-cranberry | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC038-W.png?v=1785456057 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-cranberry | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC038-W.png?v=1785456057 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-cranberry | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC038-W.png?v=1785456057 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-cranberry | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC038-W.png?v=1785456057 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-cranberry | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC038-W.png?v=1785456057 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-fin-de-bagnols | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8043-1_1e7806a5-0aef-46aa-8e49-d53ad79ba42b.jpg?v=1721601827 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-fin-de-bagnols | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8043-1_1e7806a5-0aef-46aa-8e49-d53ad79ba42b.jpg?v=1721601827 | Visually reviewed and mapped.
+
+Colour Combo and Cranberry now have six stages. Fin de Bagnols gained Seed and First sprout. The production build and all 44 focused browser checks passed.
