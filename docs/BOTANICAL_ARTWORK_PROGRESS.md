@@ -1972,3 +1972,20 @@ Kings Seeds Growth Batch deployed at 0e2c905 (https://github.com/Archil3s/Blenhe
 - Kings Seeds | bean-runner-blue-shackamaxon | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/blue-1024x768.jpg | Visually reviewed and mapped.
 
 Xera Select and Blue Lake now have six stages. Blue Shackamaxon gained Seed and First sprout. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch 17 deployed at 069ff8d (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44865446847).
+
+## Kings Seeds Growth Batch 18
+
+- Kings Seeds | bean-runner-blue-shackamaxon | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/blue-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-blue-shackamaxon | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/blue-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-blue-shackamaxon | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/blue-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-cherokee-trail-of-tears | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/tears-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-cherokee-trail-of-tears | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/tears-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-cherokee-trail-of-tears | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/tears-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-cherokee-trail-of-tears | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/tears-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-cherokee-trail-of-tears | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/tears-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-good-mother-stallard | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/mother-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-good-mother-stallard | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/mother-1024x768.jpg | Visually reviewed and mapped.
+
+Blue Shackamaxon and Cherokee Trail of Tears now have six stages. Good Mother Stallard gained Seed and First sprout. The production build and all 44 focused browser checks passed.
