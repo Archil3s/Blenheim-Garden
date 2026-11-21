@@ -1904,3 +1904,20 @@ Kings Seeds Growth Batch deployed at 1c6013f (https://github.com/Archil3s/Blenhe
 - Kings Seeds | bean-dwarf-fin-de-bagnols | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8043-1_1e7806a5-0aef-46aa-8e49-d53ad79ba42b.jpg?v=1721601827 | Visually reviewed and mapped.
 
 Colour Combo and Cranberry now have six stages. Fin de Bagnols gained Seed and First sprout. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch deployed at 347a80b (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44861110535).
+
+## Kings Seeds Growth Batch 14
+
+- Kings Seeds | bean-dwarf-fin-de-bagnols | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8043-1_1e7806a5-0aef-46aa-8e49-d53ad79ba42b.jpg?v=1721601827 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-fin-de-bagnols | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8043-1_1e7806a5-0aef-46aa-8e49-d53ad79ba42b.jpg?v=1721601827 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-fin-de-bagnols | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8043-1_1e7806a5-0aef-46aa-8e49-d53ad79ba42b.jpg?v=1721601827 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-kaiapoi-red | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2022/07/Kaiapoi-Red-Dwarf-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-kaiapoi-red | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2022/07/Kaiapoi-Red-Dwarf-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-kaiapoi-red | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2022/07/Kaiapoi-Red-Dwarf-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-kaiapoi-red | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2022/07/Kaiapoi-Red-Dwarf-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-kaiapoi-red | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2022/07/Kaiapoi-Red-Dwarf-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-mayocoba | seed | 512 px master and 128 px gallery | https://shop.woodlandfoods.com/img/WF_Images/B91-mayocoba-beans-main.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-mayocoba | first-sprout | 512 px master and 128 px gallery | https://shop.woodlandfoods.com/img/WF_Images/B91-mayocoba-beans-main.jpg | Visually reviewed and mapped.
+
+Fin de Bagnols and Kaiapoi Red now have six stages. Mayocoba gained Seed and First sprout. The production build and all 44 focused browser checks passed.
