@@ -1802,3 +1802,20 @@ Kings Seeds Growth Batch deployed at 3475ce8 (https://github.com/Archil3s/Blenhe
 - Kings Seeds | bean-climbing-mangere-pole | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Mangere-Pole-Bean-4JPG-1024x575.jpg | Visually reviewed and mapped.
 
 Hopi Purple String and Lima Del Papa now have six stages. Mangere Pole gained Seed and First sprout. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch deployed at 100404a (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44854237087).
+
+## Kings Seeds Growth Batch 08
+
+- Kings Seeds | bean-climbing-mangere-pole | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Mangere-Pole-Bean-4JPG-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-mangere-pole | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Mangere-Pole-Bean-4JPG-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-mangere-pole | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Mangere-Pole-Bean-4JPG-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-rydal-a-yellow | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC042-W.png?v=1785456978 | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-rydal-a-yellow | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC042-W.png?v=1785456978 | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-rydal-a-yellow | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC042-W.png?v=1785456978 | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-rydal-a-yellow | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC042-W.png?v=1785456978 | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-rydal-a-yellow | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC042-W.png?v=1785456978 | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-shiny-fardenlosa | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/shiny-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-shiny-fardenlosa | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/shiny-1024x575.jpg | Visually reviewed and mapped.
+
+Mangere Pole and Rydal A Yellow now have six stages. Shiny Fardenlosa gained Seed and First sprout. The production build and all 44 focused browser checks passed.
