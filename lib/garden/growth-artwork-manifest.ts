@@ -1132,6 +1132,13 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/artichoke-green-globe.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/artichoke-green-globe",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/artichoke-green-globe-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/artichoke-green-globe-seed.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/artichoke-green-globe",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:asparagus-mary-washington": {
@@ -3912,6 +3919,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/amaranth-green-red.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/amaranth-green-red",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/amaranth-green-red-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/amaranth-green-red-seed.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/amaranth-green-red",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/amaranth-green-red-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/amaranth-green-red-first-sprout.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/amaranth-green-red",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/amaranth-green-red-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/amaranth-green-red-baby-plant.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/amaranth-green-red",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/amaranth-green-red-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/amaranth-green-red-semi-mature.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/amaranth-green-red",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/amaranth-green-red-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/amaranth-green-red-pre-harvest.png",
+      "referenceUrl": "https://www.kingsseeds.co.nz/products/amaranth-green-red",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-runner-purple-star": {
@@ -3963,6 +4005,34 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/growth/kings-seeds/master/amaranth-garnet-red-harvest.png",
       "gallery": "/plant-icons/growth/kings-seeds/gallery/amaranth-garnet-red-harvest.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/cdn/shop/files/V8379-2_1080x.png?v=1721082912",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/amaranth-garnet-red-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/amaranth-garnet-red-seed.png",
+      "referenceUrl": "https://www.winnowseedco.ca/product-page/amaranth-garnet-red",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/amaranth-garnet-red-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/amaranth-garnet-red-first-sprout.png",
+      "referenceUrl": "https://www.winnowseedco.ca/product-page/amaranth-garnet-red",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/amaranth-garnet-red-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/amaranth-garnet-red-baby-plant.png",
+      "referenceUrl": "https://www.winnowseedco.ca/product-page/amaranth-garnet-red",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/amaranth-garnet-red-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/amaranth-garnet-red-semi-mature.png",
+      "referenceUrl": "https://www.winnowseedco.ca/product-page/amaranth-garnet-red",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },

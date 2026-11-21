@@ -1683,3 +1683,20 @@ Rasmussen Growth Batch 17 deployed at 03179f2 (https://github.com/Archil3s/Blenh
 
 Rocoto Manzano Red Flat now has six mapped stages. Its reviewed Harvest illustration supplies the card and showcase bed in the isolated test garden.
 The production build and all 44 focused browser checks passed.
+
+Rasmussen Growth Batch 18 deployed at a5b9596 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44845279873).
+
+## Kings Seeds Growth Batch 01
+
+- Kings Seeds | amaranth-garnet-red | seed | 512 px master and 128 px gallery | https://www.winnowseedco.ca/product-page/amaranth-garnet-red | Visually reviewed and mapped.
+- Kings Seeds | amaranth-garnet-red | first-sprout | 512 px master and 128 px gallery | https://www.winnowseedco.ca/product-page/amaranth-garnet-red | Visually reviewed and mapped.
+- Kings Seeds | amaranth-garnet-red | baby-plant | 512 px master and 128 px gallery | https://www.winnowseedco.ca/product-page/amaranth-garnet-red | Visually reviewed and mapped.
+- Kings Seeds | amaranth-garnet-red | semi-mature | 512 px master and 128 px gallery | https://www.winnowseedco.ca/product-page/amaranth-garnet-red | Visually reviewed and mapped.
+- Kings Seeds | amaranth-green-red | seed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/amaranth-green-red | Visually reviewed and mapped.
+- Kings Seeds | amaranth-green-red | first-sprout | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/amaranth-green-red | Visually reviewed and mapped.
+- Kings Seeds | amaranth-green-red | baby-plant | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/amaranth-green-red | Visually reviewed and mapped.
+- Kings Seeds | amaranth-green-red | semi-mature | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/amaranth-green-red | Visually reviewed and mapped.
+- Kings Seeds | amaranth-green-red | pre-harvest | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/amaranth-green-red | Visually reviewed and mapped.
+- Kings Seeds | artichoke-green-globe | seed | 512 px master and 128 px gallery | https://www.kingsseeds.co.nz/products/artichoke-green-globe | Visually reviewed and mapped.
+
+Two amaranth Seed renders were regenerated to isolate the seeds. The production build and all 44 focused browser checks passed.
