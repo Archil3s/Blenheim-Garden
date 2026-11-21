@@ -1751,3 +1751,20 @@ Kings Seeds Growth Batch deployed at 9844061 (https://github.com/Archil3s/Blenhe
 - Kings Seeds | bean-asian-yard-long | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8055-1_0fcbffb4-ea5d-4948-8c25-edbff9e4c389.jpg?v=1721602213 | Visually reviewed and mapped.
 
 Asian winged bean now has six stages. Asparagus pea gained three stages and Asian yard-long bean gained two. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch deployed at c9730b2 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44850599382).
+
+## Kings Seeds Growth Batch 05
+
+- Kings Seeds | bean-asian-yard-long | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8055-1_0fcbffb4-ea5d-4948-8c25-edbff9e4c389.jpg?v=1721602213 | Visually reviewed and mapped.
+- Kings Seeds | bean-asian-yard-long | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8055-1_0fcbffb4-ea5d-4948-8c25-edbff9e4c389.jpg?v=1721602213 | Visually reviewed and mapped.
+- Kings Seeds | bean-asian-yard-long | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8055-1_0fcbffb4-ea5d-4948-8c25-edbff9e4c389.jpg?v=1721602213 | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-bicolour-pean | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/pea-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-bicolour-pean | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/pea-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-bicolour-pean | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/pea-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-bicolour-pean | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/pea-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-bicolour-pean | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/pea-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-cornplanter-purple | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC032-W.png?v=1785463863 | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-cornplanter-purple | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC032-W.png?v=1785463863 | Visually reviewed and mapped.
+
+Asian yard-long bean and Bicolour Pean now have six stages. Cornplanter Purple gained Seed and First sprout. The production build and all 44 focused browser checks passed.

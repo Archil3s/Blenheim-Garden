@@ -1366,6 +1366,27 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-asian-yard-long-first-sprout.png",
       "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8055-1_0fcbffb4-ea5d-4948-8c25-edbff9e4c389.jpg?v=1721602213",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-asian-yard-long-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-asian-yard-long-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8055-1_0fcbffb4-ea5d-4948-8c25-edbff9e4c389.jpg?v=1721602213",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-asian-yard-long-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-asian-yard-long-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8055-1_0fcbffb4-ea5d-4948-8c25-edbff9e4c389.jpg?v=1721602213",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-asian-yard-long-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-asian-yard-long-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8055-1_0fcbffb4-ea5d-4948-8c25-edbff9e4c389.jpg?v=1721602213",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-climbing-bicolour-pean": {
@@ -1375,6 +1396,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-bicolour-pean.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-bicolour-pean-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-bicolour-pean-seed.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/pea-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-bicolour-pean-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-bicolour-pean-first-sprout.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/pea-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-bicolour-pean-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-bicolour-pean-baby-plant.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/pea-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-bicolour-pean-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-bicolour-pean-semi-mature.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/pea-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-bicolour-pean-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-bicolour-pean-pre-harvest.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/pea-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-climbing-cornplanter-purple": {
@@ -1383,6 +1439,20 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-cornplanter-purple.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-cornplanter-purple.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-climbing-cornplanter-purple",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-cornplanter-purple-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-cornplanter-purple-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC032-W.png?v=1785463863",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-cornplanter-purple-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-cornplanter-purple-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC032-W.png?v=1785463863",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
