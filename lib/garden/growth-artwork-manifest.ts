@@ -1454,6 +1454,27 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-cornplanter-purple-first-sprout.png",
       "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC032-W.png?v=1785463863",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-cornplanter-purple-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-cornplanter-purple-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC032-W.png?v=1785463863",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-cornplanter-purple-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-cornplanter-purple-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC032-W.png?v=1785463863",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-cornplanter-purple-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-cornplanter-purple-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC032-W.png?v=1785463863",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-climbing-hopi-black-pinto": {
@@ -1463,6 +1484,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-hopi-black-pinto.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-hopi-black-pinto-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-hopi-black-pinto-seed.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-black-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-hopi-black-pinto-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-hopi-black-pinto-first-sprout.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-black-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-hopi-black-pinto-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-hopi-black-pinto-baby-plant.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-black-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-hopi-black-pinto-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-hopi-black-pinto-semi-mature.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-black-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-hopi-black-pinto-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-hopi-black-pinto-pre-harvest.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-black-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-climbing-hopi-purple-string": {
@@ -1471,6 +1527,20 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-hopi-purple-string.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-hopi-purple-string.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-hopi-purple-string-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-hopi-purple-string-seed.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2021/04/Hopi-Purple-StringJPG-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-hopi-purple-string-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-hopi-purple-string-first-sprout.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2021/04/Hopi-Purple-StringJPG-1024x575.jpg",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },

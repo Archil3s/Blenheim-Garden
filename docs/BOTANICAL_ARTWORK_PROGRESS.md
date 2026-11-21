@@ -1768,3 +1768,20 @@ Kings Seeds Growth Batch deployed at c9730b2 (https://github.com/Archil3s/Blenhe
 - Kings Seeds | bean-climbing-cornplanter-purple | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC032-W.png?v=1785463863 | Visually reviewed and mapped.
 
 Asian yard-long bean and Bicolour Pean now have six stages. Cornplanter Purple gained Seed and First sprout. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch deployed at 7956816 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44851855441).
+
+## Kings Seeds Growth Batch 06
+
+- Kings Seeds | bean-climbing-cornplanter-purple | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC032-W.png?v=1785463863 | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-cornplanter-purple | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC032-W.png?v=1785463863 | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-cornplanter-purple | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC032-W.png?v=1785463863 | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-hopi-black-pinto | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-black-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-hopi-black-pinto | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-black-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-hopi-black-pinto | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-black-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-hopi-black-pinto | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-black-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-hopi-black-pinto | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-black-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-hopi-purple-string | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2021/04/Hopi-Purple-StringJPG-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-hopi-purple-string | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2021/04/Hopi-Purple-StringJPG-1024x575.jpg | Visually reviewed and mapped.
+
+Cornplanter Purple and Hopi Black Pinto now have six stages. Hopi Purple String gained Seed and First sprout. The production build and all 44 focused browser checks passed.
