@@ -1870,3 +1870,20 @@ Kings Seeds Growth Batch deployed at b386c91 (https://github.com/Archil3s/Blenhe
 - Kings Seeds | bean-dwarf-borlotto-fire-tongue | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8039-2.png?v=1720423767 | Visually reviewed and mapped.
 
 Berrgold Improved and Black Valentine now have six stages. Borlotto Fire Tongue gained Seed and First sprout. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch deployed at 5408c64 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44858721648).
+
+## Kings Seeds Growth Batch 12
+
+- Kings Seeds | bean-dwarf-borlotto-fire-tongue | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8039-2.png?v=1720423767 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-borlotto-fire-tongue | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8039-2.png?v=1720423767 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-borlotto-fire-tongue | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8039-2.png?v=1720423767 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-cannellino | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8040-1.png?v=1687991584 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-cannellino | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8040-1.png?v=1687991584 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-cannellino | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8040-1.png?v=1687991584 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-cannellino | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8040-1.png?v=1687991584 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-cannellino | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8040-1.png?v=1687991584 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-colour-combo | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8042-1_a6eb81fc-ed2f-49e3-9084-90d2e0c82e3d.jpg?v=1721601800 | Visually reviewed and mapped.
+- Kings Seeds | bean-dwarf-colour-combo | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8042-1_a6eb81fc-ed2f-49e3-9084-90d2e0c82e3d.jpg?v=1721601800 | Visually reviewed and mapped.
+
+Borlotto Fire Tongue and Cannellino now have six stages. Colour Combo gained Seed and First sprout, with seed-coat colors inferred because the cultivar photo shows pods. The production build and all 44 focused browser checks passed.

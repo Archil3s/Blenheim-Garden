@@ -1674,6 +1674,27 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-borlotto-fire-tongue-first-sprout.png",
       "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8039-2.png?v=1720423767",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-borlotto-fire-tongue-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-borlotto-fire-tongue-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8039-2.png?v=1720423767",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-borlotto-fire-tongue-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-borlotto-fire-tongue-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8039-2.png?v=1720423767",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-borlotto-fire-tongue-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-borlotto-fire-tongue-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8039-2.png?v=1720423767",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-dwarf-cannellino": {
@@ -1683,6 +1704,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-cannellino.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-cannellino",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-cannellino-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-cannellino-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8040-1.png?v=1687991584",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-cannellino-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-cannellino-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8040-1.png?v=1687991584",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-cannellino-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-cannellino-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8040-1.png?v=1687991584",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-cannellino-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-cannellino-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8040-1.png?v=1687991584",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-cannellino-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-cannellino-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8040-1.png?v=1687991584",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-dwarf-colour-combo": {
@@ -1691,6 +1747,20 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-dwarf-colour-combo.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-dwarf-colour-combo.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-dwarf-colour-combo",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-colour-combo-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-colour-combo-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8042-1_a6eb81fc-ed2f-49e3-9084-90d2e0c82e3d.jpg?v=1721601800",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-dwarf-colour-combo-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-dwarf-colour-combo-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8042-1_a6eb81fc-ed2f-49e3-9084-90d2e0c82e3d.jpg?v=1721601800",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
