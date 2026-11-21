@@ -517,3 +517,135 @@
   border-radius: 50%;
   z-index: 1;
 }
+
+.planner-phone-actions,
+.gv-phone-inspector-title { display: none; }
+
+@media (max-width: 760px) {
+  .gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d)[data-report-view=plan] {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+  }
+  .reference-planner.gv-device-mobile:not(.gv-view-3d) :is(.gv-titlebar, .gv-quickbar) {
+    flex-shrink: 0;
+  }
+  .gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d)[data-report-view=plan] .gv-body {
+    flex: 1;
+    height: auto;
+  }
+  .reference-planner.gv-device-mobile[data-report-view=plan][data-mobile-tools=false]:not(.gv-view-3d)
+    :is(.gv-quickbar, .gv-rail, .gv-panel-reopen) {
+    display: none;
+  }
+  .gv-app.reference-planner.gv-device-mobile[data-report-view=plan][data-mobile-tools=false]:not(.gv-view-3d) .gv-body {
+    grid-template-columns: 0 minmax(0, 1fr) !important;
+  }
+
+  .reference-planner.gv-device-mobile[data-report-view=plan]:not(.gv-view-3d) .planner-phone-actions {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    flex-shrink: 0;
+    gap: 4px;
+    padding: 4px 6px max(4px, env(safe-area-inset-bottom));
+    border-top: 1px solid #ccd6d1;
+    background: #f7faf8;
+  }
+  .planner-phone-actions :is(button, a) {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 3px;
+    min-height: 52px;
+    padding: 4px 2px;
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    color: #245b43;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+    cursor: pointer;
+  }
+  .planner-phone-actions [aria-expanded=true] { background: #e1f3e9; }
+  .planner-phone-actions svg { width: 18px; height: 18px; }
+
+  .gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-context {
+    left: 0 !important;
+    max-height: min(58dvh, 100%) !important;
+    border-radius: 14px 14px 0 0;
+  }
+  .gv-app.reference-planner.gv-device-mobile:not(.gv-view-3d) .gv-context[data-catalogue=true],
+  .gv-app.reference-planner.gv-device-mobile[data-tools-expanded=true]:not(.gv-view-3d) .gv-context {
+    max-height: min(72dvh, 100%) !important;
+  }
+  .reference-planner.gv-device-mobile .gv-desktop-inspector-title { display: none; }
+  .reference-planner.gv-device-mobile .gv-phone-inspector-title { display: inline; }
+  .reference-planner.gv-device-mobile .gv-context-content {
+    overscroll-behavior: contain;
+    scroll-padding-block: 10px;
+  }
+  .reference-planner.gv-device-mobile .gv-context :is(button, summary, input:not([type=checkbox]), select),
+  .reference-planner.gv-device-mobile .gv-stage-status :is(button, summary) {
+    min-height: 44px;
+  }
+  .reference-planner.gv-device-mobile .gv-context summary,
+  .reference-planner.gv-device-mobile .gv-stage-status summary {
+    align-content: center;
+  }
+  .reference-planner.gv-device-mobile .gv-stage-status { height: 48px; }
+  .reference-planner.gv-device-mobile .gv-stage-scroll { height: calc(100% - 48px); }
+  .reference-planner.gv-device-mobile .planner-garden-menu > div { top: 46px; }
+  .reference-planner.gv-device-mobile .gv-stage-status > code { display: none; }
+  .reference-planner.gv-device-mobile .gv-context :is(input:not([type=checkbox]), select),
+  .garden-size-dialog.plan-beds-dialog input { font-size: 16px; }
+  .reference-planner.gv-device-mobile .gv-context[data-catalogue=true] :is(.gv-filters, .catalogue-switcher) {
+    position: static;
+  }
+  .reference-planner.gv-device-mobile .gv-context[data-catalogue=true] .gv-filters :is(input, select) {
+    min-height: 44px !important;
+    font-size: 16px;
+  }
+  .reference-planner.gv-device-mobile .gv-context[data-catalogue=true] .gv-context-content {
+    scroll-padding-top: 12px;
+  }
+  .reference-planner.gv-device-mobile .gv-context[data-catalogue=true] .gv-catalogue-options:has(input[placeholder="Object name"]) {
+    top: 0;
+  }
+  .reference-planner.gv-device-mobile .gv-context[data-catalogue=true] .gv-plant-list:has(.plant-entry-actions) > button {
+    padding-inline: 10px 100px !important;
+  }
+  .reference-planner.gv-device-mobile .plant-entry-actions {
+    left: auto;
+    right: 6px;
+    display: flex;
+    width: auto;
+  }
+  .reference-planner.gv-device-mobile .plant-entry-actions button { width: 44px; height: 44px; }
+  .reference-planner.gv-device-mobile .gv-cloud-state { display: none; }
+
+  .garden-size-dialog.plan-beds-dialog {
+    inset: auto 0 0;
+    width: 100%;
+    max-width: none;
+    max-height: 85dvh;
+    margin: 0;
+    padding: 16px 16px max(16px, env(safe-area-inset-bottom));
+    border-radius: 14px 14px 0 0;
+  }
+  .plan-beds-dialog header button { min-width: 44px; min-height: 44px; }
+  .plan-beds-dialog li { grid-template-columns: minmax(0, 1fr); }
+  .plan-beds-dialog .plan-item-select { display: grid; gap: 3px; min-height: 52px; }
+  .plan-beds-dialog li small { text-transform: none; overflow-wrap: anywhere; }
+}
+
+@media (max-width: 760px) {
+  .gv-app.reference-planner.gv-device-mobile[data-mobile-tools=true]:not(.gv-view-3d) .gv-context {
+    left: 50px !important;
+    border-top-left-radius: 14px;
+  }
+}

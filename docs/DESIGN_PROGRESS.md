@@ -577,3 +577,24 @@ The isolated test garden reads generated artwork by supplier and catalogue ID.
 The card uses the 128 px image and the inspector opens the 512 px master with
 cultivar and style provenance. The existing two-column phone layout is used.
 Production build and 28 focused Playwright checks passed on desktop, laptop, tablet and phone. Desktop and 390 px phone captures were inspected. User feedback is pending.
+
+## One-handed planner and progress logging P-017 — 21 November 2026
+
+The 360 px audit exposed a horizontally clipped toolbar and a 54 px tool rail
+that reduced the drawing area. The phone layout gives the canvas the full
+width and moves Beds, Find plants, Tools and Log progress into a bottom bar.
+Tools restores the editing ribbon and rail, and Fit recalculates when the
+available canvas changes. Beds lists varieties and counts for the selected
+planning month and opens the existing bed inspector. The catalogue and inspector
+use one scrolling surface, larger touch targets and 16 px form fields. The
+progress link opens the photo form directly.
+
+Chromium touch tests passed at 390 × 844 and 360 × 800, including a protected
+save against a test API, reload with unchanged plantings, catalogue lookup,
+layout switching and a test photo upload. Desktop, laptop and tablet passed
+31 focused regression checks across 1920 × 1080, 1440 × 900 and 1024 × 768.
+Five phone checks passed. The existing reports/export browser scenario still
+uses the removed More summary selector and was excluded from the final run.
+Production build passed. ESLint reported two existing icon-gallery warnings.
+Before/after screenshots and the four-screen phone walkthrough are in the
+task outputs. User feedback is pending.

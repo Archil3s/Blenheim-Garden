@@ -14,11 +14,9 @@ function defaultMode(): DeviceLayout {
 export function DeviceLayoutToggleBridge() {
   useEffect(() => {
     const app = document.querySelector<HTMLElement>(".gv-app");
-    const quickActions = document.querySelector<HTMLElement>(".gv-layout-options");
-    if (!app || !quickActions || app.querySelector(".gv-device-toggle")) return;
-
+    const moreMenu = app?.querySelector(".gv-more");
+    if (!app || !moreMenu) return;
     const appRoot = app;
-    const quickBarActions = quickActions;
 
     const wrapper = document.createElement("div");
     wrapper.className = "gv-device-toggle";
@@ -38,13 +36,19 @@ export function DeviceLayoutToggleBridge() {
     desktop.title = "Use the full desktop planner layout";
 
     wrapper.append(mobile, desktop);
-    quickBarActions.prepend(wrapper);
+    const attachOptions = () => {
+      const options = moreMenu.querySelector(".gv-layout-options");
+      if (options && wrapper.parentElement !== options) options.prepend(wrapper);
+    };
+    const menuObserver = new MutationObserver(attachOptions);
+    menuObserver.observe(moreMenu, { childList: true, subtree: true });
+    attachOptions();
 
     const buttons = [mobile, desktop];
 
     function apply(mode: DeviceLayout, persist = true) {
       appRoot.classList.toggle("gv-device-mobile", mode === "mobile");
-      appRoot.classList.toggle("gv-device-desktop", mode === "desktop");
+      appRoot.classList.toggle("gv-device-desktop", mode === "desktop" && saved === "desktop");
       appRoot.dataset.deviceLayout = mode;
       buttons.forEach((button) => {
         const active = button.dataset.deviceLayout === mode;
@@ -83,6 +87,7 @@ export function DeviceLayoutToggleBridge() {
     return () => {
       wrapper.removeEventListener("click", onClick);
       window.removeEventListener("resize", onViewportResize);
+      menuObserver.disconnect();
       wrapper.remove();
       appRoot.classList.remove("gv-device-mobile", "gv-device-desktop");
       delete appRoot.dataset.deviceLayout;

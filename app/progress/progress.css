@@ -39,3 +39,31 @@
   .progress-collage-info strong { font-size:12px; }
   .progress-lightbox-header { padding:9px 11px; }
 }
+
+.progress-log-link { display: none; }
+@media (max-width: 760px) {
+  .progress-topbar nav {
+    flex-wrap: wrap;
+    white-space: normal;
+    gap: 0 16px;
+    overflow: visible;
+  }
+  .progress-topbar nav a { display: grid; align-items: center; min-height: 44px; }
+  .photo-progress .progress-log-link {
+    display: grid;
+    place-items: center;
+    min-height: 48px;
+    margin-top: 16px;
+    border-radius: 4px;
+    background: var(--pine);
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .progress-add { scroll-margin-top: 12px; }
+  .progress-form { padding: 14px; }
+  .progress-form :is(input, select, textarea) { font-size: 16px; }
+  .progress-upload-actions { display: grid; }
+  .progress-upload-actions button { min-height: 48px; }
+  .progress-timeline button { min-height: 44px; }
+}
