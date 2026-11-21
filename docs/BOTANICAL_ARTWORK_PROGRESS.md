@@ -1652,3 +1652,20 @@ Rasmussen Growth Batch 15 deployed at 1d3ef4d (https://github.com/Archil3s/Blenh
 - Rasmussen | bahamian-goat-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://pepperjoe.com/cdn/shop/files/Bahamian-Goat-Pepper.02.jpg?v=1730930995&width=1946 | Visually reviewed and mapped.
 
 Violet de Provence Artichoke and Bahamian Goat Chilli each have six mapped stages. Seed and seedling anatomy follows the pepper references. The production build and all 44 focused gallery checks passed.
+
+Rasmussen Growth Batch 16 deployed at a015fd3 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44625689685).
+
+## Rasmussen Growth Batch 17
+
+- Rasmussen | beetroot-chioggia-150-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_Chioggia_150_seeds.png?v=1776722697&width=1946 | Visually reviewed and mapped.
+- Rasmussen | beetroot-chioggia-150-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_Chioggia_150_seeds.png?v=1776722697&width=1946 | Visually reviewed and mapped.
+- Rasmussen | beetroot-chioggia-150-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_Chioggia_150_seeds.png?v=1776722697&width=1946 | Visually reviewed and mapped.
+- Rasmussen | beetroot-chioggia-150-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_Chioggia_150_seeds.png?v=1776722697&width=1946 | Visually reviewed and mapped.
+- Rasmussen | beetroot-chioggia-150-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_Chioggia_150_seeds.png?v=1776722697&width=1946 | Visually reviewed and mapped.
+- Rasmussen | beetroot-white-albino-100-seeds | seed | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_White_Albino_100_seeds.png?v=1776721352&width=1946 | Visually reviewed and mapped.
+- Rasmussen | beetroot-white-albino-100-seeds | first-sprout | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_White_Albino_100_seeds.png?v=1776721352&width=1946 | Visually reviewed and mapped.
+- Rasmussen | beetroot-white-albino-100-seeds | baby-plant | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_White_Albino_100_seeds.png?v=1776721352&width=1946 | Visually reviewed and mapped.
+- Rasmussen | beetroot-white-albino-100-seeds | semi-mature | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_White_Albino_100_seeds.png?v=1776721352&width=1946 | Visually reviewed and mapped.
+- Rasmussen | beetroot-white-albino-100-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_White_Albino_100_seeds.png?v=1776721352&width=1946 | Visually reviewed and mapped.
+
+Chioggia and White Albino beetroot each have six mapped stages. The smaller White Albino root represents Semi-mature, and the larger root represents Pre-harvest. The production build and all 44 focused browser checks passed.
