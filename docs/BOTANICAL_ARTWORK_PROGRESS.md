@@ -1717,3 +1717,20 @@ Kings Seeds Growth Batch 01 deployed at 09d39e1 (https://github.com/Archil3s/Ble
 - Kings Seeds | asparagus-pacific-challenger-f1 | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8388-1_b870f493-4409-4c07-94ee-74bf4782e061.jpg?v=1725603906 | Visually reviewed and mapped.
 
 Green Globe artichoke and Mary Washington asparagus now have six stages. The Pacific Challenger F1 Seed illustration is also mapped. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch 02 deployed at b4572c2 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44848112466).
+
+## Kings Seeds Growth Batch 03
+
+- Kings Seeds | asparagus-pacific-challenger-f1 | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8388-1_b870f493-4409-4c07-94ee-74bf4782e061.jpg?v=1725603906 | Visually reviewed and mapped.
+- Kings Seeds | asparagus-pacific-challenger-f1 | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8388-1_b870f493-4409-4c07-94ee-74bf4782e061.jpg?v=1725603906 | Visually reviewed and mapped.
+- Kings Seeds | asparagus-pacific-challenger-f1 | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8388-1_b870f493-4409-4c07-94ee-74bf4782e061.jpg?v=1725603906 | Visually reviewed and mapped.
+- Kings Seeds | asparagus-pacific-challenger-f1 | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8388-1_b870f493-4409-4c07-94ee-74bf4782e061.jpg?v=1725603906 | Visually reviewed and mapped.
+- Kings Seeds | asparagus-pacific-purple-f1 | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8402-1_1246125c-cce3-472d-ae22-d08f39aa7802.png?v=1752445819 | Visually reviewed and mapped.
+- Kings Seeds | asparagus-pacific-purple-f1 | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8402-1_1246125c-cce3-472d-ae22-d08f39aa7802.png?v=1752445819 | Visually reviewed and mapped.
+- Kings Seeds | asparagus-pacific-purple-f1 | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8402-1_1246125c-cce3-472d-ae22-d08f39aa7802.png?v=1752445819 | Visually reviewed and mapped.
+- Kings Seeds | asparagus-pacific-purple-f1 | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8402-1_1246125c-cce3-472d-ae22-d08f39aa7802.png?v=1752445819 | Visually reviewed and mapped.
+- Kings Seeds | asparagus-pacific-purple-f1 | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8402-1_1246125c-cce3-472d-ae22-d08f39aa7802.png?v=1752445819 | Visually reviewed and mapped.
+- Kings Seeds | asparagus-pea | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8033-1_944823dc-9076-4254-9eff-d730dcd9e008.jpg?v=1721601476 | Visually reviewed and mapped.
+
+Pacific Challenger F1 and Pacific Purple F1 now have six stages. Asparagus pea Seed is also mapped. The production build and all 44 focused browser checks passed.

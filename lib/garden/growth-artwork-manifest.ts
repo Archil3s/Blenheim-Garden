@@ -1227,6 +1227,34 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pacific-challenger-f1-seed.png",
       "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8388-1_b870f493-4409-4c07-94ee-74bf4782e061.jpg?v=1725603906",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pacific-challenger-f1-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pacific-challenger-f1-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8388-1_b870f493-4409-4c07-94ee-74bf4782e061.jpg?v=1725603906",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pacific-challenger-f1-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pacific-challenger-f1-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8388-1_b870f493-4409-4c07-94ee-74bf4782e061.jpg?v=1725603906",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pacific-challenger-f1-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pacific-challenger-f1-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8388-1_b870f493-4409-4c07-94ee-74bf4782e061.jpg?v=1725603906",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pacific-challenger-f1-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pacific-challenger-f1-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8388-1_b870f493-4409-4c07-94ee-74bf4782e061.jpg?v=1725603906",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:asparagus-pacific-purple-f1": {
@@ -1235,6 +1263,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/asparagus-pacific-purple-f1.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/asparagus-pacific-purple-f1.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/asparagus-pacific-purple-f1",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pacific-purple-f1-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pacific-purple-f1-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8402-1_1246125c-cce3-472d-ae22-d08f39aa7802.png?v=1752445819",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pacific-purple-f1-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pacific-purple-f1-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8402-1_1246125c-cce3-472d-ae22-d08f39aa7802.png?v=1752445819",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pacific-purple-f1-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pacific-purple-f1-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8402-1_1246125c-cce3-472d-ae22-d08f39aa7802.png?v=1752445819",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pacific-purple-f1-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pacific-purple-f1-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8402-1_1246125c-cce3-472d-ae22-d08f39aa7802.png?v=1752445819",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pacific-purple-f1-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pacific-purple-f1-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8402-1_1246125c-cce3-472d-ae22-d08f39aa7802.png?v=1752445819",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
@@ -4119,6 +4182,13 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/growth/kings-seeds/master/asparagus-pea-harvest.png",
       "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pea-harvest.png",
       "referenceUrl": "https://www.kingsseeds.com/images/thumbs/0009022_10301-1_550.jpeg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/asparagus-pea-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/asparagus-pea-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8033-1_944823dc-9076-4254-9eff-d730dcd9e008.jpg?v=1721601476",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
