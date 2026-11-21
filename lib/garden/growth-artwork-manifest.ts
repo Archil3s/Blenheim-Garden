@@ -7609,6 +7609,50 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "referenceUrl": "https://www.rareseeds.com/burdock-takinogawa",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
+  },
+  "rasmussen:rocoto-manzano-red-flat-chilli-seeds-10-seeds": {
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/rocoto-manzano-red-flat-chilli-seeds-10-seeds-seed.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/rocoto-manzano-red-flat-chilli-seeds-10-seeds-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0928/4098/4879/files/Rocoto_Manzano_-_Red_Flat_chilli_Seeds_10_seeds.png?v=1791500862",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/rocoto-manzano-red-flat-chilli-seeds-10-seeds-first-sprout.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/rocoto-manzano-red-flat-chilli-seeds-10-seeds-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0928/4098/4879/files/Rocoto_Manzano_-_Red_Flat_chilli_Seeds_10_seeds.png?v=1791500862",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/rocoto-manzano-red-flat-chilli-seeds-10-seeds-baby-plant.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/rocoto-manzano-red-flat-chilli-seeds-10-seeds-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0928/4098/4879/files/Rocoto_Manzano_-_Red_Flat_chilli_Seeds_10_seeds.png?v=1791500862",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/rocoto-manzano-red-flat-chilli-seeds-10-seeds-semi-mature.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/rocoto-manzano-red-flat-chilli-seeds-10-seeds-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0928/4098/4879/files/Rocoto_Manzano_-_Red_Flat_chilli_Seeds_10_seeds.png?v=1791500862",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/rocoto-manzano-red-flat-chilli-seeds-10-seeds-pre-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/rocoto-manzano-red-flat-chilli-seeds-10-seeds-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0928/4098/4879/files/Rocoto_Manzano_-_Red_Flat_chilli_Seeds_10_seeds.png?v=1791500862",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/rasmussen/master/rocoto-manzano-red-flat-chilli-seeds-10-seeds-harvest.png",
+      "gallery": "/plant-icons/growth/rasmussen/gallery/rocoto-manzano-red-flat-chilli-seeds-10-seeds-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0928/4098/4879/files/Rocoto_Manzano_-_Red_Flat_chilli_Seeds_10_seeds.png?v=1791500862",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    }
   }
 };
 

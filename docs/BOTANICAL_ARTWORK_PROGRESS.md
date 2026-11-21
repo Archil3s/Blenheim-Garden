@@ -1669,3 +1669,17 @@ Rasmussen Growth Batch 16 deployed at a015fd3 (https://github.com/Archil3s/Blenh
 - Rasmussen | beetroot-white-albino-100-seeds | pre-harvest | 512 px master and 128 px gallery | https://rasmussengardens.co.nz/cdn/shop/files/Beetroot_-_White_Albino_100_seeds.png?v=1776721352&width=1946 | Visually reviewed and mapped.
 
 Chioggia and White Albino beetroot each have six mapped stages. The smaller White Albino root represents Semi-mature, and the larger root represents Pre-harvest. The production build and all 44 focused browser checks passed.
+
+Rasmussen Growth Batch 17 deployed at 03179f2 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44844056097).
+
+## Rasmussen Growth Batch 18
+
+- Rasmussen | rocoto-manzano-red-flat-chilli-seeds-10-seeds | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0928/4098/4879/files/Rocoto_Manzano_-_Red_Flat_chilli_Seeds_10_seeds.png?v=1791500862 | Visually reviewed and mapped.
+- Rasmussen | rocoto-manzano-red-flat-chilli-seeds-10-seeds | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0928/4098/4879/files/Rocoto_Manzano_-_Red_Flat_chilli_Seeds_10_seeds.png?v=1791500862 | Visually reviewed and mapped.
+- Rasmussen | rocoto-manzano-red-flat-chilli-seeds-10-seeds | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0928/4098/4879/files/Rocoto_Manzano_-_Red_Flat_chilli_Seeds_10_seeds.png?v=1791500862 | Visually reviewed and mapped.
+- Rasmussen | rocoto-manzano-red-flat-chilli-seeds-10-seeds | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0928/4098/4879/files/Rocoto_Manzano_-_Red_Flat_chilli_Seeds_10_seeds.png?v=1791500862 | Visually reviewed and mapped.
+- Rasmussen | rocoto-manzano-red-flat-chilli-seeds-10-seeds | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0928/4098/4879/files/Rocoto_Manzano_-_Red_Flat_chilli_Seeds_10_seeds.png?v=1791500862 | Visually reviewed and mapped.
+- Rasmussen | rocoto-manzano-red-flat-chilli-seeds-10-seeds | harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0928/4098/4879/files/Rocoto_Manzano_-_Red_Flat_chilli_Seeds_10_seeds.png?v=1791500862 | Visually reviewed and mapped.
+
+Rocoto Manzano Red Flat now has six mapped stages. Its reviewed Harvest illustration supplies the card and showcase bed in the isolated test garden.
+The production build and all 44 focused browser checks passed.

@@ -32,11 +32,16 @@ test("pending artwork stays unmapped and verified originals retain their source"
   await expect(page.locator("#tg-inspector").getByRole("link", { name: /Open original image/ }))
     .toHaveAttribute("href", "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png");
 
-  await page.getByRole("searchbox", { name: "SEARCH BY CROP OR VARIETY OR SUPPLIER" }).fill("Rocoto Manzano - Red Flat");
+  await page.getByRole("searchbox").fill("Rocoto Manzano - Red Flat");
   await expect(page.locator(".tg-plot")).toHaveCount(1);
-  await expect(page.locator(".tg-plot").first().locator("img")).toHaveCount(0);
-  await page.locator(".tg-plot").first().click();
-  await expect(page.locator("#tg-inspector")).toContainText("Artwork pending");
+  await page.locator(".tg-plot").click();
+  const rocotoStages = page.getByRole("region", { name: "Seed to harvest" });
+  const rocotoStem = "/plant-icons/growth/rasmussen/master/rocoto-manzano-red-flat-chilli-seeds-10-seeds-";
+  const order = ["seed", "first-sprout", "baby-plant", "semi-mature", "pre-harvest", "harvest"];
+  for (const [index, stage] of order.entries()) {
+    await expect(rocotoStages.locator("li").nth(index).getByRole("link").first())
+      .toHaveAttribute("href", rocotoStem + stage + ".png");
+  }
 
   await page.getByRole("button", { name: "Icon gallery" }).click();
   await expect(page.locator(".tg-gallery-mode")).toBeVisible();
@@ -182,9 +187,12 @@ test("all approved generated varieties occupy one isolated showcase bed", async 
   const expected = Object.values(generatedArtwork)
     .filter(artwork => artwork.status === "generated_qa_passed").length;
   expect(expected).toBeGreaterThanOrEqual(449);
+  const rocotoId = "rasmussen:rocoto-manzano-red-flat-chilli-seeds-10-seeds";
+  const rocoto = page.locator('.tg-showcase-bed [data-artwork-id="' + rocotoId + '"] img');
+  await expect(rocoto).toHaveAttribute("src", "/plant-icons/growth/rasmussen/gallery/" + rocotoId.split(":")[1] + "-harvest.png");
   await expect(page.locator(".tg-showcase-bed .tg-bed")).toHaveCount(1);
-  await expect(page.locator(".tg-showcase-bed .tg-plot")).toHaveCount(expected);
-  await expect(page.locator(".tg-showcase-bed .tg-plot img[data-art-source='generated']")).toHaveCount(expected);
+  await expect(page.locator(".tg-showcase-bed .tg-plot")).toHaveCount(expected + 1);
+  await expect(page.locator(".tg-showcase-bed .tg-plot img[data-art-source='generated']")).toHaveCount(expected + 1);
 
   const kings = page.locator('[data-artwork-id="kings:chilli-mild-anaheim"] img');
   const rasmussen = page.locator('[data-artwork-id="rasmussen:anaheim-chilli-seeds-10-seeds"] img');

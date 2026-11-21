@@ -28,7 +28,7 @@ const verifiedRasmussen = new Map(rasmussenManifest.items
 const generatedById = new Map(Object.entries(generatedArtwork));
 
 function generatedFields(id: string): Partial<TestGardenEntry> {
-  const artwork = generatedById.get(id);
+  const artwork = generatedById.get(id) ?? growthArtwork[id]?.harvest;
   if (!artwork || (artwork.status !== "generated_qa_passed" &&
       artwork.status !== "needs_review" && artwork.status !== "failed")) return {};
   return {
