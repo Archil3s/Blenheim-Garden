@@ -1542,6 +1542,27 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-hopi-purple-string-first-sprout.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2021/04/Hopi-Purple-StringJPG-1024x575.jpg",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-hopi-purple-string-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-hopi-purple-string-baby-plant.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2021/04/Hopi-Purple-StringJPG-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-hopi-purple-string-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-hopi-purple-string-semi-mature.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2021/04/Hopi-Purple-StringJPG-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-hopi-purple-string-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-hopi-purple-string-pre-harvest.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2021/04/Hopi-Purple-StringJPG-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-dwarf-berrgold-improved": {
@@ -4151,6 +4172,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-lima-del-papa.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-lima-del-papa-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-lima-del-papa-seed.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/papa-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-lima-del-papa-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-lima-del-papa-first-sprout.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/papa-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-lima-del-papa-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-lima-del-papa-baby-plant.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/papa-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-lima-del-papa-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-lima-del-papa-semi-mature.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/papa-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-lima-del-papa-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-lima-del-papa-pre-harvest.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/papa-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-climbing-mangere-pole": {
@@ -4159,6 +4215,20 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-climbing-mangere-pole.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-climbing-mangere-pole.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-mangere-pole-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-mangere-pole-seed.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Mangere-Pole-Bean-4JPG-1024x575.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-climbing-mangere-pole-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-climbing-mangere-pole-first-sprout.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Mangere-Pole-Bean-4JPG-1024x575.jpg",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },

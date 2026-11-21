@@ -1785,3 +1785,20 @@ Kings Seeds Growth Batch deployed at 7956816 (https://github.com/Archil3s/Blenhe
 - Kings Seeds | bean-climbing-hopi-purple-string | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2021/04/Hopi-Purple-StringJPG-1024x575.jpg | Visually reviewed and mapped.
 
 Cornplanter Purple and Hopi Black Pinto now have six stages. Hopi Purple String gained Seed and First sprout. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch deployed at 3475ce8 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44853065661).
+
+## Kings Seeds Growth Batch 07
+
+- Kings Seeds | bean-climbing-hopi-purple-string | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2021/04/Hopi-Purple-StringJPG-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-hopi-purple-string | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2021/04/Hopi-Purple-StringJPG-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-hopi-purple-string | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2021/04/Hopi-Purple-StringJPG-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-lima-del-papa | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/papa-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-lima-del-papa | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/papa-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-lima-del-papa | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/papa-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-lima-del-papa | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/papa-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-lima-del-papa | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/papa-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-mangere-pole | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Mangere-Pole-Bean-4JPG-1024x575.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-climbing-mangere-pole | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2024/05/Mangere-Pole-Bean-4JPG-1024x575.jpg | Visually reviewed and mapped.
+
+Hopi Purple String and Lima Del Papa now have six stages. Mangere Pole gained Seed and First sprout. The production build and all 44 focused browser checks passed.
