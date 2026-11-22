@@ -1989,3 +1989,20 @@ Kings Seeds Growth Batch 17 deployed at 069ff8d (https://github.com/Archil3s/Ble
 - Kings Seeds | bean-runner-good-mother-stallard | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/mother-1024x768.jpg | Visually reviewed and mapped.
 
 Blue Shackamaxon and Cherokee Trail of Tears now have six stages. Good Mother Stallard gained Seed and First sprout. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch 18 deployed at a35acb9 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44866401341).
+
+## Kings Seeds Growth Batch 19
+
+- Kings Seeds | bean-runner-good-mother-stallard | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/mother-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-good-mother-stallard | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/mother-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-good-mother-stallard | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/mother-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-holy-climbing | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/angle-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-holy-climbing | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/angle-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-holy-climbing | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/angle-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-holy-climbing | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/angle-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-holy-climbing | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/angle-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-hopi-beige | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-1-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-hopi-beige | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-1-1024x768.jpg | Visually reviewed and mapped.
+
+Good Mother Stallard and Holy Climbing now have six stages. Hopi Beige gained Seed and First sprout. The production build and all 44 focused browser checks passed.

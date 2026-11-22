@@ -2202,6 +2202,27 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-good-mother-stallard-first-sprout.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/mother-1024x768.jpg",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-good-mother-stallard-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-good-mother-stallard-baby-plant.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/mother-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-good-mother-stallard-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-good-mother-stallard-semi-mature.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/mother-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-good-mother-stallard-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-good-mother-stallard-pre-harvest.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/mother-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-runner-holy-climbing": {
@@ -2211,6 +2232,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-holy-climbing.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-holy-climbing-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-holy-climbing-seed.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/angle-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-holy-climbing-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-holy-climbing-first-sprout.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/angle-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-holy-climbing-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-holy-climbing-baby-plant.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/angle-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-holy-climbing-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-holy-climbing-semi-mature.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/angle-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-holy-climbing-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-holy-climbing-pre-harvest.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/angle-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-runner-hopi-beige": {
@@ -2219,6 +2275,20 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-runner-hopi-beige.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-hopi-beige.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-hopi-beige-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-hopi-beige-seed.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-1-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-hopi-beige-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-hopi-beige-first-sprout.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-1-1024x768.jpg",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
