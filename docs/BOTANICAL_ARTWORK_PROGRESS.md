@@ -2057,3 +2057,20 @@ Kings Seeds Growth Batch 21 deployed at b3957a7 (https://github.com/Archil3s/Ble
 - Kings Seeds | bean-runner-ojo-de-cabra | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/goats-1024x768.jpg | Visually reviewed and mapped.
 
 Lazy Housewife and Neekar Golden now have six stages. Ojo de Cabra gained Seed and First sprout. Seed coats were corrected to white on Neekar Golden. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch 22 deployed at 4517cc8 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/45328648050).
+
+## Kings Seeds Growth Batch 23
+
+- Kings Seeds | bean-runner-ojo-de-cabra | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/goats-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-ojo-de-cabra | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/goats-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-ojo-de-cabra | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/goats-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-purple-star | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC014-1_355177e3-a032-4633-9007-0ce74128a18e.png?v=1752445873 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-purple-star | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC014-1_355177e3-a032-4633-9007-0ce74128a18e.png?v=1752445873 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-purple-star | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC014-1_355177e3-a032-4633-9007-0ce74128a18e.png?v=1752445873 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-purple-star | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC014-1_355177e3-a032-4633-9007-0ce74128a18e.png?v=1752445873 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-purple-star | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/HFC014-1_355177e3-a032-4633-9007-0ce74128a18e.png?v=1752445873 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-scarlet | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8054-1_522bf059-970d-48b5-b3d7-62984b4c7187.jpg?v=1721602182 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-scarlet | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8054-1_522bf059-970d-48b5-b3d7-62984b4c7187.jpg?v=1721602182 | Visually reviewed and mapped.
+
+Ojo de Cabra and Purple Star now have six stages. Scarlet gained Seed and First sprout. The production build and all 44 focused browser checks passed.
