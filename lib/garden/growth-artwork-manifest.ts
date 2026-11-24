@@ -2378,6 +2378,27 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-italian-flat-first-sprout.png",
       "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8049-1_b83fd284-7156-4633-886b-a1676ae7942e.jpg?v=1721602042",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-italian-flat-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-italian-flat-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8049-1_b83fd284-7156-4633-886b-a1676ae7942e.jpg?v=1721602042",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-italian-flat-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-italian-flat-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8049-1_b83fd284-7156-4633-886b-a1676ae7942e.jpg?v=1721602042",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-italian-flat-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-italian-flat-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8049-1_b83fd284-7156-4633-886b-a1676ae7942e.jpg?v=1721602042",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-runner-king-of-the-blues": {
@@ -2386,6 +2407,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-runner-king-of-the-blues.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-king-of-the-blues.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-king-of-the-blues",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-king-of-the-blues-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-king-of-the-blues-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8050-1_2c1ea095-b451-40c3-b2d2-dde1050ab739.jpg?v=1721602069",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-king-of-the-blues-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-king-of-the-blues-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8050-1_2c1ea095-b451-40c3-b2d2-dde1050ab739.jpg?v=1721602069",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-king-of-the-blues-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-king-of-the-blues-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8050-1_2c1ea095-b451-40c3-b2d2-dde1050ab739.jpg?v=1721602069",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-king-of-the-blues-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-king-of-the-blues-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8050-1_2c1ea095-b451-40c3-b2d2-dde1050ab739.jpg?v=1721602069",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-king-of-the-blues-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-king-of-the-blues-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8050-1_2c1ea095-b451-40c3-b2d2-dde1050ab739.jpg?v=1721602069",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
@@ -4797,6 +4853,20 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-runner-lazy-housewife.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-lazy-housewife.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-lazy-housewife",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-lazy-housewife-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-lazy-housewife-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8051-1.png?v=1688006868",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-lazy-housewife-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-lazy-housewife-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8051-1.png?v=1688006868",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },

@@ -2023,3 +2023,20 @@ Kings Seeds Growth Batch 19 deployed at bf7c291 (https://github.com/Archil3s/Ble
 - Kings Seeds | bean-runner-italian-flat | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8049-1_b83fd284-7156-4633-886b-a1676ae7942e.jpg?v=1721602042 | Visually reviewed and mapped.
 
 Hopi Beige and Indian Hannah now have six stages. Italian Flat gained Seed and First sprout. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch 20 deployed at f63bb9b (https://github.com/Archil3s/Blenheim-Garden/actions/runs/45325155520).
+
+## Kings Seeds Growth Batch 21
+
+- Kings Seeds | bean-runner-italian-flat | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8049-1_b83fd284-7156-4633-886b-a1676ae7942e.jpg?v=1721602042 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-italian-flat | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8049-1_b83fd284-7156-4633-886b-a1676ae7942e.jpg?v=1721602042 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-italian-flat | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8049-1_b83fd284-7156-4633-886b-a1676ae7942e.jpg?v=1721602042 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-king-of-the-blues | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8050-1_2c1ea095-b451-40c3-b2d2-dde1050ab739.jpg?v=1721602069 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-king-of-the-blues | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8050-1_2c1ea095-b451-40c3-b2d2-dde1050ab739.jpg?v=1721602069 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-king-of-the-blues | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8050-1_2c1ea095-b451-40c3-b2d2-dde1050ab739.jpg?v=1721602069 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-king-of-the-blues | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8050-1_2c1ea095-b451-40c3-b2d2-dde1050ab739.jpg?v=1721602069 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-king-of-the-blues | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8050-1_2c1ea095-b451-40c3-b2d2-dde1050ab739.jpg?v=1721602069 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-lazy-housewife | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8051-1.png?v=1688006868 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-lazy-housewife | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8051-1.png?v=1688006868 | Visually reviewed and mapped.
+
+Italian Flat and King of the Blues now have six stages. Lazy Housewife gained Seed and First sprout. The supplier confirms white seeds (https://www.kingsseeds.co.nz/products/bean-runner-lazy-housewife). The production build and all 44 focused browser checks passed.
