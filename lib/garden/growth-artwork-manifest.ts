@@ -4868,6 +4868,27 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-lazy-housewife-first-sprout.png",
       "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8051-1.png?v=1688006868",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-lazy-housewife-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-lazy-housewife-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8051-1.png?v=1688006868",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-lazy-housewife-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-lazy-housewife-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8051-1.png?v=1688006868",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-lazy-housewife-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-lazy-housewife-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8051-1.png?v=1688006868",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-runner-neekar-golden": {
@@ -4876,6 +4897,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-runner-neekar-golden.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-neekar-golden.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-neekar-golden",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-neekar-golden-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-neekar-golden-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8053-1_2f674661-2c2b-4742-9755-0c9e9b6ac201.jpg?v=1721602152",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-neekar-golden-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-neekar-golden-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8053-1_2f674661-2c2b-4742-9755-0c9e9b6ac201.jpg?v=1721602152",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-neekar-golden-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-neekar-golden-baby-plant.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8053-1_2f674661-2c2b-4742-9755-0c9e9b6ac201.jpg?v=1721602152",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-neekar-golden-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-neekar-golden-semi-mature.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8053-1_2f674661-2c2b-4742-9755-0c9e9b6ac201.jpg?v=1721602152",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-neekar-golden-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-neekar-golden-pre-harvest.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8053-1_2f674661-2c2b-4742-9755-0c9e9b6ac201.jpg?v=1721602152",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
@@ -5281,6 +5337,20 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-runner-ojo-de-cabra.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-ojo-de-cabra.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-ojo-de-cabra-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-ojo-de-cabra-seed.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/goats-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-ojo-de-cabra-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-ojo-de-cabra-first-sprout.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/goats-1024x768.jpg",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },

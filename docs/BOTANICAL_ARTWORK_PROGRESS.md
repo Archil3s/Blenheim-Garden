@@ -2040,3 +2040,20 @@ Kings Seeds Growth Batch 20 deployed at f63bb9b (https://github.com/Archil3s/Ble
 - Kings Seeds | bean-runner-lazy-housewife | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8051-1.png?v=1688006868 | Visually reviewed and mapped.
 
 Italian Flat and King of the Blues now have six stages. Lazy Housewife gained Seed and First sprout. The supplier confirms white seeds (https://www.kingsseeds.co.nz/products/bean-runner-lazy-housewife). The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch 21 deployed at b3957a7 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/45326906579).
+
+## Kings Seeds Growth Batch 22
+
+- Kings Seeds | bean-runner-lazy-housewife | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8051-1.png?v=1688006868 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-lazy-housewife | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8051-1.png?v=1688006868 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-lazy-housewife | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/products/V8051-1.png?v=1688006868 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-neekar-golden | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8053-1_2f674661-2c2b-4742-9755-0c9e9b6ac201.jpg?v=1721602152 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-neekar-golden | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8053-1_2f674661-2c2b-4742-9755-0c9e9b6ac201.jpg?v=1721602152 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-neekar-golden | baby-plant | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8053-1_2f674661-2c2b-4742-9755-0c9e9b6ac201.jpg?v=1721602152 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-neekar-golden | semi-mature | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8053-1_2f674661-2c2b-4742-9755-0c9e9b6ac201.jpg?v=1721602152 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-neekar-golden | pre-harvest | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8053-1_2f674661-2c2b-4742-9755-0c9e9b6ac201.jpg?v=1721602152 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-ojo-de-cabra | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/goats-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-ojo-de-cabra | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/goats-1024x768.jpg | Visually reviewed and mapped.
+
+Lazy Housewife and Neekar Golden now have six stages. Ojo de Cabra gained Seed and First sprout. Seed coats were corrected to white on Neekar Golden. The production build and all 44 focused browser checks passed.
