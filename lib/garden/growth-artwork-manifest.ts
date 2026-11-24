@@ -2290,6 +2290,27 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-hopi-beige-first-sprout.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-1-1024x768.jpg",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-hopi-beige-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-hopi-beige-baby-plant.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-1-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-hopi-beige-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-hopi-beige-semi-mature.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-1-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-hopi-beige-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-hopi-beige-pre-harvest.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-1-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-runner-indian-hannah": {
@@ -2299,6 +2320,41 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-indian-hannah.png",
       "referenceUrl": "https://www.heritagefoodcrops.org.nz/heirloom-beans/",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-indian-hannah-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-indian-hannah-seed.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/Indian-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-indian-hannah-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-indian-hannah-first-sprout.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/Indian-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "baby-plant": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-indian-hannah-baby-plant.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-indian-hannah-baby-plant.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/Indian-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "semi-mature": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-indian-hannah-semi-mature.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-indian-hannah-semi-mature.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/Indian-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "pre-harvest": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-indian-hannah-pre-harvest.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-indian-hannah-pre-harvest.png",
+      "referenceUrl": "https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/Indian-1024x768.jpg",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },
   "kings:bean-runner-italian-flat": {
@@ -2307,6 +2363,20 @@ const growthArtwork: Record<string, GrowthArtworkByStage> = {
       "master": "/plant-icons/generated/kings-seeds/master/bean-runner-italian-flat.png",
       "gallery": "/plant-icons/generated/kings-seeds/gallery/bean-runner-italian-flat.png",
       "referenceUrl": "https://www.kingsseeds.co.nz/products/bean-runner-italian-flat",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "seed": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-italian-flat-seed.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-italian-flat-seed.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8049-1_b83fd284-7156-4633-886b-a1676ae7942e.jpg?v=1721602042",
+      "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
+    },
+    "first-sprout": {
+      "status": "generated_qa_passed",
+      "master": "/plant-icons/growth/kings-seeds/master/bean-runner-italian-flat-first-sprout.png",
+      "gallery": "/plant-icons/growth/kings-seeds/gallery/bean-runner-italian-flat-first-sprout.png",
+      "referenceUrl": "https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8049-1_b83fd284-7156-4633-886b-a1676ae7942e.jpg?v=1721602042",
       "styleReference": "/assets/icons/rasmussen/approved/001_7-pot-jonah-yellow.png"
     }
   },

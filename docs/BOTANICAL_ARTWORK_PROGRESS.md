@@ -2006,3 +2006,20 @@ Kings Seeds Growth Batch 18 deployed at a35acb9 (https://github.com/Archil3s/Ble
 - Kings Seeds | bean-runner-hopi-beige | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-1-1024x768.jpg | Visually reviewed and mapped.
 
 Good Mother Stallard and Holy Climbing now have six stages. Hopi Beige gained Seed and First sprout. The production build and all 44 focused browser checks passed.
+
+Kings Seeds Growth Batch 19 deployed at bf7c291 (https://github.com/Archil3s/Blenheim-Garden/actions/runs/44995968590).
+
+## Kings Seeds Growth Batch 20
+
+- Kings Seeds | bean-runner-hopi-beige | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-1-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-hopi-beige | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-1-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-hopi-beige | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/hopi-1-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-indian-hannah | seed | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/Indian-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-indian-hannah | first-sprout | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/Indian-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-indian-hannah | baby-plant | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/Indian-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-indian-hannah | semi-mature | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/Indian-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-indian-hannah | pre-harvest | 512 px master and 128 px gallery | https://www.heritagefoodcrops.org.nz/wp-content/uploads/2020/08/Indian-1024x768.jpg | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-italian-flat | seed | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8049-1_b83fd284-7156-4633-886b-a1676ae7942e.jpg?v=1721602042 | Visually reviewed and mapped.
+- Kings Seeds | bean-runner-italian-flat | first-sprout | 512 px master and 128 px gallery | https://cdn.shopify.com/s/files/1/0729/0555/6276/files/V8049-1_b83fd284-7156-4633-886b-a1676ae7942e.jpg?v=1721602042 | Visually reviewed and mapped.
+
+Hopi Beige and Indian Hannah now have six stages. Italian Flat gained Seed and First sprout. The production build and all 44 focused browser checks passed.
