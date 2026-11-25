@@ -36,7 +36,8 @@ import { ReferenceObjectCatalogue } from "@/components/reference-object-catalogu
 import { PlannerObjectArt as ReferenceObjectArt } from "./planner-art";
 import { PlannerIcon } from "@/components/planner-icon";
 import { PlannerPlantArt as PlantArt } from "./planner-art";
-import { PlannerReports } from "@/components/planner-reports";
+import type { BedGrowingConditions } from "@/lib/garden/bed-growing-conditions";
+import { openPlannerReport, PlannerReports } from "@/components/planner-reports";
 import { DesignerShapeArt } from "@/components/designer-shape";
 import { DesignerShapeControls, DesignerShapeInspector, type ShapeStyle } from "@/components/designer-shape-controls";
 import { shapeFromDrag } from "@/lib/garden/designer-shapes";
@@ -49,6 +50,8 @@ import { canonicalSelection, deleteSelections, moveSelection, pasteGroup, sameSe
 
 import type { CalendarPlanting } from "@/lib/garden/planting-calendar";
 import { PlantingScheduleControls } from "./planting-schedule-controls";
+import { applyScheduleRecovery, proposeScheduleRecovery, type RecoveryRequest } from "@/lib/garden/schedule-recovery";
+import { PlantingOverlapError } from "@/lib/garden/planting-overlap";
 import { addSuccession } from "@/lib/garden/succession-planting";
 import { planInPeriod, planningPeriodEvent, planningPeriodKey, readPlanningPeriod, type PlantingSchedule } from "@/lib/garden/planting-schedule";
 import { PlantingBlockControls } from "./planting-block-controls";
@@ -257,7 +260,8 @@ export function GardenPlanner() {
   const [boxSelect, setBoxSelect] = useState(false);
   const boxAdditive = useRef(false);
   const groupClipboard = useRef<GroupClipboard | null>(null);
-  function setSelection(next: Selection) { setPrimarySelection(next); setGroupSelection([]); }
+  const [successionConflicts, setSuccessionConflicts] = useState<{ kind: "row" | "planting"; id: string }[]>([]);
+  function setSelection(next: Selection) { setSuccessionConflicts([]); setPrimarySelection(next); setGroupSelection([]); }
   function setSelections(next: PlanSelection[]) { setGroupSelection(next.length > 1 ? next : []); setPrimarySelection(next[0] ?? null); }
   const activeSelections = groupSelection.length ? groupSelection : selection ? [selection] : [];
   const [editLockedItems, setEditLockedItems] = useState(false);
@@ -493,8 +497,19 @@ export function GardenPlanner() {
     edit(current => kind === "row" ? { ...current, rows: current.rows.map(row => row.id === id ? { ...row, schedule } : row) }
       : { ...current, plantingAreas: current.plantingAreas.map(area => area.id === id ? { ...area, schedule } : area) });
   }
-  function succession(kind: "row" | "planting", id: string, crop: PlantOption) {
-    const result = addSuccession(plan, { kind, id }, crop);
+  function succession(kind: "row" | "planting", id: string, crop: PlantOption, dates: Pick<PlantingSchedule, "from" | "until">) {
+    const source = kind === "planting" ? plan.plantingAreas.find(area => area.id === id) : undefined;
+    if (selectionLocked || source && lockedKeys.has(`bed:${source.bedId}`)) throw new Error("Unlock this planting space before adding a succession.");
+    let result: ReturnType<typeof addSuccession>;
+    try { result = addSuccession(plan, { kind, id }, crop, undefined, dates); }
+    catch (error) {
+      if (error instanceof PlantingOverlapError) {
+        setSuccessionConflicts(error.plantings.map(item => ({ kind: "bedId" in item ? "planting" : "row", id: item.id })));
+        const first = error.plantings.map(item => item.schedule?.from && item.schedule.from > error.from ? item.schedule.from : error.from).sort()[0];
+        setPlanningYear(Number(first.slice(0, 4))); setMonth(months[Number(first.slice(5, 7)) - 1]);
+      }
+      throw error;
+    }
     commit(result.plan); setSelection(result.selection); setTool("select"); setPanelOpen(true);
     const next = kind === "row" ? result.plan.rows.at(-1)! : result.plan.plantingAreas.at(-1)!;
     setPlanningYear(Number(next.schedule!.from!.slice(0, 4))); setMonth(months[Number(next.schedule!.from!.slice(5, 7)) - 1]);
@@ -1132,19 +1147,56 @@ export function GardenPlanner() {
     edit((current) => ({ ...current, plantingAreas: current.plantingAreas.filter((area) => area.bedId !== selectedBed.id) }));
   }
 
-  async function savePlan() {
-    if (loadSource === "starting" || loadSource === "error") return;
+  async function savePlan(nextPlan = plan) {
+    if (loadSource === "starting" || loadSource === "error" || saveState === "saving") return "error" as const;
     const gardenId = readActiveGardenId();
-    const snapshot = planJson;
+    const snapshot = JSON.stringify(nextPlan);
     setSaveState("saving");
     try {
       const notesResult = await planNotesRef.current?.save();
-      const result = await persistGardenPlan(gardenId, plan);
-      if (result === "local" || notesResult === "local") { setSaveState("local"); return; }
+      const result = await persistGardenPlan(gardenId, nextPlan);
+      if (result === "local" || notesResult === "local") { setSaveState("local"); return result; }
       setSavedSnapshot(snapshot);
       setLoadSource("cloud");
       setSaveState("cloud");
-    } catch { setSaveState("error"); }
+      return result;
+    } catch { setSaveState("error"); return "error" as const; }
+  }
+
+  function successionBed(bedId: number) {
+    const bed = plan.beds.find(item => item.id === bedId);
+    if (!bed || activeGardenId !== readActiveGardenId() || loadSource === "error" || loadSource === "starting" || saveState === "saving"
+      || lockedKeys.has(planLockKey({ kind: "bed", id: String(bedId) }))) {
+      throw new Error("This garden bed cannot be edited right now.");
+    }
+    return bed;
+  }
+
+  async function saveSuccession(bedId: number, crop: PlantOption, variety: string, schedule: PlantingSchedule, growingConditions?: BedGrowingConditions) {
+    const bed = successionBed(bedId);
+    const area = { ...makePlantingArea(bed, crop, variety, undefined, true), schedule };
+    const next = { ...plan, beds: plan.beds.map(item => item.id === bedId ? { ...item, growingConditions } : item),
+      plantingAreas: [...plan.plantingAreas, area] };
+    commit(next);
+    return savePlan(next);
+  }
+
+  async function saveRecovery(request: RecoveryRequest) {
+    if (activeGardenId !== readActiveGardenId() || loadSource === "error" || loadSource === "starting" || saveState === "saving") {
+      throw new Error("This garden cannot be edited right now.");
+    }
+    const { conflicts, schedule } = proposeScheduleRecovery(plan, request);
+    if (conflicts.length) throw new Error("This recovery overlaps another booking. Review the dates again.");
+    const next = applyScheduleRecovery(plan, request, schedule);
+    commit(next);
+    return savePlan(next);
+  }
+
+  async function saveBedConditions(bedId: number, growingConditions?: BedGrowingConditions) {
+    successionBed(bedId);
+    const next = { ...plan, beds: plan.beds.map(item => item.id === bedId ? { ...item, growingConditions } : item) };
+    commit(next);
+    return savePlan(next);
   }
 
   function updatePlanting(id: string, mutate: (area: PlannerPlantingArea, bed: Bed) => PlannerPlantingArea) {
@@ -1210,7 +1262,7 @@ export function GardenPlanner() {
         {selection?.plantId && itemEditError && <p role="alert">{itemEditError}</p>}
         <div className="gv-selection-hero"><span><PlantArt crop={selectedPlanting.crop} variety={selectedPlanting.variety} fallback={selectedPlanting.cropIcon} /></span><div><small>PLANTING AREA</small><h2>{selectedPlanting.variety}</h2><p>{selectedPlantingBed.name} · {widthM.toFixed(1)} × {heightM.toFixed(1)} m</p></div></div>
         <dl><div><dt>Crop</dt><dd>{selectedPlanting.crop}</dd></div><div><dt>Plants</dt><dd>≈ {selectedPlanting.count}</dd></div><div><dt>Spacing</dt><dd>{selectedPlanting.spacingCm} cm centres</dd></div></dl>
-        <PlantingScheduleControls key={selectedPlanting.id} schedule={selectedPlanting.schedule} onChange={schedule => changeSchedule("planting", selectedPlanting.id, schedule)} onSuccession={crop => succession("planting", selectedPlanting.id, crop)} />
+        <PlantingScheduleControls key={selectedPlanting.id} schedule={selectedPlanting.schedule} onChange={schedule => changeSchedule("planting", selectedPlanting.id, schedule)} locked={selectionLocked || lockedKeys.has(`bed:${selectedPlanting.bedId}`)} onResetConflict={() => setSuccessionConflicts([])} onSuccession={(crop, dates) => succession("planting", selectedPlanting.id, crop, dates)} />
         <section className="gv-inspector-section gv-records-group"><h3>Records</h3><button type="button" className="gv-secondary-action">📝 Notes & harvests</button><button type="button" className="gv-secondary-action">📷 Photos & video</button></section>
         <details className="gv-inspector-section gv-edit-section"><summary>Edit planting</summary>
         <label>Variety<input value={selectedPlanting.variety} onChange={(event) => updatePlanting(selectedPlanting.id, (area) => ({ ...area, variety: event.target.value || area.crop }))} /></label>
@@ -1235,6 +1287,7 @@ export function GardenPlanner() {
           setPanelOpen(false);
         }}>Show bed on map</button>}
         <dl><div><dt>Area</dt><dd>{(size.w * size.h / 10000).toFixed(1)} m²</dd></div><div><dt>Plantings</dt><dd>{areas.length}</dd></div><div><dt>Plants this month</dt><dd>≈ {totalPlants}</dd></div></dl>
+        <button type="button" className="gv-secondary-action" onClick={() => openPlannerReport("succession", selectedBed.id)}>What to plant next</button>
         <section className="gv-inspector-section"><h3>Plantings</h3>
           {areas.length ? areas.map((area) => <button type="button" className="gv-planting-summary" key={area.id} onClick={() => setSelection({ kind: "planting", id: area.id })}><span><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></span><span><strong>{area.variety}</strong><small>{area.crop} · {area.spacingCm} cm spacing{area.schedule && <><br />{area.schedule.from ?? "Any time"} → {area.schedule.until ?? "Ongoing"}</>}</small></span><b>×{area.count}</b></button>) : <p className="gv-inspector-empty">Empty · ready for your next planting</p>}
         </section>
@@ -1250,7 +1303,7 @@ export function GardenPlanner() {
         <details className="gv-inspector-section gv-danger-zone"><summary>Danger zone</summary><p>Removing a bed keeps its plants in place and preserves its saved history.</p>{areas.length > 0 && <button type="button" className="gv-secondary-action danger" onClick={clearBed}>Clear all plantings</button>}<button type="button" className="gv-secondary-action danger" onClick={deleteSelection}>Remove bed</button></details>
       </div>;
     }
-    if (selectedRow) return <div className="gv-selection-panel">{individualPlantEditor(selectedRow)}{selection?.plantId && itemEditError && <p role="alert">{itemEditError}</p>}<div className="gv-selection-hero"><span><PlantArt crop={selectedRow.crop} variety={selectedRow.variety} fallback={selectedRow.cropIcon} /></span><div><small>{selectedRow.block?.mode === "square-foot" ? "SQUARE FOOT" : selectedRow.block ? "PLANTING BLOCK" : "PLANTING ROW"}</small><h2>{selectedRow.variety}</h2><p>{(lineLength(selectedRow) / 100).toFixed(1)} m · ≈ {selectedRow.count} plants</p></div></div><label>Spacing (cm)<input type="number" value={selectedRow.spacingCm} min={2} onChange={(event) => { const spacing = Math.max(2, Number(event.target.value) || 2); setPlan((current) => ({ ...current, rows: current.rows.map((row) => row.id === selectedRow.id ? resizePlantingRow(row, { spacingCm: spacing }) : row) })); }} /></label><PlantingScheduleControls key={selectedRow.id} schedule={selectedRow.schedule} onChange={schedule => changeSchedule("row", selectedRow.id, schedule)} onSuccession={crop => succession("row", selectedRow.id, crop)} /><PlantingBlockControls row={selectedRow} onChange={next => edit(current => ({ ...current, rows: current.rows.map(row => row.id === next.id ? next : row) }))} /><p className="gv-help">Drag to move. Use the square corner to grow a block; round endpoints change a row.</p><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
+    if (selectedRow) return <div className="gv-selection-panel">{individualPlantEditor(selectedRow)}{selection?.plantId && itemEditError && <p role="alert">{itemEditError}</p>}<div className="gv-selection-hero"><span><PlantArt crop={selectedRow.crop} variety={selectedRow.variety} fallback={selectedRow.cropIcon} /></span><div><small>{selectedRow.block?.mode === "square-foot" ? "SQUARE FOOT" : selectedRow.block ? "PLANTING BLOCK" : "PLANTING ROW"}</small><h2>{selectedRow.variety}</h2><p>{(lineLength(selectedRow) / 100).toFixed(1)} m · ≈ {selectedRow.count} plants</p></div></div><label>Spacing (cm)<input type="number" value={selectedRow.spacingCm} min={2} onChange={(event) => { const spacing = Math.max(2, Number(event.target.value) || 2); setPlan((current) => ({ ...current, rows: current.rows.map((row) => row.id === selectedRow.id ? resizePlantingRow(row, { spacingCm: spacing }) : row) })); }} /></label><PlantingScheduleControls key={selectedRow.id} schedule={selectedRow.schedule} onChange={schedule => changeSchedule("row", selectedRow.id, schedule)} locked={selectionLocked} onResetConflict={() => setSuccessionConflicts([])} onSuccession={(crop, dates) => succession("row", selectedRow.id, crop, dates)} /><PlantingBlockControls row={selectedRow} onChange={next => edit(current => ({ ...current, rows: current.rows.map(row => row.id === next.id ? next : row) }))} /><p className="gv-help">Drag to move. Use the square corner to grow a block; round endpoints change a row.</p><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
     if (!selectedObject) return null;
     if (selectedObject.type === "path") return <div className="gv-selection-panel"><div className="gv-selection-hero"><span>═</span><div><small>PATH</small><h2>{selectedObject.label ?? "Path"}</h2><p>{(lineLength(selectedObject) / 100).toFixed(1)} m long</p></div></div><label>Label<input value={selectedObject.label ?? ""} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "path" ? { ...object, label: event.target.value } : object) }))} /></label><label>Width (cm)<input type="number" min={20} max={400} value={selectedObject.widthCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "path" ? { ...object, widthCm: clamp(Number(event.target.value) || 20, 20, 400) } : object) }))} /></label><p className="gv-help">Drag the path to move it. Drag either endpoint to reshape it.</p><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
     if (selectedObject.type === "trellis") return <div className="gv-selection-panel"><div className="gv-selection-hero"><span>⋮</span><div><small>TRELLIS</small><h2>{selectedObject.label ?? "Trellis"}</h2><p>{(lineLength(selectedObject) / 100).toFixed(1)} m long</p></div></div><label>Label<input value={selectedObject.label ?? ""} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "trellis" ? { ...object, label: event.target.value } : object) }))} /></label><div className="gv-field-grid"><label>Height (cm)<input type="number" value={selectedObject.heightCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "trellis" ? { ...object, heightCm: clamp(Number(event.target.value) || 50, 50, 500) } : object) }))} /></label><label>Posts (cm)<input type="number" value={selectedObject.postSpacingCm} onChange={(event) => setPlan((current) => ({ ...current, objects: current.objects.map((object) => object.id === selectedObject.id && object.type === "trellis" ? { ...object, postSpacingCm: clamp(Number(event.target.value) || 50, 30, 1000) } : object) }))} /></label></div><div className="gv-edit-actions"><button type="button" onClick={duplicateSelection}>Duplicate</button><button type="button" className="danger" onClick={deleteSelection}>Delete</button></div></div>;
@@ -1314,7 +1367,7 @@ export function GardenPlanner() {
     const renderLimit = compact ? 6 : overview ? 400 : 1600;
     const sampleStep = area.placements && !compact ? 1 : Math.max(1, Math.ceil(Math.round(area.count) / renderLimit));
     const positions = bed ? plantPositionsForArea(area, areaSize.width, areaSize.height, renderLimit, sampleStep) : [];
-    return <div key={area.id} data-area-id={area.id} data-compact={compact} data-skip-locked={skipLockedItem({ kind: "planting", id: area.id })} className={`planting-area ${area.placements ? "has-explicit-placements" : ""} ${overview ? "is-overview" : ""} ${selected ? "selected" : ""}`} data-crop={area.crop} data-pattern={area.pattern} style={{ left: `${area.x}%`, top: `${area.y}%`, width: `${area.w}%`, height: `${area.h}%`, ["--area-icon-size" as string]: `${symbol?.width ?? area.iconSize}px`, ["--area-icon-height" as string]: `${symbol?.height ?? area.iconSize}px` }} onPointerDown={(event) => overview && bed && tool === "select" && !area.placements && !clickedPlantId(event) && !lockedKeys.has("bed:" + bed.id) ? startBedInteraction(event, bed) : startPlantingInteraction(event, area)}>
+    return <div key={area.id} data-area-id={area.id} data-succession-conflict={successionConflicts.some(item => item.kind === "planting" && item.id === area.id) || undefined} data-compact={compact} data-skip-locked={skipLockedItem({ kind: "planting", id: area.id })} className={`planting-area ${area.placements ? "has-explicit-placements" : ""} ${overview ? "is-overview" : ""} ${selected ? "selected" : ""}`} data-crop={area.crop} data-pattern={area.pattern} style={{ left: `${area.x}%`, top: `${area.y}%`, width: `${area.w}%`, height: `${area.h}%`, ["--area-icon-size" as string]: `${symbol?.width ?? area.iconSize}px`, ["--area-icon-height" as string]: `${symbol?.height ?? area.iconSize}px` }} onPointerDown={(event) => overview && bed && tool === "select" && !area.placements && !clickedPlantId(event) && !lockedKeys.has("bed:" + bed.id) ? startBedInteraction(event, bed) : startPlantingInteraction(event, area)}>
       <span className="planting-area-icons">{!compact && overview && !positions.length && zoom >= 45 && <i className="gv-overview-art" style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)", ["--area-icon-size" as string]: `${30 / (zoom / 100)}px` }}><PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} /></i>}{positions.map((position, index) => { const plantId = area.placements?.[index * sampleStep]?.id ?? `${area.id}:generated-${index * sampleStep}`; return <i key={plantId} data-plant-id={plantId} data-selected-plant={selected && selection?.plantId === plantId} style={{ left: position.x, top: position.y, transform: `translate(-50%, -50%) rotate(${position.rotation}deg)` }}>{!compact && <PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} />}</i>; })}</span>
       <span className="planting-area-label" title={`${area.crop} · ${area.variety} · ${area.count} plants · ${area.spacingCm} cm spacing`}><span className="gv-crop-symbol" aria-hidden="true">{compact ? area.cropIcon : <PlantArt crop={area.crop} variety={area.variety} fallback={area.cropIcon} />}</span><span className="gv-crop-name">{area.variety}</span><b>×{area.count}</b></span>
       {selected && !groupSelection.length && !overview && <span className="planting-spacing-badge">↔ {area.spacingCm} cm</span>}
@@ -1360,7 +1413,7 @@ export function GardenPlanner() {
           <Link className="planner-phone-link" href="/">Overview</Link>
           <Link className="planner-phone-link" href="/seedlings">Seedling journal</Link>
           <Link href="/progress">Track photo progress ↗</Link>
-          <button type="button" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(true); }}>Plan notes</button><PlannerReports plan={plan} period={{ year: planningYear, month: months.indexOf(month) }} onPeriodChange={period => { setPlanningYear(period.year); setMonth(months[period.month]); setSelection(null); }} onDatesChange={changeSchedule} onShowPlanting={showCalendarPlanting} /><button type="button" data-season-view="week">This Week</button>
+          <button type="button" onClick={() => { window.dispatchEvent(new Event("garden-report-close")); setNotesOpen(true); }}>Plan notes</button>{([["plants", "Plant List"], ["parts", "Parts List"], ["calendar", "Calendar"], ["succession", "Succession planting"], ["export", "Export plan"]] as const).map(([report, label]) => <button type="button" key={report} onClick={() => openPlannerReport(report, report === "succession" ? selectedBed?.id ?? selectedPlanting?.bedId : undefined)}>{label}</button>)}<button type="button" data-season-view="week">This Week</button>
           <a href="/3d" target="_blank" rel="noopener">Live 3D ↗</a> <Link href="/test-garden">All plant icons · Test garden ↗</Link>
           <button type="button" disabled={Boolean(interaction || draft) || loadSource === "starting"} onClick={() => { if (window.confirm("Load the complete icon sample into this 2D planner? This replaces your current draft, which can be restored with Undo or Restore previous draft. For a separate saved sample, create a new named garden first.")) { void loadArtworkSample(); } }}>Editable icon sample bed · all approved varieties</button>
           <button type="button" className="gv-settings">Settings</button>
@@ -1370,6 +1423,10 @@ export function GardenPlanner() {
         <button type="button" className="gv-save" onClick={() => void savePlan()} disabled={saveState === "saving" || loadSource === "starting" || loadSource === "error"}> {saveLabel}</button>
       </nav>
     </header>
+    <PlannerReports plan={plan} gardenId={activeGardenId} planUnavailable={loadSource === "starting" || loadSource === "error"} saveBusy={saveState === "saving"}
+      onSaveSuccession={saveSuccession} onSaveBedConditions={saveBedConditions} onApplyRecovery={saveRecovery} period={{ year: planningYear, month: months.indexOf(month) }}
+      onPeriodChange={period => { setPlanningYear(period.year); setMonth(months[period.month]); setSelection(null); }}
+      onDatesChange={changeSchedule} onShowPlanting={showCalendarPlanting} />
     <div className="gv-quickbar" id="planner-edit-toolbar"><div className="planner-plan-actions"><span className="planner-ribbon-caption">Plan</span><button type="button" aria-label="New plan" title="New plan" onClick={() => window.dispatchEvent(new CustomEvent("garden-manager-open", { detail: "new" }))}><PlannerIcon name="new" /></button><button type="button" aria-label="Open plan" title="Open plan" onClick={() => window.dispatchEvent(new CustomEvent("garden-manager-open"))}><PlannerIcon name="open" /></button><button type="button" aria-label="Save plan" title="Save plan" onClick={() => void savePlan()} disabled={saveState === "saving"}><PlannerIcon name="save" /></button><button type="button" aria-label="Export design" title="Export design" onClick={() => window.dispatchEvent(new CustomEvent("garden-report-open", { detail: "export" }))}>↥</button></div><div className="gv-quick-actions"><span className="planner-ribbon-caption">Edit</span><button type="button" aria-label="Box selection" title="Box selection" aria-pressed={boxSelect} onClick={() => { setTool("select"); setBoxSelect(true); setPanMode(false); setPanelOpen(false); setDraft(null); setInteraction(null); }}><PlannerIcon name="select" /></button><button type="button" data-planner-action="select-all" className="planner-select-all" onClick={() => { setSelections(canonicalSelection(plan, selectableItems(visiblePlan, designerLayer).filter(item => !skipLockedItem(item)))); setTool("select"); setPanelOpen(true); }}>Select all</button><button type="button" aria-label="Select and edit" title="Select and edit" onClick={() => chooseTool("select")}><PlannerIcon name="edit" /></button><button type="button" aria-label="Cut selection" title="Cut" data-planner-action="cut" disabled={!selection || (selectedObject?.type === "shape" && selectedObject.locked)} onClick={() => { copyDrawingSelection(); removeSelection(false); }}><PlannerIcon name="cut" /></button><button type="button" aria-label="Copy selection" title="Copy" data-planner-action="copy" disabled={!selection} onClick={copyDrawingSelection}><PlannerIcon name="copy" /></button><button type="button" aria-label="Paste selection" title="Paste" data-planner-action="paste" disabled={!clipboardReady} onClick={pasteDrawingObject}><PlannerIcon name="paste" /></button><button type="button" aria-label="Delete selection" title="Delete" data-planner-action="delete" disabled={!selection || (selectedObject?.type === "shape" && selectedObject.locked)} onClick={deleteSelection}><PlannerIcon name="delete" /></button><button type="button" onClick={undo} disabled={!past.length} title="Undo"><PlannerIcon name="undo" /> <span>Undo</span></button><button type="button" onClick={redo} disabled={!future.length} title="Redo"><PlannerIcon name="redo" /> <span>Redo</span></button><button type="button" className={snapEnabled ? "active" : ""} onClick={() => setSnapEnabled((value) => !value)}>⌗ <span>Snap {snapEnabled ? "10 cm" : "Off"}</span></button></div><div className="gv-quick-center"><span className="planner-ribbon-caption">Timeline & view</span><button type="button" aria-label="Zoom out" onClick={() => navigation.zoomBy(-10)}>−</button><strong>{zoom}%</strong><button type="button" className="gv-fit-width" onClick={navigation.fit}>Fit</button><button type="button" aria-label="Zoom in" onClick={() => navigation.zoomBy(10)}>+</button><select aria-label="Planning month" value={month} onChange={(event) => { setMonth(event.target.value); setGeneratedMonth(null); setSelection(null); }}>{months.map((item) => <option key={item}>{item}</option>)}</select><input className="planning-year" aria-label="Planning year" type="number" min={1900} max={2200} key={planningYear} defaultValue={planningYear} onBlur={event => { const year = Number(event.target.value); if (Number.isInteger(year) && year >= 1900 && year <= 2200) { setPlanningYear(year); setSelection(null); } else event.target.value = String(planningYear); }} onKeyDown={event => { if (event.key === "Enter") event.currentTarget.blur(); }} /><div className="gv-seasonal-generator"><button type="button" aria-label="Generate seasonal garden" data-generated={generatedMonth === month} title={`Generate a Blenheim seasonal garden for ${month}`} disabled={!plan.beds.length} onClick={() => generateSeasonalGarden(uuid("season"))}>{generatedMonth === month ? `✓ ${month}` : "✦ Generate"}</button></div></div><div className="gv-cloud-state" role="status" aria-live="polite" data-save-state={saveState}><span className={isSaved ? "online" : ""} />{sourceLabel}</div>
     <div className="designer-toolbar" aria-label="Garden drawing controls"><span className="planner-ribbon-caption">Layout & layers</span><button type="button" aria-pressed={hideLabels} onClick={() => setHideLabels(value => !value)}>Hide labels</button><button type="button" aria-pressed={editLockedItems} onClick={() => { if (editLockedItems) setSelections(activeSelections.filter(item => !lockedKeys.has(planLockKey(item)))); setEditLockedItems(!editLockedItems); }}>Edit locked items</button>
       <label>Layers<select aria-label="Drawing layers" value={designerLayer} onChange={(event) => { setDesignerLayer(event.target.value); setSelection(null); }}><option value="all">Edit All</option><option value="view">View All</option><option value="plants">Plants</option><option value="structures">Structures</option><option value="layout">Layout</option><option value="text">Text</option></select></label>
@@ -1397,7 +1454,7 @@ export function GardenPlanner() {
           if (object.type === "structure") { const preset = structurePreset(object.kind); return <div key={object.id} data-object-id={object.id} data-kind={object.kind} data-skip-locked={skipLockedObject(object)} className={`layout-object structure-object ${selected ? "selected" : ""}`} style={{ left: object.x - object.widthCm / 2, top: object.y - object.depthCm / 2, width: object.widthCm, height: object.depthCm, transform: `rotate(${object.rotationDeg}deg)` }} onPointerDown={(event) => startObjectInteraction(event, object)}><span className="structure-symbol reference-structure-symbol" aria-hidden="true">{phoneLayout && !selected ? <span className="planner-compact-object" /> : <ReferenceObjectArt kind={object.kind} widthCm={object.widthCm} depthCm={object.depthCm} />}</span><small>{object.label ?? preset.label}</small>{selected && !groupSelection.length && !selectionLocked && <span className="resize-handle structure-resize-handle" title="Resize structure" onPointerDown={(event) => startObjectInteraction(event, object, "structure-resize")} />}</div>; }
           return <div key={object.id} data-object-id={object.id} data-skip-locked={skipLockedObject(object)} className={`layout-object text-object ${selected ? "selected" : ""}`} style={{ left: object.x, top: object.y, fontSize: object.fontSize }} onPointerDown={(event) => startObjectInteraction(event, object)}>{object.text}</div>;
         })}
-        {visiblePlan.rows.map(row => <PlannerPlantingRow key={row.id} row={row} compact={phoneLayout && (!isSelected("row", row.id) || zoom < 85 || !mobileToolsOpen)} selectedPlantId={selection?.kind === "row" && selection.id === row.id ? selection.plantId : undefined} skipLocked={skipLockedItem({ kind: "row", id: row.id })} selected={isSelected("row", row.id)} handles={isSelected("row", row.id) && !groupSelection.length && !selectionLocked} onDrag={startRowInteraction} />)}
+        {visiblePlan.rows.map(row => <PlannerPlantingRow key={row.id} row={row} successionConflict={successionConflicts.some(item => item.kind === "row" && item.id === row.id)} compact={phoneLayout && (!isSelected("row", row.id) || zoom < 85 || !mobileToolsOpen)} selectedPlantId={selection?.kind === "row" && selection.id === row.id ? selection.plantId : undefined} skipLocked={skipLockedItem({ kind: "row", id: row.id })} selected={isSelected("row", row.id)} handles={isSelected("row", row.id) && !groupSelection.length && !selectionLocked} onDrag={startRowInteraction} />)}
         {plan.beds.length > 0 && <div className="garden-bed-coordinate-layer">{plan.beds.map((bed) => {
           const selected = isSelected("bed", bed.id);
           const areas = areasByBed.get(bed.id) ?? [];

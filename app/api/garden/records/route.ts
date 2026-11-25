@@ -1,6 +1,6 @@
 import { getGardenDb } from "@/lib/garden/cloudflare-db";
 import { ensureGardenPlantingAreaSchema } from "@/lib/garden/planting-area-schema";
-import { GARDEN_ID } from "@/lib/garden/storage-contract";
+import { requestGardenId } from "@/lib/garden/request-garden";
 import { authoriseGardenWrite } from "@/lib/garden/write-auth";
 
 export const dynamic = "force-dynamic";
@@ -110,16 +110,16 @@ function plantingDto(planting: PlantingDb | null) {
   };
 }
 
-async function getBed(bedId: string) {
+async function getBed(gardenId: string, bedId: string) {
   const db = getGardenDb();
   return db.prepare(`
     SELECT id, label FROM beds
     WHERE garden_id = ? AND id = ? AND archived_at IS NULL
     LIMIT 1
-  `).bind(GARDEN_ID, bedId).first<BedDb>();
+  `).bind(gardenId, bedId).first<BedDb>();
 }
 
-async function getPlanting(plantingId: string, bedId?: string | null, activeOnly = true) {
+async function getPlanting(gardenId: string, plantingId: string, bedId?: string | null, activeOnly = true) {
   const db = getGardenDb();
   const activeClause = activeOnly ? "AND status = 'active'" : "";
   const bedClause = bedId ? "AND bed_id = ?" : "";
@@ -131,11 +131,11 @@ async function getPlanting(plantingId: string, bedId?: string | null, activeOnly
     LIMIT 1
   `);
   return bedId
-    ? statement.bind(GARDEN_ID, plantingId, bedId).first<PlantingDb>()
-    : statement.bind(GARDEN_ID, plantingId).first<PlantingDb>();
+    ? statement.bind(gardenId, plantingId, bedId).first<PlantingDb>()
+    : statement.bind(gardenId, plantingId).first<PlantingDb>();
 }
 
-async function getActivePlantings(bedId: string) {
+async function getActivePlantings(gardenId: string, bedId: string) {
   const db = getGardenDb();
   const result = await db.prepare(`
     SELECT id, bed_id, crop_name, crop_icon, variety, sow_date, germinated_date,
@@ -143,17 +143,17 @@ async function getActivePlantings(bedId: string) {
     FROM plantings
     WHERE garden_id = ? AND bed_id = ? AND status = 'active'
     ORDER BY created_at ASC
-  `).bind(GARDEN_ID, bedId).all<PlantingDb>();
+  `).bind(gardenId, bedId).all<PlantingDb>();
   return result.results ?? [];
 }
 
-async function resolveWritablePlanting(bedId: string, plantingId: string | null) {
+async function resolveWritablePlanting(gardenId: string, bedId: string, plantingId: string | null) {
   if (plantingId) {
-    const planting = await getPlanting(plantingId, bedId, true);
+    const planting = await getPlanting(gardenId, plantingId, bedId, true);
     if (!planting) throw new Error("That planting is no longer active in this bed.");
     return planting;
   }
-  const active = await getActivePlantings(bedId);
+  const active = await getActivePlantings(gardenId, bedId);
   if (active.length === 1) return active[0];
   if (active.length > 1) throw new Error("This bed has multiple crops. Select the planting area you want first.");
   throw new Error("There is no active crop in this bed.");
@@ -161,6 +161,7 @@ async function resolveWritablePlanting(bedId: string, plantingId: string | null)
 
 export async function GET(request: Request) {
   try {
+    const gardenId = requestGardenId(request);
     const db = getGardenDb();
     await ensureGardenPlantingAreaSchema(db);
     const url = new URL(request.url);
@@ -168,9 +169,9 @@ export async function GET(request: Request) {
     const plantingId = url.searchParams.get("plantingId")?.trim() || null;
 
     if (plantingId) {
-      const planting = await getPlanting(plantingId, bedId, false);
+      const planting = await getPlanting(gardenId, plantingId, bedId, false);
       if (!planting || !planting.bed_id) return Response.json({ ok: false, error: "That planting could not be found." }, { status: 404 });
-      const bed = await getBed(planting.bed_id);
+      const bed = await getBed(gardenId, planting.bed_id);
       if (!bed) return Response.json({ ok: false, error: "That garden bed could not be found." }, { status: 404 });
 
       const notesResult = await db.prepare(`
@@ -182,7 +183,7 @@ export async function GET(request: Request) {
         WHERE n.garden_id = ? AND n.target_type = 'planting' AND n.target_id = ?
         ORDER BY COALESCE(n.occurred_on, substr(n.created_at, 1, 10)) DESC, n.created_at DESC
         LIMIT 250
-      `).bind(GARDEN_ID, planting.id).all<NoteDb>();
+      `).bind(gardenId, planting.id).all<NoteDb>();
 
       const harvestResult = await db.prepare(`
         SELECT h.id, h.planting_id, h.harvested_on, h.weight_g, h.quantity, h.unit,
@@ -193,7 +194,7 @@ export async function GET(request: Request) {
         WHERE h.garden_id = ? AND h.planting_id = ?
         ORDER BY h.harvested_on DESC, h.created_at DESC
         LIMIT 250
-      `).bind(GARDEN_ID, planting.id).all<HarvestDb>();
+      `).bind(gardenId, planting.id).all<HarvestDb>();
 
       return Response.json({
         ok: true,
@@ -206,9 +207,9 @@ export async function GET(request: Request) {
     }
 
     if (bedId) {
-      const bed = await getBed(bedId);
+      const bed = await getBed(gardenId, bedId);
       if (!bed) return Response.json({ ok: false, error: "That garden bed could not be found." }, { status: 404 });
-      const activePlantings = await getActivePlantings(bedId);
+      const activePlantings = await getActivePlantings(gardenId, bedId);
       const activePlanting = activePlantings.length === 1 ? activePlantings[0] : null;
 
       const notesResult = await db.prepare(`
@@ -226,7 +227,7 @@ export async function GET(request: Request) {
         )
         ORDER BY COALESCE(n.occurred_on, substr(n.created_at, 1, 10)) DESC, n.created_at DESC
         LIMIT 250
-      `).bind(GARDEN_ID, bedId, bedId).all<NoteDb>();
+      `).bind(gardenId, bedId, bedId).all<NoteDb>();
 
       const harvestResult = await db.prepare(`
         SELECT h.id, h.planting_id, h.harvested_on, h.weight_g, h.quantity, h.unit,
@@ -237,7 +238,7 @@ export async function GET(request: Request) {
         WHERE h.garden_id = ? AND p.bed_id = ?
         ORDER BY h.harvested_on DESC, h.created_at DESC
         LIMIT 250
-      `).bind(GARDEN_ID, bedId).all<HarvestDb>();
+      `).bind(gardenId, bedId).all<HarvestDb>();
 
       return Response.json({
         ok: true,
@@ -260,7 +261,7 @@ export async function GET(request: Request) {
       WHERE n.garden_id = ?
       ORDER BY COALESCE(n.occurred_on, substr(n.created_at, 1, 10)) DESC, n.created_at DESC
       LIMIT 300
-    `).bind(GARDEN_ID).all<NoteDb>();
+    `).bind(gardenId).all<NoteDb>();
 
     const harvestResult = await db.prepare(`
       SELECT h.id, h.planting_id, h.harvested_on, h.weight_g, h.quantity, h.unit,
@@ -271,7 +272,7 @@ export async function GET(request: Request) {
       WHERE h.garden_id = ?
       ORDER BY h.harvested_on DESC, h.created_at DESC
       LIMIT 300
-    `).bind(GARDEN_ID).all<HarvestDb>();
+    `).bind(gardenId).all<HarvestDb>();
 
     return Response.json({
       ok: true,
@@ -291,6 +292,7 @@ export async function POST(request: Request) {
   if (!auth.ok) return Response.json({ ok: false, error: auth.error }, { status: auth.status });
 
   try {
+    const gardenId = requestGardenId(request);
     const body = await request.json() as Record<string, unknown>;
     const action = text(body.action, 40);
     const db = getGardenDb();
@@ -303,15 +305,15 @@ export async function POST(request: Request) {
       const bedId = text(body.bedId, 160) || null;
       const plantingId = text(body.plantingId, 160) || null;
       let targetType: "garden" | "bed" | "planting" = "garden";
-      let targetId: string = GARDEN_ID;
+      let targetId: string = gardenId;
 
       if (plantingId) {
-        const planting = await getPlanting(plantingId, bedId, false);
+        const planting = await getPlanting(gardenId, plantingId, bedId, false);
         if (!planting) return Response.json({ ok: false, error: "That planting could not be found." }, { status: 404 });
         targetType = "planting";
         targetId = planting.id;
       } else if (bedId) {
-        const bed = await getBed(bedId);
+        const bed = await getBed(gardenId, bedId);
         if (!bed) return Response.json({ ok: false, error: "That garden bed could not be found." }, { status: 404 });
         targetType = "bed";
         targetId = bedId;
@@ -321,7 +323,7 @@ export async function POST(request: Request) {
       await db.prepare(`
         INSERT INTO notes (id, garden_id, target_type, target_id, body, occurred_on)
         VALUES (?, ?, ?, ?, ?, ?)
-      `).bind(id, GARDEN_ID, targetType, targetId, noteBody, occurredOn).run();
+      `).bind(id, gardenId, targetType, targetId, noteBody, occurredOn).run();
       return Response.json({ ok: true, id });
     }
 
@@ -329,9 +331,9 @@ export async function POST(request: Request) {
       const bedId = text(body.bedId, 160);
       const plantingId = text(body.plantingId, 160) || null;
       if (!bedId) return Response.json({ ok: false, error: "Choose a bed before recording a harvest." }, { status: 400 });
-      const bed = await getBed(bedId);
+      const bed = await getBed(gardenId, bedId);
       if (!bed) return Response.json({ ok: false, error: "That garden bed could not be found." }, { status: 404 });
-      const planting = await resolveWritablePlanting(bedId, plantingId);
+      const planting = await resolveWritablePlanting(gardenId, bedId, plantingId);
 
       const harvestedOn = optionalDate(body.harvestedOn);
       if (!harvestedOn) return Response.json({ ok: false, error: "Choose the harvest date." }, { status: 400 });
@@ -345,7 +347,7 @@ export async function POST(request: Request) {
       await db.prepare(`
         INSERT INTO harvests (id, garden_id, planting_id, harvested_on, weight_g, quantity, unit, notes)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-      `).bind(id, GARDEN_ID, planting.id, harvestedOn, weightG, quantity, unit, notes).run();
+      `).bind(id, gardenId, planting.id, harvestedOn, weightG, quantity, unit, notes).run();
       return Response.json({ ok: true, id });
     }
 
@@ -353,14 +355,14 @@ export async function POST(request: Request) {
       const bedId = text(body.bedId, 160);
       const plantingId = text(body.plantingId, 160) || null;
       if (!bedId) return Response.json({ ok: false, error: "Choose a bed first." }, { status: 400 });
-      const planting = await resolveWritablePlanting(bedId, plantingId);
+      const planting = await resolveWritablePlanting(gardenId, bedId, plantingId);
       const sowDate = optionalDate(body.sowDate);
       const germinatedDate = optionalDate(body.germinatedDate);
       const transplantDate = optionalDate(body.transplantDate);
       await db.prepare(`
         UPDATE plantings SET sow_date = ?, germinated_date = ?, transplant_date = ?, updated_at = CURRENT_TIMESTAMP
         WHERE id = ? AND garden_id = ?
-      `).bind(sowDate, germinatedDate, transplantDate, planting.id, GARDEN_ID).run();
+      `).bind(sowDate, germinatedDate, transplantDate, planting.id, gardenId).run();
       return Response.json({ ok: true });
     }
 
@@ -375,13 +377,14 @@ export async function DELETE(request: Request) {
   if (!auth.ok) return Response.json({ ok: false, error: auth.error }, { status: auth.status });
 
   try {
+    const gardenId = requestGardenId(request);
     const db = getGardenDb();
     const url = new URL(request.url);
     const kind = url.searchParams.get("kind");
     const id = url.searchParams.get("id")?.trim();
     if (!id || (kind !== "note" && kind !== "harvest")) return Response.json({ ok: false, error: "A valid record id and type are required." }, { status: 400 });
-    if (kind === "note") await db.prepare("DELETE FROM notes WHERE id = ? AND garden_id = ?").bind(id, GARDEN_ID).run();
-    else await db.prepare("DELETE FROM harvests WHERE id = ? AND garden_id = ?").bind(id, GARDEN_ID).run();
+    if (kind === "note") await db.prepare("DELETE FROM notes WHERE id = ? AND garden_id = ?").bind(id, gardenId).run();
+    else await db.prepare("DELETE FROM harvests WHERE id = ? AND garden_id = ?").bind(id, gardenId).run();
     return Response.json({ ok: true });
   } catch (error) {
     return Response.json({ ok: false, error: error instanceof Error ? error.message : "Unable to delete garden record." }, { status: 400 });

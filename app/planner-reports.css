@@ -84,3 +84,63 @@
 @media(max-width:600px) { .calendar-date-fields { grid-template-columns: 1fr; } .calendar-grid th:first-child { width: 150px; } }
 
 .calendar-grid tbody th { top: auto; }
+
+.planner-report .calendar-succession-link { margin-top: 12px; min-height: 44px; }
+.succession-timeline { max-width: 900px; }
+.succession-timeline h3 { margin: 20px 0 8px; font: 21px Georgia, serif; }
+.succession-timeline p { font-size: 14px; line-height: 1.5; }
+.succession-events { list-style: none; padding: 0; margin: 0; border-top: 1px solid #dadfd2; }
+.succession-events li {
+  display: grid; grid-template-columns: 42px minmax(0, 1fr) auto;
+  align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #dadfd2;
+}
+.succession-events small { display: block; margin-top: 4px; line-height: 1.4; }
+.succession-art { font-size: 38px; }
+.succession-review { margin-top: 16px; padding: 0 14px 14px; border: 1px solid #b3bfac; background: #f7f5ef; }
+.succession-warning { color: #78421f; }
+.planner-report .succession-timeline button { min-height: 44px; }
+.planner-report .succession-timeline button:disabled { opacity: .55; cursor: default; }
+.succession-bed-conditions, .succession-next { margin: 16px 0; padding: 0 14px 14px; border: 1px solid #dadfd2; }
+.succession-bed-conditions summary { padding: 13px 0 4px; cursor: pointer; font-weight: 700; min-height: 44px; }
+.succession-bed-conditions:not([open]) { padding-bottom: 0; }
+.succession-condition-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.succession-next { background: #eef0e6; }
+.succession-next-crop { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 8px 12px; }
+.succession-next-crop > div { flex: 1 1 180px; }
+.succession-next-crop p { margin: 4px 0 0; }
+@media(max-width:600px) { .succession-condition-fields { grid-template-columns: 1fr; } }
+
+.succession-bed-overview { margin-top: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.succession-bed-overview section { border: 1px solid #dadfd2; padding: 14px; }
+.succession-bed-overview h4 { margin: 0 0 8px; font: 20px Georgia, serif; }
+.succession-bed-overview p { margin: 5px 0; }
+.succession-overview-replacement { display: flex; align-items: start; gap: 10px; padding: 8px; margin: 12px 0; background: #eef0e6; }
+.succession-bed-overview button { margin-top: 8px; }
+@media(max-width:600px) { .succession-bed-overview { grid-template-columns: 1fr; } }
+
+.garden-canvas [data-succession-conflict=true] {
+  outline: 2px solid #a33927;
+  outline-offset: 2px;
+}
+
+.seasonal-shade-map { border: 1px solid #dadfd2; margin: 12px 0 20px; padding: 0 14px 14px; }
+.seasonal-shade-map svg { display: block; width: 100%; height: min(54dvh, 480px); background: #f6f6ef; }
+.seasonal-shade-results { list-style: none; padding: 0; margin: 12px 0 0; }
+.seasonal-shade-results li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 0; border-top: 1px solid #dadfd2; }
+.seasonal-shade-results small { display: block; margin-top: 4px; }
+.succession-weather { border-top: 1px solid #dadfd2; margin: 12px 0; padding-top: 8px; }
+.succession-weather h4 { margin: 0; }
+
+.harvest-proposals { list-style: none; padding: 0; }
+.harvest-proposals li { padding: 12px; border: 1px solid #dadfd2; }
+
+.season-results-list { list-style: none; padding: 0; }
+.season-results-list > li { display: flex; gap: 10px; padding: 12px 0; border-top: 1px solid #dadfd2; }
+.season-results-list dl { margin: 8px 0; }
+.season-results-list dl > div { margin-top: 6px; }
+.season-results-list dt { font-weight: 700; }
+.season-results-list dd { margin: 0; }
+.season-results-photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 12px; }
+.season-results-photos figure { margin: 0; }
+.season-results-photos img { display: block; width: 100%; aspect-ratio: 3 / 2; height: auto; object-fit: cover; }
+.season-results-photos figcaption { margin-top: 6px; font-size: 13px; }

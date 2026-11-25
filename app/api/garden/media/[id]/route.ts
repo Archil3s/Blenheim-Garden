@@ -1,5 +1,5 @@
 import { getGardenDb, getGardenMediaBucket } from "@/lib/garden/cloudflare-db";
-import { GARDEN_ID } from "@/lib/garden/storage-contract";
+import { requestGardenId } from "@/lib/garden/request-garden";
 import { authoriseGardenWrite } from "@/lib/garden/write-auth";
 
 export const dynamic = "force-dynamic";
@@ -16,23 +16,24 @@ function safeHeaderFileName(fileName: string) {
   return fileName.replace(/[\r\n"\\]/g, "_").slice(0, 180) || "garden-media";
 }
 
-async function findMedia(id: string) {
+async function findMedia(gardenId: string, id: string) {
   const db = getGardenDb();
   return db.prepare(`
     SELECT id, r2_key, file_name, content_type, size_bytes
     FROM media
     WHERE garden_id = ? AND id = ?
     LIMIT 1
-  `).bind(GARDEN_ID, id).first<MediaObjectRow>();
+  `).bind(gardenId, id).first<MediaObjectRow>();
 }
 
 export async function GET(
-  _request: Request,
+  request: Request,
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
+    const gardenId = requestGardenId(request);
     const { id } = await params;
-    const media = await findMedia(id);
+    const media = await findMedia(gardenId, id);
     if (!media) return new Response("Not found", { status: 404 });
 
     const object = await getGardenMediaBucket().get(media.r2_key);
@@ -62,14 +63,15 @@ export async function DELETE(
   if (!auth.ok) return Response.json({ ok: false, error: auth.error }, { status: auth.status });
 
   try {
+    const gardenId = requestGardenId(request);
     const { id } = await params;
     const db = getGardenDb();
-    const media = await findMedia(id);
+    const media = await findMedia(gardenId, id);
     if (!media) return Response.json({ ok: false, error: "Media item not found." }, { status: 404 });
 
     await getGardenMediaBucket().delete(media.r2_key);
     await db.prepare("DELETE FROM media WHERE garden_id = ? AND id = ?")
-      .bind(GARDEN_ID, id)
+      .bind(gardenId, id)
       .run();
 
     return Response.json({ ok: true });

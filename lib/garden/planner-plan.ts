@@ -1,7 +1,9 @@
+import type { BedGrowingConditions } from "./bed-growing-conditions";
 import type { PlantingSchedule } from "./planting-schedule";
 export type PlannerBed = {
   id: number;
   name: string;
+  growingConditions?: BedGrowingConditions;
   x: number;
   y: number;
   w: number;

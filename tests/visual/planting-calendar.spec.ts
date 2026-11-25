@@ -55,7 +55,7 @@ test("calendar milestones survive protected D1 round trips and keep recorded his
 async function openCalendar(page: Page) {
   const button = page.getByRole("button", { name: "Open planting calendar", exact: true });
   if (await button.isVisible()) await button.click();
-  else { await page.locator(".gv-more summary").click(); await page.locator(".gv-more-panel").getByRole("button", { name: "Calendar", exact: true }).click(); }
+  else { await page.locator(".gv-more-trigger").click(); await page.locator(".gv-more-panel").getByRole("button", { name: "Calendar", exact: true }).click(); }
   return page.getByRole("dialog", { name: "Planting Calendar", exact: true });
 }
 

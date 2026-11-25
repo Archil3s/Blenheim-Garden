@@ -1,5 +1,6 @@
 "use client";
 
+import { gardenResourceUrl, readActiveGardenId } from "@/lib/garden/active-garden";
 import { useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 
 const EDIT_KEY_SESSION = "blenheim-garden-edit-key";
@@ -53,7 +54,7 @@ type RecordsResponse = {
   harvests?: HarvestItem[];
 };
 
-type Target = { bedId: string | null; plantingId: string | null; label: string };
+type Target = { gardenId?: string; bedId: string | null; plantingId: string | null; label: string };
 
 function todayInput() {
   const now = new Date();
@@ -115,7 +116,7 @@ export function GardenRecordsDialogBridge() {
       if (nextTarget.bedId) params.set("bedId", nextTarget.bedId);
       if (nextTarget.plantingId) params.set("plantingId", nextTarget.plantingId);
       const query = params.size ? `?${params.toString()}` : "";
-      const response = await fetch(`/api/garden/records${query}`, { cache: "no-store" });
+      const response = await fetch(gardenResourceUrl(`/api/garden/records${query}`, nextTarget.gardenId), { cache: "no-store" });
       const data = await response.json() as RecordsResponse;
       if (!response.ok || !data.ok) throw new Error(data.error || "Unable to load notes and harvests.");
       applyResponse(data);
@@ -152,6 +153,7 @@ export function GardenRecordsDialogBridge() {
       event.preventDefault();
       event.stopPropagation();
       event.stopImmediatePropagation();
+      nextTarget = { ...nextTarget, gardenId: readActiveGardenId() };
       setTarget(nextTarget);
       setNoteBody("");
       setNoteDate(todayInput());
@@ -186,7 +188,7 @@ export function GardenRecordsDialogBridge() {
     setError("");
     setSuccess("");
     try {
-      const response = await fetch("/api/garden/records", {
+      const response = await fetch(gardenResourceUrl("/api/garden/records", target.gardenId), {
         method: "POST",
         headers: { "content-type": "application/json", authorization: `Bearer ${editKey}` },
         body: JSON.stringify({ action, ...payload }),
@@ -259,7 +261,7 @@ export function GardenRecordsDialogBridge() {
     setError("");
     try {
       const query = new URLSearchParams({ kind, id });
-      const response = await fetch(`/api/garden/records?${query.toString()}`, { method: "DELETE", headers: { authorization: `Bearer ${editKey}` } });
+      const response = await fetch(gardenResourceUrl(`/api/garden/records?${query.toString()}`, target.gardenId), { method: "DELETE", headers: { authorization: `Bearer ${editKey}` } });
       const data = await response.json() as RecordsResponse;
       if (!response.ok || !data.ok) throw new Error(data.error || "Delete failed.");
       await loadRecords(target);

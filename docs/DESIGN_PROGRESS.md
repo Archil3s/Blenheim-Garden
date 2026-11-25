@@ -643,3 +643,64 @@ tablet checks passed in Chromium. Both phone viewport sizes had no horizontal
 page overflow. Bed edits, plant counts and saved history were verified with
 isolated test data. Screenshots were reviewed at all five viewport sizes.
 ESLint reported two existing icon-gallery warnings. User feedback is pending.
+
+## Visual sowing guide P-020 — 24 November 2026
+
+- The Overview previously showed short seasonal tasks. The Seedling Journal showed the current month's windows. The Overview now has a Sowing guide link and catalogue artwork for direct sowing and covered starts, with expandable months for the next New Zealand season.
+- The guide uses the Seedling Journal's starter crop windows and the Blenheim calendar date. Outdoor transplant windows are excluded from seed recommendations. Timing represents seasonal guidance.
+- Browser evidence is captured as `seasonal-sowing-guide.png` by `tests/visual/home-seedlings-editorial.spec.ts` at 1920 × 1080, 1440 × 900, 1024 × 768 and 390 × 844. The November run covered the December-to-January rollover, keyboard expansion and horizontal overflow.
+- User feedback pending.
+
+## Saved-garden succession planting P-021 — 25 November 2026
+
+- The Calendar previously showed crop windows and dated plantings. The planner now opens a succession timeline from Calendar or More, with the selected garden's crop history, bed occupancy and the next 120 days of illustrated sowing suggestions.
+- The review uses the planner's whole-bed planting geometry and protected Save flow. It shows conflicting occupancy and flags incomplete dates before saving. Covered starts use a separately entered transplant date. Dated overlap checks conservatively include rows whose bounds intersect the bed.
+- `tests/visual/succession-timeline.spec.ts` captures the timeline and conflict review and exercises the real plan and history handlers against isolated SQLite. The browser reload clears both plan caches before verifying persistence, then opens a second named garden.
+- User feedback pending.
+
+## Bed-specific replacement advice P-022 — 25 November 2026
+
+- The succession view now starts with the crop currently in the selected bed, its scheduled clear date and the next booked crop. The bed inspector opens the same view directly.
+- Replacement ranking uses recorded sun, heat and frost exposure, climbing support, soil moisture and bed width, alongside rotation and the gap before the next booking. Mapped shade cloth, heated cover and trellises inform defaults until observations are saved. Tree canopies flag possible shade. These map cues do not measure the microclimate.
+- Bed observations persist through protected garden saves and reload with the associated bed. The succession browser test verifies named-garden isolation and captures the advice and review panels at all four standard viewports.
+- User feedback pending.
+
+## Garden-wide replacement overview P-023 — 25 November 2026
+
+- Succession planting opens with every bed in the selected garden. Each bed shows its current crops, clearance date, next booking and highest-ranked compatible replacement when available. Each bed links to its detailed review and preserves the planning date.
+- The selected bed's inspector opens bed review directly. The overview uses two columns at larger widths and one on phones.
+- Browser screenshots are captured as `garden-replacement-overview.png` by the succession timeline test. That flow checks a second bed in the first garden and verifies that the bed is absent after switching gardens.
+- User feedback pending.
+
+## Measured succession and seasonal shade P-024–P-025 — 25 November 2026
+
+- The planting inspector now provides start and clear dates for replacements in the selected row or planting area. It rejects positive-area intersections during overlapping inclusive date ranges, allows shared boundaries, and marks the overlapping booking on the measured map.
+- The succession overview opens a measured seasonal shade map of the selected garden. Estimates use Blenheim solar positions at three sample times, compass rotation when one is mapped, and approximate tree height from canopy size. Saved observations stay visible beside geometric estimates and can be updated through bed review.
+- Browser evidence is captured as `succession-measured-conflict.png` and `seasonal-shade-map.png`. Coverage includes existing neighbouring plantings, date-boundary collision, season changes, saved shade observations and named-garden isolation.
+- User feedback pending.
+
+## Dated trellis use P-026 — 25 November 2026
+
+- Succession planting lists mapped climbing supports, nearby beds, availability on the selected date and release dates for linked or nearby climbing crops. Variety fit uses indicative support heights.
+- A reviewed climbing succession can reserve a nearby support. The reservation persists in the existing planting schedule and the review checks for ongoing or overlapping use before saving.
+- The succession browser scenario verifies dated availability, protected round trips and isolation across named gardens at the four standard sizes. User feedback pending.
+
+## Planting weather and expanded crop guide P-027–P-028 — 25 November 2026
+
+- Succession review combines the bed start or transplant date, saved exposure and historical Blenheim frost guidance. Users can request a regional seven-day air-temperature forecast and review a possible later date when the forecast flags heat or frost. The alternate date remains subject to the crop window and bed bookings.
+- Beetroot, radish, spinach, kale and cucumber join the seasonal and succession guides. The review displays catalogue spacing, broad first-harvest estimates, a reference to the existing Tui NZ planting calendar and notes for selected catalogue varieties. Daikon uses packet-specific maturity guidance.
+- The managed environment returned HTTP 403 for the live forecast provider. The browser scenario uses an isolated regional forecast fixture and exercises both its advice and the unavailable response. It also checks the selected beetroot variety's bed-depth advice.
+- User feedback pending.
+
+## Seed packets, tray links and harvest targets P-029–P-030 — 25 November 2026
+
+- The Seedling Companion records packet counts per garden and links a single-crop tray batch to a scheduled planting area. Readiness warnings appear in the journal and succession review. Device-local links use garden and planting-area identifiers. Saving one garden preserves other gardens' batch records.
+- Succession planting previews staggered sowings against a target harvest date, batch size, available whole beds, and covered tray capacity. Active local batches count towards tray occupancy. The preview leaves scheduling decisions to the gardener.
+- Browser scenarios verify packet and readiness persistence, cross-garden isolation, feasible batches, and bed and tray capacity failures at the four standard sizes. User feedback pending.
+
+## Schedule recovery and bed season results P-031–P-032 — 25 November 2026
+
+- The succession overview previews delays and failed-crop clearance. Measured footprint and trellis bookings determine whether a delayed booking fits. A later clear slot can be previewed, and changes are applied only after confirmation. Failed plantings retain their records and open replacement review for the cleared bed.
+- Bed season results compare current plan dates with recorded sowing, transplanting and first harvest. They include dated seasonal yields and photos from bed, crop and harvest attachments. Historical crops retain their actual records even if their planned dates are absent.
+- Records and media use the selected garden for reads and protected writes. The end-to-end scenario tests two named gardens, denied cross-garden reads, a real isolated photo upload and preview, date recovery, seasonal filtering and a photo taken across the NZ season boundary. Screenshots are captured as `review-recovery.png` and `season-results.png`.
+- User feedback pending.

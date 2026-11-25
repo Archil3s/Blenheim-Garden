@@ -46,6 +46,8 @@ test("full catalogue, custom spacing, reports and exports work", async ({ page }
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/planner");
   await expect(page.locator(".gv-save")).toHaveText("Saved ✓");
+  const phoneTools = page.getByRole("navigation", { name: "Quick garden actions" }).getByRole("button", { name: "Tools", exact: true });
+  if (await phoneTools.isVisible()) await phoneTools.click();
   await page.locator('.gv-rail button').filter({ has: page.locator("small", { hasText: /^Plants$/ }) }).click();
   await page.getByLabel(/Full plant catalogue/).check();
   await page.getByPlaceholder("Plant or variety").fill("Zucchini");
@@ -62,7 +64,7 @@ test("full catalogue, custom spacing, reports and exports work", async ({ page }
   await expect(page.locator(".gv-structure-ready")).toContainText("Pond");
   await page.screenshot({ path: testInfo.outputPath("expanded-catalogue.png"), fullPage: true });
   await page.getByRole("button", { name: "Close inspector", exact: true }).click();
-  await page.locator(".gv-more summary").click();
+  await page.locator(".gv-more-trigger").click();
   await page.locator(".gv-more-panel").getByRole("button", { name: "Plant List", exact: true }).click();
   const dialog = page.getByRole("dialog", { name: "Plant List", exact: true });
   await expect(dialog).toBeVisible();
@@ -74,7 +76,7 @@ test("full catalogue, custom spacing, reports and exports work", async ({ page }
   expect((await csvDownload).suggestedFilename()).toBe("garden-plants.csv");
   await page.screenshot({ path: testInfo.outputPath("plant-list.png"), fullPage: true });
   await dialog.getByRole("button", { name: "Close", exact: true }).click();
-  await page.locator(".gv-more summary").click();
+  await page.locator(".gv-more-trigger").click();
   await page.locator(".gv-more-panel").getByRole("button", { name: "Parts List", exact: true }).click();
   await expect(page.getByRole("dialog")).toContainText("14.50");
   await page.emulateMedia({ media: "print" });
@@ -82,7 +84,7 @@ test("full catalogue, custom spacing, reports and exports work", async ({ page }
   await expect(page.getByRole("dialog")).toBeVisible();
   await page.emulateMedia({ media: "screen" });
   await page.getByRole("dialog").getByRole("button", { name: "Close", exact: true }).click();
-  await page.locator(".gv-more summary").click();
+  await page.locator(".gv-more-trigger").click();
   await page.locator(".gv-more-panel").getByRole("button", { name: "Export plan", exact: true }).click();
   for (const [label, name] of [["Download JSON backup", "garden-plan.json"], ["Download SVG plan", "garden-plan.svg"], ["Download PNG plan", "garden-plan.png"]]) {
     const pending = page.waitForEvent("download");

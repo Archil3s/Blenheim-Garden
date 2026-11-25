@@ -60,9 +60,15 @@ test("protected D1 schedules round-trip without finishing prior plantings or alt
   } finally { globals[symbol] = previous; db.close(); }
 });
 
+async function showPlannerTools(page: Page) {
+  const tools = page.getByRole("navigation", { name: "Quick garden actions" }).getByRole("button", { name: "Tools", exact: true });
+  if (await tools.isVisible() && await tools.getAttribute("aria-expanded") === "false") await tools.click();
+}
+
 async function boot(page: Page) {
   await page.route("**/api/**", route => route.fulfill({ json: { ok: true, plan: fixture, gardens: [], body: "", beds: [], items: [], notes: [], harvests: [] } }));
   await page.goto("/planner"); await expect(page.locator(".gv-save")).toHaveText("Saved ✓");
+  await showPlannerTools(page);
 }
 
 test("month visibility, same-space succession, undo and reload preserve every planting", async ({ page }, info) => {
@@ -86,6 +92,7 @@ test("month visibility, same-space succession, undo and reload preserve every pl
   await page.getByLabel("Planning month", { exact: true }).selectOption("Sep");
   await expect(page.locator('.planting-row[data-crop="Pumpkin"]')).toHaveCount(1);
   await page.locator(".gv-save").click(); await page.reload();
+  await showPlannerTools(page);
   await expect(page.getByLabel("Planning month", { exact: true })).toHaveValue("Sep");
   expect((await read(page)).rows).toHaveLength(3);
   await page.getByLabel("Planning year", { exact: true }).fill("2027");
@@ -108,7 +115,7 @@ test("dated areas remain editable and plant lists distinguish schedules and sele
   await page.screenshot({ path: info.outputPath("area-dates.png") });
   const tab = page.getByRole("button", { name: "Open plant list", exact: true });
   if (await tab.isVisible()) await tab.click();
-  else { await page.locator(".gv-more summary").click(); await page.locator(".gv-more-panel").getByRole("button", { name: "Plant List", exact: true }).click(); }
+  else { await page.locator(".gv-more-trigger").click(); await page.locator(".gv-more-panel").getByRole("button", { name: "Plant List", exact: true }).click(); }
   const report = page.getByRole("dialog", { name: "Plant List", exact: true });
   await expect(report).toContainText("2027-03-01");
   await page.getByLabel("Show plantings", { exact: true }).selectOption("month");
@@ -131,4 +138,41 @@ test("3D uses the selected month without dropping hidden plantings from the edit
   await editor.getByRole("button", { name: "Fit", exact: true }).click();
   await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   await page.screenshot({ path: info.outputPath("november-3d.png") });
+});
+
+test("a partial-bed succession can touch a live neighbour but cannot occupy a booked area", () => {
+  const original = { ...fixture.plantingAreas[0], w: 50 };
+  const neighbour = { ...original, id: "neighbour", x: 50, crop: "Bean", variety: "Superstar", schedule: undefined };
+  const booked = { ...original, id: "booked", crop: "Broccoli", variety: "Calabrese",
+    schedule: { from: "2027-03-12", until: "2027-03-31" } };
+  const plan = { ...fixture, plantingAreas: [original, neighbour, booked] };
+  expect(() => addSuccession(plan, { kind: "planting", id: original.id }, lettuce, "blocked", { until: "2027-03-12" }))
+    .toThrow(/overlaps Calabrese/);
+  const replacement = addSuccession(plan, { kind: "planting", id: original.id }, lettuce, "allowed", { until: "2027-03-11" });
+  expect(replacement.plan.plantingAreas.slice(0, 3)).toEqual(plan.plantingAreas);
+  expect(replacement.plan.plantingAreas.at(-1)).toMatchObject({ x: 0, w: 50, schedule: { from: "2027-03-01", until: "2027-03-11" } });
+});
+
+test("row succession marks the overlapping booking on the measured map before saving", async ({ page }, info) => {
+  const errors: string[] = [];
+  page.on("pageerror", error => errors.push(error.message));
+  const future = { ...fixture.rows[0], id: "future", crop: "Bean", variety: "Superstar", schedule: { from: "2026-10-15", until: "2026-11-15" } };
+  const plan = { ...fixture, rows: [...fixture.rows, future] };
+  await page.route("**/api/**", route => route.fulfill({ json: { ok: true, plan, gardens: [], body: "", beds: [], items: [] } }));
+  await page.goto("/planner");
+  await expect(page.locator(".gv-save")).toHaveText("Saved ✓");
+  await showPlannerTools(page);
+  await page.getByLabel("Planning month", { exact: true }).selectOption("Sep");
+  await page.locator('.planting-row[data-crop="Pumpkin"] .row-dots i').first().click();
+  await page.getByRole("button", { name: "Add succession planting", exact: true }).click();
+  await expect(page.getByRole("group", { name: "Planting dates" }).getByRole("alert")).toContainText("This space overlaps Superstar");
+  await expect(page.locator('[data-row-id="future"]')).toHaveAttribute("data-succession-conflict", "true");
+  expect((await read(page)).rows).toEqual(plan.rows);
+  await page.screenshot({ path: info.outputPath("succession-measured-conflict.png") });
+  await page.getByLabel("Next crop clears").fill("2026-10-14");
+  await expect(page.locator('[data-row-id="future"][data-succession-conflict=true]')).toHaveCount(0);
+  await page.getByRole("button", { name: "Add succession planting", exact: true }).click();
+  await expect.poll(async () => (await read(page)).rows.at(-1)?.schedule).toEqual({ from: "2026-10-01", until: "2026-10-14" });
+  expect((await read(page)).rows.slice(0, plan.rows.length)).toEqual(plan.rows);
+  expect(errors).toEqual([]);
 });

@@ -1,5 +1,6 @@
 "use client";
 
+import { gardenResourceUrl, readActiveGardenId } from "@/lib/garden/active-garden";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -25,7 +26,7 @@ type MediaItem = {
 };
 
 type Usage = { fileCount: number; totalBytes: number };
-type Target = { targetType: "garden" | "bed" | "planting"; targetId: string; label: string };
+type Target = { gardenId?: string; targetType: "garden" | "bed" | "planting"; targetId: string; label: string };
 
 type MediaResponse = {
   ok: boolean;
@@ -56,8 +57,8 @@ export function GardenMediaDialogBridge() {
     setBusy(true);
     setError("");
     try {
-      const query = new URLSearchParams({ targetType: nextTarget.targetType, targetId: nextTarget.targetId });
-      const response = await fetch(`/api/garden/media?${query.toString()}`, { cache: "no-store" });
+      const query = new URLSearchParams({ targetType: nextTarget.targetType, targetId: nextTarget.targetType === "garden" ? nextTarget.gardenId ?? nextTarget.targetId : nextTarget.targetId });
+      const response = await fetch(gardenResourceUrl(`/api/garden/media?${query.toString()}`, nextTarget.gardenId), { cache: "no-store" });
       const data = await response.json() as MediaResponse;
       if (!response.ok || !data.ok) throw new Error(data.error || "Unable to load media.");
       setItems(data.items ?? []);
@@ -107,6 +108,7 @@ export function GardenMediaDialogBridge() {
       event.stopPropagation();
       event.stopImmediatePropagation();
 
+      nextTarget = { ...nextTarget, gardenId: readActiveGardenId() };
       setTarget(nextTarget);
       setSelectedFile(null);
       setCaption("");
@@ -165,11 +167,11 @@ export function GardenMediaDialogBridge() {
       const form = new FormData();
       form.set("file", selectedFile);
       form.set("targetType", target.targetType);
-      form.set("targetId", target.targetId);
+      form.set("targetId", target.targetType === "garden" ? target.gardenId ?? target.targetId : target.targetId);
       if (caption.trim()) form.set("caption", caption.trim());
       if (selectedFile.lastModified) form.set("capturedAt", new Date(selectedFile.lastModified).toISOString());
 
-      const response = await fetch("/api/garden/media", {
+      const response = await fetch(gardenResourceUrl("/api/garden/media", target.gardenId), {
         method: "POST",
         headers: { authorization: `Bearer ${editKey}` },
         body: form,
@@ -203,7 +205,7 @@ export function GardenMediaDialogBridge() {
     setBusy(true);
     setError("");
     try {
-      const response = await fetch(`/api/garden/media/${encodeURIComponent(item.id)}`, {
+      const response = await fetch(gardenResourceUrl(`/api/garden/media/${encodeURIComponent(item.id)}`, target.gardenId), {
         method: "DELETE",
         headers: { authorization: `Bearer ${editKey}` },
       });

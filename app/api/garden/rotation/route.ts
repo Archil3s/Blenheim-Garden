@@ -15,6 +15,7 @@ type BedDb = {
 type PlantingDb = {
   id: string;
   bed_id: string;
+  area_id: string | null;
   crop_name: string;
   crop_icon: string | null;
   variety: string | null;
@@ -43,6 +44,7 @@ function historyDto(row: PlantingDb) {
   return {
     id: row.id,
     bedId: row.bed_id,
+    areaId: row.area_id,
     cropName: row.crop_name,
     cropIcon: row.crop_icon ?? "🌱",
     variety: row.variety,
@@ -91,6 +93,10 @@ export async function GET(request: Request) {
     await ensureGardenPlantingAreaSchema(db);
 
     const url = new URL(request.url);
+    const gardenId = url.searchParams.get("gardenId")?.trim() || GARDEN_ID;
+    if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,79}$/.test(gardenId)) {
+      return Response.json({ ok: false, error: "Garden id is invalid." }, { status: 400 });
+    }
     const bedId = url.searchParams.get("bedId")?.trim() || null;
 
     const bedsStatement = bedId
@@ -99,13 +105,13 @@ export async function GET(request: Request) {
           FROM beds
           WHERE garden_id = ? AND id = ? AND archived_at IS NULL
           LIMIT 1
-        `).bind(GARDEN_ID, bedId)
+        `).bind(gardenId, bedId)
       : db.prepare(`
           SELECT id, label, sort_order
           FROM beds
           WHERE garden_id = ? AND archived_at IS NULL
           ORDER BY sort_order ASC, label ASC
-        `).bind(GARDEN_ID);
+        `).bind(gardenId);
 
     const bedsResult = await bedsStatement.all<BedDb>();
     const beds = bedsResult.results ?? [];
@@ -115,21 +121,21 @@ export async function GET(request: Request) {
 
     const plantingStatement = bedId
       ? db.prepare(`
-          SELECT id, bed_id, crop_name, crop_icon, variety, estimated_count, status,
+          SELECT id, bed_id, area_id, crop_name, crop_icon, variety, estimated_count, status,
             sow_date, germinated_date, transplant_date, start_date, end_date, created_at, updated_at
           FROM plantings
           WHERE garden_id = ? AND bed_id = ?
           ORDER BY COALESCE(start_date, transplant_date, sow_date, substr(created_at, 1, 10)) DESC, created_at DESC
           LIMIT 500
-        `).bind(GARDEN_ID, bedId)
+        `).bind(gardenId, bedId)
       : db.prepare(`
-          SELECT id, bed_id, crop_name, crop_icon, variety, estimated_count, status,
+          SELECT id, bed_id, area_id, crop_name, crop_icon, variety, estimated_count, status,
             sow_date, germinated_date, transplant_date, start_date, end_date, created_at, updated_at
           FROM plantings
           WHERE garden_id = ? AND bed_id IS NOT NULL
           ORDER BY COALESCE(start_date, transplant_date, sow_date, substr(created_at, 1, 10)) DESC, created_at DESC
           LIMIT 2000
-        `).bind(GARDEN_ID);
+        `).bind(gardenId);
 
     const plantingResult = await plantingStatement.all<PlantingDb>();
     const history = (plantingResult.results ?? []).map(historyDto);
@@ -155,6 +161,7 @@ export async function GET(request: Request) {
     return Response.json({
       ok: true,
       scope: "garden",
+      ...(url.searchParams.get("includeHistory") === "1" ? { history, historyMayBeIncomplete: history.length === 2000 } : {}),
       beds: beds.map((bed) => bedSummary(bed, byBed.get(bed.id) ?? [])),
     });
   } catch (error) {

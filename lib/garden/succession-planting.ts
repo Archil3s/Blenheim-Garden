@@ -1,16 +1,23 @@
 import type { PlannerPlan, PlannerRow } from "./planner-plan";
 import type { PlantOption } from "./plant-catalog";
-import { nextPlantingDate } from "./planting-schedule";
+import { overlappingPlantings, PlantingOverlapError, type MeasuredPlanting } from "./planting-overlap";
+import { nextPlantingDate, parsePlantingSchedule, type PlantingSchedule } from "./planting-schedule";
 import { plantCountForArea } from "./plant-spacing-layout";
 import { resizePlantingBlock } from "./planting-block";
 import { rowPlantCount } from "./row-layout";
 import { plantFacts } from "./plant-catalogue-filters";
 
 export function addSuccession(plan: PlannerPlan, selection: { kind: "planting" | "row"; id: string },
-  crop: PlantOption, id = crypto.randomUUID()) {
+  crop: PlantOption, id = crypto.randomUUID(), dates?: Pick<PlantingSchedule, "from" | "until">) {
   const original = selection.kind === "row" ? plan.rows.find(p => p.id === selection.id) : plan.plantingAreas.find(p => p.id === selection.id);
   if (!original?.schedule?.until) throw new Error("Set the current planting’s end date first.");
-  const schedule = { from: nextPlantingDate(original.schedule.until) };
+  const earliest = nextPlantingDate(original.schedule.until);
+  const schedule = parsePlantingSchedule({ ...dates, from: dates?.from || earliest })!;
+  if (schedule.from! < earliest) throw new Error("The next crop must start after this planting clears.");
+  function check(planting: MeasuredPlanting) {
+    const conflicts = overlappingPlantings(plan, planting);
+    if (conflicts.length) throw new PlantingOverlapError(conflicts, schedule.from!);
+  }
   const details = { id, crop: crop.name, cropIcon: crop.icon, variety: crop.varieties[0], spacingCm: crop.spacingCm, schedule, placements: undefined };
   if (selection.kind === "row" && "x1" in original) {
     let row: PlannerRow = { ...structuredClone(original), ...details };
@@ -22,6 +29,7 @@ export function addSuccession(plan: PlannerPlan, selection: { kind: "planting" |
       ...(row.block.mode === "square-foot" ? facts?.squareFootCount
         ? { plantsPerSquareFoot: facts.squareFootCount } : { mode: "block", plantsPerSquareFoot: undefined } : {}) });
     else row.count = rowPlantCount(length, facts?.inRowSpacingCm ?? crop.spacingCm);
+    check(row);
     return { plan: { ...plan, rows: [...plan.rows, row] }, selection: { kind: "row" as const, id } };
   }
   if (!("bedId" in original)) throw new Error("Planting area is missing.");
@@ -29,5 +37,6 @@ export function addSuccession(plan: PlannerPlan, selection: { kind: "planting" |
   if (!bed) throw new Error("Planting bed is missing.");
   const area = { ...structuredClone(original), ...details, plantingId: undefined };
   area.count = plantCountForArea(area, bed.w * 9 * area.w / 100, bed.h * 10.8 * area.h / 100);
+  check(area);
   return { plan: { ...plan, plantingAreas: [...plan.plantingAreas, area] }, selection: { kind: "planting" as const, id } };
 }

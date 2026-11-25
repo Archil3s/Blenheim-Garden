@@ -49,7 +49,7 @@ function sqliteD1(sqlite: DatabaseSync): D1DatabaseLike {
       const statement: D1PreparedStatementLike = {
         bind(...bindings) { values = bindings as SQLInputValue[]; return statement; },
         async all<T>() { return { results: sqlite.prepare(query).all(...values) as T[], success: true }; },
-        async first<T>(column) { const row = sqlite.prepare(query).get(...values); return (row ? column ? row[column] : row : null) as T | null; },
+        async first<T>(column?: string) { const row = sqlite.prepare(query).get(...values); return (row ? column ? row[column] : row : null) as T | null; },
         async run() { sqlite.prepare(query).run(...values); return { success: true }; },
       }; return statement;
     },

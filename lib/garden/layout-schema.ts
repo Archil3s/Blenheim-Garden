@@ -53,9 +53,10 @@ async function addLayoutColumnIfMissing(db: D1DatabaseLike, name: string, defini
 
 export async function ensureGardenLayoutSchema(db: D1DatabaseLike) {
   const bedColumns = await db.prepare("PRAGMA table_info(beds)").all<TableInfoRow>();
-  if (!(bedColumns.results ?? []).some((column) => column.name === "archived_at")) {
+  for (const column of ["archived_at", "growing_conditions_json"]) {
+    if ((bedColumns.results ?? []).some(item => item.name === column)) continue;
     try {
-      await db.prepare("ALTER TABLE beds ADD COLUMN archived_at TEXT").run();
+      await db.prepare(`ALTER TABLE beds ADD COLUMN ${column} TEXT`).run();
     } catch (error) {
       const message = error instanceof Error ? error.message.toLowerCase() : "";
       if (!message.includes("duplicate column") && !message.includes("already exists")) throw error;

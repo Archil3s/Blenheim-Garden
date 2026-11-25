@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { blenheimFrostForMonth, blenheimGardenActions } from "@/lib/garden/blenheim-calendar";
 import { SeedlingDashboardTeaser } from "@/components/seedling-dashboard-teaser";
+import { SeasonalSowingGuide } from "@/components/seasonal-sowing-guide";
 import "./home.css";
 
 // Seasonal context must update each NZ day; do not prerender it at build time.
@@ -37,12 +38,12 @@ function MonthArtwork() {
 export default function Home() {
   const now = new Date();
   const localDate = newZealandDate(now);
-  const frost = blenheimFrostForMonth(localDate.getMonth());
+  const frost = blenheimFrostForMonth(localDate.getUTCMonth());
   const actions = blenheimGardenActions(localDate, "today").slice(0, 4);
   const dateText = new Intl.DateTimeFormat("en-NZ", { timeZone: "Pacific/Auckland",
     weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(now);
   const monthYear = new Intl.DateTimeFormat("en-NZ", {
-    month: "long", year: "numeric" }).format(localDate);
+    timeZone: "UTC", month: "long", year: "numeric" }).format(localDate);
   return (
     <main className="garden-home">
       <a className="home-skip" href="#home-main">Skip to main content</a>
@@ -54,6 +55,7 @@ export default function Home() {
         <nav aria-label="Primary navigation">
           <Link href="/" aria-current="page">Overview</Link>
           <Link href="/planner">Garden planner</Link>
+          <Link href="#sowing-guide">Sowing guide</Link>
           <Link href="/seedlings">Seedling journal</Link>
           <Link href="/progress">Photo progress</Link>
           <Link href="/3d">3D view</Link>
@@ -83,6 +85,8 @@ export default function Home() {
             </div>
           </aside>
         </section>
+
+        <SeasonalSowingGuide date={localDate} />
 
         <section className="home-section home-library" aria-labelledby="home-spaces">
           <div className="home-section-heading">

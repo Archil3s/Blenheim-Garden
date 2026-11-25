@@ -1,3 +1,4 @@
+import { parseBedGrowingConditions } from "@/lib/garden/bed-growing-conditions";
 import { parsePlanLocks } from "@/lib/garden/plan-item-locks";
 import { defaultGardenDimensions, gardenDimensions, parseGardenDimensions, type GardenDimensions } from "@/lib/garden/garden-dimensions";
 import { parsePlantingSchedule } from "@/lib/garden/planting-schedule";
@@ -30,6 +31,7 @@ const PATTERNS = new Set<PlannerPlantingPattern>(["grid", "staggered", "rows", "
 const VISUAL_SPACING = new Set<PlannerVisualSpacing>(["tight", "normal", "wide"]);
 
 type BedRow = {
+  growing_conditions_json: string | null;
   id: string;
   label: string;
   x_percent: number;
@@ -219,6 +221,7 @@ function parsePlan(value: unknown): PlannerPlan {
     return {
       id: bed.id as number,
       name: bed.name.trim(),
+      growingConditions: parseBedGrowingConditions(bed.growingConditions),
       x,
       y,
       w,
@@ -367,7 +370,7 @@ export async function GET(request: Request) {
     await ensureDesignerSchema(db);
 
     const bedsResult = await db.prepare(`
-      SELECT id, label, x_percent, y_percent, width_percent, height_percent
+      SELECT id, label, x_percent, y_percent, width_percent, height_percent, growing_conditions_json
       FROM beds WHERE garden_id = ? AND archived_at IS NULL
       ORDER BY sort_order ASC, id ASC
     `).bind(gardenId).all<BedRow>();
@@ -404,6 +407,7 @@ export async function GET(request: Request) {
     const beds: PlannerBed[] = (bedsResult.results ?? []).map((bed) => ({
       id: Number.parseInt(bed.id, 10), name: bed.label, x: Number(bed.x_percent), y: Number(bed.y_percent),
       w: Number(bed.width_percent), h: Number(bed.height_percent),
+      growingConditions: bed.growing_conditions_json ? parseBedGrowingConditions(JSON.parse(bed.growing_conditions_json)) : undefined,
     })).filter((bed) => Number.isInteger(bed.id) && bed.id > 0);
 
     const bedIds = new Set(beds.map((bed) => bed.id));
@@ -505,12 +509,12 @@ export async function PUT(request: Request) {
     for (const [index, bed] of plan.beds.entries()) {
       const bedId = String(bed.id);
       statements.push(db.prepare(`
-        INSERT INTO beds (id, garden_id, label, x_percent, y_percent, width_percent, height_percent, sort_order, archived_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL)
+        INSERT INTO beds (id, garden_id, label, x_percent, y_percent, width_percent, height_percent, sort_order, archived_at, growing_conditions_json)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL, ?)
         ON CONFLICT(id) DO UPDATE SET label = excluded.label, x_percent = excluded.x_percent,
           y_percent = excluded.y_percent, width_percent = excluded.width_percent, height_percent = excluded.height_percent,
-          sort_order = excluded.sort_order, archived_at = NULL, updated_at = CURRENT_TIMESTAMP
-      `).bind(bedId, gardenId, bed.name, bed.x, bed.y, bed.w, bed.h, index));
+          sort_order = excluded.sort_order, growing_conditions_json = excluded.growing_conditions_json, archived_at = NULL, updated_at = CURRENT_TIMESTAMP
+      `).bind(bedId, gardenId, bed.name, bed.x, bed.y, bed.w, bed.h, index, bed.growingConditions ? JSON.stringify(bed.growingConditions) : null));
     }
 
     const bedIds = plan.beds.map((bed) => String(bed.id));

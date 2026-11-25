@@ -1,11 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { DEFAULT_GARDEN_ID, gardenLivePlanKey, gardenLocalPlanKey, readActiveGardenId } from "@/lib/garden/active-garden";
+import { linkedBatchDelay, readSeedPackets, seedPacketKey, type SeedPacket } from "@/lib/garden/seed-inventory";
+import type { PlannerPlan } from "@/lib/garden/planner-plan";
 import { PlantArt } from "./plant-art";
 import { SeedCataloguePicker, SeedTrayEditor } from "./seed-tray-editor";
 import { SeedContainerArt, SeedContainerPicker, seedContainers } from "./seed-container-art";
 import { useEffect, useMemo, useState } from "react";
-import { addDays, findGuide, formatNzDate, getSavedBatches, saveBatches, SEED_CROPS, type SeedBatch } from "@/lib/garden/seedling-local";
+import { addDays, cropArtName, findGuide, formatNzDate, getSavedBatches, saveBatches, SEED_CROPS, type SeedBatch } from "@/lib/garden/seedling-local";
 
 const stages: {value: SeedBatch["stage"]; label:string; hint:string}[] = [
   {value:"sown",label:"Sown",hint:"Moist, aerated growing mix; watch for emergence."},
@@ -15,7 +18,6 @@ const stages: {value: SeedBatch["stage"]; label:string; hint:string}[] = [
   {value:"hardening",label:"Hardening off",hint:"Gradually introduce wind and outdoor sun over 7–10 days."},
   {value:"planted",label:"Planted outside",hint:"Transplanted to a prepared bed; monitor local conditions."}
 ];
-const cropArtName = (crop: string) => crop === "Capsicum / chilli" ? "Capsicum" : crop === "Beans" ? "Bean" : crop;
 function todayNz() { return new Intl.DateTimeFormat("en-CA",{timeZone:"Pacific/Auckland",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date()); }
 function initialForm(): Omit<SeedBatch,"id"> {return {crop:"Tomato",variety:"",dateSown:todayNz(),count:6,site:"waihopai",method:"indoors",container:"Six-cell tray",covered:true,bottomWatered:true,stage:"sown",notes:""};}
 /** A deliberately generic botanical schematic, not a crop/variety reference photo. */
@@ -39,6 +41,11 @@ function SeedStageSketch({ stage }: { stage: SeedBatch["stage"] }) {
 
 export function SeedlingCompanion() {
   const [batches,setBatches] = useState<SeedBatch[]>([]);
+  const [gardenId, setGardenId] = useState(DEFAULT_GARDEN_ID);
+  const [gardenPlan, setGardenPlan] = useState<PlannerPlan>();
+  const [packets, setPackets] = useState<SeedPacket[]>([]);
+  const [packet, setPacket] = useState({ crop: "Tomato", variety: "", count: 20 });
+  const [inventoryError, setInventoryError] = useState("");
   const [loaded,setLoaded] = useState(false);
   const [showForm,setShowForm] = useState(false);
   const [form,setForm] = useState(initialForm);
@@ -46,21 +53,60 @@ export function SeedlingCompanion() {
   const [site,setSite] = useState<SeedBatch["site"]>("waihopai");
   const [filter,setFilter] = useState<"all" | "indoor" | "outdoor">("all");
   const [now,setNow] = useState<Date|null>(null);
-  useEffect(()=>{ queueMicrotask(()=>{setBatches(getSavedBatches());setLoaded(true);setNow(new Date());}); },[]);
+  useEffect(() => {
+    const controller = new AbortController();
+    queueMicrotask(() => {
+      if (controller.signal.aborted) return;
+      const id = readActiveGardenId();
+      setGardenId(id); setBatches(getSavedBatches()); setPackets(readSeedPackets(id)); setLoaded(true); setNow(new Date());
+      try {
+        const stored = localStorage.getItem(gardenLivePlanKey(id)) ?? localStorage.getItem(gardenLocalPlanKey(id));
+        if (stored) { setGardenPlan(JSON.parse(stored)); return; }
+      } catch { /* Try the saved garden if the local draft is unreadable. */ }
+      void fetch(`/api/garden?gardenId=${encodeURIComponent(id)}`, { signal: controller.signal })
+        .then(response => response.json()).then(data => {
+          if (!controller.signal.aborted && data.ok && data.plan) setGardenPlan(data.plan);
+        }).catch(() => { /* Unlinked batches can still be recorded. */ });
+    });
+    return () => controller.abort();
+  }, []);
   const date = now ?? new Date("2026-11-01T12:00:00+13:00");
   const month = Number(new Intl.DateTimeFormat("en-NZ",{timeZone:"Pacific/Auckland",month:"numeric"}).format(date));
   const today = todayNz();
   const planned = useMemo(()=>SEED_CROPS.map(crop=>({...crop, indoor:crop.indoorMonths?.includes(month)??false, outdoor:crop.outdoorMonths.includes(month)})).filter(c=>c.indoor||c.outdoor),[month]);
-  const visible = batches.filter(b=>filter==="all"||(filter==="indoor"?b.method!=="direct":b.method==="direct"));
-  function persist(next:SeedBatch[]) { setBatches(next);saveBatches(next); }
+  const belongsToGarden = (batch: SeedBatch) => batch.gardenId === gardenId || !batch.gardenId && gardenId === DEFAULT_GARDEN_ID;
+  const gardenBatches = batches.filter(belongsToGarden);
+  const visible = gardenBatches.filter(b=>filter==="all"||(filter==="indoor"?b.method!=="direct":b.method==="direct"));
+  function persist(next: SeedBatch[]) {
+    const merged = [...next.filter(belongsToGarden), ...getSavedBatches().filter(batch => !belongsToGarden(batch))];
+    saveBatches(merged);
+    setBatches(merged);
+  }
   function patchBatch(id:string,update:Partial<SeedBatch>){ persist(batches.map(x=>x.id===id?{...x,...update}:x)); }
+  const targets = (gardenPlan?.plantingAreas ?? []).filter(area =>
+    (area.schedule?.from || area.schedule?.transplant) && (!area.schedule?.until || area.schedule.until >= today)
+    && area.crop.toLowerCase() === cropArtName(form.crop).toLowerCase()
+    && (!form.variety || area.variety.toLowerCase() === form.variety.toLowerCase()));
+  function savePacket(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    try {
+      const saved = packets.find(item => item.crop === packet.crop && item.variety === packet.variety);
+      const next = saved ? packets.map(item => item.id === saved.id ? { ...item, count: packet.count } : item)
+        : [...packets, { ...packet, id: crypto.randomUUID() }];
+      localStorage.setItem(seedPacketKey(gardenId), JSON.stringify(next));
+      setPackets(next);
+      setInventoryError("");
+    } catch { setInventoryError("Could not save this seed packet on this device."); }
+  }
   function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const first = mappedCells[0];
     const batch = first
       ? { ...form, crop: first.crop, variety: first.variety, count: mappedCells.length }
       : { ...form, cells: undefined };
-    persist([{ ...batch, id: crypto.randomUUID() }, ...batches]);
+    persist([{ ...batch, gardenId, packetId: first ? undefined : batch.packetId,
+      plantingAreaId: !first && targets.some(area => area.id === batch.plantingAreaId) ? batch.plantingAreaId : undefined,
+      id: crypto.randomUUID() }, ...batches]);
     setForm(initialForm());
     setShowForm(false);
   }
@@ -69,21 +115,52 @@ export function SeedlingCompanion() {
     <div className="seed-width">
       <div className="seed-heading"><div><span className="seed-eyebrow">YOUR SEED-RAISING JOURNAL</span><h1>Seedling <em>Companion.</em></h1><p>Know what to start, what to check and when your next batch should be sown.</p></div><button className="seed-add" onClick={()=>setShowForm(s=>!s)}>{showForm?"Close form":"＋ Add seed batch"}</button></div>
       <div className="seed-location"><span>Default location for new batches</span><div className="seed-switch"><button className={site==="waihopai"?"selected":""} onClick={()=>setSite("waihopai")}>Waihopai Valley</button><button className={site==="blenheim"?"selected":""} onClick={()=>setSite("blenheim")}>Blenheim Central</button></div><small>Both sites currently share generic sowing windows; no site-specific forecast or soil sensor is connected</small></div>
+      <details className="seed-form seed-inventory">
+        <summary>Seed packets for this garden</summary>
+        <p>Packet counts are your last recorded counts. Packets and tray links are stored on this device.</p>
+        {packets.length > 0 && <ul>{packets.map(item => <li key={item.id}>{item.crop}{item.variety && ` · ${item.variety}`} · {item.count} seeds recorded</li>)}</ul>}
+        <form aria-label="Add seed packet" onSubmit={savePacket}>
+          <div className="seed-form-grid">
+            <SeedCataloguePicker crop={packet.crop} variety={packet.variety} onChange={(crop, variety) => setPacket(current => ({ ...current, crop, variety }))} />
+            <label>Packet seed count<input type="number" min="0" max="99999" required value={packet.count} onChange={event => setPacket(current => ({ ...current, count: Number(event.target.value) }))} /></label>
+          </div>
+          <button type="submit" className="seed-add" disabled={!loaded}>Add seed packet</button>
+          {inventoryError && <p role="alert">{inventoryError}</p>}
+        </form>
+      </details>
       {showForm&&<form className="seed-form" onSubmit={submit}><h2>Start tracking a batch</h2><div className="seed-form-grid">
-        <SeedCataloguePicker showVarietyOptions crop={form.crop} variety={form.variety} onChange={(crop, variety) => setForm(f => ({ ...f, crop, variety }))} />
+        <SeedCataloguePicker showVarietyOptions crop={form.crop} variety={form.variety} onChange={(crop, variety) => setForm(f => ({ ...f, crop, variety, packetId: undefined, plantingAreaId: undefined }))} />
+        <label>Seed packet<select disabled={mappedCells.length > 0} value={form.packetId ?? ""} onChange={event => {
+          const selected = packets.find(item => item.id === event.target.value);
+          setForm(current => ({ ...current, packetId: selected?.id, crop: selected?.crop ?? current.crop,
+            variety: selected?.variety ?? current.variety, plantingAreaId: undefined }));
+        }}><option value="">No packet selected</option>{packets.map(item => <option key={item.id} value={item.id}>{item.crop} {item.variety}</option>)}</select></label>
+        <label>Future bed planting<select disabled={mappedCells.length > 0} value={form.plantingAreaId ?? ""} onChange={event => setForm(current => ({ ...current, plantingAreaId: event.target.value || undefined }))}>
+          <option value="">Leave unlinked</option>
+          {targets.map(area => <option key={area.id} value={area.id}>{gardenPlan?.beds.find(bed => bed.id === area.bedId)?.name} · {area.variety} · {formatNzDate((area.schedule?.transplant ?? area.schedule?.from)!)}</option>)}
+        </select></label>
         <label>Seeds sown<input type="number" min="1" max="9999" readOnly={mappedCells.length > 0} value={mappedCells.length || form.count} onChange={e=>setForm(f=>({...f,count:Number(e.target.value)}))}/></label>
         <label>Date sown<input type="date" required value={form.dateSown} onChange={e=>setForm(f=>({...f,dateSown:e.target.value}))}/></label>
         <label>Method<select disabled={mappedCells.length > 0} value={form.method} onChange={e=>setForm(f=>({...f,method:e.target.value as SeedBatch["method"],container:e.target.value==="direct"?"Direct in bed":f.container==="Direct in bed"?"Six-cell tray":f.container}))}><option value="indoors">Under grow light / indoors</option><option value="protected">Outside protected</option><option value="direct">Direct sow in bed</option></select></label>
         <label>Location<select value={form.site} onChange={e=>setForm(f=>({...f,site:e.target.value as SeedBatch["site"]}))}><option value="waihopai">Waihopai Valley</option><option value="blenheim">Blenheim Central</option></select></label>
         <label>Notes<input placeholder="Substrate, ventilation, soil temperature…" value={form.notes||""} onChange={e=>setForm(f=>({...f,notes:e.target.value}))}/></label>
       </div><SeedContainerPicker disabled={mappedCells.length > 0} value={form.container} onChange={container=>setForm(f=>({...f,container,method:container==="Direct in bed"?"direct":f.method==="direct"&&seedContainers.some(item=>item.name===container)?"indoors":f.method}))}/>{mappedCells.length > 0 && <small>Clear the cells to switch trays or sowing methods.</small>}<SeedTrayEditor container={form.container} crop={form.crop} variety={form.variety} cells={mappedCells} onChange={cells => setForm(f => ({ ...f, cells }))} /><div className="seed-checks"><label><input type="checkbox" checked={form.covered} onChange={e=>setForm(f=>({...f,covered:e.target.checked}))}/> Ventilated cover / humidity box</label><label><input type="checkbox" checked={form.bottomWatered} onChange={e=>setForm(f=>({...f,bottomWatered:e.target.checked}))}/> Bottom-watering setup</label></div><button type="submit" className="seed-add">Save batch</button></form>}
-      <div className="seed-metrics"><div><span>ACTIVE BATCHES</span><strong>{loaded?batches.filter(b=>b.stage!=="planted").length:"—"}</strong><small>Tracked on this device</small></div><div><span>OUTDOOR PLANTING WINDOWS</span><strong>{planned.filter(x=>x.outdoor).length}</strong><small>Potential sowing or transplant windows</small></div><div><span>START UNDER COVER</span><strong>{planned.filter(x=>x.indoor).length}</strong><small>Calendar-based suggestions</small></div></div>
+      <div className="seed-metrics"><div><span>ACTIVE BATCHES</span><strong>{loaded?gardenBatches.filter(b=>b.stage!=="planted").length:"—"}</strong><small>Tracked on this device</small></div><div><span>OUTDOOR PLANTING WINDOWS</span><strong>{planned.filter(x=>x.outdoor).length}</strong><small>Potential sowing or transplant windows</small></div><div><span>START UNDER COVER</span><strong>{planned.filter(x=>x.indoor).length}</strong><small>Calendar-based suggestions</small></div></div>
       <section className="seed-section"><div className="seed-section-top"><div><span className="seed-eyebrow">THIS MONTH</span><h2>This month&apos;s sowing windows</h2></div><span className="seed-date">{date.toLocaleDateString("en-NZ",{month:"long",year:"numeric",timeZone:"Pacific/Auckland"})}</span></div>
         <div className="seed-crop-grid">{planned.length?planned.map(c=><article key={c.crop} className="seed-crop-card"><div className="seed-crop-top"><span className="seed-plant-glyph"><PlantArt crop={cropArtName(c.crop)} fallback="🌱" /></span><span className="seed-crop-type">{c.indoor&&c.outdoor?(c.outdoorAction==="transplant"?"Sow indoors / plant out":"Under cover / direct sow"):c.indoor?"Sow under cover":c.outdoorAction==="transplant"?"Plant out seedlings":"Direct sow"}</span></div><h3>{c.crop}</h3><p>{c.notes}</p>{c.indoor&&c.outdoor&&<small>Indoor start or outdoor sowing depending on conditions</small>}{c.intervalDays&&<div className="seed-succession">↻ Consider another sowing in ~{c.intervalDays} days</div>}<button onClick={()=>{setForm({...initialForm(),crop:c.crop,site,method:c.indoor||c.outdoorAction==="transplant"?"indoors":"direct",container:c.indoor||c.outdoorAction==="transplant"?"Six-cell tray":"Direct in bed"});setShowForm(true);window.scrollTo({top:0,behavior:"smooth"});}}>Track this crop →</button></article>):<p>There are no recommended crops for this month in the starter library. Check variety-specific sources.</p>}</div>
       </section>
       <section className="seed-section"><div className="seed-section-top"><div><span className="seed-eyebrow">YOUR GROWING BATCHES</span><h2>On the growing bench</h2></div><div className="seed-switch"><button className={filter==="all"?"selected":""} onClick={()=>setFilter("all")}>All</button><button className={filter==="indoor"?"selected":""} onClick={()=>setFilter("indoor")}>Under cover</button><button className={filter==="outdoor"?"selected":""} onClick={()=>setFilter("outdoor")}>Outside</button></div></div>
         {!visible.length?<div className="seed-empty"><span aria-hidden="true">01 /</span><h3>No batches in this view yet</h3><p>Add your first sowing to get a germination countdown, growth-stage checklist and succession date.</p><button className="seed-add" onClick={()=>setShowForm(true)}>＋ Add seed batch</button></div>:<div className="seed-batch-grid">{visible.map(b=>{const mixed = b.cells?.some(cell => cell.crop !== b.crop || cell.variety !== b.variety);const guide=mixed ? undefined : findGuide(b.crop);const step=stages.findIndex(s=>s.value===b.stage);const min=guide?addDays(b.dateSown,guide.emergenceDays[0]):null;const max=guide?addDays(b.dateSown,guide.emergenceDays[1]):null;const next=guide?.intervalDays?addDays(b.dateSown,guide.intervalDays):null;const due=next&&next<=today;
+        const link = linkedBatchDelay(b, gardenPlan?.plantingAreas ?? [], today);
+        const assignedPacket = packets.find(item => item.id === b.packetId);
         return <article className="seed-batch-card" key={b.id}><div className="seed-batch-header"><div className="seed-batch-art"><SeedContainerArt name={b.container}/><PlantArt crop={cropArtName(b.crop)} variety={b.variety} fallback="🌱" /></div><div><span className="seed-crop-type">{b.site==="waihopai"?"Waihopai Valley":"Blenheim Central"} · {b.container}</span><h3>{mixed ? "Mixed tray" : b.crop}{!mixed && b.variety ? ` · ${b.variety}` : ""}</h3><small>{b.count} seeds · sown {formatNzDate(b.dateSown)}</small></div><button className="seed-delete" onClick={()=>{if(window.confirm("Delete this batch?"))persist(batches.filter(x=>x.id!==b.id));}} aria-label={`Delete ${b.crop} batch`}>×</button></div>
+        {assignedPacket && <p className="seed-milestone">Packet · {assignedPacket.crop} {assignedPacket.variety}</p>}
+        {link && <div className="seed-milestone">
+          <p>Planned bed · {gardenPlan?.beds.find(bed => bed.id === link.planting.bedId)?.name} · {link.date ? formatNzDate(link.date) : "Date to confirm"}</p>
+          <label>Expected ready date<input type="date" value={b.readyFrom ?? ""} onChange={event => patchBatch(b.id, { readyFrom: event.target.value || undefined })} /></label>
+          {link.delayed && <p role="status">This batch may miss the planned bed date. Review the booking in the planner.</p>}
+        </div>}
+        {b.plantingAreaId && !link && <p className="seed-milestone">Linked planting is unavailable. Check the saved garden plan.</p>}
         {b.cells?.length ? <SeedTrayEditor editOnly container={b.container} crop={b.crop} variety={b.variety} cells={b.cells} onChange={cells => {
           const first = cells[0];
           if (first) patchBatch(b.id, { cells, crop: first.crop, variety: first.variety, count: cells.length });

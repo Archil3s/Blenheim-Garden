@@ -1,5 +1,6 @@
 "use client";
 
+import { readActiveGardenId } from "@/lib/garden/active-garden";
 import { useEffect, useMemo, useState } from "react";
 import type { CropFamily, RotationAdvice } from "@/lib/garden/crop-rotation";
 
@@ -158,8 +159,9 @@ export function CropRotationBridge() {
     if (!open) return;
     const controller = new AbortController();
     queueMicrotask(() => { if (!controller.signal.aborted) { setLoading(true); setError(""); setData(null); } });
-    const query = bedId ? `?bedId=${encodeURIComponent(bedId)}` : "";
-    fetch(`/api/garden/rotation${query}`, { cache: "no-store", signal: controller.signal })
+    const query = new URLSearchParams({ gardenId: readActiveGardenId() });
+    if (bedId) query.set("bedId", bedId);
+    fetch(`/api/garden/rotation?${query}`, { cache: "no-store", signal: controller.signal })
       .then(async (response) => {
         const result = await response.json() as GardenResponse | BedResponse;
         if (!response.ok || !result.ok) throw new Error(result.error || "Unable to load rotation history.");

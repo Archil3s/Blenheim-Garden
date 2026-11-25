@@ -27,3 +27,8 @@ export function writeActiveGardenId(gardenId: string) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(ACTIVE_GARDEN_KEY, gardenId);
 }
+
+export function gardenResourceUrl(path: string, gardenId = readActiveGardenId()) {
+  if (gardenId === DEFAULT_GARDEN_ID) return path;
+  return `${path}${path.includes("?") ? "&" : "?"}gardenId=${encodeURIComponent(gardenId)}`;
+}

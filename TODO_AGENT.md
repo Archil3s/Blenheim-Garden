@@ -450,3 +450,18 @@ P-014: linked planting calendar, manual planned milestones, sourced maturity
 estimates and CSV implemented. Full 252/252 regression checks and final 16/16
 calendar checks pass; final lint/build pass. Four-size screenshots reviewed.
 Unsupported crops retain manual dates, not guessed guidance.
+
+## Saved-garden roadmap, 25 November 2026
+
+- 1. Garden-wide replacement overview. Implemented in the Succession planting report. The overview opens each bed's existing review with the same planning date. The selected-bed inspector still opens that bed directly. Verification in `tests/visual/succession-timeline.spec.ts`.
+- 2. Row and partial-bed successions. Implemented in the planting inspector. `addSuccession` checks measured footprints and inclusive dates before appending; conflict bookings are marked on the canvas.
+- 3. Seasonal shade estimates. Implemented in the garden-wide succession view, with mapped shadow geometry, season and solar-time controls, and links to saved per-bed observations.
+- 4. Trellis availability by date. Implemented in the succession overview. Reservations use existing schedule JSON and checks consider both linked and inferred occupancy.
+- 5. Heat and frost date advice. Implemented in succession review. Open-Meteo supports a regional seven-day overlay; HTTP 403 in the managed workspace prevented a live check. The fixture verifies cold and heat guidance and the seasonal fallback.
+- 6. Crop guide expansion. Implemented five crops with broad Blenheim planning windows, the existing NZ calendar reference, catalogue spacing and selected variety advice.
+- 7. Seed packets and trays. Implemented garden-scoped device-local packets and links from batches to scheduled planting areas. Readiness delays appear in succession. Legacy unscoped batches remain available in the default garden.
+- 8. Staggered harvest preview. Implemented repeated targets and bed and tray capacity checks in Succession planting. Uses whole-bed occupancy and crop maturity estimates.
+- 9. Schedule recovery. Implemented explicit previews, measured bed and trellis conflict checks, a next clear slot, and failed-crop clearance. Approved changes use the protected selected-garden save.
+- 10. Bed season results. Implemented planned and recorded milestones, harvested weights and quantities, and dated bed photos. The records and media dialogs now use the selected garden.
+
+Verify each milestone in the normal selected-garden workflow and preserve dated plantings, measured geometry, cloud edit protection and legacy plan reads. The live forecast provider returned HTTP 403 in the managed workspace. Its response and seasonal fallback are covered by fixtures.

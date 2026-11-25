@@ -47,7 +47,7 @@ test("PDF template and custom dimensions round-trip through protected D1 storage
     const statement: D1PreparedStatementLike = {
       bind(...bindings) { values = bindings as SQLInputValue[]; return statement; },
       async all<T>() { return { results: sqlite.prepare(query).all(...values) as T[], success: true }; },
-      async first<T>(column) { const row = sqlite.prepare(query).get(...values); return (row ? column ? row[column] : row : null) as T | null; },
+      async first<T>(column?: string) { const row = sqlite.prepare(query).get(...values); return (row ? column ? row[column] : row : null) as T | null; },
       async run() { sqlite.prepare(query).run(...values); return { success: true }; },
     }; return statement;
   }, async batch<T>(statements: D1PreparedStatementLike[]) {
@@ -99,11 +99,11 @@ test("PDF and blank templates are undoable, backed up and persist only through e
   await gardenMenu(page); await page.getByRole("button", { name: "2023 PDF base template" }).click();
   await expect(page.locator(".plan-bed")).toHaveCount(23);
   await expect(page.locator(".berry-strip,.north-zone")).toHaveCount(0);
-  expect(await page.locator(".garden-canvas").evaluate(el => el.offsetWidth)).toBe(3500);
+  expect(await page.locator(".garden-canvas").evaluate(el => (el as HTMLElement).offsetWidth)).toBe(3500);
   await page.screenshot({ path: info.outputPath("pdf-template.png") });
   await gardenMenu(page); await page.getByRole("button", { name: "Blank template", exact: true }).click();
   await expect(page.locator(".plan-bed,.planting-row,.planting-area,.layout-object")).toHaveCount(0);
-  expect(await page.locator(".garden-canvas").evaluate(el => el.offsetWidth)).toBe(3500);
+  expect(await page.locator(".garden-canvas").evaluate(el => (el as HTMLElement).offsetWidth)).toBe(3500);
   expect(writes).toBe(0);
   const backup = await page.evaluate(() => JSON.parse(localStorage.getItem("garden-before-blank-template:blenheim-garden")!));
   expect(backup.beds).toHaveLength(23);
@@ -128,7 +128,7 @@ test("garden size edits retain physical geometry, reject clipping and undo", asy
   await dialog.getByLabel("Width (metres)").fill("40"); await dialog.getByLabel("Length (metres)").fill("25");
   await dialog.getByRole("button", { name: "Apply size" }).click();
   await expect(dialog).toHaveCount(0);
-  expect(await page.locator(".garden-canvas").evaluate(el => [el.offsetWidth, el.offsetHeight])).toEqual([4000, 2500]);
+  expect(await page.locator(".garden-canvas").evaluate(el => [(el as HTMLElement).offsetWidth, (el as HTMLElement).offsetHeight])).toEqual([4000, 2500]);
   expect(await page.locator(".plan-bed").first().getAttribute("style")).toBe(geometry);
   await gardenMenu(page); await page.getByRole("button", { name: "Garden size…" }).click();
   await dialog.getByLabel("Width (metres)").fill("1"); await dialog.getByLabel("Length (metres)").fill("1");
@@ -136,7 +136,7 @@ test("garden size edits retain physical geometry, reject clipping and undo", asy
   await page.screenshot({ path: info.outputPath("garden-size-validation.png") });
   await dialog.getByRole("button", { name: "Cancel", exact: true }).click();
   await page.locator('.gv-quickbar button[title^="Undo"]').click();
-  expect(await page.locator(".garden-canvas").evaluate(el => [el.offsetWidth, el.offsetHeight])).toEqual([900, 1080]);
+  expect(await page.locator(".garden-canvas").evaluate(el => [(el as HTMLElement).offsetWidth, (el as HTMLElement).offsetHeight])).toEqual([900, 1080]);
 });
 
 test("catalogue has one scroll surface and pinned search while map dragging stays separate", async ({ page, context }, info) => {

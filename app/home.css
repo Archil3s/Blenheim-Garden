@@ -147,3 +147,25 @@
 @media (prefers-reduced-motion: reduce) {
  .home-primary,.home-workspace-item { transition: none; }
 }
+
+.home-sowing { padding: 48px 0; border-bottom: 1px solid var(--field-rule); }
+.home-sowing .home-section-heading { margin-bottom: 12px; }
+.home-sowing > p, .home-sowing-groups p { color: var(--field-muted); font-size: 14px; line-height: 1.55; }
+.home-sowing h3 { margin: 26px 0 12px; font: 24px/1.25 Georgia, serif; }
+.home-sowing-now { padding: 1px 20px 18px; background: #eef0e6; border: 1px solid var(--field-rule); }
+.home-sowing-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 28px; }
+.home-sowing-groups h4 { margin: 8px 0 0; color: var(--field-green); font-size: 14px; }
+.home-sowing-groups ul { list-style: none; padding: 0; margin: 7px 0 0; }
+.home-sowing-groups li { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--field-rule); }
+.home-sowing-groups li:last-child { border-bottom: 0; }
+.home-sowing-groups li p { margin: 3px 0 0; }
+.home-sowing-art { font-size: 48px; }
+.home-sowing-months { border-top: 1px solid var(--field-rule); }
+.home-sowing-months details { border-bottom: 1px solid var(--field-rule); }
+.home-sowing-months summary { min-height: 44px; padding: 12px 0; cursor: pointer; font-weight: 700; }
+.home-sowing-months .home-sowing-groups { padding: 0 0 12px 16px; }
+
+@media (max-width: 600px) {
+  .home-sowing-groups { grid-template-columns: 1fr; }
+  .home-sowing-now { padding-inline: 14px; }
+}
